@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d0ec6afb30584e5e8c61b43b12675d02" Name="Diagram1">
+        <EntityTypeShape EntityType="shahriarco.Anbar.Models.TAnb" Width="1.5" PointX="0.75" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="shahriarco.Anbar.Models.TCurrent" Width="1.5" PointX="10.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="shahriarco.Anbar.Models.THes" Width="1.5" PointX="12.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="shahriarco.Anbar.Models.THesAnb" Width="1.5" PointX="14.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="shahriarco.Anbar.Models.THesKala" Width="1.5" PointX="5.25" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="shahriarco.Anbar.Models.THesMad" Width="1.5" PointX="12.75" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="shahriarco.Anbar.Models.THesMar" Width="1.5" PointX="8.25" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="shahriarco.Anbar.Models.TKala" Width="1.5" PointX="3" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="shahriarco.Anbar.Models.TMad" Width="1.5" PointX="3" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="shahriarco.Anbar.Models.TMadEnt" Width="1.5" PointX="10.75" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="shahriarco.Anbar.Models.TMadIEnt" Width="1.5" PointX="13" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="shahriarco.Anbar.Models.TMadItm" Width="1.5" PointX="10.5" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="shahriarco.Anbar.Models.TMah" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="shahriarco.Anbar.Models.TMahD" Width="1.5" PointX="3" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="shahriarco.Anbar.Models.TMar" Width="1.5" PointX="6" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="shahriarco.Anbar.Models.TMarKala" Width="1.5" PointX="8.25" PointY="16" IsExpanded="true" />
+        <EntityTypeShape EntityType="shahriarco.Anbar.Models.TMedia" Width="1.5" PointX="5.75" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="shahriarco.Anbar.Models.TMediaKala" Width="1.5" PointX="14.75" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="shahriarco.Anbar.Models.TMenu" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="shahriarco.Anbar.Models.TMenuD" Width="1.5" PointX="5.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="shahriarco.Anbar.Models.TProject" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="shahriarco.Anbar.Models.TProjectD" Width="1.5" PointX="6" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="shahriarco.Anbar.Models.TProjectDItm" Width="1.5" PointX="8.25" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="shahriarco.Anbar.Models.TUser" Width="1.5" PointX="14.75" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="shahriarco.Anbar.Models.TUserAccess" Width="1.5" PointX="15.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="shahriarco.Anbar.Models.TVahed" Width="1.5" PointX="7.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="shahriarco.Anbar.Models.THavRez" Width="1.5" PointX="10.75" PointY="17" IsExpanded="true" />
+        <EntityTypeShape EntityType="shahriarco.Anbar.Models.THavRezItm" Width="1.5" PointX="16.75" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="shahriarco.Anbar.Models.TParmtr" Width="1.5" PointX="7.75" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="shahriarco.Anbar.Models.TSet" Width="1.5" PointX="16.75" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="shahriarco.Anbar.Models.QAnbar" Width="1.5" PointX="16.75" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="shahriarco.Anbar.Models.QAnbarKalaCode" Width="1.5" PointX="12.75" PointY="18" IsExpanded="true" />
+        <EntityTypeShape EntityType="shahriarco.Anbar.Models.QAnbarValid" Width="1.5" PointX="14.75" PointY="18" IsExpanded="true" />
+        <EntityTypeShape EntityType="shahriarco.Anbar.Models.QCardex" Width="1.5" PointX="16.75" PointY="17" IsExpanded="true" />
+        <EntityTypeShape EntityType="shahriarco.Anbar.Models.QCardex_THav" Width="1.5" PointX="18.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="shahriarco.Anbar.Models.QCardexAK" Width="1.5" PointX="5.75" PointY="20" IsExpanded="true" />
+        <EntityTypeShape EntityType="shahriarco.Anbar.Models.QCardexM" Width="1.5" PointX="18.75" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="shahriarco.Anbar.Models.QDarkhast" Width="1.5" PointX="7.75" PointY="20" IsExpanded="true" />
+        <EntityTypeShape EntityType="shahriarco.Anbar.Models.QDCardex_AvalDoreh" Width="1.5" PointX="18.75" PointY="16" IsExpanded="true" />
+        <EntityTypeShape EntityType="shahriarco.Anbar.Models.QDCardex_Ghabz" Width="1.5" PointX="18.75" PointY="19" IsExpanded="true" />
+        <EntityTypeShape EntityType="shahriarco.Anbar.Models.QDCardex_Havaleh" Width="1.5" PointX="9.75" PointY="21" IsExpanded="true" />
+        <EntityTypeShape EntityType="shahriarco.Anbar.Models.QGardesh" Width="1.5" PointX="11.75" PointY="21" IsExpanded="true" />
+        <EntityTypeShape EntityType="shahriarco.Anbar.Models.QGardeshIn" Width="1.5" PointX="13.75" PointY="21" IsExpanded="true" />
+        <EntityTypeShape EntityType="shahriarco.Anbar.Models.QGardeshNM" Width="1.5" PointX="20.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="shahriarco.Anbar.Models.QGardeshNMIn" Width="1.5" PointX="0.75" PointY="22" IsExpanded="true" />
+        <EntityTypeShape EntityType="shahriarco.Anbar.Models.QGardeshNMOut" Width="1.5" PointX="2.75" PointY="22" IsExpanded="true" />
+        <EntityTypeShape EntityType="shahriarco.Anbar.Models.QGardeshOut" Width="1.5" PointX="20.75" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="shahriarco.Anbar.Models.QHavaleh" Width="1.5" PointX="20.75" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="shahriarco.Anbar.Models.QHavalehMoujod" Width="1.5" PointX="20.75" PointY="18" IsExpanded="true" />
+        <EntityTypeShape EntityType="shahriarco.Anbar.Models.QHavHavItm" Width="1.5" PointX="18.75" PointY="22" IsExpanded="true" />
+        <EntityTypeShape EntityType="shahriarco.Anbar.Models.QHavItm" Width="1.5" PointX="20.75" PointY="21" IsExpanded="true" />
+        <EntityTypeShape EntityType="shahriarco.Anbar.Models.QHesab" Width="1.5" PointX="4.75" PointY="23" IsExpanded="true" />
+        <EntityTypeShape EntityType="shahriarco.Anbar.Models.QHesabAnbar" Width="1.5" PointX="22.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="shahriarco.Anbar.Models.QHesabKala" Width="1.5" PointX="22.75" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="shahriarco.Anbar.Models.QHesabMarkaz" Width="1.5" PointX="22.75" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="shahriarco.Anbar.Models.QKala" Width="1.5" PointX="22.75" PointY="15" IsExpanded="true" />
+        <EntityTypeShape EntityType="shahriarco.Anbar.Models.QKalaAnbar" Width="1.5" PointX="15.75" PointY="24" IsExpanded="true" />
+        <EntityTypeShape EntityType="shahriarco.Anbar.Models.QMadrak" Width="1.5" PointX="22.75" PointY="24" IsExpanded="true" />
+        <EntityTypeShape EntityType="shahriarco.Anbar.Models.QMadrakItem" Width="1.5" PointX="24.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="shahriarco.Anbar.Models.QMadrakItem2" Width="1.5" PointX="24.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="shahriarco.Anbar.Models.QMadrakMadrakItem" Width="1.5" PointX="24.75" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="shahriarco.Anbar.Models.QMarkazKalaUnValid" Width="1.5" PointX="24.75" PointY="17" IsExpanded="true" />
+        <EntityTypeShape EntityType="shahriarco.Anbar.Models.QRaked" Width="1.5" PointX="17.75" PointY="26" IsExpanded="true" />
+        <EntityTypeShape EntityType="shahriarco.Anbar.Models.QRHesabKala" Width="1.5" PointX="24.75" PointY="20" IsExpanded="true" />
+        <EntityTypeShape EntityType="shahriarco.Anbar.Models.QRHesabMarkaz" Width="1.5" PointX="19.75" PointY="26" IsExpanded="true" />
+        <EntityTypeShape EntityType="shahriarco.Anbar.Models.QSanad" Width="1.5" PointX="24.75" PointY="24" IsExpanded="true" />
+        <EntityTypeShape EntityType="shahriarco.Anbar.Models.QSanadNonUpdatable" Width="1.5" PointX="0.75" PointY="27" IsExpanded="true" />
+        <EntityTypeShape EntityType="shahriarco.Anbar.Models.QSefPoint" Width="1.5" PointX="2.75" PointY="27" IsExpanded="true" />
+        <EntityTypeShape EntityType="shahriarco.Anbar.Models.QShomaresh" Width="1.5" PointX="4.75" PointY="27" IsExpanded="true" />
+        <EntityTypeShape EntityType="shahriarco.Anbar.Models.QSumAvalDoreh" Width="1.5" PointX="6.75" PointY="27" IsExpanded="true" />
+        <EntityTypeShape EntityType="shahriarco.Anbar.Models.QSumAvaldorehNM" Width="1.5" PointX="8.75" PointY="27" IsExpanded="true" />
+        <EntityTypeShape EntityType="shahriarco.Anbar.Models.QSumAvalDorehNMR" Width="1.5" PointX="10.75" PointY="27" IsExpanded="true" />
+        <EntityTypeShape EntityType="shahriarco.Anbar.Models.QSumGhabz" Width="1.5" PointX="12.75" PointY="27" IsExpanded="true" />
+        <EntityTypeShape EntityType="shahriarco.Anbar.Models.QSumGhabzNM" Width="1.5" PointX="26.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="shahriarco.Anbar.Models.QSumGhabzNMR" Width="1.5" PointX="26.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="shahriarco.Anbar.Models.QSumGhabzNMT" Width="1.5" PointX="26.75" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="shahriarco.Anbar.Models.QSumHavaleh" Width="1.5" PointX="26.75" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="shahriarco.Anbar.Models.QSumHavalehNM" Width="1.5" PointX="26.75" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="shahriarco.Anbar.Models.QSumHavalehNMR" Width="1.5" PointX="26.75" PointY="17" IsExpanded="true" />
+        <EntityTypeShape EntityType="shahriarco.Anbar.Models.QSumHavalehNMT" Width="1.5" PointX="26.75" PointY="20" IsExpanded="true" />
+        <EntityTypeShape EntityType="shahriarco.Anbar.Models.QtempDarkhast" Width="1.5" PointX="26.75" PointY="23" IsExpanded="true" />
+        <EntityTypeShape EntityType="shahriarco.Anbar.Models.QUpdate" Width="1.5" PointX="21.75" PointY="29" IsExpanded="true" />
+        <EntityTypeShape EntityType="shahriarco.Anbar.Models.QUpdate_THav" Width="1.5" PointX="28.75" PointY="2" IsExpanded="true" />
+        <AssociationConnector Association="shahriarco.Anbar.Models.FK_TKala_TAnb" ManuallyRouted="false" />
+        <AssociationConnector Association="shahriarco.Anbar.Models.FK_TMad_TAnb" ManuallyRouted="false" />
+        <AssociationConnector Association="shahriarco.Anbar.Models.FK_THesKala_TKala" ManuallyRouted="false" />
+        <AssociationConnector Association="shahriarco.Anbar.Models.FK_THesMad_TMadItm" ManuallyRouted="false" />
+        <AssociationConnector Association="shahriarco.Anbar.Models.FK_THesMar_TMar" ManuallyRouted="false" />
+        <AssociationConnector Association="shahriarco.Anbar.Models.FK_TMarKala_TKala" ManuallyRouted="false" />
+        <AssociationConnector Association="shahriarco.Anbar.Models.FK_TMadItm_TMad" ManuallyRouted="false" />
+        <AssociationConnector Association="shahriarco.Anbar.Models.FK_TMadIEnt_TMadEnt" ManuallyRouted="false" />
+        <AssociationConnector Association="shahriarco.Anbar.Models.FK_TMadItm_TMarKala" ManuallyRouted="false" />
+        <AssociationConnector Association="shahriarco.Anbar.Models.FK_TMahD_TMah" ManuallyRouted="false" />
+        <AssociationConnector Association="shahriarco.Anbar.Models.FK_TProjectD_TMah" ManuallyRouted="false" />
+        <AssociationConnector Association="shahriarco.Anbar.Models.FK_TMarKala_TMar" ManuallyRouted="false" />
+        <AssociationConnector Association="shahriarco.Anbar.Models.FK_TProjectD_TProject" ManuallyRouted="false" />
+        <AssociationConnector Association="shahriarco.Anbar.Models.FK_TProjectDItm_TProjectD" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

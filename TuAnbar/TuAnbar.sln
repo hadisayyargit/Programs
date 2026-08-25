@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "shahriarco.Anbar", "shahriarco.Anbar\shahriarco.Anbar.csproj", "{F8DB3A42-011F-4A2B-A890-38D04F606487}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "shahriarco.CommonUnit", "shahriarco.CommonUnit\shahriarco.CommonUnit.csproj", "{029822E4-04F2-451D-968D-96F4256C8772}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F8DB3A42-011F-4A2B-A890-38D04F606487}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8DB3A42-011F-4A2B-A890-38D04F606487}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8DB3A42-011F-4A2B-A890-38D04F606487}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8DB3A42-011F-4A2B-A890-38D04F606487}.Release|Any CPU.Build.0 = Release|Any CPU
+		{029822E4-04F2-451D-968D-96F4256C8772}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{029822E4-04F2-451D-968D-96F4256C8772}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{029822E4-04F2-451D-968D-96F4256C8772}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{029822E4-04F2-451D-968D-96F4256C8772}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

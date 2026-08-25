@@ -1,0 +1,253 @@
+﻿@using Kendo.Mvc.UI
+
+@model shahriarco.Anbar.Models.THes
+
+@{
+    ViewBag.Title = "";
+    ViewBag.tab1class = "";
+    ViewBag.tab2class = "active";
+    ViewBag.tab3class = "";
+    ViewBag.tab4class = "";
+    ViewBag.tab5class = "";
+    ViewBag.tab6class = "";
+    ViewBag.tab7class = "";
+    ViewBag.tab8class = "";
+
+    ViewBag.menuAnbarclass = "";
+    ViewBag.menuKalaclass = "";
+    ViewBag.menuAvalDorehclass = "";
+    ViewBag.menuResidclass = "";
+    ViewBag.menuHavalehclass = "";
+
+
+    ViewBag.menuHesabdariAnbarclass = "";
+    ViewBag.menuHesabdariMotefareghehclass = "current";
+    
+    List<shahriarco.Anbar.Models.QHesab> myHesabdariList = ViewBag.HesabdariList;
+
+}
+
+
+<head>
+    <link href="~/Content/kendo/2014.1.318/style/kendo.common.min.css" rel="stylesheet" />
+    <link href="~/Content/kendo/2014.1.318/style/kendo.default.min.css" rel="stylesheet" />
+    <link href="~/Content/kendo/2014.1.318/style/kendo.dataviz.min.css" rel="stylesheet" />
+    <link href="~/Content/kendo/2014.1.318/style/kendo.dataviz.default.min.css" rel="stylesheet" />
+    <link href="~/Content/kendo/2014.1.318/style/kendo.rtl.min.css" rel="stylesheet" />
+
+    <script src="~/Content/kendo/2014.1.318/js/kendo.all.min.js"></script>
+    <script src="~/Content/kendo/2014.1.318/js/kendo.aspnetmvc.min.js"></script>
+
+</head>
+
+<div id='wrapper'>
+
+    <section id='content'>
+        <div class='container-fluid'>
+            <div class='row-fluid' id='content-wrapper'>
+                <div class='span12'>
+
+                    <div class='row-fluid'>
+
+                        <div class='span10 box bordered-box' style='margin-bottom:0;'>
+
+
+                            <div class='box-header orange-background'>
+                                <div class='title'>حسابداری متفرقه</div>
+                                <div class='actions'>
+                                    <a href="#" class="btn box-remove btn-mini btn-link">
+                                        <i class='icon-remove'></i>
+                                    </a>
+                                    <a href="#" class="btn box-collapse btn-mini btn-link">
+                                        <i></i>
+                                    </a>
+                                </div>
+                            </div>
+
+
+                            <div class='box-content box-no-padding'>
+
+
+                                @(Html.Kendo().Grid(myHesabdariList).Name("MyGrid")
+                                .Resizable(resize => resize.Columns(true))
+                                .Columns(columns =>
+                                {
+                                columns.Bound("Radif").Title("ردیف ").Width(200).HtmlAttributes(new { style = "font-family:B yekan,Tahoma" });
+                                columns.Bound("sharh").Title("شرح").Width("auto").Template(@<text>
+                                <a onclick="item_change(@item.Radif,@item.Kol,@item.Moein,@item.Tafzili,@item.Joz,'@item.Sharh',@item.Type,@item.id)" style="cursor:pointer">@item.Sharh</a>
+                                </text>);
+
+                                    columns.Bound("Joz").Title("جزء").Width(50).HtmlAttributes(new { style = "font-family:B yekan,Tahoma" });
+                                    columns.Bound("Tafzili").Title("تفصیلی").Width(50).HtmlAttributes(new { style = "font-family:B yekan,Tahoma" });
+                                    columns.Bound("Moein").Title("معین").Width(50).HtmlAttributes(new { style = "font-family:B yekan,Tahoma" });
+                                    columns.Bound("Kol").Title("کل").Width(50).HtmlAttributes(new { style = "font-family:B yekan,Tahoma" });
+
+                                    columns.Bound("id").Title("شناسه").Width(10).HtmlAttributes(new { style = "" });
+                                })
+                                .DataSource(d => d.Server().PageSize(10))
+
+                            .Sortable()
+
+
+                            .Filterable(filterable => filterable
+                                            .Messages(str => str
+                                            .And("و")
+                                            .Cancel("لغو")
+                                            .Clear("پاک")
+                                            .Filter("فیلتر")
+                                            .Info("فیلتر کردن گزینه ها")
+                                            )
+                                            .Operators(operators => operators
+                                            .ForNumber(n => n.Clear()
+                                                .IsEqualTo("=")
+                                                .IsGreaterThan(">")
+                                                .IsGreaterThanOrEqualTo(">=")
+                                                .IsLessThan("<")
+                                                .IsLessThanOrEqualTo("<=")
+                                                .IsNotEqualTo("<>")
+                                                )
+                                            .ForString(str => str.Clear()
+                                                .StartsWith("شروع شود با ")
+                                                .IsEqualTo("برابر با")
+                                                .Contains("شامل")
+                                                .DoesNotContain("شامل نباشد")
+                                                .StartsWith("شروع شود با")
+                                                .EndsWith("تمام شود به")
+                                                .IsNotEqualTo("نابرابر با")))
+                                   )
+
+                            .Pageable(pageable => pageable
+                                .PageSizes(new int[] { 10, 20, 30, 40 })
+                                .ButtonCount(5).Numeric(true).Refresh(true)
+                                .Messages(str => str.ItemsPerPage("تعداد سطر در صفحه").First("اولین").Last("آخرین").Next("بعدی").Previous("قبلی").Page("صفحه").Of("از").MorePages("صفحات بیشتر").Empty("خالی").Refresh("تازه سازی"))
+                                    )
+
+
+                                )
+
+
+                                <div class='box-content'>
+
+                                    @using (Html.BeginForm("HesabdariMotefaregheh_update", "Hesabdari", FormMethod.Post))
+                                    {
+
+                                        @Html.ValidationSummary(true)
+
+                                        <div class='control-group'>
+
+                                            @Html.HiddenFor(m => m.id, htmlAttributes: new { id = "txtId" })
+                                            @Html.HiddenFor(m => m.SalMali, htmlAttributes: new { id = "txtSalMali" })
+                                            @Html.HiddenFor(m => m.Type, htmlAttributes: new { id = "txtType" })
+
+                                            <label class='control-label'>ردیف</label>
+                                            <div class='controls'>
+                                                @Html.TextBoxFor(m => m.Radif, htmlAttributes: new { id = "txtRadif" })
+                                                @Html.ValidationMessageFor(m => m.Radif)
+                                            </div>
+
+
+                                            <label class='control-label'>شرح</label>
+                                            <div class='controls'>
+                                                @Html.TextBoxFor(m => m.Sharh, htmlAttributes: new { id = "txtSharh" })
+                                                @Html.ValidationMessageFor(m => m.Sharh)
+                                            </div>
+
+                                            <label class='control-label'>کل</label>
+                                            <div class='controls'>
+                                                @Html.TextBoxFor(m => m.Kol, htmlAttributes: new { id = "txtKol" })
+                                                @Html.ValidationMessageFor(m => m.Kol)
+                                            </div>
+
+                                            <label class='control-label'>معین</label>
+                                            <div class='controls'>
+                                                @Html.TextBoxFor(m => m.Moein, htmlAttributes: new { id = "txtMoein" })
+                                                @Html.ValidationMessageFor(m => m.Moein)
+                                            </div>
+
+                                            <label class='control-label'>تفصیلی</label>
+                                            <div class='controls'>
+                                                @Html.TextBoxFor(m => m.Tafzili, htmlAttributes: new { id = "txtTafsili" })
+                                                @Html.ValidationMessageFor(m => m.Tafzili)
+                                            </div>
+                                                    
+                                            <label class='control-label'>جزء</label>
+                                            <div class='controls'>
+                                                @Html.TextBoxFor(m => m.Joz, htmlAttributes: new { id = "txtJoz" })
+                                                @Html.ValidationMessageFor(m => m.Joz)
+                                            </div>
+
+                 
+
+                                        </div>
+
+                                        <div class='form-actions' style='margin-bottom: 0;'>
+                                            <div class='text-right'>
+                                                <button class='btn btn-small ' onclick="clearMaster()" type="button">
+                                                    <i class='ui-icon-newwin'></i>
+                                                    جدید
+                                                </button>
+
+                                                <button class='btn btn-file btn-small ' type="submit">
+                                                    <i class='icon-save'></i>
+                                                    ثبت
+                                                </button>
+
+                                                <button class='btn btn-file btn-small' onclick="clearMaster()" type="button">
+                                                    <i class='ui-icon-cancel'></i>
+                                                    انصراف
+                                                </button>
+
+                                            </div>
+                                        </div>
+
+                                    }
+                                </div>
+
+
+                            </div>
+
+                        </div>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+
+<script>
+        function item_change(radif, kol, moein, tafsili, joz, sharh, type, id) {
+        $("#txtId").val(id);
+        $("#txtRadif").val(radif);
+        $("#txtKol").val(kol);
+        $("#txtMoein").val(moein);
+        $("#txtTafsili").val(tafsili);
+        $("#txtJoz").val(joz);
+        $("#txtSharh").val(sharh);
+        $("#txtType").val(type);
+        
+    }
+</script>
+
+
+
+<script>
+
+    function clearMaster() {
+        $("#txtId").val(0);
+        $("#txtRadif").val("");
+        $("#cboAnbar").val("").select2();
+        $("#txtKol").val("");
+        $("#txtMoein").val("");
+        $("#txtTafsili").val("");
+        $("#txtJoz").val("");
+        $("#txtSharh").val("");
+
+    }
+
+</script>
+

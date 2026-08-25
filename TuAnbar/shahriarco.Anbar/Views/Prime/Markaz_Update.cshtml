@@ -1,0 +1,76 @@
+﻿@model shahriarco.Anbar.Models.TMar
+
+@{
+
+    ViewBag.tab1class = "active";
+    ViewBag.tab2class = "";
+    ViewBag.tab3class = "";
+    ViewBag.tab4class = "";
+    ViewBag.tab5class = "";
+    ViewBag.tab6class = "";
+    ViewBag.tab7class = "";
+    ViewBag.tab8class = "";
+
+    ViewBag.menuAnbarclass = "";
+    ViewBag.menuMarkazclass = "current";
+    ViewBag.menuAboutclass = "";
+
+}
+
+<div class='row-fluid'>
+    <div class='span12 box'>
+        <div class='box-header blue-background'>
+            <div class='title'>
+                <div class='icon-edit'></div>
+                مراکز
+            </div>
+            <div class='actions'>
+                <a href="#" class="btn box-remove btn-mini btn-link">
+                    <i class='icon-remove'></i>
+                </a>
+                <a href="#" class="btn box-collapse btn-mini btn-link">
+                    <i></i>
+                </a>
+            </div>
+        </div>
+        <div class='box-content'>
+            @using (Html.BeginForm())
+            {
+
+                <div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="CFC7d00LWKQsSahRqsfD+e/mHLqbaVIXBvlBGe/KP+I=" /></div>
+
+                <div class='control-group'>
+                    <label class='control-label' for='disabledInput1'>کد مرکز</label>
+                    <div class='controls'>
+                        <span class='input-xlarge uneditable-input' style="width:100px">
+                            @Html.DisplayFor(m => m.MarkazCode)
+                            @Html.HiddenFor(m => m.SalMali)
+                        </span>
+                    </div>
+
+                </div>
+
+                <div class='control-group'>
+                    <label class='control-label' for='inputText1'>نام مرکز</label>
+                    <div class='controls'>
+                        @Html.TextBoxFor(m => m.MarkazName, htmlAttributes: new { @id = "inputText1", @placeholder = "نام مرکز", @style = "width:300px" })
+                        @Html.ValidationMessageFor(m => m.MarkazName)
+                    </div>
+                </div>
+
+
+
+
+                <div class='form-actions'>
+                    <button class='btn btn-primary' type='submit'>
+                        <i class='icon-save'></i>
+                        ثبت
+                    </button>
+                    <input type="button" class="btn btn-danger" style="font-family:Tahoma" value="حذف" onclick="location.href = '/prime/Markaz_Delete?markazcode=@Model.MarkazCode'" />
+                    <input type="button" class="btn btn-info" style="font-family:Tahoma" value="انصراف" onclick="location.href = '/prime/Markaz'" />
+                </div>
+
+            }
+        </div>
+    </div>
+</div>

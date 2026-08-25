@@ -1,0 +1,63 @@
+﻿@using pharmacy.Models
+
+@model LoginViewModel
+
+@{
+    ViewBag.Menu = "";
+    ViewBag.SubMenu = "";
+
+    ViewBag.menuhomeclass = "";
+    ViewBag.menuadminclass = "current";
+    ViewBag.menuserviceclass = "";
+    ViewBag.menuoverlookclass = "";
+    ViewBag.menuaboutclass = "";
+    ViewBag.menucontactclass = "";
+}
+
+@section featured {
+    <section class="featured">
+        <div class="pagename_style">
+            <div class="skin_width">
+                <div class="row-fluid">
+                    <div class="top_title span12">
+                        <h1 style="font-family:Tahoma">ورود با حساب کاربری‌ </h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+<br />
+                
+        <div class="skin_width">
+            <div id="content">
+                <div class="standard_content">
+                    <div class="login_panel">
+                        <form action="~/Account/Authenticate" id="login_form">
+                            <div class="form-group">
+
+                                <label for="login_username" style="font-family:Tahoma">شناسه(ایمیل/تلفن همراه)</label>
+                                @*<input type="text" id="login_username" name="login_username" class="form-control input-lg" data-required="true" data-minlength="2" data-required-message="شناسه خود را وارد نمایید" value="Ali">*@
+                                @Html.TextBoxFor(m => m.UserName, htmlAttributes: new { @id = "login_username", @class = "form-control input-lg", @Text = "Ali" })
+                            </div>
+                            <div class="form-group">
+                                <label for="login_password" style="font-family:Tahoma">گذرواژه </label>
+                                @Html.PasswordFor(m => m.Password, htmlAttributes: new { @id = "login_password", @class = "form-control input-lg", @Text = "123456" })
+                                @*<input type="password" id="login_password" name="login_password" class="form-control input-lg" data-required="true" data-minlength="6" data-minlength-message="Password should have at least 6 characters." data-required-message="Please enter a valid Password" value="123456">*@
+
+                            </div>
+                            <div class="login_submit" >
+                                <button class="btn btn-primary " style="font-family:Tahoma">ورود</button>
+                                &nbsp;
+                                <bdi style="font-family:Tahoma">حساب کاربری ندارید؟</bdi>
+                                <a href="#" style="font-family:Tahoma;color:blue">ثبت نام</a>
+                            </div>
+                            @*<a href="#">Need an account? Sign up</a>*@
+                            
+                        </form>
+                    </div>
+                </div>
+            </div>
+           </div>
+</section>
+}

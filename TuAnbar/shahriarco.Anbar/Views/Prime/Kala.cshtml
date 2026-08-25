@@ -1,0 +1,379 @@
+﻿@using Kendo.Mvc.UI
+
+@model shahriarco.Anbar.Models.TKala
+
+@{
+    ViewBag.Title = "";
+    ViewBag.tab1class = "active";
+    ViewBag.tab2class = "";
+    ViewBag.tab3class = "";
+    ViewBag.tab4class = "";
+    ViewBag.tab5class = "";
+    ViewBag.tab6class = "";
+    ViewBag.tab7class = "";
+    ViewBag.tab8class = "";
+
+    ViewBag.menuAnbarclass = "";
+    ViewBag.menuKalaclass = "current";
+    ViewBag.menuAboutclass = "";
+
+    List<shahriarco.Anbar.Models.TAnb> myAnbarList = ViewBag.AnbarList;
+    List<shahriarco.Anbar.Models.TKala> myKalaList = ViewBag.KalaList;
+    List<shahriarco.Anbar.Models.TVahed> myVahedList = ViewBag.VahedList;
+
+
+}
+
+
+<head>
+    <link href="~/Content/kendo/2014.1.318/style/kendo.common.min.css" rel="stylesheet" />
+    <link href="~/Content/kendo/2014.1.318/style/kendo.default.min.css" rel="stylesheet" />
+    <link href="~/Content/kendo/2014.1.318/style/kendo.dataviz.min.css" rel="stylesheet" />
+    <link href="~/Content/kendo/2014.1.318/style/kendo.dataviz.default.min.css" rel="stylesheet" />
+    <link href="~/Content/kendo/2014.1.318/style/kendo.rtl.min.css" rel="stylesheet" />
+    <link href="~/Content/kendo/2014.1.318/style/kendo.flat.min.css" rel="stylesheet" />
+    <link href="~/Content/kendo/2014.1.318/style/kendo.flat.mobile.min.css" rel="stylesheet" />
+
+    <script src="~/Content/kendo/2014.1.318/js/kendo.all.min.js"></script>
+    <script src="~/Content/kendo/2014.1.318/js/kendo.aspnetmvc.min.js"></script>
+
+</head>
+
+<div id='wrapper'>
+
+    <section id='content'>
+        <div class='container-fluid'>
+            <div class='row-fluid' id='content-wrapper'>
+                <div class='span12'>
+                    @*<div class='page-header'>
+                            <h1 class='pull-left'>
+                                <i class='icon-user'></i>
+                                <span>کالا</span>
+                            </h1>
+                            <div class='pull-right'>
+                                <ul class='breadcrumb'>
+                                    <li>
+                                        <a href="index.html">
+                                            <i class='icon-table'></i>
+                                        </a>
+                                    </li>
+                                    <li class='separator'>
+                                        <i class='icon-angle-right'></i>
+                                    </li>
+                                    <li>اطلاعات پایه</li>
+                                    <li class='separator'>
+                                        <i class='icon-angle-right'></i>
+                                    </li>
+                                    <li class='active'>کالا</li>
+                                </ul>
+                            </div>
+                        </div>*@
+
+                    <div class='row-fluid'>
+
+                        <div class='span5 box bordered-box orange-border' style='margin-bottom:0;'>
+
+
+                            <div class="box">
+                                @*<label class='control-label'>انبار</label>*@
+                                <div class='controls'>
+                                    @*@Html.DropDownListFor(m => m.AnbarCode, new SelectList(myAnbarList, "AnbarCode", "AnbarName", "0"), "انبار را انتخاب کنید:", htmlAttributes: new { @id = "cboAnbar", @onchange = "cboAnbar_Change()", @class = "select2 input-block-level" })*@
+                                    @Html.DropDownList("cboAnbar", new SelectList(myAnbarList, "AnbarCode", "AnbarName", "0"), "انبار را انتخاب کنید:", htmlAttributes: new { @id = "cboAnbar", @onchange = "cboAnbar_Change()", @class = "select2 input-block-level" })
+
+                                </div>
+                            </div>
+
+                            <div class='box-header orange-background'>
+                                <div class='title'>فهرست کالاها</div>
+                                <div class='actions'>
+                                    <a href="#" class="btn box-remove btn-mini btn-link">
+                                        <i class='icon-remove'></i>
+                                    </a>
+                                    <a href="#" class="btn box-collapse btn-mini btn-link">
+                                        <i></i>
+                                    </a>
+                                </div>
+                            </div>
+
+
+                            <div class='box-content box-no-padding'>
+
+
+                                @(Html.Kendo().Grid(myKalaList).Name("MyGrid")
+        .Resizable(resize => resize.Columns(true))
+        .Columns(columns =>
+        {
+        columns.Bound("KalaCode").Title("کد کالا").Width(50).HtmlAttributes(new { style = "font-family:B yekan,Tahoma" });
+        columns.Bound("KalaName").Title("نام کالا")
+             .Template(@<text>
+                <a onclick="kala_change(@item.KalaCode)" style="cursor:pointer">@item.KalaName</a>
+            </text>);
+
+        })
+                                .DataSource(d => d.Server().PageSize(20))
+
+                            .Sortable()
+
+
+                            .Filterable(filterable => filterable
+                                            .Messages(str => str
+                                            .And("و")
+                                            .Cancel("لغو")
+                                            .Clear("پاک")
+                                            .Filter("فیلتر")
+                                            .Info("فیلتر کردن گزینه ها")
+                                            )
+                                            .Operators(operators => operators
+                                            .ForNumber(n => n.Clear()
+                                                .IsEqualTo("=")
+                                                .IsGreaterThan(">")
+                                                .IsGreaterThanOrEqualTo(">=")
+                                                .IsLessThan("<")
+                                                .IsLessThanOrEqualTo("<=")
+                                                .IsNotEqualTo("<>")
+                                                )
+                                            .ForString(str => str.Clear()
+                                                .StartsWith("شروع شود با ")
+                                                .IsEqualTo("برابر با")
+                                                .Contains("شامل")
+                                                .DoesNotContain("شامل نباشد")
+                                                .StartsWith("شروع شود با")
+                                                .EndsWith("تمام شود به")
+                                                .IsNotEqualTo("نابرابر با")))
+                                   )
+
+                            .Pageable(pageable => pageable
+                                //.PageSizes(true)
+                                .PageSizes(new int[] { 10, 20, 30, 40 })
+                                .ButtonCount(5).Numeric(true).Refresh(true)
+                                .Messages(str => str.ItemsPerPage("تعداد سطر در صفحه").First("اولین").Last("آخرین").Next("بعدی").Previous("قبلی").Page("صفحه").Of("از").MorePages("صفحات بیشتر").Empty("خالی").Refresh("تازه سازی"))
+                                    )
+
+
+                                )
+
+
+                            </div>
+
+                        </div>
+
+                        <div class='span7 box'>
+                            @using (Html.BeginForm("kala_update", "prime", FormMethod.Post))
+                            {
+                                @Html.HiddenFor(m => m.AnbarCode)
+                                @Html.HiddenFor(m => m.SalMali,htmlAttributes:new  {id= "txtSalMali" })
+
+                                <div class='box-content box-double-padding'>
+
+                                    <fieldset>
+                                        <div class='span4'>
+                                            <div class='lead'>
+                                                <i class='icon-signin text-contrast'></i>
+                                                کالا
+                                            </div>
+                                            <div class='box'>
+                                                <img alt="230x230&amp;text=photo" src="~/assets/images/23.jpg" style="background-size:contain;width:200px;height:200px" />
+
+                                            </div>
+                                        </div>
+                                        <div class='span7 offset1'>
+                                            <div class='control-group'>
+                                                <label class='control-label'>کد کالا</label>
+                                                <div class='controls'>
+                                                    @*<input class='span12' id='txtKalacode' placeholder='کد کالا' type='text' />*@
+                                                    @Html.TextBoxFor(m => m.KalaCode, htmlAttributes: new { @class = "span12", @id = "txtKalacode", @placeholder = "کد کالا", style = "color:blue" })
+                                                </div>
+                                                <label class='control-label'>نام کالا</label>
+                                                <div class='controls'>
+                                                    @Html.TextBoxFor(m => m.KalaName, htmlAttributes: new { @class = "span12", @id = "txtKalaName", @placeholder = "نام کالا", style = "color:blue" })
+                                                </div>
+                                                <label class='control-label'>محل استقرار</label>
+                                                <div class='controls'>
+                                                    @Html.TextBoxFor(m => m.KalaEsteghrar, htmlAttributes: new { @class = "span12", @id = "txtKalaEsteghrar", @placeholder = "محل استقرار", style = "color:blue" })
+                                                </div>
+                                                <label class='control-label'>مشخصات فنی</label>
+                                                <div class='controls'>
+                                                    @Html.TextBoxFor(m => m.KalaProperty, htmlAttributes: new { @class = "span12", @id = "txtKalaProperty", @placeholder = "مشخصات فنی", style = "color:blue" })
+                                                </div>
+                                                @*<div class='controls'>
+                                                        <label class='checkbox'>
+                                                            <input data-target='#change-password' data-toggle='collapse' id='changepasswordcheck' type='checkbox' value='option1' />
+                                                            وضعیت
+                                                        </label>
+                                                    </div>*@
+
+                                                <label class='control-label'>شماره فنی</label>
+                                                <div class='controls'>
+                                                    @Html.TextBoxFor(m => m.KalaShomareh, htmlAttributes: new { @class = "span12", @id = "txtKalaShomareh", @placeholder = "شماره فنی", style = "color:blue" })
+                                                </div>
+
+                                                <label class='control-label'>واحد کالا</label>
+                                                <div class='controls'>
+                                                    @*@Html.DropDownListFor(m => m.KalaVahedCode, new SelectList(myVahedList, "VahedCode", "VahedName", "0"), "واحد کالا را انتخاب کنید:", htmlAttributes: new { @id = "cboVahed", @class = "select2 input-block-level", style = "color:blue" })*@
+                                                    @Html.DropDownListFor(m => m.KalaVahedCode, new SelectList(myVahedList, "VahedCode", "VahedName", "0"), "واحد کالا را انتخاب کنید:", htmlAttributes: new { @id = "cboVahed", @class = "input-block-level", style = "color:blue" })
+                                                </div>
+
+                                                <label class='control-label'>تعداد ممیز</label>
+                                                <div class='controls'>
+                                                    @Html.TextBoxFor(m => m.KalaMomaiez, htmlAttributes: new { @class = "span12", @id = "txtPoint", @placeholder = "تعداد ممیز", @style = "width:70px;color:blue" })
+                                                </div>
+
+
+                                            </div>
+                                            <div class='control-group'>
+
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                    <hr class='hr-normal' />
+
+                                    <fieldset>
+                                        <div class='span4'>
+
+                                            <input class='span12' id='barcode' placeholder='بارکد' style="font-family:'barcode2';font-size:24pt;height:150px;width:230px;text-align:center" type='text' value="*@Model.AnbarCode@Model.KalaCode*" />
+
+                                        </div>
+
+                                        <div class='span7 offset1'>
+
+                                            <div class='control-group'>
+                                                <label class='control-label' style="font-family:">حداقل موجودی</label>
+                                                <div class='controls'>
+                                                    @Html.TextBoxFor(m => m.KalaMin, htmlAttributes: new { @class = "span12", @id = "txtKalaMin", @placeholder = "حداقل موجودی", style = "color:blue" })
+                                                </div>
+                                                <label class='control-label'>نقطه سفارش</label>
+                                                <div class='controls'>
+                                                    @Html.TextBoxFor(m => m.KalaSefPoint, htmlAttributes: new { @class = "span12", @id = "txtKalaSefPoint", @placeholder = "نقطه سفارش", style = "color:blue" })
+                                                </div>
+                                                <label class='control-label'>حداکثر موجودی</label>
+                                                <div class='controls'>
+                                                    @Html.TextBoxFor(m => m.KalaMax, htmlAttributes: new { @class = "span12", @id = "txtKalaMax", @placeholder = "حداکثر موجودی", style = "color:blue" })
+                                                </div>
+                                                <label class='control-label'>نوع ارز</label>
+                                                <div class='controls'>
+                                                    @Html.TextBoxFor(m => m.KalaArzType, htmlAttributes: new { @class = "span12", @id = "txtKalaArzType", @placeholder = "نوع ارز", style = "color:blue" })
+                                                </div>
+                                                <label class='control-label'>ضریب واحد</label>
+                                                <div class='controls'>
+                                                    @Html.TextBoxFor(m => m.KalaZaribVahed, htmlAttributes: new { @class = "span12", @id = "txtKalaZaribVahed", @placeholder = "ضریب واحد", style = "color:blue" })
+                                                </div>
+                                                <label class='control-label'>نام قسمت</label>
+                                                <div class='controls'>
+                                                    @Html.TextBoxFor(m => m.KalaGhesmat, htmlAttributes: new { @class = "span12", @id = "txtKalaGhesmat", @placeholder = "نام قسمت", style = "color:blue" })
+                                                </div>
+                                                <label class='control-label'>استاندارد مصرف</label>
+                                                <div class='controls'>
+                                                    <input class='span12' id='lastname' placeholder='استاندارد مصرف' type='text' />
+                                                </div>
+                                            </div>
+
+
+
+
+
+
+                                        </div>
+                                    </fieldset>
+
+                                    <div class='form-actions' style='margin-bottom: 0;'>
+                                        <div class='text-right'>
+                                            <button class='btn btn-primary btn-large' type="submit">
+                                                <i class='icon-save'></i>
+                                                ثبت
+                                            </button>
+                                            <button class='btn btn-primary btn-large' onclick="location.href = '/prime/kala?anbarcode=@Model.AnbarCode'" type="button">
+                                                <i class='ui-icon-cancel'></i>
+                                                انصراف
+                                            </button>
+                                            <button class='btn btn-primary btn-large' onclick="location.href = '/prime/kala_barcode?kalacode=@Model.KalaCode'" type="button">
+                                                <i class='icon-barcode'></i>
+                                                چاپ بارکد
+                                            </button>
+                                            <button class='btn btn-primary btn-large' onclick="location.href = '/prime/kala?anbarcode=@Model.AnbarCode'" type="button">
+                                                <i class='ui-icon-alert'></i>
+                                                تصاویر
+                                            </button>
+
+                                            @*<input type="button" class="btn btn-danger" style="font-family:Tahoma" value="حذف" onclick="kala_change($('#txtKalacode').val())" />*@
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            }
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<script>
+    function cboAnbar_Change() {
+        
+        var anbarcode = $("#cboAnbar").val();
+        alert(anbarcode);
+        var url = "Kala?kalacode=0&anbarcode=" + anbarcode; //Append Id To URL
+        window.location.replace(url);
+    }
+</script>
+
+<script>
+    function kala_change(kalacode) {
+
+        var n = kalacode;
+
+        //alert(n);
+
+
+        $.ajax({
+            cache: false,
+            type: "GET",
+            url: "@(Url.Action("GetKala", "Prime"))",
+            data: { "kalacode": n },
+            success: function (data) {
+
+                if (data != null) {
+                    //alert(data.SalMali);
+
+                    $("#txtKalacode").val(data.KalaCode);
+                    $("#txtKalaName").val(data.KalaName);
+                    $("#txtKalaEsteghrar").val(data.KalaEsteghrar);
+                    $("#txtKalaProperty").val(data.KalaProperty);
+                    $("#txtKalaShomareh").val(data.KalaShomareh);
+                    $("#cboVahed").val(data.KalaVahedCode);
+                    $("#txtPoint").val(data.KalaMomaiez);
+                    $("#txtSalMali").val(data.SalMali);
+
+                    $("#txtKalaMin").val(data.KalaMin);
+                    $("#txtKalaSefPoint").val(data.KalaSefPoint);
+                    $("#txtKalaMax").val(data.KalaMax);
+                    $("#txtKalaArzType").val(data.KalaArzType);
+                    $("#txtKalaZaribVahed").val(data.KalaZaribVahed);
+                    $("#txtKalaGhesmat").val(data.KalaGhesmat);
+                    $("#barcode").val("*" + data.AnbarCode + data.KalaCode + "*");
+                }
+                else {
+                    alert("fail");
+                }
+            }
+            , error: function (data) {
+                if (data != null) {
+                    alert("data is ok with error");
+                }
+                else {
+                    alert(data);
+                }
+            }
+
+        });
+
+
+
+    }
+
+</script>
+

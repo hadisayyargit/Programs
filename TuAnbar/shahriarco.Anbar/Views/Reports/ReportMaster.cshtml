@@ -1,0 +1,39 @@
+﻿@model shahriarco.Anbar.Models.ReportModel
+
+@{
+    ViewBag.Title = "";
+    ViewBag.tab1class = "";
+    ViewBag.tab2class = "";
+    ViewBag.tab3class = "";
+    ViewBag.tab4class = "";
+    ViewBag.tab5class = "";
+    ViewBag.tab6class = "active";
+    ViewBag.tab7class = "";
+    ViewBag.tab8class = "";
+
+    ViewBag.menuAnbarclass = "";
+    ViewBag.menuAboutclass = "";
+
+    ViewBag.menuReportPrimeclass = "current";
+    ViewBag.menuReportDailyclass = "";
+
+}
+
+@*@if (Request.IsAuthenticated)*@
+<div id='wrapper'>
+
+    <section id='content'>
+        @if (Model != null && Model.IsEnabledParameterDialog)
+        {
+            @Html.Partial("_DialogReportPartial", Model)
+        }
+
+
+        @if (Model != null
+    //&& Model.IsEnabledReportContainer && Model.RunStatus == ShakelliReportsUI.DataLayer.Models.RunStatusEnum.Started && Model.ReportDisplayMode == ShakelliReportsUI.DataLayer.Models.ReportFormatEnum.ReportViewer
+    )
+        {
+            @Html.Partial("_ReportViewerPartial", Model)
+        }
+    </section>
+</div>

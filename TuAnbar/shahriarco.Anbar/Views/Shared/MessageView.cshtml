@@ -1,0 +1,75 @@
+﻿@model shahriarco.Anbar.Models.MessageModel
+
+@{
+    Layout = null;
+
+    string strBodyContrast = "contrast-red", strIconClass = "";
+
+    if (Model.MessageType.ToLower() == "success")
+    {
+        strBodyContrast = "contrast-green";
+        strIconClass = "icon-ok";
+    }
+    else if (Model.MessageType.ToLower() == "info")
+    {
+        strBodyContrast = "contrast-blue";
+        strIconClass = "icon-info-sign";
+    }
+
+    else if (Model.MessageType.ToLower() == "warning")
+    {
+        strBodyContrast = "contrast-orange";
+        strIconClass = "icon-warning-sign";
+    }
+
+    else if (Model.MessageType.ToLower() == "error")
+    {
+        strBodyContrast = "contrast-red";
+        strIconClass = "icon-cogs";
+    }
+}
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <title>شهریار کامپیوتر-انبار عددی</title>
+
+    <link rel="shortcut icon" href="~/assets/images/anbar2.jpg" />
+
+
+    <link href="~/Content/bootstrap-rtl/bootstrap-rtl.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-rtl/bootstrap-responsive-rtl.min.css" rel="stylesheet" />
+    
+    <link href='~/Content/light-theme.css' id='color-settings-body-color' media='all' rel='stylesheet' type='text/css' />
+
+</head>
+
+<body class="@strBodyContrast application-error 500-error contrast-background">
+
+
+
+    <div id='wrapper'>
+        <div class='error-type'>
+                <i class=@strIconClass></i>
+
+            <span>@Model.Title</span>
+        </div>
+        <div class='error-message'>
+            
+            @Model.SubTitle
+            <br />
+            @Model.MessageBody
+        </div>
+
+        <a href="@Url.Content(@Model.BackUrl)" class="btn btn-block">
+                    <i class='icon-chevron-right'></i>
+                    بازگشت                
+        </a>
+
+
+
+</div>
+
+</body>

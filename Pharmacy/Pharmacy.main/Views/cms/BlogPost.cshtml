@@ -1,0 +1,142 @@
+﻿<link href="~/Content/style2.css" rel="stylesheet" />
+@model pharmacy.Models.Cms 
+
+@{
+    ViewBag.Menu = "";
+    ViewBag.SubMenu = "";
+
+    ViewBag.menuhomeclass = "";
+    ViewBag.menuadminclass = "";
+    ViewBag.menuserviceclass = "current";
+    ViewBag.menuoverlookclass = "";
+    ViewBag.menuaboutclass = "";
+    ViewBag.menucontactclass = "";
+
+}
+
+@section featured {
+    <section class="featured">
+        <div class="pagename_style">
+            <div class="skin_width">
+                <div class="row-fluid">
+                    <div class="top_title span12">
+                        <h1 dir="rtl" style="font-family:Tahoma">@ViewBag.Title‌ </h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="skin_width">
+            <div class="blog_page">
+                <div class="skin_main ">
+                    <div class="pe-spacer size20"></div>
+                    <div class="row-fluid">
+
+                        <!-- start post -->
+                        <div class="standard_title">
+
+                            <span style="font-family:Tahoma">جزئیات</span>
+                        </div>
+
+                        <img id="img1" src="~/assets/images/blog/@Model.ImageName"  style="max-width:600px;max-height:300px"/>
+                        <div class="pe-spacer size20"></div>
+                        @using (Html.BeginForm("UpdateBlog", "cms", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        {
+                            @Html.ValidationSummary(true);
+
+                            <form action="#" class="form-horizontal" method="post">
+
+                                <div class="form-group">
+                                    <label class="control-label ">شناسه&nbsp;</label>
+                                    @Html.HiddenFor(m=>m.cmsId)
+                                    @Html.HiddenFor(m => m.IsNews)
+                                    @Html.HiddenFor(m => m.IsHotNews)
+                                    @Html.HiddenFor(m => m.AuthorId)
+                                    @Html.HiddenFor(m => m.ImageName)
+                                    @Html.HiddenFor(m => m.PublishDate)
+                                    @Html.TextBoxFor(m=>m.BlogId, htmlAttributes: new { @class = "form-control", @id = "txtId", @style = "font-family: 'Tahoma'" , @disabled="disabled" })
+                                </div>
+                                &nbsp;
+                                <div class="form-group">
+                                    <label class="control-label">عنوان&nbsp;</label>
+                                    @Html.TextBoxFor(m => m.Title, htmlAttributes: new { @class = "form-control", @id = "txtTitle", @style = "font-family: 'Tahoma'" })
+
+                                    <label class="control-label">متن خبر&nbsp;</label>
+                                    @Html.TextAreaFor(m => m.Body, htmlAttributes: new { @class = "form-control", @id = "txtBody", @style = "font-family: 'Tahoma'; width:600px;Height:255px" })
+                                    
+                                    <label class="control-label">تصویر</label>
+                                    <input type="file" name="UserImageUrlUpload" onchange="readURL(this);" style="color:blue;background-color:red" />
+                                    <input type="button" class="btn btn-warning" value="پاک کردن تصویر"  id="btnClearPicture"/>
+                                    
+                                </div>
+
+                                <div class="span3 form-group">
+                                    <label class="control-label col-lg-3">وضعیت: &nbsp;فعال؟</label>
+                                    <div class="holder">
+                                        @Html.CheckBoxFor(m=>m.IsActive, htmlAttributes: new { @checked= "checked" ,@class="check-ios", @id="check" ,@name="check" ,@type="checkbox"  })
+                                        @*<input checked="checked" class="check-ios" id="check" name="check" type="checkbox" value="None" />*@
+                                        <label for="check" style="font-family:Tahoma"></label>
+                                        <span></span>
+                                    </div>
+                                </div>
+                                <div class="pe-spacer size20"></div>
+
+                                <div class="span4 button7_style">
+                                    <input type="submit" class="btn btn-danger" style="font-family:Tahoma" value="بروزرسانی" />
+                                    <input type="button" class="btn btn-danger" style="font-family:Tahoma" value="حذف" onclick="location.href='/cms/deleteBlog?blogid=@Model.CmsId'" />
+                                    <input type="button" class="btn btn-danger" style="font-family:Tahoma" value="بازگشت" onclick="location.href = '/cms/bloglist?isNews=!(@Model.IsChat).ToString()'" />
+                                    @*<span><a href="#">بروزرسانی</a></span>
+                                        <div class="buttons7_left_bg"></div>*@
+                                </div>
+
+                            </form>
+                        }
+
+
+
+
+                        <!-- end post -->
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
+
+
+
+    </section>
+}
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+
+<script>
+    //$("#UserImageUrlUpload").change(function () {
+    //    alert("1");
+    //});
+
+    function readURL(input) {
+
+        if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#img1')             .attr('src', e.target.result) ;
+                    
+
+                };
+                reader.readAsDataURL(input.files[0]);
+        }
+        else {
+        }
+    }
+
+    $("#btnClearPicture").click(function () {
+        //alert("100");
+        $('#img1').attr('src', "");
+
+    });
+
+
+</script>
+

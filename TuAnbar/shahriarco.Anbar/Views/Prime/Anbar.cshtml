@@ -1,0 +1,116 @@
+﻿@{
+    ViewBag.Title = "";
+    ViewBag.tab1class = "active";
+    ViewBag.tab2class = "";
+    ViewBag.tab3class = "";
+    ViewBag.tab4class = "";
+    ViewBag.tab5class = "";
+    ViewBag.tab6class = "";
+    ViewBag.tab7class = "";
+    ViewBag.tab8class = "";
+
+    ViewBag.menuAnbarclass = "current";
+    ViewBag.menuAboutclass = "";
+
+    List<shahriarco.Anbar.Models.TAnb> myAnbarList = ViewBag.AnbarList;
+
+}
+
+
+<div class='row-fluid'>
+    
+    <div class='span12 box bordered-box orange-border' style='margin-bottom:0;'>
+        
+
+        <div class='box-header purple-background'>
+            <div class='title'>فهرست انبارها</div>
+            <div class='actions'>
+                <a href="#" class="btn box-remove btn-mini btn-link">
+                    <i class='icon-remove'></i>
+                </a>
+                <a href="#" class="btn box-collapse btn-mini btn-link">
+                    <i></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="box-content box-no-padding responsive-table scrollable-area">
+                    <table class='data-table-column-filter table table-bordered table-striped' style='margin-bottom:0;'>
+
+                        <thead>
+                            <tr>
+                                <th>
+                                    کد انبار
+                                </th>
+                                <th>
+                                    نام انبار
+                                </th>
+                                <th>
+                                    روش محاسبه
+                                </th>
+                                <th class="sorting_disabled">
+                                    &nbsp;
+                                    <input type="button" class="btn btn-info" style="font-family:Tahoma; float:left" value="+" onclick="location.href = '/prime/Anbar_Update?anbarcode=0'" />
+                                </th>
+
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (shahriarco.Anbar.Models.TAnb item in myAnbarList)
+                            {
+                            string strAnbarTypeLabel = "label-success";
+                            switch (item.AnbarType)
+                            {
+                            case "FREE":
+                            strAnbarTypeLabel = "label-success";
+                            break;
+                            case "AVERAGE":
+                            strAnbarTypeLabel = "label-important";
+                            break;
+                            case "FIFO":
+                            strAnbarTypeLabel = "label-warning";
+                            break;
+                            case "LIFO":
+                            strAnbarTypeLabel = "label-info";
+                            break;
+                            }
+                            <tr>
+                                <td>
+                                    <a href="~/prime/Anbar_Update?anbarcode=@item.AnbarCode">@item.AnbarCode</a>
+                                </td>
+                                <td>
+                                    <a href="~/prime/Anbar_Update?anbarcode=@item.AnbarCode">@item.AnbarName</a>
+                                </td>
+                                <td>
+                                    <span class='label @strAnbarTypeLabel'>@item.AnbarType</span>
+                                </td>
+                                <td>
+                                    <div class='text-right' style="float:left">
+                                        <a class='btn btn-success btn-mini' href='~/prime/Anbar_Update?anbarcode=@item.AnbarCode'>
+                                        <i class='icon-edit'></i>
+                                        </a>
+                                        @*<a class='btn btn-danger btn-mini' href='#'>
+                                        <i class='icon-edit-sign'></i>
+                                        </a>*@
+
+                                    </div>
+                                </td>
+                            </tr>
+                            }
+
+
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>کد انبار</th>
+                                <th>نام </th>
+                                <th colspan='2'>روش محاسبه</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+        </div>
+    </div>
+
+</div>
+

@@ -1,0 +1,251 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="datasourceDBAnbar" targetNamespace="http://tempuri.org/datasourceDBAnbar.xsd" xmlns:mstns="http://tempuri.org/datasourceDBAnbar.xsd" xmlns="http://tempuri.org/datasourceDBAnbar.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" GeneratorFunctionsComponentClassName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" UserFunctionsComponentName="QueriesTableAdapter" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection ConnectionStringObject="Data Source=.;Initial Catalog=DBAnb86;User ID=sa;Password=110;MultipleActiveResultSets=True;Application Name=EntityFramework" IsAppSettingsProperty="false" Modifier="Assembly" Name="AnbarEntities (shahriarco.Anbar)" ParameterPrefix="@" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="QKalaTableAdapter" GeneratorDataComponentClassName="QKalaTableAdapter" Name="QKala" UserDataComponentName="QKalaTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="AnbarEntities (shahriarco.Anbar)" DbObjectName="DBAnb86.dbo.QKala" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT SalMali, AnbarCode, AnbarName, AnbarType, KalaCode, KalaName, KalaVahedCode, KalaMin, KalaMax, KalaSefPoint, KalaEst1, KalaEst2, KalaEst3, KalaEst4, KalaEst5, KalaEst6, KalaEst7, KalaEst8, KalaEst9, KalaEst10, KalaEst11, KalaEst12, KalaEsteghrar, KalaProperty, KalaShomareh, KalaMomaiez, KalaArzType, KalaZaribVahed, KalaGhesmat, Darkhast, SharhDarkhast, Shomaresh1, Shomaresh2, Shomaresh3, ShomareshNahaei FROM dbo.QKala</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="SalMali" DataSetColumn="SalMali" />
+              <Mapping SourceColumn="AnbarCode" DataSetColumn="AnbarCode" />
+              <Mapping SourceColumn="AnbarName" DataSetColumn="AnbarName" />
+              <Mapping SourceColumn="AnbarType" DataSetColumn="AnbarType" />
+              <Mapping SourceColumn="KalaCode" DataSetColumn="KalaCode" />
+              <Mapping SourceColumn="KalaName" DataSetColumn="KalaName" />
+              <Mapping SourceColumn="KalaVahedCode" DataSetColumn="KalaVahedCode" />
+              <Mapping SourceColumn="KalaMin" DataSetColumn="KalaMin" />
+              <Mapping SourceColumn="KalaMax" DataSetColumn="KalaMax" />
+              <Mapping SourceColumn="KalaSefPoint" DataSetColumn="KalaSefPoint" />
+              <Mapping SourceColumn="KalaEst1" DataSetColumn="KalaEst1" />
+              <Mapping SourceColumn="KalaEst2" DataSetColumn="KalaEst2" />
+              <Mapping SourceColumn="KalaEst3" DataSetColumn="KalaEst3" />
+              <Mapping SourceColumn="KalaEst4" DataSetColumn="KalaEst4" />
+              <Mapping SourceColumn="KalaEst5" DataSetColumn="KalaEst5" />
+              <Mapping SourceColumn="KalaEst6" DataSetColumn="KalaEst6" />
+              <Mapping SourceColumn="KalaEst7" DataSetColumn="KalaEst7" />
+              <Mapping SourceColumn="KalaEst8" DataSetColumn="KalaEst8" />
+              <Mapping SourceColumn="KalaEst9" DataSetColumn="KalaEst9" />
+              <Mapping SourceColumn="KalaEst10" DataSetColumn="KalaEst10" />
+              <Mapping SourceColumn="KalaEst11" DataSetColumn="KalaEst11" />
+              <Mapping SourceColumn="KalaEst12" DataSetColumn="KalaEst12" />
+              <Mapping SourceColumn="KalaEsteghrar" DataSetColumn="KalaEsteghrar" />
+              <Mapping SourceColumn="KalaProperty" DataSetColumn="KalaProperty" />
+              <Mapping SourceColumn="KalaShomareh" DataSetColumn="KalaShomareh" />
+              <Mapping SourceColumn="KalaMomaiez" DataSetColumn="KalaMomaiez" />
+              <Mapping SourceColumn="KalaArzType" DataSetColumn="KalaArzType" />
+              <Mapping SourceColumn="KalaZaribVahed" DataSetColumn="KalaZaribVahed" />
+              <Mapping SourceColumn="KalaGhesmat" DataSetColumn="KalaGhesmat" />
+              <Mapping SourceColumn="Darkhast" DataSetColumn="Darkhast" />
+              <Mapping SourceColumn="SharhDarkhast" DataSetColumn="SharhDarkhast" />
+              <Mapping SourceColumn="Shomaresh1" DataSetColumn="Shomaresh1" />
+              <Mapping SourceColumn="Shomaresh2" DataSetColumn="Shomaresh2" />
+              <Mapping SourceColumn="Shomaresh3" DataSetColumn="Shomaresh3" />
+              <Mapping SourceColumn="ShomareshNahaei" DataSetColumn="ShomareshNahaei" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="QAnbarTableAdapter" GeneratorDataComponentClassName="QAnbarTableAdapter" Name="QAnbar" UserDataComponentName="QAnbarTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="AnbarEntities (shahriarco.Anbar)" DbObjectName="DBAnb86.dbo.QAnbar" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT SalMali, AnbarCode, AnbarName, AnbarType, TedadKala FROM dbo.QAnbar</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="SalMali" DataSetColumn="SalMali" />
+              <Mapping SourceColumn="AnbarCode" DataSetColumn="AnbarCode" />
+              <Mapping SourceColumn="AnbarName" DataSetColumn="AnbarName" />
+              <Mapping SourceColumn="AnbarType" DataSetColumn="AnbarType" />
+              <Mapping SourceColumn="TedadKala" DataSetColumn="TedadKala" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="datasourceDBAnbar" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="datasourceDBAnbar" msprop:Generator_UserDSName="datasourceDBAnbar">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="QKala" msprop:Generator_TableClassName="QKalaDataTable" msprop:Generator_TableVarName="tableQKala" msprop:Generator_TablePropName="QKala" msprop:Generator_RowDeletingName="QKalaRowDeleting" msprop:Generator_RowChangingName="QKalaRowChanging" msprop:Generator_RowEvHandlerName="QKalaRowChangeEventHandler" msprop:Generator_RowDeletedName="QKalaRowDeleted" msprop:Generator_UserTableName="QKala" msprop:Generator_RowChangedName="QKalaRowChanged" msprop:Generator_RowEvArgName="QKalaRowChangeEvent" msprop:Generator_RowClassName="QKalaRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="SalMali" msprop:Generator_ColumnVarNameInTable="columnSalMali" msprop:Generator_ColumnPropNameInRow="SalMali" msprop:Generator_ColumnPropNameInTable="SalMaliColumn" msprop:Generator_UserColumnName="SalMali" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="AnbarCode" msprop:Generator_ColumnVarNameInTable="columnAnbarCode" msprop:Generator_ColumnPropNameInRow="AnbarCode" msprop:Generator_ColumnPropNameInTable="AnbarCodeColumn" msprop:Generator_UserColumnName="AnbarCode" type="xs:int" minOccurs="0" />
+              <xs:element name="AnbarName" msprop:Generator_ColumnVarNameInTable="columnAnbarName" msprop:Generator_ColumnPropNameInRow="AnbarName" msprop:Generator_ColumnPropNameInTable="AnbarNameColumn" msprop:Generator_UserColumnName="AnbarName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="AnbarType" msprop:Generator_ColumnVarNameInTable="columnAnbarType" msprop:Generator_ColumnPropNameInRow="AnbarType" msprop:Generator_ColumnPropNameInTable="AnbarTypeColumn" msprop:Generator_UserColumnName="AnbarType" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="KalaCode" msprop:Generator_ColumnVarNameInTable="columnKalaCode" msprop:Generator_ColumnPropNameInRow="KalaCode" msprop:Generator_ColumnPropNameInTable="KalaCodeColumn" msprop:Generator_UserColumnName="KalaCode" type="xs:int" />
+              <xs:element name="KalaName" msprop:Generator_ColumnVarNameInTable="columnKalaName" msprop:Generator_ColumnPropNameInRow="KalaName" msprop:Generator_ColumnPropNameInTable="KalaNameColumn" msprop:Generator_UserColumnName="KalaName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="KalaVahedCode" msprop:Generator_ColumnVarNameInTable="columnKalaVahedCode" msprop:Generator_ColumnPropNameInRow="KalaVahedCode" msprop:Generator_ColumnPropNameInTable="KalaVahedCodeColumn" msprop:Generator_UserColumnName="KalaVahedCode" type="xs:int" minOccurs="0" />
+              <xs:element name="KalaMin" msprop:Generator_ColumnVarNameInTable="columnKalaMin" msprop:Generator_ColumnPropNameInRow="KalaMin" msprop:Generator_ColumnPropNameInTable="KalaMinColumn" msprop:Generator_UserColumnName="KalaMin" type="xs:int" minOccurs="0" />
+              <xs:element name="KalaMax" msprop:Generator_ColumnVarNameInTable="columnKalaMax" msprop:Generator_ColumnPropNameInRow="KalaMax" msprop:Generator_ColumnPropNameInTable="KalaMaxColumn" msprop:Generator_UserColumnName="KalaMax" type="xs:int" minOccurs="0" />
+              <xs:element name="KalaSefPoint" msprop:Generator_ColumnVarNameInTable="columnKalaSefPoint" msprop:Generator_ColumnPropNameInRow="KalaSefPoint" msprop:Generator_ColumnPropNameInTable="KalaSefPointColumn" msprop:Generator_UserColumnName="KalaSefPoint" type="xs:int" minOccurs="0" />
+              <xs:element name="KalaEst1" msprop:Generator_ColumnVarNameInTable="columnKalaEst1" msprop:Generator_ColumnPropNameInRow="KalaEst1" msprop:Generator_ColumnPropNameInTable="KalaEst1Column" msprop:Generator_UserColumnName="KalaEst1" type="xs:int" minOccurs="0" />
+              <xs:element name="KalaEst2" msprop:Generator_ColumnVarNameInTable="columnKalaEst2" msprop:Generator_ColumnPropNameInRow="KalaEst2" msprop:Generator_ColumnPropNameInTable="KalaEst2Column" msprop:Generator_UserColumnName="KalaEst2" type="xs:int" minOccurs="0" />
+              <xs:element name="KalaEst3" msprop:Generator_ColumnVarNameInTable="columnKalaEst3" msprop:Generator_ColumnPropNameInRow="KalaEst3" msprop:Generator_ColumnPropNameInTable="KalaEst3Column" msprop:Generator_UserColumnName="KalaEst3" type="xs:int" minOccurs="0" />
+              <xs:element name="KalaEst4" msprop:Generator_ColumnVarNameInTable="columnKalaEst4" msprop:Generator_ColumnPropNameInRow="KalaEst4" msprop:Generator_ColumnPropNameInTable="KalaEst4Column" msprop:Generator_UserColumnName="KalaEst4" type="xs:int" minOccurs="0" />
+              <xs:element name="KalaEst5" msprop:Generator_ColumnVarNameInTable="columnKalaEst5" msprop:Generator_ColumnPropNameInRow="KalaEst5" msprop:Generator_ColumnPropNameInTable="KalaEst5Column" msprop:Generator_UserColumnName="KalaEst5" type="xs:int" minOccurs="0" />
+              <xs:element name="KalaEst6" msprop:Generator_ColumnVarNameInTable="columnKalaEst6" msprop:Generator_ColumnPropNameInRow="KalaEst6" msprop:Generator_ColumnPropNameInTable="KalaEst6Column" msprop:Generator_UserColumnName="KalaEst6" type="xs:int" minOccurs="0" />
+              <xs:element name="KalaEst7" msprop:Generator_ColumnVarNameInTable="columnKalaEst7" msprop:Generator_ColumnPropNameInRow="KalaEst7" msprop:Generator_ColumnPropNameInTable="KalaEst7Column" msprop:Generator_UserColumnName="KalaEst7" type="xs:int" minOccurs="0" />
+              <xs:element name="KalaEst8" msprop:Generator_ColumnVarNameInTable="columnKalaEst8" msprop:Generator_ColumnPropNameInRow="KalaEst8" msprop:Generator_ColumnPropNameInTable="KalaEst8Column" msprop:Generator_UserColumnName="KalaEst8" type="xs:int" minOccurs="0" />
+              <xs:element name="KalaEst9" msprop:Generator_ColumnVarNameInTable="columnKalaEst9" msprop:Generator_ColumnPropNameInRow="KalaEst9" msprop:Generator_ColumnPropNameInTable="KalaEst9Column" msprop:Generator_UserColumnName="KalaEst9" type="xs:int" minOccurs="0" />
+              <xs:element name="KalaEst10" msprop:Generator_ColumnVarNameInTable="columnKalaEst10" msprop:Generator_ColumnPropNameInRow="KalaEst10" msprop:Generator_ColumnPropNameInTable="KalaEst10Column" msprop:Generator_UserColumnName="KalaEst10" type="xs:int" minOccurs="0" />
+              <xs:element name="KalaEst11" msprop:Generator_ColumnVarNameInTable="columnKalaEst11" msprop:Generator_ColumnPropNameInRow="KalaEst11" msprop:Generator_ColumnPropNameInTable="KalaEst11Column" msprop:Generator_UserColumnName="KalaEst11" type="xs:int" minOccurs="0" />
+              <xs:element name="KalaEst12" msprop:Generator_ColumnVarNameInTable="columnKalaEst12" msprop:Generator_ColumnPropNameInRow="KalaEst12" msprop:Generator_ColumnPropNameInTable="KalaEst12Column" msprop:Generator_UserColumnName="KalaEst12" type="xs:int" minOccurs="0" />
+              <xs:element name="KalaEsteghrar" msprop:Generator_ColumnVarNameInTable="columnKalaEsteghrar" msprop:Generator_ColumnPropNameInRow="KalaEsteghrar" msprop:Generator_ColumnPropNameInTable="KalaEsteghrarColumn" msprop:Generator_UserColumnName="KalaEsteghrar" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="KalaProperty" msprop:Generator_ColumnVarNameInTable="columnKalaProperty" msprop:Generator_ColumnPropNameInRow="KalaProperty" msprop:Generator_ColumnPropNameInTable="KalaPropertyColumn" msprop:Generator_UserColumnName="KalaProperty" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="KalaShomareh" msprop:Generator_ColumnVarNameInTable="columnKalaShomareh" msprop:Generator_ColumnPropNameInRow="KalaShomareh" msprop:Generator_ColumnPropNameInTable="KalaShomarehColumn" msprop:Generator_UserColumnName="KalaShomareh" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="KalaMomaiez" msprop:Generator_ColumnVarNameInTable="columnKalaMomaiez" msprop:Generator_ColumnPropNameInRow="KalaMomaiez" msprop:Generator_ColumnPropNameInTable="KalaMomaiezColumn" msprop:Generator_UserColumnName="KalaMomaiez" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="KalaArzType" msprop:Generator_ColumnVarNameInTable="columnKalaArzType" msprop:Generator_ColumnPropNameInRow="KalaArzType" msprop:Generator_ColumnPropNameInTable="KalaArzTypeColumn" msprop:Generator_UserColumnName="KalaArzType" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="KalaZaribVahed" msprop:Generator_ColumnVarNameInTable="columnKalaZaribVahed" msprop:Generator_ColumnPropNameInRow="KalaZaribVahed" msprop:Generator_ColumnPropNameInTable="KalaZaribVahedColumn" msprop:Generator_UserColumnName="KalaZaribVahed" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="KalaGhesmat" msprop:Generator_ColumnVarNameInTable="columnKalaGhesmat" msprop:Generator_ColumnPropNameInRow="KalaGhesmat" msprop:Generator_ColumnPropNameInTable="KalaGhesmatColumn" msprop:Generator_UserColumnName="KalaGhesmat" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Darkhast" msprop:Generator_ColumnVarNameInTable="columnDarkhast" msprop:Generator_ColumnPropNameInRow="Darkhast" msprop:Generator_ColumnPropNameInTable="DarkhastColumn" msprop:Generator_UserColumnName="Darkhast" type="xs:int" minOccurs="0" />
+              <xs:element name="SharhDarkhast" msprop:Generator_ColumnVarNameInTable="columnSharhDarkhast" msprop:Generator_ColumnPropNameInRow="SharhDarkhast" msprop:Generator_ColumnPropNameInTable="SharhDarkhastColumn" msprop:Generator_UserColumnName="SharhDarkhast" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Shomaresh1" msprop:Generator_ColumnVarNameInTable="columnShomaresh1" msprop:Generator_ColumnPropNameInRow="Shomaresh1" msprop:Generator_ColumnPropNameInTable="Shomaresh1Column" msprop:Generator_UserColumnName="Shomaresh1" type="xs:double" minOccurs="0" />
+              <xs:element name="Shomaresh2" msprop:Generator_ColumnVarNameInTable="columnShomaresh2" msprop:Generator_ColumnPropNameInRow="Shomaresh2" msprop:Generator_ColumnPropNameInTable="Shomaresh2Column" msprop:Generator_UserColumnName="Shomaresh2" type="xs:double" minOccurs="0" />
+              <xs:element name="Shomaresh3" msprop:Generator_ColumnVarNameInTable="columnShomaresh3" msprop:Generator_ColumnPropNameInRow="Shomaresh3" msprop:Generator_ColumnPropNameInTable="Shomaresh3Column" msprop:Generator_UserColumnName="Shomaresh3" type="xs:double" minOccurs="0" />
+              <xs:element name="ShomareshNahaei" msprop:Generator_ColumnVarNameInTable="columnShomareshNahaei" msprop:Generator_ColumnPropNameInRow="ShomareshNahaei" msprop:Generator_ColumnPropNameInTable="ShomareshNahaeiColumn" msprop:Generator_UserColumnName="ShomareshNahaei" type="xs:double" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="QAnbar" msprop:Generator_TableClassName="QAnbarDataTable" msprop:Generator_TableVarName="tableQAnbar" msprop:Generator_TablePropName="QAnbar" msprop:Generator_RowDeletingName="QAnbarRowDeleting" msprop:Generator_RowChangingName="QAnbarRowChanging" msprop:Generator_RowEvHandlerName="QAnbarRowChangeEventHandler" msprop:Generator_RowDeletedName="QAnbarRowDeleted" msprop:Generator_UserTableName="QAnbar" msprop:Generator_RowChangedName="QAnbarRowChanged" msprop:Generator_RowEvArgName="QAnbarRowChangeEvent" msprop:Generator_RowClassName="QAnbarRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="SalMali" msprop:Generator_ColumnVarNameInTable="columnSalMali" msprop:Generator_ColumnPropNameInRow="SalMali" msprop:Generator_ColumnPropNameInTable="SalMaliColumn" msprop:Generator_UserColumnName="SalMali">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="AnbarCode" msprop:Generator_ColumnVarNameInTable="columnAnbarCode" msprop:Generator_ColumnPropNameInRow="AnbarCode" msprop:Generator_ColumnPropNameInTable="AnbarCodeColumn" msprop:Generator_UserColumnName="AnbarCode" type="xs:int" />
+              <xs:element name="AnbarName" msprop:Generator_ColumnVarNameInTable="columnAnbarName" msprop:Generator_ColumnPropNameInRow="AnbarName" msprop:Generator_ColumnPropNameInTable="AnbarNameColumn" msprop:Generator_UserColumnName="AnbarName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="AnbarType" msprop:Generator_ColumnVarNameInTable="columnAnbarType" msprop:Generator_ColumnPropNameInRow="AnbarType" msprop:Generator_ColumnPropNameInTable="AnbarTypeColumn" msprop:Generator_UserColumnName="AnbarType" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TedadKala" msprop:Generator_ColumnVarNameInTable="columnTedadKala" msprop:Generator_ColumnPropNameInRow="TedadKala" msprop:Generator_ColumnPropNameInTable="TedadKalaColumn" msprop:Generator_UserColumnName="TedadKala" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DataTableDynamic" msprop:Generator_TableClassName="DataTableDynamicDataTable" msprop:Generator_TableVarName="tableDataTableDynamic" msprop:Generator_RowChangedName="DataTableDynamicRowChanged" msprop:Generator_TablePropName="DataTableDynamic" msprop:Generator_RowDeletingName="DataTableDynamicRowDeleting" msprop:Generator_RowChangingName="DataTableDynamicRowChanging" msprop:Generator_RowEvHandlerName="DataTableDynamicRowChangeEventHandler" msprop:Generator_RowDeletedName="DataTableDynamicRowDeleted" msprop:Generator_RowClassName="DataTableDynamicRow" msprop:Generator_UserTableName="DataTableDynamic" msprop:Generator_RowEvArgName="DataTableDynamicRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="RowNo" msprop:Generator_ColumnVarNameInTable="columnRowNo" msprop:Generator_ColumnPropNameInRow="RowNo" msprop:Generator_ColumnPropNameInTable="RowNoColumn" msprop:Generator_UserColumnName="RowNo" type="xs:int" minOccurs="0" />
+              <xs:element name="column1Name" msprop:Generator_ColumnVarNameInTable="columncolumn1Name" msprop:Generator_ColumnPropNameInRow="column1Name" msprop:Generator_ColumnPropNameInTable="column1NameColumn" msprop:Generator_UserColumnName="column1Name" type="xs:string" minOccurs="0" />
+              <xs:element name="column1Value" msprop:Generator_ColumnVarNameInTable="columncolumn1Value" msprop:Generator_ColumnPropNameInRow="column1Value" msprop:Generator_ColumnPropNameInTable="column1ValueColumn" msprop:Generator_UserColumnName="column1Value" type="xs:string" minOccurs="0" />
+              <xs:element name="column1Type" msprop:Generator_ColumnVarNameInTable="columncolumn1Type" msprop:Generator_ColumnPropNameInRow="column1Type" msprop:Generator_ColumnPropNameInTable="column1TypeColumn" msprop:Generator_UserColumnName="column1Type" type="xs:string" minOccurs="0" />
+              <xs:element name="column2Name" msprop:Generator_ColumnVarNameInTable="columncolumn2Name" msprop:Generator_ColumnPropNameInRow="column2Name" msprop:Generator_ColumnPropNameInTable="column2NameColumn" msprop:Generator_UserColumnName="column2Name" type="xs:string" minOccurs="0" />
+              <xs:element name="column2Value" msprop:Generator_ColumnVarNameInTable="columncolumn2Value" msprop:Generator_ColumnPropNameInRow="column2Value" msprop:Generator_ColumnPropNameInTable="column2ValueColumn" msprop:Generator_UserColumnName="column2Value" type="xs:string" minOccurs="0" />
+              <xs:element name="column2Type" msprop:Generator_ColumnVarNameInTable="columncolumn2Type" msprop:Generator_ColumnPropNameInRow="column2Type" msprop:Generator_ColumnPropNameInTable="column2TypeColumn" msprop:Generator_UserColumnName="column2Type" type="xs:string" minOccurs="0" />
+              <xs:element name="AnbarName" msprop:Generator_ColumnVarNameInTable="columnAnbarName" msprop:Generator_ColumnPropNameInRow="AnbarName" msprop:Generator_ColumnPropNameInTable="AnbarNameColumn" msprop:Generator_UserColumnName="AnbarName" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:QAnbar" />
+      <xs:field xpath="mstns:AnbarCode" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

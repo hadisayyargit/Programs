@@ -1,0 +1,294 @@
+﻿@{
+    List<string> myList = ViewBag.DrugstoreList;
+    string myPath = Server.MapPath("~/assets/images/drugstore/");
+    string filename = "";
+
+
+    ViewBag.hotnews = (pharmacy.Models.Cms)Session[pharmacy.Helper.GeneralModule.m_HotNewsItem];
+
+    ViewBag.menuhomeclass = "current";
+    ViewBag.menuadminclass = "";
+    ViewBag.menuserviceclass = "";
+    ViewBag.menuoverlookclass = "";
+    ViewBag.menuaboutclass = "";
+    ViewBag.menucontactclass = "";
+}
+
+@section featured {
+    <section class="featured">
+
+        <div class="banner_style">
+            <!-- start slider -->
+            <div class="TB_Wrapper">
+                <div class="Slides">
+                    <div class="Slide">
+                        <img alt="img1" src="~/assets/images/gallery/banner01.jpg" />
+                        <div style="text-align: center;"> مجهز </div>
+                    </div>
+
+                    <div class="Slide">
+                        <img alt="img2" src="~/assets/images/gallery/banner02.jpg" />
+                        <div style="text-align: center;"> راهکارها و خدمات </div>
+                    </div>
+
+                    <div class="Slide">
+                        <img alt="img3" src="~/assets/images/gallery/banner03.jpg" />
+                        <div style="text-align: center;"> دانش روز </div>
+                    </div>
+
+                    <div class="Slide">
+                        <img alt="img4" src="~/assets/images/gallery/banner04.jpg" />
+                        <div style="text-align: center;"> بیمه‌ها </div>
+                    </div>
+
+                    <div class="Slide">
+                        <img alt="img5" src="~/assets/images/gallery/banner05.jpg" />
+                        <div style="text-align: center;">  </div>
+                    </div>
+
+                    <div class="Slide">
+                        <img alt="img3" src="~/assets/images/gallery/banner06.jpg" />
+                        <div style="text-align: center;"> داروخانه مجازی </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- end slider -->
+        </div>
+
+        <div class="home_page">
+            <div class="skin_width">
+                <div class="skin_main">
+                    <div class="row-fluid">
+                        <!-- start icon hover effect -->
+                        <div class="main_top">
+                            <div class="icon_hover span3">
+                                <a href="#" target="_blank">
+                                    <div class="service-bg">
+                                        <img alt="" src="~/assets/images/icons/icon_01.png" />
+                                    </div>
+                                </a>
+                                <h3 style="font-family:'B Titr'">کادر پیشرفته</h3>
+                                <p>
+                                    تیم تخصصی در این داروخانه با برخورداری از تجارب موفق و ارزشمند در حوزه دارویی، می‌تواند همراهی مطمئن و کارآزموده در ارائه خدمات سالم برای شما باشد.
+                                    <a class="more_icon" href="~/home/crm">ادامه...</a>
+                                </p>
+                            </div>
+                            <div class="icon_hover span3">
+                                <a href="#" target="_blank">
+                                    <div class="service-bg">
+                                        <img alt="" src="~/assets/images/icons/icon_02.png" />
+                                    </div>
+                                </a>
+                                <h3 style="font-family:'B Titr'"> اطلاعات دارویی</h3>
+                                <p>
+                                    ارائه اطلاعات دقیق و کاربردی از کلیه محصولات بهداشتی، آرایشی، ارتوپدی ومکمل های رژیمی ، غذائی ، گیاهی و لاغری، همچنین محصولات تخصصی پوست، مو، زیبائی ومحصولات بهداشتی کودک و انواع شیر خشک و غذای کودک مورد تأیید وزارت بهداشت 
+                                    <a class="more_icon" href="~/home/bi">ادامه</a>
+                                </p>
+                            </div>
+                            <div class="icon_hover span3">
+                                <a href="#" target="_blank">
+                                    <div class="service-bg">
+                                        <img alt="" src="~/assets/images/icons/icon_03.png" />
+                                    </div>
+                                </a>
+                                <h3 style="font-family:'B Titr'">تجهیزات پزشکی درمانی</h3>
+                                <p>
+                                     با برخورداری از شرکای تجاری استراتژیک و امکانات انسانی، سخت افزاری و نرم‌افزاری گسترده در این حوزه، طرحی دقیق و بلند مدت را دنبال می‌کند
+                                    <a class="more_icon" href="~/home/ecommerce">ادامه</a>
+                                </p>
+                            </div>
+                            <div class="icon_hover span3">
+                                <a href="#" target="_blank">
+                                    <div class="service-bg">
+                                        <img alt="" src="~/assets/images/icons/icon_04.png" />
+                                    </div>
+                                </a>
+                                <h3 style="font-family:'B Titr'">محصولات آرایشی بهداشتی</h3>
+                                <p>
+                                    محصولات زیبایی مورد نظر خود را خریداری نموده و بدون هزینه ارسال در منزل خود تحویل بگیرید و حتی مبلغ وجه را نیز درب منزل به پیک پرداخت نمایید . با عضویت در سایت امکان بهره مندی از انواع تخفیف جهت خرید های بعدی ، تخفیف اعمال زیبایی نظیر تزریق ژل و بوتاو امکان 
+                                    <a class="more_icon" href="~/home/fipi">ادامه</a>
+                                </p>
+                            </div>
+                        </div>
+                        <!-- end icon hover effect -->
+                    </div>
+                    <div class="pe-spacer size20"></div>
+
+                    <div class="pe-spacer size20"></div>
+                    <div class="row-fluid">
+                        <div class="span9">
+                            @*<div class="main_content_title ">
+                                <h3 style="font-family:Tahoma;">مطالب</h3>
+                            </div>
+                            <div class="pe-spacer size10"></div>*@
+                            <!-- start horizontal tab -->
+                            <ul id="myTab" class="nav nav-tabs" style="font-family:Tahoma;">
+                                <li class="active" style="font-family:Tahoma;">
+                                    <a href="#tab1" data-toggle="tab" style="font-family:Tahoma;">اخبار</a>
+                                </li>
+                                <li>
+                                    <a href="#tab2" data-toggle="tab" style="font-family:Tahoma;">دانستنیها</a>
+                                </li>
+                                @*<li>
+                        <a href="#tab3" data-toggle="tab">SZZT E09</a>
+                    </li>*@
+                            </ul>
+                            <div id="myTabContent" class="tab-content" style="height:250px">
+                                <div class="tab-pane fade in active" id="tab1">
+                                    <div class="row-fluid">
+                                        <div class="shake">
+                                            @if (Session[pharmacy.Helper.GeneralModule.m_NewsList] != null)
+                                            {
+                                                foreach (pharmacy.Models.Cms item in (List<pharmacy.Models.Cms>)Session[pharmacy.Helper.GeneralModule.m_NewsList])
+                                                {
+                                                    string strBody = item.Body;
+                                                    if (strBody.Length > 300)
+                                                    {
+                                                        strBody = strBody.Substring(0, 300);
+                                                    }
+
+                                                <div class="lblog-date right" style="font-family:Tahoma;font-size:8px; color:darkseagreen">@item.PublishDate &nbsp;</div>
+                                                <a href="#">
+                                                    <div class="lblog-content right" style="font-family:Tahoma;font-size:12px;font-weight:bold">@item.Title</div>
+                                                </a>
+                                                    <div class="lblog-content right" style="font-family:Tahoma;font-size:12px">@strBody...</div>
+                                                    <div class="pe-spacer size10"></div>
+                                                    <br />
+                                                }
+                                            }
+                                        </div>
+
+                                        <div >
+                                            <a href="~/cms/BlogList?isNews=true" class="btn-danger" style="float:left;font-family:Tahoma;bottom:0px ">همه اخبار</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="tab2">
+                                    <div class="row-fluid">
+                                        <div class="shake">
+@if (Session[pharmacy.Helper.GeneralModule.m_BlogList] != null)
+{
+    foreach (pharmacy.Models.Cms item in (List<pharmacy.Models.Cms>)Session[pharmacy.Helper.GeneralModule.m_BlogList])
+    {
+        string strBody = item.Body;
+        if (strBody.Length > 600)
+        {
+            strBody = strBody.Substring(0, 600);
+        }
+
+                                                <div class="lblog-date right">@item.PublishDate &nbsp;</div>
+                                                <div class="lblog-content right" style="font-family:Tahoma;font-size:12px;font-weight:bold">@item.Title</div>
+                                                <div class="lblog-content right" style="font-family:Tahoma;font-size:12px">@strBody...</div>
+                                                    <div class="pe-spacer size10"></div>
+    }
+}
+                                        </div>
+                                        <a href="~/cms/BlogList?isNews=false" class="btn-danger" style="float:left;font-family:Tahoma;">همه</a>
+                                    </div>
+                                </div>
+                                @*<div class="tab-pane fade" id="tab3">
+                        <div class="row-fluid">
+                            <div class="shake">
+                                <img alt="Shake Image" src="~/assets/images/gallery/tab_shake3.jpg" />
+                            </div>
+
+                        </div>
+                    </div>*@
+                            </div>
+                            <!-- end horizontal tab -->
+                        </div>
+                        <div class="span3">
+                            <!-- start accordion -->
+                            <div class="accordion" id="accordion2">
+                                @*<div class="main_content_title ">
+                                    <h3 style="font-family:Tahoma;">مطالب برگزیده</h3>
+                                </div>*@
+                                @*<div class="pe-spacer size10"></div>*@
+                                <div class="accordion-group">
+                                    <div class="accordion-heading">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne" style="font-family:Tahoma;">پیوند داغ</a>
+                                    </div>
+                                    <div id="collapseOne" class="accordion-body collapse in">
+                                        <div class="thumbnail" style="height:300px;">
+
+                                                    @*<a href="http://www.dici.ir/"  class="fancybox" rel="group">
+                                                        <img src="~/assets/images/gallery/dici.gif" style="height:300px;" />
+                                                    </a>*@
+
+                                                    <a href="http://daroo118.com/" class="fancybox" rel="group" target="_blank">
+                                                        <img src="~/assets/images/gallery/daroo118.png" style="height:300px;" />
+                                                    </a>
+                                            </div>
+                                      
+
+                                        @*<a class="more_icon" href="#" style="font-family:Tahoma;">بیشتر...</a>*@
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-group">
+                                <div class="accordion-heading">
+                                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo" style="font-family:Tahoma;">محبوبترین مطلب</a>
+                                </div>
+                                <div id="collapseTwo" class="accordion-body collapse">
+                                    <div class="accordion-inner" style="font-family:Tahoma;">
+                                        ارایه راهکارهای سیستمی و تولید نرم افزاری های تخصصی صنعت بانکداری، ارایه مشاوره و تامین سخت افزار قابل استفاده در راهکارهای، پشتیبانی از سیستم های عرضه شده
+                                        <a class="more_icon" href="#">بیشتر...</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- end accordion -->
+                    </div>
+
+                    
+                    <div class="pe-spacer size30"></div>
+                    <div class="row-fluid">
+                        <div class="span12">
+                            <div class="main_content_title" dir="ltr">
+                                <h3 dir="rtl" style="font-family:Tahoma;">گالری محصولات</h3>
+                            </div>
+                            <!-- start lightbox & carousel -->
+                            <div class="carouFredSel_style clearafter">
+
+                                <ul id="carouFredSel">
+                                    @foreach (string item in myList)
+                                    {
+                                        filename = @item.Replace(myPath, "");
+
+                                        <li>
+                                            <a href="~/assets/images/drugstore/@filename" title=@filename class="fancybox" rel="group">
+                                                <img alt="" src="~/assets/images/drugstore/@filename" />
+
+                                            </a>
+                                        </li>
+                                    }
+
+                                </ul>
+                                <div class="carouFredSel_nav" dir="ltr" style="float:left">
+                                    <a id="caroul_prev" class="caroul_prev" href="#"></a>
+                                    <a id="caroul_next" class="caroul_next" href="#"></a>
+                                </div>
+
+                            </div>
+                            <!-- end lightbox & carousel -->
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        
+
+
+    </section>
+}
+
+@*<script src="@Url.Content("~/Scripts/jquery-1.8.3.min.js")"></script>
+
+    <script>
+        jQuery(document).ready(function () {
+            // initiate layout and plugins
+            App.init();
+        });
+    </script>*@

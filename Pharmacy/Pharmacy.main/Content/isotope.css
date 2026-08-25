@@ -1,0 +1,164 @@
+/* Start: Recommended Isotope styles */
+
+/**** Isotope Filtering ****/
+.isotope-item {
+  z-index: 2;
+}
+
+.isotope-hidden.isotope-item {
+  pointer-events: none;
+  z-index: 1;
+}
+
+/**** Isotope CSS3 transitions ****/
+
+.isotope,
+.isotope .isotope-item {
+  -webkit-transition-duration: 0.8s;
+     -moz-transition-duration: 0.8s;
+      -ms-transition-duration: 0.8s;
+       -o-transition-duration: 0.8s;
+          transition-duration: 0.8s;
+}
+
+.isotope {
+  -webkit-transition-property: height, width;
+     -moz-transition-property: height, width;
+      -ms-transition-property: height, width;
+       -o-transition-property: height, width;
+          transition-property: height, width;
+}
+
+.isotope .isotope-item {
+  -webkit-transition-property: -webkit-transform, opacity;
+     -moz-transition-property:    -moz-transform, opacity;
+      -ms-transition-property:     -ms-transform, opacity;
+       -o-transition-property:      -o-transform, opacity;
+          transition-property:         transform, opacity;
+}
+
+/**** disabling Isotope CSS3 transitions ****/
+
+.isotope.no-transition,
+.isotope.no-transition .isotope-item,
+.isotope .isotope-item.no-transition {
+  -webkit-transition-duration: 0s;
+     -moz-transition-duration: 0s;
+      -ms-transition-duration: 0s;
+       -o-transition-duration: 0s;
+          transition-duration: 0s;
+}
+/* End: Recommended Isotope styles */
+/* disable CSS transitions for containers with infinite scrolling*/
+.isotope.infinite-scrolling {
+  -webkit-transition: none;
+     -moz-transition: none;
+      -ms-transition: none;
+       -o-transition: none;
+          transition: none;
+}
+/**** Isotope styles ****/
+.element {
+  width:98% ;
+  min-height:100px;
+  margin:5px 1%;
+  padding:0;
+  float: left;
+  overflow: hidden;
+  position: relative;
+  color: #222;
+}
+
+.element2 {
+  width:47.9% ;
+  min-height:100px;
+  margin:5px 1%;
+  padding:0;
+  float: left;
+  overflow: hidden;
+  position: relative;
+  color: #222;
+}
+
+.element3 {
+  width: 31%;
+  min-height:100px;
+  margin:5px 1%;
+  padding:0;
+  float: left;
+  overflow: hidden;
+  position: relative;
+  color: #222;
+}
+
+.element4 {
+  width: 22.9%;
+  min-height:100px;
+  margin:5px 1%;
+  float: left;
+  overflow: hidden;
+  position: relative;
+  color: #222;
+}
+
+.isotope_img img {
+	position: relative;
+	height: auto;
+    width: 100%;
+	opacity: 0.88;
+}
+.isotope_img img:hover {
+	opacity:1;
+}
+.strip {
+    display: block;
+	background: none repeat scroll 0 0 #FF6812;
+    height: 3px;
+    width: 50px;
+}
+/**** Example Options ****/
+
+#options ul {
+    padding-top:15px;
+    list-style: none outside none;
+    margin: 0 auto 30px;
+    max-width: 100% !important;
+    position: relative;
+    text-align: left;
+}
+
+#options ul li {
+    display: inline-block;
+	border-right:1px solid #999;
+}
+
+#options ul li a {
+    border-bottom: medium none !important;
+    color: #666;
+    display: inline-block;
+    font-size: 14px;
+    line-height: 20px;
+    margin: 0 auto;
+    padding: 0 15px;
+    text-align: center;
+	
+
+}
+#options ul li a.last{ border-right:none;}
+
+#options ul li a { text-decoration:none;}
+
+#options a {
+    display: block;
+    font-size: 12px;
+    line-height: 22px;
+    padding: 0 5px;
+    text-transform: uppercase;
+}
+#options a:hover {
+    color:#409dc1;
+}
+
+@media handheld, only screen and (max-width: 767px) {
+.element2, .element3, .element4 { width:auto; }
+}

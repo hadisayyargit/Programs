@@ -1,0 +1,534 @@
+﻿@using Kendo.Mvc.UI
+
+@model shahriarco.Anbar.Models.TMad
+
+@{
+    ViewBag.Title = "";
+    ViewBag.tab1class = "active";
+    ViewBag.tab2class = "";
+    ViewBag.tab3class = "";
+    ViewBag.tab4class = "";
+    ViewBag.tab5class = "";
+    ViewBag.tab6class = "";
+    ViewBag.tab7class = "";
+    ViewBag.tab8class = "";
+
+    ViewBag.menuAnbarclass = "";
+    ViewBag.menuKalaclass = "";
+    ViewBag.menuAvalDorehclass = "";
+    ViewBag.menuResidclass = "";
+    ViewBag.menuHavalehclass = "";
+
+    string strBackground = "orange-background";
+
+    if (Model.MadrakType == 0)
+    {
+        ViewBag.menuAvalDorehclass = "current";
+        strBackground = "orange-background";
+    }
+    else if (Model.MadrakType == 1)
+    {
+        ViewBag.menuResidclass = "current";
+        strBackground = "sea-blue-background";
+    }
+    else if (Model.MadrakType == 2)
+    {
+        ViewBag.menuHavalehclass = "current";
+        strBackground = "brown-background";
+    }
+
+    ViewBag.menuAboutclass = "";
+
+    List<shahriarco.Anbar.Models.TAnb> myAnbarList = ViewBag.AnbarList;
+    var myKalaList = ViewBag.KalaList;
+    List<shahriarco.Anbar.Models.TMar> myMarkazList = ViewBag.MarkazList;
+    List<shahriarco.Anbar.Models.TMad> myMadList = ViewBag.MadList;
+    List<shahriarco.Anbar.Models.TMadItm> myMadItemList = ViewBag.MadItemList;
+
+
+}
+
+
+    <head>
+        <link href="~/Content/kendo/2014.1.318/style/kendo.common.min.css" rel="stylesheet" />
+        <link href="~/Content/kendo/2014.1.318/style/kendo.default.min.css" rel="stylesheet" />
+        <link href="~/Content/kendo/2014.1.318/style/kendo.dataviz.min.css" rel="stylesheet" />
+        <link href="~/Content/kendo/2014.1.318/style/kendo.dataviz.default.min.css" rel="stylesheet" />
+        <link href="~/Content/kendo/2014.1.318/style/kendo.rtl.min.css" rel="stylesheet" />
+
+
+        <link href="~/Content/datepicker-fa/styles/jquery-ui-1.8.14.css" rel="stylesheet" />
+
+        @*<script src="~/Content/datepicker-fa/scripts/jquery-1.10.2.min.js"></script>*@
+        @*<script src="~/Content/datepicker-fa/scripts/jquery-1.6.2.min.js"></script>*@
+
+        <script src="~/Content/kendo/2014.1.318/js/kendo.all.min.js"></script>
+
+        <script src="@Url.Content("~/Content/datepicker-fa/scripts/calendar.js")"></script>
+        <script src="@Url.Content("~/Content/datepicker-fa/scripts/jquery.ui.core.js")"></script>
+        <script src="@Url.Content("~/Content/datepicker-fa/scripts/jquery.ui.datepicker-cc.js")" type="text/javascript"></script>
+        <script src="@Url.Content("~/Content/datepicker-fa/scripts/jquery.ui.datepicker-cc-fa.js")" type="text/javascript"></script>
+
+    </head>
+
+    <div id='wrapper'>
+
+        <section id='content'>
+            <div class='container-fluid'>
+                <div class='row-fluid' id='content-wrapper'>
+                    <div class='span12'>
+
+
+                        <div class='row-fluid'>
+
+                            <div class='span5 box bordered-box' style='margin-bottom:0;'>
+                                <div class="box">
+                                    <div class='controls'>
+                                        @Html.DropDownListFor(m => m.AnbarCode, new SelectList(myAnbarList, "AnbarCode", "AnbarName", "0"), "انبار را انتخاب کنید:", htmlAttributes: new { @id = "cboAnbar", @onchange = "cboAnbar_Change()", @class = "select2 input-block-level" })
+
+                                    </div>
+                                </div>
+
+                                <div class='box-header @strBackground'>
+                                    <div class='title'>موجودیهای اول دوره</div>
+                                    <div class='actions'>
+                                        <a href="#" class="btn box-remove btn-mini btn-link">
+                                            <i class='icon-remove'></i>
+                                        </a>
+                                        <a href="#" class="btn box-collapse btn-mini btn-link">
+                                            <i></i>
+                                        </a>
+                                    </div>
+                                </div>
+
+
+                                <div class='box-content box-no-padding'>
+
+
+                                    @(Html.Kendo().Grid(myMadList).Name("MyGrid")
+                                .Resizable(resize => resize.Columns(true))
+                                .Columns(columns =>
+                                {
+                                columns.Bound("madrakcode").Title("کد").Width(50).HtmlAttributes(new { style = "font-family:B yekan,Tahoma" });
+                                columns.Bound("madrakdate").Title("تاریخ").Width(50).HtmlAttributes(new { style = "font-family:B yekan,Tahoma" });
+                                columns.Bound("MadrakDescription").Title("شرح")
+                                     .Template(@<text>
+                                        <a onclick="madrak_change(@item.AnbarCode,@item.MadrakCode,@item.MadrakType)" style="cursor:pointer">@item.MadrakDescription</a>
+                                    </text>);
+
+                                })
+                                .DataSource(d => d.Server().PageSize(10))
+
+                            .Sortable()
+
+
+                            .Filterable(filterable => filterable
+                                            .Messages(str => str
+                                            .And("و")
+                                            .Cancel("لغو")
+                                            .Clear("پاک")
+                                            .Filter("فیلتر")
+                                            .Info("فیلتر کردن گزینه ها")
+                                            )
+                                            .Operators(operators => operators
+                                            .ForNumber(n => n.Clear()
+                                                .IsEqualTo("=")
+                                                .IsGreaterThan(">")
+                                                .IsGreaterThanOrEqualTo(">=")
+                                                .IsLessThan("<")
+                                                .IsLessThanOrEqualTo("<=")
+                                                .IsNotEqualTo("<>")
+                                                )
+                                            .ForString(str => str.Clear()
+                                                .StartsWith("شروع شود با ")
+                                                .IsEqualTo("برابر با")
+                                                .Contains("شامل")
+                                                .DoesNotContain("شامل نباشد")
+                                                .StartsWith("شروع شود با")
+                                                .EndsWith("تمام شود به")
+                                                .IsNotEqualTo("نابرابر با")))
+                                   )
+
+                            .Pageable(pageable => pageable
+                                .PageSizes(new int[] { 10, 20, 30, 40 })
+                                .ButtonCount(5).Numeric(true).Refresh(true)
+                                .Messages(str => str.ItemsPerPage("تعداد سطر در صفحه").First("اولین").Last("آخرین").Next("بعدی").Previous("قبلی").Page("صفحه").Of("از").MorePages("صفحات بیشتر").Empty("خالی").Refresh("تازه سازی"))
+                                    )
+
+
+                                    )
+
+
+                                    <div class='box-content'>
+
+                                        @using (Html.BeginForm("madrak_update", "AnbarGardani", FormMethod.Post))
+                                        {
+
+                                            @Html.ValidationSummary(true)
+
+                                            <div class='control-group'>
+
+                                                @Html.HiddenFor(m => m.AnbarCode)
+                                                @Html.HiddenFor(m => m.SalMali, htmlAttributes: new { id = "txtSalMali" })
+                                                @Html.HiddenFor(m => m.MadrakActive, htmlAttributes: new { id = "txtMadrakActive" })
+                                                @Html.HiddenFor(m => m.MadrakType, htmlAttributes: new { id = "txtMadrakType" })
+
+                                                <label class='control-label'>کد موجودی</label>
+                                                <div class='controls'>
+                                                    @Html.TextBoxFor(m => m.MadrakCode, "", htmlAttributes: new { @class = "span12", @id = "txtMadrakCode", @placeholder = "کد موجودی", @readonly = "readonly", style = "color:blue" })
+                                                </div>
+                                                <label class='control-label'>شرح</label>
+                                                <div class='controls'>
+
+                                                    @Html.TextBoxFor(m => m.MadrakDescription, htmlAttributes: new { id = "txtMadrakDescription" })
+                                                    @Html.ValidationMessageFor(m => m.MadrakDescription)
+                                                </div>
+                                                <label class='control-label'>تاریخ</label>
+                                                <div class='controls'>
+                                                    @Html.TextBoxFor(m => m.MadrakDate, "", htmlAttributes: new { @class = "span2  popovers", @id = "txtMadrakDate", @data_trigger = "hover", @data_content = "تاریخ را وارد نمایید", @data_original_title = "تاریخ", @placeholder = "تاریخ ", style = "color:blue;" })
+                                                    @Html.ValidationMessageFor(m => m.MadrakDate)
+                                                </div>
+
+
+
+                                            </div>
+
+                                            <div class='form-actions' style='margin-bottom: 0;'>
+                                                <div class='text-right'>
+                                                    <button class='btn btn-warning btn-small @strBackground' onclick="clearMaster()" type="button">
+                                                        <i class='ui-icon-cancel'></i>
+                                                        جدید
+                                                    </button>
+
+                                                    <button class='btn btn-warning btn-small @strBackground' type="submit">
+                                                        <i class='icon-save'></i>
+                                                        ثبت
+                                                    </button>
+
+                                                    <button class='btn btn-warning btn-small @strBackground' onclick="clearMaster()" type="button">
+                                                        <i class='ui-icon-cancel'></i>
+                                                        انصراف
+                                                    </button>
+                                                    <button class='btn btn-warning btn-small @strBackground' onclick="deleteMadrak()" type="button">
+
+                                                        <i class='ui-icon-alert'></i>
+                                                        حذف
+                                                    </button>
+
+
+
+                                                </div>
+                                            </div>
+
+                                        }
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+
+                            <div class='span7 box'>
+
+                                <div class='box-content box-double-padding muted-background'>
+
+
+
+                                    <div class='span12 box'>
+                                        <div class='box-content box-no-padding responsive-table scrollable-area'>
+
+                                            <table id="tableDetail" class="data-table-column-filter table table-bordered table-striped" style='margin-bottom:0;'>
+
+                                                <thead>
+                                                    <tr>
+                                                        <th>
+                                                            ردیف
+                                                        </th>
+                                                        <th>
+                                                            کد کالای موجود
+                                                        </th>
+                                                        <th>
+                                                            نام کالای موجود
+                                                        </th>
+                                                        <th>
+                                                            کد مرکز
+                                                        </th>
+                                                        <th>
+                                                            نام مرکز
+                                                        </th>
+                                                        <th>
+                                                            مقدار موجود
+                                                        </th>
+                                                        <th></th>
+
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @if (myMadItemList != null)
+                                                    {
+                                                        foreach (shahriarco.Anbar.Models.TMadItm item in myMadItemList)
+                                                        {
+                                                            @*<tr>
+        <td>
+            <a href="~/prime/Anbar_Update?anbarcode=@item.AnbarCode">@item.MadrakCode</a>
+        </td>
+
+        <td>
+            <a onclick="madrak_change(@item.AnbarCode,@item.MadrakCode)" style="cursor:pointer">@item.KalaCode</a>
+        </td>
+
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>*@
+                                                        }
+
+                                                    }
+                                                </tbody>
+
+                                            </table>
+
+                                        </div>
+                                    </div>
+
+
+                                    <hr class='hr-normal' />
+
+                                    <fieldset>
+
+                                        <div class='span7 offset1'>
+
+                                            <div class='control-group'>
+                                                <label class='control-label'>ردیف</label>
+                                                <div class='controls'>
+                                                    @Html.TextBox("txtRadif", "", htmlAttributes: new { @class = "span12", @id = "txtRadif", @placeholder = "ردیف", @style = "color:blue", @readonly = "readonly" })
+                                                </div>
+
+                                                <label class='control-label'>مرکز</label>
+                                                <div class='controls'>
+                                                    @Html.DropDownList("cboMarkaz", new SelectList(myMarkazList, "MarkazCode", "MarkazName", "0"), "مرکز را انتخاب کنید:", htmlAttributes: new { @id = "cboMarkaz", @class = "select2 input-block-level", style = "color:blue" })
+                                                </div>
+                                                <label class='control-label'>کالا</label>
+                                                <div class='controls'>
+                                                    @Html.DropDownList("cboKala", new SelectList(myKalaList, "KalaCode", "KalaName", 0), "کالا را انتخاب کنید:", htmlAttributes: new { @id = "cboKala", @class = "select2 input-block-level", style = "color:blue" })
+                                                </div>
+
+                                                <label class='control-label'>مقدار موجود</label>
+                                                <div class='controls'>
+                                                    @Html.TextBox("txtTedad", "", htmlAttributes: new { @class = "span12", @id = "txtTedad", @placeholder = "مقدار موجود ", style = "color:blue" })
+                                                </div>
+
+                                                @*<div class='controls'>
+                                                    <label class='checkbox'>
+                                                    <input data-target='#change-password' data-toggle='collapse' id='changepasswordcheck' type='checkbox' value='option1' />
+                                                    وضعیت
+                                                    </label>
+                                                    </div>*@
+
+                                            </div>
+
+
+                                        </div>
+                                    </fieldset>
+
+                                    <div class='form-actions' style='margin-bottom: 0;'>
+                                        <div class='text-right'>
+                                            <button class='btn btn-primary btn-large' onclick="clearDetail()" type="button">
+                                                <i class='ui-icon-cancel'></i>
+                                                جدید
+                                            </button>
+
+                                            <button class='btn btn-primary btn-large' onclick="updateItem()" type="button">
+                                                <i class='icon-save'></i>
+                                                ثبت
+                                            </button>
+                                            <button class='btn btn-primary btn-large' onclick="location.href = '/AnbarGardani/Madrak?anbarcode=@Model.AnbarCode'" type="button">
+                                                <i class='ui-icon-cancel'></i>
+                                                انصراف
+                                            </button>
+                                            <button class='btn btn-primary btn-large' onclick="deleteItem()" type="button">
+                                                <i class='ui-icon-alert'></i>
+                                                حذف
+                                            </button>
+
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <script type="text/javascript">
+
+    $(function () {
+        // حالت پیشفرض
+        //$('#txtMadrakDate').datepicker();
+        //-----------------------------------
+
+        //-----------------------------------
+        // انتخاب با کلیک بر روی عکس
+        $("#txtMadrakDate").datepicker({
+            showOn: 'button',
+            buttonImage: '../../Content/datepicker-fa/styles/images/calendar.png',
+            buttonImageOnly: true
+        });
+
+
+
+
+    });
+
+    </script>
+
+
+<script>
+    function cboAnbar_Change() {
+
+        var anbarcode = $("#cboAnbar").val();
+        var madraktype = $("#txtMadrakType").val();
+        var url = "Madrak?madraktype="+madraktype+"&madrakcode=0&anbarcode=" + anbarcode; //Append Id To URL
+        window.location.replace(url);
+    }
+</script>
+
+<script>
+    function madrak_change(anbacode, madrakcode,madraktype) {
+
+        var n = anbacode;
+        var m = madrakcode;
+        var t = madraktype;
+        //alert(t);
+
+        $.ajax({
+            cache: false,
+            type: "GET",
+            url: "@(Url.Action("GetMadrak", "AnbarGardani"))",
+            data: { "anbarcode": n, "madrakcode": m, "madraktype": t },
+            success: function (data) {
+
+                if (data != null) {
+
+                    $("#txtMadrakCode").val(data[0].MadrakCode);
+                    $("#txtMadrakDescription").val(data[0].MadrakDescription);
+                    $("#txtMadrakDate").val(data[0].MadrakDate);
+                    $("#txtMadrakActive").val(data[0].MadrakActive);
+                    $("#txtSalMali").val(data[0].SalMali);
+
+
+                    $("#tableDetail tbody").empty();
+                    $.each(data, function () {
+                        $("#tableDetail tbody").append("<tr><td>" + this.MadrakRadif + "</td><td>" + this.KalaCode + "</td><td><a onclick='item_change(" + this.AnbarCode + "," + this.MadrakCode + "," + this.KalaCode + "," + this.MarkazCode + "," + this.MadrakRadif + "," + this.Tedad + ")' style='cursor:pointer'>" + this.KalaName + "</td><td>" + this.MarkazCode + "</td><td>" + this.MarkazName + "</td><td>" + this.Tedad + "</td><td></td></tr>")
+                        //alert($("#tableDetail").find("tbody").html());
+                        //$("#table1 td:contains('a')").html("hello");
+                    });
+
+                }
+                else {
+                    alert("fail");
+                }
+            }
+            , error: function (data) {
+                if (data != null) {
+                    alert("data is ok with error");
+                }
+                else {
+                    alert(data);
+                }
+            }
+
+        });
+
+    }
+
+
+</script>
+
+<script>
+    function item_change(anbacode, madrakcode, kalacode, markazcode, radif, tedad) {
+        $("#txtRadif").val(radif);
+        $("#txtTedad").val(tedad);
+        $("#cboKala").val(kalacode).select2();
+        $("#cboMarkaz").val(markazcode).select2();
+    }
+</script>
+
+<script>
+
+    function clearMaster() {
+        $("#txtMadrakCode").val(0);
+        $("#txtMadrakDescription").val("");
+        //$("#txtMadrakDate").val("");
+        $("#tableDetail tbody").empty();
+
+        clearDetail();
+    }
+
+</script>
+
+<script>
+
+    function clearDetail() {
+        $("#txtRadif").val(0);        
+        $("#cboKala").val("").select2();
+        $("#cboMarkaz").val("").select2();
+        $("#txtTedad").val("");
+    }
+
+</script>
+
+<script>
+    function updateItem() {
+        var anbarcode = $("#cboAnbar").val();
+        var madrakcode = $("#txtMadrakCode").val();
+        var madrakradif = $("#txtRadif").val();
+        var kalacode = $("#cboKala").val();
+        var markazcode = $("#cboMarkaz").val();
+        var tedad = $("#txtTedad").val();
+        var madraktype = $("#txtMadrakType").val();
+
+        location.href = "madrakItem_update?madraktype="+madraktype+"&anbarcode=" + anbarcode + "&madrakcode=" + madrakcode + "&madrakradif=" + madrakradif + "&kalacode=" + kalacode + "&markazcode=" + markazcode + "&tedad=" + tedad;
+
+    }
+</script>
+
+<script>
+    function deleteMadrak() {
+        var anbarcode = $("#cboAnbar").val();
+        var madrakcode = $("#txtMadrakCode").val();
+        var madraktype = $("#txtMadrakType").val();
+        location.href = "madrak_Delete?madraktype=" + madraktype + "&anbarcode=" + anbarcode + "&madrakcode=" + madrakcode;
+    }
+</script>
+
+<script>
+    function deleteItem() {
+        var anbarcode = $("#cboAnbar").val();
+        var madrakcode = $("#txtMadrakCode").val();
+        var madrakradif = $("#txtRadif").val();
+        var madraktype = $("#txtMadrakType").val();
+
+        location.href = "madrakItem_Delete?madraktype=" + madraktype + "&anbarcode=" + anbarcode + "&madrakcode=" + madrakcode + "&madrakradif=" + madrakradif;
+    }
+</script>
+
+<script>
+    $(document).ready(function () {
+        //alert("ok2");
+        var anbarcode = $("#cboAnbar").val();
+        var madrakcode = $("#txtMadrakCode").val();
+        var madraktype = $("#txtMadrakType").val();
+        madrak_change(anbarcode, madrakcode,madraktype);
+    })
+
+    </script>

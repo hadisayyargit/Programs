@@ -1,0 +1,181 @@
+﻿@model shahriarco.Anbar.Models.TUser
+
+@{
+    ViewBag.Title = "";
+    ViewBag.tab1class = "";
+    ViewBag.tab2class = "";
+    ViewBag.tab3class = "";
+    ViewBag.tab4class = "";
+    ViewBag.tab5class = "";
+    ViewBag.tab6class = "";
+    ViewBag.tab7class = "";
+    ViewBag.tab8class = "";
+
+    ViewBag.menuAnbarclass = "";
+    ViewBag.menuAboutclass = "";
+    string strMale = "checked='checked'";
+    string strFemale = "";
+    if (Model.Sex == 0)
+    {
+        strMale = "";
+        strFemale = "checked='checked'";
+    }
+}
+
+<div id='wrapper'>
+
+    <section id='content'>
+        <div class='container-fluid'>
+            <div class='row-fluid' id='content-wrapper'>
+                <div class='span12'>
+                    <div class='page-header'>
+                        <h1 class='pull-left'>
+                            <i class='icon-user'></i>
+                            <span>پروفایل کاربر</span>
+                        </h1>
+                        <div class='pull-right'>
+                            <ul class='breadcrumb'>
+                                <li>
+                                    <a href="index.html">
+                                        <i class='icon-bar-chart'></i>
+                                    </a>
+                                </li>
+                                <li class='separator'>
+                                    <i class='icon-angle-right'></i>
+                                </li>
+                                <li>راهبری</li>
+                                <li class='separator'>
+                                    <i class='icon-angle-right'></i>
+                                </li>
+                                <li class='active'>پروفایل کاربر</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class='row-fluid'>
+                        <div class='span3 box'>
+                            <div class='box-content'>
+                                <img alt="230x230&amp;text=photo" src="~/assets/images/avatar2.png" style="width:220px;height:200px; background-size:cover" />
+                            </div>
+                        </div>
+                        <div class='span9 box'>
+                            <div class='box-content box-double-padding'>
+                                <form class='form' style='margin-bottom: 0;' >
+                                <fieldset>
+                                    <div class='span4'>
+                                        <div class='lead'>
+                                            <i class='icon-signin text-contrast'></i>
+                                            حساب کاربری
+                                        </div>
+                                        <small class='muted'>مشخصات کاربری برای ورود به سیستم</small>
+                                    </div>
+                                    <div class='span7 offset1'>
+                                        <div class='control-group'>
+                                            <label class='control-label'>شناسه</label>
+                                                @Html.TextBoxFor(m=>m.IDUser, htmlAttributes: new  { @class="span12" ,@id="username" ,@placeholder="Username"})
+                                        </div>
+                                        <div class='control-group'>
+                                            <label class='control-label'>نام کاربری</label>
+                                                @Html.TextBoxFor(m => m.LoginName, htmlAttributes: new { @class = "span12", @id = "loginname", @placeholder = "نام کاربری" })
+                                        </div>
+                                        <hr class='hr-normal' />
+                                        <div class='control-group'>
+                                            <div class='controls'>
+                                                <label class='checkbox'>
+                                                    <input data-target='#change-password' data-toggle='collapse' id='changepasswordcheck' type='checkbox' value='option1' />
+                                                    فعال؟
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class='collapse' id='change-password'>
+                                            <div class='control-group'>
+                                                <label class='control-label'>Password</label>
+                                                <div class='controls'>
+                                                    <input class='span12' id='password' placeholder='Password' type='password' />
+                                                </div>
+                                            </div>
+                                            <div class='control-group'>
+                                                <label class='control-label'>Password confirmation</label>
+                                                <div class='controls'>
+                                                    <input class='span12' id='password-confirmation' placeholder='Password confirmation' type='password' />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                                <hr class='hr-normal' />
+                                <fieldset>
+                                    <div class='span4 box'>
+                                        <div class='lead'>
+                                            <i class='icon-user text-contrast'></i>
+                                            اطلاعات پرسنلی
+                                        </div>
+                                        <small class='muted'>اطلاعات پرسنلی کاربر...</small>
+                                    </div>
+                                    <div class='span7 offset1'>
+                                        <div class='control-group'>
+                                            <label class='control-label'>نام</label>
+                                            <div class='controls'>
+                                                @Html.TextBoxFor(m => m.FirstName, htmlAttributes: new { @class = "span12", @id = "firstname", @placeholder = "نام" })
+                                            </div>
+                                        </div>
+                                        <div class='control-group'>
+                                            <label class='control-label'>نام خانوادگی</label>
+                                            <div class='controls'>
+                                                @Html.TextBoxFor(m => m.LastName, htmlAttributes: new { @class = "span12", @id = "مشسفدشئث", @placeholder = "نام خانوادگی" })
+                                            </div>
+                                        </div>
+                  
+                                        <div class='control-group'>
+                                            <label class='control-label'>جنسیت</label>
+                                            <div class='controls'>
+                                                <label class='radio inline'>
+                                                    <input type='radio' name="rdoGender" @strFemale />
+                                                    زن
+                                                </label>
+                                                <label class='radio inline'>
+                                                    <input type='radio' name="rdoGender" @strMale />
+                                                    مرد
+                                                </label>
+                                   
+                                            </div>
+                                        </div>
+
+                                        <div class='control-group'>
+                                            <label class='control-label'>تاریخ تولد</label>
+                                            <div class='controls'>
+                                                <input class='span12' id='lastname' placeholder='' type='text' />
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        <div class='control-group'>
+                                            <div class='control-group'>
+                                                <label class='control-label'>تلفن</label>
+                                                <div class='controls'>
+                                                    <input class='span12' id='lastname' placeholder='' type='text' />
+                                                </div>
+                                            </div>
+                                            <label class='control-label'>نشانی</label>
+                                            <div class='controls'>
+                                                <textarea class='autosize span12' id='bio' placeholder='نشانی'></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                                <div class='form-actions' style='margin-bottom: 0;'>
+                                    <div class='text-right'>
+                                        <div class='btn btn-primary btn-large'>
+                                            <i class='icon-save'></i>
+                                            تایید
+                                        </div>
+                                    </div>
+                                </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    </div>
