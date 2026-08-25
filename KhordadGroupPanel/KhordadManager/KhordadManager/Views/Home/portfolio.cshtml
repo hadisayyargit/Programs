@@ -1,0 +1,158 @@
+﻿
+
+<script src="~/Scripts/bootstrap.js"></script>
+<script src="~/Scripts/global.js"></script>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script> 
+
+@{
+    ViewBag.Title = "Apps";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    
+}
+
+
+@section featured {        
+
+        <div class="container wrapper closes">      
+
+    <section class="content span8 offset4">   
+      <h2 class="section-title">Projects</h2>
+         
+      <ul class="blog unstyled">
+
+          <li class="row">
+              <div class="post-media span2">
+                  <img src="~/Images/stock/paya_1.png" alt="img">
+              </div>
+              <div class="span6">
+                  @*<h3 class="title"><a href="~/home/AppBrief1">Paya</a></h3>*@
+                  <h3 class="title"><a href="@Url.Action("AppBrief1", "home", new khordadmanager.Models.ProjectModel() { LName = "paya", NumberOfImage =6, Title = "paya industry" ,UsedTec=".net,sql server,barcode", Desc="This program used for tracing Communication Boards" })">Paya</a></h3>
+                  <p class="brief">
+                      @*application for Paya Industry <a href="~/home/AppBrief1" target="_blank">Brief</a> ...*@
+                      application for Paya Industry <a href="@Url.Action("AppBrief1", "home", new khordadmanager.Models.ProjectModel() { LName = "paya", NumberOfImage = 6, Title = "paya industry" ,UsedTec=".net,sql server,barcode", Desc="This program used for tracing Communication Boards" })">Brief</a> ...
+                  </p>
+                  @*<a class="more btn" href="~/home/AppBrief1">Detail...</a>*@
+                  <a class="more btn" href="@Url.Action("AppBrief1", "home", new khordadmanager.Models.ProjectModel() { LName = "paya", NumberOfImage = 6, Title = "paya industry" ,UsedTec=".net,sql server,barcode", Desc="This program used for tracing Communication Boards" })">Detail...</a>
+              </div>
+          </li>
+
+
+          <li class="row">
+              <div class="post-media span2">
+                  <img src="~/Images/stock/minoopda_1.png" alt="img">
+              </div>
+              <div class="span6">
+                  <h3 class="title">
+                      <a href="@Url.Action("AppBrief1", "home", new khordadmanager.Models.ProjectModel() { LName = "Minoopda", NumberOfImage = 13, Title = "Minoo Smart Visit" ,UsedTec=".net,sql server, sqlite,windows phone" , Desc="The Visitor Use This App for Registering Orders in Shops"})">MINOO </a>
+                  </h3>
+                  <p class="brief">
+                      App for Registering Orders in Shops
+                      <a href="@Url.Action("AppBrief1", "home", new khordadmanager.Models.ProjectModel() { LName = "Minoopda", NumberOfImage = 13, Title = "Minoo Smart Visit" ,UsedTec=".net,sql server, sqlite,windows phone" , Desc="The Visitor Use This App for Registering Orders in Shops"})">Brief</a> ...
+                  </p>
+                  <a class="more btn" href="@Url.Action("AppBrief1", "home", new khordadmanager.Models.ProjectModel() { LName = "Minoopda", NumberOfImage = 13, Title = "Minoo Smart Visit" ,UsedTec=".net,sql server, sqlite,windows phone" , Desc="The Visitor Use This App for Registering Orders in Shops"})">Detail...</a>
+              </div>
+          </li>
+
+          <li class="row">
+              <div class="post-media span2">
+                  <img src="~/Images/stock/hospital_1.png" alt="img">
+              </div>
+              <div class="span6">
+                  <h3 class="title">
+                      <a href="@Url.Action("AppBrief1", "home", new khordadmanager.Models.ProjectModel() { LName = "Hospital", NumberOfImage = 20, Title = "Operating Room Program" ,UsedTec=".net,sql server" , Desc="Software for Asia Hospital"})">Asia Hospital</a>
+                  </h3>
+                  <p class="brief">
+                      Asia Hospital
+                      <a href="@Url.Action("AppBrief1", "home", new khordadmanager.Models.ProjectModel() { LName = "Hospital", NumberOfImage = 20, Title = "Operating Room Program" ,UsedTec=".net,sql server" , Desc="Software for Asia Hospital"})">Brief</a> ...
+                  </p>
+                  <a class="more btn" href="@Url.Action("AppBrief1", "home", new khordadmanager.Models.ProjectModel(){LName = "Hospital", NumberOfImage = 20, Title = "Operating Room Program" ,UsedTec=".net,sql server" , Desc="Software for Asia Hospital"})">Detail...</a>
+              </div>
+          </li>
+
+          <li class="row">
+              <div class="post-media span2">
+                  <img src="~/Images/stock/tosanroid_1.png" alt="img">
+              </div>
+              <div class="span6">
+                  <h3 class="title">
+                      <a href="@Url.Action("AppBrief1", "home", new khordadmanager.Models.ProjectModel() { LName = "tosanroid", NumberOfImage = 9, Title = "Tosan Mobie Bi" ,UsedTec=".net,sql server" , Desc="App for BI Dashboards on Smart Devices such as mobile tablet and pda"})">Tosanroid</a>
+                  </h3>
+                  <p class="brief">
+                      App for BI Dashboards on Smart Devices
+                      <a href="@Url.Action("AppBrief1", "home", new khordadmanager.Models.ProjectModel() { LName = "tosanroid", NumberOfImage = 9, Title = "Tosan Mobie Bi" ,UsedTec=".net,sql server" , Desc="App for BI Dashboards on Smart Devices such as mobile tablet and pda"})">Brief</a> ...
+                  </p>
+                  <a class="more btn" href="@Url.Action("AppBrief1", "home", new khordadmanager.Models.ProjectModel(){ LName = "tosanroid", NumberOfImage = 9, Title = "Tosan Mobie Bi" ,UsedTec=".net,sql server" , Desc="App for BI Dashboards on Smart Devices such as mobile tablet and pda"})">Detail...</a>
+              </div>
+          </li>
+
+          <li class="row">
+              <div class="post-media span2">
+                  <img src="~/Images/stock/rwas_1.png" alt="img">
+              </div>
+              <div class="span6">
+                  <h3 class="title">
+                      <a href="@Url.Action("AppBrief1", "home", new khordadmanager.Models.ProjectModel() { LName = "rwas", NumberOfImage = 21, Title = "Iran Railway Accidents" ,UsedTec=".net,sql server" , Desc="Software for Iran Raiway Accidents"})">RWAS </a>
+                  </h3>
+                  <p class="brief">
+                      application for Iran Railway
+                      <a href="@Url.Action("AppBrief1", "home", new khordadmanager.Models.ProjectModel() { LName = "rwas", NumberOfImage = 21, Title = "Iran Railway Accidents" ,UsedTec=".net,sql server" , Desc="Software for Iran Raiway Accidents"})">Brief</a> ...
+                  </p>
+                  <a class="more btn" href="@Url.Action("AppBrief1", "home", new khordadmanager.Models.ProjectModel() { LName = "rwas", NumberOfImage = 21, Title = "Iran Railway Accidents" ,UsedTec=".net,sql server" , Desc="Software for Iran Raiway Accidents"})">Detail...</a>
+              </div>
+          </li>
+
+          <li class="row">
+              <div class="post-media span2">
+                  <img src="~/Images/stock/postoffice_1.png" alt="img">
+              </div>
+              <div class="span6">
+                  <h3 class="title">
+                      <a href="@Url.Action("AppBrief1", "home", new khordadmanager.Models.ProjectModel() { LName = "postoffice", NumberOfImage = 10, Title = "Iran Post Track&Trace" ,UsedTec=".net,sql server,microsoft access,Barcode solutions" , Desc="Software for Iran Post Track&Trace"})">Iran Post Track&Trace </a>
+                  </h3>
+                  <p class="brief">
+                      application for Iran Post Track&Trace
+                      <a href="@Url.Action("AppBrief1", "home", new khordadmanager.Models.ProjectModel() { LName = "postoffice", NumberOfImage = 10, Title = "Iran Post Track&Trace" ,UsedTec=".net,sql server,microsoft access,Barcode solutions" , Desc="Software for Iran Post Track&Trace"})">Brief</a> ...
+                  </p>
+                  <a class="more btn" href="@Url.Action("AppBrief1", "home", new khordadmanager.Models.ProjectModel() { LName = "postoffice", NumberOfImage = 10, Title = "Iran Post Track&Trace" ,UsedTec=".net,sql server,microsoft access,Barcode solutions" , Desc="Software for Iran Post Track&Trace"})">Detail...</a>
+              </div>
+          </li>
+
+          <li class="row">
+              <div class="post-media span2">
+                  <img src="~/Images/stock/mobilereg_1.png" alt="img">
+              </div>
+              <div class="span6">
+                  <h3 class="title">
+                      <a href="@Url.Action("AppBrief1", "home", new khordadmanager.Models.ProjectModel() { LName = "mobilereg", NumberOfImage = 15, Title = "Iran Mobile Registeration" ,UsedTec=".net,sql server,microsoft access" , Desc="Software for Iran Mobile Registeration"})">Mobile Registeration </a>
+                  </h3>
+                  <p class="brief">
+                      application for Iran Mobile Registeration 2006
+                      <a href="@Url.Action("AppBrief1", "home", new khordadmanager.Models.ProjectModel() { LName = "mobilereg", NumberOfImage = 15, Title = "Iran Mobile Registeration" ,UsedTec=".net,sql server,microsoft access" , Desc="Software for Iran Mobile Registeration"})">Brief</a> ...
+                  </p>
+                  <a class="more btn" href="@Url.Action("AppBrief1", "home", new khordadmanager.Models.ProjectModel() { LName = "mobilereg", NumberOfImage = 15, Title = "Iran Mobile Registeration" ,UsedTec=".net,sql server, microsoft access" , Desc="Software for Iran Mobile Registeration"})">Detail...</a>
+              </div>
+          </li>
+
+          <li class="row">
+              <div class="post-media span2">
+                  <img src="~/Images/stock/prs_1.png" alt="img">
+              </div>
+              <div class="span6">
+                  <h3 class="title">
+                      <a href="@Url.Action("AppBrief1", "home", new khordadmanager.Models.ProjectModel() { LName = "prs", NumberOfImage = 11, Title = "Process Registeration System" ,UsedTec=".net,sql server,microsoft access" , Desc="Process Registeration System and Time Tracking"})">Process Registeration System </a>
+                  </h3>
+                  <p class="brief">
+                      Process Registeration System and Time Tracking
+                      <a href="@Url.Action("AppBrief1", "home", new khordadmanager.Models.ProjectModel() { LName = "prs", NumberOfImage = 11, Title = "Process Registeration System" ,UsedTec=".net,sql server,microsoft access" , Desc="Process Registeration System and Time Tracking"})">Brief</a> ...
+                  </p>
+                  <a class="more btn" href="@Url.Action("AppBrief1", "home", new khordadmanager.Models.ProjectModel() { LName = "prs", NumberOfImage = 11, Title = "Process Registeration System" ,UsedTec=".net,sql server,microsoft access" , Desc="Process Registeration System and Time Tracking"})">Detail...</a>
+              </div>
+          </li>
+
+      </ul>
+
+        </section>
+
+            </div>
+
+    }

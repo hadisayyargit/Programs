@@ -1,0 +1,382 @@
+﻿@model footballcup.Models.AppUserView
+
+
+<link href='~/Content/plugins/jquery_fileupload/jquery.fileupload-ui.css' media='all' rel='stylesheet' type='text/css' />
+
+@{
+    string strVisibility = "hidden";
+
+    if (((footballcup.Models.AppUserView)Session[CommonUnit.GlobalModule.m_CurrentUser]).UserRole == (int)footballcup.Models.UserRoleEnum.ADMIN )
+    {
+        strVisibility = "visible";
+    }
+
+}
+
+@*<div id='wrapper'>*@
+
+<section id='content'>
+    <div class='container-fluid'>
+        <div class='row-fluid' id='content-wrapper'>
+            <div class='span12'>
+
+                <div class='page-header'>
+                    <h1 class='pull-right'>
+                        <i class='icon-user'></i>
+                        <span>پروفایل کاربر</span>
+                    </h1>
+
+                </div>
+
+                <div class='row-fluid'>
+
+
+
+
+                    @using (Html.BeginForm("UserProfile_Update", "Account", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+
+                        <div class='row-fluid' style="visibility:@strVisibility">
+                            <div class='span3 box'>
+                                @Html.DropDownListFor(m => m.UserId, new SelectList(ViewBag.UserList, "UserId", "UserDs", "0"), htmlAttributes: new { @class = "select2 input-block-level", @id = "cboUser", @data_placeholder = "شرکت کننده را انتخاب کنید" })
+
+                            </div>
+
+                        </div>
+
+                        <div class='span3 box'>
+                            <div class='box-content'>
+
+                                @{
+                                    if (Model.UserRole == (int)footballcup.Models.UserRoleEnum.ADMIN)
+                                    {
+                                        <img id="img1" alt="230x230&amp;text=photo" src="~/assets/images/person/avatar1.png" width="100%" height='100%' />
+                                    }
+
+                                    else
+                                    {
+                                        if (Model.ThumbnailPhotoFileName == null)
+                                        {
+                                            string s = "";
+
+                                            try
+                                            {
+                                                s = Convert.ToBase64String(Model.ThumbnailPhoto);
+                                            }
+                                            catch
+                                            {
+                                            }
+                                            var imgsrc = string.Format("data:image/jpeg;base64,{0}", s);
+                                            <img id="img1" alt="230x230&amp;text=photo" src="@imgsrc" width="100%" height='100%' />
+                                        }
+                                        else
+                                        {
+                                            <img id="img1" alt="230x230&amp;text=photo" src="/@Model.ThumbnailPhotoFileName" width="100%" height='100%' />
+                                        }
+                                    }
+
+                                }
+
+                                <span class='btn btn-success fileinput-button' style="width:40%">
+                                    <i class='icon-plus icon-white'></i>
+                                    @*<span>تصویر...</span>*@
+                                    <input type='file' data-bfi-disabled='' multiple='' id="UserImageUrlUpload" name="UserImageUrlUpload" onchange="readURL(this);" />
+                                </span>
+
+                                <span class='btn btn-danger' id="btnClearPicture" style="width:40%">
+                                    <i class='icon-eraser'></i>
+                                </span>
+
+                                <div class=''>
+                                    <ul class='pager'>
+                                        <li class='previous'>
+                                            <a href='#'>→ قبلی</a>
+                                        </li>
+                                        <li class='next'>
+                                            <a href='#'>بعدی ←</a>
+                                        </li>
+                                    </ul>
+
+                                </div>
+
+
+                            </div>
+
+
+                        </div>
+
+                        <div class='span9 box'>
+                            <div class='box-content box-double-padding'>
+                                <fieldset>
+                                    <div class='span4'>
+                                        <div class='lead'>
+                                            <i class='icon-signin text-contrast'></i>
+                                            اطلاعات کاربری
+                                        </div>
+                                        @*<small class='muted'>@Html.HiddenFor(m => m.UserId, htmlAttributes: new { @id = "txtUserId" })</small>*@
+
+                                        <br />
+                                        <small class='muted'>گزینه‌هایی که شرکت‌کننده با آن وارد سیستم می‌شود</small>
+                                    </div>
+                                    <div class='span7 offset1'>
+                                        <div class='control-group'>
+
+                                            @Html.LabelFor(m => m.LoginName, htmlAttributes: new { @class = "control-label" })
+                                            <div class='controls'>
+                                                @Html.TextBoxFor(m => m.LoginName, htmlAttributes: new { @id = "txtLoginName", @class = "span10", @Text = "LoginName" })
+                                            </div>
+                                        </div>
+                                        <div class='control-group'>
+                                            @Html.LabelFor(m => m.Email, htmlAttributes: new { @class = "control-label" })
+                                            <div class='controls'>
+                                                @Html.TextBoxFor(m => m.Email, htmlAttributes: new { @id = "txtEmail", @class = "span10", @Text = "", placeholder = "رایانامه" })
+                                            </div>
+                                        </div>
+                                        <div class='control-group'>
+                                            @Html.LabelFor(m => m.Phone, htmlAttributes: new { @class = "control-label" })
+                                            <div class='controls'>
+                                                @Html.TextBoxFor(m => m.Phone, htmlAttributes: new { @id = "txtPhone", @class = "span10", @Text = "", placeholder = "تلفن همراه" })
+                                            </div>
+                                        </div>
+
+                                        <div class='control-group'>
+                                            <div class='controls'>
+                                                <label class='checkbox'>
+                                                    <input data-target='#change-password' data-toggle='collapse' id='changepasswordcheck' type='checkbox' value='option1' />
+                                                    تغییر رمز؟
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                        <div class='collapse' id='change-password'>
+
+                                            <div class='control-group'>
+                                                @Html.LabelFor(m => m.Password, htmlAttributes: new { @class = "control-label" })
+                                                <div class='controls'>
+                                                    @Html.PasswordFor(m => m.Password, htmlAttributes: new { @id = "login_password", @class = "span10", @placeholder = "گذرواژه" })
+                                                </div>
+                                            </div>
+
+                                            <div class='control-group'>
+                                                @Html.LabelFor(m => m.ConfirmPassword, htmlAttributes: new { @class = "control-label" })
+                                                <div class='controls'>
+                                                    @Html.PasswordFor(m => m.ConfirmPassword, htmlAttributes: new { @id = "password-confirmation", @class = "span10", @placeholder = "تکرار گذرواژه" })
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <hr class='hr-normal' />
+
+
+                                        <div class='control-group ' style="visibility:@strVisibility;" id="divRole">
+                                            <label class="control-label">نقش کاربر</label>
+                                            <div class='controls'>
+
+                                                @*@Html.HiddenFor(m => m.UserRole, htmlAttributes: new { @id = "txtUserRole" })*@
+
+                                                <label class='radio'>
+                                                    @Html.RadioButtonFor(m => m.UserRole, (int)footballcup.Models.UserRoleEnum.GUEST, htmlAttributes: new { @id = "rdoUserRole0" })
+                                                    مهمان
+                                                </label>
+                                                <label class='radio'>
+                                                    @Html.RadioButtonFor(m => m.UserRole, (int)footballcup.Models.UserRoleEnum.PARTICIPANT, htmlAttributes: new { @id = "rdoUserRole1" })
+                                                    شرکت‌کننده
+                                                </label>                                        
+                                                <label class='radio'>
+                                                    @Html.RadioButtonFor(m => m.UserRole, (int)footballcup.Models.UserRoleEnum.ADMIN, htmlAttributes: new { @id = "rdoUserRole3" })
+                                                    راهبر سامانه
+                                                </label>
+
+                                            </div>
+
+                                            <div class='control-group'>
+                                                <label class="control-label" style="color:blue">وضعیت</label>
+                                                <div class='controls' style="color:red" id="divEnabled">
+                                                    <label class='checkbox'>
+                                                        @Html.CheckBoxFor(m => m.Enabled, htmlAttributes: new { @id = "chkEnabled", @style = "fontcolor = 'Red'" })
+                                                        فعال
+                                                    </label>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </fieldset>
+                                <hr class='hr-normal' />
+                                <fieldset>
+                                    <div class='span4 box'>
+                                        <div class='lead'>
+                                            <i class='icon-user text-contrast'></i>
+                                            اطلاعات فردی
+                                        </div>
+                                        <small class='muted'>اطلاعات فردی شرکت کننده</small>
+                                    </div>
+                                    <div class='span7 offset1'>
+                                        <div class='control-group'>
+                                            <label class='control-label'>نام کاربر</label>
+                                            <div class='controls'>
+                                                @Html.TextBoxFor(m => m.UserDs, htmlAttributes: new { @id = "txtUserDs", @class = "span12", @Text = "", placeholder = "نام کاربر" })
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </fieldset>
+
+                                <div class='form-actions' style='margin-bottom: 0;'>
+
+                                    <button type="submit" class='btn btn-primary btn-large' id="btnSubmit">
+                                        <i class='icon-save'></i>
+                                        بروزرسانی
+                                    </button>
+
+                                    @*<button type="button" class='btn btn-primary btn-large' hidden="hidden">
+                            <i class='icon-beaker'></i>
+                            پیش‌بینیهای من
+                        </button>*@
+
+                                    <button type="button" class='btn btn-primary btn-large' id="btnDelete" style="visibility:@strVisibility">
+                                        <i class='icon-eye-close'></i>
+                                        حذف
+                                    </button>
+
+                                    <a class='btn btn-danger btn-large' href="~/">
+                                        <i class='icon-home'></i>
+                                        بازگشت
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    }
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+@*</div>*@
+
+
+<script src="~/Scripts/jquery-1.7.1.min.js"></script>
+
+<script>
+
+    $("#cboUser").click(function () {
+
+        $.ajax({
+            cache: false,
+            type: "GET",
+            url: "@(Url.Action("SelectUser", "Account"))",
+            data: { "userid": $("#cboUser").val() },
+            success: function (data) {
+
+                if (data != null) {
+
+
+                    //alert(data.Enabled);
+
+                    $('#txtUserId').attr('value', data.UserId);
+                    $('#txtLoginName').attr('value', data.LoginName);
+                    $('#txtEmail').attr('value', data.Email);
+                    $('#txtPhone').attr('value', data.Phone);
+                    $('#txtUserDs').attr('value', data.UserDs);
+                    $('#login_password').attr('value', data.Password);
+                    $('#password-confirmation').attr('value', data.ConfirmPassword);
+
+
+                    $('#chkEnabled').attr("checked", data.Enabled);
+
+
+                    if (data.UserRole == 0)
+                        $('#rdoUserRole0').attr("checked", (data.UserRole == 0));
+
+                    if (data.UserRole == 1)
+                        $('#rdoUserRole1').attr("checked", (data.UserRole == 1));
+
+
+                    if (data.UserRole == 2)
+                        $('#rdoUserRole2').attr("checked", (data.UserRole == 2));
+
+                    if (data.UserRole == 3)
+                        $('#rdoUserRole3').attr("checked", (data.UserRole == 3));
+
+                    if (data.UserRole == 4)
+                        $('#rdoUserRole4').attr("checked", (data.UserRole == 4));
+
+
+
+                    ///خطوط پایین درست کار نمی‌کرد
+
+                    //$('#rdoUserRole1').attr("checked", (data.UserRole == 0));
+                    //$('#rdoUserRole1').attr("checked", (data.UserRole == 0));
+                    //$('#rdoUserRole2').attr("checked", (data.UserRole == 2));
+                    //$('#rdoUserRole3').attr("checked", (data.UserRole == 3));
+                    //$('#rdoUserRole4').attr("checked", (data.UserRole == 4));
+
+                    ///اگر راهبر سامانه انتخاب شد نباید اجازه تغییر دهد
+                    if (data.UserRole == 3) {
+                        $('#btnSubmit').attr('disabled', 'disabled')
+                        $('#divRole *').attr("disabled", "disabled").off('click');
+                    }
+                    else
+                    {
+                        $('#btnSubmit').attr('disabled', false)
+                        $('#divRole *').prop('disabled', false);
+                    }
+
+                    if (data.ThumbnailPhotoFileName == null) {
+                        var str = String.fromCharCode.apply(null, data.ThumbnailPhoto);
+                        $('#img1').attr('src', "data:image/jpeg;base64," + btoa(str));
+                    }
+                    else {
+                        $('#img1').attr('src', "/" + data.ThumbnailPhotoFileName);
+                    }
+
+                }
+                else {
+                    alert("خطا در بازیابی");
+
+                }
+            }
+        , error: function (data) {
+            if (data != null) {
+                alert("data is ok with error");
+            }
+            else {
+                alert(data);
+            }
+        }
+
+        });
+    });
+
+
+    function readURL(input) {
+
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#img1').attr('src', e.target.result);
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+        else {
+        }
+    }
+
+    $("#btnClearPicture").click(function () {
+        $('#img1').attr('src', "/assets/images/person/avatar2.png");
+
+    });
+
+    $("#btnDelete").click(function () {        
+        var url ='@Url.Content("~/account")'+ "/user_delete?userid=" + $("#cboUser").val();
+
+        window.location.replace(url);
+    });
+
+</script>

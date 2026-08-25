@@ -1,0 +1,749 @@
+﻿@{
+
+    ViewBag.CopyRight = ((System.Reflection.AssemblyCopyrightAttribute)(System.Reflection.Assembly.GetAssembly(typeof(footballcup.MvcApplication)).GetCustomAttributes(typeof(System.Reflection.AssemblyCopyrightAttribute), false)).First()).Copyright.ToString();
+    ViewBag.Version = System.Reflection.Assembly.GetAssembly(typeof(footballcup.MvcApplication)).GetName().Version.ToString();
+
+    List<footballcup.Models.CmsView> MessageList = (List<footballcup.Models.CmsView>)Session[CommonUnit.GlobalModule.m_NotificationList];
+    var MessageCount = Session[CommonUnit.GlobalModule.m_NotificationCount];
+    string sss = "";
+}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>مسابقه پیش‌بینی بازیها</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="shortcut icon" href="~/assets/images/cup/cup1.png" />
+    <link rel="manifest" href="~/manifest.json">
+
+    <link href="~/Content/bootstrap-rtl/bootstrap-rtl.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-rtl/bootstrap-responsive-rtl.min.css" rel="stylesheet" />
+    <link href='~/Content/light-theme.css' id='color-settings-body-color' media='all' rel='stylesheet' type='text/css' />
+    <link href="~/Content/popupnotification.css" rel="stylesheet" />
+    <link href='~/Content/jquery_ui/jquery.ui.1.10.0.ie.css' media='all' rel='stylesheet' type='text/css' />
+
+    @*
+        <link href='~/Content/plugins/bootstrap_switch/bootstrap-switch.css' media='all' rel='stylesheet' type='text/css' />
+        <link href='~/Content/plugins/xeditable/bootstrap-editable.css' media='all' rel='stylesheet' type='text/css' />
+        <link href='~/Content/plugins/common/bootstrap-wysihtml5.css' media='all' rel='stylesheet' type='text/css' />
+        <link href='~/Content/plugins/jquery_fileupload/jquery.fileupload-ui.css' media='all' rel='stylesheet' type='text/css' />
+        <link href='~/Content/plugins/fullcalendar/fullcalendar.css' media='all' rel='stylesheet' type='text/css' />
+        <link href='~/Content/plugins/select2/select2.css' media='all' rel='stylesheet' type='text/css' />
+        <link href='~/Content/plugins/mention/mention.css' media='all' rel='stylesheet' type='text/css' />
+        <link href='~/Content/plugins/tabdrop/tabdrop.css' media='all' rel='stylesheet' type='text/css' />
+        <link href='~/Content/plugins/jgrowl/jquery.jgrowl.min.css' media='all' rel='stylesheet' type='text/css' />
+        <link href='~/Content/plugins/dynatree/ui.dynatree.css' media='all' rel='stylesheet' type='text/css' />
+        <link href='~/Content/plugins/bootstrap_colorpicker/bootstrap-colorpicker.css' media='all' rel='stylesheet' type='text/css' />
+        <link href='~/Content/plugins/flags/flags.css' media='all' rel='stylesheet' type='text/css' />
+        <link href='~/Content/plugins/slider_nav/slidernav.css' media='all' rel='stylesheet' type='text/css' />
+        <link href='~/Content/plugins/fuelux/wizard.css' media='all' rel='stylesheet' type='text/css' />
+        <link href='~/Content/demo.css' media='all' rel='stylesheet' type='text/css' />
+        <link href="~/Content/nivo-slider.css" rel="stylesheet" />
+
+    *@
+
+
+</head>
+
+
+@*<body style=" background-color:indianred ">*@
+<body>
+    <header>
+
+        <div class='navbar'>
+            <div class='navbar-inner'>
+                <div class='container-fluid'>
+                    <a class='brand' href='~/home/index'>
+                        <i class='icon-heart-empty'></i>
+                        <img src="~/assets/images/cup/cup2.png" width="32" height="32" />
+                        <span class='hidden-phone'>@(((footballcup.Models.Cup)Session[CommonUnit.GlobalModule.m_CurrentCup]).LName)</span>
+                    </a>
+
+                    <a class='toggle-nav btn pull-left' href='#' style=" background-color:transparent ">
+                        <i class='icon-reorder'></i>
+                    </a>
+
+                    <a class='btn pull-left' href='~/home/about'>
+                        <i class='icon-question'></i>
+                    </a>
+
+                    <ul class='nav pull-right'>
+                        <li class='dropdown light only-icon' style=" background-color:transparent ">
+                            <a class='dropdown-toggle' data-toggle='dropdown' href='#'>
+                                <i class='icon-adjust'></i>
+                            </a>
+                            <ul class='dropdown-menu color-settings'>
+                                <li class='color-settings-contrast-color'>
+                                    <a href="#" data-change-to="contrast-red">
+                                        <i class='icon-adjust text-red'></i>
+                                        Red(قرمز)
+                                        <small>(default)</small>
+                                    </a>
+
+                                    <a href="#" data-change-to="contrast-pink">
+                                        <i class='icon-adjust text-pink'></i>
+                                        Pink(صورتی)
+                                    </a>
+                                    <a href="#" data-change-to="contrast-magenta">
+                                        <i class='icon-adjust text-magenta'></i>
+                                        Magenta(سرخابی)
+                                    </a>
+
+                                    <a href="#" data-change-to="contrast-blue">
+                                        <i class='icon-adjust text-blue'></i>
+                                        Blue(آبی)
+                                    </a>
+                                    <a href="#" data-change-to="contrast-sea-blue">
+                                        <i class='icon-adjust text-sea-blue'></i>
+                                        Sea blue(آبی سیر)
+                                    </a>
+                                    <a href="#" data-change-to="contrast-azure">
+                                        <i class='icon-adjust text-azure'></i>
+                                        Azure(لاجوردی)
+                                    </a>
+
+                                    <a href="#" data-change-to="contrast-violet">
+                                        <i class='icon-adjust text-violet'></i>
+                                        Violet(بنفش)
+                                    </a>
+                                    <a href="#" data-change-to="contrast-purple">
+                                        <i class='icon-adjust text-purple'></i>
+                                        Purple(ارغوانی)
+                                    </a>
+                                    <a href="#" data-change-to="contrast-green">
+                                        <i class='icon-adjust text-green'></i>
+                                        Green(سبز)
+                                    </a>
+                                    <a href="#" data-change-to="contrast-pistachio">
+                                        <i class='icon-adjust text-pistachio'></i>
+                                        Pistachio(مغز پسته‌ای)
+                                    </a>
+                                    <a href="#" data-change-to="contrast-mediumaquamarine">
+                                        <i class='icon-adjust text-mediumaquamarine'></i>
+                                        Aquamarine(دریایی)
+                                    </a>
+                                    <a href="#" data-change-to="contrast-seagreen">
+                                        <i class='icon-adjust text-seagreen'></i>
+                                        seagreen(اقیانوسی)
+                                    </a>
+
+                                    <a href="#" data-change-to="contrast-olive">
+                                        <i class='icon-adjust text-olive'></i>
+                                        Olive(زیتونی)
+                                    </a>
+                                    <a href="#" data-change-to="contrast-cyan">
+                                        <i class='icon-adjust text-cyan'></i>
+                                        Cyan(فیروزه‌ای)
+                                    </a>
+                                    <a href="#" data-change-to="contrast-banana">
+                                        <i class='icon-adjust text-banana'></i>
+                                        Banana(زرد موزی)
+                                    </a>
+                                    <a href="#" data-change-to="contrast-amber">
+                                        <i class='icon-adjust text-orange'></i>
+                                        Amber(کهربایی)
+
+                                    </a>
+
+                                    <a href="#" data-change-to="contrast-coral">
+                                        <i class='icon-adjust text-dark-orange'></i>
+                                        coral(مرجانی)
+                                    </a>
+
+
+                                    <a href="#" data-change-to="contrast-brown">
+                                        <i class='icon-adjust text-brown'></i>
+                                        Brown(قهوه‌ای)
+                                    </a>
+                                    <a href="#" data-change-to="contrast-russet">
+                                        <i class='icon-adjust text-russet'></i>
+                                        Russet(فندقی)
+                                    </a>
+
+
+
+
+                                </li>
+                                <li class='divider'></li>
+
+                                <li class='color-settings-contrast-color'>
+                                    <a href="#" data-change-to="contrast-white">
+                                        <i class='icon-adjust text-white'></i>
+                                        White(سفید)
+                                    </a>
+                                    <a href="#" data-change-to="contrast-muted">
+                                        <i class='icon-adjust text-muted'></i>
+                                        Muted(خاموش)
+                                    </a>
+
+                                    <a href="#" data-change-to="contrast-dark">
+                                        <i class='icon-adjust text-dark'></i>
+                                        Dark(تاریک)
+                                    </a>
+
+                                </li>
+                            </ul>
+                        </li>
+
+                        @if (((footballcup.Models.AppUserView)Session[CommonUnit.GlobalModule.m_CurrentUser]).UserRole == (int)footballcup.Models.UserRoleEnum.GUEST)
+                        {
+
+                            <li class='dropdown medium only-icon widget' style=" background-color:transparent ">
+                                <a class='dropdown-toggle' data-toggle='dropdown' href='#'>
+                                    <i class='icon-comment'></i>
+                                    <div class='label'>۱</div>
+                                </a>
+
+                                <ul class='dropdown-menu'>
+                                    <li>
+                                        <a href='#'>
+                                            <div class='widget-body'>
+                                                <div class='pull-left icon'>
+                                                    <i class='icon-user text-success'></i>
+                                                </div>
+                                                <div class='pull-left text'>
+                                                    خوش آمدید
+                                                    <small class='muted'>امروز</small>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        }
+                        else
+                        {
+
+                            <li class='dropdown medium only-icon widget' id="notificationmenu" style=" background-color:transparent ">
+
+                            </li>
+                        }
+
+                        <li class='dropdown dark user-menu' style=" background-color:transparent ">
+                            <a class='dropdown-toggle' data-toggle='dropdown' href='#'>
+                                @if (((footballcup.Models.AppUserView)Session[CommonUnit.GlobalModule.m_CurrentUser]).ThumbnailPhotoFileName == null)
+                                {
+                                    string s = "";
+                                    try
+                                    {
+                                        s = Convert.ToBase64String(((footballcup.Models.AppUserView)Session[CommonUnit.GlobalModule.m_CurrentUser]).ThumbnailPhoto);
+                                    }
+                                    catch
+                                    {
+                                    }
+                                    var imgsrc = string.Format("data:image/jpeg;base64,{0}", s);
+                                    <img src="@imgsrc" width='23' height='23' alt="-" />
+                                }
+                                else
+                                {
+                                    <img height='23' alt="-" src="~/@(((footballcup.Models.AppUserView)Session[CommonUnit.GlobalModule.m_CurrentUser]).ThumbnailPhotoFileName)" width='23' />
+                                }
+                                <span class='user-name hidden-phone'>@(((footballcup.Models.AppUserView)Session[CommonUnit.GlobalModule.m_CurrentUser]).UserDs)</span>
+                                <b class='caret'></b>
+                            </a>
+                            <ul class='dropdown-menu'>
+                                @if (((footballcup.Models.AppUserView)Session[CommonUnit.GlobalModule.m_CurrentUser]).UserRole != (int)footballcup.Models.UserRoleEnum.GUEST)
+                                {
+                                    <li>
+                                        <a href='~/account/userprofile'>
+                                            <i class='icon-user'></i>
+                                            پروفایل
+                                        </a>
+                                    </li>
+                                    <li>
+                                        @*<a href="#top">*@
+                                        <a href="#">
+                                            <i class='icon-cog'></i>
+                                            تنظیمات
+                                        </a>
+                                    </li>
+                                    <li class='divider'></li>
+
+                                    <li>
+                                        <a href='~/Account/LogOff'>
+                                            <i class='icon-signout'></i>
+                                            میرم بیرون
+                                        </a>
+                                    </li>
+                                }
+                                else
+                                {
+
+                                    <li>
+                                        <a href='~/Account/SignUp'>
+                                            <i class='icon-chevron-sign-up'></i>
+                                            ثبت‌نام
+                                        </a>
+                                    </li>
+                                }
+
+                            </ul>
+                        </li>
+                    </ul>
+
+                    @{
+                        string strLoginVisibility = "visible";
+                        if (((footballcup.Models.AppUserView)Session[CommonUnit.GlobalModule.m_CurrentUser]).UserRole != (int)footballcup.Models.UserRoleEnum.GUEST)
+                        {
+                            strLoginVisibility = "hidden";
+                        }
+
+                    }
+
+                    <div id="divLogin" style="visibility:@strLoginVisibility">
+
+                        <input autocomplete="off" class="search-query span2" id="txtUserId" placeholder="شناسه" type="text" value="" />
+                        <input autocomplete="off" class="search-query span2" id="txtPassword" name="txtPassword" placeholder="گذرواژه" style="" type="password" value="" />
+
+                        <button class="btn btn-link icon-signin" id="btnLogin" type="button" onclick="location.href ='@Url.Content("~/Account")'+'/Authenticate?loginname='+$('#txtUserId').val()+'&password='+$('#txtPassword').val()"></button>
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="popup" id="popupgroup">
+            <span class="popuptext" id="myPopup" onclick="this.style.visibility='hidden'">popup text ...</span>
+        </div>
+
+    </header>
+
+    <nav class='' id='main-nav' style="width:8% ">
+        @*<nav class='' id='main-nav' >*@
+        <div class='navigation'>
+            <div class=''>
+                <a href="#" target="_blank">
+                    <img alt="" src="~/assets/images/adv/arj.png" />
+                </a>
+            </div>
+
+            <div class=''>
+                <a href="http://www.khordadnet.ir" target="_blank">
+                    <img alt="" src="~/assets/images/khordadnet.png" />
+                </a>
+            </div>
+
+
+            <div class=''>
+                <a href="#" target="_blank">
+                    <img alt="" src="~/assets/images/adv/homa_logo.png" />
+                </a>
+            </div>
+
+            <div class=''>
+                <a href="#" target="_blank">
+                    <img alt="" src="~/assets/images/adv/1_1.png" />
+                </a>
+            </div>
+
+            <div class=''>
+                <a href="#" target="_blank">
+                    <img alt="" src="~/assets/images/adv/MINOO.png" />
+                </a>
+            </div>
+
+            @*<div class=''>
+                    <a href="https://shop.upera.co/ref/9AjW/8Vl5koe1" target="_blank">
+                        <img alt="" src="~/assets/images/adv/shahrzad-s03-e01-32.jpg" width="70%" height="50%" />
+                    </a>
+                </div>*@
+
+
+        </div>
+    </nav>
+
+    <section id='content' style=" border:double;width:90%">
+
+        <div class='container-fluid' style="height:300px">
+            <div class='row-fluid' id='content-wrapper'>
+                <div class='span12'>
+                    @{
+                        string strVisibility = "hidden";
+                        if (((footballcup.Models.AppUserView)Session[CommonUnit.GlobalModule.m_CurrentUser]).UserRole == (int)footballcup.Models.UserRoleEnum.ADMIN)
+                        {
+                            strVisibility = "visible";
+                        }
+
+                    }
+                    <div class='page-header' style="margin-right:0px">
+                        <h1 class='pull-left'>
+                            @*<i class='icon-dashboard'></i>*@
+                            <img src="~/assets/images/cup/@(((footballcup.Models.Cup)Session[CommonUnit.GlobalModule.m_CurrentCup]).PhotoFileName)" width="64" height="64" />
+                            <span style="font-family:myfont_nastaliq; color:teal">@(((footballcup.Models.Cup)Session[CommonUnit.GlobalModule.m_CurrentCup]).PName)</span>
+                        </h1>
+
+                        <div class='pull-right btn-group' id="adminbar">
+
+                            @if (((footballcup.Models.AppUserView)Session[CommonUnit.GlobalModule.m_CurrentUser]).UserRole == (int)footballcup.Models.UserRoleEnum.ADMIN)
+                            {
+                                <a class="btn btn-white" href="~/Administration/cup" style="visibility:@strVisibility">
+                                    <img src="~/assets/images/cup/cup1.png" width="16" height="16" />
+                                    <span class='hidden-phone'>جام</span>
+                                </a>
+
+                                <a href="~/Administration/CupTeam" class="btn btn-white" style="visibility:@strVisibility">تیمهای جام</a>
+                                <a href="~/Administration/Competitor" class="btn btn-white" style="visibility:@strVisibility">شرکت‌کننده‌ها</a>
+                            }
+                            <a href="~/Account/AppUserList" class="btn btn-white">دوستان</a>
+                            @if (((footballcup.Models.AppUserView)Session[CommonUnit.GlobalModule.m_CurrentUser]).UserRole == (int)footballcup.Models.UserRoleEnum.ADMIN)
+                            {
+                                <a class='btn btn-white' data-toggle='dropdown' href='#' style="visibility:@strVisibility">
+                                    <i class='icon-calendar'></i>
+                                    <span class='hidden-phone'>راهبری</span>
+                                    <b class='caret'></b>
+
+                                </a>
+
+                                <ul class='dropdown-menu' style="left: 0;right: auto;visibility:@strVisibility">
+                                    <li>
+                                        <a href="~/game/UpdateTotalPoints">بازشماری امتیاز</a>
+                                    </li>
+                                    <li>
+                                        <a href="~/administration/notification">سازماندهی پیامها</a>
+
+                                    </li>
+
+                                    <li class='divider'></li>
+                                    <li class='nav-header'>رسانه‌</li>
+                                    <li>
+                                        <a href="~/Administration/cms">مدیریت محتوا</a>
+                                    </li>
+                                </ul>
+
+                            }
+                        </div>
+
+                    </div>
+
+                    <div class='row-fluid'>
+                        <div class='span12 box box-transparent'>
+
+                            <div class='span2 box-quick-link blue-background'>
+                                <a href="~/">
+                                    <div class='header'>
+                                        <div class='icon-home'></div>
+                                    </div>
+                                    <div class='content'>خانه</div>
+                                </a>
+                            </div>
+
+
+
+                            <div class='span2 box-quick-link purple-background'>
+                                <a href='~/game/match'>
+                                    <div class='header'>
+                                        <div class='icon-eye-open'></div>
+                                    </div>
+                                    <div class='content'>بازیها</div>
+                                </a>
+                            </div>
+
+                            <div class='span2 box-quick-link orange-background'>
+                                <a href='~/game/prediction'>
+                                    <div class='header'>
+                                        <div class='icon-magic'></div>
+                                    </div>
+                                    <div class='content'>پیش‌بینی</div>
+                                </a>
+                            </div>
+
+                            <div class='span2 box-quick-link green-background'>
+                                <a href='~/game/predictionchampion'>
+                                    <div class='header'>
+                                        <div class='icon-star'></div>
+                                    </div>
+                                    <div class='content'>پیش‌بینی ویژه</div>
+                                </a>
+                            </div>
+
+                            <div class='span2 box-quick-link red-background'>
+                                <a href='~/game/PredictionTable'>
+                                    <div class='header'>
+                                        <div class='icon-inbox'></div>
+                                    </div>
+                                    <div class='content'>جدول پیش‌بینیها</div>
+                                </a>
+                            </div>
+
+                            <div class='span2 box-quick-link brown-background'>
+                                <a href='~/Report/ReportMaster?reportname=rptParticipant'>
+                                    <div class='header'>
+                                        <div class='icon-refresh'></div>
+                                    </div>
+                                    <div class='content'>امتیازات</div>
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        @RenderSection("featured", required: false)
+
+        @RenderSection("scripts", required: false)
+
+        @RenderBody()
+
+
+    </section>
+
+
+    <footer>
+        <div class="footer">
+            <a href="http://www.khordadnet.ir" target="_blank" style="font-family:myfont_nastaliq">پیاده‌سازی: <img src="~/assets/images/khordadnet.png" width="5%" height="5%" /></a>
+        </div>
+    </footer>
+
+</body>
+
+
+
+
+</html>
+
+
+
+<script src="~/Content/datetimepicker-fa2/Scripts/jquery-1.6.4.js"></script>
+
+<script src='~/Scripts/jquery-1.10.2.min.js'></script>
+
+
+
+<script src='~/Scripts/bootstrap/bootstrap.min.js' type='text/javascript'></script>
+<script src="~/Scripts/jquery_ui/jquery-ui.min.js"></script>
+<script src='~/Scripts/jquery/jquery-migrate.min.js' type='text/javascript'></script>
+<script src='~/Scripts/plugins/timeago/jquery.timeago.js' type='text/javascript'></script>
+<script src='~/Scripts/plugins/slimscroll/jquery.slimscroll.min.js' type='text/javascript'></script>
+<script src='~/Scripts/plugins/autosize/jquery.autosize-min.js' type='text/javascript'></script>
+<script src='~/Scripts/plugins/mobile_events/jquery.mobile-events.min.js' type='text/javascript'></script>
+<script src='~/Scripts/plugins/fullcalendar/fullcalendar.min.js' type='text/javascript'></script>
+<script src='~/Scripts/plugins/select2/select2.js' type='text/javascript'></script>
+<script src='~/Scripts/plugins/validate/jquery.validate.min.js' type='text/javascript'></script>
+<script src='~/Scripts/plugins/dynatree/jquery.dynatree.min.js' type='text/javascript'></script>
+<script src='~/Scripts/plugins/bootstrap_daterangepicker/moment.min.js' type='text/javascript'></script>
+<script src='~/Scripts/plugins/bootstrap_daterangepicker/bootstrap-daterangepicker.js' type='text/javascript'></script>
+<script src='~/Scripts/plugins/slider_nav/slidernav-min.js' type='text/javascript'></script>
+<script src='~/Scripts/demo/demo.js' type='text/javascript'></script>
+
+<script src="~/Content/datetimepicker-fa2/Scripts/jquery-ui-datetimepicker.min.js"></script>
+
+<script src="~/Scripts/jquery.signalR-2.1.2.js"></script>
+<script src="~/signalr/hubs"></script>
+
+
+@*
+
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src='~/Scripts/custom.js'></script>
+    <script src='~/Scripts/plugins/mention/mention.min.js' type='text/javascript'></script>
+    <script src='~/Scripts/plugins/ckeditor/ckeditor.js' type='text/javascript'></script>
+    <script src='~/Scripts/plugins/flot/excanvas.js' type='text/javascript'></script>
+    <script src='~/Scripts/plugins/flot/flot.min.js' type='text/javascript'></script>
+    <script src='~/Scripts/plugins/flot/flot.resize.js' type='text/javascript'></script>
+    <script src='~/Scripts/plugins/flot/flot.pie.js' type='text/javascript'></script>
+    <script src='~/Scripts/plugins/sparklines/jquery.sparkline.min.js' type='text/javascript'></script>
+    <script src='~/Scripts/plugins/common/wysihtml5.min.js' type='text/javascript'></script>
+    <script src='~/Scripts/plugins/common/bootstrap-wysihtml5.js' type='text/javascript'></script>
+    <script src='~/Scripts/plugins/bootbox/bootbox.min.js' type='text/javascript'></script>
+    <script src='~/Scripts/plugins/bootstrap_colorpicker/bootstrap-colorpicker.min.js' type='text/javascript'></script>
+    <script src='~/Scripts/plugins/bootstrap_switch/bootstrapSwitch.min.js' type='text/javascript'></script>
+    <script src='~/Scripts/plugins/bootstrap_maxlength/bootstrap-maxlength.min.js' type='text/javascript'></script>
+    <script src='~/Scripts/plugins/bootstrap_hover_dropdown/twitter-bootstrap-hover-dropdown.min.js' type='text/javascript'></script>
+    <script src='~/Scripts/plugins/input_mask/bootstrap-inputmask.min.js' type='text/javascript'></script>
+    <script src='~/Scripts/plugins/fileinput/bootstrap-fileinput.js' type='text/javascript'></script>
+    <script src='~/Scripts/plugins/modernizr/modernizr.min.js' type='text/javascript'></script>
+    <script src='~/Scripts/plugins/retina/retina.js' type='text/javascript'></script>
+    <script src='~/Scripts/plugins/fileupload/tmpl.min.js' type='text/javascript'></script>
+    <script src='~/Scripts/plugins/fileupload/load-image.min.js' type='text/javascript'></script>
+    <script src='~/Scripts/plugins/fileupload/canvas-to-blob.min.js' type='text/javascript'></script>
+    <script src='~/Scripts/plugins/fileupload/jquery.iframe-transport.min.js' type='text/javascript'></script>
+    <script src='~/Scripts/plugins/fileupload/jquery.fileupload.min.js' type='text/javascript'></script>
+    <script src='~/Scripts/plugins/fileupload/jquery.fileupload-fp.min.js' type='text/javascript'></script>
+    <script src='~/Scripts/plugins/fileupload/jquery.fileupload-ui.min.js' type='text/javascript'></script>
+    <script src='~/Scripts/plugins/fileupload/jquery.fileupload-init.js' type='text/javascript'></script>
+    <script src='~/Scripts/plugins/charCount/charCount.js' type='text/javascript'></script>
+    <script src='~/Scripts/plugins/validate/additional-methods.js' type='text/javascript'></script>
+    <script src='~/Scripts/plugins/naked_password/naked_password-0.2.4.min.js' type='text/javascript'></script>
+    <script src='~/Scripts/plugins/nestable/jquery.nestable.js' type='text/javascript'></script>
+    <script src='~/Scripts/plugins/tabdrop/bootstrap-tabdrop.js' type='text/javascript'></script>
+    <script src='~/Scripts/plugins/jgrowl/jquery.jgrowl.min.js' type='text/javascript'></script>
+    <script src='~/Scripts/plugins/fuelux/wizard.js' type='text/javascript'></script>
+    <script src='~/Scripts/tables.js' type='text/javascript'></script>
+    <script src='~/Scripts/demo/jquery.mockjax.js' type='text/javascript'></script>
+    <script src='~/Scripts/demo/charts.js' type='text/javascript'></script>
+    <script src='~/Scripts/demo/inplace_editing.js' type='text/javascript'></script>
+
+*@
+
+
+
+<script>
+    $(document).ready(function () {
+        makenotificationmenu();
+    });
+</script>
+
+
+<script>
+    // showpopup('23');
+    // alert(2);
+
+    var mychathub = $.connection.chatHub;
+
+    var chat, date, li, message, months, reply, scrollable, sender, timeago;
+
+
+
+    mychathub.client.message = function (from, to, message, displayname, pubishdate, imagesrc, ismessage) {
+        if (ismessage) {
+            showpopup(' You have new message ');
+            // alert(message);
+            makenotificationmenu();
+        }
+    }
+
+    //makenotificationmenu();
+</script>
+
+
+
+<script>
+
+    mychathub.client.user = function (msg) {
+        // alert(20);
+    };
+
+
+    $.connection.hub.start(function () {
+    });
+</script>
+
+
+<script>
+    function makenotificationmenu() {
+
+        var innerhtml = "";
+        //alert(3);
+        var mylist = @Html.Raw(new System.Web.Script.Serialization.JavaScriptSerializer().Serialize(MessageList));
+        var messagecount = @Html.Raw(new System.Web.Script.Serialization.JavaScriptSerializer().Serialize(MessageCount));
+
+            if (mylist != null) {
+
+                    innerhtml = "<a class='dropdown-toggle' data-toggle='dropdown' href='#'>"
+                        + "<i class='icon-comment'></i>&nbsp;"
+                        + "<div class='label'> " + messagecount + "</div>"
+                        + "</a>"
+                    + "<ul class='dropdown-menu'>";
+
+
+                for (var i = 0; i < mylist.length; i++)
+                {
+                    var item = mylist[i];
+
+                        innerhtml = innerhtml + " <li class='divider'></li>"
+
+                            + "<li class='divider'></li>"
+                            + "<li>"
+                            + "<a href='@Url.Content("~/Administration/notification")'?cmsid=" + item.CmsId + "'>"
+                            + "<div class='widget-body'>"
+                            + "<div class='pull-left icon'>";
+
+
+                        if (item.AuthorId == 1)
+                        {
+                            innerhtml = innerhtml + " <i class='icon-inbox text-error'></i>";
+                        }
+                        else
+                        {
+                            innerhtml = innerhtml + "<i class='icon-comment text-warning'></i>";
+                        }
+
+                        innerhtml = innerhtml + " </div>"
+                                + "<small class='date pull-right muted'>"
+                                + "  <span class='timeago fade has-tooltip' data-placement='top' title='"+item.PublishDate+"'"+item.Body+"</span>"
+                                + "</small>"
+                            + "<div class='pull-left text '>"
+                            + item.CmsId
+
+                            + "<img  src=data:image/jpeg;base64," + btoa(String.fromCharCode.apply(null, item.AuthorThumbnail)) + " height='23' />"
+                        + " &nbsp; " + item.Title
+                                + "</div>"
+                                + "</div>"
+                                + "</a>"
+                                + "</li>"
+                                + "<li class='divider'></li>";
+
+                    }
+
+
+
+                    innerhtml = innerhtml + " <li class='widget-footer' >"
+                        + "<a href='@Url.Content("~/Administration/notification")'>همه اطلاعها</a>"
+                            + "</li>"
+                            + "</ul>";
+
+
+                            }
+
+
+
+            $('#notificationmenu').empty();
+
+            $('#notificationmenu').append(innerhtml);
+
+                        }
+
+
+</script>
+
+
+<script>
+
+    function showpopup(message) {
+        // alert(message);
+        $("#myPopup").text(message);
+        //$("#myPopup").classList.toggle("show");
+        var popup = document.getElementById("myPopup");
+        popup.classList.toggle("show");
+        popup.style.visibility = "visible";
+
+        // alert("m");
+    }
+</script>
+
+<script>
+
+    if ("serviceWorker" in navigator) {
+        //  alert("service worker is ok");
+
+        navigator.serviceWorker
+            .register("~/serviceWorker.js")
+            .then(reg => {
+                console.log("Service worker registred successfully", reg);
+            })
+            .catch(err => {
+                console.log("service worker not registred !!", err);
+            });
+    }
+    else {
+        alert("service worker has not supported");
+    }
+</script>
+
+
+  @*<script>
+    if (!navigator.serviceWorker.controller) {
+        navigator.serviceWorker.register('~/serviceWorker.js').then(function(reg) {
+            console.log("Service worker has been registered for scope: " + reg.scope);
+        });
+    }
+    </script>*@

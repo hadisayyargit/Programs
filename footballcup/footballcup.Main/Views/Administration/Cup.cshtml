@@ -1,0 +1,483 @@
+﻿@model footballcup.Models.Cup
+
+
+<link href="~/Content/datetimepicker-fa2/Content/jquery-ui.min.css" rel="stylesheet" />
+<link href='~/Content/plugins/jquery_fileupload/jquery.fileupload-ui.css' media='all' rel='stylesheet' type='text/css' />
+<link href='~/Content/plugins/flags/flags.css' media='all' rel='stylesheet' type='text/css' />
+
+
+
+<section id='content'>
+    <div class='container-fluid'>
+        <div class='row-fluid' id='content-wrapper'>
+            <div class='span12'>
+
+                <div class='page-header'>
+                    <h1 class='pull-right'>
+                        <i class='icon-user'></i>
+                        <span>مسابقات</span>
+                    </h1>
+
+                </div>
+
+                <div class='row-fluid'>
+
+
+                    <div class='row-fluid' style="">
+                        <div class='span3 box'>
+                            @Html.DropDownListFor(m => m.CupId, new SelectList(ViewBag.CupList, "CupId", "PName", "0"), htmlAttributes: new { @class = "select2 input-block-level", @id = "cboCup", @data_placeholder = "جام را انتخاب کنید" })
+                        </div>
+
+                    </div>
+
+                    @using (Html.BeginForm("Cup_Update", "Administration", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        <div class='span3 box'>
+                            <div class='box-content'>
+                                <img id="img1" alt="@Model.PhotoFileName" src="@Url.Content("~/assets/images/cup/"+@Model.PhotoFileName)" width="100%" height='100%' />
+                            </div>
+
+                            <span class='btn btn-success fileinput-button' style="width:40%">
+                                <i class='icon-plus icon-white'></i>
+                                <input type='file' data-bfi-disabled='' multiple='' id="ImageUrlUpload" name="ImageUrlUpload" onchange="readURL(this);" />
+                            </span>
+
+                            <span class='btn btn-danger' id="btnClearPicture" style="width:40%">
+                                <i class='icon-eraser'></i>
+                            </span>
+
+
+
+                        </div>
+
+                        <div class='span9 box'>
+                            <div class='box-content box-double-padding'>
+                                <fieldset>
+                                    <div class='span4'>
+                                        <div class='lead'>
+                                            <i class='icon-signin text-contrast'></i>
+                                            جام
+                                        </div>
+                                        <small class='muted'>@Html.HiddenFor(m => m.CupId, htmlAttributes: new { @id = "txtCupId" })</small>
+                                        <br />
+
+                                    </div>
+                                    <div class='span7 offset1'>
+                                        <div class='control-group'>
+
+                                            @Html.LabelFor(m => m.LName, htmlAttributes: new { @class = "control-label" })
+                                            <div class='controls'>
+                                                @Html.TextBoxFor(m => m.LName, htmlAttributes: new { @id = "txtLName", @class = "span10", @Text = "Latin Name", placeholder = "عنوان لاتین" })
+                                            </div>
+                                        </div>
+                                        <div class='control-group'>
+                                            @Html.LabelFor(m => m.PName, htmlAttributes: new { @class = "control-label" })
+                                            <div class='controls'>
+                                                @Html.TextBoxFor(m => m.PName, htmlAttributes: new { @id = "txtPName", @class = "span10", @Text = "", placeholder = "عنوان پارسی" })
+                                            </div>
+                                        </div>
+
+                                        <div class='control-group'>
+                                            <label class='control-label'>تاریخ شروع جام</label>
+                                            <div class='input-group'>
+                                                @Html.TextBox("txtJalaliDate", "", htmlAttributes: new { @id = "txtJalaliDate", @class = "span4  ", @style = "color:blue;direction:ltr", @placeholder = "تاریخ " })
+
+
+                                                @Html.TextBoxFor(m => m.CupDate, htmlAttributes: new { @id = "txtCupDate", @class = "span3", @style = "background-color:lightgreen; direction:ltr;", @ReadOnly = "True", @placeholder = "تاریخ شروع جام را انتخاب کنید" })
+
+                                            </div>
+
+
+
+                                            <div class='input-group'>
+
+
+
+
+
+                                            </div>
+
+                                        </div>
+
+
+                                        <hr class='hr-normal' />
+                                        <div class='control-group'>
+                                            <div class='controls'>
+                                                <label class='checkbox'>
+                                                    @Html.CheckBoxFor(m => m.IsDefaultCup, htmlAttributes: new { @id = "chkDefault", @class = "" })
+                                                    آیا این جام پیش فرض است؟
+                                                </label>
+
+                                            </div>
+                                        </div>
+
+                                        <div class='control-group'>
+                                            <label class='control-label'>آخرین مهلت پیش‌بینی تیمهای برتر</label>
+                                            <div class='input-group'>
+                                                @Html.TextBox("txtJalaliDueDate", "", htmlAttributes: new { @id = "txtJalaliDueDate", @class = "span4  ", @style = "color:blue;direction:ltr", @placeholder = "تاریخ " })
+                                                @Html.TextBoxFor(m => m.PredictionDueTime, htmlAttributes: new { @id = "txtPredictionDueTime", @class = "span4", @style = "background-color:lightgreen; direction:ltr;", @ReadOnly = "True", @placeholder = "آخرین مهلت پیش‌بینی تیمهای برتر را مشخص کنید" })
+                                            </div>
+                                        </div>
+
+                                        <hr class='hr-normal' />
+
+                                        <div class='row-fluid'>
+                                            <div class='span4'>
+                                                <div class='span1' style="width:80px">
+                                                    <label class='control-label'>قهرمان</label>
+                                                </div>
+                                                <div class='span1' style="width:20px">
+                                                    <i class="" id="flagtag1"></i>
+                                                </div>
+
+                                                <div class='span1'> @Html.DropDownListFor(m => m.Team1, new SelectList(ViewBag.TeamList, "TeamId", "TeamPName", "0"), htmlAttributes: new { @class = "select2 input-block-level", @id = "cboTeam1", @data_placeholder = "قهرمان را انتخاب کنید", @onchange = "cboTeam1_change()", style = "width:150px" })  </div>
+
+                                            </div>
+                                        </div>
+
+                                        <div class='row-fluid'>
+                                            <div class='span4'>
+                                                <div class='span1' style="width:80px">
+                                                    <label class='control-label'>نایب قهرمان</label>
+                                                </div>
+                                                <div class='span1' style="width:20px">
+                                                    <i class="" id="flagtag2"></i>
+                                                </div>
+                                                <div class='span1'>
+                                                    @Html.DropDownListFor(m => m.Team2, new SelectList(ViewBag.TeamList, "TeamId", "TeamPName", ""), htmlAttributes: new { @class = "select2 input-block-level", @id = "cboTeam2", @data_placeholder = "نایب قهرمان را انتخاب کنید", @onchange = "cboTeam2_change()", style = "width:150px" })
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <div class='row-fluid'>
+                                            <div class='span4'>
+                                                <div class='span1' style="width:80px">
+                                                    <label class='control-label'>مقام سوم</label>
+                                                </div>
+                                                <div class='span1' style="width:20px">
+                                                    <i class="" id="flagtag3"></i>
+                                                </div>
+                                                <div class='span1'>
+                                                    @Html.DropDownListFor(m => m.Team3, new SelectList(ViewBag.TeamList, "TeamId", "TeamPName", -1), htmlAttributes: new { @class = "select2 input-block-level", @id = "cboTeam3", @data_placeholder = "تیم سوم را انتخاب کنید", @onchange = "cboTeam3_change()", style = "width:150px" })
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+
+                                        <button class='btn btn-danger icon-remove ' id="btnClearteamcombo" type="button" onclick="clearteamcombo()"></button>
+
+                                        <hr class='hr-normal' />
+
+                                        <div class='control-group' style="">
+                                            <label class="control-label">وضعیت</label>
+                                            <div class='controls'>
+
+
+                                                <label class='radio'>
+                                                    @Html.RadioButtonFor(m => m.Enabled, true, htmlAttributes: new { @id = "rdoEnabled1" })
+                                                    فعال
+                                                </label>
+                                                <label class='radio'>
+                                                    @Html.RadioButtonFor(m => m.Enabled, false, htmlAttributes: new { @id = "rdoEnabled0" })
+                                                    غیرفعال
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+
+                                <hr class='hr-normal' />
+
+                                <div class='form-actions' style='margin-bottom: 0;'>
+                                    <button type="button" class='btn btn-primary btn-large' id="btnNew">
+                                        <i class='ui-icon-circle-plus'></i>
+                                        جدید
+                                    </button>
+
+                                    <button type="submit" class='btn btn-primary btn-large'>
+                                        <i class='icon-save'></i>
+                                        بروزرسانی
+                                    </button>
+
+                                    <a class='btn btn-danger btn-large' href="~/">
+                                        <i class='icon-home'></i>
+                                        بازگشت
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    }
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<script src="~/Content/datetimepicker-fa2/Scripts/jquery-1.6.4.js"></script>
+<script src='~/Scripts/jquery-1.10.2.min.js'></script>
+<script src='~/Scripts/jquery_ui/jquery-ui.min.js' type='text/javascript'></script>
+<script src="~/Content/datetimepicker-fa2/Scripts/jquery-ui-datetimepicker.min.js"></script>
+
+
+
+
+
+<script>
+    //$(document).ready(function () {
+    ///احتیاجی به خط بالا نیست
+
+    //$("#cboTeam").select();
+
+
+        $("#txtJalaliDate").datetimepicker();
+        $("#txtJalaliDueDate").datetimepicker();
+        $("#cboCup").click();
+
+        // $("#cboTeam1").select();
+
+        $("#cboTeam1").append($("<option></option>").val(0).text("تیم را انتخاب کنید:"));
+   
+
+
+</script>
+
+
+
+<script>
+    function clearteamcombo() {
+        //alert(6);
+
+        $("#cboTeam1").val(0);
+        $("#cboTeam2").val(0);
+        $("#cboTeam3").val(0);
+
+        $('#flagtag1').attr('class', "")
+        $('#flagtag2').attr('class', "")
+        $('#flagtag3').attr('class', "")
+    }
+
+
+</script>
+
+<script>
+
+    $("#cboCup").click(function () {
+        $.ajax({
+            cache: false,
+            type: "GET",
+            url: "@(Url.Action("SelectCup", "Administration"))",
+            data: { "cupid": $("#cboCup").val() },
+        success: function (data) {
+
+            // alert("7");
+
+            if (data != null) {
+
+                var greg, myDate, splt1, splt2, splt, y, m, d;
+                //var d = new Date(data.CupDate);
+                var d = new Date(parseInt(data.result.CupDate.toString().replace('/Date(', '')));
+                var d2 = new Date(parseInt(data.result.PredictionDueTime.toString().replace('/Date(', '')));
+
+
+                $('#txtCupDate').attr('value', d.toLocaleString());
+                $('#txtJalaliDate').attr('value', d.toLocaleDateString("fa-IR") + " " + d.toLocaleTimeString("fa-IR"));
+
+                $('#txtPredictionDueTime').attr('value', d2.toLocaleString());
+                $('#txtJalaliDueDate').attr('value', d2.toLocaleDateString("fa-IR") + " " + d2.toLocaleTimeString("fa-IR"));
+
+
+                $('#txtCupId').attr('value', data.result.CupId);
+                $('#txtLName').attr('value', data.result.LName);
+                $('#txtPName').attr('value', data.result.PName);
+
+
+                ///for jquery 1.5-
+                //$('#chkDefault').attr("checked", data.result.IsDefaultCup);
+
+                ///for jquery 1.6+
+                $('#chkDefault').prop("checked", data.result.IsDefaultCup);
+
+
+
+                //      $('#rdoEnabled0').attr("checked", true);
+                //      $('#rdoEnabled0').attr("checked", false);
+
+                $('#rdoEnabled0').prop("checked", true);
+                $('#rdoEnabled1').prop("checked", false);
+                $('#rdoEnabled1').prop("checked", data.result.Enabled);
+
+                $('#img1').attr('src', "../assets/images/cup/" + data.result.PhotoFileName);
+                $('#img1').attr('alt', $('#img1').attr('src'));
+
+                clearteamcombo();
+
+                $("#cboTeam1").val(data.result.Team1);
+                $("#cboTeam2").val(data.result.Team2);
+                $("#cboTeam3").val(data.result.Team3);
+
+                $('#flagtag1').attr('class', "flag flag-" + $.trim(data.con1).toLowerCase());
+                $('#flagtag2').attr('class', "flag flag-" + $.trim(data.con2).toLowerCase());
+                $('#flagtag3').attr('class', "flag flag-" + $.trim(data.con3).toLowerCase());
+            }
+            else {
+                alert("خطا در بازیابی");
+
+            }
+        }
+        , error: function (data) {
+            if (data != null) {
+                alert("data is ok with error");
+            }
+            else {
+                alert(data);
+            }
+        }
+
+    });
+    });
+
+
+    function readURL(input) {
+
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#img1').attr('src', e.target.result);
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+        else {
+        }
+    }
+
+    $("#btnClearPicture").click(function () {
+        $('#img1').attr('src', "../assets/images/cup/cup_animated.gif");
+
+    });
+
+    $("#btnNew").click(function () {
+        var d = new Date();
+        $('#txtCupDate').attr('value', d.getFullYear() + "/" + (d.getMonth() + 1).toString() + "/" + d.getDate().toString());
+        $('#txtJalaliDate').attr('value', d.toLocaleDateString("fa-IR") + " ۰۰:۰۰:۰۰");
+
+        $('#txtPredictionDueTime').attr('value', d.getFullYear() + "/" + (d.getMonth() + 1).toString() + "/" + d.getDate().toString());
+        $('#txtJalaliDueDate').attr('value', d.toLocaleDateString("fa-IR") + " ۰۰:۰۰:۰۰");
+
+
+        $('#txtCupId').attr('value', 0);
+        $('#txtLName').attr('value', "");
+        $('#txtPName').attr('value', "");
+        $('#rdoEnabled2').prop("checked", true);
+        $('#chkDefault').attr("checked", false);
+        $('#img1').attr('src', "../assets/images/cup/cup_animated.gif");
+        clearteamcombo();
+    });
+
+</script>
+
+<script>
+    function cboTeam1_change() {
+        var con;
+
+        var x =@Html.Raw(new System.Web.Script.Serialization.JavaScriptSerializer().Serialize(@ViewBag.TeamList));
+
+        for (var i = 0; i < x.length; i++) {
+            if (x[i].TeamId == $("#cboTeam1").val())
+                con = x[i].con;
+        }
+
+        $('#flagtag1').attr('class', "flag flag-" + con);
+
+    }
+
+        function cboTeam2_change() {
+        var con;
+
+        var x =@Html.Raw(new System.Web.Script.Serialization.JavaScriptSerializer().Serialize(@ViewBag.TeamList));
+
+        for (var i = 0; i < x.length; i++) {
+            if (x[i].TeamId == $("#cboTeam2").val())
+                con = x[i].con;
+        }
+
+        $('#flagtag2').attr('class', "flag flag-" + con);
+
+    }
+
+        function cboTeam3_change() {
+        var con;
+
+        var x =@Html.Raw(new System.Web.Script.Serialization.JavaScriptSerializer().Serialize(@ViewBag.TeamList));
+
+        for (var i = 0; i < x.length; i++) {
+            if (x[i].TeamId == $("#cboTeam3").val())
+                con = x[i].con;
+        }
+
+        $('#flagtag3').attr('class', "flag flag-" + con);
+
+    }
+
+</script>
+
+
+<script>
+    $("#txtJalaliDate").change(function () {
+
+        var greg, myDate, splt1, splt2, splt, y, m, d;
+        
+
+        splt = $('#txtJalaliDate').val().split(" ");
+        splt1 = splt[0].split("/");
+
+
+        y = Number(splt1[0]);
+        m = Number(splt1[1]);
+        d = Number(splt1[2]);
+
+        greg = jd_to_gregorian(persian_to_jd(y, m, d));
+
+        myDate = greg[0].toString() + "/" + greg[1].toString() + "/" + greg[2].toString() + " " + splt[1];
+        $('#txtCupDate').attr('value', myDate);
+
+    });
+
+</script>
+
+<script>
+    $("#txtJalaliDueDate").change(function () {
+
+        var greg, myDate, splt1, splt2, splt, y, m, d;
+
+
+
+
+        splt = $('#txtJalaliDueDate').val().split(" ");
+        splt1 = splt[0].split("/");
+
+        y = Number(splt1[0]);
+        m = Number(splt1[1]);
+        d = Number(splt1[2]);
+
+        greg = jd_to_gregorian(persian_to_jd(y, m, d));
+
+        myDate = greg[0].toString() + "/" + greg[1].toString() + "/" + greg[2].toString() + " " + splt[1];
+        $('#txtPredictionDueTime').attr('value', myDate);
+
+    });
+
+</script>
+
+
+

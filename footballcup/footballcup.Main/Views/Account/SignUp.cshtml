@@ -1,0 +1,207 @@
+﻿@model footballcup.Models.AppUserView
+
+@{
+    ViewBag.BodyClass = "sign-up";
+}
+
+@section featured {
+
+}
+
+<div class="pagename_style">
+    <div class="skin_width">
+        <div class="row-fluid">
+            <div class="top_title span12">
+
+                <h1 style="font-family:Tahoma">ثبت‌نام‌ </h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class='controls'>
+
+    <div class='form-wrapper'>
+
+        @using (Html.BeginForm("SignUp", "Account", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {       
+
+            @Html.ValidationSummary();
+
+        <div class='controls' style="direction:ltr">
+            <div class="divider"></div>
+            <img id="img1" alt='Avatar' src='~/assets/images/person/avatar2.png' width='64' height='64' />
+            <br />
+            <div class='row-fluid'>
+                <div class='span10 icon-over-input'>
+                    @Html.TextBoxFor(m => m.LoginName, htmlAttributes: new { @id = "loginname", @class = "input-large span10", @Text = "Ali", placeholder = "شناسه ورود(مثلا شماره تلفن همراه و ایمیل و ...)" })
+                    <i class='icon-user muted'></i>
+                </div>
+            </div>
+
+            <div class='row-fluid'>
+                <div class='span10 icon-over-input'>
+
+                    @Html.TextBoxFor(m => m.UserDs, htmlAttributes: new { @id = "userds", @class = "span10", @Text = "", placeholder = "نام کاربر" })
+                    @Html.ValidationMessageFor(m => m.UserDs)
+                    <i class='icon-user muted'></i>
+
+                </div>
+            </div>
+
+            <div class='row-fluid'>
+                <div class='span10 icon-over-input'>
+                    @Html.TextBoxFor(m => m.Email, htmlAttributes: new { @id = "email", @class = "span10", @Text = "", placeholder = "رایانامه(پست الکترونیک)" })
+                    <i class='icon-envelope muted'></i>
+                </div>
+            </div>
+
+            <div class='row-fluid'>
+                <div class='span10 icon-over-input'>
+                    @Html.TextBoxFor(m => m.Phone, htmlAttributes: new { @id = "phone", @class = "span10", @Text = "", placeholder = "شماره تلفن همراه" })
+                    <i class='icon-mobile-phone muted'></i>
+                </div>
+            </div>
+            
+            <div class='row-fluid'>
+
+
+                <div class='span10 icon-over-input'>
+                    @Html.PasswordFor(m => m.Password, htmlAttributes: new { @id = "login_password", @class = "span10", @Text = "", placeholder = "گذرواژه (علامات # و & و + را بکار نبرید!)" })
+                    <i class='icon-lock muted'></i>
+                </div>
+            </div>
+
+            <div class='row-fluid'>
+                <div class='span10 icon-over-input'>
+                    @Html.PasswordFor(m => m.ConfirmPassword, htmlAttributes: new { @id = "confirmpassword", @class = "span10", placeholder = "تکرار گذرواژه" })
+                    <i class='icon-lock muted'></i>
+
+                </div>
+            </div>
+
+            <br />
+            <div class='row-fluid'>
+                <div>
+
+                    <div class='span7 offset1'>
+                        <input type="button" class="btn btn-warning" value="پاک کردن تصویر" id="btnClearPicture" />
+                        <span class='btn btn-success fileinput-button'>
+                            <i class='icon-plus icon-white'></i>
+                            <span>تصویر...</span>
+                            <input type='file' data-bfi-disabled='' multiple='' name="UserImageUrlUpload" onchange="readURL(this);" />
+                        </span>
+
+                        <button class='btn btn-primary' type='submit'>
+                            <i class='icon-save'></i>
+                            ثبت‌نام
+                        </button>
+                    </div>
+
+
+                </div>
+
+                @*<div class='alert alert-error' id="messagebody" style="visibility:hidden">
+                <a href="#" class="close" data-dismiss="alert">
+                    &times;
+                </a>
+                <i class='icon-remove-sign'></i>
+
+            </div>*@
+
+            </div>
+
+
+        </div>
+
+            @*</form>*@
+        }
+
+    </div>
+</div>
+
+<style>
+    #skin_wrapper {
+        width: 100%;
+        margin: 0 auto;
+        background: #FFFFFF;
+    }
+
+    .skin_width {
+        width: 100%;
+        max-width: 980px;
+        min-width: 767px;
+        margin: 0 auto;
+        position: relative;
+    }
+
+    .pagename_style {
+        background: #409dc1;
+    }
+
+        .pagename_style .top_title {
+            min-height: 60px;
+        }
+
+            .pagename_style .top_title h1 {
+                color: #fff;
+                text-align: center;
+                line-height: 60px;
+                font-size: 25px;
+            }
+
+
+
+    .pre_defined_color {
+        background: #409dc1;
+    }
+
+    .skin_top_bg {
+        background: #409dc1;
+        height: 5px;
+        width: 100%;
+    }
+</style>
+
+<script src="~/Scripts/jquery-1.7.1.min.js"></script>
+
+
+<script>
+    $(function () {
+        $("#phone").attr('value', '');
+        $("#login_password").attr('value', '');
+    });
+
+
+</script>
+
+<script>
+    //$("#UserImageUrlUpload").change(function () {
+    //    alert("1");
+    //});
+
+    function readURL(input) {
+
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#img1').attr('src', e.target.result);
+
+
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+        else {
+        }
+    }
+
+    $("#btnClearPicture").click(function () {
+        //alert("100");
+        $('#img1').attr('src', "/assets/images/person/avatar2.png");
+
+    });
+
+
+</script>
+
+

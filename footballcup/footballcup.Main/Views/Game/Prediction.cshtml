@@ -1,0 +1,263 @@
+﻿@model List<footballcup.Models.PredictionView>
+
+
+
+<link href="~/Content/plugins/datatables/bootstrap-datatable.css" rel="stylesheet" />
+<link href='~/Content/plugins/flags/flags.css' media='all' rel='stylesheet' type='text/css' />
+
+
+
+
+
+<div class='container-fluid'>
+    <div class='row-fluid' id='content-wrapper'>
+        <div class='span12'>
+
+            <div class='page-header'>
+                <h1 class='pull-right'>
+                    <i class='icon-user'></i>
+                    <span>پیش‌بینی</span>
+                </h1>
+
+            </div>
+
+            <div class='span3'>
+                <div class='lead'>
+                    <i class='icon-github text-contrast'></i>
+                    تیم
+                </div>
+                <small class='muted'>مسابقه مورد نظر را انتخاب کنید:</small>
+
+            </div>
+
+            <div class='box-content box-no-padding' style="width:100%; ">
+                @using (Html.BeginForm("Prediction_UpdateBatch", "Game", new { backurl = "~/game/prediction" }, FormMethod.Post))
+                {
+
+                    <div class='responsive-table'>
+                        <div class='scrollable-area'>
+                            <table class='data-table-column-filter table table-bordered table-striped' style='margin-bottom:0;' id="mytable">
+                                <thead>
+                                    <tr>
+                                        <th class='only-checkbox'></th>
+                                        <th width="100px">شماره بازی</th>
+                                        <th width="10px">نام جام</th>
+                                        <th style="width:20px">زمان بازی</th>
+                                        <th>تیم1</th>
+                                        <th width="50px">پیش‌بینی گل تیم1</th>
+                                        <th width="200px">تیم2</th>
+                                        <th width="50px">پیش‌بینی گل تیم2</th>
+                                        <th>شرکت کننده</th>
+                                        <th class='only-checkbox' style="width:10px">نمایش پیش‌بینی</th>
+                                        <th width="20px">زمان پیش‌بینی</th>
+                                        <th>وضعیت</th>
+                                        <th>گروه</th>
+
+                                        @*<th></th>*@
+                                        <th></th>
+                                        <th style="display:none">PredictId</th>
+                                        <th style="display:none">MatchId</th>
+                                        <th style="display:none">CompetitorId</th>
+                                        <th style="display:none">MatchTime</th>
+                                        <th style="display:none">MatchNo</th>
+
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    @foreach (footballcup.Models.PredictionView match in Model)
+                                    {
+                                        int i = ((List<footballcup.Models.PredictionView>)(Model)).IndexOf(match);
+
+                                        <tr>
+                                            <td>
+                                                @Html.CheckBoxFor(m => m[i].selected, htmlAttributes: new { @id = "chkSelected" + i, @class = "", @style = "", @enabled = "enabled", @onClick = "chkSelected_click(" + i + ")" })
+                                            </td>
+                                            <td style="background-color:blanchedalmond;">
+                                                @*@Html.DisplayFor(m => m[i].MatchNo)*@
+                                                @*///DisplayFor doesnt send model*@
+
+                                                @match.MatchNo
+                                            </td>
+                                            <td>@match.CupName</td>
+
+                                            <td dir="ltr">
+                                                @{
+                                                    System.Globalization.PersianCalendar myCalendar = new System.Globalization.PersianCalendar();
+                                                    string strJalali = myCalendar.GetYear(match.MatchTime).ToString() + "/" + myCalendar.GetMonth(match.MatchTime).ToString() + "/" + myCalendar.GetDayOfMonth(match.MatchTime).ToString() + " " + match.MatchTime.ToShortTimeString();
+                                                }
+
+                                                @strJalali
+
+                                            </td>
+                                            <td>
+                                                <i class='flag flag-@match.con1.ToLower()'></i>
+                                                @match.Team1PName
+
+                                            </td>
+                                            <td>
+                                                @Html.DropDownListFor(m => m[i].Team1Guess, new SelectList(new List<int> { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 }, "", "", match.Team1Guess), "", htmlAttributes: new { @disabled = "disabled", @class = " input-block-level span1", @id = "cboTeam1Guess" + i, @style = "width:50px", @data_placeholder = "تعداد گل تیم اول را انتخاب کنید" })
+
+                                            </td>
+                                            <td>
+                                                <i class='flag flag-@match.con2.ToLower()'></i>
+                                                @match.Team2PName
+                                            </td>
+                                            <td>
+                                                @Html.DropDownListFor(m => m[i].Team2Guess, new SelectList(new List<int> { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 }, "", "", match.Team2Guess), "", htmlAttributes: new { @disabled = "disabled", @class = " input-block-level span1", @id = "cboTeam2Guess" + i, @style = "width:50px", @data_placeholder = "تعداد گل تیم دوم را انتخاب کنید" })
+                                            </td>
+
+                                            <td>@match.CompetitorName</td>
+                                            <td>
+                                                @Html.CheckBoxFor(m => m[i].ShowPrediction, htmlAttributes: new { @id = "chkShowPrediction" + i, @class = "", @style = "", @enabled = "enabled" })
+                                            </td>
+                                            <td>
+                                                @{
+
+                                                    System.Globalization.PersianCalendar myCalendar2 = new System.Globalization.PersianCalendar();
+                                                    string strJalali2 = "";
+                                                    if (match.PredictTime != null)
+                                                    {
+                                                        strJalali2 = myCalendar2.GetYear(match.PredictTime.Value).ToString() + "/" + myCalendar2.GetMonth(match.PredictTime.Value).ToString() + "/" + myCalendar2.GetDayOfMonth(match.PredictTime.Value).ToString() + " " + match.PredictTime.Value.ToShortTimeString();
+                                                    }
+                                                }
+
+                                                @strJalali2
+                                            </td>
+                                            <td>@match.MatchState</td>
+                                            <td>@match.GroupName</td>
+
+                                            @*<td>
+                                                    <button class='btn btn-success btn-mini' id="btnUpdate" type="button" onclick='beforupdate(@i,@(match.PredictId??0),@match.MatchId, @match.CompetitorId,"@match.MatchTime.ToString("yyyy/MM/dd HH:mm")")'>
+                                                        <i class='icon-ok'></i>
+                                                    </button>
+                                                </td>*@
+                                            <td>
+                                                <button class='btn btn-danger btn-mini' id="btnDelete" type="button" onclick='deleterow(@(match.PredictId))'>
+                                                    <i class='icon-remove'></i>
+                                                </button>
+                                            </td>
+
+                                            <td style="display:none">@Html.HiddenFor(m => m[i].PredictId)</td>
+                                            <td style="display:none">@Html.HiddenFor(m => m[i].MatchId)</td>
+                                            <td style="display:none">@Html.HiddenFor(m => m[i].CompetitorId)  </td>
+
+                                            <td style="display:none">@Html.HiddenFor(m => m[i].MatchTime)  </td>
+                                            <td style="display:none">@Html.HiddenFor(m => m[i].MatchNo)  </td>
+                                        </tr>
+                                    }
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class='span7 offset1'>
+                        <button class='btn btn-primary btn-large' id="btnUpdateBatch" type="submit">
+                            <i class='ui-icon-newwin'></i>
+                            بروزرسانی
+                        </button>
+
+                    </div>
+                }
+
+            </div>
+
+
+
+        </div>
+    </div>
+</div>
+
+<script src="~/Content/datetimepicker-fa2/Scripts/jquery-1.6.4.js"></script>
+<script src='~/Scripts/jquery-1.10.2.min.js'></script>
+
+<script src='~/Scripts/jquery_ui/jquery-ui.min.js' type='text/javascript'></script>
+
+<script src="~/Content/datetimepicker-fa2/Scripts/jquery-ui-datetimepicker.min.js"></script>
+<link href='~/Content/plugins/flags/flags.css' media='all' rel='stylesheet' type='text/css' />
+
+@*<script src="~/Scripts/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="~/Scripts/plugins/datatables/jquery.dataTables.columnFilter.js"></script>*@
+
+<script src='~/Scripts/plugins/common/bootstrap-wysihtml5.js' type='text/javascript'></script>
+<script src='~/Scripts/plugins/charCount/charCount.js' type='text/javascript'></script>
+<script src='~/Scripts/plugins/naked_password/naked_password-0.2.4.min.js' type='text/javascript'></script>
+<script src='~/Scripts/plugins/nestable/jquery.nestable.js' type='text/javascript'></script>
+<script src='~/Scripts/plugins/tabdrop/bootstrap-tabdrop.js' type='text/javascript'></script>
+<script src='~/Scripts/plugins/bootstrap_maxlength/bootstrap-maxlength.min.js' type='text/javascript'></script>
+
+<script src='~/Scripts/tables.js' type='text/javascript'></script>
+<script src="~/Scripts/theme.js"></script>
+
+@*<script>
+        (function () {
+            $(document).ready(function () {
+
+                setDataTable($(".data-table"));
+                setDataTable($(".data-table-column-filter")).columnFilter();
+
+
+            });
+        }).call(this);
+
+    </script>*@
+
+
+<script>
+            function beforupdate(rowno, predictid, matchid, competitorid, matchtime) {
+                // alert("ok");
+                //alert($("#cboTeam1Guess" + rowno).val());
+                //alert($("#chkShowPrediction" + rowno).prop("checked"));
+                //alert(matchtime);
+
+                var mt = new Date(matchtime);
+
+                now = new Date();
+
+                //اختلاف 1 ثانیه معادل 1000 است
+                ///حداکثر مدت مجاز 5 دقیقه قبل از آغاز بازی
+                if (mt - now < 300000) {
+                    alert("تاریخ مجاز پیش‌بینی گذشته و یا بازی بسته شده است");
+                }
+
+
+                @*var url = '@Url.Content("~/game/Prediction_Update")'+"?backurl="+ '@Url.Content("~/game/prediction")'+"&predictid=" + predictid + "&matchid=" + matchid + "&competitorid=" + competitorid + "&matchtime=" + matchtime + "&team1guess=" + $("#cboTeam1Guess" + rowno).val() + "&team2guess=" + $("#cboTeam2Guess" + rowno).val() + "&ShowPrediction=" + $("#chkShowPrediction" + rowno).prop("checked");
+
+                window.location.replace(url);*@
+
+            }
+
+    function deleterow(predictid) {
+        if (predictid > 0) {
+            var r = confirm("آیا اطلاعات حذف شود؟");
+            if (r == true) {
+                var url = '@Url.Content("~/game/Prediction_delete")' + '/?predictid=' + predictid;
+
+                window.location.replace(url);
+            }
+        }
+            }
+
+    function chkSelected_click(row) {
+       // alert(row);
+        var chk1 = document.getElementById('cboTeam1Guess' + row);
+        var chk2 = document.getElementById('cboTeam2Guess' + row);
+
+        if ($("#chkSelected" + row).prop("checked") == true)
+        {
+            chk1.disabled = false;
+            chk2.disabled = false;
+        }
+        else {
+              chk1.disabled = true;
+              chk2.disabled = true;
+        }
+
+    }
+
+
+
+</script>

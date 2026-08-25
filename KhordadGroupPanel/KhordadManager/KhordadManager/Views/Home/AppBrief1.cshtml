@@ -1,0 +1,85 @@
+﻿@model khordadmanager.Models.ProjectModel
+
+<script src="~/Scripts/bootstrap.js"></script>
+<script src="~/Scripts/global.js"></script>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+
+@{
+    ViewBag.Title = "";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string imagename = "";
+}
+@section featured {
+    <div class="container wrapper closes">
+        <section class="content span8 offset4">
+            <h2 class="section-title">
+                @Model.LName
+
+            </h2>
+            <div class="row port-details">
+                <div class="span8">
+                    <div class="screenshot browser">
+                        <div id="myCarousel" class="carousel slide">
+                            <div class="carousel-inner">
+
+                                <div class="active item">
+                                    
+                                    <img src="~/Images/stock/@{@Model.LName}_1.png" style="height:400px" alt="img">
+                                </div>
+                                @for (int i = 2; i <= @Model.NumberOfImage; i++)
+                                {
+                                    <div class="item">                                
+                                        <img src="~/Images/stock/@{@Model.LName}_@{@i}.png" style="height:400px" alt="img" />
+                                    </div>
+    }
+
+                            </div>
+
+                            <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+                            <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+
+                        </div>
+
+                    </div>
+                    <p class="p-visit">
+                        <a href="~/home/portfolio" target="" class="btn">Back <img src="~/Images/ext-lk.png" height="9" width="9" alt=""></a>
+                    </p>
+
+                </div>
+                <div class="span4 topic">
+                    <h4>Description</h4>
+
+                    <p> @Model.Desc.</p>
+                    <span class="ball"></span>
+                </div>
+
+     
+
+                <div class="span4 topic">
+                    <h4>Technologies Used</h4>
+                    <p>
+                        @*<span class="label">@Model.UsedTec</span>*@
+                        @{ 
+                            string[] ss;
+                            if (Model.UsedTec != null)
+                            {
+
+
+                                ss = Model.UsedTec.Split(',');
+
+                                for (int i = 0; i < ss.Length; i++)
+                                {
+                        <span class="label">@ss[i]</span>
+                                    }
+                                }
+                            }
+                        @*<span class="label">Barcode Api.</span>*@
+                    </p>
+                    <span class="ball"></span>
+                </div>
+            </div>
+
+        </section>
+    </div>
+
+}

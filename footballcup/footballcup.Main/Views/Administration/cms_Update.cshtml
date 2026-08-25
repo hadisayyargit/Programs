@@ -1,0 +1,256 @@
+﻿@model footballcup.Models.Cms
+
+
+
+<link href="~/Content/datetimepicker-fa2/Content/jquery-ui.min.css" rel="stylesheet" />
+<link href='~/Content/plugins/jquery_fileupload/jquery.fileupload-ui.css' media='all' rel='stylesheet' type='text/css' />
+
+
+
+<div class='page-header'>
+    <h1 class='pull-right'>
+        <i class='icon-user'></i>
+        <span>محتوا</span>
+    </h1>
+
+</div>
+
+<div class='row-fluid'>
+    <div class='span12 box bordered-box blue-border'>
+
+
+        <div class='box-content box-double-padding'>
+            @using (Html.BeginForm("cms_Update", "Administration", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+
+                <fieldset>
+                    <div class='span4'>
+                        <div class='control-group'>
+
+                            <div class='controls'>
+
+                                @Html.HiddenFor(m => m.CmsId, htmlAttributes: new { @id = "txtCmsId" })
+                                @Html.HiddenFor(m => m.CupId, htmlAttributes: new { @id = "txtCupId" })
+                                @Html.HiddenFor(m => m.PictureFile, htmlAttributes: new { @id = "txtPictureFile" })
+                                @Html.HiddenFor(m => m.AuthorId, htmlAttributes: new { @id = "txtAuthorId" })
+
+                                <img id="img1" src="~/assets/images/gallery/@Model.PictureFile" style="width:500px;height:300px" />
+                                <div class="pe-spacer size20"></div>
+                                <br />
+                                <div class="span4 ">
+
+                                    @if (((footballcup.Models.AppUser)Sessi‍on[CommonUnit.GlobalModule.m_CurrentUser]).UserRole == (int)footballcup.Models.UserRoleEnum.ADMIN)
+                                    {
+                                        <span class='btn btn-success fileinput-button'>
+                                            <i class='icon-plus icon-white'></i>
+                                            <input type='file' data-bfi-disabled='' multiple='' id="ImageUrlUpload" name="ImageUrlUpload" onchange="readURL(this);" />
+                                        </span>
+
+
+                                        <span class='btn btn-danger' id="btnClearPicture">
+                                            <i class='icon-eraser'></i>
+                                        </span>
+
+                                    }
+
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class='span7 offset1'>
+                        <div class='control-group'>
+                            <label class='control-label'>عنوان</label>
+                            <div class='controls'>
+                                @Html.TextBoxFor(m => m.Title, htmlAttributes: new { @class = "span12", @id = "txtTitle" })
+                                <p class='help-block' />
+                            </div>
+                        </div>
+                        <div class='control-group'>
+                            <label class='control-label'>متن</label>
+                            <div class='controls'>
+                                @Html.TextAreaFor(m => m.Body, htmlAttributes: new { @class = "span12", @id = "txtBody" })
+                                <p class='help-block' />
+                            </div>
+                        </div>
+
+                        <div class='control-group'>
+                            <label class='control-label'>زمان انتشار</label>
+                            @*<div class='datetimepicker input-append' id='datetimepickerMatchTime'>
+                                    @Html.TextBoxFor(m => m.PublishDate, htmlAttributes: new { @data_format = "yyyy/MM/dd hh:mm", @class = "input-medium span3", @id = "txtPublishDate", @style = "width:150px; direction:ltr" })
+                                    @Html.TextBox("txtShamsi", "", htmlAttributes: new { @class = "input-medium span4", @disabled = "disabled", @style = "background-color:lightgreen", @id = "txtShamsi" })
+                                    <p class='help-block' />
+                                </div>*@
+
+                            <div class='input-group'>
+                                @*<span class="icon-calendar"></span>*@
+                                @Html.TextBox("txtJalaliDate", "", htmlAttributes: new { @id = "txtJalaliDate", @class = "span4  ", @style = "color:blue;direction:ltr", @placeholder = "تاریخ " })
+                                @Html.TextBoxFor(m => m.PublishDate, htmlAttributes: new { @id = "txtPublishDate", @class = "span3", @style = "background-color:lightgreen; direction:ltr;", @ReadOnly = "True", @placeholder = "زمان را انتخاب کنید" })
+
+                                @*@Html.ValidationMessageFor(m => m.MatchTime)*@
+                            </div>
+
+
+
+                        </div>
+
+                        <div class='control-group'>
+                            <label class='control-label'>وضعیت</label>
+                            <div class='controls'>
+
+                                <label class='radio'>
+                                    @Html.RadioButtonFor(m => m.IsActive, true)
+                                    فعال
+                                </label>
+                                <label class='radio'>
+                                    @Html.RadioButtonFor(m => m.IsActive, false)
+                                    غیرفعال
+                                </label>
+
+                                <p class='help-block' />
+                            </div>
+                        </div>
+                        <div class='control-group'>
+
+                            <div class='controls'>
+                                <label class='checkbox'>
+                                    @Html.CheckBoxFor(m => m.IsSlider, htmlAttributes: new { @id = "chkIsSlider", @class = "" })
+                                    نمایش اسلاید؟
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class='control-group'>
+
+                            <div class='controls'>
+                                <label class='checkbox'>
+                                    @Html.CheckBoxFor(m => m.IsHotNews, htmlAttributes: new { @id = "chkIsHotNews", @class = "" })
+                                    خبر داغ؟
+                                </label>
+                            </div>
+                        </div>
+
+                    </div>
+                </fieldset>
+
+                <hr class='hr-normal' />
+
+                <fieldset>
+                    <div class='span4'>
+                    </div>
+
+                    <div class='span7 offset1'>
+                        <button class='btn btn-primary btn-large' id="btnNew" type="button">
+                            <i class='icon-file'></i>
+                            جدید
+                        </button>
+
+                        <button class='btn btn-danger btn-large' id="btnDelete" type="button">
+                            <i class='icon-remove'></i>
+                            حذف
+                        </button>
+
+                        <button class='btn btn-primary btn-large' id="btnUpdate" type="submit">
+                            <i class='icon-save'></i>
+                            بروزرسانی
+                        </button>
+
+                        <a class="btn btn-primary btn-large" href="~/Administration/cms">
+                            <i class='icon-level-up'></i>
+                            بازگشت
+                        </a>
+                    </div>
+
+
+                </fieldset>
+
+            }
+
+        </div>
+
+    </div>
+</div>
+
+
+<script src="~/Content/datetimepicker-fa2/Scripts/jquery-1.6.4.js"></script>
+<script src='~/Scripts/jquery-1.10.2.min.js'></script>
+<script src='~/Scripts/jquery_ui/jquery-ui.min.js' type='text/javascript'></script>
+<script src="~/Content/datetimepicker-fa2/Scripts/jquery-ui-datetimepicker.min.js"></script>
+
+
+<script>
+
+        $("#txtJalaliDate").datetimepicker();
+
+</script>
+
+<script>
+    $("#txtJalaliDate").change(function () {
+
+        var greg, myDate, splt1, splt2, splt, y, m, d;
+
+        splt = $('#txtJalaliDate').val().split(" ");
+        splt1 = splt[0].split("/");
+
+        //alert($('#txtJalaliDate').val().toLocaleDateString("fa-IR"));
+        //alert(splt[1]);
+
+        y = Number(splt1[0]);
+        m = Number(splt1[1]);
+        d = Number(splt1[2]);
+
+        greg = jd_to_gregorian(persian_to_jd(y, m, d));
+
+        myDate = greg[0].toString() + "/" + greg[1].toString() + "/" + greg[2].toString() + " " + splt[1];
+        $('#txtPublishDate').attr('value', myDate);
+
+    });
+
+</script>
+
+<script>
+
+
+
+
+    function readURL(input) {
+
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#img1').attr('src', e.target.result);
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+        else {
+        }
+    }
+
+
+    $("#btnClearPicture").click(function () {
+        $('#img1').attr('src', "");
+        $("#txtPictureFile").attr('value', "");
+    });
+
+
+    $("#btnNew").click(function () {
+
+        $('#txtCmsId').attr('value', "0");
+        var d = new Date();
+        $('#txtPublishDate').attr('value', d.getFullYear() + "/" + (d.getMonth() + 1).toString() + "/" + d.getDate().toString());
+        $('#txtShamsi').attr('value', d.toLocaleString());
+
+        $('#txtTitle').attr('value', "");
+        $('#txtBody').attr('value', "");
+        $('#img1').attr('src', "");
+    });
+
+    $("#btnDelete").click(function () {
+        var url ='@Url.Content("~/Administration")'+ "/cms_delete?cmsid=" + $("#txtCmsId").val();
+        window.location.replace(url);
+    });
+
+</script>
+

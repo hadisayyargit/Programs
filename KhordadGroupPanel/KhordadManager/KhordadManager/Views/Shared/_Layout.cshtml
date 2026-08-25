@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hadi Sayyar</title>
+        <link href="~/Content/style.css" rel="stylesheet" />
+        <link href="~/Content/bootstrap.css" rel="stylesheet" />
+        <link href="~/Content/bootstrap-responsive.css" rel="stylesheet" />
+        
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
+        <link href="~/Images/khordad.ico" rel="shortcut icon" type="image/x-icon" />
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")
+
+        <script src="~/Scripts/bootstrap.js"></script>
+        <script src="~/Scripts/global.js"></script>
+        <script src="~/Scripts/jquery-1.10.2.min.js"></script> 
+
+    </head>
+    <body>
+
+        <nav class="nav">
+      <h6>MENU</h6>
+      <ul>
+        <li>
+            <a class="active" href="~/Home/Index">
+
+              <span class="resume-ico"></span> Works
+            </a>
+        </li>
+
+        <li>
+            <a  href="~/home/portfolio">
+              <span class="blog-ico"></span> Portfolio
+            </a>
+        </li>
+        <li>
+            <a href="~/Home/Contact">
+              <span class="contact-ico"></span> Contact
+            </a>
+        </li>
+      </ul>
+    </nav>
+
+        <div class="container wrapper closes">
+                <a class="btn-menu">
+                    <img src="~/Images/icon-menu.png" height="10" width="13" alt="menu" />
+
+                </a>
+             <div class="row">
+            <aside class="sidebar span4">         
+                               <div class="cover">
+                </div>       
+                        <div class="profile">
+                          <img src="~/Images/hadi6.jpg" alt="profile img" />
+                          <h1>
+                              Hadi Sayyar
+                          </h1>
+                          <p>
+                              Smart Systems Developer <br> Tehran, IR.
+                          </p>
+                          <ul class="mini-social">
+                              <li>
+                                <a href="#" title="Facebook" class="a-icon facebook"></a>
+                              </li>
+                              <li>
+                                <a href="#" title="Linkedin" class="a-icon linkedin"></a>
+                              </li>
+                              <li>
+                                <a href="#" title="Google+" class="a-icon googleplus"></a>
+                              </li>
+                             
+                          </ul>
+                        </div>
+
+                    </aside>
+                 </div>
+            </div>
+
+        <div id="body">
+            @RenderSection("featured", required: false)
+            <section class="content-wrapper main-content clear-fix">
+                @RenderBody()
+            </section>
+        </div>
+
+        @*<footer>
+            <div class="content-wrapper">
+                <div class="float-left">
+                    <p>&copy; @DateTime.Now.Year - My ASP.NET MVC Application</p>
+                </div>
+            </div>
+        </footer>*@
+
+
+
+        @Scripts.Render("~/bundles/jquery")
+        @RenderSection("scripts", required: false)
+    </body>
+</html>

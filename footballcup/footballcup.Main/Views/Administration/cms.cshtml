@@ -1,0 +1,212 @@
+﻿@model footballcup.Models.Cup
+
+@{
+    //Layout = null;
+
+    List<footballcup.Models.Cms> myCmsList = ViewBag.CmsList;
+    string myPath = Server.MapPath("~/assets/images/gallery/");
+    string filename = "";
+}
+
+<link rel="stylesheet" type="text/css" href="~/Content/style.css" />
+
+
+@*<div id='wrapper'>*@
+
+    <div class='container-fluid'>
+        <div class='row-fluid' id='content-wrapper'>
+            <div class='span12'>
+
+                <div class='page-header'>
+                    <h1 class='pull-right'>
+                        <i class='icon-user'></i>
+                        <span>مسابقات</span>
+                    </h1>
+
+                </div>
+
+                <div class='row-fluid'>
+
+                    <div class='span3 box'>
+                        <div class='box row-fluid' style="">
+                            @Html.DropDownListFor(m => m.CupId, new SelectList(ViewBag.CupList, "CupId", "PName", ViewBag.Cup.CupId), htmlAttributes: new { @class = "select2 input-block-level", @id = "cboCup", @data_placeholder = "جام را انتخاب کنید" })
+                        </div>
+
+                        <div class='box-content'>
+
+                            <img id="img1" alt="کاپ" src="~/assets/images/cup/@Model.PhotoFileName" width="100%" height='100%' />
+
+                        </div>
+
+                    </div>
+
+                    <div class='span9 box'>
+                        <div class='box-content box-double-padding'>
+                            <fieldset>
+                                <div class='span2'>
+                                    <div class='lead'>
+                                        <i class='icon-signin text-contrast'></i>
+                                        جام
+                                    </div>
+                                    @*<small class='muted'>@Html.HiddenFor(m => m.CupId, htmlAttributes: new { @id = "txtCupId" })</small>*@
+                                    @if (((footballcup.Models.AppUser)Sessi‍on[CommonUnit.GlobalModule.m_CurrentUser]).UserRole == (int)footballcup.Models.UserRoleEnum.ADMIN )
+                                    {
+                                <div style="float:right">
+                                    <button class="btn-primary" onclick="location.href = '@Url.Content("~/Administration")'+'/cms_Update?cupid='+$('#cboCup').val()+'&cmsid=0'">+</button>                                                                        
+                                </div>
+                                    }
+                                    <br />
+
+                                </div>
+
+                                <div class='offset1'>
+                                    <div class="skin_width">
+                                        <div class="carousel_page">
+                                            <div class="skin_main ">
+                                                <div class="row-fluid">
+
+
+                                                    <div class="carouFredSel">
+                                                        <ul id="carouFredSel">
+                                                            @foreach(footballcup.Models.Cms item in myCmsList)
+                                                            {
+                                                                filename = (item.PictureFile == null) ?"":@item.PictureFile.Replace(myPath, "");
+
+                                                                <li>
+                                                                    <div>
+                                                                        <a href="~/Administration/cms_Update?cupid=@Model.CupId&cmsid=@item.CmsId" >
+                                                                        
+                                                                        <img alt="" src="~/assets/images/gallery/@filename"  width="200px" />
+                                                                            <label>@item.CmsId - @item.Title</label>
+                                                                        </a>
+
+                                                                    </div>
+                                                                </li>
+                                                                        }
+                                                        </ul>
+
+                                                        <div class="carouFredSel_nav" dir="rtl">
+                                                            <a id="caroul_prev" class="caroul_prev" href="#"></a>
+                                                            <a id="caroul_next" class="caroul_next" href="#"></a>
+                                                        </div>
+
+
+                                                    </div>
+
+
+                                                    <div class="pe-spacer size30"></div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="pe-spacer size30"></div>
+
+                                        @*<a href="#" id="top-link" title="Back to Top"></a>*@
+                                    </div>
+                                </div>
+                            </fieldset>
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+@*</div>*@
+
+
+
+<script type='text/javascript'>
+    //For CarouFredSel Style:
+    jQuery(document).ready(function () {
+        $("#carouFredSel").carouFredSel({
+            responsive: true,
+            width: "100%",
+            prev: "#caroul_prev",
+            next: "#caroul_next",
+            mousewheel: true,
+            scroll: 1,
+            items: {
+                width: 205,
+                //	height: '30%',	//	optionally resize item-height
+                visible: {
+                    min: 4,
+                    max: 4
+                }
+            }
+        });
+    });
+    //For CarouFredSel Style:
+    jQuery(document).ready(function () {
+        $("#carouFredSel2").carouFredSel({
+            responsive: true,
+            width: "100%",
+            prev: "#caroul_prev2",
+            next: "#caroul_next2",
+            mousewheel: true,
+            scroll: {
+                'duration': 1000
+            },
+            items: {
+                width: 175,
+                //	height: '30%',	//	optionally resize item-height
+                visible: {
+                    min: 6,
+                    max: 6
+                }
+            }
+        });
+    });
+</script>
+
+<script src="~/Scripts/jquery-1.7.1.min.js"></script>
+
+<script>
+
+    $("#cboCup").click(function () {
+
+        ///not ajax
+
+        
+        var url ='@Url.Content("~/Administration")'+ "/cms?cupid=" + $("#cboCup").val();
+
+        window.location.replace(url);
+
+
+    });
+
+
+    function readURL(input) {
+
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#img1').attr('src', e.target.result);
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+        else {
+        }
+    }
+
+    $("#btnClearPicture").click(function () {
+        $('#img1').attr('src', "/assets/images/cup/cup_animated.gif");
+
+    });
+
+    $("#btnNew").click(function () {
+
+        $('#txtCupId').attr('value', 0);
+        $('#txtLName').attr('value', "");
+        $('#txtPName').attr('value', "");
+        $('#rdoEnabled2').attr("checked", true);
+        $('#ckhDefault').attr("checked", false);
+        $('#img1').attr('src', "/assets/images/cup/cup_animated.gif");
+    });
+
+</script>

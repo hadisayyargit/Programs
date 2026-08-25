@@ -1,0 +1,344 @@
+﻿@model footballcup.Models.Competitor
+
+
+<link href="~/Content/plugins/datatables/bootstrap-datatable.css" rel="stylesheet" />
+<link href='~/Content/plugins/flags/flags.css' media='all' rel='stylesheet' type='text/css' />
+
+<div class='container-fluid'>
+    <div class='row-fluid' id='content-wrapper'>
+        <div class='span12'>
+
+            <div class='page-header'>
+                <h1 class='pull-right'>
+                    <i class='icon-user'></i>
+                    <span>پیش‌بینی ویژه</span>
+                </h1>
+
+            </div>
+
+            <div class='row-fluid'>
+
+                <div class='span3 box'>
+                    <div class='box row-fluid' style="">
+                        @Html.DropDownList("cboCup", new SelectList(ViewBag.CupList, "CupId", "PName", ViewBag.Cup.CupId), htmlAttributes: new { @class = " input-block-level", @id = "cboCup", @data_placeholder = "جام را انتخاب کنید" })
+                    </div>
+
+                    <div class='box-content'>
+
+                        <img id="img1" alt="کاپ" src="~/assets/images/cup/@ViewBag.Cup.PhotoFileName" width="100%" height='100%' />
+
+                    </div>
+
+                </div>
+
+                <div class='span9 box '>
+
+                    <div class='box-content box-padding ' style="width:auto">
+                        <div class='responsive-table'>
+                            <div class='scrollable-area'>
+                                <table class='data-table table table-bordered table-striped' style='margin-bottom:0;width:100%'>
+                                    <thead>
+                                        <tr>
+                                            <th>شماره</th>
+                                            <th>شرکت کننده</th>
+                                            <th style="width:100px">زمان پیش‌بینی</th>
+                                            <th>قهرمان</th>
+                                            <th>نایب قهرمان</th>
+                                            <th>مقام سوم</th>
+                                            <th></th>
+                                            <th></th>
+
+                                            <th style="display:none"></th>
+                                            <th style="display:none"></th>
+                                            <th style="display:none"></th>
+                                            <th style="display:none"></th>
+                                            <th style="display:none"></th>
+                                            <th style="display:none"></th>
+                                            <th style="display:none"></th>
+                                            <th style="display:none"></th>
+                                            <th style="display:none"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        @foreach (footballcup.Models.CompetitorView pr in ViewBag.PredictionChampionList)
+                                        {
+
+                                            string team1style = "", team2style = "", team3style = "";
+                                            int i = ((List<footballcup.Models.CompetitorView>)(ViewBag.PredictionChampionList)).IndexOf(pr);
+
+
+                                            string imgsrc = "";
+                                            try
+                                            {
+                                                imgsrc = string.Format("data:image/jpeg;base64,{0}", Convert.ToBase64String(pr.ThumbnailPhoto));
+                                            }
+                                            catch
+                                            {
+
+                                            }
+
+
+
+                                            if (pr.Team1Rank > 1) { team1style = "background-color:brown   "; }
+                                            if (pr.Team2Rank > 2 || pr.Team2Rank == 1) { team2style = "background-color:brown"; }
+                                            if (pr.Team3Rank > 3 || pr.Team3Rank == 2 || pr.Team3Rank == 1) { team3style = "background-color:brown"; }
+
+                                            if (pr.Team1Rank == 1) { team1style = "background-color:gold"; }
+                                            if (pr.Team2Rank == 2) { team2style = "background-color:silver"; }
+                                            if (pr.Team3Rank == 3) { team3style = "background-color:mediumseagreen"; }
+
+                                            <tr style="">
+                                                @*<td style="background-color:tomato; cursor:pointer" onclick='btnSelectPrediction("@pr.CupId","@pr.CompetitorId","@pr.PredictDate.ToString("yyyy/MM/dd HH:mm")","@pr.Team1","@pr.Team2","@pr.Team3","@pr.CompetitorName", "@pr.ParticipantType", "@pr.RegStatus", "@pr.RegDate.ToString("yyyy/MM/dd HH:mm")", "@pr.InitialPoint", "@pr.TotalPredictionsPoint","@pr.SpecialPoint" )'>@pr.CompetitorId</td>*@
+                                                <td style="background-color:tomato;">@pr.CompetitorId</td>
+                                                <td style="">
+                                                    <a href=@imgsrc target='_blank'>
+                                                        <img alt='' height='64' src='@imgsrc' />
+                                                        @pr.CompetitorName
+                                                    </a>
+                                                </td>
+
+                                                <td dir="ltr" style="">
+                                                    @{
+                                                        System.Globalization.PersianCalendar myCalendar = new System.Globalization.PersianCalendar();
+                                                        string strJalali = myCalendar.GetYear(pr.PredictDate).ToString() + "/" + myCalendar.GetMonth(pr.PredictDate).ToString() + "/" + myCalendar.GetDayOfMonth(pr.PredictDate).ToString() + " " + pr.PredictDate.ToShortTimeString();
+                                                    }
+
+                                                    @strJalali
+
+                                                </td>
+
+                                                <td style="@team1style;">
+                                                    <i class="flag flag-@pr.Team1con" id="flagtag1_@i"></i>
+                                                    @Html.DropDownListFor(m => m.Team1, new SelectList(ViewBag.TeamList, "TeamId", "TeamPName", pr.Team1), "", htmlAttributes: new { @class = " input-block-level span1", @id = "cboTeam1_" + i, @style = "width:100px", @data_placeholder = "تیم اول را انتخاب کنید", @onchange = "cboTeam1_change(" + i + ")" })
+                                                </td>
+                                                <td style="@team2style;">
+                                                    <i class="flag flag-@pr.Team2con" id="flagtag2_@i"></i>
+                                                    @Html.DropDownListFor(m => m.Team2, new SelectList(ViewBag.TeamList, "TeamId", "TeamPName", pr.Team2), "", htmlAttributes: new { @class = " input-block-level span1", @id = "cboTeam2_" + i, @style = "width:100px", @data_placeholder = "تیم دوم را انتخاب کنید", @onchange = "cboTeam2_change(" + i + ")" })
+                                                </td>
+                                                <td style="@team3style;">
+                                                    <i class="flag flag-@pr.Team3con" id="flagtag3_@i"></i>
+                                                    @Html.DropDownListFor(m => m.Team3, new SelectList(ViewBag.TeamList, "TeamId", "TeamPName", pr.Team3), "", htmlAttributes: new { @class = " input-block-level span1", @id = "cboTeam3_" + i, @style = "width:100px", @data_placeholder = "تیم سوم را انتخاب کنید", @onchange = "cboTeam3_change(" + i + ")" })
+                                                </td>
+
+                                                <td>
+                                                    <button class='btn btn-success btn-mini' id="btnUpdate" type="button" onclick='beforupdate(@i,@pr.CompetitorId)'>
+                                                        <i class='icon-ok'></i>
+                                                    </button>
+                                                </td>
+                                                <td>
+                                                    <button class='btn btn-inverse btn-mini' id="btnDelete" type="button" onclick='deleterow(@i,@pr.CompetitorId)'>
+                                                        <i class="icon-trash "></i>
+                                                    </button>
+                                                </td>
+
+                                                <td style="display:none">@pr.PredictDate</td>
+                                                <td style="display:none">@pr.CompetitorId</td>
+                                                <td style="display:none">@pr.CupId</td>
+                                                <td style="display:none">@pr.ParticipantType</td>
+                                                <td style="display:none">@pr.RegStatus</td>
+                                                <td style="display:none">@pr.RegDate</td>
+                                                <td style="display:none">@pr.InitialPoint</td>
+                                                <td style="display:none">@pr.TotalPredictionsPoint</td>
+                                                <td style="display:none">@pr.SpecialPoint</td>
+                                            </tr>
+
+                                                        }
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="~/Content/datetimepicker-fa2/Scripts/jquery-1.6.4.js"></script>
+<script src='~/Scripts/jquery-1.10.2.min.js'></script>
+
+<script src='~/Scripts/jquery_ui/jquery-ui.min.js' type='text/javascript'></script>
+
+<script src="~/Content/datetimepicker-fa2/Scripts/jquery-ui-datetimepicker.min.js"></script>
+<link href='~/Content/plugins/flags/flags.css' media='all' rel='stylesheet' type='text/css' />
+
+<script src="~/Scripts/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="~/Scripts/plugins/datatables/jquery.dataTables.columnFilter.js"></script>
+
+<script src='~/Scripts/plugins/common/bootstrap-wysihtml5.js' type='text/javascript'></script>
+<script src='~/Scripts/plugins/charCount/charCount.js' type='text/javascript'></script>
+<script src='~/Scripts/plugins/naked_password/naked_password-0.2.4.min.js' type='text/javascript'></script>
+<script src='~/Scripts/plugins/nestable/jquery.nestable.js' type='text/javascript'></script>
+<script src='~/Scripts/plugins/tabdrop/bootstrap-tabdrop.js' type='text/javascript'></script>
+<script src='~/Scripts/plugins/bootstrap_maxlength/bootstrap-maxlength.min.js' type='text/javascript'></script>
+
+<script src='~/Scripts/tables.js' type='text/javascript'></script>
+<script src="~/Scripts/theme.js"></script>
+
+
+@*<script src='~/Scripts/jquery-1.10.2.min.js'></script>
+<script src="~/Scripts/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="~/Scripts/plugins/datatables/jquery.dataTables.columnFilter.js"></script>
+<script src='~/Scripts/tables.js' type='text/javascript'></script>
+<script src="~/Scripts/theme.js"></script>*@
+
+@*<script>
+    (function () {
+        $(document).ready(function () {
+
+            setDataTable($(".data-table"));
+            setDataTable($(".data-table-column-filter")).columnFilter();
+
+
+        });
+    }).call(this);
+
+</script>*@
+
+
+
+
+<script>
+
+    $('#txtCupId').attr('value', $("#cboCup").val());
+
+
+</script>
+
+<script>
+
+    $("#cboCup").click(function () {
+
+        ///not ajax
+
+        var url = '@Url.Content("~/game")'+"/PredictionChampion?cupid=" + $("#cboCup").val();
+        $('#txtCupId').attr('value', $("#cboCup").val());
+        //$('#txtId').attr('value', "0");
+
+        window.location.replace(url);
+
+    });
+
+
+    function cboTeam1_change(rowno) {
+
+        var con;
+
+        var x =@Html.Raw(new System.Web.Script.Serialization.JavaScriptSerializer().Serialize(@ViewBag.TeamList));
+
+        var teamid = $("#cboTeam1_" + rowno).val();
+
+        for (var i = 0; i < x.length; i++) {
+            if (x[i].TeamId == teamid)
+                con = x[i].con;
+        }
+
+        $('#flagtag1_' + rowno).attr('class', "flag flag-" + con);
+
+    }
+
+    function cboTeam2_change(rowno) {
+
+                var con;
+
+        var x =@Html.Raw(new System.Web.Script.Serialization.JavaScriptSerializer().Serialize(@ViewBag.TeamList));
+
+        var teamid = $("#cboTeam2_" + rowno).val();
+
+        for (var i = 0; i < x.length; i++) {
+            if (x[i].TeamId == teamid)
+                con = x[i].con;
+        }
+
+        $('#flagtag2_' + rowno).attr('class', "flag flag-" + con);
+
+    }
+
+    function cboTeam3_change(rowno) {
+
+                var con;
+
+        var x =@Html.Raw(new System.Web.Script.Serialization.JavaScriptSerializer().Serialize(@ViewBag.TeamList));
+
+        var teamid = $("#cboTeam3_" + rowno).val();
+
+        for (var i = 0; i < x.length; i++) {
+            if (x[i].TeamId == teamid)
+                con = x[i].con;
+        }
+
+        $('#flagtag3_' + rowno).attr('class', "flag flag-" + con);
+
+    }
+
+
+</script>
+
+<script>
+    function beforupdate(rowno, competitorid) {
+        // alert(rowno);
+        //alert($("#cboTeam1Guess" + rowno).val());
+        //alert($("#chkShowPrediction" + rowno).prop("checked"));
+        /*
+                   var mt = new Date(matchtime);
+
+                now = new Date();
+
+                //اختلاف 1 ثانیه معادل 1000 است
+                ///حداکثر مدت مجاز 5 دقیقه قبل از آغاز بازی
+                if (mt - now < 300000) {
+                    alert("تاریخ مجاز پیش‌بینی گذشته و یا بازی بسته شده است");
+                }
+                */
+
+        var cupid = $("#cboCup").val();
+
+        var url ='@Url.Content("~/game")'+ "/PredictionChampion_Update?cupid=" + cupid + "&competitorid=" + competitorid + "&team1=" + $("#cboTeam1_" + rowno).val() + "&team2=" + $("#cboTeam2_" + rowno).val() + "&team3=" + $("#cboTeam3_" + rowno).val();
+
+        window.location.replace(url);
+
+    }
+
+
+    function deleterow(rowno, competitorid) {
+        var r = confirm("آیا اطلاعات حذف شود؟");
+        if (r == true) {
+            var cupid = $("#cboCup").val();
+            var url = '@Url.Content("~/game")'+"/PredictionChampion_Update?cupid=" + cupid + "&competitorid=" + competitorid + "&team1=0&team2=0&team3=0";
+            window.location.replace(url);
+        }
+        else {
+        }
+
+    }
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

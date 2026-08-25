@@ -1,0 +1,73 @@
+﻿@model footballcup.Models.MessageModel
+
+@{
+    //Layout = null;
+
+    string strBodyContrast = "contrast-red", strIconClass = "", strBackUrl = "";
+
+    if (Model.MessageType.ToLower() == "success")
+    {
+        strBodyContrast = "contrast-green";
+        strIconClass = "icon-ok";
+    }
+    else if (Model.MessageType.ToLower() == "info")
+    {
+        strBodyContrast = "contrast-blue";
+        strIconClass = "icon-info-sign";
+    }
+
+    else if (Model.MessageType.ToLower() == "warning")
+    {
+        strBodyContrast = "contrast-orange";
+        strIconClass = "icon-warning-sign";
+    }
+
+    else if (Model.MessageType.ToLower() == "error")
+    {
+        strBodyContrast = "contrast-red";
+        strIconClass = "icon-cogs";
+    }
+
+    strBackUrl = Url.Content(Model.BackUrl);
+}
+
+
+<div class='container-fluid'>
+    <div class='row-fluid' id='content-wrapper'>
+        <div class='span12'>
+
+            <div class='@strBodyContrast application-error contrast-background ' id="messagebody" style="visibility:visible">
+                <a href="#" class="close" data-dismiss="alert">
+                    &times;
+                </a>
+                <div id='wrapper'>
+                    <div class='error-type'>
+                        <i class=@strIconClass></i>
+                        <span  style="font-size:large">@Model.Title</span>
+                    </div>
+                    <div class='error-message'>
+                        @Model.SubTitle
+                        <br />
+                        @Model.MessageBody
+                    </div>
+
+
+                    @*<a href="@Model.BackUrl" class="btn btn-block">*@
+                    <a href="@strBackUrl" class="btn btn-block">
+                        <i class='icon-chevron-left'></i>
+                        بازگشت
+                    </a>
+
+
+                </div>
+
+            </div>
+
+            </div>
+        </div>
+    </div>
+
+
+            <script src='~/Scripts/jquery-1.10.2.min.js'></script>
+
+

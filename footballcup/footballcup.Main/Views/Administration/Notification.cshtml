@@ -1,0 +1,369 @@
+﻿@model footballcup.Models.Cms
+@{
+    List<footballcup.Models.CmsView> NotificationList = ViewBag.NotificationList;
+    int uid = ((footballcup.Models.AppUserView)Session[CommonUnit.GlobalModule.m_CurrentUser]).UserId;
+}
+
+
+
+@*<link href="~/Content/datetimepicker-fa2/Content/jquery-ui.min.css" rel="stylesheet" />*@
+<link href="~/Content/plugins/datatables/bootstrap-datatable.css" rel="stylesheet" />
+
+
+
+
+<div class='container-fluid'>
+    <div class='row-fluid' id='content-wrapper'>
+        <div class='span12'>
+
+            <div class='page-header'>
+                <h1 class='pull-right'>
+                    <i class='icon-user'></i>
+                    <span>اطلاع رسانیها</span>
+                </h1>
+
+            </div>
+
+            <div class='row-fluid'>
+
+                <div class='span3 box'>
+
+
+                </div>
+
+                <div class='span9 box '>
+                    <div class='box-content box-double-padding '>
+
+                        <div class='offset1'>
+
+                            <div class='box-content box-no-padding '>
+                                <div class='responsive-table'>
+                                    <div class='scrollable-area'>
+                                        <table class='table data-Table data-table-column-filter table-bordered table-striped ' style='margin-bottom:0;width:auto'>
+                                            <thead>
+                                                <tr>
+                                                    <th>شماره</th>
+                                                    <th style="width:100px">زمان پیام</th>
+                                                    <th>فرستنده</th>
+                                                    <th>گیرنده</th>
+                                                    <th>عنوان</th>
+                                                    <th>وضعیت پیام</th>                                                 
+                                                    <th>متن پیام</th>
+                                                    <th>فعال</th>
+                                                    <th style="display:none">AuthorId</th>
+                                                    <th style="display:none">TargetReceiver</th>
+                                                    <th style="display:none">ReadStatus</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (footballcup.Models.CmsView item in NotificationList)
+                                                {
+                                                    string strStyle = "";
+                                                    if (item.ReadStatus == 0)
+                                                    {
+                                                        strStyle = "color:blue";
+                                                    }
+
+
+                                                <tr style="@strStyle">
+                                                    <td style="background-color:blanchedalmond; cursor:pointer" onclick='btnSelectCms("@item.CmsId", "@item.AuthorId","@item.TargetReceiver","@item.Title","@item.Body","@item.PublishDate.ToString("yyyy/MM/dd HH:mm:ss")", "@item.IsActive.ToString().ToLower()")'>@item.CmsId</td>
+                                                    <td>@item.PublishDate</td>
+                                                    <td>@item.AuthorDs</td>
+                                                    <td>@item.TargetDs</td>
+                                                    <td>@item.Title</td>
+
+                                                    <td>
+                                                        @if (item.ReadStatus == 0)
+                                                        {
+
+                                                            <button class='btn btn-danger btn-mini' type="button" onclick='btnChangeReadstatus("@item.CmsId", "@item.AuthorId","@item.TargetReceiver")'>
+
+                                                                <i class='icon-remove'></i>
+                                                                خوانده نشده
+
+                                                            </button>
+                                                        }
+                                                        else
+                                                        {
+                                                            <button class='btn btn-success btn-mini' type="button" onclick='btnChangeReadstatus("@item.CmsId", "@item.AuthorId","@item.TargetReceiver")'>
+                                                                <i class='icon-bookmark'></i>
+                                                                خوانده شده
+                                                            </button>
+                                                        }
+
+
+                                                    </td>
+
+
+                                                    @if (item.IsActive)
+                                                    {
+                                                        <td>@item.Body</td>
+                                                    }
+                                                    else
+                                                    {
+                                                        <td style="background-color:darkseagreen;">@item.Body</td>
+                                                    }
+                                                    <td>@Html.CheckBox("chkIsActive1", item.IsActive)</td>
+
+
+                                                    <td style="display:none">@item.AuthorId</td>
+                                                    <td style="display:none">@item.TargetReceiver</td>
+                                                    <td style="display:none">@item.ReadStatus</td>
+                                                </tr>
+                                                }
+
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+
+
+                        <hr class='hr-normal' />
+
+                        @using (Html.BeginForm("Notification_Update", "Administration", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        {
+                            <fieldset>
+                                <div class='span7 offset1'>
+
+                                    @Html.HiddenFor(m => m.CmsId, htmlAttributes: new { @id = "txtCmsId" })
+                                    @Html.HiddenFor(m => m.PublishDate, htmlAttributes: new { @id = "txtPublishDate" })
+                                    @Html.HiddenFor(m => m.AuthorId, htmlAttributes: new { @id = "txtAuthorId" })
+
+                                    <div class='control-group'>
+                                        <label class='control-label'>عنوان</label>
+                                        <div class='controls'>
+                                            @Html.TextBoxFor(m => m.Title, htmlAttributes: new { @class = "span12", @id = "txtTitle" })
+                                            <p class='help-block' />
+                                        </div>
+                                    </div>
+                                    <div class='control-group'>
+                                        <label class='control-label'>متن</label>
+                                        <div class='controls'>
+                                            @Html.TextAreaFor(m => m.Body, htmlAttributes: new { @class = "span12", @id = "txtBody" })
+                                            <p class='help-block' />
+                                        </div>
+                                    </div>
+
+                                    <div class='control-group'>
+                                        <div class='span1'>
+                                            <label class='control-label'>از</label>
+                                        </div>
+                                        <div class='span5'> @Html.DropDownList("cboAuthor", new SelectList(ViewBag.UserList, "UserId", "UserDs", ""), htmlAttributes: new { @class = " input-block-level", @id = "cboAuthor", @data_placeholder = "فرستنده را انتخاب کنید", @disabled = "disabled" })        </div>
+                                    </div>
+
+
+                                    <div class='control-group'>
+
+                                        <div class='span1'>
+                                            <label class='control-label'>&nbsp;&nbsp;&nbsp;به</label>
+                                        </div>
+                                        <div class='span5'> @Html.DropDownListFor(m => m.TargetReceiver, new SelectList(ViewBag.UserList, "UserId", "UserDs", ""), "همه", htmlAttributes: new { @class = " input-block-level", @id = "cboTarget" })        </div>
+                                    </div>
+
+                                    <div class='control-group'>
+                                        <div class='span2'>
+                                            <label class='control-label'>فعال/غیرفعال: </label>
+                                        </div>
+                                        <div class='span3'>
+                                            &nbsp;&nbsp;&nbsp;
+                                            @Html.CheckBoxFor(m => m.IsActive, htmlAttributes: new { @id = "chkIsActive" })
+                                            فعال
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="control-group">
+                                        <div class='span2'>
+                                            <label class='control-label'>وضعیت پیام: </label>
+                                        </div>
+                                        <div class='span5'>
+
+                                            @Html.DropDownListFor(m => m.ReadStatus, new SelectList(new List<footballcup.Models.Prime> { new footballcup.Models.Prime() { Id = 0, Title = "خوانده نشده" }, new footballcup.Models.Prime() { Id = 1, Title = "باز شده" } }, "Id", "Title", ""), "", htmlAttributes: new { @class = " input-block-level span1", @style = "width:100px", @data_placeholder = "وضعیت" })
+                                        </div>
+
+
+
+                                    </div>
+
+
+                                </div>
+                            </fieldset>
+                            <hr class='hr-normal' />
+
+                            <fieldset>
+                                <div class='span4'>
+                                </div>
+
+                                <div class='span7 offset1'>
+                                    <button class='btn btn-primary btn-large' id="btnNew" type="button">
+                                        <i class='icon-file'></i>
+                                        جدید
+                                    </button>
+
+                                    <button class='btn btn-danger btn-large' id="btnDelete" type="button">
+                                        <i class='icon-remove'></i>
+                                        حذف
+                                    </button>
+
+                                    <button class='btn btn-primary btn-large' id="btnUpdate" type="submit">
+                                        <i class='icon-save'></i>
+                                        بروزرسانی
+                                    </button>
+
+                                </div>
+
+
+                            </fieldset>
+                        }
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src='~/Scripts/jquery-1.10.2.min.js'></script>
+<script src='~/Scripts/jquery_ui/jquery-ui.min.js' type='text/javascript'></script>
+
+<script src='~/Scripts/plugins/datatables/jquery.dataTables.min.js' type='text/javascript'></script>
+<script src='~/Scripts/plugins/datatables/jquery.dataTables.columnFilter.js' type='text/javascript'></script>
+<script src='~/Scripts/plugins/common/bootstrap-wysihtml5.js' type='text/javascript'></script>
+<script src='~/Scripts/plugins/charCount/charCount.js' type='text/javascript'></script>
+<script src='~/Scripts/plugins/naked_password/naked_password-0.2.4.min.js' type='text/javascript'></script>
+<script src='~/Scripts/plugins/nestable/jquery.nestable.js' type='text/javascript'></script>
+<script src='~/Scripts/plugins/tabdrop/bootstrap-tabdrop.js' type='text/javascript'></script>
+<script src='~/Scripts/plugins/bootstrap_datetimepicker/bootstrap-datetimepicker.js' type='text/javascript'></script>
+<script src='~/Scripts/plugins/bootstrap_maxlength/bootstrap-maxlength.min.js' type='text/javascript'></script>
+
+
+
+<script src='~/Scripts/tables.js' type='text/javascript'></script>
+<script src='~/Scripts/theme.js' type='text/javascript'></script>
+
+<script src="~/Scripts/jquery.signalR-2.1.2.js"></script>
+<script src="~/signalr/hubs"></script>
+
+
+@*<script>
+        (function () {
+            $(document).ready(function () {
+
+                setDataTable($(".data-table"));
+                setDataTable($(".data-table-column-filter")).columnFilter();
+            });
+        }).call(this);
+
+    </script>*@
+
+<script>
+
+
+    $("#cboTarget").val("");
+
+
+    var mychathub = $.connection.chatHub;
+
+    //var chat, date, li, message, months, reply, scrollable, sender, timeago;
+
+    //mychathub.client.message = function (from, to, message, displayname, pubishdate, imagesrc, ismessage) {
+    //};
+
+    mychathub.client.user = function (msg) {
+
+    };
+
+
+    $.connection.hub.start(function () {
+    });
+
+    @*$('#btnUpdate').click(function () {
+        mychathub.server.send("@uid", "", $('#txtBody').val(), "", "", "", true);
+
+    });*@
+      $('#cboAuthor').val(@uid);
+</script>
+
+<script>
+
+    $("#btnNew").click(function () {
+
+        $('#txtCmsId').attr('value', "0");
+
+        $('#txtTitle').val("");
+        $('#txtBody').val("");
+
+        $('#cboTarget').val("");
+
+        $('#cboAuthor').val(@uid);
+        $('#txtAuthorId').val(@uid);
+
+        $("#chkIsActive").prop("checked", true);
+
+    });
+
+
+
+    function btnSelectCms(cmsid, authorid, targetid, title, body, publishdate, isactive) {
+       // alert(publishdate);
+
+        $('#txtCmsId').attr('value', cmsid);
+        $('#txtTitle').attr('value', title);
+        $('#txtBody').val(body);
+
+        $('#cboAuthor').val(authorid);
+        $('#txtAuthorId').val(authorid);
+        $('#cboTarget').val(targetid).change();
+
+        if (targetid == 0)
+            $('#cboTarget').val("");
+
+        $('#chkIsActive').prop('checked', (isactive == "true"));
+
+        $('#txtPublishDate').val(publishdate);
+
+    }
+
+    $("#btnDelete").click(function () {
+        var r = confirm("آیا پیام حذف شود؟");
+        if (r == true) {
+            if ($('#cboAuthor').val() != @uid)
+            {
+                //mywindow.document.write("شما اجازه حذف پیام دیگران را ندارید");
+                alert("شما اجازه حذف پیام دیگران را ندارید");
+            }
+            else {
+                var cmsid = $('#txtCmsId').val();
+                var url = '@Url.Content("~/Administration")'+'/Notification_Delete?cmsid=' + cmsid;
+                
+                window.location.replace(url);
+            }
+        }
+
+         // var mywindow=window.open("HH");
+        //var r2=prompt("delete?","lala");
+
+
+    });
+
+    function btnChangeReadstatus(cmsid, authorid, targetid) {
+        var url ='@Url.Content("~/Administration")'+'/Notification_UpdateReadStatus?cmsid=' + cmsid + '&authorid=' + authorid + '&targetid=' + targetid;
+
+ 
+        //alert(url);
+        window.location.replace(url);
+    }
+
+
+
+</script>
+

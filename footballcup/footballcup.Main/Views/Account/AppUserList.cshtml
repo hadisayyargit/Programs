@@ -1,0 +1,150 @@
+﻿@model footballcup.Models.Competitor
+
+
+<link href="~/Content/plugins/datatables/bootstrap-datatable.css" rel="stylesheet" />
+<link href='~/Content/plugins/flags/flags.css' media='all' rel='stylesheet' type='text/css' />
+
+<div class='container-fluid'>
+    <div class='row-fluid' id='content-wrapper'>
+        <div class='span12'>
+
+            <div class='page-header'>
+                <h1 class='pull-right'>
+                    <i class='icon-user'></i>
+                    <span>فهرست شرکت‌کنندگان</span>
+                </h1>
+
+            </div>
+
+            <div class='row-fluid'>
+
+
+
+                <div class='span9 box '>
+
+                    <div class='box-content box-padding ' style="width:auto">
+                        <div class='responsive-table'>
+                            <div class='scrollable-area'>
+                                <table class='data-table table table-bordered table-striped' style='margin-bottom:0;width:100%'>
+                                    <thead>
+                                        <tr>
+                                            <th>شماره</th>
+                                            <th>شرکت کننده</th>
+                                           
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        @foreach (footballcup.Models.CompetitorView pr in ViewBag.CompetitorList)
+                                        {
+
+                                                                                       
+                                            string imgsrc = "";
+                                            try
+                                            {
+                                                imgsrc = string.Format("data:image/jpeg;base64,{0}", Convert.ToBase64String(pr.ThumbnailPhoto));
+                                            }
+                                            catch
+                                            {
+
+                                            }
+
+
+
+                                            <tr style="">
+                                                @*<td style="background-color:tomato; cursor:pointer" onclick='btnSelectPrediction("@pr.CupId","@pr.CompetitorId","@pr.PredictDate.ToString("yyyy/MM/dd HH:mm")","@pr.Team1","@pr.Team2","@pr.Team3","@pr.CompetitorName", "@pr.ParticipantType", "@pr.RegStatus", "@pr.RegDate.ToString("yyyy/MM/dd HH:mm")", "@pr.InitialPoint", "@pr.TotalPredictionsPoint","@pr.SpecialPoint" )'>@pr.CompetitorId</td>*@
+                                                <td style="background-color:tomato;width:50px">@pr.CompetitorId</td>
+                                                <td >
+                                                    <a href=@imgsrc target='_blank'>
+                                                        <img alt=''  width="230" height="200" src='@imgsrc' />
+                                                        @pr.CompetitorName
+                                                    </a>
+                                                </td>
+
+                                              
+                                            </tr>
+
+                                        }
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="~/Content/datetimepicker-fa2/Scripts/jquery-1.6.4.js"></script>
+<script src='~/Scripts/jquery-1.10.2.min.js'></script>
+
+<script src='~/Scripts/jquery_ui/jquery-ui.min.js' type='text/javascript'></script>
+
+<script src="~/Content/datetimepicker-fa2/Scripts/jquery-ui-datetimepicker.min.js"></script>
+<link href='~/Content/plugins/flags/flags.css' media='all' rel='stylesheet' type='text/css' />
+
+<script src="~/Scripts/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="~/Scripts/plugins/datatables/jquery.dataTables.columnFilter.js"></script>
+
+<script src='~/Scripts/plugins/common/bootstrap-wysihtml5.js' type='text/javascript'></script>
+<script src='~/Scripts/plugins/charCount/charCount.js' type='text/javascript'></script>
+<script src='~/Scripts/plugins/naked_password/naked_password-0.2.4.min.js' type='text/javascript'></script>
+<script src='~/Scripts/plugins/nestable/jquery.nestable.js' type='text/javascript'></script>
+<script src='~/Scripts/plugins/tabdrop/bootstrap-tabdrop.js' type='text/javascript'></script>
+<script src='~/Scripts/plugins/bootstrap_maxlength/bootstrap-maxlength.min.js' type='text/javascript'></script>
+
+<script src='~/Scripts/tables.js' type='text/javascript'></script>
+<script src="~/Scripts/theme.js"></script>
+
+
+@*<script src='~/Scripts/jquery-1.10.2.min.js'></script>
+    <script src="~/Scripts/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/plugins/datatables/jquery.dataTables.columnFilter.js"></script>
+    <script src='~/Scripts/tables.js' type='text/javascript'></script>
+    <script src="~/Scripts/theme.js"></script>*@
+
+@*<script>
+        (function () {
+            $(document).ready(function () {
+
+                setDataTable($(".data-table"));
+                setDataTable($(".data-table-column-filter")).columnFilter();
+
+
+            });
+        }).call(this);
+
+    </script>*@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>D:\documents\publish\khordadmanager</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/Antlr3.Runtime.dll">
+      <publishTime>06/15/2015 14:37:16</publishTime>
+    </File>
+    <File Include="bin/DotNetOpenAuth.AspNet.dll">
+      <publishTime>06/15/2015 14:36:48</publishTime>
+    </File>
+    <File Include="bin/DotNetOpenAuth.Core.dll">
+      <publishTime>06/15/2015 14:36:48</publishTime>
+    </File>
+    <File Include="bin/DotNetOpenAuth.OAuth.Consumer.dll">
+      <publishTime>06/15/2015 14:36:48</publishTime>
+    </File>
+    <File Include="bin/DotNetOpenAuth.OAuth.dll">
+      <publishTime>06/15/2015 14:36:50</publishTime>
+    </File>
+    <File Include="bin/DotNetOpenAuth.OpenId.dll">
+      <publishTime>06/15/2015 14:36:54</publishTime>
+    </File>
+    <File Include="bin/DotNetOpenAuth.OpenId.RelyingParty.dll">
+      <publishTime>06/15/2015 14:36:56</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.dll">
+      <publishTime>06/15/2015 14:36:56</publishTime>
+    </File>
+    <File Include="bin/HadiPortfolio.dll">
+      <publishTime>11/17/2021 12:33:53</publishTime>
+    </File>
+    <File Include="bin/HadiPortfolio.pdb">
+      <publishTime>11/17/2021 12:33:53</publishTime>
+    </File>
+    <File Include="bin/KhordadManager.dll">
+      <publishTime>11/22/2021 16:31:21</publishTime>
+    </File>
+    <File Include="bin/KhordadManager.pdb">
+      <publishTime>11/22/2021 16:31:21</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Infrastructure.dll">
+      <publishTime>06/15/2015 14:37:12</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.WebPages.OAuth.dll">
+      <publishTime>06/15/2015 14:37:10</publishTime>
+    </File>
+    <File Include="bin/Mono.Math.dll">
+      <publishTime>06/15/2015 14:36:54</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>06/15/2015 14:37:14</publishTime>
+    </File>
+    <File Include="bin/Org.Mentalis.Security.Cryptography.dll">
+      <publishTime>06/15/2015 14:36:54</publishTime>
+    </File>
+    <File Include="bin/System.Net.Http.Formatting.dll">
+      <publishTime>06/15/2015 14:37:06</publishTime>
+    </File>
+    <File Include="bin/System.Web.Helpers.dll">
+      <publishTime>06/15/2015 14:37:08</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.dll">
+      <publishTime>06/15/2015 14:37:08</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.WebHost.dll">
+      <publishTime>06/15/2015 14:37:08</publishTime>
+    </File>
+    <File Include="bin/System.Web.Mvc.dll">
+      <publishTime>06/15/2015 14:37:02</publishTime>
+    </File>
+    <File Include="bin/System.Web.Optimization.dll">
+      <publishTime>06/15/2015 14:37:04</publishTime>
+    </File>
+    <File Include="bin/System.Web.Razor.dll">
+      <publishTime>06/15/2015 14:37:04</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Deployment.dll">
+      <publishTime>06/15/2015 14:37:08</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.dll">
+      <publishTime>06/15/2015 14:37:08</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Razor.dll">
+      <publishTime>06/15/2015 14:37:08</publishTime>
+    </File>
+    <File Include="bin/WebGrease.dll">
+      <publishTime>06/15/2015 14:37:16</publishTime>
+    </File>
+    <File Include="bin/WebMatrix.Data.dll">
+      <publishTime>06/15/2015 14:37:08</publishTime>
+    </File>
+    <File Include="bin/WebMatrix.WebData.dll">
+      <publishTime>06/15/2015 14:37:10</publishTime>
+    </File>
+    <File Include="Content/bootstrap-responsive.css">
+      <publishTime>09/09/2013 16:24:00</publishTime>
+    </File>
+    <File Include="Content/bootstrap.css">
+      <publishTime>09/09/2013 16:24:02</publishTime>
+    </File>
+    <File Include="Content/style.css">
+      <publishTime>10/05/2013 23:15:08</publishTime>
+    </File>
+    <File Include="favicon.ico">
+      <publishTime>10/03/2013 07:51:42</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>11/17/2021 16:06:58</publishTime>
+    </File>
+    <File Include="Images/arrow.png">
+      <publishTime>09/10/2013 16:34:26</publishTime>
+    </File>
+    <File Include="Images/Behsazan.jpg">
+      <publishTime>11/22/2021 13:08:18</publishTime>
+    </File>
+    <File Include="Images/browser-top.png">
+      <publishTime>09/10/2013 16:34:26</publishTime>
+    </File>
+    <File Include="Images/dpi.jpg">
+      <publishTime>10/03/2013 06:30:54</publishTime>
+    </File>
+    <File Include="Images/EmdadSaipaLogo.bmp">
+      <publishTime>01/15/2004 10:37:32</publishTime>
+    </File>
+    <File Include="Images/ext-lk.png">
+      <publishTime>09/10/2013 16:34:32</publishTime>
+    </File>
+    <File Include="Images/glyphicons-halflings-white.html">
+      <publishTime>09/10/2013 16:35:44</publishTime>
+    </File>
+    <File Include="Images/glyphicons-halflings.png">
+      <publishTime>09/10/2013 16:34:26</publishTime>
+    </File>
+    <File Include="Images/hadi6.JPG">
+      <publishTime>10/21/2013 19:27:10</publishTime>
+    </File>
+    <File Include="Images/icon-dl.png">
+      <publishTime>09/10/2013 16:34:26</publishTime>
+    </File>
+    <File Include="Images/icon-menu.png">
+      <publishTime>09/10/2013 16:34:24</publishTime>
+    </File>
+    <File Include="Images/irpostitcenter.PNG">
+      <publishTime>10/03/2013 06:44:34</publishTime>
+    </File>
+    <File Include="Images/JP-wp3.jpg">
+      <publishTime>11/30/2008 22:43:34</publishTime>
+    </File>
+    <File Include="Images/khordad.ico">
+      <publishTime>04/29/2013 18:23:32</publishTime>
+    </File>
+    <File Include="Images/khordadgroup.jpg">
+      <publishTime>04/29/2013 19:00:20</publishTime>
+    </File>
+    <File Include="Images/minoo.jpg">
+      <publishTime>05/31/2009 17:09:00</publishTime>
+    </File>
+    <File Include="Images/mobile.png">
+      <publishTime>09/10/2013 16:34:26</publishTime>
+    </File>
+    <File Include="Images/port-1.jpeg">
+      <publishTime>09/10/2013 16:34:30</publishTime>
+    </File>
+    <File Include="Images/portfolio-detail/daphlex-1.png">
+      <publishTime>09/10/2013 16:34:32</publishTime>
+    </File>
+    <File Include="Images/portfolio-detail/daphlex-2.png">
+      <publishTime>09/10/2013 16:34:34</publishTime>
+    </File>
+    <File Include="Images/portfolio-detail/daphlex-3.png">
+      <publishTime>09/10/2013 16:34:34</publishTime>
+    </File>
+    <File Include="Images/portfolio-detail/Descr.WD3">
+      <publishTime>09/10/2013 16:34:36</publishTime>
+    </File>
+    <File Include="Images/portfolio-detail/tablet-img-1.png">
+      <publishTime>09/10/2013 16:34:34</publishTime>
+    </File>
+    <File Include="Images/portfolio-detail/tablet-img-2.png">
+      <publishTime>09/10/2013 16:34:34</publishTime>
+    </File>
+    <File Include="Images/portfolio-detail/tablet-img-3.png">
+      <publishTime>09/10/2013 16:34:34</publishTime>
+    </File>
+    <File Include="Images/roshd.gif">
+      <publishTime>10/03/2013 07:21:14</publishTime>
+    </File>
+    <File Include="Images/rsa.jpg">
+      <publishTime>10/03/2013 06:55:52</publishTime>
+    </File>
+    <File Include="Images/sabzfaam2.gif">
+      <publishTime>10/03/2013 06:59:24</publishTime>
+    </File>
+    <File Include="Images/social-icons.png">
+      <publishTime>09/10/2013 16:34:26</publishTime>
+    </File>
+    <File Include="Images/stock/Descr.WD3">
+      <publishTime>09/10/2013 16:34:32</publishTime>
+    </File>
+    <File Include="Images/stock/s1.png">
+      <publishTime>09/10/2013 16:34:30</publishTime>
+    </File>
+    <File Include="Images/stock/s1_1.png">
+      <publishTime>09/10/2013 16:34:28</publishTime>
+    </File>
+    <File Include="Images/stock/s2.png">
+      <publishTime>09/10/2013 16:34:30</publishTime>
+    </File>
+    <File Include="Images/stock/s2_2.png">
+      <publishTime>09/10/2013 16:34:30</publishTime>
+    </File>
+    <File Include="Images/stock/s3.png">
+      <publishTime>09/10/2013 16:34:30</publishTime>
+    </File>
+    <File Include="Images/stock/s3_3.png">
+      <publishTime>09/10/2013 16:34:28</publishTime>
+    </File>
+    <File Include="Images/stock/s4.png">
+      <publishTime>09/10/2013 16:34:32</publishTime>
+    </File>
+    <File Include="Images/stock/s4_4.png">
+      <publishTime>09/10/2013 16:34:28</publishTime>
+    </File>
+    <File Include="Images/stock/s5.png">
+      <publishTime>09/10/2013 16:34:30</publishTime>
+    </File>
+    <File Include="Images/stock/s6.png">
+      <publishTime>09/10/2013 16:34:32</publishTime>
+    </File>
+    <File Include="Images/stock/s6_6.png">
+      <publishTime>09/10/2013 16:34:30</publishTime>
+    </File>
+    <File Include="Images/stock/s7_7.png">
+      <publishTime>09/10/2013 16:34:30</publishTime>
+    </File>
+    <File Include="Images/tablet.png">
+      <publishTime>09/10/2013 16:34:26</publishTime>
+    </File>
+    <File Include="Images/tidm3.png">
+      <publishTime>08/13/2012 11:25:52</publishTime>
+    </File>
+    <File Include="Images/unv.jpg">
+      <publishTime>10/03/2013 07:17:40</publishTime>
+    </File>
+    <File Include="Images/workspace.png">
+      <publishTime>09/10/2013 16:34:28</publishTime>
+    </File>
+    <File Include="khordad.ico">
+      <publishTime>11/17/2021 16:04:46</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>10/14/2013 10:14:32</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.js">
+      <publishTime>09/09/2013 16:24:26</publishTime>
+    </File>
+    <File Include="Scripts/global.js">
+      <publishTime>09/09/2013 16:24:26</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.10.2.min.js">
+      <publishTime>09/09/2013 16:24:28</publishTime>
+    </File>
+    <File Include="Scripts/_references.js">
+      <publishTime>10/14/2013 10:00:30</publishTime>
+    </File>
+    <File Include="Views/Account/ExternalLoginConfirmation.cshtml">
+      <publishTime>10/03/2013 07:51:42</publishTime>
+    </File>
+    <File Include="Views/Account/ExternalLoginFailure.cshtml">
+      <publishTime>10/03/2013 07:51:42</publishTime>
+    </File>
+    <File Include="Views/Account/Login.cshtml">
+      <publishTime>10/03/2013 07:51:42</publishTime>
+    </File>
+    <File Include="Views/Account/Manage.cshtml">
+      <publishTime>10/03/2013 07:51:42</publishTime>
+    </File>
+    <File Include="Views/Account/Register.cshtml">
+      <publishTime>10/03/2013 07:51:42</publishTime>
+    </File>
+    <File Include="Views/Account/_ChangePasswordPartial.cshtml">
+      <publishTime>10/03/2013 07:51:42</publishTime>
+    </File>
+    <File Include="Views/Account/_ExternalLoginsListPartial.cshtml">
+      <publishTime>10/03/2013 07:51:42</publishTime>
+    </File>
+    <File Include="Views/Account/_RemoveExternalLoginsPartial.cshtml">
+      <publishTime>10/03/2013 07:51:42</publishTime>
+    </File>
+    <File Include="Views/Account/_SetPasswordPartial.cshtml">
+      <publishTime>10/03/2013 07:51:42</publishTime>
+    </File>
+    <File Include="Views/Apps/AppsDetail0.cshtml">
+      <publishTime>11/16/2021 12:46:06</publishTime>
+    </File>
+    <File Include="Views/Apps/AppsDetail1.cshtml">
+      <publishTime>11/16/2021 13:07:21</publishTime>
+    </File>
+    <File Include="Views/Apps/Index.cshtml">
+      <publishTime>11/16/2021 12:52:41</publishTime>
+    </File>
+    <File Include="Views/Home/AppBrief1.cshtml">
+      <publishTime>11/22/2021 13:44:38</publishTime>
+    </File>
+    <File Include="Views/Home/Contact.cshtml">
+      <publishTime>11/15/2021 16:39:23</publishTime>
+    </File>
+    <File Include="Views/Home/Index.cshtml">
+      <publishTime>11/22/2021 13:24:51</publishTime>
+    </File>
+    <File Include="Views/Home/portfolio.cshtml">
+      <publishTime>11/22/2021 16:28:38</publishTime>
+    </File>
+    <File Include="Views/Portfolio/Index.cshtml">
+      <publishTime>11/16/2021 13:09:10</publishTime>
+    </File>
+    <File Include="Views/Portfolio/PortfolioDetail0.cshtml">
+      <publishTime>11/16/2021 13:11:07</publishTime>
+    </File>
+    <File Include="Views/Shared/Error.cshtml">
+      <publishTime>10/03/2013 07:51:42</publishTime>
+    </File>
+    <File Include="Views/Shared/_Layout.cshtml">
+      <publishTime>11/22/2021 11:40:47</publishTime>
+    </File>
+    <File Include="Views/Shared/_LoginPartial.cshtml">
+      <publishTime>10/03/2013 07:51:42</publishTime>
+    </File>
+    <File Include="Views/Web.config">
+      <publishTime>10/03/2013 07:51:42</publishTime>
+    </File>
+    <File Include="Views/_ViewStart.cshtml">
+      <publishTime>10/03/2013 07:51:42</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>11/18/2021 17:19:25</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

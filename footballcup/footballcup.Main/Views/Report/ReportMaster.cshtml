@@ -1,0 +1,20 @@
+﻿@model footballcup.Models.ReportModel
+
+
+    <section id='content1'>
+        @*@if (Model != null && Model.IsEnabledParameterDialog)
+        {
+            @Html.Partial("_DialogReportPartial", Model)
+        }*@
+
+
+        @if (Model != null
+        )
+        {
+            @Html.Partial("_ReportViewerPartial", Model)
+        }
+
+
+    </section>
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>

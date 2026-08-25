@@ -1,0 +1,873 @@
+﻿
+
+@{
+    //index view
+    string cupPname = "";
+    int cupid = 0;
+    string sendbuttonstyle = "";
+    string struserid = "", username = "";
+    string imagesrc1 = "";
+
+    try
+    {
+        struserid = ((footballcup.Models.AppUserView)Session[CommonUnit.GlobalModule.m_CurrentUser]).UserId.ToString();
+        username = ((footballcup.Models.AppUserView)Session[CommonUnit.GlobalModule.m_CurrentUser]).UserDs;
+
+
+        string s = "";
+        byte[] tp = ((footballcup.Models.AppUserView)Session[CommonUnit.GlobalModule.m_CurrentUser]).ThumbnailPhoto;
+        s = Convert.ToBase64String(tp);
+        imagesrc1 = string.Format("data:image/jpeg;base64,{0}", s);
+
+    }
+    catch
+    {
+    }
+
+    try
+    {
+        cupid = ((footballcup.Models.Cup)Session[CommonUnit.GlobalModule.m_CurrentCup]).CupId;
+        cupPname = ((footballcup.Models.Cup)Session[CommonUnit.GlobalModule.m_CurrentCup]).PName;
+    }
+    catch
+    {
+
+    }
+
+    List<footballcup.Models.CmsView> myCmsList = new List<footballcup.Models.CmsView>();
+    if (ViewBag.CmsList != null) { myCmsList = ViewBag.CmsList; }
+    List<footballcup.Models.CmsView> myGalleryList = new List<footballcup.Models.CmsView>();
+
+    if (ViewBag.CmsList != null)
+    {
+        myGalleryList = ViewBag.CmsList;
+        myGalleryList = myCmsList.Where(m => m.IsChat == false && m.IsSlider == true && m.CupId == cupid).ToList();
+    }
+
+
+    List<footballcup.Models.CmsView> myNewsList = new List<footballcup.Models.CmsView>();
+    try
+    {
+        myNewsList = myCmsList.Where(m => m.IsChat == false && m.IsHotNews == true && m.CupId == cupid).ToList().OrderByDescending(m => m.PublishDate).ToList();
+    }
+    catch
+    { }
+
+    ///گرفتن 100 رکورد آخر
+    List<footballcup.Models.CmsView> myChatList = new List<footballcup.Models.CmsView>();
+    try
+    {
+        myChatList = myCmsList.Where(m => m.IsChat == true).Reverse().Take(100).Reverse().ToList();
+    }
+    catch { }
+
+    List<footballcup.Models.CompetitorView> myTopCompetitorList = new List<footballcup.Models.CompetitorView>();
+    if ((List<footballcup.Models.CompetitorView>)Session[CommonUnit.GlobalModule.m_CompetitorList] != null)
+    {
+        myTopCompetitorList = (List<footballcup.Models.CompetitorView>)Session[CommonUnit.GlobalModule.m_CompetitorList];
+        myTopCompetitorList = myTopCompetitorList.OrderByDescending(m => m.TotalPredictionsPoint + m.InitialPoint + m.SpecialPoint).Take(4).ToList();
+    }
+
+    string myPath = Server.MapPath("~/assets/images/gallery/");
+    string filename = "";
+
+
+    List<footballcup.Models.MatchView> myEndedMatchList = ViewBag.MatchList_4Ended;
+
+    List<footballcup.Models.PredictionView> myNextMatchList = ViewBag.MatchList_4Upcoming;
+
+    /*
+
+    List<footballcup.Models.PredictionView> myEndedMatchList = new List<footballcup.Models.PredictionView>();
+    try
+    {
+        // myEndedMatchList = myMatchList.Where(m => m.MatchState == 1).Reverse().Take(4).Reverse().ToList();
+        myEndedMatchList = myMatchList.Where(m => m.MatchState == 1).OrderByDescending(m => m.MatchNo).Take(4).ToList();
+    }
+
+    catch
+    {
+
+    }
+
+
+    List<footballcup.Models.PredictionView> myNextMatchList = new List<footballcup.Models.PredictionView>();
+
+    try
+    {
+        myNextMatchList = myMatchList.Where(m=> (m.CompetitorId==int.Parse(struserid) || m.CompetitorId==0) &&  (m.MatchState == 0 || m.MatchState == 2)).OrderBy(m => m.MatchTime).ToList().Take(4).ToList();
+    }
+    catch
+    {
+
+    }
+
+    */
+
+
+
+    if (((footballcup.Models.AppUserView)Session[CommonUnit.GlobalModule.m_CurrentUser]).UserRole == (int)footballcup.Models.UserRoleEnum.GUEST)
+    {
+        sendbuttonstyle = "visibility:hidden";
+    }
+
+}
+
+
+
+<link href='~/Content/plugins/flags/flags.css' media='all' rel='stylesheet' type='text/css' />
+<link href='~/Content/myfonts.css' id='color-settings-body-color' media='all' rel='stylesheet' type='text/css' />
+<script src="~/Scripts/jquery-1.7.1.min.js"></script>
+
+
+
+
+
+@*@section featured {*@
+
+<div class='row-fluid'>
+    <div class='span6  box-nomargin' style="">
+
+        @*<div class='box-content'>*@
+
+        <h3 style="font-family:myfont_nastaliq;align-self:center">
+            به مسابقه پیش‌بینی بازیهای <strong style="color:red; font-size:xx-large">@cupPname </strong> خوش آمدید!!
+        </h3>
+
+        <div class='alert alert-info'>
+            <h4>
+                <i class='icon-ok-sign'></i>
+                یک دنیا هیجان، تفریح، شادی، لذت و اوقات خوش با شرکت در مسابقات پیش‌بینی
+            </h4>
+            <i class='icon-info-sign'></i>
+            <text style="color:chocolate">
+                توجه: این سامانه، سایت شرط‌بندی نبوده و تنها برای فراهم آوردن ساعاتی خوش و سرگرمی بین دوستان ساخته شده است.
+            </text>
+        </div>
+
+        <div class='alert alert-success' style="font-family:myfont_mjfaraz; font-size:large; ">
+            <h4>
+                <i class='icon-bullhorn'></i>
+                مقررات
+            </h4>
+            1. جوایز یادبودی به نفرات اول تا سوم بر پایه امتیاز تعلق می‌گیرد و جایزه ویژه و مرد اخلاق و ... نداریم!
+            <br />
+            2. پیش‌بینی تا قبل از شروع هر بازی امکان‌پذیر است.
+            <br />
+            3. پیش‌بینی فقط شامل 90 یا 120 دقیقه بازی می‌شود.
+            <br />
+
+            ۴- علاوه بر امتیاز پیش‌بینی هر بازی، سامانه دارای امتیاز پیش‌بینی ویژه حدس سه تیم اول و دوم و سوم نیز می‌باشد که به ترتیب ۸و۵و۳ می‌باشد
+            <h1>
+                روش محاسبه امتیاز پیش‌بینی هر بازی:
+            </h1>
+            <div class='alert alert-warning'>
+                شرکت در مسابقه: 1
+                <br />
+                نتیجه نسبی(برد، باخت، مساوی): +2
+                <br />
+                تفاضل گل: +2
+                <br />
+                حدس درست تعداد گل تیم اول: +1
+                <br />
+                حدس درست تعداد گل تیم دوم: +1
+                <br />
+                حدس درست نتیجه دقیق: +1
+            </div>
+        </div>
+
+        @*</div>*@
+    </div>
+
+    <div class='span6 box' style='margin-bottom:0'>
+
+
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="carousel slide" id="myCarousel">
+                    <div class="carousel-inner" style="top:60px">
+                        <div class="item active">
+                            <img src="~/assets/images/Gallery/welcome.jpg" alt="welcome.jpg" title="جام" width="100%" height="450px">
+                            <div class="carousel-caption">
+                            </div>
+                        </div>
+
+                        @foreach (footballcup.Models.CmsView item in myGalleryList)
+                        {
+                            if (@item.PictureFile != null)
+                            {
+                                filename = @item.PictureFile.Replace(myPath, "");
+                            }
+
+
+                            if (filename == "" || !File.Exists(Server.MapPath("~/assets/images/gallery/" + filename)))
+                            {
+                                filename = "defaultslide.jpg";
+                            }
+
+                            int m = myGalleryList.IndexOf(item);
+
+
+
+                            <div class="item">
+                                @*<img src="~/assets/images/Gallery/@filename" alt="" style="width:auto;height:auto">*@
+                                @*<img src="~/assets/images/Gallery/@filename" alt="" title="#@m" style="width:100%;height:450px">*@
+                                <img src="~/assets/images/Gallery/@filename" alt="@filename" title="#@m" style="width:100%;height:450px">
+                                <div class="carousel-caption">
+                                    <h4>@item.Title</h4>
+
+                                    <p>...</p>
+                                </div>
+                            </div>
+                        }
+
+
+                    </div>
+                    <a class="left  carousel-control" href="#myCarousel" data-slide="prev">&rsaquo;</a>
+                    <a class="right carousel-control" href="#myCarousel" data-slide="next">&lsaquo;</a>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+</div>
+
+<div class='row-fluid'>
+
+    <div class='span4 box'>
+        <div class='box-header'>
+            <div class='title' style="float:right">
+                <i class='icon-group'></i>
+                بازیهای پیش رو
+            </div>
+
+        </div>
+
+        @*@foreach (footballcup.Models.MatchView item in myNextMatchList)*@
+        @{
+            for (int i = 0; i < 4; i++)
+            {
+                footballcup.Models.PredictionView item;
+                string strCon1 = "", strCon2 = "", strTeam1PName = "", strTeam2PName = "", strJalali = "", strMatchTime = "", strCompetitorId = ""
+                    , strMatchId = "", strPredictId = "", strMatchState = "";
+                int? nTeam1Guess = null, nTeam2Guess = null;
+
+                try
+                {
+                    item = myNextMatchList[i];
+                    strCon1 = "flag-" + item.con1;
+                    strCon2 = "flag-" + item.con2;
+                    strTeam1PName = item.Team1PName;
+                    strTeam2PName = item.Team2PName;
+                    strMatchTime = item.MatchTime.ToString("yyyy/MM/dd HH:mm");
+
+
+                    strPredictId = item.PredictId.ToString();
+                    strMatchId = item.MatchId.ToString();
+                    strCompetitorId = item.CompetitorId.ToString();
+
+                    nTeam1Guess = item.Team1Guess;
+                    nTeam2Guess = item.Team2Guess;
+
+                    System.Globalization.PersianCalendar myCalendar = new System.Globalization.PersianCalendar();
+                    strJalali = myCalendar.GetYear(item.MatchTime).ToString() + "/" + myCalendar.GetMonth(item.MatchTime).ToString() + "/" + myCalendar.GetDayOfMonth(item.MatchTime).ToString() + " " + item.MatchTime.ToShortTimeString();
+
+
+                    if (item.MatchState == 2)
+                    {
+                        strJalali = "در حال بازی...";
+                    }
+
+                    strMatchState = item.MatchState.ToString();
+                }
+                catch
+                {
+                    item = null;
+                    strCon1 = "";
+                    strCon2 = "";
+                    strTeam1PName = "";
+                    strTeam2PName = "";
+                    strMatchTime = "";
+                    strJalali = "";
+
+                    strPredictId = "";
+                    strMatchId = "";
+                    strCompetitorId = "";
+
+                }
+
+
+                <div class=' box box-content box-statistic box-nomargin box-collapsed' style="height:200px">
+                    <div class='box-header'>
+                        <div class='actions'>
+
+                            <a href="#" class="btn box-collapse btn-mini btn-link">
+                                <i></i>
+                            </a>
+                        </div>
+                        <div class='title' style="font-size:14px">
+
+                            <small class='muted'>
+                                @if (strMatchState == "2")
+                                {
+                                    <span class='timeago fade has-tooltip' data-placement='top'>@strJalali</span>
+                                }
+                                else
+                                {
+                                    <span class='timeago fade has-tooltip' data-placement='top' title='@strMatchTime'>@strJalali</span>
+                                }
+                                <i class='icon-time'></i>
+                            </small>
+                        </div>
+                        <br />
+                        <div class='title' style="font-size:14px">
+                            <i class='flag @strCon1'></i>
+                            <text class='text-primary'>@strTeam1PName</text>
+                            -
+                            <i class='flag @strCon2'></i>
+                            <text class='text-primary'>@strTeam2PName</text>
+                        </div>
+
+
+                    </div>
+
+                    <div class='box-content' style="height:100px">
+
+                        <div class='scrollable' data-scrollable-height='150' data-scrollable-start=''>
+                            <label class='control-label'>
+                                حدس گل زده @strTeam1PName  <i class='flag @strCon1'></i>
+                                @Html.DropDownList("cboTeam1Guess" + i, new SelectList(new List<int> { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 }, "", "", nTeam1Guess), "", htmlAttributes: new { @class = "  ", @id = "cboTeam1Guess" + i, @style = "width:50px; right=10px", @data_placeholder = "تعداد گل تیم اول را انتخاب کنید" })
+
+                            </label>
+                            <label class='control-label'>
+                                حدس گل زده @strTeam2PName <i class='flag @strCon2'></i>
+
+
+                                @Html.DropDownList("cboTeam2Guess" + i, new SelectList(new List<int> { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 }, "", "", nTeam2Guess), "", htmlAttributes: new { @class = " input-block-level span12", @id = "cboTeam2Guess" + i, @style = "width:50px", @data_placeholder = "تعداد گل تیم دوم را انتخاب کنید" })
+
+                                <button class='btn btn-success btn-mini' id="btnUpdate" type="button"
+                                        onclick="predictmatch(@i,'@strPredictId','@strMatchId', '@struserid','@strMatchTime')">
+                                    <i class='icon-ok'></i>
+                                </button>
+                            </label>
+                        </div>
+
+
+                    </div>
+                </div>
+
+
+            }
+
+        }
+
+        <div class='box-content box-statistic'>
+
+            <button class="btn btn-primary" name="button" style="margin-bottom:5px;" type="button" onclick="location.href = '@Url.Content("~/game/Prediction")'">
+
+                همه پیشبینیها
+                <i class='icon-smile'></i>
+            </button>
+
+        </div>
+
+    </div>
+
+    <div class='span4 box'>
+        <div class='box-header'>
+            <div class='title' style="float:right">
+                <div class='icon-inbox'></div>
+                نتایج
+            </div>
+
+        </div>
+
+        @*<div class='row-fluid timeline'>
+                <div class='icon purple-background'>
+                <i class='icon-plane'></i>
+            </div>
+            <div class='title'>
+                Vacation
+                <small class='muted'>1 minute ago</small>
+            </div>*@
+
+
+        @{
+
+            for (int i = 0; i < 4; i++)
+            {
+                footballcup.Models.MatchView item;
+                string strCon1 = "", strCon2 = "", strTeam1PName = "", strTeam2PName = "", strTeam1Score = "", strTeam2Score = "";
+
+                try
+                {
+                    item = myEndedMatchList[i];
+                    strCon1 = "flag-" + item.con1;
+                    strCon2 = "flag-" + item.con2;
+                    strTeam1PName = item.Team1PName;
+                    strTeam2PName = item.Team2PName;
+                    strTeam1Score = item.Team1Score.ToString();
+                    strTeam2Score = item.Team2Score.ToString();
+
+                }
+                catch
+                {
+                    item = null;
+
+                }
+
+                <div class='row-fluid box-content box-statistic' style="height:100px; ">
+                    <div class='span4'>
+                        <h3 class='title'>
+                            <i class='flag @strCon1'></i>
+                            @strTeam1PName
+                            <text class="text-brown">@strTeam1Score</text>
+                        </h3>
+                        <small class='muted'>-</small>
+
+                    </div>
+
+                    <div class='span4'>
+                        <h3 class='title'>
+                            <i class='flag @strCon2'></i>
+                            @strTeam2PName
+                            <text class="text-brown">@strTeam2Score</text>
+                        </h3>
+                        <small class='muted'>-</small>
+
+                    </div>
+
+                </div>
+            }
+        }
+
+        <div class='box-content box-statistic'>
+            <button class="btn btn-primary" name="button" style="margin-bottom:5px" type="button" onclick="location.href = '@Url.Content("~/game/PredictionTable")'">
+
+                همه نتایج ...
+                <i class='icon-smile'></i>
+            </button>
+        </div>
+
+    </div>
+
+
+
+    <div class='span4 box'>
+        <div class='box-header'>
+            <div class='title'>
+                <i class='icon-comments'></i>
+                نفرات برتر
+            </div>
+
+        </div>
+        <div class='row-fluid'>
+
+            <div class=''>
+
+                @{
+
+                    for (int i = 0; i < 4; i++)
+                    {
+                        footballcup.Models.CompetitorView item;
+                        string strCompetitorName = "";
+                        int total = 0;
+                        var imgsrc = "";
+
+                        try
+                        {
+                            item = myTopCompetitorList[i];
+                            strCompetitorName = item.CompetitorName;
+
+
+                            total = item.InitialPoint + item.SpecialPoint + item.TotalPredictionsPoint;
+                            string s = "";
+                            if (item.ThumbnailPhoto != null)
+                            {
+                                s = Convert.ToBase64String(item.ThumbnailPhoto);
+                            }
+
+                            imgsrc = string.Format("data:image/jpeg;base64,{0}", s);
+
+                        }
+                        catch
+                        {
+                            item = null;
+                            strCompetitorName = "";
+
+                        }
+
+
+                        <div class='box-content box-statistic' style="height:100px">
+                            <h3 class='title text-error'>@strCompetitorName</h3>
+                            <small>@total</small>
+                            <div class='text-success icon-2x align-left'>
+                                <img alt='-' height='48' src=@imgsrc />
+                            </div>
+                        </div>
+
+                    }
+
+                }
+
+                <div class='box-content box-statistic'>
+                    <button class="btn btn-primary" name="button" style="margin-bottom:5px" type="button" onclick="location.href = '@Url.Content("~/Report")'+'/ReportMaster?reportname=rptParticipant'">
+                        همه امتیازات...
+                        <i class='icon-smile'></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class='row-fluid'>
+    <div class='span6'>
+        <div class='group-header'>
+            <div class='row-fluid'>
+                <div class='span6'>
+                    <div class='text-center'>
+                        <h2>آخرین اخبار و اطلاعات</h2>
+                        <small class='muted'>آخرین و بروزترین اخبار و اطلاعات بازیها</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class='row-fluid'>
+            <div class='span12 box box-nomargin'>
+                <div class='box-header green-background'>
+                    <div class='title'>
+                        <div class='icon-tasks'></div>
+                        اخبار
+                    </div>
+                    <div class='actions'>
+                        <a href="#" class="btn box-remove btn-mini btn-link">
+                            <i class='icon-remove'></i>
+                        </a>
+                        <a href="#" class="btn box-collapse btn-mini btn-link">
+                            <i></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class='box-content'>
+
+                    <div class='scrollable' data-scrollable-height='300' data-scrollable-start=''>
+                        <ul class='unstyled list-hover list-striped'>
+                            @*@foreach (footballcup.Models.Cms item in myGalleryList.OrderByDescending(m => m.PublishDate))*@
+                            @foreach (footballcup.Models.CmsView item in myNewsList)
+                            {
+                                System.Globalization.PersianCalendar myCalendar = new System.Globalization.PersianCalendar();
+                                string strJalali = myCalendar.GetYear(@item.PublishDate).ToString() + "/" + myCalendar.GetMonth(@item.PublishDate).ToString() + "/" + myCalendar.GetDayOfMonth(@item.PublishDate).ToString() + " " + @item.PublishDate.ToShortTimeString();
+                                string strPublishDate = @item.PublishDate.ToString("yyyy/MM/dd HH:mm");
+
+                                <li class='message'>
+                                    <div class='avatar'>
+                                        <img src="~/assets/images/Gallery/@item.PictureFile" alt="slide" title="" style="width:48px;height:48px" />
+                                    </div>
+                                    <div class='name-and-time'>
+                                        <div class='name pull-left'>
+                                            <small>
+                                                <a href="#" class="text-contrast">*</a>
+                                            </small>
+                                        </div>
+                                        <div class='time pull-right'>
+                                            <small class='date pull-right muted'>
+                                                @*<span class='timeago fade has-tooltip' data-placement='top' title='@item.PublishDate'>@strJalali</span>*@
+                                                <span class='timeago fade has-tooltip' data-placement='top' title='@strPublishDate'>@strJalali</span>
+
+                                                <i class='icon-time'></i>
+                                            </small>
+                                        </div>
+                                    </div>
+                                    <div class='body'>
+                                        <b>@item.Title</b>
+                                        <br />
+
+                                        @item.Body
+                                    </div>
+                                </li>
+                                <br />
+                            }
+
+                        </ul>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class='span6 '>
+        <div class='group-header' style="margin-left:0">
+            <div class='row-fluid'>
+                <div class='span6'>
+                    <div class='text-center'>
+                        <h2>تالار گفتگوها</h2>
+                        <small class='muted'>کل کل ها و کری خوانی اینجاست:</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class='chat row-fluid'>
+            <div class='box box-nomargin span12'>
+                <div class='box-header orange-background'>
+                    <div class='title'>
+                        <i class='icon-comments-alt'></i>
+                        تالار گفتگوها
+                    </div>
+                    <div class='actions'>
+                        <a href="#" class="btn box-remove btn-mini btn-link">
+                            <i class='icon-remove'></i>
+                        </a>
+                        <a href="#" class="btn box-collapse btn-mini btn-link">
+                            <i></i>
+                        </a>
+                    </div>
+                </div>
+                <div class='box-content box-no-padding'>
+                    <div class='scrollable' data-scrollable-height='300' data-scrollable-start='bottom' id="chatroom1">
+                        <ul class='unstyled list-hover list-striped' id="chatroom">
+                            @foreach (footballcup.Models.CmsView item in myChatList)
+                            {
+                                System.Globalization.PersianCalendar myCalendar = new System.Globalization.PersianCalendar();
+                                string strJalali = myCalendar.GetYear(@item.PublishDate).ToString() + "/" + myCalendar.GetMonth(@item.PublishDate).ToString() + "/" + myCalendar.GetDayOfMonth(@item.PublishDate).ToString() + " " + @item.PublishDate.ToShortTimeString();
+                                string strPublishDate = @item.PublishDate.ToString("yyyy/MM/dd HH:mm");
+
+                                string s = "";
+                                if (item.AuthorThumbnail != null) s = Convert.ToBase64String(item.AuthorThumbnail);
+                                var imgsrc = string.Format("data:image/jpeg;base64,{0}", s);
+
+                                <li class='message'>
+                                    <div class='avatar'>
+                                        <img alt='Avatar' height='23' src='@imgsrc' width='23' />
+                                    </div>
+                                    <div class='name-and-time'>
+                                        <div class='name pull-left'>
+                                            <small>
+                                                <a href="#" class="text-contrast">@item.AuthorDs</a>
+                                            </small>
+                                        </div>
+                                        <div class='time pull-right'>
+                                            <small class='date pull-right muted'>
+                                                <span class='timeago fade has-tooltip' data-placement='top' title='@strPublishDate'>@item.PublishDate</span>
+                                                <i class='icon-time'></i>
+                                            </small>
+                                        </div>
+                                    </div>
+                                    <div class='body'>
+                                        @item.Body
+                                    </div>
+                                </li>
+                            }
+
+
+                        </ul>
+                    </div>
+
+                    @*<form accept-charset="utf-8" action="/home/sendmessage" class="new-message" method="post">*@
+                    <form accept-charset="UTF-8" action="#" class="new-message" method="post">
+                        @*<div style="margin:0;padding:0;display:inline">
+                                <input name="utf8" type="hidden" value="&#x2713;" />
+                                <input name="authenticity_token" type="hidden" value="CFC7d00LWKQsSahRqsfD+e/mHLqbaVIXBvlBGe/KP+I=" />
+                            </div>*@
+                        <input class='span12' id='message_body' name='message[body]' placeholder='پیامتو بنویس...' type='text' />
+                        @*<textarea class="span12" rows="1" cols="40" id="message_body" placeholder="پیامتو بنویس..."></textarea>*@
+                        <button class='btn btn-success' type='button' id="btnSendMessage" style=@sendbuttonstyle>
+                            <i class='icon-plus'></i>
+                        </button>
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+</div>
+
+
+
+<style>
+
+    .carousel-control {
+        position: absolute;
+        top: 40%;
+        left: 15px;
+        width: 40px;
+        height: 40px;
+        margin-top: -20px;
+        font-size: 60px;
+        font-weight: 100;
+        line-height: 30px;
+        color: #fff;
+        text-align: center;
+        /* background: #222; */
+        border: 3px solid #fff;
+        -webkit-border-radius: 23px;
+        -moz-border-radius: 23px;
+        border-radius: 23px;
+        opacity: -1.8;
+        filter: alpha(opacity=50);
+    }
+</style>
+
+@*<script src='~/Scripts/jquery-1.10.2.min.js'></script>*@
+
+
+<script src='~/Scripts/nav.js' type='text/javascript'></script>
+<script src='~/Scripts/theme.js' type='text/javascript'></script>
+
+
+<script src="~/Scripts/jquery/jquery.min.js"></script>
+<script src='~/Scripts/jquery_ui/jquery-ui.min.js' type='text/javascript'></script>
+
+<script src="~/Scripts/jquery.signalR-2.1.2.js"></script>
+<script src="~/signalr/hubs"></script>
+
+<script>
+
+    $(document).ready(function () {
+
+        // test2();
+        $('.carousel').carousel();
+        $("[rel=tooltip]").tooltip();
+
+
+    });
+
+</script>
+
+
+<script>
+    $(".box .box-remove").click(function (e) {
+        $(this).parents(".box").first().remove();
+        return e.preventDefault();
+    });
+    $(".box .box-collapse").click(function (e) {
+        var box;
+
+        box = $(this).parents(".box").first();
+        box.toggleClass("box-collapsed");
+        return e.preventDefault();
+    });
+</script>
+
+
+
+<script>
+
+    //  $('#displayname').val(prompt('Your Good Name Please:', ''));
+
+    var mychathub = $.connection.chatHub;
+
+    var chat, date, li, message, months, reply, scrollable, sender, timeago;
+
+
+
+    mychathub.client.message = function (from, to, message, displayname, pubishdate, imagesrc, ismessage) {
+        if (ismessage == false) {
+            //alert(ismessage);
+            //  message = $("#  ").val();
+            /*
+            date = new Date();
+            months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+            chat = $(this).parents(".chat");
+
+            li = chat.find("li.message").first().clone();
+            li.find(".body").text(message);
+            timeago = li.find(".timeago");
+            timeago.removeClass("in");
+            timeago.attr("title", "" + (date.getFullYear()) + "-" + (date.getDate()) + "-" + (date.getMonth() + 1) + " " + (date.getHours()) + ":" + (date.getMinutes()) + ":" + (date.getSeconds()) + " +0200");
+            timeago.text("" + months[date.getMonth()] + " " + (date.getDate()) + ", " + (date.getFullYear()) + " " + (date.getHours()) + ":" + (date.getMinutes()));
+            */
+
+
+            // setTimeAgo(timeago);
+            //  alert(timeago);
+
+            var inner = '<li class="message">' +
+                '<div class="avatar"><img alt="Avatar" height="23" src="' + imagesrc + '" width="23" /></div>'
+                + ' <div class="name-and-time">'
+                + ' <div class="name pull-left"><small><a href="#" class="text-contrast">' + displayname + '</a></small></div>'
+                + ' <div class="time pull-right"> <small class="date pull-right muted"><span class="timeago fade has-tooltip in" data-placement="top" title="' + pubishdate + '">"' + pubishdate + '" </span><i class="icon-time"></i></small></div>'
+                + '</div>'
+                + '<div class="body">' + message + ' </div> </li>';
+
+
+            //<span class="timeago fade has-tooltip in" data-placement="top" title="" data-original-title="2018/08/26 03:03:39 ب.ظ">about 22 hours ago</span>
+
+
+            $('#chatroom').append(inner);
+
+            $('#message_body').val('').focus();
+
+            scrollable = $("#chatroom1")
+            $(scrollable).slimScroll({
+                scrollTo: scrollable.prop('scrollHeight') + "px"
+            });
+            li.effect("highlight", {}, 500);
+
+        }
+
+
+    };
+
+
+    mychathub.client.user = function (msg) {
+
+       // alert(20);
+    };
+
+
+    $.connection.hub.start(function () {
+    });
+
+    $('#btnSendMessage').click(function () {
+       // alert(@struserid);
+        //alert("@username");
+        mychathub.server.send("@struserid", "", $('#message_body').val(), "@username", "", "@imagesrc1", false);
+
+    });
+
+</script>
+
+<script>
+    function predictmatch(rowno, predictid, matchid, competitorid, matchtime) {
+        //alert(rowno);
+        //alert(predictid);
+        //alert(matchid);
+        //alert(competitorid);
+        //alert(matchtime);
+        //alert($("#cboTeam1Guess" + rowno).val());
+        //alert($("#cboTeam2Guess" + rowno).val());
+
+        var mt = new Date(matchtime);
+
+        now = new Date();
+
+        ///اختلاف 1 ثانیه معادل 1000 است
+        ///حداکثر مدت مجاز 5 دقیقه قبل از آغاز بازی
+        if (mt - now < 300000) {
+            alert("تاریخ مجاز پیش‌بینی گذشته و یا بازی بسته شده است");
+        }
+
+
+        var url ='@Url.Content("~/game")'+ "/Prediction_Update?backurl=~/home/index&predictid=" + predictid + "&matchid=" + matchid + "&competitorid=" + competitorid + "&matchtime=" + matchtime + "&team1guess=" + $("#cboTeam1Guess" + rowno).val() + "&team2guess=" + $("#cboTeam2Guess" + rowno).val() + "&ShowPrediction=true";
+        window.location.replace(url);
+
+
+    }
+</script>
+

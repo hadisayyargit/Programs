@@ -1,0 +1,25 @@
+﻿{
+  "name": "مسابقه پیش‌بینی بازیها",
+  "short_name": "footballcup",
+  "description": "مسابقات",
+  "orientation": "portrait",
+    "display": "standalone",
+    "icons": [
+    {
+      "src": "/assets/images/cup/cup1.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/images/cup/cup1.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": "/",
+  "color": "#1e2f38",
+  "background_color": "#ffffff",
+  "theme_color": "#00a887"
+}
