@@ -1,0 +1,3090 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="4/24/2023 4:32:03 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="ORACLE-PYD"
+  DTS:CreatorName="MINOO\sayar.ha"
+  DTS:DTSID="{964DCBA0-3703-4083-BE8E-F7852403E277}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5035.3"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package_factInventory"
+  DTS:PackageType="5"
+  DTS:ProtectionLevel="2"
+  DTS:VersionBuild="297"
+  DTS:VersionGUID="{5C39C0C4-61C8-4947-8A00-3FC130EBE4F4}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{ADF40484-3BE6-49C6-AA9D-81C7D83B18C5}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="v_FinishDateString">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{C8B6EA72-FEB8-4B41-90CE-E6E6456BD9CD}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="v_FinishDateTime">
+      <DTS:VariableValue
+        DTS:DataType="7">6/26/2023 4:26:55 PM</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{9EB51D75-0A66-4079-A8AA-BC101237B6E8}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="v_MaxDateTime">
+      <DTS:VariableValue
+        DTS:DataType="7">6/26/2023 4:26:57 PM</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{FCE3B6D3-FBEC-47EC-9C29-113CCD2009C5}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="v_Rowcount">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{2CEEEBE0-A40F-4437-B073-FB1B71D7EA6F}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="v_StartDateString">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{0B325A54-5B37-4BD9-A461-5714303CFC9B}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="v_StartDateTime">
+      <DTS:VariableValue
+        DTS:DataType="7">6/26/2023 4:27:00 PM</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\ETL"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{F6BE3335-A8D8-4E91-A760-63D1168CB362}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="ETL">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\ETL\Extract Source to stage"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{05ECBCCE-8690-4903-988A-595928708E76}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Extract Source to stage"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\ETL\Extract Source to stage\Data Conversion"
+                  componentClassID="Microsoft.DataConvert"
+                  contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Data Conversion"
+                  name="Data Conversion"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\ETL\Extract Source to stage\Data Conversion.Inputs[Data Conversion Input]"
+                      name="Data Conversion Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\ETL\Extract Source to stage\Data Conversion.Inputs[Data Conversion Input].Columns[DocTypeID]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="4"
+                          cachedName="DocTypeID"
+                          lineageId="Package\ETL\Extract Source to stage\Source_pyd_Vw_KardexKala_olap.Outputs[OLE DB Source Output].Columns[DocTypeID]" />
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\ETL\Extract Source to stage\Data Conversion.Outputs[Data Conversion Output]"
+                      exclusionGroup="1"
+                      name="Data Conversion Output"
+                      synchronousInputId="Package\ETL\Extract Source to stage\Data Conversion.Inputs[Data Conversion Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\ETL\Extract Source to stage\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of DocTypeID]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="4"
+                          lineageId="Package\ETL\Extract Source to stage\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of DocTypeID]"
+                          name="Copy of DocTypeID"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\ETL\Extract Source to stage\Source_pyd_Vw_KardexKala_olap.Outputs[OLE DB Source Output].Columns[DocTypeID]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\ETL\Extract Source to stage\Data Conversion.Outputs[Data Conversion Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Data Conversion Error Output"
+                      synchronousInputId="Package\ETL\Extract Source to stage\Data Conversion.Inputs[Data Conversion Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\ETL\Extract Source to stage\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\ETL\Extract Source to stage\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\ETL\Extract Source to stage\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\ETL\Extract Source to stage\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\ETL\Extract Source to stage\Source_pyd_Vw_KardexKala_olap"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="Source_pyd_Vw_KardexKala_olap"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT  [RetailStoreId]
+      ,[StockID]
+      ,[ItemID]
+      ,[DocTypeID]	 
+      ,[DocType]	
+      ,[DocDate]
+      ,isnull([Qty],0) as QTY
+      ,isnull([Cost],0) as Cost
+FROM [pyd_Vw_KardexKala_olap]
+Where cast([DocTime] as date) between ? and ?
+and   isnull([Qty],0)&lt;&gt;0</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping">"Parameter0:Input",{2CEEEBE0-A40F-4437-B073-FB1B71D7EA6F};"Parameter1:Input",{ADF40484-3BE6-49C6-AA9D-81C7D83B18C5};</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\ETL\Extract Source to stage\Source_pyd_Vw_KardexKala_olap.Connections[OleDbConnection]"
+                      connectionManagerID="{5A0025D8-6814-4A00-BF15-A7E11211310C}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[COAPP.CMSDB.sa]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\ETL\Extract Source to stage\Source_pyd_Vw_KardexKala_olap.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\ETL\Extract Source to stage\Source_pyd_Vw_KardexKala_olap.Outputs[OLE DB Source Output].Columns[RetailStoreId]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ETL\Extract Source to stage\Source_pyd_Vw_KardexKala_olap.Outputs[OLE DB Source Output].ExternalColumns[RetailStoreId]"
+                          lineageId="Package\ETL\Extract Source to stage\Source_pyd_Vw_KardexKala_olap.Outputs[OLE DB Source Output].Columns[RetailStoreId]"
+                          name="RetailStoreId"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ETL\Extract Source to stage\Source_pyd_Vw_KardexKala_olap.Outputs[OLE DB Source Output].Columns[StockID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ETL\Extract Source to stage\Source_pyd_Vw_KardexKala_olap.Outputs[OLE DB Source Output].ExternalColumns[StockID]"
+                          lineageId="Package\ETL\Extract Source to stage\Source_pyd_Vw_KardexKala_olap.Outputs[OLE DB Source Output].Columns[StockID]"
+                          name="StockID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ETL\Extract Source to stage\Source_pyd_Vw_KardexKala_olap.Outputs[OLE DB Source Output].Columns[ItemID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ETL\Extract Source to stage\Source_pyd_Vw_KardexKala_olap.Outputs[OLE DB Source Output].ExternalColumns[ItemID]"
+                          lineageId="Package\ETL\Extract Source to stage\Source_pyd_Vw_KardexKala_olap.Outputs[OLE DB Source Output].Columns[ItemID]"
+                          name="ItemID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ETL\Extract Source to stage\Source_pyd_Vw_KardexKala_olap.Outputs[OLE DB Source Output].Columns[DocTypeID]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ETL\Extract Source to stage\Source_pyd_Vw_KardexKala_olap.Outputs[OLE DB Source Output].ExternalColumns[DocTypeID]"
+                          length="4"
+                          lineageId="Package\ETL\Extract Source to stage\Source_pyd_Vw_KardexKala_olap.Outputs[OLE DB Source Output].Columns[DocTypeID]"
+                          name="DocTypeID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ETL\Extract Source to stage\Source_pyd_Vw_KardexKala_olap.Outputs[OLE DB Source Output].Columns[DocType]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ETL\Extract Source to stage\Source_pyd_Vw_KardexKala_olap.Outputs[OLE DB Source Output].ExternalColumns[DocType]"
+                          length="22"
+                          lineageId="Package\ETL\Extract Source to stage\Source_pyd_Vw_KardexKala_olap.Outputs[OLE DB Source Output].Columns[DocType]"
+                          name="DocType"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ETL\Extract Source to stage\Source_pyd_Vw_KardexKala_olap.Outputs[OLE DB Source Output].Columns[DocDate]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ETL\Extract Source to stage\Source_pyd_Vw_KardexKala_olap.Outputs[OLE DB Source Output].ExternalColumns[DocDate]"
+                          length="10"
+                          lineageId="Package\ETL\Extract Source to stage\Source_pyd_Vw_KardexKala_olap.Outputs[OLE DB Source Output].Columns[DocDate]"
+                          name="DocDate"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ETL\Extract Source to stage\Source_pyd_Vw_KardexKala_olap.Outputs[OLE DB Source Output].Columns[Cost]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ETL\Extract Source to stage\Source_pyd_Vw_KardexKala_olap.Outputs[OLE DB Source Output].ExternalColumns[Cost]"
+                          lineageId="Package\ETL\Extract Source to stage\Source_pyd_Vw_KardexKala_olap.Outputs[OLE DB Source Output].Columns[Cost]"
+                          name="Cost"
+                          precision="25"
+                          scale="3"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ETL\Extract Source to stage\Source_pyd_Vw_KardexKala_olap.Outputs[OLE DB Source Output].Columns[QTY]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ETL\Extract Source to stage\Source_pyd_Vw_KardexKala_olap.Outputs[OLE DB Source Output].ExternalColumns[QTY]"
+                          lineageId="Package\ETL\Extract Source to stage\Source_pyd_Vw_KardexKala_olap.Outputs[OLE DB Source Output].Columns[QTY]"
+                          name="QTY"
+                          precision="11"
+                          scale="4"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\ETL\Extract Source to stage\Source_pyd_Vw_KardexKala_olap.Outputs[OLE DB Source Output].ExternalColumns[RetailStoreId]"
+                          dataType="i4"
+                          name="RetailStoreId" />
+                        <externalMetadataColumn
+                          refId="Package\ETL\Extract Source to stage\Source_pyd_Vw_KardexKala_olap.Outputs[OLE DB Source Output].ExternalColumns[StockID]"
+                          dataType="i4"
+                          name="StockID" />
+                        <externalMetadataColumn
+                          refId="Package\ETL\Extract Source to stage\Source_pyd_Vw_KardexKala_olap.Outputs[OLE DB Source Output].ExternalColumns[ItemID]"
+                          dataType="i4"
+                          name="ItemID" />
+                        <externalMetadataColumn
+                          refId="Package\ETL\Extract Source to stage\Source_pyd_Vw_KardexKala_olap.Outputs[OLE DB Source Output].ExternalColumns[DocTypeID]"
+                          codePage="1252"
+                          dataType="str"
+                          length="4"
+                          name="DocTypeID" />
+                        <externalMetadataColumn
+                          refId="Package\ETL\Extract Source to stage\Source_pyd_Vw_KardexKala_olap.Outputs[OLE DB Source Output].ExternalColumns[DocType]"
+                          dataType="wstr"
+                          length="22"
+                          name="DocType" />
+                        <externalMetadataColumn
+                          refId="Package\ETL\Extract Source to stage\Source_pyd_Vw_KardexKala_olap.Outputs[OLE DB Source Output].ExternalColumns[DocDate]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          name="DocDate" />
+                        <externalMetadataColumn
+                          refId="Package\ETL\Extract Source to stage\Source_pyd_Vw_KardexKala_olap.Outputs[OLE DB Source Output].ExternalColumns[Cost]"
+                          dataType="numeric"
+                          name="Cost"
+                          precision="25"
+                          scale="3" />
+                        <externalMetadataColumn
+                          refId="Package\ETL\Extract Source to stage\Source_pyd_Vw_KardexKala_olap.Outputs[OLE DB Source Output].ExternalColumns[QTY]"
+                          dataType="numeric"
+                          name="QTY"
+                          precision="11"
+                          scale="4" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\ETL\Extract Source to stage\Source_pyd_Vw_KardexKala_olap.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\ETL\Extract Source to stage\Source_pyd_Vw_KardexKala_olap.Outputs[OLE DB Source Error Output].Columns[RetailStoreId]"
+                          dataType="i4"
+                          lineageId="Package\ETL\Extract Source to stage\Source_pyd_Vw_KardexKala_olap.Outputs[OLE DB Source Error Output].Columns[RetailStoreId]"
+                          name="RetailStoreId" />
+                        <outputColumn
+                          refId="Package\ETL\Extract Source to stage\Source_pyd_Vw_KardexKala_olap.Outputs[OLE DB Source Error Output].Columns[StockID]"
+                          dataType="i4"
+                          lineageId="Package\ETL\Extract Source to stage\Source_pyd_Vw_KardexKala_olap.Outputs[OLE DB Source Error Output].Columns[StockID]"
+                          name="StockID" />
+                        <outputColumn
+                          refId="Package\ETL\Extract Source to stage\Source_pyd_Vw_KardexKala_olap.Outputs[OLE DB Source Error Output].Columns[ItemID]"
+                          dataType="i4"
+                          lineageId="Package\ETL\Extract Source to stage\Source_pyd_Vw_KardexKala_olap.Outputs[OLE DB Source Error Output].Columns[ItemID]"
+                          name="ItemID" />
+                        <outputColumn
+                          refId="Package\ETL\Extract Source to stage\Source_pyd_Vw_KardexKala_olap.Outputs[OLE DB Source Error Output].Columns[DocTypeID]"
+                          codePage="1252"
+                          dataType="str"
+                          length="4"
+                          lineageId="Package\ETL\Extract Source to stage\Source_pyd_Vw_KardexKala_olap.Outputs[OLE DB Source Error Output].Columns[DocTypeID]"
+                          name="DocTypeID" />
+                        <outputColumn
+                          refId="Package\ETL\Extract Source to stage\Source_pyd_Vw_KardexKala_olap.Outputs[OLE DB Source Error Output].Columns[DocType]"
+                          dataType="wstr"
+                          length="22"
+                          lineageId="Package\ETL\Extract Source to stage\Source_pyd_Vw_KardexKala_olap.Outputs[OLE DB Source Error Output].Columns[DocType]"
+                          name="DocType" />
+                        <outputColumn
+                          refId="Package\ETL\Extract Source to stage\Source_pyd_Vw_KardexKala_olap.Outputs[OLE DB Source Error Output].Columns[DocDate]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          lineageId="Package\ETL\Extract Source to stage\Source_pyd_Vw_KardexKala_olap.Outputs[OLE DB Source Error Output].Columns[DocDate]"
+                          name="DocDate" />
+                        <outputColumn
+                          refId="Package\ETL\Extract Source to stage\Source_pyd_Vw_KardexKala_olap.Outputs[OLE DB Source Error Output].Columns[QTY]"
+                          dataType="numeric"
+                          lineageId="Package\ETL\Extract Source to stage\Source_pyd_Vw_KardexKala_olap.Outputs[OLE DB Source Error Output].Columns[QTY]"
+                          name="QTY"
+                          precision="11"
+                          scale="4" />
+                        <outputColumn
+                          refId="Package\ETL\Extract Source to stage\Source_pyd_Vw_KardexKala_olap.Outputs[OLE DB Source Error Output].Columns[Cost]"
+                          dataType="numeric"
+                          lineageId="Package\ETL\Extract Source to stage\Source_pyd_Vw_KardexKala_olap.Outputs[OLE DB Source Error Output].Columns[Cost]"
+                          name="Cost"
+                          precision="25"
+                          scale="3" />
+                        <outputColumn
+                          refId="Package\ETL\Extract Source to stage\Source_pyd_Vw_KardexKala_olap.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\ETL\Extract Source to stage\Source_pyd_Vw_KardexKala_olap.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\ETL\Extract Source to stage\Source_pyd_Vw_KardexKala_olap.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\ETL\Extract Source to stage\Source_pyd_Vw_KardexKala_olap.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\ETL\Extract Source to stage\stageFactInventory_Extract"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="stageFactInventory_Extract"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[stageFactInventory_Extract]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1256</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\ETL\Extract Source to stage\stageFactInventory_Extract.Connections[OleDbConnection]"
+                      connectionManagerID="{C00465DE-0A1C-49BD-946D-68D1B0AC5346}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[PYD-OLAP_mssql2019.PAYVANDDW]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\ETL\Extract Source to stage\stageFactInventory_Extract.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\ETL\Extract Source to stage\stageFactInventory_Extract.Inputs[OLE DB Destination Input].Columns[DocType]"
+                          cachedDataType="wstr"
+                          cachedLength="22"
+                          cachedName="DocType"
+                          externalMetadataColumnId="Package\ETL\Extract Source to stage\stageFactInventory_Extract.Inputs[OLE DB Destination Input].ExternalColumns[DocType]"
+                          lineageId="Package\ETL\Extract Source to stage\Source_pyd_Vw_KardexKala_olap.Outputs[OLE DB Source Output].Columns[DocType]" />
+                        <inputColumn
+                          refId="Package\ETL\Extract Source to stage\stageFactInventory_Extract.Inputs[OLE DB Destination Input].Columns[StockID]"
+                          cachedDataType="i4"
+                          cachedName="StockID"
+                          externalMetadataColumnId="Package\ETL\Extract Source to stage\stageFactInventory_Extract.Inputs[OLE DB Destination Input].ExternalColumns[StockId]"
+                          lineageId="Package\ETL\Extract Source to stage\Source_pyd_Vw_KardexKala_olap.Outputs[OLE DB Source Output].Columns[StockID]" />
+                        <inputColumn
+                          refId="Package\ETL\Extract Source to stage\stageFactInventory_Extract.Inputs[OLE DB Destination Input].Columns[RetailStoreId]"
+                          cachedDataType="i4"
+                          cachedName="RetailStoreId"
+                          externalMetadataColumnId="Package\ETL\Extract Source to stage\stageFactInventory_Extract.Inputs[OLE DB Destination Input].ExternalColumns[RetailStoreId]"
+                          lineageId="Package\ETL\Extract Source to stage\Source_pyd_Vw_KardexKala_olap.Outputs[OLE DB Source Output].Columns[RetailStoreId]" />
+                        <inputColumn
+                          refId="Package\ETL\Extract Source to stage\stageFactInventory_Extract.Inputs[OLE DB Destination Input].Columns[ItemID]"
+                          cachedDataType="i4"
+                          cachedName="ItemID"
+                          externalMetadataColumnId="Package\ETL\Extract Source to stage\stageFactInventory_Extract.Inputs[OLE DB Destination Input].ExternalColumns[ItemId]"
+                          lineageId="Package\ETL\Extract Source to stage\Source_pyd_Vw_KardexKala_olap.Outputs[OLE DB Source Output].Columns[ItemID]" />
+                        <inputColumn
+                          refId="Package\ETL\Extract Source to stage\stageFactInventory_Extract.Inputs[OLE DB Destination Input].Columns[Cost]"
+                          cachedDataType="numeric"
+                          cachedName="Cost"
+                          cachedPrecision="25"
+                          cachedScale="3"
+                          externalMetadataColumnId="Package\ETL\Extract Source to stage\stageFactInventory_Extract.Inputs[OLE DB Destination Input].ExternalColumns[Cost]"
+                          lineageId="Package\ETL\Extract Source to stage\Source_pyd_Vw_KardexKala_olap.Outputs[OLE DB Source Output].Columns[Cost]" />
+                        <inputColumn
+                          refId="Package\ETL\Extract Source to stage\stageFactInventory_Extract.Inputs[OLE DB Destination Input].Columns[QTY]"
+                          cachedDataType="numeric"
+                          cachedName="QTY"
+                          cachedPrecision="11"
+                          cachedScale="4"
+                          externalMetadataColumnId="Package\ETL\Extract Source to stage\stageFactInventory_Extract.Inputs[OLE DB Destination Input].ExternalColumns[QTY]"
+                          lineageId="Package\ETL\Extract Source to stage\Source_pyd_Vw_KardexKala_olap.Outputs[OLE DB Source Output].Columns[QTY]" />
+                        <inputColumn
+                          refId="Package\ETL\Extract Source to stage\stageFactInventory_Extract.Inputs[OLE DB Destination Input].Columns[DocDate]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="10"
+                          cachedName="DocDate"
+                          externalMetadataColumnId="Package\ETL\Extract Source to stage\stageFactInventory_Extract.Inputs[OLE DB Destination Input].ExternalColumns[DocDate]"
+                          lineageId="Package\ETL\Extract Source to stage\Source_pyd_Vw_KardexKala_olap.Outputs[OLE DB Source Output].Columns[DocDate]" />
+                        <inputColumn
+                          refId="Package\ETL\Extract Source to stage\stageFactInventory_Extract.Inputs[OLE DB Destination Input].Columns[Copy of DocTypeID]"
+                          cachedDataType="wstr"
+                          cachedLength="4"
+                          cachedName="Copy of DocTypeID"
+                          externalMetadataColumnId="Package\ETL\Extract Source to stage\stageFactInventory_Extract.Inputs[OLE DB Destination Input].ExternalColumns[DocTypeId]"
+                          lineageId="Package\ETL\Extract Source to stage\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of DocTypeID]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\ETL\Extract Source to stage\stageFactInventory_Extract.Inputs[OLE DB Destination Input].ExternalColumns[DocTypeId]"
+                          dataType="wstr"
+                          length="4"
+                          name="DocTypeId" />
+                        <externalMetadataColumn
+                          refId="Package\ETL\Extract Source to stage\stageFactInventory_Extract.Inputs[OLE DB Destination Input].ExternalColumns[DocType]"
+                          dataType="wstr"
+                          length="30"
+                          name="DocType" />
+                        <externalMetadataColumn
+                          refId="Package\ETL\Extract Source to stage\stageFactInventory_Extract.Inputs[OLE DB Destination Input].ExternalColumns[StockId]"
+                          dataType="i4"
+                          name="StockId" />
+                        <externalMetadataColumn
+                          refId="Package\ETL\Extract Source to stage\stageFactInventory_Extract.Inputs[OLE DB Destination Input].ExternalColumns[RetailStoreId]"
+                          dataType="i4"
+                          name="RetailStoreId" />
+                        <externalMetadataColumn
+                          refId="Package\ETL\Extract Source to stage\stageFactInventory_Extract.Inputs[OLE DB Destination Input].ExternalColumns[ItemId]"
+                          dataType="i4"
+                          name="ItemId" />
+                        <externalMetadataColumn
+                          refId="Package\ETL\Extract Source to stage\stageFactInventory_Extract.Inputs[OLE DB Destination Input].ExternalColumns[Cost]"
+                          dataType="numeric"
+                          name="Cost"
+                          precision="18"
+                          scale="3" />
+                        <externalMetadataColumn
+                          refId="Package\ETL\Extract Source to stage\stageFactInventory_Extract.Inputs[OLE DB Destination Input].ExternalColumns[QTY]"
+                          dataType="numeric"
+                          name="QTY"
+                          precision="18"
+                          scale="3" />
+                        <externalMetadataColumn
+                          refId="Package\ETL\Extract Source to stage\stageFactInventory_Extract.Inputs[OLE DB Destination Input].ExternalColumns[RialiAmount]"
+                          dataType="numeric"
+                          name="RialiAmount"
+                          precision="18"
+                          scale="3" />
+                        <externalMetadataColumn
+                          refId="Package\ETL\Extract Source to stage\stageFactInventory_Extract.Inputs[OLE DB Destination Input].ExternalColumns[DocDate]"
+                          dataType="dbTimeStamp"
+                          name="DocDate" />
+                        <externalMetadataColumn
+                          refId="Package\ETL\Extract Source to stage\stageFactInventory_Extract.Inputs[OLE DB Destination Input].ExternalColumns[DocDateKey]"
+                          dataType="i4"
+                          name="DocDateKey" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\ETL\Extract Source to stage\stageFactInventory_Extract.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\ETL\Extract Source to stage\stageFactInventory_Extract.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\ETL\Extract Source to stage\stageFactInventory_Extract.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\ETL\Extract Source to stage\stageFactInventory_Extract.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\ETL\Extract Source to stage\stageFactInventory_Extract.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\ETL\Extract Source to stage\stageFactInventory_Extract.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\ETL\Extract Source to stage.Paths[Data Conversion Output]"
+                  endId="Package\ETL\Extract Source to stage\stageFactInventory_Extract.Inputs[OLE DB Destination Input]"
+                  name="Data Conversion Output"
+                  startId="Package\ETL\Extract Source to stage\Data Conversion.Outputs[Data Conversion Output]" />
+                <path
+                  refId="Package\ETL\Extract Source to stage.Paths[OLE DB Source Output]"
+                  endId="Package\ETL\Extract Source to stage\Data Conversion.Inputs[Data Conversion Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\ETL\Extract Source to stage\Source_pyd_Vw_KardexKala_olap.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\ETL\Load to factInventory"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{E8BEB28C-B8EA-4B6D-84A3-758278277851}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Load to factInventory"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\ETL\Load to factInventory\factInventory"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="factInventory"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[factInventory]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\ETL\Load to factInventory\factInventory.Connections[OleDbConnection]"
+                      connectionManagerID="{C00465DE-0A1C-49BD-946D-68D1B0AC5346}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[PYD-OLAP_mssql2019.PAYVANDDW]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\ETL\Load to factInventory\factInventory.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\ETL\Load to factInventory\factInventory.Inputs[OLE DB Destination Input].Columns[StockId]"
+                          cachedDataType="i4"
+                          cachedName="StockId"
+                          externalMetadataColumnId="Package\ETL\Load to factInventory\factInventory.Inputs[OLE DB Destination Input].ExternalColumns[StockId]"
+                          lineageId="Package\ETL\Load to factInventory\stageFactInventory_Transform.Outputs[OLE DB Source Output].Columns[StockId]" />
+                        <inputColumn
+                          refId="Package\ETL\Load to factInventory\factInventory.Inputs[OLE DB Destination Input].Columns[DocTypeId]"
+                          cachedDataType="wstr"
+                          cachedLength="4"
+                          cachedName="DocTypeId"
+                          externalMetadataColumnId="Package\ETL\Load to factInventory\factInventory.Inputs[OLE DB Destination Input].ExternalColumns[DocTypeId]"
+                          lineageId="Package\ETL\Load to factInventory\stageFactInventory_Transform.Outputs[OLE DB Source Output].Columns[DocTypeId]" />
+                        <inputColumn
+                          refId="Package\ETL\Load to factInventory\factInventory.Inputs[OLE DB Destination Input].Columns[DocType]"
+                          cachedDataType="wstr"
+                          cachedLength="30"
+                          cachedName="DocType"
+                          externalMetadataColumnId="Package\ETL\Load to factInventory\factInventory.Inputs[OLE DB Destination Input].ExternalColumns[DocType]"
+                          lineageId="Package\ETL\Load to factInventory\stageFactInventory_Transform.Outputs[OLE DB Source Output].Columns[DocType]" />
+                        <inputColumn
+                          refId="Package\ETL\Load to factInventory\factInventory.Inputs[OLE DB Destination Input].Columns[RetailStoreId]"
+                          cachedDataType="i4"
+                          cachedName="RetailStoreId"
+                          externalMetadataColumnId="Package\ETL\Load to factInventory\factInventory.Inputs[OLE DB Destination Input].ExternalColumns[StoreKey]"
+                          lineageId="Package\ETL\Load to factInventory\stageFactInventory_Transform.Outputs[OLE DB Source Output].Columns[RetailStoreId]" />
+                        <inputColumn
+                          refId="Package\ETL\Load to factInventory\factInventory.Inputs[OLE DB Destination Input].Columns[ItemId]"
+                          cachedDataType="i4"
+                          cachedName="ItemId"
+                          externalMetadataColumnId="Package\ETL\Load to factInventory\factInventory.Inputs[OLE DB Destination Input].ExternalColumns[ProductKey]"
+                          lineageId="Package\ETL\Load to factInventory\stageFactInventory_Transform.Outputs[OLE DB Source Output].Columns[ItemId]" />
+                        <inputColumn
+                          refId="Package\ETL\Load to factInventory\factInventory.Inputs[OLE DB Destination Input].Columns[QTY]"
+                          cachedDataType="numeric"
+                          cachedName="QTY"
+                          cachedPrecision="18"
+                          cachedScale="3"
+                          externalMetadataColumnId="Package\ETL\Load to factInventory\factInventory.Inputs[OLE DB Destination Input].ExternalColumns[ProductQuantity]"
+                          lineageId="Package\ETL\Load to factInventory\stageFactInventory_Transform.Outputs[OLE DB Source Output].Columns[QTY]" />
+                        <inputColumn
+                          refId="Package\ETL\Load to factInventory\factInventory.Inputs[OLE DB Destination Input].Columns[Cost]"
+                          cachedDataType="numeric"
+                          cachedName="Cost"
+                          cachedPrecision="18"
+                          cachedScale="3"
+                          externalMetadataColumnId="Package\ETL\Load to factInventory\factInventory.Inputs[OLE DB Destination Input].ExternalColumns[UnitCost]"
+                          lineageId="Package\ETL\Load to factInventory\stageFactInventory_Transform.Outputs[OLE DB Source Output].Columns[Cost]" />
+                        <inputColumn
+                          refId="Package\ETL\Load to factInventory\factInventory.Inputs[OLE DB Destination Input].Columns[DocDateKey]"
+                          cachedDataType="i4"
+                          cachedName="DocDateKey"
+                          externalMetadataColumnId="Package\ETL\Load to factInventory\factInventory.Inputs[OLE DB Destination Input].ExternalColumns[DocDateKey]"
+                          lineageId="Package\ETL\Load to factInventory\stageFactInventory_Transform.Outputs[OLE DB Source Output].Columns[DocDateKey]" />
+                        <inputColumn
+                          refId="Package\ETL\Load to factInventory\factInventory.Inputs[OLE DB Destination Input].Columns[RialiAmount]"
+                          cachedDataType="numeric"
+                          cachedName="RialiAmount"
+                          cachedPrecision="18"
+                          cachedScale="3"
+                          externalMetadataColumnId="Package\ETL\Load to factInventory\factInventory.Inputs[OLE DB Destination Input].ExternalColumns[RialiAmount]"
+                          lineageId="Package\ETL\Load to factInventory\stageFactInventory_Transform.Outputs[OLE DB Source Output].Columns[RialiAmount]" />
+                        <inputColumn
+                          refId="Package\ETL\Load to factInventory\factInventory.Inputs[OLE DB Destination Input].Columns[LastPurchaseAmount]"
+                          cachedDataType="numeric"
+                          cachedName="LastPurchaseAmount"
+                          cachedPrecision="18"
+                          cachedScale="3"
+                          externalMetadataColumnId="Package\ETL\Load to factInventory\factInventory.Inputs[OLE DB Destination Input].ExternalColumns[LastPurchaseAmount]"
+                          lineageId="Package\ETL\Load to factInventory\stageFactInventory_Transform.Outputs[OLE DB Source Output].Columns[LastPurchaseAmount]" />
+                        <inputColumn
+                          refId="Package\ETL\Load to factInventory\factInventory.Inputs[OLE DB Destination Input].Columns[LastSaleAmount]"
+                          cachedDataType="numeric"
+                          cachedName="LastSaleAmount"
+                          cachedPrecision="18"
+                          cachedScale="3"
+                          externalMetadataColumnId="Package\ETL\Load to factInventory\factInventory.Inputs[OLE DB Destination Input].ExternalColumns[LastSaleAmount]"
+                          lineageId="Package\ETL\Load to factInventory\stageFactInventory_Transform.Outputs[OLE DB Source Output].Columns[LastSaleAmount]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\ETL\Load to factInventory\factInventory.Inputs[OLE DB Destination Input].ExternalColumns[TransactionKey]"
+                          dataType="i8"
+                          name="TransactionKey" />
+                        <externalMetadataColumn
+                          refId="Package\ETL\Load to factInventory\factInventory.Inputs[OLE DB Destination Input].ExternalColumns[StoreKey]"
+                          dataType="i4"
+                          name="StoreKey" />
+                        <externalMetadataColumn
+                          refId="Package\ETL\Load to factInventory\factInventory.Inputs[OLE DB Destination Input].ExternalColumns[ProductKey]"
+                          dataType="i4"
+                          name="ProductKey" />
+                        <externalMetadataColumn
+                          refId="Package\ETL\Load to factInventory\factInventory.Inputs[OLE DB Destination Input].ExternalColumns[StockId]"
+                          dataType="i4"
+                          name="StockId" />
+                        <externalMetadataColumn
+                          refId="Package\ETL\Load to factInventory\factInventory.Inputs[OLE DB Destination Input].ExternalColumns[DocTypeId]"
+                          dataType="wstr"
+                          length="4"
+                          name="DocTypeId" />
+                        <externalMetadataColumn
+                          refId="Package\ETL\Load to factInventory\factInventory.Inputs[OLE DB Destination Input].ExternalColumns[DocType]"
+                          dataType="wstr"
+                          length="30"
+                          name="DocType" />
+                        <externalMetadataColumn
+                          refId="Package\ETL\Load to factInventory\factInventory.Inputs[OLE DB Destination Input].ExternalColumns[ProductQuantity]"
+                          dataType="numeric"
+                          name="ProductQuantity"
+                          precision="18"
+                          scale="3" />
+                        <externalMetadataColumn
+                          refId="Package\ETL\Load to factInventory\factInventory.Inputs[OLE DB Destination Input].ExternalColumns[UnitCost]"
+                          dataType="numeric"
+                          name="UnitCost"
+                          precision="18"
+                          scale="3" />
+                        <externalMetadataColumn
+                          refId="Package\ETL\Load to factInventory\factInventory.Inputs[OLE DB Destination Input].ExternalColumns[RialiAmount]"
+                          dataType="numeric"
+                          name="RialiAmount"
+                          precision="18"
+                          scale="3" />
+                        <externalMetadataColumn
+                          refId="Package\ETL\Load to factInventory\factInventory.Inputs[OLE DB Destination Input].ExternalColumns[DocDateKey]"
+                          dataType="i4"
+                          name="DocDateKey" />
+                        <externalMetadataColumn
+                          refId="Package\ETL\Load to factInventory\factInventory.Inputs[OLE DB Destination Input].ExternalColumns[StockQuantity]"
+                          dataType="numeric"
+                          name="StockQuantity"
+                          precision="18"
+                          scale="3" />
+                        <externalMetadataColumn
+                          refId="Package\ETL\Load to factInventory\factInventory.Inputs[OLE DB Destination Input].ExternalColumns[LastPurchaseAmount]"
+                          dataType="numeric"
+                          name="LastPurchaseAmount"
+                          precision="18"
+                          scale="3" />
+                        <externalMetadataColumn
+                          refId="Package\ETL\Load to factInventory\factInventory.Inputs[OLE DB Destination Input].ExternalColumns[LastSaleAmount]"
+                          dataType="numeric"
+                          name="LastSaleAmount"
+                          precision="18"
+                          scale="3" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\ETL\Load to factInventory\factInventory.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\ETL\Load to factInventory\factInventory.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\ETL\Load to factInventory\factInventory.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\ETL\Load to factInventory\factInventory.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\ETL\Load to factInventory\factInventory.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\ETL\Load to factInventory\factInventory.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\ETL\Load to factInventory\stageFactInventory_Transform"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="stageFactInventory_Transform"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[stageFactInventory_Transform]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select *,cast(TransactionTime as date) as transactionDate from 
+stageFactInventory</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1256</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\ETL\Load to factInventory\stageFactInventory_Transform.Connections[OleDbConnection]"
+                      connectionManagerID="{C00465DE-0A1C-49BD-946D-68D1B0AC5346}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[PYD-OLAP_mssql2019.PAYVANDDW]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\ETL\Load to factInventory\stageFactInventory_Transform.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\ETL\Load to factInventory\stageFactInventory_Transform.Outputs[OLE DB Source Output].Columns[StockId]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ETL\Load to factInventory\stageFactInventory_Transform.Outputs[OLE DB Source Output].ExternalColumns[StockId]"
+                          lineageId="Package\ETL\Load to factInventory\stageFactInventory_Transform.Outputs[OLE DB Source Output].Columns[StockId]"
+                          name="StockId"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ETL\Load to factInventory\stageFactInventory_Transform.Outputs[OLE DB Source Output].Columns[DocTypeId]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ETL\Load to factInventory\stageFactInventory_Transform.Outputs[OLE DB Source Output].ExternalColumns[DocTypeId]"
+                          length="4"
+                          lineageId="Package\ETL\Load to factInventory\stageFactInventory_Transform.Outputs[OLE DB Source Output].Columns[DocTypeId]"
+                          name="DocTypeId"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ETL\Load to factInventory\stageFactInventory_Transform.Outputs[OLE DB Source Output].Columns[DocType]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ETL\Load to factInventory\stageFactInventory_Transform.Outputs[OLE DB Source Output].ExternalColumns[DocType]"
+                          length="30"
+                          lineageId="Package\ETL\Load to factInventory\stageFactInventory_Transform.Outputs[OLE DB Source Output].Columns[DocType]"
+                          name="DocType"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ETL\Load to factInventory\stageFactInventory_Transform.Outputs[OLE DB Source Output].Columns[RetailStoreId]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ETL\Load to factInventory\stageFactInventory_Transform.Outputs[OLE DB Source Output].ExternalColumns[RetailStoreId]"
+                          lineageId="Package\ETL\Load to factInventory\stageFactInventory_Transform.Outputs[OLE DB Source Output].Columns[RetailStoreId]"
+                          name="RetailStoreId"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ETL\Load to factInventory\stageFactInventory_Transform.Outputs[OLE DB Source Output].Columns[ItemId]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ETL\Load to factInventory\stageFactInventory_Transform.Outputs[OLE DB Source Output].ExternalColumns[ItemId]"
+                          lineageId="Package\ETL\Load to factInventory\stageFactInventory_Transform.Outputs[OLE DB Source Output].Columns[ItemId]"
+                          name="ItemId"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ETL\Load to factInventory\stageFactInventory_Transform.Outputs[OLE DB Source Output].Columns[DocDate]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ETL\Load to factInventory\stageFactInventory_Transform.Outputs[OLE DB Source Output].ExternalColumns[DocDate]"
+                          lineageId="Package\ETL\Load to factInventory\stageFactInventory_Transform.Outputs[OLE DB Source Output].Columns[DocDate]"
+                          name="DocDate"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ETL\Load to factInventory\stageFactInventory_Transform.Outputs[OLE DB Source Output].Columns[Cost]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ETL\Load to factInventory\stageFactInventory_Transform.Outputs[OLE DB Source Output].ExternalColumns[Cost]"
+                          lineageId="Package\ETL\Load to factInventory\stageFactInventory_Transform.Outputs[OLE DB Source Output].Columns[Cost]"
+                          name="Cost"
+                          precision="18"
+                          scale="3"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ETL\Load to factInventory\stageFactInventory_Transform.Outputs[OLE DB Source Output].Columns[QTY]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ETL\Load to factInventory\stageFactInventory_Transform.Outputs[OLE DB Source Output].ExternalColumns[QTY]"
+                          lineageId="Package\ETL\Load to factInventory\stageFactInventory_Transform.Outputs[OLE DB Source Output].Columns[QTY]"
+                          name="QTY"
+                          precision="18"
+                          scale="3"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ETL\Load to factInventory\stageFactInventory_Transform.Outputs[OLE DB Source Output].Columns[RialiAmount]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ETL\Load to factInventory\stageFactInventory_Transform.Outputs[OLE DB Source Output].ExternalColumns[RialiAmount]"
+                          lineageId="Package\ETL\Load to factInventory\stageFactInventory_Transform.Outputs[OLE DB Source Output].Columns[RialiAmount]"
+                          name="RialiAmount"
+                          precision="18"
+                          scale="3"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ETL\Load to factInventory\stageFactInventory_Transform.Outputs[OLE DB Source Output].Columns[DocDateKey]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ETL\Load to factInventory\stageFactInventory_Transform.Outputs[OLE DB Source Output].ExternalColumns[DocDateKey]"
+                          lineageId="Package\ETL\Load to factInventory\stageFactInventory_Transform.Outputs[OLE DB Source Output].Columns[DocDateKey]"
+                          name="DocDateKey"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ETL\Load to factInventory\stageFactInventory_Transform.Outputs[OLE DB Source Output].Columns[LastPurchaseAmount]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ETL\Load to factInventory\stageFactInventory_Transform.Outputs[OLE DB Source Output].ExternalColumns[LastPurchaseAmount]"
+                          lineageId="Package\ETL\Load to factInventory\stageFactInventory_Transform.Outputs[OLE DB Source Output].Columns[LastPurchaseAmount]"
+                          name="LastPurchaseAmount"
+                          precision="18"
+                          scale="3"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ETL\Load to factInventory\stageFactInventory_Transform.Outputs[OLE DB Source Output].Columns[LastSaleAmount]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ETL\Load to factInventory\stageFactInventory_Transform.Outputs[OLE DB Source Output].ExternalColumns[LastSaleAmount]"
+                          lineageId="Package\ETL\Load to factInventory\stageFactInventory_Transform.Outputs[OLE DB Source Output].Columns[LastSaleAmount]"
+                          name="LastSaleAmount"
+                          precision="18"
+                          scale="3"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\ETL\Load to factInventory\stageFactInventory_Transform.Outputs[OLE DB Source Output].ExternalColumns[StockId]"
+                          dataType="i4"
+                          name="StockId" />
+                        <externalMetadataColumn
+                          refId="Package\ETL\Load to factInventory\stageFactInventory_Transform.Outputs[OLE DB Source Output].ExternalColumns[DocTypeId]"
+                          dataType="wstr"
+                          length="4"
+                          name="DocTypeId" />
+                        <externalMetadataColumn
+                          refId="Package\ETL\Load to factInventory\stageFactInventory_Transform.Outputs[OLE DB Source Output].ExternalColumns[DocType]"
+                          dataType="wstr"
+                          length="30"
+                          name="DocType" />
+                        <externalMetadataColumn
+                          refId="Package\ETL\Load to factInventory\stageFactInventory_Transform.Outputs[OLE DB Source Output].ExternalColumns[RetailStoreId]"
+                          dataType="i4"
+                          name="RetailStoreId" />
+                        <externalMetadataColumn
+                          refId="Package\ETL\Load to factInventory\stageFactInventory_Transform.Outputs[OLE DB Source Output].ExternalColumns[ItemId]"
+                          dataType="i4"
+                          name="ItemId" />
+                        <externalMetadataColumn
+                          refId="Package\ETL\Load to factInventory\stageFactInventory_Transform.Outputs[OLE DB Source Output].ExternalColumns[DocDate]"
+                          dataType="dbTimeStamp"
+                          name="DocDate" />
+                        <externalMetadataColumn
+                          refId="Package\ETL\Load to factInventory\stageFactInventory_Transform.Outputs[OLE DB Source Output].ExternalColumns[Cost]"
+                          dataType="numeric"
+                          name="Cost"
+                          precision="18"
+                          scale="3" />
+                        <externalMetadataColumn
+                          refId="Package\ETL\Load to factInventory\stageFactInventory_Transform.Outputs[OLE DB Source Output].ExternalColumns[QTY]"
+                          dataType="numeric"
+                          name="QTY"
+                          precision="18"
+                          scale="3" />
+                        <externalMetadataColumn
+                          refId="Package\ETL\Load to factInventory\stageFactInventory_Transform.Outputs[OLE DB Source Output].ExternalColumns[RialiAmount]"
+                          dataType="numeric"
+                          name="RialiAmount"
+                          precision="18"
+                          scale="3" />
+                        <externalMetadataColumn
+                          refId="Package\ETL\Load to factInventory\stageFactInventory_Transform.Outputs[OLE DB Source Output].ExternalColumns[DocDateKey]"
+                          dataType="i4"
+                          name="DocDateKey" />
+                        <externalMetadataColumn
+                          refId="Package\ETL\Load to factInventory\stageFactInventory_Transform.Outputs[OLE DB Source Output].ExternalColumns[LastPurchaseAmount]"
+                          dataType="numeric"
+                          name="LastPurchaseAmount"
+                          precision="18"
+                          scale="3" />
+                        <externalMetadataColumn
+                          refId="Package\ETL\Load to factInventory\stageFactInventory_Transform.Outputs[OLE DB Source Output].ExternalColumns[LastSaleAmount]"
+                          dataType="numeric"
+                          name="LastSaleAmount"
+                          precision="18"
+                          scale="3" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\ETL\Load to factInventory\stageFactInventory_Transform.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\ETL\Load to factInventory\stageFactInventory_Transform.Outputs[OLE DB Source Error Output].Columns[RetailStoreId]"
+                          dataType="i4"
+                          lineageId="Package\ETL\Load to factInventory\stageFactInventory_Transform.Outputs[OLE DB Source Error Output].Columns[RetailStoreId]"
+                          name="RetailStoreId" />
+                        <outputColumn
+                          refId="Package\ETL\Load to factInventory\stageFactInventory_Transform.Outputs[OLE DB Source Error Output].Columns[StockId]"
+                          dataType="i4"
+                          lineageId="Package\ETL\Load to factInventory\stageFactInventory_Transform.Outputs[OLE DB Source Error Output].Columns[StockId]"
+                          name="StockId" />
+                        <outputColumn
+                          refId="Package\ETL\Load to factInventory\stageFactInventory_Transform.Outputs[OLE DB Source Error Output].Columns[ItemId]"
+                          dataType="i4"
+                          lineageId="Package\ETL\Load to factInventory\stageFactInventory_Transform.Outputs[OLE DB Source Error Output].Columns[ItemId]"
+                          name="ItemId" />
+                        <outputColumn
+                          refId="Package\ETL\Load to factInventory\stageFactInventory_Transform.Outputs[OLE DB Source Error Output].Columns[DocTypeId]"
+                          dataType="wstr"
+                          length="4"
+                          lineageId="Package\ETL\Load to factInventory\stageFactInventory_Transform.Outputs[OLE DB Source Error Output].Columns[DocTypeId]"
+                          name="DocTypeId" />
+                        <outputColumn
+                          refId="Package\ETL\Load to factInventory\stageFactInventory_Transform.Outputs[OLE DB Source Error Output].Columns[DocType]"
+                          dataType="wstr"
+                          length="30"
+                          lineageId="Package\ETL\Load to factInventory\stageFactInventory_Transform.Outputs[OLE DB Source Error Output].Columns[DocType]"
+                          name="DocType" />
+                        <outputColumn
+                          refId="Package\ETL\Load to factInventory\stageFactInventory_Transform.Outputs[OLE DB Source Error Output].Columns[DocDate]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\ETL\Load to factInventory\stageFactInventory_Transform.Outputs[OLE DB Source Error Output].Columns[DocDate]"
+                          name="DocDate" />
+                        <outputColumn
+                          refId="Package\ETL\Load to factInventory\stageFactInventory_Transform.Outputs[OLE DB Source Error Output].Columns[Cost]"
+                          dataType="numeric"
+                          lineageId="Package\ETL\Load to factInventory\stageFactInventory_Transform.Outputs[OLE DB Source Error Output].Columns[Cost]"
+                          name="Cost"
+                          precision="18"
+                          scale="3" />
+                        <outputColumn
+                          refId="Package\ETL\Load to factInventory\stageFactInventory_Transform.Outputs[OLE DB Source Error Output].Columns[QTY]"
+                          dataType="numeric"
+                          lineageId="Package\ETL\Load to factInventory\stageFactInventory_Transform.Outputs[OLE DB Source Error Output].Columns[QTY]"
+                          name="QTY"
+                          precision="18"
+                          scale="3" />
+                        <outputColumn
+                          refId="Package\ETL\Load to factInventory\stageFactInventory_Transform.Outputs[OLE DB Source Error Output].Columns[DocDateKey]"
+                          dataType="i4"
+                          lineageId="Package\ETL\Load to factInventory\stageFactInventory_Transform.Outputs[OLE DB Source Error Output].Columns[DocDateKey]"
+                          name="DocDateKey" />
+                        <outputColumn
+                          refId="Package\ETL\Load to factInventory\stageFactInventory_Transform.Outputs[OLE DB Source Error Output].Columns[RialiAmount]"
+                          dataType="numeric"
+                          lineageId="Package\ETL\Load to factInventory\stageFactInventory_Transform.Outputs[OLE DB Source Error Output].Columns[RialiAmount]"
+                          name="RialiAmount"
+                          precision="18"
+                          scale="3" />
+                        <outputColumn
+                          refId="Package\ETL\Load to factInventory\stageFactInventory_Transform.Outputs[OLE DB Source Error Output].Columns[LastPurchaseAmount]"
+                          dataType="numeric"
+                          lineageId="Package\ETL\Load to factInventory\stageFactInventory_Transform.Outputs[OLE DB Source Error Output].Columns[LastPurchaseAmount]"
+                          name="LastPurchaseAmount"
+                          precision="18"
+                          scale="3" />
+                        <outputColumn
+                          refId="Package\ETL\Load to factInventory\stageFactInventory_Transform.Outputs[OLE DB Source Error Output].Columns[LastSaleAmount]"
+                          dataType="numeric"
+                          lineageId="Package\ETL\Load to factInventory\stageFactInventory_Transform.Outputs[OLE DB Source Error Output].Columns[LastSaleAmount]"
+                          name="LastSaleAmount"
+                          precision="18"
+                          scale="3" />
+                        <outputColumn
+                          refId="Package\ETL\Load to factInventory\stageFactInventory_Transform.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\ETL\Load to factInventory\stageFactInventory_Transform.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\ETL\Load to factInventory\stageFactInventory_Transform.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\ETL\Load to factInventory\stageFactInventory_Transform.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\ETL\Load to factInventory.Paths[OLE DB Source Output]"
+                  endId="Package\ETL\Load to factInventory\factInventory.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\ETL\Load to factInventory\stageFactInventory_Transform.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\ETL\Transform"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{7E0C465B-6E9E-4230-A170-11C70E8A4A70}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Transform"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\ETL\Transform\Derived Column"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+                  name="Derived Column"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\ETL\Transform\Derived Column.Inputs[Derived Column Input]"
+                      description="Input to the Derived Column Transformation"
+                      name="Derived Column Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\ETL\Transform\Derived Column.Inputs[Derived Column Input].Columns[cost]"
+                          cachedDataType="numeric"
+                          cachedName="cost"
+                          cachedPrecision="18"
+                          cachedScale="3"
+                          lineageId="Package\ETL\Transform\stageFactInventory_Extract.Outputs[OLE DB Source Output].Columns[cost]" />
+                        <inputColumn
+                          refId="Package\ETL\Transform\Derived Column.Inputs[Derived Column Input].Columns[QTY]"
+                          cachedDataType="numeric"
+                          cachedName="QTY"
+                          cachedPrecision="38"
+                          cachedScale="3"
+                          lineageId="Package\ETL\Transform\stageFactInventory_Extract.Outputs[OLE DB Source Output].Columns[QTY]" />
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\ETL\Transform\Derived Column.Outputs[Derived Column Output]"
+                      description="Default Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      name="Derived Column Output"
+                      synchronousInputId="Package\ETL\Transform\Derived Column.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\ETL\Transform\Derived Column.Outputs[Derived Column Output].Columns[DerrivedRialiAmount]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\ETL\Transform\Derived Column.Outputs[Derived Column Output].Columns[DerrivedRialiAmount]"
+                          name="DerrivedRialiAmount"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">#{Package\ETL\Transform\stageFactInventory_Extract.Outputs[OLE DB Source Output].Columns[QTY]} * #{Package\ETL\Transform\stageFactInventory_Extract.Outputs[OLE DB Source Output].Columns[cost]}</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">QTY * cost</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\ETL\Transform\Derived Column.Outputs[Derived Column Error Output]"
+                      description="Error Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Derived Column Error Output"
+                      synchronousInputId="Package\ETL\Transform\Derived Column.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\ETL\Transform\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\ETL\Transform\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\ETL\Transform\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\ETL\Transform\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\ETL\Transform\Lookup DocDateKey"
+                  componentClassID="Microsoft.Lookup"
+                  contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+                  description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+                  name="Lookup DocDateKey"
+                  usesDispositions="true"
+                  version="6">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the SQL statement that generates the lookup table."
+                      expressionType="Notify"
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [dbo].[dimDate]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                      expressionType="Notify"
+                      name="SqlCommandParam"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [dbo].[dimDate]) [refTable]
+where [refTable].[GregorianDate] = ?</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the type of connection used to access the reference dataset."
+                      name="ConnectionType"
+                      typeConverter="LookupConnectionType">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the cache type of the lookup table."
+                      name="CacheType"
+                      typeConverter="CacheType">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                      name="NoMatchBehavior"
+                      typeConverter="LookupNoMatchBehavior">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                      name="NoMatchCachePercentage">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                      name="MaxMemoryUsage">25</property>
+                    <property
+                      dataType="System.Int64"
+                      description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                      name="MaxMemoryUsage64">25</property>
+                    <property
+                      dataType="System.String"
+                      description="Indicates whether to reference metadata in an XML format."
+                      name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="DateKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="GregorianDate" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="DayOfWeek" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="DayNameOfWeek" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="DayOfMonth" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="MonthNumberOfYear" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="EnglishMonthName" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CalendarQuarter" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CalendarYear" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="JalaliYear" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="JalaliMonth" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="JalaliMonthDay" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="JalaliMonthName" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="JalaliWeekDayName" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="JalaliString" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="JalaliFullName" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="PersianSeason" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="PersianSeasonName" dataType="DT_WSTR" length="7" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="JalaliDateKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                      name="ParameterMap">#{Package\ETL\Transform\stageFactInventory_Extract.Outputs[OLE DB Source Output].Columns[DocDate]};</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                      name="TreatDuplicateKeysAsError">false</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\ETL\Transform\Lookup DocDateKey.Connections[OleDbConnection]"
+                      connectionManagerID="{C00465DE-0A1C-49BD-946D-68D1B0AC5346}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[PYD-OLAP_mssql2019.PAYVANDDW]"
+                      description="Connection manager used to access lookup data."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\ETL\Transform\Lookup DocDateKey.Inputs[Lookup Input]"
+                      name="Lookup Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\ETL\Transform\Lookup DocDateKey.Inputs[Lookup Input].Columns[DocDate]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="DocDate"
+                          lineageId="Package\ETL\Transform\stageFactInventory_Extract.Outputs[OLE DB Source Output].Columns[DocDate]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table that a column joins."
+                              name="JoinToReferenceColumn">GregorianDate</property>
+                            <property
+                              dataType="System.Null"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn" />
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\ETL\Transform\Lookup DocDateKey.Outputs[Lookup Match Output]"
+                      errorOrTruncationOperation="Lookup"
+                      errorRowDisposition="IgnoreFailure"
+                      exclusionGroup="1"
+                      name="Lookup Match Output"
+                      synchronousInputId="Package\ETL\Transform\Lookup DocDateKey.Inputs[Lookup Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\ETL\Transform\Lookup DocDateKey.Outputs[Lookup Match Output].Columns[DateKey]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Copy Column"
+                          lineageId="Package\ETL\Transform\Lookup DocDateKey.Outputs[Lookup Match Output].Columns[DateKey]"
+                          name="DateKey"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn">DateKey</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\ETL\Transform\Lookup DocDateKey.Outputs[Lookup No Match Output]"
+                      description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                      exclusionGroup="1"
+                      name="Lookup No Match Output"
+                      synchronousInputId="Package\ETL\Transform\Lookup DocDateKey.Inputs[Lookup Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\ETL\Transform\Lookup DocDateKey.Outputs[Lookup Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Lookup Error Output"
+                      synchronousInputId="Package\ETL\Transform\Lookup DocDateKey.Inputs[Lookup Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\ETL\Transform\Lookup DocDateKey.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\ETL\Transform\Lookup DocDateKey.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\ETL\Transform\Lookup DocDateKey.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\ETL\Transform\Lookup DocDateKey.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\ETL\Transform\stageFactInventory_Extract"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="stageFactInventory_Extract"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[stageFactInventory_Extract]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">Select     
+RetailStoreId,StockID,ItemID,  
+DocTypeID=(Case When DocType='Return' then 'RT' Else DocTypeID End),  
+DocType,DocDate,cost,      
+Sum(Isnull(QTY,0)) As QTY,
+LastPurchaseAmount=Sum(Isnull(QTY,0)*Isnull(PPrice,0)),
+LastSaleAmount=Sum(Isnull(QTY,0)*Isnull(SPrice,0))
+From stageFactInventory_Extract
+left join dimProducts on stageFactInventory_Extract.ItemId=dimProducts.ProductId
+Group by      
+RetailStoreId,StockID,ItemID,  
+(Case When DocType='Return' then 'RT' Else DocTypeID End),  
+DocType,DocDate,cost</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1256</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\ETL\Transform\stageFactInventory_Extract.Connections[OleDbConnection]"
+                      connectionManagerID="{C00465DE-0A1C-49BD-946D-68D1B0AC5346}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[PYD-OLAP_mssql2019.PAYVANDDW]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\ETL\Transform\stageFactInventory_Extract.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\ETL\Transform\stageFactInventory_Extract.Outputs[OLE DB Source Output].Columns[DocType]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ETL\Transform\stageFactInventory_Extract.Outputs[OLE DB Source Output].ExternalColumns[DocType]"
+                          length="30"
+                          lineageId="Package\ETL\Transform\stageFactInventory_Extract.Outputs[OLE DB Source Output].Columns[DocType]"
+                          name="DocType"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ETL\Transform\stageFactInventory_Extract.Outputs[OLE DB Source Output].Columns[RetailStoreId]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ETL\Transform\stageFactInventory_Extract.Outputs[OLE DB Source Output].ExternalColumns[RetailStoreId]"
+                          lineageId="Package\ETL\Transform\stageFactInventory_Extract.Outputs[OLE DB Source Output].Columns[RetailStoreId]"
+                          name="RetailStoreId"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ETL\Transform\stageFactInventory_Extract.Outputs[OLE DB Source Output].Columns[DocDate]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ETL\Transform\stageFactInventory_Extract.Outputs[OLE DB Source Output].ExternalColumns[DocDate]"
+                          lineageId="Package\ETL\Transform\stageFactInventory_Extract.Outputs[OLE DB Source Output].Columns[DocDate]"
+                          name="DocDate"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ETL\Transform\stageFactInventory_Extract.Outputs[OLE DB Source Output].Columns[QTY]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ETL\Transform\stageFactInventory_Extract.Outputs[OLE DB Source Output].ExternalColumns[QTY]"
+                          lineageId="Package\ETL\Transform\stageFactInventory_Extract.Outputs[OLE DB Source Output].Columns[QTY]"
+                          name="QTY"
+                          precision="38"
+                          scale="3"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ETL\Transform\stageFactInventory_Extract.Outputs[OLE DB Source Output].Columns[StockID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ETL\Transform\stageFactInventory_Extract.Outputs[OLE DB Source Output].ExternalColumns[StockID]"
+                          lineageId="Package\ETL\Transform\stageFactInventory_Extract.Outputs[OLE DB Source Output].Columns[StockID]"
+                          name="StockID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ETL\Transform\stageFactInventory_Extract.Outputs[OLE DB Source Output].Columns[ItemID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ETL\Transform\stageFactInventory_Extract.Outputs[OLE DB Source Output].ExternalColumns[ItemID]"
+                          lineageId="Package\ETL\Transform\stageFactInventory_Extract.Outputs[OLE DB Source Output].Columns[ItemID]"
+                          name="ItemID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ETL\Transform\stageFactInventory_Extract.Outputs[OLE DB Source Output].Columns[DocTypeID]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ETL\Transform\stageFactInventory_Extract.Outputs[OLE DB Source Output].ExternalColumns[DocTypeID]"
+                          length="4"
+                          lineageId="Package\ETL\Transform\stageFactInventory_Extract.Outputs[OLE DB Source Output].Columns[DocTypeID]"
+                          name="DocTypeID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ETL\Transform\stageFactInventory_Extract.Outputs[OLE DB Source Output].Columns[cost]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ETL\Transform\stageFactInventory_Extract.Outputs[OLE DB Source Output].ExternalColumns[cost]"
+                          lineageId="Package\ETL\Transform\stageFactInventory_Extract.Outputs[OLE DB Source Output].Columns[cost]"
+                          name="cost"
+                          precision="18"
+                          scale="3"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ETL\Transform\stageFactInventory_Extract.Outputs[OLE DB Source Output].Columns[LastPurchaseAmount]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ETL\Transform\stageFactInventory_Extract.Outputs[OLE DB Source Output].ExternalColumns[LastPurchaseAmount]"
+                          lineageId="Package\ETL\Transform\stageFactInventory_Extract.Outputs[OLE DB Source Output].Columns[LastPurchaseAmount]"
+                          name="LastPurchaseAmount"
+                          precision="38"
+                          scale="3"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ETL\Transform\stageFactInventory_Extract.Outputs[OLE DB Source Output].Columns[LastSaleAmount]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ETL\Transform\stageFactInventory_Extract.Outputs[OLE DB Source Output].ExternalColumns[LastSaleAmount]"
+                          lineageId="Package\ETL\Transform\stageFactInventory_Extract.Outputs[OLE DB Source Output].Columns[LastSaleAmount]"
+                          name="LastSaleAmount"
+                          precision="38"
+                          scale="3"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\ETL\Transform\stageFactInventory_Extract.Outputs[OLE DB Source Output].ExternalColumns[DocType]"
+                          dataType="wstr"
+                          length="30"
+                          name="DocType" />
+                        <externalMetadataColumn
+                          refId="Package\ETL\Transform\stageFactInventory_Extract.Outputs[OLE DB Source Output].ExternalColumns[RetailStoreId]"
+                          dataType="i4"
+                          name="RetailStoreId" />
+                        <externalMetadataColumn
+                          refId="Package\ETL\Transform\stageFactInventory_Extract.Outputs[OLE DB Source Output].ExternalColumns[DocDate]"
+                          dataType="dbTimeStamp"
+                          name="DocDate" />
+                        <externalMetadataColumn
+                          refId="Package\ETL\Transform\stageFactInventory_Extract.Outputs[OLE DB Source Output].ExternalColumns[QTY]"
+                          dataType="numeric"
+                          name="QTY"
+                          precision="38"
+                          scale="3" />
+                        <externalMetadataColumn
+                          refId="Package\ETL\Transform\stageFactInventory_Extract.Outputs[OLE DB Source Output].ExternalColumns[StockID]"
+                          dataType="i4"
+                          name="StockID" />
+                        <externalMetadataColumn
+                          refId="Package\ETL\Transform\stageFactInventory_Extract.Outputs[OLE DB Source Output].ExternalColumns[ItemID]"
+                          dataType="i4"
+                          name="ItemID" />
+                        <externalMetadataColumn
+                          refId="Package\ETL\Transform\stageFactInventory_Extract.Outputs[OLE DB Source Output].ExternalColumns[DocTypeID]"
+                          dataType="wstr"
+                          length="4"
+                          name="DocTypeID" />
+                        <externalMetadataColumn
+                          refId="Package\ETL\Transform\stageFactInventory_Extract.Outputs[OLE DB Source Output].ExternalColumns[cost]"
+                          dataType="numeric"
+                          name="cost"
+                          precision="18"
+                          scale="3" />
+                        <externalMetadataColumn
+                          refId="Package\ETL\Transform\stageFactInventory_Extract.Outputs[OLE DB Source Output].ExternalColumns[LastPurchaseAmount]"
+                          dataType="numeric"
+                          name="LastPurchaseAmount"
+                          precision="38"
+                          scale="3" />
+                        <externalMetadataColumn
+                          refId="Package\ETL\Transform\stageFactInventory_Extract.Outputs[OLE DB Source Output].ExternalColumns[LastSaleAmount]"
+                          dataType="numeric"
+                          name="LastSaleAmount"
+                          precision="38"
+                          scale="3" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\ETL\Transform\stageFactInventory_Extract.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\ETL\Transform\stageFactInventory_Extract.Outputs[OLE DB Source Error Output].Columns[RetailStoreId]"
+                          dataType="i4"
+                          lineageId="Package\ETL\Transform\stageFactInventory_Extract.Outputs[OLE DB Source Error Output].Columns[RetailStoreId]"
+                          name="RetailStoreId" />
+                        <outputColumn
+                          refId="Package\ETL\Transform\stageFactInventory_Extract.Outputs[OLE DB Source Error Output].Columns[StockID]"
+                          dataType="i4"
+                          lineageId="Package\ETL\Transform\stageFactInventory_Extract.Outputs[OLE DB Source Error Output].Columns[StockID]"
+                          name="StockID" />
+                        <outputColumn
+                          refId="Package\ETL\Transform\stageFactInventory_Extract.Outputs[OLE DB Source Error Output].Columns[ItemID]"
+                          dataType="i4"
+                          lineageId="Package\ETL\Transform\stageFactInventory_Extract.Outputs[OLE DB Source Error Output].Columns[ItemID]"
+                          name="ItemID" />
+                        <outputColumn
+                          refId="Package\ETL\Transform\stageFactInventory_Extract.Outputs[OLE DB Source Error Output].Columns[DocTypeID]"
+                          dataType="wstr"
+                          length="4"
+                          lineageId="Package\ETL\Transform\stageFactInventory_Extract.Outputs[OLE DB Source Error Output].Columns[DocTypeID]"
+                          name="DocTypeID" />
+                        <outputColumn
+                          refId="Package\ETL\Transform\stageFactInventory_Extract.Outputs[OLE DB Source Error Output].Columns[DocType]"
+                          dataType="wstr"
+                          length="30"
+                          lineageId="Package\ETL\Transform\stageFactInventory_Extract.Outputs[OLE DB Source Error Output].Columns[DocType]"
+                          name="DocType" />
+                        <outputColumn
+                          refId="Package\ETL\Transform\stageFactInventory_Extract.Outputs[OLE DB Source Error Output].Columns[DocDate]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\ETL\Transform\stageFactInventory_Extract.Outputs[OLE DB Source Error Output].Columns[DocDate]"
+                          name="DocDate" />
+                        <outputColumn
+                          refId="Package\ETL\Transform\stageFactInventory_Extract.Outputs[OLE DB Source Error Output].Columns[cost]"
+                          dataType="numeric"
+                          lineageId="Package\ETL\Transform\stageFactInventory_Extract.Outputs[OLE DB Source Error Output].Columns[cost]"
+                          name="cost"
+                          precision="18"
+                          scale="3" />
+                        <outputColumn
+                          refId="Package\ETL\Transform\stageFactInventory_Extract.Outputs[OLE DB Source Error Output].Columns[QTY]"
+                          dataType="numeric"
+                          lineageId="Package\ETL\Transform\stageFactInventory_Extract.Outputs[OLE DB Source Error Output].Columns[QTY]"
+                          name="QTY"
+                          precision="38"
+                          scale="3" />
+                        <outputColumn
+                          refId="Package\ETL\Transform\stageFactInventory_Extract.Outputs[OLE DB Source Error Output].Columns[LastPurchaseAmount]"
+                          dataType="numeric"
+                          lineageId="Package\ETL\Transform\stageFactInventory_Extract.Outputs[OLE DB Source Error Output].Columns[LastPurchaseAmount]"
+                          name="LastPurchaseAmount"
+                          precision="38"
+                          scale="3" />
+                        <outputColumn
+                          refId="Package\ETL\Transform\stageFactInventory_Extract.Outputs[OLE DB Source Error Output].Columns[LastSaleAmount]"
+                          dataType="numeric"
+                          lineageId="Package\ETL\Transform\stageFactInventory_Extract.Outputs[OLE DB Source Error Output].Columns[LastSaleAmount]"
+                          name="LastSaleAmount"
+                          precision="38"
+                          scale="3" />
+                        <outputColumn
+                          refId="Package\ETL\Transform\stageFactInventory_Extract.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\ETL\Transform\stageFactInventory_Extract.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\ETL\Transform\stageFactInventory_Extract.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\ETL\Transform\stageFactInventory_Extract.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\ETL\Transform\stageFactInventory_Transform"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="stageFactInventory_Transform"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[stageFactInventory_Transform]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\ETL\Transform\stageFactInventory_Transform.Connections[OleDbConnection]"
+                      connectionManagerID="{C00465DE-0A1C-49BD-946D-68D1B0AC5346}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[PYD-OLAP_mssql2019.PAYVANDDW]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\ETL\Transform\stageFactInventory_Transform.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\ETL\Transform\stageFactInventory_Transform.Inputs[OLE DB Destination Input].Columns[StockID]"
+                          cachedDataType="i4"
+                          cachedName="StockID"
+                          externalMetadataColumnId="Package\ETL\Transform\stageFactInventory_Transform.Inputs[OLE DB Destination Input].ExternalColumns[StockId]"
+                          lineageId="Package\ETL\Transform\stageFactInventory_Extract.Outputs[OLE DB Source Output].Columns[StockID]" />
+                        <inputColumn
+                          refId="Package\ETL\Transform\stageFactInventory_Transform.Inputs[OLE DB Destination Input].Columns[DocTypeID]"
+                          cachedDataType="wstr"
+                          cachedLength="4"
+                          cachedName="DocTypeID"
+                          externalMetadataColumnId="Package\ETL\Transform\stageFactInventory_Transform.Inputs[OLE DB Destination Input].ExternalColumns[DocTypeId]"
+                          lineageId="Package\ETL\Transform\stageFactInventory_Extract.Outputs[OLE DB Source Output].Columns[DocTypeID]" />
+                        <inputColumn
+                          refId="Package\ETL\Transform\stageFactInventory_Transform.Inputs[OLE DB Destination Input].Columns[DocType]"
+                          cachedDataType="wstr"
+                          cachedLength="30"
+                          cachedName="DocType"
+                          externalMetadataColumnId="Package\ETL\Transform\stageFactInventory_Transform.Inputs[OLE DB Destination Input].ExternalColumns[DocType]"
+                          lineageId="Package\ETL\Transform\stageFactInventory_Extract.Outputs[OLE DB Source Output].Columns[DocType]" />
+                        <inputColumn
+                          refId="Package\ETL\Transform\stageFactInventory_Transform.Inputs[OLE DB Destination Input].Columns[RetailStoreId]"
+                          cachedDataType="i4"
+                          cachedName="RetailStoreId"
+                          externalMetadataColumnId="Package\ETL\Transform\stageFactInventory_Transform.Inputs[OLE DB Destination Input].ExternalColumns[RetailStoreId]"
+                          lineageId="Package\ETL\Transform\stageFactInventory_Extract.Outputs[OLE DB Source Output].Columns[RetailStoreId]" />
+                        <inputColumn
+                          refId="Package\ETL\Transform\stageFactInventory_Transform.Inputs[OLE DB Destination Input].Columns[ItemID]"
+                          cachedDataType="i4"
+                          cachedName="ItemID"
+                          externalMetadataColumnId="Package\ETL\Transform\stageFactInventory_Transform.Inputs[OLE DB Destination Input].ExternalColumns[ItemId]"
+                          lineageId="Package\ETL\Transform\stageFactInventory_Extract.Outputs[OLE DB Source Output].Columns[ItemID]" />
+                        <inputColumn
+                          refId="Package\ETL\Transform\stageFactInventory_Transform.Inputs[OLE DB Destination Input].Columns[DocDate]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="DocDate"
+                          externalMetadataColumnId="Package\ETL\Transform\stageFactInventory_Transform.Inputs[OLE DB Destination Input].ExternalColumns[DocDate]"
+                          lineageId="Package\ETL\Transform\stageFactInventory_Extract.Outputs[OLE DB Source Output].Columns[DocDate]" />
+                        <inputColumn
+                          refId="Package\ETL\Transform\stageFactInventory_Transform.Inputs[OLE DB Destination Input].Columns[cost]"
+                          cachedDataType="numeric"
+                          cachedName="cost"
+                          cachedPrecision="18"
+                          cachedScale="3"
+                          externalMetadataColumnId="Package\ETL\Transform\stageFactInventory_Transform.Inputs[OLE DB Destination Input].ExternalColumns[Cost]"
+                          lineageId="Package\ETL\Transform\stageFactInventory_Extract.Outputs[OLE DB Source Output].Columns[cost]" />
+                        <inputColumn
+                          refId="Package\ETL\Transform\stageFactInventory_Transform.Inputs[OLE DB Destination Input].Columns[QTY]"
+                          cachedDataType="numeric"
+                          cachedName="QTY"
+                          cachedPrecision="38"
+                          cachedScale="3"
+                          externalMetadataColumnId="Package\ETL\Transform\stageFactInventory_Transform.Inputs[OLE DB Destination Input].ExternalColumns[QTY]"
+                          lineageId="Package\ETL\Transform\stageFactInventory_Extract.Outputs[OLE DB Source Output].Columns[QTY]" />
+                        <inputColumn
+                          refId="Package\ETL\Transform\stageFactInventory_Transform.Inputs[OLE DB Destination Input].Columns[DerrivedRialiAmount]"
+                          cachedDataType="r8"
+                          cachedName="DerrivedRialiAmount"
+                          externalMetadataColumnId="Package\ETL\Transform\stageFactInventory_Transform.Inputs[OLE DB Destination Input].ExternalColumns[RialiAmount]"
+                          lineageId="Package\ETL\Transform\Derived Column.Outputs[Derived Column Output].Columns[DerrivedRialiAmount]" />
+                        <inputColumn
+                          refId="Package\ETL\Transform\stageFactInventory_Transform.Inputs[OLE DB Destination Input].Columns[DateKey]"
+                          cachedDataType="i4"
+                          cachedName="DateKey"
+                          externalMetadataColumnId="Package\ETL\Transform\stageFactInventory_Transform.Inputs[OLE DB Destination Input].ExternalColumns[DocDateKey]"
+                          lineageId="Package\ETL\Transform\Lookup DocDateKey.Outputs[Lookup Match Output].Columns[DateKey]" />
+                        <inputColumn
+                          refId="Package\ETL\Transform\stageFactInventory_Transform.Inputs[OLE DB Destination Input].Columns[LastPurchaseAmount]"
+                          cachedDataType="numeric"
+                          cachedName="LastPurchaseAmount"
+                          cachedPrecision="38"
+                          cachedScale="3"
+                          externalMetadataColumnId="Package\ETL\Transform\stageFactInventory_Transform.Inputs[OLE DB Destination Input].ExternalColumns[LastPurchaseAmount]"
+                          lineageId="Package\ETL\Transform\stageFactInventory_Extract.Outputs[OLE DB Source Output].Columns[LastPurchaseAmount]" />
+                        <inputColumn
+                          refId="Package\ETL\Transform\stageFactInventory_Transform.Inputs[OLE DB Destination Input].Columns[LastSaleAmount]"
+                          cachedDataType="numeric"
+                          cachedName="LastSaleAmount"
+                          cachedPrecision="38"
+                          cachedScale="3"
+                          externalMetadataColumnId="Package\ETL\Transform\stageFactInventory_Transform.Inputs[OLE DB Destination Input].ExternalColumns[LastSaleAmount]"
+                          lineageId="Package\ETL\Transform\stageFactInventory_Extract.Outputs[OLE DB Source Output].Columns[LastSaleAmount]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\ETL\Transform\stageFactInventory_Transform.Inputs[OLE DB Destination Input].ExternalColumns[StockId]"
+                          dataType="i4"
+                          name="StockId" />
+                        <externalMetadataColumn
+                          refId="Package\ETL\Transform\stageFactInventory_Transform.Inputs[OLE DB Destination Input].ExternalColumns[DocTypeId]"
+                          dataType="wstr"
+                          length="4"
+                          name="DocTypeId" />
+                        <externalMetadataColumn
+                          refId="Package\ETL\Transform\stageFactInventory_Transform.Inputs[OLE DB Destination Input].ExternalColumns[DocType]"
+                          dataType="wstr"
+                          length="30"
+                          name="DocType" />
+                        <externalMetadataColumn
+                          refId="Package\ETL\Transform\stageFactInventory_Transform.Inputs[OLE DB Destination Input].ExternalColumns[RialiAmount]"
+                          dataType="numeric"
+                          name="RialiAmount"
+                          precision="18"
+                          scale="3" />
+                        <externalMetadataColumn
+                          refId="Package\ETL\Transform\stageFactInventory_Transform.Inputs[OLE DB Destination Input].ExternalColumns[RetailStoreId]"
+                          dataType="i4"
+                          name="RetailStoreId" />
+                        <externalMetadataColumn
+                          refId="Package\ETL\Transform\stageFactInventory_Transform.Inputs[OLE DB Destination Input].ExternalColumns[ItemId]"
+                          dataType="i4"
+                          name="ItemId" />
+                        <externalMetadataColumn
+                          refId="Package\ETL\Transform\stageFactInventory_Transform.Inputs[OLE DB Destination Input].ExternalColumns[DocDate]"
+                          dataType="dbTimeStamp"
+                          name="DocDate" />
+                        <externalMetadataColumn
+                          refId="Package\ETL\Transform\stageFactInventory_Transform.Inputs[OLE DB Destination Input].ExternalColumns[Cost]"
+                          dataType="numeric"
+                          name="Cost"
+                          precision="18"
+                          scale="3" />
+                        <externalMetadataColumn
+                          refId="Package\ETL\Transform\stageFactInventory_Transform.Inputs[OLE DB Destination Input].ExternalColumns[QTY]"
+                          dataType="numeric"
+                          name="QTY"
+                          precision="18"
+                          scale="3" />
+                        <externalMetadataColumn
+                          refId="Package\ETL\Transform\stageFactInventory_Transform.Inputs[OLE DB Destination Input].ExternalColumns[DocDateKey]"
+                          dataType="i4"
+                          name="DocDateKey" />
+                        <externalMetadataColumn
+                          refId="Package\ETL\Transform\stageFactInventory_Transform.Inputs[OLE DB Destination Input].ExternalColumns[LastPurchaseAmount]"
+                          dataType="numeric"
+                          name="LastPurchaseAmount"
+                          precision="18"
+                          scale="3" />
+                        <externalMetadataColumn
+                          refId="Package\ETL\Transform\stageFactInventory_Transform.Inputs[OLE DB Destination Input].ExternalColumns[LastSaleAmount]"
+                          dataType="numeric"
+                          name="LastSaleAmount"
+                          precision="18"
+                          scale="3" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\ETL\Transform\stageFactInventory_Transform.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\ETL\Transform\stageFactInventory_Transform.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\ETL\Transform\stageFactInventory_Transform.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\ETL\Transform\stageFactInventory_Transform.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\ETL\Transform\stageFactInventory_Transform.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\ETL\Transform\stageFactInventory_Transform.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\ETL\Transform.Paths[Derived Column Output]"
+                  endId="Package\ETL\Transform\stageFactInventory_Transform.Inputs[OLE DB Destination Input]"
+                  name="Derived Column Output"
+                  startId="Package\ETL\Transform\Derived Column.Outputs[Derived Column Output]" />
+                <path
+                  refId="Package\ETL\Transform.Paths[Lookup Match Output]"
+                  endId="Package\ETL\Transform\Derived Column.Inputs[Derived Column Input]"
+                  name="Lookup Match Output"
+                  startId="Package\ETL\Transform\Lookup DocDateKey.Outputs[Lookup Match Output]" />
+                <path
+                  refId="Package\ETL\Transform.Paths[OLE DB Source Output]"
+                  endId="Package\ETL\Transform\Lookup DocDateKey.Inputs[Lookup Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\ETL\Transform\stageFactInventory_Extract.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\ETL.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{C4477907-C904-40F5-B423-7326E0903A46}"
+          DTS:From="Package\ETL\Extract Source to stage"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\ETL\Transform" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\ETL.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{20859BA8-A4E7-4166-BD7C-750D3AA9B9FC}"
+          DTS:From="Package\ETL\Transform"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\ETL\Load to factInventory" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Finalizing"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{1FB3DAB4-D7FF-4B46-9044-CC02375341DD}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Finalizing">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Finalizing\Get Last DateTime From Target"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{7c6ece8e-2f97-4d96-a782-3dc31b559c58}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Get Last DateTime From Target"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{C00465DE-0A1C-49BD-946D-68D1B0AC5346}"
+              SQLTask:BypassPrepare="False"
+              SQLTask:SqlStatementSource="select max(DocDate) from stageFactInventory_Extract"
+              SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="0"
+                SQLTask:DtsVariableName="User::v_MaxDateTime" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Finalizing\recalculate finishdatetime"
+          DTS:CreationName="Microsoft.ExpressionTask"
+          DTS:Description="Expression Task"
+          DTS:DTSID="{97427eca-9379-4ac4-b170-90f332eda4a6}"
+          DTS:ExecutableType="Microsoft.ExpressionTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="recalculate finishdatetime"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExpressionTask
+              Expression="@[User::v_FinishDateTime] = (DT_DBDATE)  GETDATE()" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Finalizing\recalculate startdatetime"
+          DTS:CreationName="Microsoft.ExpressionTask"
+          DTS:Description="Expression Task"
+          DTS:DTSID="{5d0dc7c2-33cc-4aa2-9ffa-016c068965be}"
+          DTS:ExecutableType="Microsoft.ExpressionTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="recalculate startdatetime"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExpressionTask
+              Expression="@[User::v_StartDateTime] =  ( @[User::v_MaxDateTime] &gt;= @[User::v_StartDateTime]  ) ?  DATEADD( &quot;day&quot;,1, @[User::v_MaxDateTime]) : @[User::v_StartDateTime]" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Finalizing\Truncate Table stages"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{7140eb0d-36a2-4481-98af-e1620d6ba40b}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Truncate Table stages"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{C00465DE-0A1C-49BD-946D-68D1B0AC5346}"
+              SQLTask:BypassPrepare="False"
+              SQLTask:SqlStatementSource="truncate table stageFactInventory_Extract&#xA;truncate table stageFactInventory_Transform" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Finalizing\update ConfigSet"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{cf0ab955-46f7-4bc1-bb78-00f73f777ffe}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="update ConfigSet"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{C00465DE-0A1C-49BD-946D-68D1B0AC5346}"
+              SQLTask:SqlStatementSource="update ConfigSet set StartDateTime=? , FinishDateTime=? &#xA;where tablename='inventory'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::v_StartDateTime"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="7"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="1"
+                SQLTask:DtsVariableName="User::v_FinishDateTime"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="7"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Finalizing.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{48E5A095-BD35-465F-922B-FC0A2D5A165E}"
+          DTS:From="Package\Finalizing\Get Last DateTime From Target"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Finalizing\recalculate startdatetime" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Finalizing.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{5A74B71B-6EC1-4AC9-A9D7-46D111E668DA}"
+          DTS:From="Package\Finalizing\recalculate startdatetime"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\Finalizing\recalculate finishdatetime" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Finalizing.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{5EDFD8DE-124E-4326-8B68-6266B315670E}"
+          DTS:From="Package\Finalizing\recalculate finishdatetime"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\Finalizing\update ConfigSet" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Finalizing.PrecedenceConstraints[Constraint 3]"
+          DTS:CreationName=""
+          DTS:DTSID="{936B26E8-1A83-455F-866C-BDA71DD21D61}"
+          DTS:From="Package\Finalizing\update ConfigSet"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 3"
+          DTS:To="Package\Finalizing\Truncate Table stages" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Initializing and Preparing"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{C7D68A98-E56A-4F29-988C-FF1538585056}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Initializing and Preparing">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Initializing and Preparing\calculate finishdatestring"
+          DTS:CreationName="Microsoft.ExpressionTask"
+          DTS:Description="Expression Task"
+          DTS:DTSID="{a01cf949-8832-4d50-8746-f86b704bb041}"
+          DTS:ExecutableType="Microsoft.ExpressionTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="calculate finishdatestring"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExpressionTask
+              Expression="@[User::v_FinishDateString]=  (DT_WSTR, 10) ( (DT_DBDATE)@[User::v_FinishDateTime])" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Initializing and Preparing\calculate startdatestring"
+          DTS:CreationName="Microsoft.ExpressionTask"
+          DTS:Description="Expression Task"
+          DTS:DTSID="{e6771c15-9cfb-47c8-bb9d-55a9862d6936}"
+          DTS:ExecutableType="Microsoft.ExpressionTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="calculate startdatestring"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExpressionTask
+              Expression="@[User::v_StartDateString]  = (DT_WSTR, 10) ( (DT_DBDATE)  @[User::v_StartDateTime])" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Initializing and Preparing\Get Bound DateTime From ConfigSet"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{66EF4E11-7F4E-4F31-A88E-E1257F00F0A4}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Get Bound DateTime From ConfigSet"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{C00465DE-0A1C-49BD-946D-68D1B0AC5346}"
+              SQLTask:BypassPrepare="False"
+              SQLTask:SqlStatementSource=" select stg.StartDateTime&#xA; ,iif (stg.FinishDateTime&gt;= CONVERT (date, GETDATE()),CONVERT (date, GETDATE()-1) , stg.FinishDateTime) as FinishDateTime&#xA; from ConfigSet stg &#xA; where stg.tablename='inventory'"
+              SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="0"
+                SQLTask:DtsVariableName="User::v_StartDateTime" />
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="1"
+                SQLTask:DtsVariableName="User::v_FinishDateTime" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Initializing and Preparing\Truncate Table stages"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{D556648A-B2AC-4412-8400-3DEE312E266C}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Truncate Table stages"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{C00465DE-0A1C-49BD-946D-68D1B0AC5346}"
+              SQLTask:BypassPrepare="False"
+              SQLTask:SqlStatementSource="truncate table stageFactInventory_Extract&#xA;truncate table stageFactInventory_Transform" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Initializing and Preparing.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{51A9D1A7-415B-4F43-AD83-8AAA05F16BFF}"
+          DTS:From="Package\Initializing and Preparing\Truncate Table stages"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Initializing and Preparing\Get Bound DateTime From ConfigSet" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Initializing and Preparing.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{D0D1F996-EA92-4E39-8525-618F7977EAF6}"
+          DTS:From="Package\Initializing and Preparing\Get Bound DateTime From ConfigSet"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\Initializing and Preparing\calculate startdatestring" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Initializing and Preparing.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{028E8A97-B537-49D7-96FA-BAFDEAC101D4}"
+          DTS:From="Package\Initializing and Preparing\calculate startdatestring"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\Initializing and Preparing\calculate finishdatestring" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{361E773A-D868-4A55-8E47-3B0E813B4DEF}"
+      DTS:From="Package\Initializing and Preparing"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\ETL" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{B9DEA401-36CA-4F3D-ACD0-9261A9ECA5F2}"
+      DTS:From="Package\ETL"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Finalizing" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="189,42"
+          Id="Package\ETL\Extract Source to stage"
+          TopLeft="53.5,15.5" />
+        <NodeLayout
+          Size="180,42"
+          Id="Package\ETL\Load to factInventory"
+          TopLeft="51.5,219.5" />
+        <NodeLayout
+          Size="127,42"
+          Id="Package\ETL\Transform"
+          TopLeft="79,124" />
+        <EdgeLayout
+          Id="Package\ETL.PrecedenceConstraints[Constraint]"
+          TopLeft="145.25,57.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,66.5"
+              Start="0,0"
+              End="0,59">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,59" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\ETL.PrecedenceConstraints[Constraint 1]"
+          TopLeft="142,166">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,53.5"
+              Start="0,0"
+              End="0,46">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,46" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="281,317"
+          Size="281,360"
+          Id="Package\ETL"
+          TopLeft="682,61" />
+        <NodeLayout
+          Size="228,42"
+          Id="Package\Finalizing\Get Last DateTime From Target"
+          TopLeft="5.5,0" />
+        <NodeLayout
+          Size="199,42"
+          Id="Package\Finalizing\recalculate finishdatetime"
+          TopLeft="24,182" />
+        <NodeLayout
+          Size="195,42"
+          Id="Package\Finalizing\recalculate startdatetime"
+          TopLeft="21.5,87.5" />
+        <NodeLayout
+          Size="183,42"
+          Id="Package\Finalizing\Truncate Table stages"
+          TopLeft="40,378" />
+        <NodeLayout
+          Size="160,42"
+          Id="Package\Finalizing\update ConfigSet"
+          TopLeft="45,287" />
+        <EdgeLayout
+          Id="Package\Finalizing.PrecedenceConstraints[Constraint]"
+          TopLeft="119.25,42">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,45.5"
+              Start="0,0"
+              End="0,38">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,38" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Finalizing.PrecedenceConstraints[Constraint 1]"
+          TopLeft="121.25,129.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,52.5"
+              Start="0,0"
+              End="0,45">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,45" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Finalizing.PrecedenceConstraints[Constraint 2]"
+          TopLeft="124.25,224">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,63"
+              Start="0,0"
+              End="0,55.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,55.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Finalizing.PrecedenceConstraints[Constraint 3]"
+          TopLeft="128.25,329">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,49"
+              Start="0,0"
+              End="0,41.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="265,475"
+          Size="265,518"
+          Id="Package\Finalizing"
+          TopLeft="691.5,488.5" />
+        <NodeLayout
+          Size="195,42"
+          Id="Package\Initializing and Preparing\calculate finishdatestring"
+          TopLeft="24.5,234.5" />
+        <NodeLayout
+          Size="192,42"
+          Id="Package\Initializing and Preparing\calculate startdatestring"
+          TopLeft="25,150" />
+        <NodeLayout
+          Size="253,42"
+          Id="Package\Initializing and Preparing\Get Bound DateTime From ConfigSet"
+          TopLeft="9.5,70.5" />
+        <NodeLayout
+          Size="183,42"
+          Id="Package\Initializing and Preparing\Truncate Table stages"
+          TopLeft="44.5,1" />
+        <EdgeLayout
+          Id="Package\Initializing and Preparing.PrecedenceConstraints[Constraint]"
+          TopLeft="136,43">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,27.5"
+              Start="0,0"
+              End="0,20">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Initializing and Preparing.PrecedenceConstraints[Constraint 1]"
+          TopLeft="136,112.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-15,37.5"
+              Start="0,0"
+              End="-15,30">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,14.75" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,14.75"
+                    Point2="0,18.75"
+                    Point3="-4,18.75" />
+                  <mssgle:LineSegment
+                    End="-11,18.75" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-11,18.75"
+                    Point2="-15,18.75"
+                    Point3="-15,22.75" />
+                  <mssgle:LineSegment
+                    End="-15,30" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Initializing and Preparing.PrecedenceConstraints[Constraint 2]"
+          TopLeft="121.5,192">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,42.5"
+              Start="0,0"
+              End="0,35">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="268,332"
+          Size="268,374"
+          Id="Package\Initializing and Preparing"
+          TopLeft="148,42" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="402,220.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="280,13.5"
+              Start="0,0"
+              End="272.5,13.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="136,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="136,0"
+                    Point2="140,0"
+                    Point3="140,4" />
+                  <mssgle:LineSegment
+                    End="140,9.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="140,9.5"
+                    Point2="140,13.5"
+                    Point3="144,13.5" />
+                  <mssgle:LineSegment
+                    End="272.5,13.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="823.25,407">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,81.5"
+              Start="0,0"
+              End="0,74">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,74" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\ETL\Extract Source to stage">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="238,42"
+          Id="Package\ETL\Extract Source to stage\stageFactInventory_Extract"
+          TopLeft="403.5,250.5" />
+        <NodeLayout
+          Size="238,42"
+          Id="Package\ETL\Extract Source to stage\Source_pyd_Vw_KardexKala_olap"
+          TopLeft="403.5,63.5" />
+        <NodeLayout
+          Size="238,42"
+          Id="Package\ETL\Extract Source to stage\Data Conversion"
+          TopLeft="403.5,156" />
+        <EdgeLayout
+          Id="Package\ETL\Extract Source to stage.Paths[OLE DB Source Output]"
+          TopLeft="522.5,105.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,50.5"
+              Start="0,0"
+              End="0,43">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,43" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\ETL\Extract Source to stage.Paths[Data Conversion Output]"
+          TopLeft="522.5,198">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,52.5"
+              Start="0,0"
+              End="0,45">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,45" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\ETL\Extract Source to stage\stageFactInventory_Extract">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\ETL\Extract Source to stage\Source_pyd_Vw_KardexKala_olap">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\ETL\Load to factInventory">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="224,42"
+          Id="Package\ETL\Load to factInventory\factInventory"
+          TopLeft="272.5,228.5" />
+        <NodeLayout
+          Size="224,42"
+          Id="Package\ETL\Load to factInventory\stageFactInventory_Transform"
+          TopLeft="272.5,70.5" />
+        <EdgeLayout
+          Id="Package\ETL\Load to factInventory.Paths[OLE DB Source Output]"
+          TopLeft="384.5,112.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,116"
+              Start="0,0"
+              End="0,108.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,108.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\ETL\Load to factInventory\factInventory">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\ETL\Load to factInventory\stageFactInventory_Transform">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\ETL\Transform">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="174,42"
+          Id="Package\ETL\Transform\Lookup DocDateKey"
+          TopLeft="358,199.5" />
+        <NodeLayout
+          Size="208,42"
+          Id="Package\ETL\Transform\stageFactInventory_Extract"
+          TopLeft="347,53" />
+        <NodeLayout
+          Size="154,42"
+          Id="Package\ETL\Transform\Derived Column"
+          TopLeft="193,296" />
+        <NodeLayout
+          Size="224,42"
+          Id="Package\ETL\Transform\stageFactInventory_Transform"
+          TopLeft="378,415" />
+        <EdgeLayout
+          Id="Package\ETL\Transform.Paths[Lookup Match Output]"
+          TopLeft="445,241.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-175,54.5"
+              Start="0,0"
+              End="-175,47">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,23.25"
+                    Point2="0,27.25"
+                    Point3="-4,27.25" />
+                  <mssgle:LineSegment
+                    End="-171,27.25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-171,27.25"
+                    Point2="-175,27.25"
+                    Point3="-175,31.25" />
+                  <mssgle:LineSegment
+                    End="-175,47" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-135.69138671875,32.25,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\ETL\Transform.Paths[Derived Column Output]"
+          TopLeft="270,338">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="220,77"
+              Start="0,0"
+              End="220,69.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,34.5"
+                    Point2="0,38.5"
+                    Point3="4,38.5" />
+                  <mssgle:LineSegment
+                    End="216,38.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="216,38.5"
+                    Point2="220,38.5"
+                    Point3="220,42.5" />
+                  <mssgle:LineSegment
+                    End="220,69.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\ETL\Transform.Paths[OLE DB Source Output]"
+          TopLeft="448,95">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,104.5"
+              Start="0,0"
+              End="0,97">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,97" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\ETL\Transform\Lookup DocDateKey">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[dimDate]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\ETL\Transform\stageFactInventory_Extract">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\ETL\Transform\stageFactInventory_Transform">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

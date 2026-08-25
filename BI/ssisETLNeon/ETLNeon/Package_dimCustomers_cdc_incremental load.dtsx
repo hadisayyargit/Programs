@@ -1,0 +1,2147 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="3/3/2022 11:50:36 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="SAYAR"
+  DTS:CreatorName="BEHSAZAN\sayar"
+  DTS:DTSID="{992798AF-6E8F-48DC-9CF4-82F3E3C5A469}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5035.3"
+  DTS:LocaleID="1065"
+  DTS:ObjectName="Package_dimCustomers_cdc_incremental load"
+  DTS:PackageType="5"
+  DTS:VersionBuild="109"
+  DTS:VersionGUID="{A1C20864-068A-4884-8DA9-EE274ECF28C7}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{748B10CF-36B2-47D4-8307-7366CE6CB3EF}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="v_CDC_State_Customers">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\CDC Control Task"
+      DTS:CreationName="Attunity.CdcControlTask"
+      DTS:Description="CDC Control Task"
+      DTS:DTSID="{0F53CACB-97FC-4B79-BF19-CA2219BCDE3D}"
+      DTS:ExecutableType="Attunity.CdcControlTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="CDC Control Task"
+      DTS:TaskContact="Attunity Ltd.; All Rights Reserved; http://www.attunity.com;"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <CDCControlTask
+          Connection="sayar_mssql2019_ADO Neon"
+          TaskOperation="GetProcessingRange"
+          OperationParameter=""
+          StateConnection="sayar_mssql2019_ADO Neon"
+          StateVariable="User::v_CDC_State_Customers"
+          AutomaticStatePersistence="True"
+          StateName="v_CDC_State_Customers"
+          StateTable="[dbo].[cdc_states]"
+          CommandTimeout="30"
+          ChangeDetectionRetryInterval="10"
+          ChangeDetectionTimeout="60" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\CDC Control Task_end CDC"
+      DTS:CreationName="Attunity.CdcControlTask"
+      DTS:Description="CDC Control Task"
+      DTS:DTSID="{95E520EB-8B1A-46AB-9933-3C01B09F9D51}"
+      DTS:ExecutableType="Attunity.CdcControlTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="CDC Control Task_end CDC"
+      DTS:TaskContact="Attunity Ltd.; All Rights Reserved; http://www.attunity.com;"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <CDCControlTask
+          Connection="sayar_mssql2019_ADO Neon"
+          TaskOperation="MarkProcessedRange"
+          OperationParameter=""
+          StateConnection="sayar_mssql2019_ADO Neon"
+          StateVariable="User::v_CDC_State_Customers"
+          AutomaticStatePersistence="True"
+          StateName="v_CDC_State_Customers"
+          StateTable="[dbo].[cdc_states]"
+          CommandTimeout="30"
+          ChangeDetectionRetryInterval="10"
+          ChangeDetectionTimeout="60" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task_Incremental load for dimCustomers"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{71205638-FAB2-4D46-9FE5-AA60BB5BF10A}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task_Incremental load for dimCustomers"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Attunity Ltd.; All Rights Reserved; http://www.attunity.com;"
+              description="Reads change data from a SQL Server change table making it available for processing by downstream data-flow components. Only changes within the current processing range determined by the CDC Control task are read"
+              name="CDC Source"
+              usesDispositions="true"
+              version="8">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="An SSIS string package variable to store the CDC state of the current CDC state."
+                  expressionType="Notify"
+                  name="StateVariable"
+                  typeConverter="Attunity.SqlServer.CDCSrc.PackageVariablesTypeConverter">User::v_CDC_State_Customers</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the content of the metadata columns and the rows returned. Modes starting with ‘All’ return all changes and modes starting with ‘Net’ return net changes."
+                  expressionType="Notify"
+                  name="CDCProcessingMode"
+                  typeConverter="Attunity.SqlServer.CDCSrc.CdcProcessingMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The name of the CDC capture instance. By default the capture instance name is in the form of &quot;&lt;owner&gt;_&lt;table&gt;&quot;. The actual table that stores the changes is the CDC table named &quot;cdc&quot;.&quot;&lt;capture-instance&gt;_CT&quot;"
+                  expressionType="Notify"
+                  name="CaptureInstance">dbo_Customers</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time out."
+                  expressionType="Notify"
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="If true, a special output column called ‘__$reprocessing ’ is added. This output column is true for each data row during the initial processing range, or when the previous CDC run&#xA;was stopped without finishing. The default value is false (the __$reprocessing output column is not generated). This special output column allows the SSIS developer to handle consistency errors differently when working on the Initial Processing Range or the previous CDC run was stopped."
+                  expressionType="Notify"
+                  name="ReprocessingIndication">false</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Attunity.CdcSourceComponent</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Connections[Connection]"
+                  connectionManagerID="{E6B0F120-7C8E-4524-9A52-4907EE30FC4E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[sayar_mssql2019_ADO Neon]"
+                  name="Connection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output]"
+                  name="Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].Columns[__$start_lsn]"
+                      dataType="bytes"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].ExternalColumns[__$start_lsn]"
+                      length="10"
+                      lineageId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].Columns[__$start_lsn]"
+                      name="__$start_lsn"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].Columns[__$operation]"
+                      dataType="i4"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].ExternalColumns[__$operation]"
+                      lineageId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].Columns[__$operation]"
+                      name="__$operation"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].Columns[__$update_mask]"
+                      dataType="bytes"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].ExternalColumns[__$update_mask]"
+                      length="128"
+                      lineageId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].Columns[__$update_mask]"
+                      name="__$update_mask"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].Columns[CustomerID]"
+                      dataType="wstr"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].ExternalColumns[CustomerID]"
+                      length="5"
+                      lineageId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].Columns[CustomerID]"
+                      name="CustomerID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].Columns[CustomerName]"
+                      dataType="wstr"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].ExternalColumns[CustomerName]"
+                      length="40"
+                      lineageId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].Columns[CustomerName]"
+                      name="CustomerName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].Columns[CustomerForeignName]"
+                      dataType="wstr"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].ExternalColumns[CustomerForeignName]"
+                      length="40"
+                      lineageId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].Columns[CustomerForeignName]"
+                      name="CustomerForeignName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].Columns[ContactTitle]"
+                      dataType="wstr"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].ExternalColumns[ContactTitle]"
+                      length="40"
+                      lineageId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].Columns[ContactTitle]"
+                      name="ContactTitle"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].Columns[CustomerType]"
+                      dataType="bool"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].ExternalColumns[CustomerType]"
+                      lineageId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].Columns[CustomerType]"
+                      name="CustomerType"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].Columns[BirthDate]"
+                      dataType="dbTimeStamp"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].ExternalColumns[BirthDate]"
+                      lineageId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].Columns[BirthDate]"
+                      name="BirthDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].Columns[Country]"
+                      dataType="wstr"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].ExternalColumns[Country]"
+                      length="15"
+                      lineageId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].Columns[Country]"
+                      name="Country"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].Columns[City]"
+                      dataType="wstr"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].ExternalColumns[City]"
+                      length="15"
+                      lineageId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].Columns[City]"
+                      name="City"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].Columns[Address]"
+                      dataType="wstr"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].ExternalColumns[Address]"
+                      length="60"
+                      lineageId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].Columns[Address]"
+                      name="Address"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].Columns[PostalCode]"
+                      dataType="wstr"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].ExternalColumns[PostalCode]"
+                      length="15"
+                      lineageId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].Columns[PostalCode]"
+                      name="PostalCode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].Columns[Phone]"
+                      dataType="wstr"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].ExternalColumns[Phone]"
+                      length="24"
+                      lineageId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].Columns[Phone]"
+                      name="Phone"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].Columns[Fax]"
+                      dataType="wstr"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].ExternalColumns[Fax]"
+                      length="24"
+                      lineageId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].Columns[Fax]"
+                      name="Fax"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].Columns[Gender]"
+                      dataType="bool"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].ExternalColumns[Gender]"
+                      lineageId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].Columns[Gender]"
+                      name="Gender"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].Columns[MaritalStatus]"
+                      dataType="ui1"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].ExternalColumns[MaritalStatus]"
+                      lineageId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].Columns[MaritalStatus]"
+                      name="MaritalStatus"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].Columns[__$command_id]"
+                      dataType="i4"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].ExternalColumns[__$command_id]"
+                      lineageId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].Columns[__$command_id]"
+                      name="__$command_id"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].ExternalColumns[__$start_lsn]"
+                      dataType="bytes"
+                      length="10"
+                      name="__$start_lsn" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].ExternalColumns[__$operation]"
+                      dataType="i4"
+                      name="__$operation" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].ExternalColumns[__$update_mask]"
+                      dataType="bytes"
+                      length="128"
+                      name="__$update_mask" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].ExternalColumns[CustomerID]"
+                      dataType="wstr"
+                      length="5"
+                      name="CustomerID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].ExternalColumns[CustomerName]"
+                      dataType="wstr"
+                      length="40"
+                      name="CustomerName" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].ExternalColumns[CustomerForeignName]"
+                      dataType="wstr"
+                      length="40"
+                      name="CustomerForeignName" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].ExternalColumns[ContactTitle]"
+                      dataType="wstr"
+                      length="40"
+                      name="ContactTitle" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].ExternalColumns[CustomerType]"
+                      dataType="bool"
+                      name="CustomerType" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].ExternalColumns[BirthDate]"
+                      dataType="dbTimeStamp"
+                      name="BirthDate" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].ExternalColumns[Country]"
+                      dataType="wstr"
+                      length="15"
+                      name="Country" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].ExternalColumns[City]"
+                      dataType="wstr"
+                      length="15"
+                      name="City" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].ExternalColumns[Address]"
+                      dataType="wstr"
+                      length="60"
+                      name="Address" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].ExternalColumns[PostalCode]"
+                      dataType="wstr"
+                      length="15"
+                      name="PostalCode" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].ExternalColumns[Phone]"
+                      dataType="wstr"
+                      length="24"
+                      name="Phone" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].ExternalColumns[Fax]"
+                      dataType="wstr"
+                      length="24"
+                      name="Fax" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].ExternalColumns[Gender]"
+                      dataType="bool"
+                      name="Gender" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].ExternalColumns[MaritalStatus]"
+                      dataType="ui1"
+                      name="MaritalStatus" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].ExternalColumns[__$command_id]"
+                      dataType="i4"
+                      name="__$command_id" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[ErrorOutput]"
+                  isErrorOut="true"
+                  name="ErrorOutput">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[ErrorOutput].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[ErrorOutput].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[ErrorOutput].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[ErrorOutput].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[ErrorOutput].Columns[__$start_lsn]"
+                      dataType="bytes"
+                      length="10"
+                      lineageId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[ErrorOutput].Columns[__$start_lsn]"
+                      name="__$start_lsn" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[ErrorOutput].Columns[__$operation]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[ErrorOutput].Columns[__$operation]"
+                      name="__$operation" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[ErrorOutput].Columns[__$update_mask]"
+                      dataType="bytes"
+                      length="128"
+                      lineageId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[ErrorOutput].Columns[__$update_mask]"
+                      name="__$update_mask" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[ErrorOutput].Columns[CustomerID]"
+                      dataType="wstr"
+                      length="5"
+                      lineageId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[ErrorOutput].Columns[CustomerID]"
+                      name="CustomerID" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[ErrorOutput].Columns[CustomerName]"
+                      dataType="wstr"
+                      length="40"
+                      lineageId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[ErrorOutput].Columns[CustomerName]"
+                      name="CustomerName" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[ErrorOutput].Columns[CustomerForeignName]"
+                      dataType="wstr"
+                      length="40"
+                      lineageId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[ErrorOutput].Columns[CustomerForeignName]"
+                      name="CustomerForeignName" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[ErrorOutput].Columns[ContactTitle]"
+                      dataType="wstr"
+                      length="40"
+                      lineageId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[ErrorOutput].Columns[ContactTitle]"
+                      name="ContactTitle" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[ErrorOutput].Columns[CustomerType]"
+                      dataType="bool"
+                      lineageId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[ErrorOutput].Columns[CustomerType]"
+                      name="CustomerType" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[ErrorOutput].Columns[BirthDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[ErrorOutput].Columns[BirthDate]"
+                      name="BirthDate" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[ErrorOutput].Columns[Country]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[ErrorOutput].Columns[Country]"
+                      name="Country" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[ErrorOutput].Columns[City]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[ErrorOutput].Columns[City]"
+                      name="City" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[ErrorOutput].Columns[Address]"
+                      dataType="wstr"
+                      length="60"
+                      lineageId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[ErrorOutput].Columns[Address]"
+                      name="Address" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[ErrorOutput].Columns[PostalCode]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[ErrorOutput].Columns[PostalCode]"
+                      name="PostalCode" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[ErrorOutput].Columns[Phone]"
+                      dataType="wstr"
+                      length="24"
+                      lineageId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[ErrorOutput].Columns[Phone]"
+                      name="Phone" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[ErrorOutput].Columns[Fax]"
+                      dataType="wstr"
+                      length="24"
+                      lineageId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[ErrorOutput].Columns[Fax]"
+                      name="Fax" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[ErrorOutput].Columns[Gender]"
+                      dataType="bool"
+                      lineageId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[ErrorOutput].Columns[Gender]"
+                      name="Gender" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[ErrorOutput].Columns[MaritalStatus]"
+                      dataType="ui1"
+                      lineageId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[ErrorOutput].Columns[MaritalStatus]"
+                      name="MaritalStatus" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[ErrorOutput].Columns[__$command_id]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[ErrorOutput].Columns[__$command_id]"
+                      name="__$command_id" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Splitter"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Attunity Ltd.; All Rights Reserved; http://www.attunity.com;"
+              description="Directs a stream of net change records into different outputs based on the type of the change (Insert, Delete and Update). This allows specific handling for different types of change records."
+              name="CDC Splitter"
+              usesDispositions="true"
+              version="8">
+              <properties>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Attunity.CdcSplitterComponent</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Splitter.Inputs[Input]"
+                  errorOrTruncationOperation="Operation of the changed row is not a valid one"
+                  errorRowDisposition="FailComponent"
+                  name="Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Splitter.Inputs[Input].Columns[__$start_lsn]"
+                      cachedDataType="bytes"
+                      cachedLength="10"
+                      cachedName="__$start_lsn"
+                      lineageId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].Columns[__$start_lsn]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Splitter.Inputs[Input].Columns[__$operation]"
+                      cachedDataType="i4"
+                      cachedName="__$operation"
+                      lineageId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].Columns[__$operation]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Splitter.Inputs[Input].Columns[__$update_mask]"
+                      cachedDataType="bytes"
+                      cachedLength="128"
+                      cachedName="__$update_mask"
+                      lineageId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].Columns[__$update_mask]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Splitter.Inputs[Input].Columns[CustomerID]"
+                      cachedDataType="wstr"
+                      cachedLength="5"
+                      cachedName="CustomerID"
+                      lineageId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].Columns[CustomerID]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Splitter.Inputs[Input].Columns[CustomerName]"
+                      cachedDataType="wstr"
+                      cachedLength="40"
+                      cachedName="CustomerName"
+                      lineageId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].Columns[CustomerName]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Splitter.Inputs[Input].Columns[CustomerForeignName]"
+                      cachedDataType="wstr"
+                      cachedLength="40"
+                      cachedName="CustomerForeignName"
+                      lineageId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].Columns[CustomerForeignName]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Splitter.Inputs[Input].Columns[ContactTitle]"
+                      cachedDataType="wstr"
+                      cachedLength="40"
+                      cachedName="ContactTitle"
+                      lineageId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].Columns[ContactTitle]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Splitter.Inputs[Input].Columns[CustomerType]"
+                      cachedDataType="bool"
+                      cachedName="CustomerType"
+                      lineageId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].Columns[CustomerType]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Splitter.Inputs[Input].Columns[BirthDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="BirthDate"
+                      lineageId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].Columns[BirthDate]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Splitter.Inputs[Input].Columns[Country]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="Country"
+                      lineageId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].Columns[Country]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Splitter.Inputs[Input].Columns[City]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="City"
+                      lineageId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].Columns[City]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Splitter.Inputs[Input].Columns[Address]"
+                      cachedDataType="wstr"
+                      cachedLength="60"
+                      cachedName="Address"
+                      lineageId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].Columns[Address]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Splitter.Inputs[Input].Columns[PostalCode]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="PostalCode"
+                      lineageId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].Columns[PostalCode]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Splitter.Inputs[Input].Columns[Phone]"
+                      cachedDataType="wstr"
+                      cachedLength="24"
+                      cachedName="Phone"
+                      lineageId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].Columns[Phone]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Splitter.Inputs[Input].Columns[Fax]"
+                      cachedDataType="wstr"
+                      cachedLength="24"
+                      cachedName="Fax"
+                      lineageId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].Columns[Fax]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Splitter.Inputs[Input].Columns[Gender]"
+                      cachedDataType="bool"
+                      cachedName="Gender"
+                      lineageId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].Columns[Gender]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Splitter.Inputs[Input].Columns[MaritalStatus]"
+                      cachedDataType="ui1"
+                      cachedName="MaritalStatus"
+                      lineageId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].Columns[MaritalStatus]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Splitter.Inputs[Input].Columns[__$command_id]"
+                      cachedDataType="i4"
+                      cachedName="__$command_id"
+                      lineageId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].Columns[__$command_id]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Splitter.Outputs[InsertOutput]"
+                  exclusionGroup="1"
+                  name="InsertOutput"
+                  synchronousInputId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Splitter.Inputs[Input]">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="Output type - Insert."
+                      name="OutputType"
+                      typeConverter="Attunity.SqlServer.CDCSplit.OutputType">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Splitter.Outputs[DeleteOutput]"
+                  exclusionGroup="1"
+                  name="DeleteOutput"
+                  synchronousInputId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Splitter.Inputs[Input]">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="Output type - Delete."
+                      name="OutputType"
+                      typeConverter="Attunity.SqlServer.CDCSplit.OutputType">2</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Splitter.Outputs[UpdateOutput]"
+                  exclusionGroup="1"
+                  name="UpdateOutput"
+                  synchronousInputId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Splitter.Inputs[Input]">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="Output type - Update."
+                      name="OutputType"
+                      typeConverter="Attunity.SqlServer.CDCSplit.OutputType">1</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Splitter.Outputs[ErrorOutput]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="ErrorOutput"
+                  synchronousInputId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Splitter.Inputs[Input]">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="Output type - Error."
+                      name="OutputType"
+                      typeConverter="Attunity.SqlServer.CDCSplit.OutputType">3</property>
+                  </properties>
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Splitter.Outputs[ErrorOutput].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Splitter.Outputs[ErrorOutput].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Splitter.Outputs[ErrorOutput].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Splitter.Outputs[ErrorOutput].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task_Incremental load for dimCustomers\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task_Incremental load for dimCustomers\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\Derived Column.Inputs[Derived Column Input].Columns[Country]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="Country"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].Columns[Country]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[LOWER](#{Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].Columns[Country]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">LOWER(Country)</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\Derived Column.Inputs[Derived Column Input].Columns[City]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="City"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].Columns[City]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[LOWER](#{Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].Columns[City]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">LOWER(City)</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task_Incremental load for dimCustomers\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Data Flow Task_Incremental load for dimCustomers\Derived Column.Inputs[Derived Column Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task_Incremental load for dimCustomers\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Data Flow Task_Incremental load for dimCustomers\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task_Incremental load for dimCustomers\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task_Incremental load for dimCustomers\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task_Incremental load for dimCustomers\Lookup_Geography"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup_Geography"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT  GeographyKey      ,lower (CountryForeignName) as [CountryForeignName]          ,lower(CityForeignName)  as CityForeignName FROM dimGeography</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (SELECT  GeographyKey      ,lower (CountryForeignName) as [CountryForeignName]          ,lower(CityForeignName)  as CityForeignName FROM dimGeography) [refTable]
+where [refTable].[CountryForeignName] = ? and [refTable].[CityForeignName] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="GeographyKey" dataType="DT_I8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CountryForeignName" dataType="DT_WSTR" length="40" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CityForeignName" dataType="DT_WSTR" length="40" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Data Flow Task_Incremental load for dimCustomers\20:invalid};#{Package\Data Flow Task_Incremental load for dimCustomers\21:invalid};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1256</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task_Incremental load for dimCustomers\Lookup_Geography.Connections[OleDbConnection]"
+                  connectionManagerID="{EC83FD05-CF2A-4C09-ABDF-E9A88D809F07}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[SAYAR_MSSQL2019 NeonDW]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task_Incremental load for dimCustomers\Lookup_Geography.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\Lookup_Geography.Inputs[Lookup Input].Columns[Country]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="Country"
+                      lineageId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].Columns[Country]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">CountryForeignName</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\Lookup_Geography.Inputs[Lookup Input].Columns[City]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="City"
+                      lineageId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].Columns[City]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">CityForeignName</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task_Incremental load for dimCustomers\Lookup_Geography.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="IgnoreFailure"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Data Flow Task_Incremental load for dimCustomers\Lookup_Geography.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\Lookup_Geography.Outputs[Lookup Match Output].Columns[GeographyKey]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Data Flow Task_Incremental load for dimCustomers\Lookup_Geography.Outputs[Lookup Match Output].Columns[GeographyKey]"
+                      name="GeographyKey"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">GeographyKey</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task_Incremental load for dimCustomers\Lookup_Geography.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Data Flow Task_Incremental load for dimCustomers\Lookup_Geography.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task_Incremental load for dimCustomers\Lookup_Geography.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Data Flow Task_Incremental load for dimCustomers\Lookup_Geography.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\Lookup_Geography.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task_Incremental load for dimCustomers\Lookup_Geography.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\Lookup_Geography.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task_Incremental load for dimCustomers\Lookup_Geography.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task_Incremental load for dimCustomers\Lookup_Geography1"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup_Geography1"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT  GeographyKey      ,lower (CountryForeignName) as [CountryForeignName]          ,lower(CityForeignName)  as CityForeignName FROM dimGeography</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (SELECT  GeographyKey      ,lower (CountryForeignName) as [CountryForeignName]          ,lower(CityForeignName)  as CityForeignName FROM dimGeography) [refTable]
+where [refTable].[CountryForeignName] = ? and [refTable].[CityForeignName] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="GeographyKey" dataType="DT_I8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CountryForeignName" dataType="DT_WSTR" length="40" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CityForeignName" dataType="DT_WSTR" length="40" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Data Flow Task_Incremental load for dimCustomers\20:invalid};#{Package\Data Flow Task_Incremental load for dimCustomers\21:invalid};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1256</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task_Incremental load for dimCustomers\Lookup_Geography1.Connections[OleDbConnection]"
+                  connectionManagerID="{EC83FD05-CF2A-4C09-ABDF-E9A88D809F07}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[SAYAR_MSSQL2019 NeonDW]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task_Incremental load for dimCustomers\Lookup_Geography1.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\Lookup_Geography1.Inputs[Lookup Input].Columns[City]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="City"
+                      lineageId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].Columns[City]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">CityForeignName</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\Lookup_Geography1.Inputs[Lookup Input].Columns[Country]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="Country"
+                      lineageId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].Columns[Country]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">CountryForeignName</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task_Incremental load for dimCustomers\Lookup_Geography1.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="IgnoreFailure"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Data Flow Task_Incremental load for dimCustomers\Lookup_Geography1.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\Lookup_Geography1.Outputs[Lookup Match Output].Columns[GeographyKey2]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Data Flow Task_Incremental load for dimCustomers\Lookup_Geography1.Outputs[Lookup Match Output].Columns[GeographyKey2]"
+                      name="GeographyKey2"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">GeographyKey</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task_Incremental load for dimCustomers\Lookup_Geography1.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Data Flow Task_Incremental load for dimCustomers\Lookup_Geography1.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task_Incremental load for dimCustomers\Lookup_Geography1.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Data Flow Task_Incremental load for dimCustomers\Lookup_Geography1.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\Lookup_Geography1.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task_Incremental load for dimCustomers\Lookup_Geography1.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\Lookup_Geography1.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task_Incremental load for dimCustomers\Lookup_Geography1.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task_Incremental load for dimCustomers\OLE DB Command_Delete"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="OLE DB Command_Delete"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">Delete dimCustomers
+ WHERE CustomerID=?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1256</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task_Incremental load for dimCustomers\OLE DB Command_Delete.Connections[OleDbConnection]"
+                  connectionManagerID="{EC83FD05-CF2A-4C09-ABDF-E9A88D809F07}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[SAYAR_MSSQL2019 NeonDW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task_Incremental load for dimCustomers\OLE DB Command_Delete.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\OLE DB Command_Delete.Inputs[OLE DB Command Input].Columns[CustomerID]"
+                      cachedDataType="wstr"
+                      cachedLength="5"
+                      cachedName="CustomerID"
+                      externalMetadataColumnId="Package\Data Flow Task_Incremental load for dimCustomers\OLE DB Command_Delete.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].Columns[CustomerID]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\OLE DB Command_Delete.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      dataType="wstr"
+                      length="50"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task_Incremental load for dimCustomers\OLE DB Command_Delete.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\Data Flow Task_Incremental load for dimCustomers\OLE DB Command_Delete.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task_Incremental load for dimCustomers\OLE DB Command_Delete.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\Data Flow Task_Incremental load for dimCustomers\OLE DB Command_Delete.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\OLE DB Command_Delete.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task_Incremental load for dimCustomers\OLE DB Command_Delete.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\OLE DB Command_Delete.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task_Incremental load for dimCustomers\OLE DB Command_Delete.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task_Incremental load for dimCustomers\OLE DB Command_Update"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="OLE DB Command_Update"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">UPDATE dimCustomers
+   SET CustomerName = ?      ,CustomerForeignName = ?      ,GeographyKey = ?
+ WHERE CustomerID=?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1256</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task_Incremental load for dimCustomers\OLE DB Command_Update.Connections[OleDbConnection]"
+                  connectionManagerID="{EC83FD05-CF2A-4C09-ABDF-E9A88D809F07}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[SAYAR_MSSQL2019 NeonDW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task_Incremental load for dimCustomers\OLE DB Command_Update.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\OLE DB Command_Update.Inputs[OLE DB Command Input].Columns[GeographyKey2]"
+                      cachedDataType="i8"
+                      cachedName="GeographyKey2"
+                      externalMetadataColumnId="Package\Data Flow Task_Incremental load for dimCustomers\OLE DB Command_Update.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      lineageId="Package\Data Flow Task_Incremental load for dimCustomers\Lookup_Geography1.Outputs[Lookup Match Output].Columns[GeographyKey2]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\OLE DB Command_Update.Inputs[OLE DB Command Input].Columns[CustomerID]"
+                      cachedDataType="wstr"
+                      cachedLength="5"
+                      cachedName="CustomerID"
+                      externalMetadataColumnId="Package\Data Flow Task_Incremental load for dimCustomers\OLE DB Command_Update.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      lineageId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].Columns[CustomerID]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\OLE DB Command_Update.Inputs[OLE DB Command Input].Columns[CustomerName]"
+                      cachedDataType="wstr"
+                      cachedLength="40"
+                      cachedName="CustomerName"
+                      externalMetadataColumnId="Package\Data Flow Task_Incremental load for dimCustomers\OLE DB Command_Update.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].Columns[CustomerName]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\OLE DB Command_Update.Inputs[OLE DB Command Input].Columns[CustomerForeignName]"
+                      cachedDataType="wstr"
+                      cachedLength="40"
+                      cachedName="CustomerForeignName"
+                      externalMetadataColumnId="Package\Data Flow Task_Incremental load for dimCustomers\OLE DB Command_Update.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      lineageId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].Columns[CustomerForeignName]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\OLE DB Command_Update.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      dataType="wstr"
+                      length="40"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\OLE DB Command_Update.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      dataType="wstr"
+                      length="40"
+                      name="Param_1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\OLE DB Command_Update.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      dataType="i8"
+                      name="Param_2">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\OLE DB Command_Update.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      dataType="wstr"
+                      length="50"
+                      name="Param_3">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task_Incremental load for dimCustomers\OLE DB Command_Update.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\Data Flow Task_Incremental load for dimCustomers\OLE DB Command_Update.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task_Incremental load for dimCustomers\OLE DB Command_Update.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\Data Flow Task_Incremental load for dimCustomers\OLE DB Command_Update.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\OLE DB Command_Update.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task_Incremental load for dimCustomers\OLE DB Command_Update.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\OLE DB Command_Update.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task_Incremental load for dimCustomers\OLE DB Command_Update.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task_Incremental load for dimCustomers\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[dimCustomers]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task_Incremental load for dimCustomers\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="{EC83FD05-CF2A-4C09-ABDF-E9A88D809F07}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[SAYAR_MSSQL2019 NeonDW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task_Incremental load for dimCustomers\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[CustomerID]"
+                      cachedDataType="wstr"
+                      cachedLength="5"
+                      cachedName="CustomerID"
+                      externalMetadataColumnId="Package\Data Flow Task_Incremental load for dimCustomers\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CustomerID]"
+                      lineageId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].Columns[CustomerID]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[GeographyKey]"
+                      cachedDataType="i8"
+                      cachedName="GeographyKey"
+                      externalMetadataColumnId="Package\Data Flow Task_Incremental load for dimCustomers\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[GeographyKey]"
+                      lineageId="Package\Data Flow Task_Incremental load for dimCustomers\Lookup_Geography.Outputs[Lookup Match Output].Columns[GeographyKey]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Address]"
+                      cachedDataType="wstr"
+                      cachedLength="60"
+                      cachedName="Address"
+                      externalMetadataColumnId="Package\Data Flow Task_Incremental load for dimCustomers\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Address]"
+                      lineageId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].Columns[Address]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[PostalCode]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="PostalCode"
+                      externalMetadataColumnId="Package\Data Flow Task_Incremental load for dimCustomers\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PostalCode]"
+                      lineageId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].Columns[PostalCode]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Phone]"
+                      cachedDataType="wstr"
+                      cachedLength="24"
+                      cachedName="Phone"
+                      externalMetadataColumnId="Package\Data Flow Task_Incremental load for dimCustomers\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MobilePhone]"
+                      lineageId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].Columns[Phone]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[CustomerForeignName]"
+                      cachedDataType="wstr"
+                      cachedLength="40"
+                      cachedName="CustomerForeignName"
+                      externalMetadataColumnId="Package\Data Flow Task_Incremental load for dimCustomers\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CustomerForeignName]"
+                      lineageId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].Columns[CustomerForeignName]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[CustomerName]"
+                      cachedDataType="wstr"
+                      cachedLength="40"
+                      cachedName="CustomerName"
+                      externalMetadataColumnId="Package\Data Flow Task_Incremental load for dimCustomers\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CustomerName]"
+                      lineageId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].Columns[CustomerName]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[CustomerType]"
+                      cachedDataType="bool"
+                      cachedName="CustomerType"
+                      externalMetadataColumnId="Package\Data Flow Task_Incremental load for dimCustomers\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CustomerType]"
+                      lineageId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].Columns[CustomerType]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Gender]"
+                      cachedDataType="bool"
+                      cachedName="Gender"
+                      externalMetadataColumnId="Package\Data Flow Task_Incremental load for dimCustomers\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Gender]"
+                      lineageId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].Columns[Gender]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[MaritalStatus]"
+                      cachedDataType="ui1"
+                      cachedName="MaritalStatus"
+                      externalMetadataColumnId="Package\Data Flow Task_Incremental load for dimCustomers\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MaritalStatus]"
+                      lineageId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output].Columns[MaritalStatus]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CustomerKey]"
+                      dataType="i4"
+                      name="CustomerKey" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CustomerID]"
+                      dataType="wstr"
+                      length="50"
+                      name="CustomerID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CustomerName]"
+                      dataType="wstr"
+                      length="40"
+                      name="CustomerName" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[GeographyKey]"
+                      dataType="i8"
+                      name="GeographyKey" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CustomerForeignName]"
+                      dataType="wstr"
+                      length="40"
+                      name="CustomerForeignName" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CustomerType]"
+                      dataType="bool"
+                      name="CustomerType" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Gender]"
+                      dataType="bool"
+                      name="Gender" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MaritalStatus]"
+                      dataType="ui1"
+                      name="MaritalStatus" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[BirthDateKey]"
+                      dataType="i4"
+                      name="BirthDateKey" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[NationalCode]"
+                      codePage="1256"
+                      dataType="str"
+                      length="10"
+                      name="NationalCode" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MobilePhone]"
+                      dataType="wstr"
+                      length="24"
+                      name="MobilePhone" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[EmailAddress]"
+                      codePage="1256"
+                      dataType="str"
+                      length="50"
+                      name="EmailAddress" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FirstPurchaseDateKey]"
+                      dataType="i4"
+                      name="FirstPurchaseDateKey" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Region]"
+                      dataType="wstr"
+                      length="15"
+                      name="Region" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PostalCode]"
+                      dataType="wstr"
+                      length="15"
+                      name="PostalCode" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Address]"
+                      dataType="wstr"
+                      length="100"
+                      name="Address" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Coordinates]"
+                      codePage="1256"
+                      dataType="str"
+                      length="30"
+                      name="Coordinates" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[IpAddressLocator]"
+                      codePage="1256"
+                      dataType="str"
+                      length="15"
+                      name="IpAddressLocator" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task_Incremental load for dimCustomers\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task_Incremental load for dimCustomers\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task_Incremental load for dimCustomers\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Incremental load for dimCustomers\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task_Incremental load for dimCustomers\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task_Incremental load for dimCustomers.Paths[DeleteOutput]"
+              endId="Package\Data Flow Task_Incremental load for dimCustomers\OLE DB Command_Delete.Inputs[OLE DB Command Input]"
+              name="DeleteOutput"
+              startId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Splitter.Outputs[DeleteOutput]" />
+            <path
+              refId="Package\Data Flow Task_Incremental load for dimCustomers.Paths[Derived Column Output]"
+              endId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Splitter.Inputs[Input]"
+              name="Derived Column Output"
+              startId="Package\Data Flow Task_Incremental load for dimCustomers\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Data Flow Task_Incremental load for dimCustomers.Paths[InsertOutput]"
+              endId="Package\Data Flow Task_Incremental load for dimCustomers\Lookup_Geography.Inputs[Lookup Input]"
+              name="InsertOutput"
+              startId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Splitter.Outputs[InsertOutput]" />
+            <path
+              refId="Package\Data Flow Task_Incremental load for dimCustomers.Paths[Lookup Match Output]"
+              endId="Package\Data Flow Task_Incremental load for dimCustomers\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Lookup Match Output"
+              startId="Package\Data Flow Task_Incremental load for dimCustomers\Lookup_Geography.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Data Flow Task_Incremental load for dimCustomers.Paths[Lookup Match Output1]"
+              endId="Package\Data Flow Task_Incremental load for dimCustomers\OLE DB Command_Update.Inputs[OLE DB Command Input]"
+              name="Lookup Match Output"
+              startId="Package\Data Flow Task_Incremental load for dimCustomers\Lookup_Geography1.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Data Flow Task_Incremental load for dimCustomers.Paths[Output]"
+              endId="Package\Data Flow Task_Incremental load for dimCustomers\Derived Column.Inputs[Derived Column Input]"
+              name="Output"
+              startId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source.Outputs[Output]" />
+            <path
+              refId="Package\Data Flow Task_Incremental load for dimCustomers.Paths[UpdateOutput]"
+              endId="Package\Data Flow Task_Incremental load for dimCustomers\Lookup_Geography1.Inputs[Lookup Input]"
+              name="UpdateOutput"
+              startId="Package\Data Flow Task_Incremental load for dimCustomers\CDC Splitter.Outputs[UpdateOutput]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{7681D41F-5F5F-49DA-8A44-C94AD9C93283}"
+      DTS:From="Package\CDC Control Task"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Data Flow Task_Incremental load for dimCustomers" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{79D8901A-438D-4DAF-9BFD-421B3E992104}"
+      DTS:From="Package\Data Flow Task_Incremental load for dimCustomers"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\CDC Control Task_end CDC" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="161,42"
+          Id="Package\CDC Control Task"
+          TopLeft="271,78" />
+        <NodeLayout
+          Size="208,42"
+          Id="Package\CDC Control Task_end CDC"
+          TopLeft="244,279" />
+        <NodeLayout
+          Size="323,42"
+          Id="Package\Data Flow Task_Incremental load for dimCustomers"
+          TopLeft="193.5,186.5" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="353.25,120">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,66.5"
+              Start="0,0"
+              End="0,59">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,59" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="351.5,228.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,50.5"
+              Start="0,0"
+              End="0,43">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,43" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <AnnotationLayout
+          Text="Incremental Load"
+          ParentId="Package"
+          FontInfo="{assembly:Null}"
+          Size="121,40"
+          Id="9cd3d402-4995-49ca-9ab4-02e8351fc8c5"
+          TopLeft="108,25" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Data Flow Task_Incremental load for dimCustomers">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Data Flow Task_Incremental load for dimCustomers\OLE DB Destination"
+          TopLeft="122,458" />
+        <NodeLayout
+          Size="154,42"
+          Id="Package\Data Flow Task_Incremental load for dimCustomers\Derived Column"
+          TopLeft="125.5,78.5" />
+        <NodeLayout
+          Size="205,42"
+          Id="Package\Data Flow Task_Incremental load for dimCustomers\OLE DB Command_Update"
+          TopLeft="385,457" />
+        <NodeLayout
+          Size="170,42"
+          Id="Package\Data Flow Task_Incremental load for dimCustomers\Lookup_Geography"
+          TopLeft="104,341" />
+        <NodeLayout
+          Size="176,42"
+          Id="Package\Data Flow Task_Incremental load for dimCustomers\Lookup_Geography1"
+          TopLeft="401,346" />
+        <NodeLayout
+          Size="134,42"
+          Id="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source"
+          TopLeft="412,2" />
+        <NodeLayout
+          Size="201,42"
+          Id="Package\Data Flow Task_Incremental load for dimCustomers\OLE DB Command_Delete"
+          TopLeft="683,459" />
+        <NodeLayout
+          Size="136,42"
+          Id="Package\Data Flow Task_Incremental load for dimCustomers\CDC Splitter"
+          TopLeft="418,182" />
+        <EdgeLayout
+          Id="Package\Data Flow Task_Incremental load for dimCustomers.Paths[UpdateOutput]"
+          TopLeft="487.5,224">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,122"
+              Start="0,0"
+              End="0,114.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,114.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-31.63033203125,51.4453125,63.2606640625,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task_Incremental load for dimCustomers.Paths[Output]"
+          TopLeft="479,44">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-276.5,34.5"
+              Start="0,0"
+              End="-276.5,27">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,13.25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,13.25"
+                    Point2="0,17.25"
+                    Point3="-4,17.25" />
+                  <mssgle:LineSegment
+                    End="-272.5,17.25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-272.5,17.25"
+                    Point2="-276.5,17.25"
+                    Point3="-276.5,21.25" />
+                  <mssgle:LineSegment
+                    End="-276.5,27" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task_Incremental load for dimCustomers.Paths[Lookup Match Output1]"
+          TopLeft="488.25,388">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,69"
+              Start="0,0"
+              End="0,61.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,61.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,24.9453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task_Incremental load for dimCustomers.Paths[Lookup Match Output]"
+          TopLeft="189,383">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="18.5,75"
+              Start="0,0"
+              End="18.5,67.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,33.5"
+                    Point2="0,37.5"
+                    Point3="4,37.5" />
+                  <mssgle:LineSegment
+                    End="14.5,37.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="14.5,37.5"
+                    Point2="18.5,37.5"
+                    Point3="18.5,41.5" />
+                  <mssgle:LineSegment
+                    End="18.5,67.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-38.94138671875,42.5,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task_Incremental load for dimCustomers.Paths[InsertOutput]"
+          TopLeft="454,224">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-265,117"
+              Start="0,0"
+              End="-265,109.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,36.5"
+                    Point2="0,40.5"
+                    Point3="-4,40.5" />
+                  <mssgle:LineSegment
+                    End="-261,40.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-261,40.5"
+                    Point2="-265,40.5"
+                    Point3="-265,44.5" />
+                  <mssgle:LineSegment
+                    End="-265,109.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-161.47798828125,45.5,57.9559765625,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task_Incremental load for dimCustomers.Paths[Derived Column Output]"
+          TopLeft="202.5,120.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="283.5,61.5"
+              Start="0,0"
+              End="283.5,54">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.75" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26.75"
+                    Point2="0,30.75"
+                    Point3="4,30.75" />
+                  <mssgle:LineSegment
+                    End="279.5,30.75" />
+                  <mssgle:CubicBezierSegment
+                    Point1="279.5,30.75"
+                    Point2="283.5,30.75"
+                    Point3="283.5,34.75" />
+                  <mssgle:LineSegment
+                    End="283.5,54" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task_Incremental load for dimCustomers.Paths[DeleteOutput]"
+          TopLeft="518,224">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="265.5,235"
+              Start="0,0"
+              End="265.5,227.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,77.3461538461539" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,77.3461538461539"
+                    Point2="0,81.3461538461539"
+                    Point3="4,81.3461538461539" />
+                  <mssgle:LineSegment
+                    End="261.5,81.3461538461539" />
+                  <mssgle:CubicBezierSegment
+                    Point1="261.5,81.3461538461539"
+                    Point2="265.5,81.3461538461539"
+                    Point3="265.5,85.3461538461539" />
+                  <mssgle:LineSegment
+                    End="265.5,227.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="102.80361328125,86.3461538461539,59.8927734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task_Incremental load for dimCustomers\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task_Incremental load for dimCustomers\Lookup_Geography">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task_Incremental load for dimCustomers\Lookup_Geography1">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task_Incremental load for dimCustomers\CDC Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

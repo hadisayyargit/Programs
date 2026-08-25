@@ -1,0 +1,1671 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="3/2/2022 2:25:21 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="SAYAR"
+  DTS:CreatorName="BEHSAZAN\sayar"
+  DTS:DTSID="{DEC5ECEF-96A6-45A3-BD5C-51D59B76C0C3}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5035.3"
+  DTS:LocaleID="1065"
+  DTS:ObjectName="Package_dimSupplier_Hash_Merge Join_test"
+  DTS:PackageType="5"
+  DTS:VersionBuild="111"
+  DTS:VersionGUID="{0A0F91A1-F20F-4664-850C-C68B4D78B5D2}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Flat File Connection Manager]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{5D874728-1CA2-4B76-8134-4D8EF04A47FA}"
+      DTS:ObjectName="Flat File Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1065"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1256"
+          DTS:ConnectionString="D:\documents\projects\dump\db2\dimCSTMR.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="CustomerId"
+              DTS:DTSID="{72CD69DC-B202-4A11-9BF2-D1D8D9D20D0C}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 1"
+              DTS:DTSID="{86776355-8C27-4436-BF89-1E705CED6BB9}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 2"
+              DTS:DTSID="{65EFC41B-4574-4DEE-AD7B-D54B00AD893F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 3"
+              DTS:DTSID="{C8DB8CB3-F3CA-4A3D-87DA-4B3BB815CEFD}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 4"
+              DTS:DTSID="{E98BC64C-0FFF-4944-B1EA-0E3ADD2D1A4E}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 5"
+              DTS:DTSID="{FBB48F60-74B8-4736-BEE6-B13AD3E65626}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 6"
+              DTS:DTSID="{3ACC4190-1AB5-4F3A-9A21-7562126BEA96}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 7"
+              DTS:DTSID="{F119604B-DBF1-4EBA-AEA3-5F9525EC5330}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 8"
+              DTS:DTSID="{1CDCA386-6BDB-4297-B397-526E7F1BB786}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="FullName"
+              DTS:DTSID="{1BF1AE4D-04C6-4F0D-A668-255A75EAB5BA}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 10"
+              DTS:DTSID="{33174DDB-6726-4B53-8EFF-BBE52C6A9175}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 11"
+              DTS:DTSID="{15D541F8-C262-4558-A1FA-360EB221A8BD}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{D0AB7280-54C5-4EC5-B66F-48A2A784A583}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="V1">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task_Merge Join"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{c75992d3-24b7-4cbd-8813-8bc63532801e}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task_Merge Join"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task_Merge Join\Conditional Split"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="Conditional Split"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task_Merge Join\Conditional Split.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task_Merge Join\Conditional Split.Inputs[Conditional Split Input].Columns[RecordHash]"
+                      cachedDataType="bytes"
+                      cachedLength="200"
+                      cachedName="RecordHash"
+                      lineageId="Package\Data Flow Task_Merge Join\Merge Join.Outputs[Merge Join Output].Columns[RecordHash]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_Merge Join\Conditional Split.Inputs[Conditional Split Input].Columns[SupplierID]"
+                      cachedDataType="i4"
+                      cachedName="SupplierID"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Data Flow Task_Merge Join\Merge Join.Outputs[Merge Join Output].Columns[SupplierID]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_Merge Join\Conditional Split.Inputs[Conditional Split Input].Columns[SourceRecordHash]"
+                      cachedDataType="bytes"
+                      cachedLength="16"
+                      cachedName="SourceRecordHash"
+                      lineageId="Package\Data Flow Task_Merge Join\Merge Join.Outputs[Merge Join Output].Columns[SourceRecordHash]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_Merge Join\Conditional Split.Inputs[Conditional Split Input].Columns[SupplierKey]"
+                      cachedDataType="i4"
+                      cachedName="SupplierKey"
+                      lineageId="Package\Data Flow Task_Merge Join\Merge Join.Outputs[Merge Join Output].Columns[SupplierKey]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task_Merge Join\Conditional Split.Outputs[New Rows]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="New Rows"
+                  synchronousInputId="Package\Data Flow Task_Merge Join\Conditional Split.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">[ISNULL](#{Package\Data Flow Task_Merge Join\Merge Join.Outputs[Merge Join Output].Columns[SupplierKey]})</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">ISNULL(SupplierKey)</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task_Merge Join\Conditional Split.Outputs[Deleted Rows]"
+                  description="Output 3 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Deleted Rows"
+                  synchronousInputId="Package\Data Flow Task_Merge Join\Conditional Split.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">[ISNULL](#{Package\Data Flow Task_Merge Join\Merge Join.Outputs[Merge Join Output].Columns[SupplierID]})</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">ISNULL(SupplierID)</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">1</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task_Merge Join\Conditional Split.Outputs[Modified Rows]"
+                  description="Output 2 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Modified Rows"
+                  synchronousInputId="Package\Data Flow Task_Merge Join\Conditional Split.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">![ISNULL](#{Package\Data Flow Task_Merge Join\Merge Join.Outputs[Merge Join Output].Columns[SupplierID]}) &amp;&amp; ![ISNULL](#{Package\Data Flow Task_Merge Join\Merge Join.Outputs[Merge Join Output].Columns[SupplierKey]}) &amp;&amp; (DT_STR,200,1256)#{Package\Data Flow Task_Merge Join\Merge Join.Outputs[Merge Join Output].Columns[SourceRecordHash]} != (DT_STR,200,1256)#{Package\Data Flow Task_Merge Join\Merge Join.Outputs[Merge Join Output].Columns[RecordHash]}</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">!ISNULL(SupplierID) &amp;&amp; !ISNULL(SupplierKey) &amp;&amp; (DT_STR,200,1256)SourceRecordHash != (DT_STR,200,1256)RecordHash</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">2</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task_Merge Join\Conditional Split.Outputs[Conditional Split Default Output]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="Conditional Split Default Output"
+                  synchronousInputId="Package\Data Flow Task_Merge Join\Conditional Split.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task_Merge Join\Conditional Split.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\Data Flow Task_Merge Join\Conditional Split.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task_Merge Join\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task_Merge Join\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Merge Join\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task_Merge Join\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task_Merge Join\Merge Join"
+              componentClassID="Microsoft.MergeJoin"
+              contactInfo="Merge Join;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combine two sorted data flows into one using the FULL, LEFT, or INNER join. We recommend this transformation when data flows can be sorted at their sources."
+              name="Merge Join"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of join to perform."
+                  name="JoinType"
+                  typeConverter="JoinType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the number of columns in the ordering key."
+                  name="NumKeyColumns">1</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the null values are treated as equal values."
+                  name="TreatNullsAsEqual">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Indicates the requested maximum buffers per input before blocking."
+                  name="MaxBuffersPerInput">5</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task_Merge Join\Merge Join.Inputs[Merge Join Left Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Left Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task_Merge Join\Merge Join.Inputs[Merge Join Left Input].Columns[SupplierID]"
+                      cachedDataType="i4"
+                      cachedName="SupplierID"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Data Flow Task_Merge Join\OLE DB Source_Supplier.Outputs[OLE DB Source Output].Columns[SupplierID]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_Merge Join\Merge Join.Inputs[Merge Join Left Input].Columns[SourceRecordHash]"
+                      cachedDataType="bytes"
+                      cachedLength="16"
+                      cachedName="SourceRecordHash"
+                      lineageId="Package\Data Flow Task_Merge Join\Multiple Hash 1.Outputs[HashedOutput].Columns[SourceRecordHash]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_Merge Join\Merge Join.Inputs[Merge Join Left Input].Columns[CompanyName]"
+                      cachedDataType="wstr"
+                      cachedLength="40"
+                      cachedName="CompanyName"
+                      lineageId="Package\Data Flow Task_Merge Join\OLE DB Source_Supplier.Outputs[OLE DB Source Output].Columns[CompanyName]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Data Flow Task_Merge Join\Merge Join.Inputs[Merge Join Right Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Right Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task_Merge Join\Merge Join.Inputs[Merge Join Right Input].Columns[SupplierKey]"
+                      cachedDataType="i4"
+                      cachedName="SupplierKey"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Data Flow Task_Merge Join\OLE DB Source_dimSupplier.Outputs[OLE DB Source Output].Columns[SupplierKey]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_Merge Join\Merge Join.Inputs[Merge Join Right Input].Columns[SupplierName]"
+                      cachedDataType="wstr"
+                      cachedLength="40"
+                      cachedName="SupplierName"
+                      lineageId="Package\Data Flow Task_Merge Join\OLE DB Source_dimSupplier.Outputs[OLE DB Source Output].Columns[SupplierName]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_Merge Join\Merge Join.Inputs[Merge Join Right Input].Columns[RecordHash]"
+                      cachedDataType="bytes"
+                      cachedLength="200"
+                      cachedName="RecordHash"
+                      lineageId="Package\Data Flow Task_Merge Join\OLE DB Source_dimSupplier.Outputs[OLE DB Source Output].Columns[RecordHash]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task_Merge Join\Merge Join.Outputs[Merge Join Output]"
+                  isSorted="true"
+                  name="Merge Join Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task_Merge Join\Merge Join.Outputs[Merge Join Output].Columns[SourceRecordHash]"
+                      dataType="bytes"
+                      length="16"
+                      lineageId="Package\Data Flow Task_Merge Join\Merge Join.Outputs[Merge Join Output].Columns[SourceRecordHash]"
+                      name="SourceRecordHash">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Data Flow Task_Merge Join\Merge Join.Inputs[Merge Join Left Input].Columns[SourceRecordHash]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task_Merge Join\Merge Join.Outputs[Merge Join Output].Columns[SupplierID]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task_Merge Join\Merge Join.Outputs[Merge Join Output].Columns[SupplierID]"
+                      name="SupplierID"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Data Flow Task_Merge Join\Merge Join.Inputs[Merge Join Left Input].Columns[SupplierID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task_Merge Join\Merge Join.Outputs[Merge Join Output].Columns[CompanyName]"
+                      dataType="wstr"
+                      length="40"
+                      lineageId="Package\Data Flow Task_Merge Join\Merge Join.Outputs[Merge Join Output].Columns[CompanyName]"
+                      name="CompanyName">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Data Flow Task_Merge Join\Merge Join.Inputs[Merge Join Left Input].Columns[CompanyName]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task_Merge Join\Merge Join.Outputs[Merge Join Output].Columns[SupplierName]"
+                      dataType="wstr"
+                      length="40"
+                      lineageId="Package\Data Flow Task_Merge Join\Merge Join.Outputs[Merge Join Output].Columns[SupplierName]"
+                      name="SupplierName">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Data Flow Task_Merge Join\Merge Join.Inputs[Merge Join Right Input].Columns[SupplierName]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task_Merge Join\Merge Join.Outputs[Merge Join Output].Columns[RecordHash]"
+                      dataType="bytes"
+                      length="200"
+                      lineageId="Package\Data Flow Task_Merge Join\Merge Join.Outputs[Merge Join Output].Columns[RecordHash]"
+                      name="RecordHash">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Data Flow Task_Merge Join\Merge Join.Inputs[Merge Join Right Input].Columns[RecordHash]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task_Merge Join\Merge Join.Outputs[Merge Join Output].Columns[SupplierKey]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task_Merge Join\Merge Join.Outputs[Merge Join Output].Columns[SupplierKey]"
+                      name="SupplierKey">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Data Flow Task_Merge Join\Merge Join.Inputs[Merge Join Right Input].Columns[SupplierKey]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task_Merge Join\Multiple Hash 1"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="https://github.com/keif888/SSISMHash/"
+              description="Creates Multiple Hash's from selected input columns."
+              name="Multiple Hash 1"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Select the number of threads to use"
+                  name="MultipleThreads"
+                  typeConverter="Martin.SQLServer.Dts.MultipleHash+MultipleThread">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Select True to force Nulls and Empty Strings to be detected in Hash, False for earlier version compatability."
+                  name="SafeNullHandling"
+                  typeConverter="Martin.SQLServer.Dts.MultipleHash+SafeNullHandling">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Select True to enable hashing of Milliseconds, False for earlier version compatability."
+                  name="IncludeMillsecond"
+                  typeConverter="Martin.SQLServer.Dts.MultipleHash+MillisecondHandling">1</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">MultipleHash</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task_Merge Join\Multiple Hash 1.Inputs[Input]"
+                  name="Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task_Merge Join\Multiple Hash 1.Inputs[Input].Columns[CompanyName]"
+                      cachedDataType="wstr"
+                      cachedLength="40"
+                      cachedName="CompanyName"
+                      lineageId="Package\Data Flow Task_Merge Join\OLE DB Source_Supplier.Outputs[OLE DB Source Output].Columns[CompanyName]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_Merge Join\Multiple Hash 1.Inputs[Input].Columns[SupplierID]"
+                      cachedDataType="i4"
+                      cachedName="SupplierID"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Data Flow Task_Merge Join\OLE DB Source_Supplier.Outputs[OLE DB Source Output].Columns[SupplierID]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task_Merge Join\Multiple Hash 1.Outputs[HashedOutput]"
+                  description="Hashed rows are directed to this output."
+                  name="HashedOutput"
+                  synchronousInputId="Package\Data Flow Task_Merge Join\Multiple Hash 1.Inputs[Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task_Merge Join\Multiple Hash 1.Outputs[HashedOutput].Columns[SourceRecordHash]"
+                      dataType="bytes"
+                      length="16"
+                      lineageId="Package\Data Flow Task_Merge Join\Multiple Hash 1.Outputs[HashedOutput].Columns[SourceRecordHash]"
+                      name="SourceRecordHash">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Select the Hash Type that will be used for this output column."
+                          name="HashType"
+                          typeConverter="Martin.SQLServer.Dts.MultipleHash+HashTypeEnumerator, MultipleHash2019, Version=1.0.0.0, Culture=neutral, PublicKeyToken=51c551904274ab44">1</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Enter the Lineage ID's that will be used to calculate the hash for this output column."
+                          name="InputColumnLineageIDs">#{Package\Data Flow Task_Merge Join\OLE DB Source_Supplier.Outputs[OLE DB Source Output].Columns[CompanyName]},#{Package\Data Flow Task_Merge Join\OLE DB Source_Supplier.Outputs[OLE DB Source Output].Columns[SupplierID]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Stores the type of the output column"
+                          name="HashOutputType"
+                          typeConverter="Martin.SQLServer.Dts.MultipleHash+OutputTypeEnumerator, MultipleHash2019, Version=1.0.0.0, Culture=neutral, PublicKeyToken=51c551904274ab44">0</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task_Merge Join\OLE DB Command_Delete"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="OLE DB Command_Delete"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">Delete dimSuppliers
+ WHERE SupplierKey=?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1256</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task_Merge Join\OLE DB Command_Delete.Connections[OleDbConnection]"
+                  connectionManagerID="{EC83FD05-CF2A-4C09-ABDF-E9A88D809F07}:invalid"
+                  connectionManagerRefId="{EC83FD05-CF2A-4C09-ABDF-E9A88D809F07}:invalid"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task_Merge Join\OLE DB Command_Delete.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task_Merge Join\OLE DB Command_Delete.Inputs[OLE DB Command Input].Columns[SupplierKey]"
+                      cachedDataType="i4"
+                      cachedName="SupplierKey"
+                      externalMetadataColumnId="Package\Data Flow Task_Merge Join\OLE DB Command_Delete.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\Data Flow Task_Merge Join\Merge Join.Outputs[Merge Join Output].Columns[SupplierKey]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Merge Join\OLE DB Command_Delete.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      dataType="i4"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task_Merge Join\OLE DB Command_Delete.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\Data Flow Task_Merge Join\OLE DB Command_Delete.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task_Merge Join\OLE DB Command_Delete.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\Data Flow Task_Merge Join\OLE DB Command_Delete.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task_Merge Join\OLE DB Command_Delete.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task_Merge Join\OLE DB Command_Delete.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Merge Join\OLE DB Command_Delete.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task_Merge Join\OLE DB Command_Delete.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task_Merge Join\OLE DB Command_Update"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="OLE DB Command_Update"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE dimSuppliers
+   SET SupplierName = ?
+,RecordHash=?
+ WHERE SupplierKey=?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1256</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task_Merge Join\OLE DB Command_Update.Connections[OleDbConnection]"
+                  connectionManagerID="{EC83FD05-CF2A-4C09-ABDF-E9A88D809F07}:invalid"
+                  connectionManagerRefId="{EC83FD05-CF2A-4C09-ABDF-E9A88D809F07}:invalid"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task_Merge Join\OLE DB Command_Update.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task_Merge Join\OLE DB Command_Update.Inputs[OLE DB Command Input].Columns[CompanyName]"
+                      cachedDataType="wstr"
+                      cachedLength="40"
+                      cachedName="CompanyName"
+                      externalMetadataColumnId="Package\Data Flow Task_Merge Join\OLE DB Command_Update.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\Data Flow Task_Merge Join\Merge Join.Outputs[Merge Join Output].Columns[CompanyName]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_Merge Join\OLE DB Command_Update.Inputs[OLE DB Command Input].Columns[SourceRecordHash]"
+                      cachedDataType="bytes"
+                      cachedLength="16"
+                      cachedName="SourceRecordHash"
+                      externalMetadataColumnId="Package\Data Flow Task_Merge Join\OLE DB Command_Update.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      lineageId="Package\Data Flow Task_Merge Join\Merge Join.Outputs[Merge Join Output].Columns[SourceRecordHash]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_Merge Join\OLE DB Command_Update.Inputs[OLE DB Command Input].Columns[SupplierID]"
+                      cachedDataType="i4"
+                      cachedName="SupplierID"
+                      cachedSortKeyPosition="1"
+                      externalMetadataColumnId="Package\Data Flow Task_Merge Join\OLE DB Command_Update.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      lineageId="Package\Data Flow Task_Merge Join\Merge Join.Outputs[Merge Join Output].Columns[SupplierID]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Merge Join\OLE DB Command_Update.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      dataType="wstr"
+                      length="40"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Merge Join\OLE DB Command_Update.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      dataType="bytes"
+                      length="200"
+                      name="Param_1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Merge Join\OLE DB Command_Update.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      dataType="i4"
+                      name="Param_2">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task_Merge Join\OLE DB Command_Update.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\Data Flow Task_Merge Join\OLE DB Command_Update.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task_Merge Join\OLE DB Command_Update.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\Data Flow Task_Merge Join\OLE DB Command_Update.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task_Merge Join\OLE DB Command_Update.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task_Merge Join\OLE DB Command_Update.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Merge Join\OLE DB Command_Update.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task_Merge Join\OLE DB Command_Update.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task_Merge Join\OLE DB Destination_Insert"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination_Insert"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[dimSuppliers]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1256</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task_Merge Join\OLE DB Destination_Insert.Connections[OleDbConnection]"
+                  connectionManagerID="{EC83FD05-CF2A-4C09-ABDF-E9A88D809F07}:invalid"
+                  connectionManagerRefId="{EC83FD05-CF2A-4C09-ABDF-E9A88D809F07}:invalid"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task_Merge Join\OLE DB Destination_Insert.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task_Merge Join\OLE DB Destination_Insert.Inputs[OLE DB Destination Input].Columns[CompanyName]"
+                      cachedDataType="wstr"
+                      cachedLength="40"
+                      cachedName="CompanyName"
+                      externalMetadataColumnId="Package\Data Flow Task_Merge Join\OLE DB Destination_Insert.Inputs[OLE DB Destination Input].ExternalColumns[SupplierName]"
+                      lineageId="Package\Data Flow Task_Merge Join\Merge Join.Outputs[Merge Join Output].Columns[CompanyName]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_Merge Join\OLE DB Destination_Insert.Inputs[OLE DB Destination Input].Columns[SupplierID]"
+                      cachedDataType="i4"
+                      cachedName="SupplierID"
+                      cachedSortKeyPosition="1"
+                      externalMetadataColumnId="Package\Data Flow Task_Merge Join\OLE DB Destination_Insert.Inputs[OLE DB Destination Input].ExternalColumns[SupplierKey]"
+                      lineageId="Package\Data Flow Task_Merge Join\Merge Join.Outputs[Merge Join Output].Columns[SupplierID]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_Merge Join\OLE DB Destination_Insert.Inputs[OLE DB Destination Input].Columns[SourceRecordHash]"
+                      cachedDataType="bytes"
+                      cachedLength="16"
+                      cachedName="SourceRecordHash"
+                      externalMetadataColumnId="Package\Data Flow Task_Merge Join\OLE DB Destination_Insert.Inputs[OLE DB Destination Input].ExternalColumns[RecordHash]"
+                      lineageId="Package\Data Flow Task_Merge Join\Merge Join.Outputs[Merge Join Output].Columns[SourceRecordHash]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Merge Join\OLE DB Destination_Insert.Inputs[OLE DB Destination Input].ExternalColumns[SupplierName]"
+                      dataType="wstr"
+                      length="40"
+                      name="SupplierName" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Merge Join\OLE DB Destination_Insert.Inputs[OLE DB Destination Input].ExternalColumns[RecordHash]"
+                      dataType="bytes"
+                      length="200"
+                      name="RecordHash" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Merge Join\OLE DB Destination_Insert.Inputs[OLE DB Destination Input].ExternalColumns[SupplierKey]"
+                      dataType="i4"
+                      name="SupplierKey" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task_Merge Join\OLE DB Destination_Insert.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task_Merge Join\OLE DB Destination_Insert.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task_Merge Join\OLE DB Destination_Insert.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task_Merge Join\OLE DB Destination_Insert.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Merge Join\OLE DB Destination_Insert.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task_Merge Join\OLE DB Destination_Insert.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task_Merge Join\OLE DB Source_dimSupplier"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source_dimSupplier"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[dimCustomers]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from dimSuppliers
+order by SupplierKey</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1256</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task_Merge Join\OLE DB Source_dimSupplier.Connections[OleDbConnection]"
+                  connectionManagerID="{EC83FD05-CF2A-4C09-ABDF-E9A88D809F07}:invalid"
+                  connectionManagerRefId="{EC83FD05-CF2A-4C09-ABDF-E9A88D809F07}:invalid"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task_Merge Join\OLE DB Source_dimSupplier.Outputs[OLE DB Source Output]"
+                  isSorted="true"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task_Merge Join\OLE DB Source_dimSupplier.Outputs[OLE DB Source Output].Columns[SupplierName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task_Merge Join\OLE DB Source_dimSupplier.Outputs[OLE DB Source Output].ExternalColumns[SupplierName]"
+                      length="40"
+                      lineageId="Package\Data Flow Task_Merge Join\OLE DB Source_dimSupplier.Outputs[OLE DB Source Output].Columns[SupplierName]"
+                      mappedColumnId="Package\Data Flow Task_Merge Join\327:invalid"
+                      name="SupplierName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Merge Join\OLE DB Source_dimSupplier.Outputs[OLE DB Source Output].Columns[RecordHash]"
+                      dataType="bytes"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task_Merge Join\OLE DB Source_dimSupplier.Outputs[OLE DB Source Output].ExternalColumns[RecordHash]"
+                      length="200"
+                      lineageId="Package\Data Flow Task_Merge Join\OLE DB Source_dimSupplier.Outputs[OLE DB Source Output].Columns[RecordHash]"
+                      mappedColumnId="Package\Data Flow Task_Merge Join\Conditional Split"
+                      name="RecordHash"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Merge Join\OLE DB Source_dimSupplier.Outputs[OLE DB Source Output].Columns[SupplierKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task_Merge Join\OLE DB Source_dimSupplier.Outputs[OLE DB Source Output].ExternalColumns[SupplierKey]"
+                      lineageId="Package\Data Flow Task_Merge Join\OLE DB Source_dimSupplier.Outputs[OLE DB Source Output].Columns[SupplierKey]"
+                      name="SupplierKey"
+                      sortKeyPosition="1"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Merge Join\OLE DB Source_dimSupplier.Outputs[OLE DB Source Output].ExternalColumns[SupplierName]"
+                      dataType="wstr"
+                      length="40"
+                      mappedColumnId="Package\Data Flow Task_Merge Join\327:invalid"
+                      name="SupplierName" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Merge Join\OLE DB Source_dimSupplier.Outputs[OLE DB Source Output].ExternalColumns[RecordHash]"
+                      dataType="bytes"
+                      length="200"
+                      mappedColumnId="Package\Data Flow Task_Merge Join\Conditional Split"
+                      name="RecordHash" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Merge Join\OLE DB Source_dimSupplier.Outputs[OLE DB Source Output].ExternalColumns[SupplierKey]"
+                      dataType="i4"
+                      name="SupplierKey" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task_Merge Join\OLE DB Source_dimSupplier.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task_Merge Join\OLE DB Source_dimSupplier.Outputs[OLE DB Source Error Output].Columns[SupplierName]"
+                      dataType="wstr"
+                      length="40"
+                      lineageId="Package\Data Flow Task_Merge Join\OLE DB Source_dimSupplier.Outputs[OLE DB Source Error Output].Columns[SupplierName]"
+                      name="SupplierName" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Merge Join\OLE DB Source_dimSupplier.Outputs[OLE DB Source Error Output].Columns[RecordHash]"
+                      dataType="bytes"
+                      length="200"
+                      lineageId="Package\Data Flow Task_Merge Join\OLE DB Source_dimSupplier.Outputs[OLE DB Source Error Output].Columns[RecordHash]"
+                      name="RecordHash" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Merge Join\OLE DB Source_dimSupplier.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task_Merge Join\OLE DB Source_dimSupplier.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Merge Join\OLE DB Source_dimSupplier.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task_Merge Join\OLE DB Source_dimSupplier.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Merge Join\OLE DB Source_dimSupplier.Outputs[OLE DB Source Error Output].Columns[SupplierKey]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task_Merge Join\OLE DB Source_dimSupplier.Outputs[OLE DB Source Error Output].Columns[SupplierKey]"
+                      name="SupplierKey" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task_Merge Join\OLE DB Source_Supplier"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source_Supplier"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select s.SupplierID,s.CompanyName from Suppliers s order by s.SupplierID</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1256</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task_Merge Join\OLE DB Source_Supplier.Connections[OleDbConnection]"
+                  connectionManagerID="{9B204C49-B62D-4C9E-9BC2-5671A32A854B}:invalid"
+                  connectionManagerRefId="{9B204C49-B62D-4C9E-9BC2-5671A32A854B}:invalid"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task_Merge Join\OLE DB Source_Supplier.Outputs[OLE DB Source Output]"
+                  isSorted="true"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task_Merge Join\OLE DB Source_Supplier.Outputs[OLE DB Source Output].Columns[CompanyName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task_Merge Join\OLE DB Source_Supplier.Outputs[OLE DB Source Output].ExternalColumns[CompanyName]"
+                      length="40"
+                      lineageId="Package\Data Flow Task_Merge Join\OLE DB Source_Supplier.Outputs[OLE DB Source Output].Columns[CompanyName]"
+                      mappedColumnId="Package\Data Flow Task_Merge Join\Merge Join.Inputs[Merge Join Left Input]"
+                      name="CompanyName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Merge Join\OLE DB Source_Supplier.Outputs[OLE DB Source Output].Columns[SupplierID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task_Merge Join\OLE DB Source_Supplier.Outputs[OLE DB Source Output].ExternalColumns[SupplierID]"
+                      lineageId="Package\Data Flow Task_Merge Join\OLE DB Source_Supplier.Outputs[OLE DB Source Output].Columns[SupplierID]"
+                      name="SupplierID"
+                      sortKeyPosition="1"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Merge Join\OLE DB Source_Supplier.Outputs[OLE DB Source Output].ExternalColumns[CompanyName]"
+                      dataType="wstr"
+                      length="40"
+                      mappedColumnId="Package\Data Flow Task_Merge Join\Merge Join.Inputs[Merge Join Left Input]"
+                      name="CompanyName" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Merge Join\OLE DB Source_Supplier.Outputs[OLE DB Source Output].ExternalColumns[SupplierID]"
+                      dataType="i4"
+                      name="SupplierID" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task_Merge Join\OLE DB Source_Supplier.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task_Merge Join\OLE DB Source_Supplier.Outputs[OLE DB Source Error Output].Columns[SupplierID]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task_Merge Join\OLE DB Source_Supplier.Outputs[OLE DB Source Error Output].Columns[SupplierID]"
+                      name="SupplierID" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Merge Join\OLE DB Source_Supplier.Outputs[OLE DB Source Error Output].Columns[CompanyName]"
+                      dataType="wstr"
+                      length="40"
+                      lineageId="Package\Data Flow Task_Merge Join\OLE DB Source_Supplier.Outputs[OLE DB Source Error Output].Columns[CompanyName]"
+                      name="CompanyName" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Merge Join\OLE DB Source_Supplier.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task_Merge Join\OLE DB Source_Supplier.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Merge Join\OLE DB Source_Supplier.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task_Merge Join\OLE DB Source_Supplier.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task_Merge Join\Row Count"
+              componentClassID="Microsoft.RowCount"
+              contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+              name="Row Count">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable to hold the row count."
+                  name="VariableName">User::V1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task_Merge Join\Row Count.Inputs[Row Count Input 1]"
+                  hasSideEffects="true"
+                  name="Row Count Input 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task_Merge Join\Row Count.Outputs[Row Count Output 1]"
+                  name="Row Count Output 1"
+                  synchronousInputId="Package\Data Flow Task_Merge Join\Row Count.Inputs[Row Count Input 1]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task_Merge Join.Paths[Conditional Split Default Output]"
+              endId="Package\Data Flow Task_Merge Join\Row Count.Inputs[Row Count Input 1]"
+              name="Conditional Split Default Output"
+              startId="Package\Data Flow Task_Merge Join\Conditional Split.Outputs[Conditional Split Default Output]" />
+            <path
+              refId="Package\Data Flow Task_Merge Join.Paths[Deleted Rows]"
+              endId="Package\Data Flow Task_Merge Join\OLE DB Command_Delete.Inputs[OLE DB Command Input]"
+              name="Deleted Rows"
+              startId="Package\Data Flow Task_Merge Join\Conditional Split.Outputs[Deleted Rows]" />
+            <path
+              refId="Package\Data Flow Task_Merge Join.Paths[HashedOutput]"
+              endId="Package\Data Flow Task_Merge Join\Merge Join.Inputs[Merge Join Left Input]"
+              name="HashedOutput"
+              startId="Package\Data Flow Task_Merge Join\Multiple Hash 1.Outputs[HashedOutput]" />
+            <path
+              refId="Package\Data Flow Task_Merge Join.Paths[Merge Join Output]"
+              endId="Package\Data Flow Task_Merge Join\Conditional Split.Inputs[Conditional Split Input]"
+              name="Merge Join Output"
+              startId="Package\Data Flow Task_Merge Join\Merge Join.Outputs[Merge Join Output]" />
+            <path
+              refId="Package\Data Flow Task_Merge Join.Paths[Modified Rows]"
+              endId="Package\Data Flow Task_Merge Join\OLE DB Command_Update.Inputs[OLE DB Command Input]"
+              name="Modified Rows"
+              startId="Package\Data Flow Task_Merge Join\Conditional Split.Outputs[Modified Rows]" />
+            <path
+              refId="Package\Data Flow Task_Merge Join.Paths[New Rows]"
+              endId="Package\Data Flow Task_Merge Join\OLE DB Destination_Insert.Inputs[OLE DB Destination Input]"
+              name="New Rows"
+              startId="Package\Data Flow Task_Merge Join\Conditional Split.Outputs[New Rows]" />
+            <path
+              refId="Package\Data Flow Task_Merge Join.Paths[OLE DB Source Output]"
+              endId="Package\Data Flow Task_Merge Join\Multiple Hash 1.Inputs[Input]"
+              name="OLE DB Source Output"
+              startId="Package\Data Flow Task_Merge Join\OLE DB Source_Supplier.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Data Flow Task_Merge Join.Paths[OLE DB Source Output1]"
+              endId="Package\Data Flow Task_Merge Join\Merge Join.Inputs[Merge Join Right Input]"
+              name="OLE DB Source Output"
+              startId="Package\Data Flow Task_Merge Join\OLE DB Source_dimSupplier.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="208,42"
+          Id="Package\Data Flow Task_Merge Join"
+          TopLeft="391,88" />
+        <AnnotationLayout
+          Text="با merge join حذفیها هم قابل تشخیص میشوند(full outer join)"
+          ParentId="Package"
+          FontInfo="{assembly:Null}"
+          Size="337,40"
+          Id="a4c8fba6-701c-4bf0-9293-e8d874c54b95"
+          TopLeft="502,20" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Data Flow Task_Merge Join">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="130,42"
+          Id="Package\Data Flow Task_Merge Join\Row Count"
+          TopLeft="965,516" />
+        <NodeLayout
+          Size="201,42"
+          Id="Package\Data Flow Task_Merge Join\OLE DB Command_Delete"
+          TopLeft="690,501" />
+        <NodeLayout
+          Size="204,42"
+          Id="Package\Data Flow Task_Merge Join\OLE DB Destination_Insert"
+          TopLeft="92,494" />
+        <NodeLayout
+          Size="205,42"
+          Id="Package\Data Flow Task_Merge Join\OLE DB Command_Update"
+          TopLeft="369,496" />
+        <NodeLayout
+          Size="130,42"
+          Id="Package\Data Flow Task_Merge Join\Merge Join"
+          TopLeft="418,197" />
+        <NodeLayout
+          Size="194,42"
+          Id="Package\Data Flow Task_Merge Join\OLE DB Source_Supplier"
+          TopLeft="251,0" />
+        <NodeLayout
+          Size="211,42"
+          Id="Package\Data Flow Task_Merge Join\OLE DB Source_dimSupplier"
+          TopLeft="537,9" />
+        <NodeLayout
+          Size="155,42"
+          Id="Package\Data Flow Task_Merge Join\Conditional Split"
+          TopLeft="413,295" />
+        <NodeLayout
+          Size="142,42"
+          Id="Package\Data Flow Task_Merge Join\Multiple Hash 1"
+          TopLeft="277,88" />
+        <EdgeLayout
+          Id="Package\Data Flow Task_Merge Join.Paths[Deleted Rows]"
+          TopLeft="505.2,337">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="285.3,164"
+              Start="0,0"
+              End="285.3,156.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,69.408410548824" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,69.408410548824"
+                    Point2="0,73.408410548824"
+                    Point3="4,73.408410548824" />
+                  <mssgle:LineSegment
+                    End="281.3,73.408410548824" />
+                  <mssgle:CubicBezierSegment
+                    Point1="281.3,73.408410548824"
+                    Point2="285.3,73.408410548824"
+                    Point3="285.3,77.408410548824" />
+                  <mssgle:LineSegment
+                    End="285.3,156.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="111.927421875,78.408410548824,61.44515625,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task_Merge Join.Paths[Conditional Split Default Output]"
+          TopLeft="534.6,337">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="495.4,179"
+              Start="0,0"
+              End="495.4,171.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,49.9098286744815" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,49.9098286744815"
+                    Point2="0,53.9098286744815"
+                    Point3="4,53.9098286744815" />
+                  <mssgle:LineSegment
+                    End="491.4,53.9098286744815" />
+                  <mssgle:CubicBezierSegment
+                    Point1="491.4,53.9098286744815"
+                    Point2="495.4,53.9098286744815"
+                    Point3="495.4,57.9098286744815" />
+                  <mssgle:LineSegment
+                    End="495.4,171.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="177.08609375,58.9098286744815,141.2278125,11.658203125"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task_Merge Join.Paths[OLE DB Source Output1]"
+          TopLeft="642.5,51">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-139.166666666667,146"
+              Start="0,0"
+              End="-139.166666666667,138.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,82.5349544072948" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,82.5349544072948"
+                    Point2="0,86.5349544072948"
+                    Point3="-4,86.5349544072948" />
+                  <mssgle:LineSegment
+                    End="-135.166666666667,86.5349544072948" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-135.166666666667,86.5349544072948"
+                    Point2="-139.166666666667,86.5349544072948"
+                    Point3="-139.166666666667,90.5349544072948" />
+                  <mssgle:LineSegment
+                    End="-139.166666666667,138.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task_Merge Join.Paths[OLE DB Source Output]"
+          TopLeft="348,42">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,46"
+              Start="0,0"
+              End="0,38.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,38.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task_Merge Join.Paths[New Rows]"
+          TopLeft="446.4,337">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-252.4,157"
+              Start="0,0"
+              End="-252.4,149.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,43.2840396753832" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,43.2840396753832"
+                    Point2="0,47.2840396753832"
+                    Point3="-4,47.2840396753832" />
+                  <mssgle:LineSegment
+                    End="-248.4,47.2840396753832" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-248.4,47.2840396753832"
+                    Point2="-252.4,47.2840396753832"
+                    Point3="-252.4,51.2840396753832" />
+                  <mssgle:LineSegment
+                    End="-252.4,149.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-149.737578125,52.2840396753832,47.07515625,9.421875"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task_Merge Join.Paths[Modified Rows]"
+          TopLeft="473.65,337">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,159"
+              Start="0,0"
+              End="0,151.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,151.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-32.472578125,70.85107421875,64.94515625,9.7978515625"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task_Merge Join.Paths[Merge Join Output]"
+          TopLeft="486.75,239">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,56"
+              Start="0,0"
+              End="0,48.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,48.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task_Merge Join.Paths[HashedOutput]"
+          TopLeft="348,130">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="114.666666666667,67"
+              Start="0,0"
+              End="114.666666666667,59.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35.7112462006079" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,35.7112462006079"
+                    Point2="0,39.7112462006079"
+                    Point3="4,39.7112462006079" />
+                  <mssgle:LineSegment
+                    End="110.666666666667,39.7112462006079" />
+                  <mssgle:CubicBezierSegment
+                    Point1="110.666666666667,39.7112462006079"
+                    Point2="114.666666666667,39.7112462006079"
+                    Point3="114.666666666667,43.7112462006079" />
+                  <mssgle:LineSegment
+                    End="114.666666666667,59.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task_Merge Join\OLE DB Destination_Insert">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task_Merge Join\OLE DB Source_Supplier">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task_Merge Join\OLE DB Source_dimSupplier">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

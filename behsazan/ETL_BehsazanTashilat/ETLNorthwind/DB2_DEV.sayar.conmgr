@@ -1,0 +1,16 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="DB2_DEV sayar"
+  DTS:DTSID="{EAD4BB1B-8D9F-495D-850A-C9FC30BD58C7}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=DEV;User ID=sayar;Provider=IBMDADB2.DB2COPY1;Persist Security Info=True;Location=172.16.16.92:478;">
+      <DTS:Password
+        DTS:Name="Password"
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAD1gH8jHpakG5irf+bY1h7gAAAAACAAAAAAADZgAAwAAAABAAAAC0Q/tqUqp1Kdwlmq/mZtDKAAAAAASAAACgAAAAEAAAACaS5oFr6AaorVFTjS47zq54AAAAnRKl4q3u3b71nHTCT1T83IcmFa7U6EgvBikrbyEuv+xvgGjMEtS6Wx1G38Mjq/2OqeKMpLBQHNpUSNJLV4L7FJ5k1Ik+y1Pzkqhz3/mvZfZVHnfS82vZE36E3kg6uXIl9kGQQOYPY7XSydol2iyIJGP5gfVNBedzFAAAABgQQQyIK3Xg5NusdWkXyxnwYdLj</DTS:Password>
+    </DTS:ConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

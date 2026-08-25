@@ -1,0 +1,12 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="SAYAR_MSSQLSERVER2019.BEHSAZANDW"
+  DTS:DTSID="{5396C769-EA4B-4C43-AB53-318B29EE5414}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=SAYAR\MSSQLSERVER2019;Initial Catalog=BEHSAZANDW;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;Application Name=SSIS-ssisETL_BehsazanTashilat-{5396C769-EA4B-4C43-AB53-318B29EE5414}SAYAR\MSSQLSERVER2019.BEHSAZANDW;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

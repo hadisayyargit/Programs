@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1778
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F14B399A-7131-4C87-9E4B-1186C45EF12D}") = "ssrsNorthwindDW", "ssrsNeonDW\ssrsNeonDW.rptproj", "{3F331054-9A85-434F-8902-31CAE369EA64}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Default = Debug|Default
+		DebugLocal|Default = DebugLocal|Default
+		Release|Default = Release|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3F331054-9A85-434F-8902-31CAE369EA64}.Debug|Default.ActiveCfg = Debug
+		{3F331054-9A85-434F-8902-31CAE369EA64}.Debug|Default.Build.0 = Debug
+		{3F331054-9A85-434F-8902-31CAE369EA64}.Debug|Default.Deploy.0 = Debug
+		{3F331054-9A85-434F-8902-31CAE369EA64}.DebugLocal|Default.ActiveCfg = DebugLocal
+		{3F331054-9A85-434F-8902-31CAE369EA64}.DebugLocal|Default.Build.0 = DebugLocal
+		{3F331054-9A85-434F-8902-31CAE369EA64}.Release|Default.ActiveCfg = Release
+		{3F331054-9A85-434F-8902-31CAE369EA64}.Release|Default.Build.0 = Release
+		{3F331054-9A85-434F-8902-31CAE369EA64}.Release|Default.Deploy.0 = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {425BCC65-0BD7-4C09-81CD-92BC06363613}
+	EndGlobalSection
+EndGlobal

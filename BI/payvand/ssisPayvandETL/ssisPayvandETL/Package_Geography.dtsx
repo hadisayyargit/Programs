@@ -1,0 +1,1731 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="4/17/2023 5:27:17 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="ORACLE-PYD"
+  DTS:CreatorName="MINOO\sayar.ha"
+  DTS:DTSID="{F973B0C3-B9D8-4F75-A991-27BB7F6FDF94}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5035.3"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package_Geography"
+  DTS:PackageType="5"
+  DTS:ProtectionLevel="2"
+  DTS:VersionBuild="30"
+  DTS:VersionGUID="{B9FEFD69-CFF7-4480-BE8C-A391E01FC5B9}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Flat File Connection Manager]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{8A4D9B40-8D0C-44B8-BBF8-B9FCFFD5FFFF}"
+      DTS:ObjectName="Flat File Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="65001"
+          DTS:ConnectionString="E:\Hadi\Payvand\dump\CITY.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="کد استان"
+              DTS:DTSID="{B6F0DD6E-14F9-46F0-AB5B-DD412457DDD5}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="استان"
+              DTS:DTSID="{5DEA21CC-F2B1-4411-A19B-B03D298FE015}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="شهرستان"
+              DTS:DTSID="{A0EE9C3C-4CA5-41CF-8179-CA809BF212F2}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="شهر"
+              DTS:DTSID="{B0E0BAD9-DD5D-4BC4-97FB-F9D539798AB4}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="کد شهر"
+              DTS:DTSID="{F5F51B1B-7E5E-4EFD-92F9-35CB35CE7D4B}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 5"
+              DTS:DTSID="{561F189D-9AF5-41AE-9E76-FF7D08F8DAD4}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 6"
+              DTS:DTSID="{B9EB4148-475B-4260-8384-B2D7CA74319E}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\export to dimGeography"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{1590BEDD-BB20-4B7B-A8C1-D37A3BC17FB6}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="export to dimGeography"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\export to dimGeography\compare"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="compare"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\export to dimGeography\compare.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\export to dimGeography\compare.Inputs[Conditional Split Input].Columns[CityCode]"
+                      cachedDataType="i4"
+                      cachedName="CityCode"
+                      lineageId="Package\export to dimGeography\OLE DB Source.Outputs[OLE DB Source Output].Columns[CityCode]" />
+                    <inputColumn
+                      refId="Package\export to dimGeography\compare.Inputs[Conditional Split Input].Columns[targetminoocitycode]"
+                      cachedDataType="i4"
+                      cachedName="targetminoocitycode"
+                      lineageId="Package\export to dimGeography\OLE DB Source.Outputs[OLE DB Source Output].Columns[targetminoocitycode]" />
+                    <inputColumn
+                      refId="Package\export to dimGeography\compare.Inputs[Conditional Split Input].Columns[minoocitycode]"
+                      cachedDataType="i4"
+                      cachedName="minoocitycode"
+                      lineageId="Package\export to dimGeography\OLE DB Source.Outputs[OLE DB Source Output].Columns[minoocitycode]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\export to dimGeography\compare.Outputs[NewCity]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="NewCity"
+                  synchronousInputId="Package\export to dimGeography\compare.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">[ISNULL](#{Package\export to dimGeography\OLE DB Source.Outputs[OLE DB Source Output].Columns[CityCode]})</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">ISNULL(CityCode)</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\export to dimGeography\compare.Outputs[ChangeCity]"
+                  description="Output 2 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="ChangeCity"
+                  synchronousInputId="Package\export to dimGeography\compare.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">[ISNULL](#{Package\export to dimGeography\OLE DB Source.Outputs[OLE DB Source Output].Columns[CityCode]}) ==  FALSE  &amp;&amp; [ISNULL](#{Package\export to dimGeography\OLE DB Source.Outputs[OLE DB Source Output].Columns[minoocitycode]}) ==  FALSE  &amp;&amp; [ISNULL](#{Package\export to dimGeography\OLE DB Source.Outputs[OLE DB Source Output].Columns[targetminoocitycode]})</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">ISNULL(CityCode) ==  FALSE  &amp;&amp; ISNULL(minoocitycode) ==  FALSE  &amp;&amp; ISNULL(targetminoocitycode)</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">1</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\export to dimGeography\compare.Outputs[Conditional Split Default Output]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="Conditional Split Default Output"
+                  synchronousInputId="Package\export to dimGeography\compare.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\export to dimGeography\compare.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\export to dimGeography\compare.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\export to dimGeography\compare.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\export to dimGeography\compare.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\export to dimGeography\compare.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\export to dimGeography\compare.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\export to dimGeography\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\export to dimGeography\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\export to dimGeography\Derived Column.Inputs[Derived Column Input].Columns[minoocitycode]"
+                      cachedDataType="i4"
+                      cachedName="minoocitycode"
+                      lineageId="Package\export to dimGeography\OLE DB Source.Outputs[OLE DB Source Output].Columns[minoocitycode]" />
+                    <inputColumn
+                      refId="Package\export to dimGeography\Derived Column.Inputs[Derived Column Input].Columns[minoocityname]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="minoocityname"
+                      lineageId="Package\export to dimGeography\OLE DB Source.Outputs[OLE DB Source Output].Columns[minoocityname]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\export to dimGeography\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\export to dimGeography\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\export to dimGeography\Derived Column.Outputs[Derived Column Output].Columns[minoocitycode2]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\export to dimGeography\Derived Column.Outputs[Derived Column Output].Columns[minoocitycode2]"
+                      name="minoocitycode2"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\export to dimGeography\OLE DB Source.Outputs[OLE DB Source Output].Columns[minoocitycode]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">minoocitycode</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\export to dimGeography\Derived Column.Outputs[Derived Column Output].Columns[minoocitycode3]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\export to dimGeography\Derived Column.Outputs[Derived Column Output].Columns[minoocitycode3]"
+                      name="minoocitycode3"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\export to dimGeography\OLE DB Source.Outputs[OLE DB Source Output].Columns[minoocitycode]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">minoocitycode</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\export to dimGeography\Derived Column.Outputs[Derived Column Output].Columns[minoocityforeignname]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\export to dimGeography\Derived Column.Outputs[Derived Column Output].Columns[minoocityforeignname]"
+                      name="minoocityforeignname"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\export to dimGeography\OLE DB Source.Outputs[OLE DB Source Output].Columns[minoocityname]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">minoocityname</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\export to dimGeography\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\export to dimGeography\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\export to dimGeography\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\export to dimGeography\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\export to dimGeography\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\export to dimGeography\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\export to dimGeography\OLE DB Command_update"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="OLE DB Command_update"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">update dimGeography
+set MinoocityCode=?
+where GeographyKey=?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\export to dimGeography\OLE DB Command_update.Connections[OleDbConnection]"
+                  connectionManagerID="{C00465DE-0A1C-49BD-946D-68D1B0AC5346}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[PYD-OLAP_mssql2019.PAYVANDDW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\export to dimGeography\OLE DB Command_update.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\export to dimGeography\OLE DB Command_update.Inputs[OLE DB Command Input].Columns[minoocitycode]"
+                      cachedDataType="i4"
+                      cachedName="minoocitycode"
+                      externalMetadataColumnId="Package\export to dimGeography\OLE DB Command_update.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\export to dimGeography\OLE DB Source.Outputs[OLE DB Source Output].Columns[minoocitycode]" />
+                    <inputColumn
+                      refId="Package\export to dimGeography\OLE DB Command_update.Inputs[OLE DB Command Input].Columns[GeographyKey]"
+                      cachedDataType="i8"
+                      cachedName="GeographyKey"
+                      externalMetadataColumnId="Package\export to dimGeography\OLE DB Command_update.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      lineageId="Package\export to dimGeography\OLE DB Source.Outputs[OLE DB Source Output].Columns[GeographyKey]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\export to dimGeography\OLE DB Command_update.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      dataType="i4"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\export to dimGeography\OLE DB Command_update.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      dataType="i8"
+                      name="Param_1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\export to dimGeography\OLE DB Command_update.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\export to dimGeography\OLE DB Command_update.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\export to dimGeography\OLE DB Command_update.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\export to dimGeography\OLE DB Command_update.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\export to dimGeography\OLE DB Command_update.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\export to dimGeography\OLE DB Command_update.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\export to dimGeography\OLE DB Command_update.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\export to dimGeography\OLE DB Command_update.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\export to dimGeography\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[dimGeography]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\export to dimGeography\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="{C00465DE-0A1C-49BD-946D-68D1B0AC5346}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[PYD-OLAP_mssql2019.PAYVANDDW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\export to dimGeography\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\export to dimGeography\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[CountryCode]"
+                      cachedCodepage="1256"
+                      cachedDataType="str"
+                      cachedLength="3"
+                      cachedName="CountryCode"
+                      externalMetadataColumnId="Package\export to dimGeography\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CountryCode]"
+                      lineageId="Package\export to dimGeography\OLE DB Source.Outputs[OLE DB Source Output].Columns[CountryCode]" />
+                    <inputColumn
+                      refId="Package\export to dimGeography\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[minooprovincecode]"
+                      cachedDataType="i4"
+                      cachedName="minooprovincecode"
+                      externalMetadataColumnId="Package\export to dimGeography\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[StateProvinceCode]"
+                      lineageId="Package\export to dimGeography\OLE DB Source.Outputs[OLE DB Source Output].Columns[minooprovincecode]" />
+                    <inputColumn
+                      refId="Package\export to dimGeography\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[minooprovincename]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="minooprovincename"
+                      externalMetadataColumnId="Package\export to dimGeography\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[StateProvinceName]"
+                      lineageId="Package\export to dimGeography\OLE DB Source.Outputs[OLE DB Source Output].Columns[minooprovincename]" />
+                    <inputColumn
+                      refId="Package\export to dimGeography\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[minoocityname]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="minoocityname"
+                      externalMetadataColumnId="Package\export to dimGeography\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CityName]"
+                      lineageId="Package\export to dimGeography\OLE DB Source.Outputs[OLE DB Source Output].Columns[minoocityname]" />
+                    <inputColumn
+                      refId="Package\export to dimGeography\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[minoocitycode]"
+                      cachedDataType="i4"
+                      cachedName="minoocitycode"
+                      externalMetadataColumnId="Package\export to dimGeography\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[minoocitycode]"
+                      lineageId="Package\export to dimGeography\OLE DB Source.Outputs[OLE DB Source Output].Columns[minoocitycode]" />
+                    <inputColumn
+                      refId="Package\export to dimGeography\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[minoocitycode2]"
+                      cachedDataType="i4"
+                      cachedName="minoocitycode2"
+                      externalMetadataColumnId="Package\export to dimGeography\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CityCode]"
+                      lineageId="Package\export to dimGeography\Derived Column.Outputs[Derived Column Output].Columns[minoocitycode2]" />
+                    <inputColumn
+                      refId="Package\export to dimGeography\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[minoocitycode3]"
+                      cachedDataType="i4"
+                      cachedName="minoocitycode3"
+                      externalMetadataColumnId="Package\export to dimGeography\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[GeographyKey]"
+                      lineageId="Package\export to dimGeography\Derived Column.Outputs[Derived Column Output].Columns[minoocitycode3]" />
+                    <inputColumn
+                      refId="Package\export to dimGeography\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[minoocityforeignname]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="minoocityforeignname"
+                      externalMetadataColumnId="Package\export to dimGeography\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CityForeignName]"
+                      lineageId="Package\export to dimGeography\Derived Column.Outputs[Derived Column Output].Columns[minoocityforeignname]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\export to dimGeography\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[GeographyKey]"
+                      dataType="i8"
+                      name="GeographyKey" />
+                    <externalMetadataColumn
+                      refId="Package\export to dimGeography\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CountryCode]"
+                      codePage="1256"
+                      dataType="str"
+                      length="3"
+                      name="CountryCode" />
+                    <externalMetadataColumn
+                      refId="Package\export to dimGeography\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CountryName]"
+                      dataType="wstr"
+                      length="40"
+                      name="CountryName" />
+                    <externalMetadataColumn
+                      refId="Package\export to dimGeography\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[StateProvinceCode]"
+                      dataType="i4"
+                      name="StateProvinceCode" />
+                    <externalMetadataColumn
+                      refId="Package\export to dimGeography\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[StateProvinceName]"
+                      dataType="wstr"
+                      length="40"
+                      name="StateProvinceName" />
+                    <externalMetadataColumn
+                      refId="Package\export to dimGeography\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CityCode]"
+                      dataType="i4"
+                      name="CityCode" />
+                    <externalMetadataColumn
+                      refId="Package\export to dimGeography\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CityName]"
+                      dataType="wstr"
+                      length="40"
+                      name="CityName" />
+                    <externalMetadataColumn
+                      refId="Package\export to dimGeography\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CountryForeignName]"
+                      dataType="wstr"
+                      length="40"
+                      name="CountryForeignName" />
+                    <externalMetadataColumn
+                      refId="Package\export to dimGeography\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[StateProvinceForeignName]"
+                      dataType="wstr"
+                      length="40"
+                      name="StateProvinceForeignName" />
+                    <externalMetadataColumn
+                      refId="Package\export to dimGeography\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CityForeignName]"
+                      dataType="wstr"
+                      length="40"
+                      name="CityForeignName" />
+                    <externalMetadataColumn
+                      refId="Package\export to dimGeography\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Latitude]"
+                      dataType="r8"
+                      name="Latitude" />
+                    <externalMetadataColumn
+                      refId="Package\export to dimGeography\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Longitude]"
+                      dataType="r8"
+                      name="Longitude" />
+                    <externalMetadataColumn
+                      refId="Package\export to dimGeography\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[RecordHash]"
+                      dataType="bytes"
+                      length="200"
+                      name="RecordHash" />
+                    <externalMetadataColumn
+                      refId="Package\export to dimGeography\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[minoocitycode]"
+                      dataType="i4"
+                      name="minoocitycode" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\export to dimGeography\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\export to dimGeography\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\export to dimGeography\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\export to dimGeography\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\export to dimGeography\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\export to dimGeography\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\export to dimGeography\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select c.minoocitycode,c.provincecode as minooprovincecode,c.provincename as minooprovincename,c.cityname as minoocityname , g.GeographyKey,g.CityCode,g.CityName,'ir' as CountryCode,g.StateProvinceName ,g.minoocitycode as targetminoocitycode
+from stageCity   c
+	full  join (select * from dimGeography where CountryCode='ir') g on g.StateProvinceCode=c.provincecode and c.cityname=g.CityName</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\export to dimGeography\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="{C00465DE-0A1C-49BD-946D-68D1B0AC5346}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[PYD-OLAP_mssql2019.PAYVANDDW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\export to dimGeography\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\export to dimGeography\OLE DB Source.Outputs[OLE DB Source Output].Columns[minoocitycode]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\export to dimGeography\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[minoocitycode]"
+                      lineageId="Package\export to dimGeography\OLE DB Source.Outputs[OLE DB Source Output].Columns[minoocitycode]"
+                      name="minoocitycode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\export to dimGeography\OLE DB Source.Outputs[OLE DB Source Output].Columns[minoocityname]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\export to dimGeography\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[minoocityname]"
+                      length="50"
+                      lineageId="Package\export to dimGeography\OLE DB Source.Outputs[OLE DB Source Output].Columns[minoocityname]"
+                      name="minoocityname"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\export to dimGeography\OLE DB Source.Outputs[OLE DB Source Output].Columns[CityCode]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\export to dimGeography\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CityCode]"
+                      lineageId="Package\export to dimGeography\OLE DB Source.Outputs[OLE DB Source Output].Columns[CityCode]"
+                      name="CityCode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\export to dimGeography\OLE DB Source.Outputs[OLE DB Source Output].Columns[CityName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\export to dimGeography\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CityName]"
+                      length="40"
+                      lineageId="Package\export to dimGeography\OLE DB Source.Outputs[OLE DB Source Output].Columns[CityName]"
+                      name="CityName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\export to dimGeography\OLE DB Source.Outputs[OLE DB Source Output].Columns[CountryCode]"
+                      codePage="1256"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\export to dimGeography\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CountryCode]"
+                      length="3"
+                      lineageId="Package\export to dimGeography\OLE DB Source.Outputs[OLE DB Source Output].Columns[CountryCode]"
+                      name="CountryCode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\export to dimGeography\OLE DB Source.Outputs[OLE DB Source Output].Columns[StateProvinceName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\export to dimGeography\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[StateProvinceName]"
+                      length="40"
+                      lineageId="Package\export to dimGeography\OLE DB Source.Outputs[OLE DB Source Output].Columns[StateProvinceName]"
+                      name="StateProvinceName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\export to dimGeography\OLE DB Source.Outputs[OLE DB Source Output].Columns[minooprovincecode]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\export to dimGeography\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[minooprovincecode]"
+                      lineageId="Package\export to dimGeography\OLE DB Source.Outputs[OLE DB Source Output].Columns[minooprovincecode]"
+                      name="minooprovincecode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\export to dimGeography\OLE DB Source.Outputs[OLE DB Source Output].Columns[minooprovincename]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\export to dimGeography\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[minooprovincename]"
+                      length="50"
+                      lineageId="Package\export to dimGeography\OLE DB Source.Outputs[OLE DB Source Output].Columns[minooprovincename]"
+                      name="minooprovincename"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\export to dimGeography\OLE DB Source.Outputs[OLE DB Source Output].Columns[targetminoocitycode]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\export to dimGeography\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[targetminoocitycode]"
+                      lineageId="Package\export to dimGeography\OLE DB Source.Outputs[OLE DB Source Output].Columns[targetminoocitycode]"
+                      name="targetminoocitycode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\export to dimGeography\OLE DB Source.Outputs[OLE DB Source Output].Columns[GeographyKey]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\export to dimGeography\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[GeographyKey]"
+                      lineageId="Package\export to dimGeography\OLE DB Source.Outputs[OLE DB Source Output].Columns[GeographyKey]"
+                      name="GeographyKey"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\export to dimGeography\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[minoocitycode]"
+                      dataType="i4"
+                      name="minoocitycode" />
+                    <externalMetadataColumn
+                      refId="Package\export to dimGeography\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CityCode]"
+                      dataType="i4"
+                      name="CityCode" />
+                    <externalMetadataColumn
+                      refId="Package\export to dimGeography\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CityName]"
+                      dataType="wstr"
+                      length="40"
+                      name="CityName" />
+                    <externalMetadataColumn
+                      refId="Package\export to dimGeography\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CountryCode]"
+                      codePage="1256"
+                      dataType="str"
+                      length="2"
+                      name="CountryCode" />
+                    <externalMetadataColumn
+                      refId="Package\export to dimGeography\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[StateProvinceName]"
+                      dataType="wstr"
+                      length="40"
+                      name="StateProvinceName" />
+                    <externalMetadataColumn
+                      refId="Package\export to dimGeography\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[minoocityname]"
+                      dataType="wstr"
+                      length="50"
+                      name="minoocityname" />
+                    <externalMetadataColumn
+                      refId="Package\export to dimGeography\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[minooprovincecode]"
+                      dataType="i4"
+                      name="minooprovincecode" />
+                    <externalMetadataColumn
+                      refId="Package\export to dimGeography\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[minooprovincename]"
+                      dataType="wstr"
+                      length="50"
+                      name="minooprovincename" />
+                    <externalMetadataColumn
+                      refId="Package\export to dimGeography\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[targetminoocitycode]"
+                      dataType="i4"
+                      name="targetminoocitycode" />
+                    <externalMetadataColumn
+                      refId="Package\export to dimGeography\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[GeographyKey]"
+                      dataType="i8"
+                      name="GeographyKey" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\export to dimGeography\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\export to dimGeography\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[minoocitycode]"
+                      dataType="i4"
+                      lineageId="Package\export to dimGeography\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[minoocitycode]"
+                      name="minoocitycode" />
+                    <outputColumn
+                      refId="Package\export to dimGeography\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[minooprovincecode]"
+                      dataType="i4"
+                      lineageId="Package\export to dimGeography\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[minooprovincecode]"
+                      name="minooprovincecode" />
+                    <outputColumn
+                      refId="Package\export to dimGeography\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[minooprovincename]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\export to dimGeography\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[minooprovincename]"
+                      name="minooprovincename" />
+                    <outputColumn
+                      refId="Package\export to dimGeography\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[minoocityname]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\export to dimGeography\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[minoocityname]"
+                      name="minoocityname" />
+                    <outputColumn
+                      refId="Package\export to dimGeography\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[GeographyKey]"
+                      dataType="i8"
+                      lineageId="Package\export to dimGeography\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[GeographyKey]"
+                      name="GeographyKey" />
+                    <outputColumn
+                      refId="Package\export to dimGeography\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\export to dimGeography\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\export to dimGeography\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\export to dimGeography\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\export to dimGeography\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CityCode]"
+                      dataType="i4"
+                      lineageId="Package\export to dimGeography\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CityCode]"
+                      name="CityCode" />
+                    <outputColumn
+                      refId="Package\export to dimGeography\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CityName]"
+                      dataType="wstr"
+                      length="40"
+                      lineageId="Package\export to dimGeography\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CityName]"
+                      name="CityName" />
+                    <outputColumn
+                      refId="Package\export to dimGeography\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[targetminoocitycode]"
+                      dataType="i4"
+                      lineageId="Package\export to dimGeography\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[targetminoocitycode]"
+                      name="targetminoocitycode" />
+                    <outputColumn
+                      refId="Package\export to dimGeography\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CountryCode]"
+                      codePage="1256"
+                      dataType="str"
+                      length="2"
+                      lineageId="Package\export to dimGeography\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CountryCode]"
+                      name="CountryCode" />
+                    <outputColumn
+                      refId="Package\export to dimGeography\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[StateProvinceName]"
+                      dataType="wstr"
+                      length="40"
+                      lineageId="Package\export to dimGeography\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[StateProvinceName]"
+                      name="StateProvinceName" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\export to dimGeography.Paths[ChangeCity]"
+              endId="Package\export to dimGeography\OLE DB Command_update.Inputs[OLE DB Command Input]"
+              name="ChangeCity"
+              startId="Package\export to dimGeography\compare.Outputs[ChangeCity]" />
+            <path
+              refId="Package\export to dimGeography.Paths[Derived Column Output]"
+              endId="Package\export to dimGeography\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\export to dimGeography\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\export to dimGeography.Paths[NewCity]"
+              endId="Package\export to dimGeography\Derived Column.Inputs[Derived Column Input]"
+              name="NewCity"
+              startId="Package\export to dimGeography\compare.Outputs[NewCity]" />
+            <path
+              refId="Package\export to dimGeography.Paths[OLE DB Source Output]"
+              endId="Package\export to dimGeography\compare.Inputs[Conditional Split Input]"
+              name="OLE DB Source Output"
+              startId="Package\export to dimGeography\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Load flat file source to stageCity"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{93E1AF58-C374-4CCC-BAA4-836176814994}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load flat file source to stageCity"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Load flat file source to stageCity\Flat File Source"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="1033"
+              name="Flat File Source"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load flat file source to stageCity\Flat File Source.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Flat File Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[Flat File Connection Manager]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Load flat file source to stageCity\Flat File Source.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load flat file source to stageCity\Flat File Source.Outputs[Flat File Source Output].Columns[کد استان]"
+                      codePage="65001"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load flat file source to stageCity\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[کد استان]"
+                      length="50"
+                      lineageId="Package\Load flat file source to stageCity\Flat File Source.Outputs[Flat File Source Output].Columns[کد استان]"
+                      name="کد استان"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load flat file source to stageCity\Flat File Source.Outputs[Flat File Source Output].Columns[استان]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load flat file source to stageCity\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[استان]"
+                      length="50"
+                      lineageId="Package\Load flat file source to stageCity\Flat File Source.Outputs[Flat File Source Output].Columns[استان]"
+                      name="استان"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load flat file source to stageCity\Flat File Source.Outputs[Flat File Source Output].Columns[شهر]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load flat file source to stageCity\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[شهر]"
+                      length="50"
+                      lineageId="Package\Load flat file source to stageCity\Flat File Source.Outputs[Flat File Source Output].Columns[شهر]"
+                      name="شهر"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load flat file source to stageCity\Flat File Source.Outputs[Flat File Source Output].Columns[کد شهر]"
+                      codePage="65001"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load flat file source to stageCity\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[کد شهر]"
+                      length="50"
+                      lineageId="Package\Load flat file source to stageCity\Flat File Source.Outputs[Flat File Source Output].Columns[کد شهر]"
+                      name="کد شهر"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load flat file source to stageCity\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[کد استان]"
+                      codePage="65001"
+                      dataType="str"
+                      length="50"
+                      name="کد استان" />
+                    <externalMetadataColumn
+                      refId="Package\Load flat file source to stageCity\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[استان]"
+                      dataType="wstr"
+                      length="50"
+                      name="استان" />
+                    <externalMetadataColumn
+                      refId="Package\Load flat file source to stageCity\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[شهرستان]"
+                      codePage="65001"
+                      dataType="str"
+                      length="50"
+                      name="شهرستان" />
+                    <externalMetadataColumn
+                      refId="Package\Load flat file source to stageCity\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[شهر]"
+                      dataType="wstr"
+                      length="50"
+                      name="شهر" />
+                    <externalMetadataColumn
+                      refId="Package\Load flat file source to stageCity\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[کد شهر]"
+                      codePage="65001"
+                      dataType="str"
+                      length="50"
+                      name="کد شهر" />
+                    <externalMetadataColumn
+                      refId="Package\Load flat file source to stageCity\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Column 5]"
+                      codePage="65001"
+                      dataType="str"
+                      length="50"
+                      name="Column 5" />
+                    <externalMetadataColumn
+                      refId="Package\Load flat file source to stageCity\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Column 6]"
+                      codePage="65001"
+                      dataType="str"
+                      length="50"
+                      name="Column 6" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Load flat file source to stageCity\Flat File Source.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load flat file source to stageCity\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="65001"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\Load flat file source to stageCity\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\Load flat file source to stageCity\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load flat file source to stageCity\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load flat file source to stageCity\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load flat file source to stageCity\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load flat file source to stageCity\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[stageCity]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load flat file source to stageCity\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="{C00465DE-0A1C-49BD-946D-68D1B0AC5346}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[PYD-OLAP_mssql2019.PAYVANDDW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load flat file source to stageCity\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load flat file source to stageCity\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[کد شهر]"
+                      cachedCodepage="65001"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="کد شهر"
+                      externalMetadataColumnId="Package\Load flat file source to stageCity\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[minoocitycode]"
+                      lineageId="Package\Load flat file source to stageCity\Flat File Source.Outputs[Flat File Source Output].Columns[کد شهر]" />
+                    <inputColumn
+                      refId="Package\Load flat file source to stageCity\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[شهر]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="شهر"
+                      externalMetadataColumnId="Package\Load flat file source to stageCity\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[cityname]"
+                      lineageId="Package\Load flat file source to stageCity\Flat File Source.Outputs[Flat File Source Output].Columns[شهر]" />
+                    <inputColumn
+                      refId="Package\Load flat file source to stageCity\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[کد استان]"
+                      cachedCodepage="65001"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="کد استان"
+                      externalMetadataColumnId="Package\Load flat file source to stageCity\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[provincecode]"
+                      lineageId="Package\Load flat file source to stageCity\Flat File Source.Outputs[Flat File Source Output].Columns[کد استان]" />
+                    <inputColumn
+                      refId="Package\Load flat file source to stageCity\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[استان]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="استان"
+                      externalMetadataColumnId="Package\Load flat file source to stageCity\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[provincename]"
+                      lineageId="Package\Load flat file source to stageCity\Flat File Source.Outputs[Flat File Source Output].Columns[استان]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load flat file source to stageCity\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[minoocitycode]"
+                      dataType="i4"
+                      name="minoocitycode" />
+                    <externalMetadataColumn
+                      refId="Package\Load flat file source to stageCity\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[cityname]"
+                      dataType="wstr"
+                      length="50"
+                      name="cityname" />
+                    <externalMetadataColumn
+                      refId="Package\Load flat file source to stageCity\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[provincecode]"
+                      dataType="i4"
+                      name="provincecode" />
+                    <externalMetadataColumn
+                      refId="Package\Load flat file source to stageCity\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[provincename]"
+                      dataType="wstr"
+                      length="50"
+                      name="provincename" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load flat file source to stageCity\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Load flat file source to stageCity\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load flat file source to stageCity\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load flat file source to stageCity\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load flat file source to stageCity\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load flat file source to stageCity\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Load flat file source to stageCity.Paths[Flat File Source Output]"
+              endId="Package\Load flat file source to stageCity\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Flat File Source Output"
+              startId="Package\Load flat file source to stageCity\Flat File Source.Outputs[Flat File Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncate Table"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{a2ddc0a9-5f62-483d-89f5-0b3adc864b6f}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncate Table"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{C00465DE-0A1C-49BD-946D-68D1B0AC5346}"
+          SQLTask:BypassPrepare="False"
+          SQLTask:SqlStatementSource="truncate table stageCity" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{B627F1CB-655B-4DA7-B848-1CE9B4A0C6DE}"
+      DTS:From="Package\Load flat file source to stageCity"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\export to dimGeography" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{DAA109C4-0194-447B-A236-3387093CC059}"
+      DTS:From="Package\Truncate Table"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Load flat file source to stageCity" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="193,42"
+          Id="Package\export to dimGeography"
+          TopLeft="243.5,301.5" />
+        <NodeLayout
+          Size="231,42"
+          Id="Package\Load flat file source to stageCity"
+          TopLeft="234.5,194.5" />
+        <NodeLayout
+          Size="150,42"
+          Id="Package\Truncate Table"
+          TopLeft="269,83" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="350,236.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-10,65"
+              Start="0,0"
+              End="-10,57.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,28.5"
+                    Point2="0,32.5"
+                    Point3="-4,32.5" />
+                  <mssgle:LineSegment
+                    End="-6,32.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-6,32.5"
+                    Point2="-10,32.5"
+                    Point3="-10,36.5" />
+                  <mssgle:LineSegment
+                    End="-10,57.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="347,125">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,69.5"
+              Start="0,0"
+              End="0,62">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,62" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\export to dimGeography">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="150,42"
+          Id="Package\export to dimGeography\OLE DB Source"
+          TopLeft="350.5,108.5" />
+        <NodeLayout
+          Size="120,42"
+          Id="Package\export to dimGeography\compare"
+          TopLeft="361.5,226.5" />
+        <EdgeLayout
+          Id="Package\export to dimGeography.Paths[OLE DB Source Output]"
+          TopLeft="423.5,150.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,76"
+              Start="0,0"
+              End="0,68.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,68.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="171,42"
+          Id="Package\export to dimGeography\OLE DB Destination"
+          TopLeft="218,459" />
+        <NodeLayout
+          Size="204,42"
+          Id="Package\export to dimGeography\OLE DB Command_update"
+          TopLeft="520,357" />
+        <EdgeLayout
+          Id="Package\export to dimGeography.Paths[ChangeCity]"
+          TopLeft="440.166666666667,268.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="181.833333333333,88.5"
+              Start="0,0"
+              End="181.833333333333,81">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.0986842105263" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,32.0986842105263"
+                    Point2="0,36.0986842105263"
+                    Point3="4,36.0986842105263" />
+                  <mssgle:LineSegment
+                    End="177.833333333333,36.0986842105263" />
+                  <mssgle:CubicBezierSegment
+                    Point1="177.833333333333,36.0986842105263"
+                    Point2="181.833333333333,36.0986842105263"
+                    Point3="181.833333333333,40.0986842105263" />
+                  <mssgle:LineSegment
+                    End="181.833333333333,81" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="65.1772135416667,41.0986842105263,51.47890625,11.6630859375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="154,42"
+          Id="Package\export to dimGeography\Derived Column"
+          TopLeft="221,334" />
+        <EdgeLayout
+          Id="Package\export to dimGeography.Paths[NewCity]"
+          TopLeft="402.833333333333,268.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-104.833333333333,65.5"
+              Start="0,0"
+              End="-104.833333333333,58">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.7171052631579" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,22.7171052631579"
+                    Point2="0,26.7171052631579"
+                    Point3="-4,26.7171052631579" />
+                  <mssgle:LineSegment
+                    End="-100.833333333333,26.7171052631579" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-100.833333333333,26.7171052631579"
+                    Point2="-104.833333333333,26.7171052631579"
+                    Point3="-104.833333333333,30.7171052631579" />
+                  <mssgle:LineSegment
+                    End="-104.833333333333,58" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-71.0186002604167,31.7171052631579,37.2038671875,11.4140625"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\export to dimGeography.Paths[Derived Column Output]"
+          TopLeft="300.75,376">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,83"
+              Start="0,0"
+              End="0,75.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,75.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\export to dimGeography\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\export to dimGeography\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Load flat file source to stageCity">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="151,42"
+          Id="Package\Load flat file source to stageCity\Flat File Source"
+          TopLeft="330.5,151.5" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Load flat file source to stageCity\OLE DB Destination"
+          TopLeft="317.5,280.5" />
+        <EdgeLayout
+          Id="Package\Load flat file source to stageCity.Paths[Flat File Source Output]"
+          TopLeft="404.5,193.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,87"
+              Start="0,0"
+              End="0,79.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,79.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load flat file source to stageCity\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

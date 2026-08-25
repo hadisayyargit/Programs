@@ -1,0 +1,40 @@
+select nonempty([DimCustomers].[Hierarchy_Customer_Geography].[Country Code].members) on columns
+, [Measures].[Line Total Price] on rows
+from [cubeNeon]
+
+go
+
+select nonempty([Order Date].[JalaliYear].members, [Measures].[Line Total Price]) on columns
+, nonempty([DimCustomers].[Hierarchy_Customer_Geography].[Country Code]) on rows
+from [cubeNeon]
+go
+
+
+select nonempty([Order Date].[JalaliYear].&[1375]) on columns
+, nonempty([DimCustomers].[Hierarchy_Customer_Geography].[Country Code].&[ir], [Measures].[Line Total Price]) on rows
+from [cubeNeon]
+go
+
+select nonempty([Order Date].[JalaliYear].&[1375]) on columns
+--, nonempty([DimCustomers].[Hierarchy_Customer_Geography].[Country Code].&[ir], [Measures].[Line Total Price]) on rows
+from [cubeNeon]
+where [DimCustomers].[Hierarchy_Customer_Geography].[Country Code].&[ir]
+go
+
+select nonempty([Order Date].[JalaliYear].members, [Measures].[Line Total Price]) on columns
+, nonempty([DimCustomers].[Hierarchy_Customer_Geography].[Country Code]) on rows
+from [cubeNeon]
+where ([Order Date].[JalaliMonth].&[1375]&[8])
+go
+
+select nonempty([Order Date].[DateKey].&[20181022]) on columns
+,  [Measures].[Line Total Price] on rows
+from [cubeNeon]
+go
+
+select [Top10Customers_dynamic] on rows,
+nonempty([Measures].[Line Total Price]) on columns
+from [cubeNeon]
+where [DimCustomers].[Hierarchy_Customer_Geography].[Country Code].&[ir]
+go
+

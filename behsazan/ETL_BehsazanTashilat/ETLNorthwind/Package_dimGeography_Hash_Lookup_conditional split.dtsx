@@ -1,0 +1,3305 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="3/19/2022 3:24:18 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="SAYAR"
+  DTS:CreatorName="BEHSAZAN\sayar"
+  DTS:DTSID="{68F3D471-28E1-4F0A-8E53-B4037A714A0B}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.170"
+  DTS:LocaleID="1065"
+  DTS:ObjectName="Package_dimGeography_Hash_Lookup_conditional split"
+  DTS:PackageType="5"
+  DTS:VersionBuild="157"
+  DTS:VersionGUID="{052C2CDD-675B-48B3-BFA2-46ABD9D0DF87}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[sayar\mssql2019.GIS]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{19B9B3CC-E83F-483D-8318-BA9165967F60}"
+      DTS:ObjectName="sayar\mssql2019.GIS">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=sayar\mssql2019;Initial Catalog=GIS;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[sayar\mssql2019.GIS 1]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{45714333-74D8-4C7F-A75D-3AC7E2C25525}"
+      DTS:ObjectName="sayar\mssql2019.GIS 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=sayar\mssql2019;Initial Catalog=GIS;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{416519CA-853E-47C4-83BF-23C6B733DF36}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="vRowCount">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task_GIS"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{1509E380-DC10-45F7-9D79-9A95D3195BF4}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task_GIS"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task_GIS\Conditional Split"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="Conditional Split"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task_GIS\Conditional Split.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task_GIS\Conditional Split.Inputs[Conditional Split Input].Columns[recordhash_source]"
+                      cachedDataType="bytes"
+                      cachedLength="16"
+                      cachedName="recordhash_source"
+                      lineageId="Package\Data Flow Task_GIS\Multiple Hash.Outputs[HashedOutput].Columns[recordhash_source]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_GIS\Conditional Split.Inputs[Conditional Split Input].Columns[RecordHash_target]"
+                      cachedDataType="bytes"
+                      cachedLength="200"
+                      cachedName="RecordHash_target"
+                      lineageId="Package\Data Flow Task_GIS\Lookup.Outputs[Lookup Match Output].Columns[RecordHash_target]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task_GIS\Conditional Split.Outputs[Modified Rows]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Modified Rows"
+                  synchronousInputId="Package\Data Flow Task_GIS\Conditional Split.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">(DT_STR,200,1256)#{Package\Data Flow Task_GIS\Multiple Hash.Outputs[HashedOutput].Columns[recordhash_source]} != (DT_STR,200,1256)#{Package\Data Flow Task_GIS\Lookup.Outputs[Lookup Match Output].Columns[RecordHash_target]}</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">(DT_STR,200,1256)recordhash_source != (DT_STR,200,1256)RecordHash_target</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task_GIS\Conditional Split.Outputs[Conditional Split Default Output]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="Conditional Split Default Output"
+                  synchronousInputId="Package\Data Flow Task_GIS\Conditional Split.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task_GIS\Conditional Split.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\Data Flow Task_GIS\Conditional Split.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task_GIS\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task_GIS\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_GIS\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task_GIS\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task_GIS\Lookup"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[dimGeography]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[dimGeography]) [refTable]
+where [refTable].[StateProvinceCode] = ? and [refTable].[CityCode] = ? and [refTable].[CountryCode] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="GeographyKey" dataType="DT_I8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CountryCode" dataType="DT_STR" length="3" precision="0" scale="0" codePage="1256"/&gt;&lt;referenceColumn name="CountryName" dataType="DT_WSTR" length="40" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="StateProvinceCode" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="StateProvinceName" dataType="DT_WSTR" length="40" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CityCode" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CityName" dataType="DT_WSTR" length="40" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Latitude" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Longitude" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="RecordHash" dataType="DT_BYTES" length="200" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Data Flow Task_GIS\OLE DB Source_GIS.Outputs[OLE DB Source Output].Columns[StateProvinceCode]};#{Package\Data Flow Task_GIS\OLE DB Source_GIS.Outputs[OLE DB Source Output].Columns[CityCode]};#{Package\Data Flow Task_GIS\OLE DB Source_GIS.Outputs[OLE DB Source Output].Columns[CountryCode]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1256</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task_GIS\Lookup.Connections[OleDbConnection]"
+                  connectionManagerID="{EC83FD05-CF2A-4C09-ABDF-E9A88D809F07}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[SAYAR_MSSQL2019.NorthwindHdw]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task_GIS\Lookup.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task_GIS\Lookup.Inputs[Lookup Input].Columns[StateProvinceCode]"
+                      cachedDataType="i4"
+                      cachedName="StateProvinceCode"
+                      lineageId="Package\Data Flow Task_GIS\OLE DB Source_GIS.Outputs[OLE DB Source Output].Columns[StateProvinceCode]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">StateProvinceCode</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task_GIS\Lookup.Inputs[Lookup Input].Columns[CityCode]"
+                      cachedDataType="i4"
+                      cachedName="CityCode"
+                      lineageId="Package\Data Flow Task_GIS\OLE DB Source_GIS.Outputs[OLE DB Source Output].Columns[CityCode]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">CityCode</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task_GIS\Lookup.Inputs[Lookup Input].Columns[CountryCode]"
+                      cachedCodepage="1256"
+                      cachedDataType="str"
+                      cachedLength="3"
+                      cachedName="CountryCode"
+                      lineageId="Package\Data Flow Task_GIS\OLE DB Source_GIS.Outputs[OLE DB Source Output].Columns[CountryCode]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">CountryCode</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task_GIS\Lookup.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Data Flow Task_GIS\Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task_GIS\Lookup.Outputs[Lookup Match Output].Columns[RecordHash_target]"
+                      dataType="bytes"
+                      errorOrTruncationOperation="Copy Column"
+                      length="200"
+                      lineageId="Package\Data Flow Task_GIS\Lookup.Outputs[Lookup Match Output].Columns[RecordHash_target]"
+                      name="RecordHash_target"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">RecordHash</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task_GIS\Lookup.Outputs[Lookup Match Output].Columns[GeographyKey]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Data Flow Task_GIS\Lookup.Outputs[Lookup Match Output].Columns[GeographyKey]"
+                      name="GeographyKey"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">GeographyKey</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task_GIS\Lookup.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Data Flow Task_GIS\Lookup.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task_GIS\Lookup.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Data Flow Task_GIS\Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task_GIS\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task_GIS\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_GIS\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task_GIS\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task_GIS\Multiple Hash"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="https://github.com/keif888/SSISMHash/"
+              description="Creates Multiple Hash's from selected input columns."
+              name="Multiple Hash"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Select the number of threads to use"
+                  name="MultipleThreads"
+                  typeConverter="Martin.SQLServer.Dts.MultipleHash+MultipleThread">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Select True to force Nulls and Empty Strings to be detected in Hash, False for earlier version compatability."
+                  name="SafeNullHandling"
+                  typeConverter="Martin.SQLServer.Dts.MultipleHash+SafeNullHandling">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Select True to enable hashing of Milliseconds, False for earlier version compatability."
+                  name="IncludeMillsecond"
+                  typeConverter="Martin.SQLServer.Dts.MultipleHash+MillisecondHandling">1</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">MultipleHash</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task_GIS\Multiple Hash.Inputs[Input]"
+                  name="Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task_GIS\Multiple Hash.Inputs[Input].Columns[StateProvinceCode]"
+                      cachedDataType="i4"
+                      cachedName="StateProvinceCode"
+                      lineageId="Package\Data Flow Task_GIS\OLE DB Source_GIS.Outputs[OLE DB Source Output].Columns[StateProvinceCode]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_GIS\Multiple Hash.Inputs[Input].Columns[StateProvinceName]"
+                      cachedDataType="wstr"
+                      cachedLength="40"
+                      cachedName="StateProvinceName"
+                      lineageId="Package\Data Flow Task_GIS\OLE DB Source_GIS.Outputs[OLE DB Source Output].Columns[StateProvinceName]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_GIS\Multiple Hash.Inputs[Input].Columns[CityCode]"
+                      cachedDataType="i4"
+                      cachedName="CityCode"
+                      lineageId="Package\Data Flow Task_GIS\OLE DB Source_GIS.Outputs[OLE DB Source Output].Columns[CityCode]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_GIS\Multiple Hash.Inputs[Input].Columns[CityName]"
+                      cachedDataType="wstr"
+                      cachedLength="40"
+                      cachedName="CityName"
+                      lineageId="Package\Data Flow Task_GIS\OLE DB Source_GIS.Outputs[OLE DB Source Output].Columns[CityName]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_GIS\Multiple Hash.Inputs[Input].Columns[Latitude]"
+                      cachedDataType="r8"
+                      cachedName="Latitude"
+                      lineageId="Package\Data Flow Task_GIS\OLE DB Source_GIS.Outputs[OLE DB Source Output].Columns[Latitude]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_GIS\Multiple Hash.Inputs[Input].Columns[Longitude]"
+                      cachedDataType="r8"
+                      cachedName="Longitude"
+                      lineageId="Package\Data Flow Task_GIS\OLE DB Source_GIS.Outputs[OLE DB Source Output].Columns[Longitude]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_GIS\Multiple Hash.Inputs[Input].Columns[CountryCode]"
+                      cachedCodepage="1256"
+                      cachedDataType="str"
+                      cachedLength="3"
+                      cachedName="CountryCode"
+                      lineageId="Package\Data Flow Task_GIS\OLE DB Source_GIS.Outputs[OLE DB Source Output].Columns[CountryCode]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_GIS\Multiple Hash.Inputs[Input].Columns[CountryName]"
+                      cachedDataType="wstr"
+                      cachedLength="40"
+                      cachedName="CountryName"
+                      lineageId="Package\Data Flow Task_GIS\OLE DB Source_GIS.Outputs[OLE DB Source Output].Columns[CountryName]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task_GIS\Multiple Hash.Outputs[HashedOutput]"
+                  description="Hashed rows are directed to this output."
+                  name="HashedOutput"
+                  synchronousInputId="Package\Data Flow Task_GIS\Multiple Hash.Inputs[Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task_GIS\Multiple Hash.Outputs[HashedOutput].Columns[recordhash_source]"
+                      dataType="bytes"
+                      length="16"
+                      lineageId="Package\Data Flow Task_GIS\Multiple Hash.Outputs[HashedOutput].Columns[recordhash_source]"
+                      name="recordhash_source">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Select the Hash Type that will be used for this output column."
+                          name="HashType"
+                          typeConverter="Martin.SQLServer.Dts.MultipleHash+HashTypeEnumerator, MultipleHash2019, Version=1.0.0.0, Culture=neutral, PublicKeyToken=51c551904274ab44">1</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Enter the Lineage ID's that will be used to calculate the hash for this output column."
+                          name="InputColumnLineageIDs">#{Package\Data Flow Task_GIS\OLE DB Source_GIS.Outputs[OLE DB Source Output].Columns[CountryName]},#{Package\Data Flow Task_GIS\OLE DB Source_GIS.Outputs[OLE DB Source Output].Columns[StateProvinceName]},#{Package\Data Flow Task_GIS\OLE DB Source_GIS.Outputs[OLE DB Source Output].Columns[CityName]},#{Package\Data Flow Task_GIS\OLE DB Source_GIS.Outputs[OLE DB Source Output].Columns[Latitude]},#{Package\Data Flow Task_GIS\OLE DB Source_GIS.Outputs[OLE DB Source Output].Columns[Longitude]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Stores the type of the output column"
+                          name="HashOutputType"
+                          typeConverter="Martin.SQLServer.Dts.MultipleHash+OutputTypeEnumerator, MultipleHash2019, Version=1.0.0.0, Culture=neutral, PublicKeyToken=51c551904274ab44">0</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task_GIS\OLE DB Command_update dimGeography"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="OLE DB Command_update dimGeography"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE dimGeography 
+   SET CountryName =?      
+      ,StateProvinceName = ?    
+      ,CityName = ?
+      ,Latitude = ?
+      ,Longitude = ?
+      ,RecordHash = ?
+ WHERE GeographyKey=?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1256</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task_GIS\OLE DB Command_update dimGeography.Connections[OleDbConnection]"
+                  connectionManagerID="{EC83FD05-CF2A-4C09-ABDF-E9A88D809F07}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[SAYAR_MSSQL2019.NorthwindHdw]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task_GIS\OLE DB Command_update dimGeography.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task_GIS\OLE DB Command_update dimGeography.Inputs[OLE DB Command Input].Columns[CountryName]"
+                      cachedDataType="wstr"
+                      cachedLength="40"
+                      cachedName="CountryName"
+                      externalMetadataColumnId="Package\Data Flow Task_GIS\OLE DB Command_update dimGeography.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\Data Flow Task_GIS\OLE DB Source_GIS.Outputs[OLE DB Source Output].Columns[CountryName]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_GIS\OLE DB Command_update dimGeography.Inputs[OLE DB Command Input].Columns[StateProvinceName]"
+                      cachedDataType="wstr"
+                      cachedLength="40"
+                      cachedName="StateProvinceName"
+                      externalMetadataColumnId="Package\Data Flow Task_GIS\OLE DB Command_update dimGeography.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      lineageId="Package\Data Flow Task_GIS\OLE DB Source_GIS.Outputs[OLE DB Source Output].Columns[StateProvinceName]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_GIS\OLE DB Command_update dimGeography.Inputs[OLE DB Command Input].Columns[CityName]"
+                      cachedDataType="wstr"
+                      cachedLength="40"
+                      cachedName="CityName"
+                      externalMetadataColumnId="Package\Data Flow Task_GIS\OLE DB Command_update dimGeography.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      lineageId="Package\Data Flow Task_GIS\OLE DB Source_GIS.Outputs[OLE DB Source Output].Columns[CityName]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_GIS\OLE DB Command_update dimGeography.Inputs[OLE DB Command Input].Columns[Latitude]"
+                      cachedDataType="r8"
+                      cachedName="Latitude"
+                      externalMetadataColumnId="Package\Data Flow Task_GIS\OLE DB Command_update dimGeography.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      lineageId="Package\Data Flow Task_GIS\OLE DB Source_GIS.Outputs[OLE DB Source Output].Columns[Latitude]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_GIS\OLE DB Command_update dimGeography.Inputs[OLE DB Command Input].Columns[Longitude]"
+                      cachedDataType="r8"
+                      cachedName="Longitude"
+                      externalMetadataColumnId="Package\Data Flow Task_GIS\OLE DB Command_update dimGeography.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                      lineageId="Package\Data Flow Task_GIS\OLE DB Source_GIS.Outputs[OLE DB Source Output].Columns[Longitude]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_GIS\OLE DB Command_update dimGeography.Inputs[OLE DB Command Input].Columns[recordhash_source]"
+                      cachedDataType="bytes"
+                      cachedLength="16"
+                      cachedName="recordhash_source"
+                      externalMetadataColumnId="Package\Data Flow Task_GIS\OLE DB Command_update dimGeography.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
+                      lineageId="Package\Data Flow Task_GIS\Multiple Hash.Outputs[HashedOutput].Columns[recordhash_source]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_GIS\OLE DB Command_update dimGeography.Inputs[OLE DB Command Input].Columns[GeographyKey]"
+                      cachedDataType="i8"
+                      cachedName="GeographyKey"
+                      externalMetadataColumnId="Package\Data Flow Task_GIS\OLE DB Command_update dimGeography.Inputs[OLE DB Command Input].ExternalColumns[Param_6]"
+                      lineageId="Package\Data Flow Task_GIS\Lookup.Outputs[Lookup Match Output].Columns[GeographyKey]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_GIS\OLE DB Command_update dimGeography.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      dataType="wstr"
+                      length="40"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_GIS\OLE DB Command_update dimGeography.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      dataType="wstr"
+                      length="40"
+                      name="Param_1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_GIS\OLE DB Command_update dimGeography.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      dataType="wstr"
+                      length="40"
+                      name="Param_2">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_GIS\OLE DB Command_update dimGeography.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      dataType="r8"
+                      name="Param_3">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_GIS\OLE DB Command_update dimGeography.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                      dataType="r8"
+                      name="Param_4">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_GIS\OLE DB Command_update dimGeography.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
+                      dataType="bytes"
+                      length="200"
+                      name="Param_5">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_GIS\OLE DB Command_update dimGeography.Inputs[OLE DB Command Input].ExternalColumns[Param_6]"
+                      dataType="i8"
+                      name="Param_6">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task_GIS\OLE DB Command_update dimGeography.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\Data Flow Task_GIS\OLE DB Command_update dimGeography.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task_GIS\OLE DB Command_update dimGeography.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\Data Flow Task_GIS\OLE DB Command_update dimGeography.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task_GIS\OLE DB Command_update dimGeography.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task_GIS\OLE DB Command_update dimGeography.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_GIS\OLE DB Command_update dimGeography.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task_GIS\OLE DB Command_update dimGeography.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task_GIS\OLE DB Destination_insert dimGeography"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination_insert dimGeography"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[dimGeography]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1256</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task_GIS\OLE DB Destination_insert dimGeography.Connections[OleDbConnection]"
+                  connectionManagerID="{EC83FD05-CF2A-4C09-ABDF-E9A88D809F07}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[SAYAR_MSSQL2019.NorthwindHdw]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task_GIS\OLE DB Destination_insert dimGeography.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task_GIS\OLE DB Destination_insert dimGeography.Inputs[OLE DB Destination Input].Columns[StateProvinceCode]"
+                      cachedDataType="i4"
+                      cachedName="StateProvinceCode"
+                      externalMetadataColumnId="Package\Data Flow Task_GIS\OLE DB Destination_insert dimGeography.Inputs[OLE DB Destination Input].ExternalColumns[StateProvinceCode]"
+                      lineageId="Package\Data Flow Task_GIS\OLE DB Source_GIS.Outputs[OLE DB Source Output].Columns[StateProvinceCode]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_GIS\OLE DB Destination_insert dimGeography.Inputs[OLE DB Destination Input].Columns[StateProvinceName]"
+                      cachedDataType="wstr"
+                      cachedLength="40"
+                      cachedName="StateProvinceName"
+                      externalMetadataColumnId="Package\Data Flow Task_GIS\OLE DB Destination_insert dimGeography.Inputs[OLE DB Destination Input].ExternalColumns[StateProvinceName]"
+                      lineageId="Package\Data Flow Task_GIS\OLE DB Source_GIS.Outputs[OLE DB Source Output].Columns[StateProvinceName]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_GIS\OLE DB Destination_insert dimGeography.Inputs[OLE DB Destination Input].Columns[CityCode]"
+                      cachedDataType="i4"
+                      cachedName="CityCode"
+                      externalMetadataColumnId="Package\Data Flow Task_GIS\OLE DB Destination_insert dimGeography.Inputs[OLE DB Destination Input].ExternalColumns[CityCode]"
+                      lineageId="Package\Data Flow Task_GIS\OLE DB Source_GIS.Outputs[OLE DB Source Output].Columns[CityCode]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_GIS\OLE DB Destination_insert dimGeography.Inputs[OLE DB Destination Input].Columns[CityName]"
+                      cachedDataType="wstr"
+                      cachedLength="40"
+                      cachedName="CityName"
+                      externalMetadataColumnId="Package\Data Flow Task_GIS\OLE DB Destination_insert dimGeography.Inputs[OLE DB Destination Input].ExternalColumns[CityName]"
+                      lineageId="Package\Data Flow Task_GIS\OLE DB Source_GIS.Outputs[OLE DB Source Output].Columns[CityName]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_GIS\OLE DB Destination_insert dimGeography.Inputs[OLE DB Destination Input].Columns[Latitude]"
+                      cachedDataType="r8"
+                      cachedName="Latitude"
+                      externalMetadataColumnId="Package\Data Flow Task_GIS\OLE DB Destination_insert dimGeography.Inputs[OLE DB Destination Input].ExternalColumns[Latitude]"
+                      lineageId="Package\Data Flow Task_GIS\OLE DB Source_GIS.Outputs[OLE DB Source Output].Columns[Latitude]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_GIS\OLE DB Destination_insert dimGeography.Inputs[OLE DB Destination Input].Columns[Longitude]"
+                      cachedDataType="r8"
+                      cachedName="Longitude"
+                      externalMetadataColumnId="Package\Data Flow Task_GIS\OLE DB Destination_insert dimGeography.Inputs[OLE DB Destination Input].ExternalColumns[Longitude]"
+                      lineageId="Package\Data Flow Task_GIS\OLE DB Source_GIS.Outputs[OLE DB Source Output].Columns[Longitude]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_GIS\OLE DB Destination_insert dimGeography.Inputs[OLE DB Destination Input].Columns[CountryCode]"
+                      cachedCodepage="1256"
+                      cachedDataType="str"
+                      cachedLength="3"
+                      cachedName="CountryCode"
+                      externalMetadataColumnId="Package\Data Flow Task_GIS\OLE DB Destination_insert dimGeography.Inputs[OLE DB Destination Input].ExternalColumns[CountryCode]"
+                      lineageId="Package\Data Flow Task_GIS\OLE DB Source_GIS.Outputs[OLE DB Source Output].Columns[CountryCode]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_GIS\OLE DB Destination_insert dimGeography.Inputs[OLE DB Destination Input].Columns[CountryName]"
+                      cachedDataType="wstr"
+                      cachedLength="40"
+                      cachedName="CountryName"
+                      externalMetadataColumnId="Package\Data Flow Task_GIS\OLE DB Destination_insert dimGeography.Inputs[OLE DB Destination Input].ExternalColumns[CountryName]"
+                      lineageId="Package\Data Flow Task_GIS\OLE DB Source_GIS.Outputs[OLE DB Source Output].Columns[CountryName]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_GIS\OLE DB Destination_insert dimGeography.Inputs[OLE DB Destination Input].Columns[recordhash_source]"
+                      cachedDataType="bytes"
+                      cachedLength="16"
+                      cachedName="recordhash_source"
+                      externalMetadataColumnId="Package\Data Flow Task_GIS\OLE DB Destination_insert dimGeography.Inputs[OLE DB Destination Input].ExternalColumns[RecordHash]"
+                      lineageId="Package\Data Flow Task_GIS\Multiple Hash.Outputs[HashedOutput].Columns[recordhash_source]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_GIS\OLE DB Destination_insert dimGeography.Inputs[OLE DB Destination Input].ExternalColumns[GeographyKey]"
+                      dataType="i8"
+                      name="GeographyKey" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_GIS\OLE DB Destination_insert dimGeography.Inputs[OLE DB Destination Input].ExternalColumns[CountryCode]"
+                      codePage="1256"
+                      dataType="str"
+                      length="3"
+                      name="CountryCode" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_GIS\OLE DB Destination_insert dimGeography.Inputs[OLE DB Destination Input].ExternalColumns[CountryName]"
+                      dataType="wstr"
+                      length="40"
+                      name="CountryName" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_GIS\OLE DB Destination_insert dimGeography.Inputs[OLE DB Destination Input].ExternalColumns[StateProvinceCode]"
+                      dataType="i4"
+                      name="StateProvinceCode" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_GIS\OLE DB Destination_insert dimGeography.Inputs[OLE DB Destination Input].ExternalColumns[StateProvinceName]"
+                      dataType="wstr"
+                      length="40"
+                      name="StateProvinceName" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_GIS\OLE DB Destination_insert dimGeography.Inputs[OLE DB Destination Input].ExternalColumns[CityCode]"
+                      dataType="i4"
+                      name="CityCode" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_GIS\OLE DB Destination_insert dimGeography.Inputs[OLE DB Destination Input].ExternalColumns[CityName]"
+                      dataType="wstr"
+                      length="40"
+                      name="CityName" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_GIS\OLE DB Destination_insert dimGeography.Inputs[OLE DB Destination Input].ExternalColumns[Latitude]"
+                      dataType="r8"
+                      name="Latitude" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_GIS\OLE DB Destination_insert dimGeography.Inputs[OLE DB Destination Input].ExternalColumns[Longitude]"
+                      dataType="r8"
+                      name="Longitude" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_GIS\OLE DB Destination_insert dimGeography.Inputs[OLE DB Destination Input].ExternalColumns[RecordHash]"
+                      dataType="bytes"
+                      length="200"
+                      name="RecordHash" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task_GIS\OLE DB Destination_insert dimGeography.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task_GIS\OLE DB Destination_insert dimGeography.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task_GIS\OLE DB Destination_insert dimGeography.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task_GIS\OLE DB Destination_insert dimGeography.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_GIS\OLE DB Destination_insert dimGeography.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task_GIS\OLE DB Destination_insert dimGeography.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task_GIS\OLE DB Source_GIS"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source_GIS"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT
+      ct.province as [StateProvinceCode]
+      ,pr.[name] as [StateProvinceName]
+      ,ct.id as [CityCode]
+      ,ct.[name] as [CityName]
+      ,ct.Latitude
+      ,ct.Longitude
+	  ,k.cod2 as CountryCode
+	  , k.pname as CountryName
+  FROM city ct
+  inner join Province pr on pr.id=ct.province
+  inner join country k on k.id=pr.country</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1256</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task_GIS\OLE DB Source_GIS.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[sayar\mssql2019.GIS]"
+                  connectionManagerRefId="Package.ConnectionManagers[sayar\mssql2019.GIS]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task_GIS\OLE DB Source_GIS.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task_GIS\OLE DB Source_GIS.Outputs[OLE DB Source Output].Columns[StateProvinceCode]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task_GIS\OLE DB Source_GIS.Outputs[OLE DB Source Output].ExternalColumns[StateProvinceCode]"
+                      lineageId="Package\Data Flow Task_GIS\OLE DB Source_GIS.Outputs[OLE DB Source Output].Columns[StateProvinceCode]"
+                      name="StateProvinceCode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_GIS\OLE DB Source_GIS.Outputs[OLE DB Source Output].Columns[StateProvinceName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task_GIS\OLE DB Source_GIS.Outputs[OLE DB Source Output].ExternalColumns[StateProvinceName]"
+                      length="40"
+                      lineageId="Package\Data Flow Task_GIS\OLE DB Source_GIS.Outputs[OLE DB Source Output].Columns[StateProvinceName]"
+                      name="StateProvinceName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_GIS\OLE DB Source_GIS.Outputs[OLE DB Source Output].Columns[CityCode]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task_GIS\OLE DB Source_GIS.Outputs[OLE DB Source Output].ExternalColumns[CityCode]"
+                      lineageId="Package\Data Flow Task_GIS\OLE DB Source_GIS.Outputs[OLE DB Source Output].Columns[CityCode]"
+                      name="CityCode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_GIS\OLE DB Source_GIS.Outputs[OLE DB Source Output].Columns[CityName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task_GIS\OLE DB Source_GIS.Outputs[OLE DB Source Output].ExternalColumns[CityName]"
+                      length="40"
+                      lineageId="Package\Data Flow Task_GIS\OLE DB Source_GIS.Outputs[OLE DB Source Output].Columns[CityName]"
+                      name="CityName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_GIS\OLE DB Source_GIS.Outputs[OLE DB Source Output].Columns[Latitude]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task_GIS\OLE DB Source_GIS.Outputs[OLE DB Source Output].ExternalColumns[Latitude]"
+                      lineageId="Package\Data Flow Task_GIS\OLE DB Source_GIS.Outputs[OLE DB Source Output].Columns[Latitude]"
+                      name="Latitude"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_GIS\OLE DB Source_GIS.Outputs[OLE DB Source Output].Columns[Longitude]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task_GIS\OLE DB Source_GIS.Outputs[OLE DB Source Output].ExternalColumns[Longitude]"
+                      lineageId="Package\Data Flow Task_GIS\OLE DB Source_GIS.Outputs[OLE DB Source Output].Columns[Longitude]"
+                      name="Longitude"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_GIS\OLE DB Source_GIS.Outputs[OLE DB Source Output].Columns[CountryCode]"
+                      codePage="1256"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task_GIS\OLE DB Source_GIS.Outputs[OLE DB Source Output].ExternalColumns[CountryCode]"
+                      length="3"
+                      lineageId="Package\Data Flow Task_GIS\OLE DB Source_GIS.Outputs[OLE DB Source Output].Columns[CountryCode]"
+                      name="CountryCode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_GIS\OLE DB Source_GIS.Outputs[OLE DB Source Output].Columns[CountryName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task_GIS\OLE DB Source_GIS.Outputs[OLE DB Source Output].ExternalColumns[CountryName]"
+                      length="40"
+                      lineageId="Package\Data Flow Task_GIS\OLE DB Source_GIS.Outputs[OLE DB Source Output].Columns[CountryName]"
+                      name="CountryName"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_GIS\OLE DB Source_GIS.Outputs[OLE DB Source Output].ExternalColumns[StateProvinceCode]"
+                      dataType="i4"
+                      name="StateProvinceCode" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_GIS\OLE DB Source_GIS.Outputs[OLE DB Source Output].ExternalColumns[StateProvinceName]"
+                      dataType="wstr"
+                      length="40"
+                      name="StateProvinceName" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_GIS\OLE DB Source_GIS.Outputs[OLE DB Source Output].ExternalColumns[CityCode]"
+                      dataType="i4"
+                      name="CityCode" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_GIS\OLE DB Source_GIS.Outputs[OLE DB Source Output].ExternalColumns[CityName]"
+                      dataType="wstr"
+                      length="40"
+                      name="CityName" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_GIS\OLE DB Source_GIS.Outputs[OLE DB Source Output].ExternalColumns[Latitude]"
+                      dataType="r8"
+                      name="Latitude" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_GIS\OLE DB Source_GIS.Outputs[OLE DB Source Output].ExternalColumns[Longitude]"
+                      dataType="r8"
+                      name="Longitude" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_GIS\OLE DB Source_GIS.Outputs[OLE DB Source Output].ExternalColumns[CountryCode]"
+                      codePage="1256"
+                      dataType="str"
+                      length="3"
+                      name="CountryCode" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_GIS\OLE DB Source_GIS.Outputs[OLE DB Source Output].ExternalColumns[CountryName]"
+                      dataType="wstr"
+                      length="40"
+                      name="CountryName" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task_GIS\OLE DB Source_GIS.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task_GIS\OLE DB Source_GIS.Outputs[OLE DB Source Error Output].Columns[StateProvinceCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task_GIS\OLE DB Source_GIS.Outputs[OLE DB Source Error Output].Columns[StateProvinceCode]"
+                      name="StateProvinceCode" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_GIS\OLE DB Source_GIS.Outputs[OLE DB Source Error Output].Columns[StateProvinceName]"
+                      dataType="wstr"
+                      length="40"
+                      lineageId="Package\Data Flow Task_GIS\OLE DB Source_GIS.Outputs[OLE DB Source Error Output].Columns[StateProvinceName]"
+                      name="StateProvinceName" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_GIS\OLE DB Source_GIS.Outputs[OLE DB Source Error Output].Columns[CityCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task_GIS\OLE DB Source_GIS.Outputs[OLE DB Source Error Output].Columns[CityCode]"
+                      name="CityCode" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_GIS\OLE DB Source_GIS.Outputs[OLE DB Source Error Output].Columns[CityName]"
+                      dataType="wstr"
+                      length="40"
+                      lineageId="Package\Data Flow Task_GIS\OLE DB Source_GIS.Outputs[OLE DB Source Error Output].Columns[CityName]"
+                      name="CityName" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_GIS\OLE DB Source_GIS.Outputs[OLE DB Source Error Output].Columns[Latitude]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task_GIS\OLE DB Source_GIS.Outputs[OLE DB Source Error Output].Columns[Latitude]"
+                      name="Latitude" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_GIS\OLE DB Source_GIS.Outputs[OLE DB Source Error Output].Columns[Longitude]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task_GIS\OLE DB Source_GIS.Outputs[OLE DB Source Error Output].Columns[Longitude]"
+                      name="Longitude" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_GIS\OLE DB Source_GIS.Outputs[OLE DB Source Error Output].Columns[CountryCode]"
+                      codePage="1256"
+                      dataType="str"
+                      length="3"
+                      lineageId="Package\Data Flow Task_GIS\OLE DB Source_GIS.Outputs[OLE DB Source Error Output].Columns[CountryCode]"
+                      name="CountryCode" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_GIS\OLE DB Source_GIS.Outputs[OLE DB Source Error Output].Columns[CountryName]"
+                      dataType="wstr"
+                      length="40"
+                      lineageId="Package\Data Flow Task_GIS\OLE DB Source_GIS.Outputs[OLE DB Source Error Output].Columns[CountryName]"
+                      name="CountryName" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_GIS\OLE DB Source_GIS.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task_GIS\OLE DB Source_GIS.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_GIS\OLE DB Source_GIS.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task_GIS\OLE DB Source_GIS.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task_GIS.Paths[HashedOutput]"
+              endId="Package\Data Flow Task_GIS\Lookup.Inputs[Lookup Input]"
+              name="HashedOutput"
+              startId="Package\Data Flow Task_GIS\Multiple Hash.Outputs[HashedOutput]" />
+            <path
+              refId="Package\Data Flow Task_GIS.Paths[Lookup Match Output]"
+              endId="Package\Data Flow Task_GIS\Conditional Split.Inputs[Conditional Split Input]"
+              name="Lookup Match Output"
+              startId="Package\Data Flow Task_GIS\Lookup.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Data Flow Task_GIS.Paths[Lookup No Match Output]"
+              endId="Package\Data Flow Task_GIS\OLE DB Destination_insert dimGeography.Inputs[OLE DB Destination Input]"
+              name="Lookup No Match Output"
+              startId="Package\Data Flow Task_GIS\Lookup.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\Data Flow Task_GIS.Paths[Modified Rows]"
+              endId="Package\Data Flow Task_GIS\OLE DB Command_update dimGeography.Inputs[OLE DB Command Input]"
+              name="Modified Rows"
+              startId="Package\Data Flow Task_GIS\Conditional Split.Outputs[Modified Rows]" />
+            <path
+              refId="Package\Data Flow Task_GIS.Paths[OLE DB Source Output]"
+              endId="Package\Data Flow Task_GIS\Multiple Hash.Inputs[Input]"
+              name="OLE DB Source Output"
+              startId="Package\Data Flow Task_GIS\OLE DB Source_GIS.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task_Northwind"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{88B459F7-A79D-46C3-8621-B588C211E3DC}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task_Northwind"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task_Northwind\Conditional Split"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="Conditional Split"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task_Northwind\Conditional Split.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task_Northwind\Conditional Split.Inputs[Conditional Split Input].Columns[recordhash_source]"
+                      cachedDataType="bytes"
+                      cachedLength="16"
+                      cachedName="recordhash_source"
+                      lineageId="Package\Data Flow Task_Northwind\Multiple Hash.Outputs[HashedOutput].Columns[recordhash_source]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_Northwind\Conditional Split.Inputs[Conditional Split Input].Columns[RecordHash_target]"
+                      cachedDataType="bytes"
+                      cachedLength="200"
+                      cachedName="RecordHash_target"
+                      lineageId="Package\Data Flow Task_Northwind\Lookup 1.Outputs[Lookup Match Output].Columns[RecordHash_target]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task_Northwind\Conditional Split.Outputs[Modified Rows]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Modified Rows"
+                  synchronousInputId="Package\Data Flow Task_Northwind\Conditional Split.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">(DT_STR,200,1256)#{Package\Data Flow Task_Northwind\Multiple Hash.Outputs[HashedOutput].Columns[recordhash_source]} != (DT_STR,200,1256)#{Package\Data Flow Task_Northwind\Lookup 1.Outputs[Lookup Match Output].Columns[RecordHash_target]}</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">(DT_STR,200,1256)recordhash_source != (DT_STR,200,1256)RecordHash_target</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task_Northwind\Conditional Split.Outputs[Conditional Split Default Output]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="Conditional Split Default Output"
+                  synchronousInputId="Package\Data Flow Task_Northwind\Conditional Split.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task_Northwind\Conditional Split.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\Data Flow Task_Northwind\Conditional Split.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task_Northwind\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task_Northwind\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Northwind\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task_Northwind\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task_Northwind\Data Conversion"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task_Northwind\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task_Northwind\Data Conversion.Inputs[Data Conversion Input].Columns[CountryName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="CountryName"
+                      lineageId="Package\Data Flow Task_Northwind\OLE DB Source_northwind.Outputs[OLE DB Source Output].Columns[CountryName]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_Northwind\Data Conversion.Inputs[Data Conversion Input].Columns[stateprovincename]"
+                      cachedCodepage="1256"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="stateprovincename"
+                      lineageId="Package\Data Flow Task_Northwind\OLE DB Source_northwind.Outputs[OLE DB Source Output].Columns[stateprovincename]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task_Northwind\Data Conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Data Flow Task_Northwind\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task_Northwind\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of CountryName]"
+                      codePage="1256"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Data Flow Task_Northwind\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of CountryName]"
+                      name="Copy of CountryName"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task_Northwind\OLE DB Source_northwind.Outputs[OLE DB Source Output].Columns[CountryName]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task_Northwind\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of stateprovincename]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="1"
+                      lineageId="Package\Data Flow Task_Northwind\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of stateprovincename]"
+                      name="Copy of stateprovincename"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task_Northwind\OLE DB Source_northwind.Outputs[OLE DB Source Output].Columns[stateprovincename]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task_Northwind\Data Conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Data Flow Task_Northwind\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task_Northwind\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task_Northwind\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Northwind\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task_Northwind\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task_Northwind\Lookup 1"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup 1"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[dimGeography]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[dimGeography]) [refTable]
+where [refTable].[CountryName] = ? and [refTable].[CityName] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="GeographyKey" dataType="DT_I8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CountryCode" dataType="DT_STR" length="3" precision="0" scale="0" codePage="1256"/&gt;&lt;referenceColumn name="CountryName" dataType="DT_WSTR" length="40" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="StateProvinceCode" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="StateProvinceName" dataType="DT_WSTR" length="40" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CityCode" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CityName" dataType="DT_WSTR" length="40" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Latitude" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Longitude" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="RecordHash" dataType="DT_BYTES" length="200" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Data Flow Task_Northwind\OLE DB Source_northwind.Outputs[OLE DB Source Output].Columns[CountryName]};#{Package\Data Flow Task_Northwind\OLE DB Source_northwind.Outputs[OLE DB Source Output].Columns[CityName]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1256</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task_Northwind\Lookup 1.Connections[OleDbConnection]"
+                  connectionManagerID="{EC83FD05-CF2A-4C09-ABDF-E9A88D809F07}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[SAYAR_MSSQL2019.NorthwindHdw]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task_Northwind\Lookup 1.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task_Northwind\Lookup 1.Inputs[Lookup Input].Columns[CountryName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="CountryName"
+                      lineageId="Package\Data Flow Task_Northwind\OLE DB Source_northwind.Outputs[OLE DB Source Output].Columns[CountryName]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">CountryName</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task_Northwind\Lookup 1.Inputs[Lookup Input].Columns[CityName]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="CityName"
+                      lineageId="Package\Data Flow Task_Northwind\OLE DB Source_northwind.Outputs[OLE DB Source Output].Columns[CityName]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">CityName</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task_Northwind\Lookup 1.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Data Flow Task_Northwind\Lookup 1.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task_Northwind\Lookup 1.Outputs[Lookup Match Output].Columns[RecordHash_target]"
+                      dataType="bytes"
+                      errorOrTruncationOperation="Copy Column"
+                      length="200"
+                      lineageId="Package\Data Flow Task_Northwind\Lookup 1.Outputs[Lookup Match Output].Columns[RecordHash_target]"
+                      name="RecordHash_target"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">RecordHash</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task_Northwind\Lookup 1.Outputs[Lookup Match Output].Columns[GeographyKey]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Data Flow Task_Northwind\Lookup 1.Outputs[Lookup Match Output].Columns[GeographyKey]"
+                      name="GeographyKey"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">GeographyKey</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task_Northwind\Lookup 1.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Data Flow Task_Northwind\Lookup 1.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task_Northwind\Lookup 1.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Data Flow Task_Northwind\Lookup 1.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task_Northwind\Lookup 1.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task_Northwind\Lookup 1.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Northwind\Lookup 1.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task_Northwind\Lookup 1.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task_Northwind\Lookup_cod2"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup_cod2"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[country]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[country]) [refTable]
+where [refTable].[LName] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="id" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="cod2" dataType="DT_STR" length="3" precision="0" scale="0" codePage="1256"/&gt;&lt;referenceColumn name="PName" dataType="DT_WSTR" length="40" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="LName" dataType="DT_STR" length="40" precision="0" scale="0" codePage="1256"/&gt;&lt;referenceColumn name="latitude" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="longitude" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Data Flow Task_Northwind\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of CountryName]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1256</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task_Northwind\Lookup_cod2.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[sayar\mssql2019.GIS]"
+                  connectionManagerRefId="Package.ConnectionManagers[sayar\mssql2019.GIS]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task_Northwind\Lookup_cod2.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task_Northwind\Lookup_cod2.Inputs[Lookup Input].Columns[Copy of CountryName]"
+                      cachedCodepage="1256"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Copy of CountryName"
+                      lineageId="Package\Data Flow Task_Northwind\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of CountryName]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">LName</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task_Northwind\Lookup_cod2.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Data Flow Task_Northwind\Lookup_cod2.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task_Northwind\Lookup_cod2.Outputs[Lookup Match Output].Columns[cod2]"
+                      codePage="1256"
+                      dataType="str"
+                      errorOrTruncationOperation="Copy Column"
+                      length="3"
+                      lineageId="Package\Data Flow Task_Northwind\Lookup_cod2.Outputs[Lookup Match Output].Columns[cod2]"
+                      name="cod2"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">cod2</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task_Northwind\Lookup_cod2.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Data Flow Task_Northwind\Lookup_cod2.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task_Northwind\Lookup_cod2.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Data Flow Task_Northwind\Lookup_cod2.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task_Northwind\Lookup_cod2.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task_Northwind\Lookup_cod2.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Northwind\Lookup_cod2.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task_Northwind\Lookup_cod2.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task_Northwind\Multiple Hash"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="https://github.com/keif888/SSISMHash/"
+              description="Creates Multiple Hash's from selected input columns."
+              name="Multiple Hash"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Select the number of threads to use"
+                  name="MultipleThreads"
+                  typeConverter="Martin.SQLServer.Dts.MultipleHash+MultipleThread">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Select True to force Nulls and Empty Strings to be detected in Hash, False for earlier version compatability."
+                  name="SafeNullHandling"
+                  typeConverter="Martin.SQLServer.Dts.MultipleHash+SafeNullHandling">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Select True to enable hashing of Milliseconds, False for earlier version compatability."
+                  name="IncludeMillsecond"
+                  typeConverter="Martin.SQLServer.Dts.MultipleHash+MillisecondHandling">1</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">MultipleHash</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task_Northwind\Multiple Hash.Inputs[Input]"
+                  name="Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task_Northwind\Multiple Hash.Inputs[Input].Columns[CountryName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="CountryName"
+                      lineageId="Package\Data Flow Task_Northwind\OLE DB Source_northwind.Outputs[OLE DB Source Output].Columns[CountryName]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_Northwind\Multiple Hash.Inputs[Input].Columns[CityName]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="CityName"
+                      lineageId="Package\Data Flow Task_Northwind\OLE DB Source_northwind.Outputs[OLE DB Source Output].Columns[CityName]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_Northwind\Multiple Hash.Inputs[Input].Columns[stateprovincename]"
+                      cachedCodepage="1256"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="stateprovincename"
+                      lineageId="Package\Data Flow Task_Northwind\OLE DB Source_northwind.Outputs[OLE DB Source Output].Columns[stateprovincename]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_Northwind\Multiple Hash.Inputs[Input].Columns[latitude]"
+                      cachedDataType="i4"
+                      cachedName="latitude"
+                      lineageId="Package\Data Flow Task_Northwind\OLE DB Source_northwind.Outputs[OLE DB Source Output].Columns[latitude]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_Northwind\Multiple Hash.Inputs[Input].Columns[longitude]"
+                      cachedDataType="i4"
+                      cachedName="longitude"
+                      lineageId="Package\Data Flow Task_Northwind\OLE DB Source_northwind.Outputs[OLE DB Source Output].Columns[longitude]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task_Northwind\Multiple Hash.Outputs[HashedOutput]"
+                  description="Hashed rows are directed to this output."
+                  name="HashedOutput"
+                  synchronousInputId="Package\Data Flow Task_Northwind\Multiple Hash.Inputs[Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task_Northwind\Multiple Hash.Outputs[HashedOutput].Columns[recordhash_source]"
+                      dataType="bytes"
+                      length="16"
+                      lineageId="Package\Data Flow Task_Northwind\Multiple Hash.Outputs[HashedOutput].Columns[recordhash_source]"
+                      name="recordhash_source">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Select the Hash Type that will be used for this output column."
+                          name="HashType"
+                          typeConverter="Martin.SQLServer.Dts.MultipleHash+HashTypeEnumerator, MultipleHash2019, Version=1.0.0.0, Culture=neutral, PublicKeyToken=51c551904274ab44">1</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Enter the Lineage ID's that will be used to calculate the hash for this output column."
+                          name="InputColumnLineageIDs">#{Package\Data Flow Task_Northwind\OLE DB Source_northwind.Outputs[OLE DB Source Output].Columns[CountryName]},#{Package\Data Flow Task_Northwind\OLE DB Source_northwind.Outputs[OLE DB Source Output].Columns[stateprovincename]},#{Package\Data Flow Task_Northwind\OLE DB Source_northwind.Outputs[OLE DB Source Output].Columns[CityName]},#{Package\Data Flow Task_Northwind\OLE DB Source_northwind.Outputs[OLE DB Source Output].Columns[latitude]},#{Package\Data Flow Task_Northwind\OLE DB Source_northwind.Outputs[OLE DB Source Output].Columns[longitude]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Stores the type of the output column"
+                          name="HashOutputType"
+                          typeConverter="Martin.SQLServer.Dts.MultipleHash+OutputTypeEnumerator, MultipleHash2019, Version=1.0.0.0, Culture=neutral, PublicKeyToken=51c551904274ab44">0</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task_Northwind\OLE DB Command_update dimGeography"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="OLE DB Command_update dimGeography"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE dimGeography 
+   SET CountryName =?      
+      ,StateProvinceName = ?    
+      ,CityName = ?
+      ,Latitude = ?
+      ,Longitude = ?
+      ,RecordHash = ?
+ WHERE GeographyKey=?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1256</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task_Northwind\OLE DB Command_update dimGeography.Connections[OleDbConnection]"
+                  connectionManagerID="{EC83FD05-CF2A-4C09-ABDF-E9A88D809F07}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[SAYAR_MSSQL2019.NorthwindHdw]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task_Northwind\OLE DB Command_update dimGeography.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task_Northwind\OLE DB Command_update dimGeography.Inputs[OLE DB Command Input].Columns[CityName]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="CityName"
+                      externalMetadataColumnId="Package\Data Flow Task_Northwind\OLE DB Command_update dimGeography.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      lineageId="Package\Data Flow Task_Northwind\OLE DB Source_northwind.Outputs[OLE DB Source Output].Columns[CityName]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_Northwind\OLE DB Command_update dimGeography.Inputs[OLE DB Command Input].Columns[latitude]"
+                      cachedDataType="i4"
+                      cachedName="latitude"
+                      externalMetadataColumnId="Package\Data Flow Task_Northwind\OLE DB Command_update dimGeography.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      lineageId="Package\Data Flow Task_Northwind\OLE DB Source_northwind.Outputs[OLE DB Source Output].Columns[latitude]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_Northwind\OLE DB Command_update dimGeography.Inputs[OLE DB Command Input].Columns[longitude]"
+                      cachedDataType="i4"
+                      cachedName="longitude"
+                      externalMetadataColumnId="Package\Data Flow Task_Northwind\OLE DB Command_update dimGeography.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                      lineageId="Package\Data Flow Task_Northwind\OLE DB Source_northwind.Outputs[OLE DB Source Output].Columns[longitude]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_Northwind\OLE DB Command_update dimGeography.Inputs[OLE DB Command Input].Columns[recordhash_source]"
+                      cachedDataType="bytes"
+                      cachedLength="16"
+                      cachedName="recordhash_source"
+                      externalMetadataColumnId="Package\Data Flow Task_Northwind\OLE DB Command_update dimGeography.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
+                      lineageId="Package\Data Flow Task_Northwind\Multiple Hash.Outputs[HashedOutput].Columns[recordhash_source]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_Northwind\OLE DB Command_update dimGeography.Inputs[OLE DB Command Input].Columns[GeographyKey]"
+                      cachedDataType="i8"
+                      cachedName="GeographyKey"
+                      externalMetadataColumnId="Package\Data Flow Task_Northwind\OLE DB Command_update dimGeography.Inputs[OLE DB Command Input].ExternalColumns[Param_6]"
+                      lineageId="Package\Data Flow Task_Northwind\Lookup 1.Outputs[Lookup Match Output].Columns[GeographyKey]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_Northwind\OLE DB Command_update dimGeography.Inputs[OLE DB Command Input].Columns[Copy of stateprovincename]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="Copy of stateprovincename"
+                      externalMetadataColumnId="Package\Data Flow Task_Northwind\OLE DB Command_update dimGeography.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      lineageId="Package\Data Flow Task_Northwind\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of stateprovincename]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_Northwind\OLE DB Command_update dimGeography.Inputs[OLE DB Command Input].Columns[CountryName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="CountryName"
+                      externalMetadataColumnId="Package\Data Flow Task_Northwind\OLE DB Command_update dimGeography.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\Data Flow Task_Northwind\OLE DB Source_northwind.Outputs[OLE DB Source Output].Columns[CountryName]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Northwind\OLE DB Command_update dimGeography.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      dataType="wstr"
+                      length="40"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Northwind\OLE DB Command_update dimGeography.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      dataType="wstr"
+                      length="40"
+                      name="Param_1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Northwind\OLE DB Command_update dimGeography.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      dataType="wstr"
+                      length="40"
+                      name="Param_2">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Northwind\OLE DB Command_update dimGeography.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      dataType="r8"
+                      name="Param_3">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Northwind\OLE DB Command_update dimGeography.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                      dataType="r8"
+                      name="Param_4">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Northwind\OLE DB Command_update dimGeography.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
+                      dataType="bytes"
+                      length="200"
+                      name="Param_5">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Northwind\OLE DB Command_update dimGeography.Inputs[OLE DB Command Input].ExternalColumns[Param_6]"
+                      dataType="i8"
+                      name="Param_6">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task_Northwind\OLE DB Command_update dimGeography.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\Data Flow Task_Northwind\OLE DB Command_update dimGeography.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task_Northwind\OLE DB Command_update dimGeography.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\Data Flow Task_Northwind\OLE DB Command_update dimGeography.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task_Northwind\OLE DB Command_update dimGeography.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task_Northwind\OLE DB Command_update dimGeography.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Northwind\OLE DB Command_update dimGeography.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task_Northwind\OLE DB Command_update dimGeography.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task_Northwind\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[dimGeography]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1256</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task_Northwind\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="{EC83FD05-CF2A-4C09-ABDF-E9A88D809F07}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[SAYAR_MSSQL2019.NorthwindHdw]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task_Northwind\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task_Northwind\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[CityCode]"
+                      cachedDataType="i4"
+                      cachedName="CityCode"
+                      externalMetadataColumnId="Package\Data Flow Task_Northwind\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CityCode]"
+                      lineageId="Package\Data Flow Task_Northwind\OLE DB Source_northwind.Outputs[OLE DB Source Output].Columns[CityCode]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_Northwind\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[CityName]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="CityName"
+                      externalMetadataColumnId="Package\Data Flow Task_Northwind\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CityName]"
+                      lineageId="Package\Data Flow Task_Northwind\OLE DB Source_northwind.Outputs[OLE DB Source Output].Columns[CityName]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_Northwind\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[stateprovincecode]"
+                      cachedDataType="i4"
+                      cachedName="stateprovincecode"
+                      externalMetadataColumnId="Package\Data Flow Task_Northwind\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[StateProvinceCode]"
+                      lineageId="Package\Data Flow Task_Northwind\OLE DB Source_northwind.Outputs[OLE DB Source Output].Columns[stateprovincecode]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_Northwind\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[latitude]"
+                      cachedDataType="i4"
+                      cachedName="latitude"
+                      externalMetadataColumnId="Package\Data Flow Task_Northwind\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Latitude]"
+                      lineageId="Package\Data Flow Task_Northwind\OLE DB Source_northwind.Outputs[OLE DB Source Output].Columns[latitude]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_Northwind\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[longitude]"
+                      cachedDataType="i4"
+                      cachedName="longitude"
+                      externalMetadataColumnId="Package\Data Flow Task_Northwind\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Longitude]"
+                      lineageId="Package\Data Flow Task_Northwind\OLE DB Source_northwind.Outputs[OLE DB Source Output].Columns[longitude]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_Northwind\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[recordhash_source]"
+                      cachedDataType="bytes"
+                      cachedLength="16"
+                      cachedName="recordhash_source"
+                      externalMetadataColumnId="Package\Data Flow Task_Northwind\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[RecordHash]"
+                      lineageId="Package\Data Flow Task_Northwind\Multiple Hash.Outputs[HashedOutput].Columns[recordhash_source]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_Northwind\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[cod2]"
+                      cachedCodepage="1256"
+                      cachedDataType="str"
+                      cachedLength="3"
+                      cachedName="cod2"
+                      externalMetadataColumnId="Package\Data Flow Task_Northwind\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CountryCode]"
+                      lineageId="Package\Data Flow Task_Northwind\Lookup_cod2.Outputs[Lookup Match Output].Columns[cod2]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_Northwind\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[CountryName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="CountryName"
+                      externalMetadataColumnId="Package\Data Flow Task_Northwind\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CountryName]"
+                      lineageId="Package\Data Flow Task_Northwind\OLE DB Source_northwind.Outputs[OLE DB Source Output].Columns[CountryName]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_Northwind\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of stateprovincename]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="Copy of stateprovincename"
+                      externalMetadataColumnId="Package\Data Flow Task_Northwind\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[StateProvinceName]"
+                      lineageId="Package\Data Flow Task_Northwind\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of stateprovincename]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Northwind\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[GeographyKey]"
+                      dataType="i8"
+                      name="GeographyKey" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Northwind\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CountryCode]"
+                      codePage="1256"
+                      dataType="str"
+                      length="3"
+                      name="CountryCode" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Northwind\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CountryName]"
+                      dataType="wstr"
+                      length="40"
+                      name="CountryName" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Northwind\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[StateProvinceCode]"
+                      dataType="i4"
+                      name="StateProvinceCode" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Northwind\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[StateProvinceName]"
+                      dataType="wstr"
+                      length="40"
+                      name="StateProvinceName" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Northwind\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CityCode]"
+                      dataType="i4"
+                      name="CityCode" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Northwind\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CityName]"
+                      dataType="wstr"
+                      length="40"
+                      name="CityName" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Northwind\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Latitude]"
+                      dataType="r8"
+                      name="Latitude" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Northwind\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Longitude]"
+                      dataType="r8"
+                      name="Longitude" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Northwind\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[RecordHash]"
+                      dataType="bytes"
+                      length="200"
+                      name="RecordHash" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task_Northwind\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task_Northwind\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task_Northwind\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task_Northwind\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Northwind\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task_Northwind\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task_Northwind\OLE DB Source_northwind"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source_northwind"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select distinct s.Country [CountryCode]
+      ,s.Country [CountryName]
+	  ,0 [stateprovincecode]
+	  ,'' stateprovincename
+      ,0  [CityCode]
+      ,s.City [CityName]
+	  ,0 [latitude]
+	  ,0 [longitude]
+from Suppliers  s
+union 
+select distinct 
+ c.Country [CountryCode]
+      ,c.Country [CountryName]    
+	  ,0 [stateprovincecode]
+	  ,'' stateprovincename	  
+      ,0  [CityCode]
+      ,c.City [CityName]
+	  ,0 [latitude]
+	  ,0 [longitude]
+ from Customers  c
+union 
+select e.Country [CountryCode]
+      ,e.Country [CountryName]
+	  ,0 [stateprovincecode]
+	  ,'' stateprovincename	  
+	  ,0  [CityCode]
+      ,e.City [CityName]
+	  ,0 [latitude]
+	  ,0 [longitude]
+	  from Employees  e 
+union  
+select distinct 
+ o.ShipCountry [CountryCode]
+      ,o.ShipCountry [CountryName]
+	  ,0 [stateprovincecode]
+	  ,'' stateprovincename
+      ,0  [CityCode]
+      ,o.ShipCity [CityName]
+	  ,0 [latitude]
+	  ,0 [longitude]
+
+  from orders  o</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1256</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task_Northwind\OLE DB Source_northwind.Connections[OleDbConnection]"
+                  connectionManagerID="{9B204C49-B62D-4C9E-9BC2-5671A32A854B}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[sayar.Northwind]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task_Northwind\OLE DB Source_northwind.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task_Northwind\OLE DB Source_northwind.Outputs[OLE DB Source Output].Columns[CountryCode]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task_Northwind\OLE DB Source_northwind.Outputs[OLE DB Source Output].ExternalColumns[CountryCode]"
+                      length="50"
+                      lineageId="Package\Data Flow Task_Northwind\OLE DB Source_northwind.Outputs[OLE DB Source Output].Columns[CountryCode]"
+                      name="CountryCode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Northwind\OLE DB Source_northwind.Outputs[OLE DB Source Output].Columns[CountryName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task_Northwind\OLE DB Source_northwind.Outputs[OLE DB Source Output].ExternalColumns[CountryName]"
+                      length="50"
+                      lineageId="Package\Data Flow Task_Northwind\OLE DB Source_northwind.Outputs[OLE DB Source Output].Columns[CountryName]"
+                      name="CountryName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Northwind\OLE DB Source_northwind.Outputs[OLE DB Source Output].Columns[CityCode]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task_Northwind\OLE DB Source_northwind.Outputs[OLE DB Source Output].ExternalColumns[CityCode]"
+                      lineageId="Package\Data Flow Task_Northwind\OLE DB Source_northwind.Outputs[OLE DB Source Output].Columns[CityCode]"
+                      name="CityCode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Northwind\OLE DB Source_northwind.Outputs[OLE DB Source Output].Columns[CityName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task_Northwind\OLE DB Source_northwind.Outputs[OLE DB Source Output].ExternalColumns[CityName]"
+                      length="15"
+                      lineageId="Package\Data Flow Task_Northwind\OLE DB Source_northwind.Outputs[OLE DB Source Output].Columns[CityName]"
+                      name="CityName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Northwind\OLE DB Source_northwind.Outputs[OLE DB Source Output].Columns[stateprovincecode]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task_Northwind\OLE DB Source_northwind.Outputs[OLE DB Source Output].ExternalColumns[stateprovincecode]"
+                      lineageId="Package\Data Flow Task_Northwind\OLE DB Source_northwind.Outputs[OLE DB Source Output].Columns[stateprovincecode]"
+                      name="stateprovincecode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Northwind\OLE DB Source_northwind.Outputs[OLE DB Source Output].Columns[stateprovincename]"
+                      codePage="1256"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task_Northwind\OLE DB Source_northwind.Outputs[OLE DB Source Output].ExternalColumns[stateprovincename]"
+                      length="1"
+                      lineageId="Package\Data Flow Task_Northwind\OLE DB Source_northwind.Outputs[OLE DB Source Output].Columns[stateprovincename]"
+                      name="stateprovincename"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Northwind\OLE DB Source_northwind.Outputs[OLE DB Source Output].Columns[latitude]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task_Northwind\OLE DB Source_northwind.Outputs[OLE DB Source Output].ExternalColumns[latitude]"
+                      lineageId="Package\Data Flow Task_Northwind\OLE DB Source_northwind.Outputs[OLE DB Source Output].Columns[latitude]"
+                      name="latitude"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Northwind\OLE DB Source_northwind.Outputs[OLE DB Source Output].Columns[longitude]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task_Northwind\OLE DB Source_northwind.Outputs[OLE DB Source Output].ExternalColumns[longitude]"
+                      lineageId="Package\Data Flow Task_Northwind\OLE DB Source_northwind.Outputs[OLE DB Source Output].Columns[longitude]"
+                      name="longitude"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Northwind\OLE DB Source_northwind.Outputs[OLE DB Source Output].ExternalColumns[CountryCode]"
+                      dataType="wstr"
+                      length="50"
+                      name="CountryCode" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Northwind\OLE DB Source_northwind.Outputs[OLE DB Source Output].ExternalColumns[CountryName]"
+                      dataType="wstr"
+                      length="50"
+                      name="CountryName" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Northwind\OLE DB Source_northwind.Outputs[OLE DB Source Output].ExternalColumns[CityCode]"
+                      dataType="i4"
+                      name="CityCode" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Northwind\OLE DB Source_northwind.Outputs[OLE DB Source Output].ExternalColumns[CityName]"
+                      dataType="wstr"
+                      length="15"
+                      name="CityName" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Northwind\OLE DB Source_northwind.Outputs[OLE DB Source Output].ExternalColumns[stateprovincecode]"
+                      dataType="i4"
+                      name="stateprovincecode" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Northwind\OLE DB Source_northwind.Outputs[OLE DB Source Output].ExternalColumns[stateprovincename]"
+                      codePage="1256"
+                      dataType="str"
+                      length="1"
+                      name="stateprovincename" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Northwind\OLE DB Source_northwind.Outputs[OLE DB Source Output].ExternalColumns[latitude]"
+                      dataType="i4"
+                      name="latitude" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Northwind\OLE DB Source_northwind.Outputs[OLE DB Source Output].ExternalColumns[longitude]"
+                      dataType="i4"
+                      name="longitude" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task_Northwind\OLE DB Source_northwind.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task_Northwind\OLE DB Source_northwind.Outputs[OLE DB Source Error Output].Columns[CountryCode]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task_Northwind\OLE DB Source_northwind.Outputs[OLE DB Source Error Output].Columns[CountryCode]"
+                      name="CountryCode" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Northwind\OLE DB Source_northwind.Outputs[OLE DB Source Error Output].Columns[CountryName]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task_Northwind\OLE DB Source_northwind.Outputs[OLE DB Source Error Output].Columns[CountryName]"
+                      name="CountryName" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Northwind\OLE DB Source_northwind.Outputs[OLE DB Source Error Output].Columns[stateprovincecode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task_Northwind\OLE DB Source_northwind.Outputs[OLE DB Source Error Output].Columns[stateprovincecode]"
+                      name="stateprovincecode" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Northwind\OLE DB Source_northwind.Outputs[OLE DB Source Error Output].Columns[stateprovincename]"
+                      codePage="1256"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\Data Flow Task_Northwind\OLE DB Source_northwind.Outputs[OLE DB Source Error Output].Columns[stateprovincename]"
+                      name="stateprovincename" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Northwind\OLE DB Source_northwind.Outputs[OLE DB Source Error Output].Columns[CityCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task_Northwind\OLE DB Source_northwind.Outputs[OLE DB Source Error Output].Columns[CityCode]"
+                      name="CityCode" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Northwind\OLE DB Source_northwind.Outputs[OLE DB Source Error Output].Columns[CityName]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\Data Flow Task_Northwind\OLE DB Source_northwind.Outputs[OLE DB Source Error Output].Columns[CityName]"
+                      name="CityName" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Northwind\OLE DB Source_northwind.Outputs[OLE DB Source Error Output].Columns[latitude]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task_Northwind\OLE DB Source_northwind.Outputs[OLE DB Source Error Output].Columns[latitude]"
+                      name="latitude" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Northwind\OLE DB Source_northwind.Outputs[OLE DB Source Error Output].Columns[longitude]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task_Northwind\OLE DB Source_northwind.Outputs[OLE DB Source Error Output].Columns[longitude]"
+                      name="longitude" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Northwind\OLE DB Source_northwind.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task_Northwind\OLE DB Source_northwind.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Northwind\OLE DB Source_northwind.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task_Northwind\OLE DB Source_northwind.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task_Northwind\Row Count"
+              componentClassID="Microsoft.RowCount"
+              contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+              name="Row Count">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable to hold the row count."
+                  name="VariableName">User::vRowCount</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task_Northwind\Row Count.Inputs[Row Count Input 1]"
+                  hasSideEffects="true"
+                  name="Row Count Input 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task_Northwind\Row Count.Outputs[Row Count Output 1]"
+                  name="Row Count Output 1"
+                  synchronousInputId="Package\Data Flow Task_Northwind\Row Count.Inputs[Row Count Input 1]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task_Northwind.Paths[Data Conversion Output]"
+              endId="Package\Data Flow Task_Northwind\Lookup_cod2.Inputs[Lookup Input]"
+              name="Data Conversion Output"
+              startId="Package\Data Flow Task_Northwind\Data Conversion.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\Data Flow Task_Northwind.Paths[HashedOutput]"
+              endId="Package\Data Flow Task_Northwind\Data Conversion.Inputs[Data Conversion Input]"
+              name="HashedOutput"
+              startId="Package\Data Flow Task_Northwind\Multiple Hash.Outputs[HashedOutput]" />
+            <path
+              refId="Package\Data Flow Task_Northwind.Paths[Lookup Match Output]"
+              endId="Package\Data Flow Task_Northwind\Lookup 1.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Data Flow Task_Northwind\Lookup_cod2.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Data Flow Task_Northwind.Paths[Lookup Match Output1]"
+              endId="Package\Data Flow Task_Northwind\Conditional Split.Inputs[Conditional Split Input]"
+              name="Lookup Match Output"
+              startId="Package\Data Flow Task_Northwind\Lookup 1.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Data Flow Task_Northwind.Paths[Lookup No Match Output]"
+              endId="Package\Data Flow Task_Northwind\Row Count.Inputs[Row Count Input 1]"
+              name="Lookup No Match Output"
+              startId="Package\Data Flow Task_Northwind\Lookup_cod2.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\Data Flow Task_Northwind.Paths[Lookup No Match Output1]"
+              endId="Package\Data Flow Task_Northwind\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Lookup No Match Output"
+              startId="Package\Data Flow Task_Northwind\Lookup 1.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\Data Flow Task_Northwind.Paths[Modified Rows]"
+              endId="Package\Data Flow Task_Northwind\OLE DB Command_update dimGeography.Inputs[OLE DB Command Input]"
+              name="Modified Rows"
+              startId="Package\Data Flow Task_Northwind\Conditional Split.Outputs[Modified Rows]" />
+            <path
+              refId="Package\Data Flow Task_Northwind.Paths[OLE DB Source Output]"
+              endId="Package\Data Flow Task_Northwind\Multiple Hash.Inputs[Input]"
+              name="OLE DB Source Output"
+              startId="Package\Data Flow Task_Northwind\OLE DB Source_northwind.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{28458020-E195-4C0C-9A91-18B5DF1DE68B}"
+      DTS:From="Package\Data Flow Task_GIS"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Data Flow Task_Northwind" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="174,42"
+          Id="Package\Data Flow Task_GIS"
+          TopLeft="414,139" />
+        <NodeLayout
+          Size="206,42"
+          Id="Package\Data Flow Task_Northwind"
+          TopLeft="400,247" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="502,181">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,66"
+              Start="0,0"
+              End="0,58.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,58.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Data Flow Task_GIS">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="276,42"
+          Id="Package\Data Flow Task_GIS\OLE DB Command_update dimGeography"
+          TopLeft="492,424" />
+        <NodeLayout
+          Size="113,42"
+          Id="Package\Data Flow Task_GIS\Lookup"
+          TopLeft="296,180" />
+        <NodeLayout
+          Size="142,42"
+          Id="Package\Data Flow Task_GIS\Multiple Hash"
+          TopLeft="279,78" />
+        <NodeLayout
+          Size="275,42"
+          Id="Package\Data Flow Task_GIS\OLE DB Destination_insert dimGeography"
+          TopLeft="203,327" />
+        <NodeLayout
+          Size="173,42"
+          Id="Package\Data Flow Task_GIS\OLE DB Source_GIS"
+          TopLeft="256,0" />
+        <NodeLayout
+          Size="155,42"
+          Id="Package\Data Flow Task_GIS\Conditional Split"
+          TopLeft="495,329" />
+        <EdgeLayout
+          Id="Package\Data Flow Task_GIS.Paths[OLE DB Source Output]"
+          TopLeft="346.25,42">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,36"
+              Start="0,0"
+              End="0,28.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task_GIS.Paths[Modified Rows]"
+          TopLeft="572.5,371">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="57.5,53"
+              Start="0,0"
+              End="57.5,45.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,22.5"
+                    Point2="0,26.5"
+                    Point3="4,26.5" />
+                  <mssgle:LineSegment
+                    End="53.5,26.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="53.5,26.5"
+                    Point2="57.5,26.5"
+                    Point3="57.5,30.5" />
+                  <mssgle:LineSegment
+                    End="57.5,45.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-3.722578125,31.5,64.94515625,9.7978515625"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task_GIS.Paths[Lookup No Match Output]"
+          TopLeft="337.75,222">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,105"
+              Start="0,0"
+              End="0,97.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,97.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-55.80638671875,42.9453125,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task_GIS.Paths[Lookup Match Output]"
+          TopLeft="370,222">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="202.5,107"
+              Start="0,0"
+              End="202.5,99.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39.696335078534" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,39.696335078534"
+                    Point2="0,43.696335078534"
+                    Point3="4,43.696335078534" />
+                  <mssgle:LineSegment
+                    End="198.5,43.696335078534" />
+                  <mssgle:CubicBezierSegment
+                    Point1="198.5,43.696335078534"
+                    Point2="202.5,43.696335078534"
+                    Point3="202.5,47.696335078534" />
+                  <mssgle:LineSegment
+                    End="202.5,99.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="53.05861328125,48.696335078534,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task_GIS.Paths[HashedOutput]"
+          TopLeft="351.25,120">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task_GIS\Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[dimGeography]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task_GIS\OLE DB Destination_insert dimGeography">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task_GIS\OLE DB Source_GIS">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Data Flow Task_Northwind">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="142,42"
+          Id="Package\Data Flow Task_Northwind\Multiple Hash"
+          TopLeft="562,94" />
+        <NodeLayout
+          Size="156,42"
+          Id="Package\Data Flow Task_Northwind\Data Conversion"
+          TopLeft="555,185" />
+        <NodeLayout
+          Size="203,42"
+          Id="Package\Data Flow Task_Northwind\OLE DB Source_northwind"
+          TopLeft="284,44" />
+        <NodeLayout
+          Size="122,42"
+          Id="Package\Data Flow Task_Northwind\Lookup 1"
+          TopLeft="581,414" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Data Flow Task_Northwind\OLE DB Destination"
+          TopLeft="176,704" />
+        <NodeLayout
+          Size="130,42"
+          Id="Package\Data Flow Task_Northwind\Row Count"
+          TopLeft="876,400" />
+        <NodeLayout
+          Size="141,42"
+          Id="Package\Data Flow Task_Northwind\Lookup_cod2"
+          TopLeft="576,287" />
+        <NodeLayout
+          Size="276,42"
+          Id="Package\Data Flow Task_Northwind\OLE DB Command_update dimGeography"
+          TopLeft="490,707" />
+        <NodeLayout
+          Size="155,42"
+          Id="Package\Data Flow Task_Northwind\Conditional Split"
+          TopLeft="678,546" />
+        <EdgeLayout
+          Id="Package\Data Flow Task_Northwind.Paths[OLE DB Source Output]"
+          TopLeft="487,65">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="75,50"
+              Start="0,0"
+              End="67.5,50">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="33.5,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="33.5,0"
+                    Point2="37.5,0"
+                    Point3="37.5,4" />
+                  <mssgle:LineSegment
+                    End="37.5,46" />
+                  <mssgle:CubicBezierSegment
+                    Point1="37.5,46"
+                    Point2="37.5,50"
+                    Point3="41.5,50" />
+                  <mssgle:LineSegment
+                    End="67.5,50" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task_Northwind.Paths[Modified Rows]"
+          TopLeft="755.5,588">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-127.5,119"
+              Start="0,0"
+              End="-127.5,111.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,55.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,55.5"
+                    Point2="0,59.5"
+                    Point3="-4,59.5" />
+                  <mssgle:LineSegment
+                    End="-123.5,59.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-123.5,59.5"
+                    Point2="-127.5,59.5"
+                    Point3="-127.5,63.5" />
+                  <mssgle:LineSegment
+                    End="-127.5,111.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-96.222578125,64.5,64.94515625,9.7978515625"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task_Northwind.Paths[Lookup No Match Output1]"
+          TopLeft="623,456">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-361.5,248"
+              Start="0,0"
+              End="-361.5,240.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,97.126213592233" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,97.126213592233"
+                    Point2="0,101.126213592233"
+                    Point3="-4,101.126213592233" />
+                  <mssgle:LineSegment
+                    End="-357.5,101.126213592233" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-357.5,101.126213592233"
+                    Point2="-361.5,101.126213592233"
+                    Point3="-361.5,105.126213592233" />
+                  <mssgle:LineSegment
+                    End="-361.5,240.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-236.55638671875,106.126213592233,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task_Northwind.Paths[Lookup No Match Output]"
+          TopLeft="668.666666666667,329">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="272.333333333333,71"
+              Start="0,0"
+              End="272.333333333333,63.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.8779803646564" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,24.8779803646564"
+                    Point2="0,28.8779803646564"
+                    Point3="4,28.8779803646564" />
+                  <mssgle:LineSegment
+                    End="268.333333333333,28.8779803646564" />
+                  <mssgle:CubicBezierSegment
+                    Point1="268.333333333333,28.8779803646564"
+                    Point2="272.333333333333,28.8779803646564"
+                    Point3="272.333333333333,32.8779803646564" />
+                  <mssgle:LineSegment
+                    End="272.333333333333,63.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="80.3602799479167,33.8779803646564,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task_Northwind.Paths[Lookup Match Output1]"
+          TopLeft="661,456">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="94.5,90"
+              Start="0,0"
+              End="94.5,82.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.6990291262136" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,32.6990291262136"
+                    Point2="0,36.6990291262136"
+                    Point3="4,36.6990291262136" />
+                  <mssgle:LineSegment
+                    End="90.5,36.6990291262136" />
+                  <mssgle:CubicBezierSegment
+                    Point1="90.5,36.6990291262136"
+                    Point2="94.5,36.6990291262136"
+                    Point3="94.5,40.6990291262136" />
+                  <mssgle:LineSegment
+                    End="94.5,82.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-0.941386718750003,41.6990291262136,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task_Northwind.Paths[Lookup Match Output]"
+          TopLeft="624.333333333333,329">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="17.6666666666666,85"
+              Start="0,0"
+              End="17.6666666666666,77.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.5722300140253" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,30.5722300140253"
+                    Point2="0,34.5722300140253"
+                    Point3="4,34.5722300140253" />
+                  <mssgle:LineSegment
+                    End="13.6666666666666,34.5722300140253" />
+                  <mssgle:CubicBezierSegment
+                    Point1="13.6666666666666,34.5722300140253"
+                    Point2="17.6666666666666,34.5722300140253"
+                    Point3="17.6666666666666,38.5722300140253" />
+                  <mssgle:LineSegment
+                    End="17.6666666666666,77.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-39.3580533854167,39.5722300140253,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task_Northwind.Paths[HashedOutput]"
+          TopLeft="633,136">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,49"
+              Start="0,0"
+              End="0,41.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task_Northwind.Paths[Data Conversion Output]"
+          TopLeft="633,227">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="13.5,60"
+              Start="0,0"
+              End="13.5,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26"
+                    Point2="0,30"
+                    Point3="4,30" />
+                  <mssgle:LineSegment
+                    End="9.5,30" />
+                  <mssgle:CubicBezierSegment
+                    Point1="9.5,30"
+                    Point2="13.5,30"
+                    Point3="13.5,34" />
+                  <mssgle:LineSegment
+                    End="13.5,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task_Northwind\OLE DB Source_northwind">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task_Northwind\Lookup 1">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[dimGeography]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task_Northwind\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task_Northwind\Lookup_cod2">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[country]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

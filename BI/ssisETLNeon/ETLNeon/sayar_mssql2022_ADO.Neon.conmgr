@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="sayar_mssql2022_ADO Neon"
+  DTS:DTSID="{E6B0F120-7C8E-4524-9A52-4907EE30FC4E}"
+  DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="Data Source=sayar\MSSQL2022;Initial Catalog=Neon;Integrated Security=True;Application Name=&quot;SSIS-Package_dimCustomers_cdc_initial load-{E6B0F120-7C8E-4524-9A52-4907EE30FC4E}sayar\mssql2019.Northwind&quot;;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

@@ -1,0 +1,972 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="3/6/2022 1:40:27 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="SAYAR"
+  DTS:CreatorName="BEHSAZAN\sayar"
+  DTS:DTSID="{D89279AB-AF0D-4B2C-A4AC-15CDEA32E9D7}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5035.3"
+  DTS:LocaleID="1065"
+  DTS:ObjectName="Package_dimBranchAgencyStore_Hash_Merge_test"
+  DTS:PackageType="5"
+  DTS:VersionBuild="49"
+  DTS:VersionGUID="{2FFC3109-477F-4629-9431-F8560BFD492A}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task_Copy_Hash_stageBranchAgency"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{3AA49FF7-BD13-444A-9B46-21FE9A393CDE}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task_Copy_Hash_stageBranchAgency"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\Lookup_Geography"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup_Geography"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT  GeographyKey      ,lower (CountryForeignName) as [CountryForeignName]          ,lower(CityForeignName)  as CityForeignName FROM dimGeography</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (SELECT  GeographyKey      ,lower (CountryForeignName) as [CountryForeignName]          ,lower(CityForeignName)  as CityForeignName FROM dimGeography) [refTable]
+where [refTable].[CityForeignName] = ? and [refTable].[CountryForeignName] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="GeographyKey" dataType="DT_I8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CountryForeignName" dataType="DT_WSTR" length="40" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CityForeignName" dataType="DT_WSTR" length="40" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Data Flow Task_Copy_Hash_stageBranchAgency\OLE DB Source.Outputs[OLE DB Source Output].Columns[CityName]};#{Package\Data Flow Task_Copy_Hash_stageBranchAgency\OLE DB Source.Outputs[OLE DB Source Output].Columns[CountryName]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1256</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\Lookup_Geography.Connections[OleDbConnection]"
+                  connectionManagerID="{EC83FD05-CF2A-4C09-ABDF-E9A88D809F07}:invalid"
+                  connectionManagerRefId="{EC83FD05-CF2A-4C09-ABDF-E9A88D809F07}:invalid"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\Lookup_Geography.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\Lookup_Geography.Inputs[Lookup Input].Columns[CountryName]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="CountryName"
+                      lineageId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\OLE DB Source.Outputs[OLE DB Source Output].Columns[CountryName]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">CountryForeignName</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\Lookup_Geography.Inputs[Lookup Input].Columns[CityName]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="CityName"
+                      lineageId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\OLE DB Source.Outputs[OLE DB Source Output].Columns[CityName]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">CityForeignName</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\Lookup_Geography.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="IgnoreFailure"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\Lookup_Geography.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\Lookup_Geography.Outputs[Lookup Match Output].Columns[GeographyKey2]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\Lookup_Geography.Outputs[Lookup Match Output].Columns[GeographyKey2]"
+                      name="GeographyKey2"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">GeographyKey</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\Lookup_Geography.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\Lookup_Geography.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\Lookup_Geography.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\Lookup_Geography.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\Lookup_Geography.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\Lookup_Geography.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\Lookup_Geography.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\Lookup_Geography.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\Multiple Hash"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="https://github.com/keif888/SSISMHash/"
+              description="Creates Multiple Hash's from selected input columns."
+              name="Multiple Hash"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Select the number of threads to use"
+                  name="MultipleThreads"
+                  typeConverter="Martin.SQLServer.Dts.MultipleHash+MultipleThread">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Select True to force Nulls and Empty Strings to be detected in Hash, False for earlier version compatability."
+                  name="SafeNullHandling"
+                  typeConverter="Martin.SQLServer.Dts.MultipleHash+SafeNullHandling">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Select True to enable hashing of Milliseconds, False for earlier version compatability."
+                  name="IncludeMillsecond"
+                  typeConverter="Martin.SQLServer.Dts.MultipleHash+MillisecondHandling">1</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">MultipleHash</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\Multiple Hash.Inputs[Input]"
+                  name="Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\Multiple Hash.Inputs[Input].Columns[StoreId]"
+                      cachedDataType="i4"
+                      cachedName="StoreId"
+                      lineageId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\OLE DB Source.Outputs[OLE DB Source Output].Columns[StoreId]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\Multiple Hash.Inputs[Input].Columns[StoreName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="StoreName"
+                      lineageId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\OLE DB Source.Outputs[OLE DB Source Output].Columns[StoreName]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\Multiple Hash.Inputs[Input].Columns[StoreForeignName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="StoreForeignName"
+                      lineageId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\OLE DB Source.Outputs[OLE DB Source Output].Columns[StoreForeignName]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\Multiple Hash.Inputs[Input].Columns[GeographyKey2]"
+                      cachedDataType="i8"
+                      cachedName="GeographyKey2"
+                      lineageId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\Lookup_Geography.Outputs[Lookup Match Output].Columns[GeographyKey2]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\Multiple Hash.Outputs[HashedOutput]"
+                  description="Hashed rows are directed to this output."
+                  name="HashedOutput"
+                  synchronousInputId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\Multiple Hash.Inputs[Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\Multiple Hash.Outputs[HashedOutput].Columns[RecordHash]"
+                      dataType="bytes"
+                      length="16"
+                      lineageId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\Multiple Hash.Outputs[HashedOutput].Columns[RecordHash]"
+                      name="RecordHash">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Select the Hash Type that will be used for this output column."
+                          name="HashType"
+                          typeConverter="Martin.SQLServer.Dts.MultipleHash+HashTypeEnumerator, MultipleHash2019, Version=1.0.0.0, Culture=neutral, PublicKeyToken=51c551904274ab44">1</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Enter the Lineage ID's that will be used to calculate the hash for this output column."
+                          name="InputColumnLineageIDs">#{Package\Data Flow Task_Copy_Hash_stageBranchAgency\OLE DB Source.Outputs[OLE DB Source Output].Columns[StoreId]},#{Package\Data Flow Task_Copy_Hash_stageBranchAgency\OLE DB Source.Outputs[OLE DB Source Output].Columns[StoreName]},#{Package\Data Flow Task_Copy_Hash_stageBranchAgency\OLE DB Source.Outputs[OLE DB Source Output].Columns[StoreForeignName]},#{Package\Data Flow Task_Copy_Hash_stageBranchAgency\Lookup_Geography.Outputs[Lookup Match Output].Columns[GeographyKey2]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Stores the type of the output column"
+                          name="HashOutputType"
+                          typeConverter="Martin.SQLServer.Dts.MultipleHash+OutputTypeEnumerator, MultipleHash2019, Version=1.0.0.0, Culture=neutral, PublicKeyToken=51c551904274ab44">0</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[stageBranchAgency]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1256</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="{EC83FD05-CF2A-4C09-ABDF-E9A88D809F07}:invalid"
+                  connectionManagerRefId="{EC83FD05-CF2A-4C09-ABDF-E9A88D809F07}:invalid"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[RecordHash]"
+                      cachedDataType="bytes"
+                      cachedLength="16"
+                      cachedName="RecordHash"
+                      externalMetadataColumnId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[RecordHash]"
+                      lineageId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\Multiple Hash.Outputs[HashedOutput].Columns[RecordHash]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[GeographyKey2]"
+                      cachedDataType="i8"
+                      cachedName="GeographyKey2"
+                      externalMetadataColumnId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[GeographyKey]"
+                      lineageId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\Lookup_Geography.Outputs[Lookup Match Output].Columns[GeographyKey2]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[StoreId]"
+                      cachedDataType="i4"
+                      cachedName="StoreId"
+                      externalMetadataColumnId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[StoreId]"
+                      lineageId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\OLE DB Source.Outputs[OLE DB Source Output].Columns[StoreId]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[StoreName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="StoreName"
+                      externalMetadataColumnId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[StoreName]"
+                      lineageId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\OLE DB Source.Outputs[OLE DB Source Output].Columns[StoreName]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[StoreForeignName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="StoreForeignName"
+                      externalMetadataColumnId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[StoreForeignName]"
+                      lineageId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\OLE DB Source.Outputs[OLE DB Source Output].Columns[StoreForeignName]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[RecordHash]"
+                      dataType="bytes"
+                      length="200"
+                      name="RecordHash" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[GeographyKey]"
+                      dataType="i4"
+                      name="GeographyKey" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[StoreId]"
+                      dataType="i4"
+                      name="StoreId" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[StoreName]"
+                      dataType="wstr"
+                      length="50"
+                      name="StoreName" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[StoreForeignName]"
+                      dataType="wstr"
+                      length="50"
+                      name="StoreForeignName" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[StoreBranch]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT b.*,lower(t.CityName) as CityName,lower(t.CountryName) as CountryName
+  FROM [Neon].[dbo].[StoreBranch] b
+  inner join Territories t on t.TerritoryID=b.TerritoryId</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1256</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="{9B204C49-B62D-4C9E-9BC2-5671A32A854B}:invalid"
+                  connectionManagerRefId="{9B204C49-B62D-4C9E-9BC2-5671A32A854B}:invalid"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\OLE DB Source.Outputs[OLE DB Source Output].Columns[StoreId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[StoreId]"
+                      lineageId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\OLE DB Source.Outputs[OLE DB Source Output].Columns[StoreId]"
+                      name="StoreId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\OLE DB Source.Outputs[OLE DB Source Output].Columns[TerritoryId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TerritoryId]"
+                      lineageId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\OLE DB Source.Outputs[OLE DB Source Output].Columns[TerritoryId]"
+                      name="TerritoryId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\OLE DB Source.Outputs[OLE DB Source Output].Columns[StoreName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[StoreName]"
+                      length="50"
+                      lineageId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\OLE DB Source.Outputs[OLE DB Source Output].Columns[StoreName]"
+                      name="StoreName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\OLE DB Source.Outputs[OLE DB Source Output].Columns[StoreForeignName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[StoreForeignName]"
+                      length="50"
+                      lineageId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\OLE DB Source.Outputs[OLE DB Source Output].Columns[StoreForeignName]"
+                      name="StoreForeignName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\OLE DB Source.Outputs[OLE DB Source Output].Columns[CityName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CityName]"
+                      length="15"
+                      lineageId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\OLE DB Source.Outputs[OLE DB Source Output].Columns[CityName]"
+                      name="CityName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\OLE DB Source.Outputs[OLE DB Source Output].Columns[CountryName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CountryName]"
+                      length="15"
+                      lineageId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\OLE DB Source.Outputs[OLE DB Source Output].Columns[CountryName]"
+                      name="CountryName"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[StoreId]"
+                      dataType="i4"
+                      name="StoreId" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TerritoryId]"
+                      dataType="i4"
+                      name="TerritoryId" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[StoreName]"
+                      dataType="wstr"
+                      length="50"
+                      name="StoreName" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[StoreForeignName]"
+                      dataType="wstr"
+                      length="50"
+                      name="StoreForeignName" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CityName]"
+                      dataType="wstr"
+                      length="15"
+                      name="CityName" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CountryName]"
+                      dataType="wstr"
+                      length="15"
+                      name="CountryName" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[StoreId]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[StoreId]"
+                      name="StoreId" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TerritoryId]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TerritoryId]"
+                      name="TerritoryId" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[StoreName]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[StoreName]"
+                      name="StoreName" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[StoreForeignName]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[StoreForeignName]"
+                      name="StoreForeignName" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CityName]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CityName]"
+                      name="CityName" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CountryName]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CountryName]"
+                      name="CountryName" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task_Copy_Hash_stageBranchAgency.Paths[HashedOutput]"
+              endId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="HashedOutput"
+              startId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\Multiple Hash.Outputs[HashedOutput]" />
+            <path
+              refId="Package\Data Flow Task_Copy_Hash_stageBranchAgency.Paths[Lookup Match Output]"
+              endId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\Multiple Hash.Inputs[Input]"
+              name="Lookup Match Output"
+              startId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\Lookup_Geography.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Data Flow Task_Copy_Hash_stageBranchAgency.Paths[OLE DB Source Output]"
+              endId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\Lookup_Geography.Inputs[Lookup Input]"
+              name="OLE DB Source Output"
+              startId="Package\Data Flow Task_Copy_Hash_stageBranchAgency\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Execute SQL Task_create_stageBranchAgency"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{71cc33fd-439f-448f-be68-55f1d15b92f5}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Execute SQL Task_create_stageBranchAgency"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{EC83FD05-CF2A-4C09-ABDF-E9A88D809F07}"
+          SQLTask:SqlStatementSource="drop table if exists stageBranchAgency&#xA;&#xA;CREATE TABLE [dbo].[stageBranchAgency](&#xA;&#x9;[StoreId] [int] NOT NULL,&#xA;&#x9;[GeographyKey] [int] NULL,&#xA;&#x9;[StoreName] [nvarchar](50) NULL,&#xA;&#x9;[StoreForeignName] [nvarchar](50) NULL,&#xA;&#x9;[RecordHash] [varbinary](200) NULL&#xA;) ON [PRIMARY]&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Execute SQL Task_merge"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{DABAECBC-4742-4956-9FEB-9455DD0D2057}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Execute SQL Task_merge"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{EC83FD05-CF2A-4C09-ABDF-E9A88D809F07}"
+          SQLTask:SqlStatementSource="&#xA;MERGE dimBranchAgencyStore AS TARGET_Table&#xA;USING stageBranchAgency AS SOURCE_Table &#xA;ON (SOURCE_Table.StoreId = TARGET_Table.BranchAgencyKey)&#xA;WHEN MATCHED AND SOURCE_Table.RecordHash&lt;&gt;TARGET_Table.RecordHash THEN &#xA;&#x9;UPDATE  SET BranchAgencyKey=SOURCE_Table.StoreId&#xA;&#x9;&#x9;,BranchAgencyName = SOURCE_Table.StoreName&#xA;&#x9;  ,BranchAgencyForeignName = SOURCE_Table.StoreForeignName&#xA;      ,GeographyKey = SOURCE_Table.GeographyKey      &#xA;&#x9;&#x9;,RecordHash=SOURCE_Table.RecordHash&#xA;WHEN  NOT MATCHED BY SOURCE THEN&#xA;&#x9;DELETE&#xA;WHEN  NOT MATCHED BY TARGET THEN&#xA;&#x9;INSERT (BranchAgencyKey  ,BranchAgencyName  ,BranchAgencyForeignName, GeographyKey,RecordHash)    &#xA;&#x9;&#x9; VALUES (SOURCE_Table.StoreId  ,SOURCE_Table.StoreName ,SOURCE_Table.StoreForeignName ,SOURCE_Table.GeographyKey, SOURCE_Table.RecordHash);&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{C1796351-34B4-42FB-A04F-A297BC274EA4}"
+      DTS:From="Package\Execute SQL Task_create_stageBranchAgency"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Data Flow Task_Copy_Hash_stageBranchAgency" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{24FA1AA6-AD27-44CA-9B2C-44C6A2FE3BAE}"
+      DTS:From="Package\Data Flow Task_Copy_Hash_stageBranchAgency"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Execute SQL Task_merge" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="308,42"
+          Id="Package\Data Flow Task_Copy_Hash_stageBranchAgency"
+          TopLeft="186,153" />
+        <NodeLayout
+          Size="296,42"
+          Id="Package\Execute SQL Task_create_stageBranchAgency"
+          TopLeft="189,45" />
+        <NodeLayout
+          Size="199,42"
+          Id="Package\Execute SQL Task_merge"
+          TopLeft="225,263" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="338.5,87">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,66"
+              Start="0,0"
+              End="0,58.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,58.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="340,195">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-15.5,68"
+              Start="0,0"
+              End="-15.5,60.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,30"
+                    Point2="0,34"
+                    Point3="-4,34" />
+                  <mssgle:LineSegment
+                    End="-11.5,34" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-11.5,34"
+                    Point2="-15.5,34"
+                    Point3="-15.5,38" />
+                  <mssgle:LineSegment
+                    End="-15.5,60.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Data Flow Task_Copy_Hash_stageBranchAgency">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="150,42"
+          Id="Package\Data Flow Task_Copy_Hash_stageBranchAgency\OLE DB Source"
+          TopLeft="250,54" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Data Flow Task_Copy_Hash_stageBranchAgency\OLE DB Destination"
+          TopLeft="224,337" />
+        <NodeLayout
+          Size="142,42"
+          Id="Package\Data Flow Task_Copy_Hash_stageBranchAgency\Multiple Hash"
+          TopLeft="245,240" />
+        <NodeLayout
+          Size="170,42"
+          Id="Package\Data Flow Task_Copy_Hash_stageBranchAgency\Lookup_Geography"
+          TopLeft="234,142" />
+        <EdgeLayout
+          Id="Package\Data Flow Task_Copy_Hash_stageBranchAgency.Paths[OLE DB Source Output]"
+          TopLeft="322,96">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,46"
+              Start="0,0"
+              End="0,38.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,38.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task_Copy_Hash_stageBranchAgency.Paths[Lookup Match Output]"
+          TopLeft="317.5,184">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,56"
+              Start="0,0"
+              End="0,48.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,48.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,18.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task_Copy_Hash_stageBranchAgency.Paths[HashedOutput]"
+          TopLeft="312.75,282">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,55"
+              Start="0,0"
+              End="0,47.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,47.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task_Copy_Hash_stageBranchAgency\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task_Copy_Hash_stageBranchAgency\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task_Copy_Hash_stageBranchAgency\Lookup_Geography">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

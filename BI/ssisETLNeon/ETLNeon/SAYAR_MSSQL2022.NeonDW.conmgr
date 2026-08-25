@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="SAYAR_MSSQL2022 NeonDW"
+  DTS:DTSID="{EC83FD05-CF2A-4C09-ABDF-E9A88D809F07}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=hadi7\MSSQL2022;Initial Catalog=NeonDW;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-{EC83FD05-CF2A-4C09-ABDF-E9A88D809F07}SAYAR_MSSQL2019 NeonDW;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

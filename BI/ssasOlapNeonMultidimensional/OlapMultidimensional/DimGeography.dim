@@ -1,0 +1,386 @@
+﻿<Dimension xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="75e77512-d72f-4409-9c10-8d022118313d" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+  <ID>Dim Geography</ID>
+  <Name>DimGeography</Name>
+  <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+  <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+  <Annotations>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramLayout</Name>
+      <Value>
+        <dds xmlns="">
+          <diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="MSDDS.Rectilinear" defaultlineroute="MSDDS.Rectilinear" version="7" nextobject="3" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="-2745" scrolltop="-3519" gridx="150" gridy="150" marginx="5000" marginy="5000" zoom="100" x="9472" y="12039" backcolor="2434342" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="0" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="0" viewpagebreaks="0" donotforceconnectorsbehindshapes="1" backpictureclsid="{00000000-0000-0000-0000-000000000000}">
+            <font>
+              <ddsxmlobjectstreamwrapper binary="01000000900144420100065461686f6d61" />
+            </font>
+            <mouseicon>
+              <ddsxmlobjectstreamwrapper binary="6c74000000000000" />
+            </mouseicon>
+          </diagram>
+          <layoutmanager>
+            <ddsxmlobj />
+          </layoutmanager>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="dimGeography" left="-1964" top="-238" logicalid="2" controlid="1" masterid="0" hint1="0" hint2="0" width="3731" height="5000" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000e0000930e000088130000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="dbo_dimGeography" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+        </dds>
+      </Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowFriendlyNames</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowRelationshipNames</Name>
+      <Value>false</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:UseDiagramDefaultLayout</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortLeft</Name>
+      <Value>-2745</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortTop</Name>
+      <Value>-3519</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingLeft</Name>
+      <Value>-1964</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingTop</Name>
+      <Value>-238</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramZoom</Name>
+      <Value>100</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ARDiagramLayout</Name>
+      <Value>
+        <DiagramLayout ZoomPercent="100" ViewPortX="0" ViewPortY="0" xmlns="">
+          <Shapes NodeWidth="145">
+            <Shape Id="Geography Key" Expanded="false">
+              <Attributes>
+                <Attribute Id="Geography Key" />
+              </Attributes>
+              <Position x="20" y="20" />
+            </Shape>
+            <Shape Id="City Code" Expanded="false">
+              <Attributes>
+                <Attribute Id="City Code" />
+              </Attributes>
+              <Position x="206" y="20" />
+            </Shape>
+            <Shape Id="State Province Code" Expanded="false">
+              <Attributes>
+                <Attribute Id="State Province Code" />
+              </Attributes>
+              <Position x="392" y="20" />
+            </Shape>
+            <Shape Id="Country Code" Expanded="false">
+              <Attributes>
+                <Attribute Id="Country Code" />
+              </Attributes>
+              <Position x="578" y="20" />
+            </Shape>
+          </Shapes>
+        </DiagramLayout>
+      </Value>
+    </Annotation>
+  </Annotations>
+  <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+  <State>Unprocessed</State>
+  <Source xsi:type="DataSourceViewBinding" dwd:design-time-name="227236ea-486f-4408-a05d-bf5c7886b603">
+    <DataSourceViewID>dsvNeonDW</DataSourceViewID>
+  </Source>
+  <UnknownMember>Visible</UnknownMember>
+  <ErrorConfiguration dwd:design-time-name="f780beba-816d-42bf-87d4-b738a97e9341">
+    <KeyNotFound>ReportAndStop</KeyNotFound>
+    <KeyDuplicate>ReportAndStop</KeyDuplicate>
+    <NullKeyNotAllowed>ReportAndStop</NullKeyNotAllowed>
+  </ErrorConfiguration>
+  <CurrentStorageMode>Molap</CurrentStorageMode>
+  <UnknownMemberName>نامعلوم</UnknownMemberName>
+  <Translations>
+    <Translation dwd:design-time-name="03ee656f-ac2f-41c7-948b-467d261c8641">
+      <Language>1065</Language>
+      <Caption>محل جغرافیایی</Caption>
+    </Translation>
+    <Translation dwd:design-time-name="4583a345-a1dd-479c-ac7d-80ae534be14f">
+      <Language>1033</Language>
+      <Caption>Geography</Caption>
+    </Translation>
+  </Translations>
+  <Attributes>
+    <Attribute dwd:design-time-name="de117cd0-96ec-4dd7-baab-987382cd3f05">
+      <ID>Geography Key</ID>
+      <Name>Geography Key</Name>
+      <Usage>Key</Usage>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="f576ab18-7b57-4e86-8a44-45a0ec5d5d82">
+          <DataType>BigInt</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="de5b0ae9-6886-45d8-8d50-12ea2113c808">
+            <TableID>dbo_dimGeography</TableID>
+            <ColumnID>GeographyKey</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <Translations>
+        <Translation dwd:design-time-name="9206e47a-d156-402c-9734-f6d12d8dcf76">
+          <Language>1065</Language>
+          <Caption>موقعیت مکانی</Caption>
+        </Translation>
+        <Translation dwd:design-time-name="f1e2a117-c6ce-441c-bf96-973f92a8fccd">
+          <Language>1033</Language>
+          <Caption>Location</Caption>
+        </Translation>
+      </Translations>
+      <AttributeRelationships>
+        <AttributeRelationship dwd:design-time-name="c5e8b871-efd3-4aa2-8b99-0870b44164a7">
+          <AttributeID>City Code</AttributeID>
+          <RelationshipType>Rigid</RelationshipType>
+          <Name>City Code</Name>
+        </AttributeRelationship>
+      </AttributeRelationships>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="6433c193-6111-49c9-a0a5-72d153bfab2f">
+      <ID>Country Code</ID>
+      <Name>Country Code</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="e885e65f-765e-4af1-9829-87990a524e8b">
+          <DataType>WChar</DataType>
+          <DataSize>3</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="0609d611-f3b6-48d6-952d-198119afaf1b">
+            <TableID>dbo_dimGeography</TableID>
+            <ColumnID>CountryCode</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="718d09c8-4f63-4d66-b2c4-557a9001843d">
+        <DataType>WChar</DataType>
+        <DataSize>40</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="b2b4da07-344f-4d5b-a6e4-46ef0b6ec484">
+          <TableID>dbo_dimGeography</TableID>
+          <ColumnID>CountryName</ColumnID>
+        </Source>
+      </NameColumn>
+      <Translations>
+        <Translation dwd:design-time-name="8a2dc487-e176-45a1-9274-3c0f7afebc2b">
+          <Language>1065</Language>
+          <Caption>کشور</Caption>
+          <CaptionColumn dwd:design-time-name="bf12f2a3-2e0d-423a-8294-126e68d23c9e">
+            <DataType>WChar</DataType>
+            <DataSize>40</DataSize>
+            <Collation>Persian_100_CI_AS</Collation>
+            <Source xsi:type="ColumnBinding" dwd:design-time-name="24e89be5-6845-4370-9354-fd891f7d87b9">
+              <TableID>dbo_dimGeography</TableID>
+              <ColumnID>CountryName</ColumnID>
+            </Source>
+          </CaptionColumn>
+        </Translation>
+        <Translation dwd:design-time-name="2004bbb7-ea7a-4f0b-ac1a-0ad35ce2bf0a">
+          <Language>1033</Language>
+          <Caption>Country</Caption>
+          <CaptionColumn dwd:design-time-name="e9a56e2a-8561-4df9-a94a-bc843ba51f3d">
+            <DataType>WChar</DataType>
+            <DataSize>40</DataSize>
+            <Collation>Latin1_General_CI_AS</Collation>
+            <Source xsi:type="ColumnBinding" dwd:design-time-name="d1620ad9-9ae8-4b27-a9cb-bd2c7b795a8b">
+              <TableID>dbo_dimGeography</TableID>
+              <ColumnID>CountryForeignName</ColumnID>
+            </Source>
+          </CaptionColumn>
+        </Translation>
+      </Translations>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="e496b044-0f40-4579-8d13-add6aecf6379">
+      <ID>State Province Code</ID>
+      <Name>StateProvinceCode</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="b5a53af2-3c4f-4c73-80e8-93ed19a048f8">
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="8a42c186-81ec-433f-a358-038f02ecfc40">
+            <TableID>dbo_dimGeography</TableID>
+            <ColumnID>StateProvinceCode</ColumnID>
+          </Source>
+        </KeyColumn>
+        <KeyColumn dwd:design-time-name="cc375a74-8b56-4d6b-98bf-92e04d112dfb">
+          <DataType>WChar</DataType>
+          <DataSize>3</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="62b0c770-8d07-4b5a-ad64-bf562e12533b">
+            <TableID>dbo_dimGeography</TableID>
+            <ColumnID>CountryCode</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="86c1179e-2aa4-47ad-a996-0030ad25f5d5">
+        <DataType>WChar</DataType>
+        <DataSize>40</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="1adbada0-9b50-4fc7-99c3-e8c19001e353">
+          <TableID>dbo_dimGeography</TableID>
+          <ColumnID>StateProvinceName</ColumnID>
+        </Source>
+      </NameColumn>
+      <Translations>
+        <Translation dwd:design-time-name="ebb43d96-ffdc-4c73-a12d-9c1781e6483a">
+          <Language>1065</Language>
+          <Caption>استان/ایالت</Caption>
+          <CaptionColumn dwd:design-time-name="306f71d7-6b37-44a9-921a-9b3c934ebb71">
+            <DataType>WChar</DataType>
+            <DataSize>40</DataSize>
+            <Collation>Persian_100_CI_AS</Collation>
+            <Source xsi:type="ColumnBinding" dwd:design-time-name="a32c357c-ffbe-4e83-b387-e7de5f6a8be6">
+              <TableID>dbo_dimGeography</TableID>
+              <ColumnID>StateProvinceName</ColumnID>
+            </Source>
+          </CaptionColumn>
+        </Translation>
+        <Translation dwd:design-time-name="eb59977e-1c84-4a03-8905-a6ad2750a3f6">
+          <Language>1033</Language>
+          <Caption>State/Province</Caption>
+          <CaptionColumn dwd:design-time-name="29e95d79-27e1-4b1a-98bd-071b5bae3a37">
+            <DataType>WChar</DataType>
+            <DataSize>40</DataSize>
+            <Collation>Latin1_General_CI_AS</Collation>
+            <Source xsi:type="ColumnBinding" dwd:design-time-name="6708607f-188e-4c4e-9acb-7a4ce0801500">
+              <TableID>dbo_dimGeography</TableID>
+              <ColumnID>StateProvinceForeignName</ColumnID>
+            </Source>
+          </CaptionColumn>
+        </Translation>
+      </Translations>
+      <AttributeRelationships>
+        <AttributeRelationship dwd:design-time-name="fc3cfdb5-b68d-4af5-b060-4d98453020e6">
+          <AttributeID>Country Code</AttributeID>
+          <RelationshipType>Rigid</RelationshipType>
+          <Name>Country Code</Name>
+        </AttributeRelationship>
+      </AttributeRelationships>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="479826b6-3bdc-4ebe-b6b2-707e0b24470f">
+      <ID>City Code</ID>
+      <Name>City Code</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="c5104cbc-7d23-4a6e-bea8-4da21dcb40ff">
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="4e86e9de-6236-4862-8eea-32f45c580b39">
+            <TableID>dbo_dimGeography</TableID>
+            <ColumnID>CityCode</ColumnID>
+          </Source>
+        </KeyColumn>
+        <KeyColumn dwd:design-time-name="9c46d63b-7bd6-4ed9-8485-95490e06910a">
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="4e1c13b4-8e23-49fb-a667-b936eb0b1a5d">
+            <TableID>dbo_dimGeography</TableID>
+            <ColumnID>StateProvinceCode</ColumnID>
+          </Source>
+        </KeyColumn>
+        <KeyColumn dwd:design-time-name="051b4c20-9a98-42fb-9985-a03f49123457">
+          <DataType>WChar</DataType>
+          <DataSize>3</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="30e1a37d-a616-4eb3-b33e-989b8e427729">
+            <TableID>dbo_dimGeography</TableID>
+            <ColumnID>CountryCode</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="786ca756-fdbc-4b3f-ad2b-762352228d8d">
+        <DataType>WChar</DataType>
+        <DataSize>40</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="1eb4d95c-0e13-42f5-8fc8-8d1b66ea5900">
+          <TableID>dbo_dimGeography</TableID>
+          <ColumnID>CityName</ColumnID>
+        </Source>
+      </NameColumn>
+      <Translations>
+        <Translation dwd:design-time-name="0ec5300b-7492-45bb-a7eb-0949e18132ad">
+          <Language>1065</Language>
+          <Caption>شهر</Caption>
+          <CaptionColumn dwd:design-time-name="6b82421a-7fec-4301-9b0e-007822b4af93">
+            <DataType>WChar</DataType>
+            <DataSize>40</DataSize>
+            <Collation>Persian_100_CI_AS</Collation>
+            <Source xsi:type="ColumnBinding" dwd:design-time-name="33e8fe4d-6974-4cb2-a80a-c97bff521e93">
+              <TableID>dbo_dimGeography</TableID>
+              <ColumnID>CityName</ColumnID>
+            </Source>
+          </CaptionColumn>
+        </Translation>
+        <Translation dwd:design-time-name="b72265e7-ab14-4eba-8e79-9309739a9337">
+          <Language>1033</Language>
+          <Caption>City</Caption>
+          <CaptionColumn dwd:design-time-name="91c4e73d-d69f-43a0-822d-8d194914f8b3">
+            <DataType>WChar</DataType>
+            <DataSize>40</DataSize>
+            <Collation>Latin1_General_CI_AS</Collation>
+            <Source xsi:type="ColumnBinding" dwd:design-time-name="9fc9389f-1178-4fee-88b4-0c95e2299dd4">
+              <TableID>dbo_dimGeography</TableID>
+              <ColumnID>CityForeignName</ColumnID>
+            </Source>
+          </CaptionColumn>
+        </Translation>
+      </Translations>
+      <AttributeRelationships>
+        <AttributeRelationship dwd:design-time-name="315c8b1b-906d-4e32-91ce-2cbc1b19be6f">
+          <AttributeID>State Province Code</AttributeID>
+          <RelationshipType>Rigid</RelationshipType>
+          <Name>State Province Code</Name>
+        </AttributeRelationship>
+      </AttributeRelationships>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+  </Attributes>
+  <AttributeAllMemberName>همه</AttributeAllMemberName>
+  <Hierarchies>
+    <Hierarchy dwd:design-time-name="dcbbc1ff-846c-48dc-b832-17af896ac428">
+      <ID>Hierarchy</ID>
+      <Name>Hierarchy1</Name>
+      <Levels>
+        <Level dwd:design-time-name="e8e45dac-5fb5-4697-ad9e-ac4ed69ce204">
+          <ID>Country Code</ID>
+          <Name>Country Code</Name>
+          <SourceAttributeID>Country Code</SourceAttributeID>
+          <Translations>
+            <Translation dwd:design-time-name="b1a659ba-95e9-4007-89ca-26713b978b05">
+              <Language>1065</Language>
+              <Caption>کشور</Caption>
+            </Translation>
+            <Translation dwd:design-time-name="bb2795b7-1d20-4d5f-b227-b976cfd8b687">
+              <Language>1033</Language>
+              <Caption>Country</Caption>
+            </Translation>
+          </Translations>
+        </Level>
+        <Level dwd:design-time-name="076303a4-bc2b-4713-b0f6-8cefcf160c58">
+          <ID>State Province Code</ID>
+          <Name>State Province Code</Name>
+          <SourceAttributeID>State Province Code</SourceAttributeID>
+        </Level>
+        <Level dwd:design-time-name="527a28a1-b6a0-487b-9cd4-766916a1f808">
+          <ID>City Code</ID>
+          <Name>City Code</Name>
+          <SourceAttributeID>City Code</SourceAttributeID>
+        </Level>
+      </Levels>
+    </Hierarchy>
+  </Hierarchies>
+  <ddl300:ProcessingState>Unprocessed</ddl300:ProcessingState>
+</Dimension>

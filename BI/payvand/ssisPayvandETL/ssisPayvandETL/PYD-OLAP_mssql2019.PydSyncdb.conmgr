@@ -1,0 +1,12 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="PYD-OLAP_mssql2019.PydSyncdb"
+  DTS:DTSID="{2F79DC2D-A58E-4922-97C6-0C3A450B2941}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=PYD-OLAP\mssql2019;Initial Catalog=PydSyncdb;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;Application Name=SSIS-ssisPayvandETL-{2F79DC2D-A58E-4922-97C6-0C3A450B2941}PYD-OLAP\mssql2019.PydSyncdb;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

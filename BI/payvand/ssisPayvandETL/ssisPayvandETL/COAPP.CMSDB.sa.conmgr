@@ -1,0 +1,19 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="COAPP.CMSDB.sa"
+  DTS:DTSID="{5A0025D8-6814-4A00-BF15-A7E11211310C}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=COAPP;User ID=sa;Initial Catalog=CMSDB;Provider=SQLNCLI11.1;Persist Security Info=True;Application Name=SSIS-ssisPayvandETL-{5A0025D8-6814-4A00-BF15-A7E11211310C}COAPP.CMSDB.sa;Auto Translate=False;">
+      <DTS:Password
+        DTS:Name="Password"
+        Sensitive="1"
+        p4:Salt="kjYF6HHxbmI="
+        p4:IV="h9ONj8DvOmcfJfb/NuAK3Q=="
+        p4:Algorithm="http://www.w3.org/2001/04/xmlenc#aes256-cbc" xmlns:p4="www.microsoft.com/SqlServer/SSIS">e0Af6IlQCmLBluakzYISZI9Il1ZQBdmnHMOEzu2n0rKWr9dgHiCKAld58aByfazxGj14zIqtKiEBc8ixICvSbQEar3BNJpmSPcvoO4Q3outMFKGjdP17KxQEKnvT9jz62FqxeoXc5PX5bex7zqsrd07nGxZ5mCIDKTbLqjsxS+4=</DTS:Password>
+    </DTS:ConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

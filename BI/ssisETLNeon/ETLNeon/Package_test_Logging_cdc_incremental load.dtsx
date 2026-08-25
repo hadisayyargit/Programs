@@ -1,0 +1,1630 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="3/3/2022 11:50:36 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="SAYAR"
+  DTS:CreatorName="BEHSAZAN\sayar"
+  DTS:DTSID="{F9B6BC4E-645C-424F-A2EB-3D1E09F96054}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5035.3"
+  DTS:LocaleID="1065"
+  DTS:ObjectName="Package_test_Logging_cdc_incremental load"
+  DTS:PackageType="5"
+  DTS:VersionBuild="27"
+  DTS:VersionGUID="{A6F709E0-04E0-4048-9A05-3EC7BE9447A9}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[.\mssql2019.university]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{A4681316-1E0B-425B-8B0A-946DAB26A475}"
+      DTS:ObjectName=".\mssql2019.university">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=.\mssql2019;Initial Catalog=university;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SAYAR\MSSQL2019.university]"
+      DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+      DTS:DTSID="{92638E9A-5ED8-4213-BC2A-44527EF76A01}"
+      DTS:ObjectName="SAYAR\MSSQL2019.university">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=SAYAR\MSSQL2019;Initial Catalog=university;Integrated Security=True;Application Name=SSIS-Package_cdc-{92638E9A-5ED8-4213-BC2A-44527EF76A01}SAYAR\MSSQL2019.university;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[sayar_mssql2019.university]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{763E0610-809C-44CA-9E15-827BFC6C04ED}"
+      DTS:ObjectName="sayar_mssql2019.university">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=.\mssql2019;Initial Catalog=university;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{76D083A4-3992-4C6B-972B-9A540A876D14}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="v_CDC_State_employee">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\CDC Control Task"
+      DTS:CreationName="Attunity.CdcControlTask"
+      DTS:Description="CDC Control Task"
+      DTS:DTSID="{09593E6D-BAD8-4A07-A964-F4395EC2CC8A}"
+      DTS:ExecutableType="Attunity.CdcControlTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="CDC Control Task"
+      DTS:TaskContact="Attunity Ltd.; All Rights Reserved; http://www.attunity.com;"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <CDCControlTask
+          Connection="SAYAR\MSSQL2019.university"
+          TaskOperation="GetProcessingRange"
+          OperationParameter=""
+          StateConnection="SAYAR\MSSQL2019.university"
+          StateVariable="User::v_CDC_State_employee"
+          AutomaticStatePersistence="True"
+          StateName="v_CDC_State_employee"
+          StateTable="[dbo].[cdc_states]"
+          CommandTimeout="30"
+          ChangeDetectionRetryInterval="10"
+          ChangeDetectionTimeout="60" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\CDC Control Task_end CDC"
+      DTS:CreationName="Attunity.CdcControlTask"
+      DTS:Description="CDC Control Task"
+      DTS:DTSID="{6F6D2A9A-EF23-4342-A0F5-04FFF15BA6A5}"
+      DTS:ExecutableType="Attunity.CdcControlTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="CDC Control Task_end CDC"
+      DTS:TaskContact="Attunity Ltd.; All Rights Reserved; http://www.attunity.com;"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <CDCControlTask
+          Connection="SAYAR\MSSQL2019.university"
+          TaskOperation="MarkProcessedRange"
+          OperationParameter=""
+          StateConnection="SAYAR\MSSQL2019.university"
+          StateVariable="User::v_CDC_State_employee"
+          AutomaticStatePersistence="True"
+          StateName="v_CDC_State_employee"
+          StateTable="[dbo].[cdc_states]"
+          CommandTimeout="30"
+          ChangeDetectionRetryInterval="10"
+          ChangeDetectionTimeout="60" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task_Incremental load for employee_log"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{44C76924-C306-4E45-9BB7-FEAA1CD677EB}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task_Incremental load for employee_log"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task_Incremental load for employee_log\Add Delete Action"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Add Delete Action"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task_Incremental load for employee_log\Add Delete Action.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task_Incremental load for employee_log\Add Delete Action.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Data Flow Task_Incremental load for employee_log\Add Delete Action.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task_Incremental load for employee_log\Add Delete Action.Outputs[Derived Column Output].Columns[ActionName]"
+                      codePage="1256"
+                      dataType="str"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="20"
+                      lineageId="Package\Data Flow Task_Incremental load for employee_log\Add Delete Action.Outputs[Derived Column Output].Columns[ActionName]"
+                      name="ActionName"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_STR,20,1256)"Delete"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_STR,20,1256)"Delete"</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task_Incremental load for employee_log\Add Delete Action.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Data Flow Task_Incremental load for employee_log\Add Delete Action.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task_Incremental load for employee_log\Add Delete Action.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task_Incremental load for employee_log\Add Delete Action.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Incremental load for employee_log\Add Delete Action.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task_Incremental load for employee_log\Add Delete Action.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task_Incremental load for employee_log\Add Inset Action"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Add Inset Action"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task_Incremental load for employee_log\Add Inset Action.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task_Incremental load for employee_log\Add Inset Action.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Data Flow Task_Incremental load for employee_log\Add Inset Action.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task_Incremental load for employee_log\Add Inset Action.Outputs[Derived Column Output].Columns[ActionName]"
+                      codePage="1256"
+                      dataType="str"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="20"
+                      lineageId="Package\Data Flow Task_Incremental load for employee_log\Add Inset Action.Outputs[Derived Column Output].Columns[ActionName]"
+                      name="ActionName"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_STR,20,1256)"Insert"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_STR,20,1256)"Insert"</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task_Incremental load for employee_log\Add Inset Action.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Data Flow Task_Incremental load for employee_log\Add Inset Action.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task_Incremental load for employee_log\Add Inset Action.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task_Incremental load for employee_log\Add Inset Action.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Incremental load for employee_log\Add Inset Action.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task_Incremental load for employee_log\Add Inset Action.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task_Incremental load for employee_log\Add update Action"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Add update Action"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task_Incremental load for employee_log\Add update Action.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task_Incremental load for employee_log\Add update Action.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Data Flow Task_Incremental load for employee_log\Add update Action.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task_Incremental load for employee_log\Add update Action.Outputs[Derived Column Output].Columns[ActionName]"
+                      codePage="1256"
+                      dataType="str"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="20"
+                      lineageId="Package\Data Flow Task_Incremental load for employee_log\Add update Action.Outputs[Derived Column Output].Columns[ActionName]"
+                      name="ActionName"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_STR,20,1256)"Update"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_STR,20,1256)"Update"</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task_Incremental load for employee_log\Add update Action.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Data Flow Task_Incremental load for employee_log\Add update Action.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task_Incremental load for employee_log\Add update Action.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task_Incremental load for employee_log\Add update Action.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Incremental load for employee_log\Add update Action.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task_Incremental load for employee_log\Add update Action.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task_Incremental load for employee_log\CDC Source"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Attunity Ltd.; All Rights Reserved; http://www.attunity.com;"
+              description="Reads change data from a SQL Server change table making it available for processing by downstream data-flow components. Only changes within the current processing range determined by the CDC Control task are read"
+              name="CDC Source"
+              usesDispositions="true"
+              version="8">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="An SSIS string package variable to store the CDC state of the current CDC state."
+                  expressionType="Notify"
+                  name="StateVariable"
+                  typeConverter="Attunity.SqlServer.CDCSrc.PackageVariablesTypeConverter">User::v_CDC_State_employee</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the content of the metadata columns and the rows returned. Modes starting with ‘All’ return all changes and modes starting with ‘Net’ return net changes."
+                  expressionType="Notify"
+                  name="CDCProcessingMode"
+                  typeConverter="Attunity.SqlServer.CDCSrc.CdcProcessingMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The name of the CDC capture instance. By default the capture instance name is in the form of &quot;&lt;owner&gt;_&lt;table&gt;&quot;. The actual table that stores the changes is the CDC table named &quot;cdc&quot;.&quot;&lt;capture-instance&gt;_CT&quot;"
+                  expressionType="Notify"
+                  name="CaptureInstance">dbo_employee</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time out."
+                  expressionType="Notify"
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="If true, a special output column called ‘__$reprocessing ’ is added. This output column is true for each data row during the initial processing range, or when the previous CDC run&#xA;was stopped without finishing. The default value is false (the __$reprocessing output column is not generated). This special output column allows the SSIS developer to handle consistency errors differently when working on the Initial Processing Range or the previous CDC run was stopped."
+                  expressionType="Notify"
+                  name="ReprocessingIndication">false</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Attunity.CdcSourceComponent</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task_Incremental load for employee_log\CDC Source.Connections[Connection]"
+                  connectionManagerID="Package.ConnectionManagers[SAYAR\MSSQL2019.university]"
+                  connectionManagerRefId="Package.ConnectionManagers[SAYAR\MSSQL2019.university]"
+                  name="Connection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task_Incremental load for employee_log\CDC Source.Outputs[Output]"
+                  name="Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task_Incremental load for employee_log\CDC Source.Outputs[Output].Columns[__$start_lsn]"
+                      dataType="bytes"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task_Incremental load for employee_log\CDC Source.Outputs[Output].ExternalColumns[__$start_lsn]"
+                      length="10"
+                      lineageId="Package\Data Flow Task_Incremental load for employee_log\CDC Source.Outputs[Output].Columns[__$start_lsn]"
+                      name="__$start_lsn"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Incremental load for employee_log\CDC Source.Outputs[Output].Columns[__$seqval]"
+                      dataType="bytes"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task_Incremental load for employee_log\CDC Source.Outputs[Output].ExternalColumns[__$seqval]"
+                      length="10"
+                      lineageId="Package\Data Flow Task_Incremental load for employee_log\CDC Source.Outputs[Output].Columns[__$seqval]"
+                      name="__$seqval"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Incremental load for employee_log\CDC Source.Outputs[Output].Columns[__$operation]"
+                      dataType="i4"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task_Incremental load for employee_log\CDC Source.Outputs[Output].ExternalColumns[__$operation]"
+                      lineageId="Package\Data Flow Task_Incremental load for employee_log\CDC Source.Outputs[Output].Columns[__$operation]"
+                      name="__$operation"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Incremental load for employee_log\CDC Source.Outputs[Output].Columns[__$update_mask]"
+                      dataType="bytes"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task_Incremental load for employee_log\CDC Source.Outputs[Output].ExternalColumns[__$update_mask]"
+                      length="128"
+                      lineageId="Package\Data Flow Task_Incremental load for employee_log\CDC Source.Outputs[Output].Columns[__$update_mask]"
+                      name="__$update_mask"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Incremental load for employee_log\CDC Source.Outputs[Output].Columns[EmployeeId]"
+                      dataType="i4"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task_Incremental load for employee_log\CDC Source.Outputs[Output].ExternalColumns[EmployeeId]"
+                      lineageId="Package\Data Flow Task_Incremental load for employee_log\CDC Source.Outputs[Output].Columns[EmployeeId]"
+                      name="EmployeeId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Incremental load for employee_log\CDC Source.Outputs[Output].Columns[FullName]"
+                      dataType="wstr"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task_Incremental load for employee_log\CDC Source.Outputs[Output].ExternalColumns[FullName]"
+                      length="50"
+                      lineageId="Package\Data Flow Task_Incremental load for employee_log\CDC Source.Outputs[Output].Columns[FullName]"
+                      name="FullName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Incremental load for employee_log\CDC Source.Outputs[Output].Columns[EmployeeGroupId]"
+                      dataType="i2"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task_Incremental load for employee_log\CDC Source.Outputs[Output].ExternalColumns[EmployeeGroupId]"
+                      lineageId="Package\Data Flow Task_Incremental load for employee_log\CDC Source.Outputs[Output].Columns[EmployeeGroupId]"
+                      name="EmployeeGroupId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Incremental load for employee_log\CDC Source.Outputs[Output].Columns[__$command_id]"
+                      dataType="i4"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task_Incremental load for employee_log\CDC Source.Outputs[Output].ExternalColumns[__$command_id]"
+                      lineageId="Package\Data Flow Task_Incremental load for employee_log\CDC Source.Outputs[Output].Columns[__$command_id]"
+                      name="__$command_id"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Incremental load for employee_log\CDC Source.Outputs[Output].ExternalColumns[__$start_lsn]"
+                      dataType="bytes"
+                      length="10"
+                      name="__$start_lsn" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Incremental load for employee_log\CDC Source.Outputs[Output].ExternalColumns[__$seqval]"
+                      dataType="bytes"
+                      length="10"
+                      name="__$seqval" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Incremental load for employee_log\CDC Source.Outputs[Output].ExternalColumns[__$operation]"
+                      dataType="i4"
+                      name="__$operation" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Incremental load for employee_log\CDC Source.Outputs[Output].ExternalColumns[__$update_mask]"
+                      dataType="bytes"
+                      length="128"
+                      name="__$update_mask" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Incremental load for employee_log\CDC Source.Outputs[Output].ExternalColumns[EmployeeId]"
+                      dataType="i4"
+                      name="EmployeeId" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Incremental load for employee_log\CDC Source.Outputs[Output].ExternalColumns[FullName]"
+                      dataType="wstr"
+                      length="50"
+                      name="FullName" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Incremental load for employee_log\CDC Source.Outputs[Output].ExternalColumns[EmployeeGroupId]"
+                      dataType="i2"
+                      name="EmployeeGroupId" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Incremental load for employee_log\CDC Source.Outputs[Output].ExternalColumns[__$command_id]"
+                      dataType="i4"
+                      name="__$command_id" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task_Incremental load for employee_log\CDC Source.Outputs[ErrorOutput]"
+                  isErrorOut="true"
+                  name="ErrorOutput">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task_Incremental load for employee_log\CDC Source.Outputs[ErrorOutput].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task_Incremental load for employee_log\CDC Source.Outputs[ErrorOutput].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Incremental load for employee_log\CDC Source.Outputs[ErrorOutput].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task_Incremental load for employee_log\CDC Source.Outputs[ErrorOutput].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Incremental load for employee_log\CDC Source.Outputs[ErrorOutput].Columns[__$start_lsn]"
+                      dataType="bytes"
+                      length="10"
+                      lineageId="Package\Data Flow Task_Incremental load for employee_log\CDC Source.Outputs[ErrorOutput].Columns[__$start_lsn]"
+                      name="__$start_lsn" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Incremental load for employee_log\CDC Source.Outputs[ErrorOutput].Columns[__$seqval]"
+                      dataType="bytes"
+                      length="10"
+                      lineageId="Package\Data Flow Task_Incremental load for employee_log\CDC Source.Outputs[ErrorOutput].Columns[__$seqval]"
+                      name="__$seqval" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Incremental load for employee_log\CDC Source.Outputs[ErrorOutput].Columns[__$operation]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task_Incremental load for employee_log\CDC Source.Outputs[ErrorOutput].Columns[__$operation]"
+                      name="__$operation" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Incremental load for employee_log\CDC Source.Outputs[ErrorOutput].Columns[__$update_mask]"
+                      dataType="bytes"
+                      length="128"
+                      lineageId="Package\Data Flow Task_Incremental load for employee_log\CDC Source.Outputs[ErrorOutput].Columns[__$update_mask]"
+                      name="__$update_mask" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Incremental load for employee_log\CDC Source.Outputs[ErrorOutput].Columns[EmployeeId]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task_Incremental load for employee_log\CDC Source.Outputs[ErrorOutput].Columns[EmployeeId]"
+                      name="EmployeeId" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Incremental load for employee_log\CDC Source.Outputs[ErrorOutput].Columns[FullName]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task_Incremental load for employee_log\CDC Source.Outputs[ErrorOutput].Columns[FullName]"
+                      name="FullName" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Incremental load for employee_log\CDC Source.Outputs[ErrorOutput].Columns[EmployeeGroupId]"
+                      dataType="i2"
+                      lineageId="Package\Data Flow Task_Incremental load for employee_log\CDC Source.Outputs[ErrorOutput].Columns[EmployeeGroupId]"
+                      name="EmployeeGroupId" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Incremental load for employee_log\CDC Source.Outputs[ErrorOutput].Columns[__$command_id]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task_Incremental load for employee_log\CDC Source.Outputs[ErrorOutput].Columns[__$command_id]"
+                      name="__$command_id" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task_Incremental load for employee_log\CDC Splitter"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Attunity Ltd.; All Rights Reserved; http://www.attunity.com;"
+              description="Directs a stream of net change records into different outputs based on the type of the change (Insert, Delete and Update). This allows specific handling for different types of change records."
+              name="CDC Splitter"
+              usesDispositions="true"
+              version="8">
+              <properties>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Attunity.CdcSplitterComponent</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task_Incremental load for employee_log\CDC Splitter.Inputs[Input]"
+                  errorOrTruncationOperation="Operation of the changed row is not a valid one"
+                  errorRowDisposition="FailComponent"
+                  name="Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task_Incremental load for employee_log\CDC Splitter.Inputs[Input].Columns[__$start_lsn]"
+                      cachedDataType="bytes"
+                      cachedLength="10"
+                      cachedName="__$start_lsn"
+                      lineageId="Package\Data Flow Task_Incremental load for employee_log\CDC Source.Outputs[Output].Columns[__$start_lsn]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_Incremental load for employee_log\CDC Splitter.Inputs[Input].Columns[__$seqval]"
+                      cachedDataType="bytes"
+                      cachedLength="10"
+                      cachedName="__$seqval"
+                      lineageId="Package\Data Flow Task_Incremental load for employee_log\CDC Source.Outputs[Output].Columns[__$seqval]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_Incremental load for employee_log\CDC Splitter.Inputs[Input].Columns[__$operation]"
+                      cachedDataType="i4"
+                      cachedName="__$operation"
+                      lineageId="Package\Data Flow Task_Incremental load for employee_log\CDC Source.Outputs[Output].Columns[__$operation]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_Incremental load for employee_log\CDC Splitter.Inputs[Input].Columns[__$update_mask]"
+                      cachedDataType="bytes"
+                      cachedLength="128"
+                      cachedName="__$update_mask"
+                      lineageId="Package\Data Flow Task_Incremental load for employee_log\CDC Source.Outputs[Output].Columns[__$update_mask]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_Incremental load for employee_log\CDC Splitter.Inputs[Input].Columns[EmployeeId]"
+                      cachedDataType="i4"
+                      cachedName="EmployeeId"
+                      lineageId="Package\Data Flow Task_Incremental load for employee_log\CDC Source.Outputs[Output].Columns[EmployeeId]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_Incremental load for employee_log\CDC Splitter.Inputs[Input].Columns[FullName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="FullName"
+                      lineageId="Package\Data Flow Task_Incremental load for employee_log\CDC Source.Outputs[Output].Columns[FullName]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_Incremental load for employee_log\CDC Splitter.Inputs[Input].Columns[EmployeeGroupId]"
+                      cachedDataType="i2"
+                      cachedName="EmployeeGroupId"
+                      lineageId="Package\Data Flow Task_Incremental load for employee_log\CDC Source.Outputs[Output].Columns[EmployeeGroupId]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_Incremental load for employee_log\CDC Splitter.Inputs[Input].Columns[__$command_id]"
+                      cachedDataType="i4"
+                      cachedName="__$command_id"
+                      lineageId="Package\Data Flow Task_Incremental load for employee_log\CDC Source.Outputs[Output].Columns[__$command_id]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task_Incremental load for employee_log\CDC Splitter.Outputs[InsertOutput]"
+                  exclusionGroup="1"
+                  name="InsertOutput"
+                  synchronousInputId="Package\Data Flow Task_Incremental load for employee_log\CDC Splitter.Inputs[Input]">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="Output type - Insert."
+                      name="OutputType"
+                      typeConverter="Attunity.SqlServer.CDCSplit.OutputType">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task_Incremental load for employee_log\CDC Splitter.Outputs[DeleteOutput]"
+                  exclusionGroup="1"
+                  name="DeleteOutput"
+                  synchronousInputId="Package\Data Flow Task_Incremental load for employee_log\CDC Splitter.Inputs[Input]">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="Output type - Delete."
+                      name="OutputType"
+                      typeConverter="Attunity.SqlServer.CDCSplit.OutputType">2</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task_Incremental load for employee_log\CDC Splitter.Outputs[UpdateOutput]"
+                  exclusionGroup="1"
+                  name="UpdateOutput"
+                  synchronousInputId="Package\Data Flow Task_Incremental load for employee_log\CDC Splitter.Inputs[Input]">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="Output type - Update."
+                      name="OutputType"
+                      typeConverter="Attunity.SqlServer.CDCSplit.OutputType">1</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task_Incremental load for employee_log\CDC Splitter.Outputs[ErrorOutput]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="ErrorOutput"
+                  synchronousInputId="Package\Data Flow Task_Incremental load for employee_log\CDC Splitter.Inputs[Input]">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="Output type - Error."
+                      name="OutputType"
+                      typeConverter="Attunity.SqlServer.CDCSplit.OutputType">3</property>
+                  </properties>
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task_Incremental load for employee_log\CDC Splitter.Outputs[ErrorOutput].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task_Incremental load for employee_log\CDC Splitter.Outputs[ErrorOutput].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Incremental load for employee_log\CDC Splitter.Outputs[ErrorOutput].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task_Incremental load for employee_log\CDC Splitter.Outputs[ErrorOutput].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task_Incremental load for employee_log\OLE DB Destination_inset into employee log"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination_inset into employee log"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Employee_Log]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1256</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task_Incremental load for employee_log\OLE DB Destination_inset into employee log.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[sayar_mssql2019.university]"
+                  connectionManagerRefId="Package.ConnectionManagers[sayar_mssql2019.university]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task_Incremental load for employee_log\OLE DB Destination_inset into employee log.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task_Incremental load for employee_log\OLE DB Destination_inset into employee log.Inputs[OLE DB Destination Input].Columns[EmployeeId]"
+                      cachedDataType="i4"
+                      cachedName="EmployeeId"
+                      externalMetadataColumnId="Package\Data Flow Task_Incremental load for employee_log\OLE DB Destination_inset into employee log.Inputs[OLE DB Destination Input].ExternalColumns[EmployeeId]"
+                      lineageId="Package\Data Flow Task_Incremental load for employee_log\CDC Source.Outputs[Output].Columns[EmployeeId]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_Incremental load for employee_log\OLE DB Destination_inset into employee log.Inputs[OLE DB Destination Input].Columns[FullName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="FullName"
+                      externalMetadataColumnId="Package\Data Flow Task_Incremental load for employee_log\OLE DB Destination_inset into employee log.Inputs[OLE DB Destination Input].ExternalColumns[FullName]"
+                      lineageId="Package\Data Flow Task_Incremental load for employee_log\CDC Source.Outputs[Output].Columns[FullName]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_Incremental load for employee_log\OLE DB Destination_inset into employee log.Inputs[OLE DB Destination Input].Columns[EmployeeGroupId]"
+                      cachedDataType="i2"
+                      cachedName="EmployeeGroupId"
+                      externalMetadataColumnId="Package\Data Flow Task_Incremental load for employee_log\OLE DB Destination_inset into employee log.Inputs[OLE DB Destination Input].ExternalColumns[EmployeeGroupId]"
+                      lineageId="Package\Data Flow Task_Incremental load for employee_log\CDC Source.Outputs[Output].Columns[EmployeeGroupId]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_Incremental load for employee_log\OLE DB Destination_inset into employee log.Inputs[OLE DB Destination Input].Columns[ActionName]"
+                      cachedCodepage="1256"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="ActionName"
+                      externalMetadataColumnId="Package\Data Flow Task_Incremental load for employee_log\OLE DB Destination_inset into employee log.Inputs[OLE DB Destination Input].ExternalColumns[ActionName]"
+                      lineageId="Package\Data Flow Task_Incremental load for employee_log\Add Inset Action.Outputs[Derived Column Output].Columns[ActionName]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Incremental load for employee_log\OLE DB Destination_inset into employee log.Inputs[OLE DB Destination Input].ExternalColumns[LogId]"
+                      dataType="i4"
+                      name="LogId" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Incremental load for employee_log\OLE DB Destination_inset into employee log.Inputs[OLE DB Destination Input].ExternalColumns[EmployeeId]"
+                      dataType="i4"
+                      name="EmployeeId" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Incremental load for employee_log\OLE DB Destination_inset into employee log.Inputs[OLE DB Destination Input].ExternalColumns[FullName]"
+                      dataType="wstr"
+                      length="50"
+                      name="FullName" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Incremental load for employee_log\OLE DB Destination_inset into employee log.Inputs[OLE DB Destination Input].ExternalColumns[EmployeeGroupId]"
+                      dataType="i2"
+                      name="EmployeeGroupId" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Incremental load for employee_log\OLE DB Destination_inset into employee log.Inputs[OLE DB Destination Input].ExternalColumns[ActionName]"
+                      codePage="1256"
+                      dataType="str"
+                      length="20"
+                      name="ActionName" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task_Incremental load for employee_log\OLE DB Destination_inset into employee log.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task_Incremental load for employee_log\OLE DB Destination_inset into employee log.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task_Incremental load for employee_log\OLE DB Destination_inset into employee log.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task_Incremental load for employee_log\OLE DB Destination_inset into employee log.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Incremental load for employee_log\OLE DB Destination_inset into employee log.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task_Incremental load for employee_log\OLE DB Destination_inset into employee log.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task_Incremental load for employee_log\OLE DB Destination_inset into employee log2"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination_inset into employee log2"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Employee_Log]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1256</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task_Incremental load for employee_log\OLE DB Destination_inset into employee log2.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[sayar_mssql2019.university]"
+                  connectionManagerRefId="Package.ConnectionManagers[sayar_mssql2019.university]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task_Incremental load for employee_log\OLE DB Destination_inset into employee log2.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task_Incremental load for employee_log\OLE DB Destination_inset into employee log2.Inputs[OLE DB Destination Input].Columns[EmployeeId]"
+                      cachedDataType="i4"
+                      cachedName="EmployeeId"
+                      externalMetadataColumnId="Package\Data Flow Task_Incremental load for employee_log\OLE DB Destination_inset into employee log2.Inputs[OLE DB Destination Input].ExternalColumns[EmployeeId]"
+                      lineageId="Package\Data Flow Task_Incremental load for employee_log\CDC Source.Outputs[Output].Columns[EmployeeId]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_Incremental load for employee_log\OLE DB Destination_inset into employee log2.Inputs[OLE DB Destination Input].Columns[FullName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="FullName"
+                      externalMetadataColumnId="Package\Data Flow Task_Incremental load for employee_log\OLE DB Destination_inset into employee log2.Inputs[OLE DB Destination Input].ExternalColumns[FullName]"
+                      lineageId="Package\Data Flow Task_Incremental load for employee_log\CDC Source.Outputs[Output].Columns[FullName]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_Incremental load for employee_log\OLE DB Destination_inset into employee log2.Inputs[OLE DB Destination Input].Columns[EmployeeGroupId]"
+                      cachedDataType="i2"
+                      cachedName="EmployeeGroupId"
+                      externalMetadataColumnId="Package\Data Flow Task_Incremental load for employee_log\OLE DB Destination_inset into employee log2.Inputs[OLE DB Destination Input].ExternalColumns[EmployeeGroupId]"
+                      lineageId="Package\Data Flow Task_Incremental load for employee_log\CDC Source.Outputs[Output].Columns[EmployeeGroupId]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_Incremental load for employee_log\OLE DB Destination_inset into employee log2.Inputs[OLE DB Destination Input].Columns[ActionName]"
+                      cachedCodepage="1256"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="ActionName"
+                      externalMetadataColumnId="Package\Data Flow Task_Incremental load for employee_log\OLE DB Destination_inset into employee log2.Inputs[OLE DB Destination Input].ExternalColumns[ActionName]"
+                      lineageId="Package\Data Flow Task_Incremental load for employee_log\Add update Action.Outputs[Derived Column Output].Columns[ActionName]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Incremental load for employee_log\OLE DB Destination_inset into employee log2.Inputs[OLE DB Destination Input].ExternalColumns[LogId]"
+                      dataType="i4"
+                      name="LogId" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Incremental load for employee_log\OLE DB Destination_inset into employee log2.Inputs[OLE DB Destination Input].ExternalColumns[EmployeeId]"
+                      dataType="i4"
+                      name="EmployeeId" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Incremental load for employee_log\OLE DB Destination_inset into employee log2.Inputs[OLE DB Destination Input].ExternalColumns[FullName]"
+                      dataType="wstr"
+                      length="50"
+                      name="FullName" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Incremental load for employee_log\OLE DB Destination_inset into employee log2.Inputs[OLE DB Destination Input].ExternalColumns[EmployeeGroupId]"
+                      dataType="i2"
+                      name="EmployeeGroupId" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Incremental load for employee_log\OLE DB Destination_inset into employee log2.Inputs[OLE DB Destination Input].ExternalColumns[ActionName]"
+                      codePage="1256"
+                      dataType="str"
+                      length="20"
+                      name="ActionName" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task_Incremental load for employee_log\OLE DB Destination_inset into employee log2.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task_Incremental load for employee_log\OLE DB Destination_inset into employee log2.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task_Incremental load for employee_log\OLE DB Destination_inset into employee log2.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task_Incremental load for employee_log\OLE DB Destination_inset into employee log2.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Incremental load for employee_log\OLE DB Destination_inset into employee log2.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task_Incremental load for employee_log\OLE DB Destination_inset into employee log2.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task_Incremental load for employee_log\OLE DB Destination_inset into employee log3"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination_inset into employee log3"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Employee_Log]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1256</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task_Incremental load for employee_log\OLE DB Destination_inset into employee log3.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[sayar_mssql2019.university]"
+                  connectionManagerRefId="Package.ConnectionManagers[sayar_mssql2019.university]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task_Incremental load for employee_log\OLE DB Destination_inset into employee log3.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task_Incremental load for employee_log\OLE DB Destination_inset into employee log3.Inputs[OLE DB Destination Input].Columns[EmployeeId]"
+                      cachedDataType="i4"
+                      cachedName="EmployeeId"
+                      externalMetadataColumnId="Package\Data Flow Task_Incremental load for employee_log\OLE DB Destination_inset into employee log3.Inputs[OLE DB Destination Input].ExternalColumns[EmployeeId]"
+                      lineageId="Package\Data Flow Task_Incremental load for employee_log\CDC Source.Outputs[Output].Columns[EmployeeId]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_Incremental load for employee_log\OLE DB Destination_inset into employee log3.Inputs[OLE DB Destination Input].Columns[FullName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="FullName"
+                      externalMetadataColumnId="Package\Data Flow Task_Incremental load for employee_log\OLE DB Destination_inset into employee log3.Inputs[OLE DB Destination Input].ExternalColumns[FullName]"
+                      lineageId="Package\Data Flow Task_Incremental load for employee_log\CDC Source.Outputs[Output].Columns[FullName]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_Incremental load for employee_log\OLE DB Destination_inset into employee log3.Inputs[OLE DB Destination Input].Columns[EmployeeGroupId]"
+                      cachedDataType="i2"
+                      cachedName="EmployeeGroupId"
+                      externalMetadataColumnId="Package\Data Flow Task_Incremental load for employee_log\OLE DB Destination_inset into employee log3.Inputs[OLE DB Destination Input].ExternalColumns[EmployeeGroupId]"
+                      lineageId="Package\Data Flow Task_Incremental load for employee_log\CDC Source.Outputs[Output].Columns[EmployeeGroupId]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task_Incremental load for employee_log\OLE DB Destination_inset into employee log3.Inputs[OLE DB Destination Input].Columns[ActionName]"
+                      cachedCodepage="1256"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="ActionName"
+                      externalMetadataColumnId="Package\Data Flow Task_Incremental load for employee_log\OLE DB Destination_inset into employee log3.Inputs[OLE DB Destination Input].ExternalColumns[ActionName]"
+                      lineageId="Package\Data Flow Task_Incremental load for employee_log\Add Delete Action.Outputs[Derived Column Output].Columns[ActionName]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Incremental load for employee_log\OLE DB Destination_inset into employee log3.Inputs[OLE DB Destination Input].ExternalColumns[LogId]"
+                      dataType="i4"
+                      name="LogId" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Incremental load for employee_log\OLE DB Destination_inset into employee log3.Inputs[OLE DB Destination Input].ExternalColumns[EmployeeId]"
+                      dataType="i4"
+                      name="EmployeeId" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Incremental load for employee_log\OLE DB Destination_inset into employee log3.Inputs[OLE DB Destination Input].ExternalColumns[FullName]"
+                      dataType="wstr"
+                      length="50"
+                      name="FullName" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Incremental load for employee_log\OLE DB Destination_inset into employee log3.Inputs[OLE DB Destination Input].ExternalColumns[EmployeeGroupId]"
+                      dataType="i2"
+                      name="EmployeeGroupId" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task_Incremental load for employee_log\OLE DB Destination_inset into employee log3.Inputs[OLE DB Destination Input].ExternalColumns[ActionName]"
+                      codePage="1256"
+                      dataType="str"
+                      length="20"
+                      name="ActionName" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task_Incremental load for employee_log\OLE DB Destination_inset into employee log3.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task_Incremental load for employee_log\OLE DB Destination_inset into employee log3.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task_Incremental load for employee_log\OLE DB Destination_inset into employee log3.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task_Incremental load for employee_log\OLE DB Destination_inset into employee log3.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task_Incremental load for employee_log\OLE DB Destination_inset into employee log3.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task_Incremental load for employee_log\OLE DB Destination_inset into employee log3.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task_Incremental load for employee_log.Paths[DeleteOutput]"
+              endId="Package\Data Flow Task_Incremental load for employee_log\Add Delete Action.Inputs[Derived Column Input]"
+              name="DeleteOutput"
+              startId="Package\Data Flow Task_Incremental load for employee_log\CDC Splitter.Outputs[DeleteOutput]" />
+            <path
+              refId="Package\Data Flow Task_Incremental load for employee_log.Paths[Derived Column Output]"
+              endId="Package\Data Flow Task_Incremental load for employee_log\OLE DB Destination_inset into employee log.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\Data Flow Task_Incremental load for employee_log\Add Inset Action.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Data Flow Task_Incremental load for employee_log.Paths[Derived Column Output1]"
+              endId="Package\Data Flow Task_Incremental load for employee_log\OLE DB Destination_inset into employee log2.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\Data Flow Task_Incremental load for employee_log\Add update Action.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Data Flow Task_Incremental load for employee_log.Paths[Derived Column Output2]"
+              endId="Package\Data Flow Task_Incremental load for employee_log\OLE DB Destination_inset into employee log3.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\Data Flow Task_Incremental load for employee_log\Add Delete Action.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Data Flow Task_Incremental load for employee_log.Paths[InsertOutput]"
+              endId="Package\Data Flow Task_Incremental load for employee_log\Add Inset Action.Inputs[Derived Column Input]"
+              name="InsertOutput"
+              startId="Package\Data Flow Task_Incremental load for employee_log\CDC Splitter.Outputs[InsertOutput]" />
+            <path
+              refId="Package\Data Flow Task_Incremental load for employee_log.Paths[Output]"
+              endId="Package\Data Flow Task_Incremental load for employee_log\CDC Splitter.Inputs[Input]"
+              name="Output"
+              startId="Package\Data Flow Task_Incremental load for employee_log\CDC Source.Outputs[Output]" />
+            <path
+              refId="Package\Data Flow Task_Incremental load for employee_log.Paths[UpdateOutput]"
+              endId="Package\Data Flow Task_Incremental load for employee_log\Add update Action.Inputs[Derived Column Input]"
+              name="UpdateOutput"
+              startId="Package\Data Flow Task_Incremental load for employee_log\CDC Splitter.Outputs[UpdateOutput]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{99EA1F66-8A24-4E17-B1CE-429D960DFA29}"
+      DTS:From="Package\CDC Control Task"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Data Flow Task_Incremental load for employee_log" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{EC9ACEE1-6612-4EBA-B384-D019C6CF63F3}"
+      DTS:From="Package\Data Flow Task_Incremental load for employee_log"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\CDC Control Task_end CDC" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="161,42"
+          Id="Package\CDC Control Task"
+          TopLeft="271,78" />
+        <NodeLayout
+          Size="208,42"
+          Id="Package\CDC Control Task_end CDC"
+          TopLeft="244,279" />
+        <NodeLayout
+          Size="321,42"
+          Id="Package\Data Flow Task_Incremental load for employee_log"
+          TopLeft="193.5,186.5" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="352.75,120">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,66.5"
+              Start="0,0"
+              End="0,59">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,59" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="351,228.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,50.5"
+              Start="0,0"
+              End="0,43">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,43" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <AnnotationLayout
+          Text="این مثال برای تولید لاگ به‌کمک cdc است"
+          ParentId="Package"
+          FontInfo="{assembly:Null}"
+          Size="227,40"
+          Id="9cd3d402-4995-49ca-9ab4-02e8351fc8c5"
+          TopLeft="558,30" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Data Flow Task_Incremental load for employee_log">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="136,42"
+          Id="Package\Data Flow Task_Incremental load for employee_log\CDC Splitter"
+          TopLeft="362,151" />
+        <NodeLayout
+          Size="134,42"
+          Id="Package\Data Flow Task_Incremental load for employee_log\CDC Source"
+          TopLeft="349,64" />
+        <NodeLayout
+          Size="157,42"
+          Id="Package\Data Flow Task_Incremental load for employee_log\Add Inset Action"
+          TopLeft="127,273" />
+        <NodeLayout
+          Size="214,42"
+          Id="Package\Data Flow Task_Incremental load for employee_log\OLE DB Destination_inset into employee log2"
+          TopLeft="312,385" />
+        <NodeLayout
+          Size="212,42"
+          Id="Package\Data Flow Task_Incremental load for employee_log\OLE DB Destination_inset into employee log3"
+          TopLeft="574,386" />
+        <NodeLayout
+          Size="165,42"
+          Id="Package\Data Flow Task_Incremental load for employee_log\Add update Action"
+          TopLeft="356,282" />
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Data Flow Task_Incremental load for employee_log\Add Delete Action"
+          TopLeft="582,283" />
+        <NodeLayout
+          Size="218,42"
+          Id="Package\Data Flow Task_Incremental load for employee_log\OLE DB Destination_inset into employee log"
+          TopLeft="67,382" />
+        <EdgeLayout
+          Id="Package\Data Flow Task_Incremental load for employee_log.Paths[Output]"
+          TopLeft="416,106">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="14,45"
+              Start="0,0"
+              End="14,37.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,18.5"
+                    Point2="0,22.5"
+                    Point3="4,22.5" />
+                  <mssgle:LineSegment
+                    End="10,22.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="10,22.5"
+                    Point2="14,22.5"
+                    Point3="14,26.5" />
+                  <mssgle:LineSegment
+                    End="14,37.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task_Incremental load for employee_log.Paths[InsertOutput]"
+          TopLeft="398,193">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-192.5,80"
+              Start="0,0"
+              End="-192.5,72.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.6923076923077" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,23.6923076923077"
+                    Point2="0,27.6923076923077"
+                    Point3="-4,27.6923076923077" />
+                  <mssgle:LineSegment
+                    End="-188.5,27.6923076923077" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-188.5,27.6923076923077"
+                    Point2="-192.5,27.6923076923077"
+                    Point3="-192.5,31.6923076923077" />
+                  <mssgle:LineSegment
+                    End="-192.5,72.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-125.22798828125,32.6923076923077,57.9559765625,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task_Incremental load for employee_log.Paths[Derived Column Output2]"
+          TopLeft="663.5,325">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="16.5,61"
+              Start="0,0"
+              End="16.5,53.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26.5"
+                    Point2="0,30.5"
+                    Point3="4,30.5" />
+                  <mssgle:LineSegment
+                    End="12.5,30.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="12.5,30.5"
+                    Point2="16.5,30.5"
+                    Point3="16.5,34.5" />
+                  <mssgle:LineSegment
+                    End="16.5,53.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task_Incremental load for employee_log.Paths[Derived Column Output1]"
+          TopLeft="438.5,324">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-19.5,61"
+              Start="0,0"
+              End="-19.5,53.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26.5"
+                    Point2="0,30.5"
+                    Point3="-4,30.5" />
+                  <mssgle:LineSegment
+                    End="-15.5,30.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-15.5,30.5"
+                    Point2="-19.5,30.5"
+                    Point3="-19.5,34.5" />
+                  <mssgle:LineSegment
+                    End="-19.5,53.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task_Incremental load for employee_log.Paths[Derived Column Output]"
+          TopLeft="205.5,315">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-29.5,67"
+              Start="0,0"
+              End="-29.5,59.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,29.5"
+                    Point2="0,33.5"
+                    Point3="-4,33.5" />
+                  <mssgle:LineSegment
+                    End="-25.5,33.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-25.5,33.5"
+                    Point2="-29.5,33.5"
+                    Point3="-29.5,37.5" />
+                  <mssgle:LineSegment
+                    End="-29.5,59.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task_Incremental load for employee_log.Paths[DeleteOutput]"
+          TopLeft="462,193">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="201.5,90"
+              Start="0,0"
+              End="201.5,82.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.1538461538462" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,27.1538461538462"
+                    Point2="0,31.1538461538462"
+                    Point3="4,31.1538461538462" />
+                  <mssgle:LineSegment
+                    End="197.5,31.1538461538462" />
+                  <mssgle:CubicBezierSegment
+                    Point1="197.5,31.1538461538462"
+                    Point2="201.5,31.1538461538462"
+                    Point3="201.5,35.1538461538462" />
+                  <mssgle:LineSegment
+                    End="201.5,82.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="70.80361328125,36.1538461538462,59.8927734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task_Incremental load for employee_log.Paths[UpdateOutput]"
+          TopLeft="430,193">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="8.5,89"
+              Start="0,0"
+              End="8.5,81.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,40.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,40.5"
+                    Point2="0,44.5"
+                    Point3="4,44.5" />
+                  <mssgle:LineSegment
+                    End="4.5,44.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="4.5,44.5"
+                    Point2="8.5,44.5"
+                    Point3="8.5,48.5" />
+                  <mssgle:LineSegment
+                    End="8.5,81.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-27.38033203125,49.5,63.2606640625,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task_Incremental load for employee_log\CDC Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task_Incremental load for employee_log\OLE DB Destination_inset into employee log">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

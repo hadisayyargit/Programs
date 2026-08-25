@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SharedDataSet xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/shareddatasetdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <DataSet Name="DataSet1">
+    <Query>
+      <DataSourceReference>datasourceNeonDW</DataSourceReference>
+      <DataSetParameters>
+        <DataSetParameter Name="@CategoryID">
+          <ReadOnly>false</ReadOnly>
+          <Nullable>false</Nullable>
+          <OmitFromQuery>false</OmitFromQuery>
+          <rd:DbType>Object</rd:DbType>
+        </DataSetParameter>
+      </DataSetParameters>
+      <CommandText>SELECT        p.ProductKey, p.ProductId, p.ProductName, p.CategoryID, p.CategoryName, s.SupplierName, p.UnitPrice, p.ThumbnailPhoto
+FROM            dimProducts AS p INNER JOIN
+                         dimSuppliers AS s ON s.SupplierKey = p.SupplierKey
+WHERE         (p.CategoryID IN (@CategoryID) )</CommandText>
+    </Query>
+    <Fields>
+      <Field Name="ProductKey">
+        <DataField>ProductKey</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="ProductId">
+        <DataField>ProductId</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="ProductName">
+        <DataField>ProductName</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="CategoryID">
+        <DataField>CategoryID</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="CategoryName">
+        <DataField>CategoryName</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="SupplierName">
+        <DataField>SupplierName</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="UnitPrice">
+        <DataField>UnitPrice</DataField>
+        <rd:TypeName>System.Decimal</rd:TypeName>
+      </Field>
+      <Field Name="ThumbnailPhoto">
+        <DataField>ThumbnailPhoto</DataField>
+        <rd:TypeName>System.Byte[]</rd:TypeName>
+      </Field>
+    </Fields>
+  </DataSet>
+</SharedDataSet>

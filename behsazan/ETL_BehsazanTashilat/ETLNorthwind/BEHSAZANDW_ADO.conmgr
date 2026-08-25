@@ -1,0 +1,10 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="BEHSAZANDW_ADO"
+  DTS:DTSID="{12C2DD2E-36F3-4ACE-BFC6-5A5FE20D4D08}"
+  DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="Data Source=SAYAR\MSSQLSERVER2019;Initial Catalog=BEHSAZANDW;Integrated Security=True;Application Name=SSIS-Package_DB2_Organization-{12C2DD2E-36F3-4ACE-BFC6-5A5FE20D4D08}SAYAR\MSSQLSERVER2019.BEHSAZANDW1;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

@@ -1,0 +1,36 @@
+﻿@{
+    ViewBag.Title = "درباره ما";
+}
+@section mycontent
+{
+    <hgroup class="title">
+    <h1>@ViewBag.Title.</h1>
+    <h2>@ViewBag.Message</h2>
+</hgroup>
+
+    <article>
+    <p style="text-align:right">
+        هادی سیار Hadi Sayyar
+        مسعود بخشنده Masoud Bakhshandeh
+    </p>
+
+    <p style="text-align:right">
+        ورمی کمپوست
+        دکتر ورمی
+    </p>
+
+    
+</article>
+
+    <aside>
+    <h3>...</h3>
+    <p style="text-align:right">
+        آدرس...
+    </p>
+    <ul style="text-align:right">
+        <li>@Html.ActionLink("خانه", "Index", "Home")</li>
+        <li>@Html.ActionLink("درباره ما", "About", "Home")</li>
+        <li>@Html.ActionLink("تماس با ما", "Contact", "Home")</li>
+    </ul>
+</aside>
+    }

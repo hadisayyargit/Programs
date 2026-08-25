@@ -1,0 +1,93 @@
+
+--where [DimDate].[Jalali Year].&[1402]
+
+/*
+select [Named Set_top10Products_Dynamic] on rows 
+, non empty ([DimDate].[Jalali Year].members, [Measures].[Sale Amount]) on columns
+from [cubePAYVANDDW]
+
+
+
+with 
+member 
+[Measures].[Internet Sales AmountRunningtotal]
+as 
+case when [Measures].[Internet Sales Amount] = null then null 
+else 
+sum({[Product].[Subcategory].firstchild:[Product].[Subcategory].currentmember},[Measures].[Internet Sales Amount])
+end
+select {[Measures].[Internet Sales Amount],
+[Measures].[Internet Sales AmountRunningtotal]
+} on columns,
+
+non empty
+([Date].[Calendar Year].[Calendar Year],[Date].[Calendar Quarter of Year].[Calendar Quarter of Year],
+[Product].[Category].[Category],[Product].[Subcategory].[Subcategory])
+on 
+rows 
+from 
+[Adventure Works]
+
+
+----------------------
+
+
+WITH MEMBER [Measures].[CumulativeSum] AS
+SUM(
+    NULL:[Date].[Date].CurrentMember, 
+    [Measures].[Internet Sales Amount]
+)
+
+SELECT 
+    {
+        [Measures].[Internet Sales Amount],
+        [Measures].[CumulativeSum] 
+    } ON COLUMNS,
+    NONEMPTY(
+        {
+            [Date].[Date].[Date]
+        }) ON ROWS
+FROM [Adventure Works]
+
+
+with MEMBER [Measures].MojoodiTedadi
+AS sum
+(
+  PeriodsToDate
+  (
+    [DimDate].[Jalali Date Key],
+      [DimDate].[Jalali Date Key].CurrentMember
+  ),
+[Measures].[Product Quantity]
+)
+
+SELECT
+    {[Measures].[Product Quantity], [Measures].[MojoodiTedadi]} ON COLUMNS,
+    {[DimDate].[Jalali Date Key].Members} ON ROWS
+FROM [cubePAYVANDDW]
+where [DimDate].[Jalali Year].&[1401]
+
+
+ SELECT NON EMPTY { [Measures].[Product Quantity], [Measures].[MojoodiTedadi], [Measures].[Riali Amount], [Measures].[MojoodiRiali] } ON COLUMNS
+ , NON EMPTY { ([DimDate].[Hierarchy_Jalali].ALLMEMBERS,[DimStores].[Store Key].[Store Key].ALLMEMBERS  ) }  ON ROWS 
+ FROM ( SELECT ( { [DimStores].[Store Key].&[4] } ) ON COLUMNS FROM ( SELECT ( { [DimDate].[Jalali Year].&[1402] } ) ON COLUMNS FROM [cubePAYVANDDW])) WHERE ( [DimDate].[Jalali Year].&[1402] ) 
+
+
+
+*/
+	-- sale amount of last 10 days
+ SELECT NON EMPTY { [Measures].[Sale Amount] } ON COLUMNS  
+ , NON EMPTY { ([DimEmployees].[Store Key].[Store Key].&[3] , [DimDate].[Jalali Date Key].members ) }  ON ROWS   
+ FROM  [cubePAYVANDDW]  
+ where ( StrToMember('[DimDate].[Date Key].&['+FORMAT (NOW() , 'yyyyMMdd') +']').lag(10) : StrToMember('[DimDate].[Date Key].&['+FORMAT (NOW() , 'yyyyMMdd') +']'))
+
+ ---- sale amount of a special date
+  SELECT NON EMPTY { [Measures].[Sale Amount] } ON COLUMNS  
+ , NON EMPTY { ([DimEmployees].[Store Key].[Store Key].&[3] , [DimDate].[Jalali Date Key].&[14011229]) }  ON ROWS   
+ FROM  [cubePAYVANDDW]  
+
+
+  
+
+
+  

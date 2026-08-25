@@ -1,0 +1,1039 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="2/6/2022 9:25:44 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="SAYAR"
+  DTS:CreatorName="BEHSAZAN\sayar"
+  DTS:DTSID="{9DD56AD9-E38A-410A-9832-34D847AD250A}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5035.3"
+  DTS:LocaleID="1065"
+  DTS:ObjectName="Package_DB2_LCITEM_with odbc"
+  DTS:PackageType="5"
+  DTS:VersionBuild="414"
+  DTS:VersionGUID="{6473795C-BD99-4FC8-A261-D68623346FB5}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Flat File Connection Manager]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{DED82FE5-E160-4953-82E0-9BCF6B1CCC15}"
+      DTS:ObjectName="Flat File Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1065"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="D:\documents\projects\dump\db2\dimCTFLCITEMS.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="131"
+              DTS:DataPrecision="18"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ITEMDTLID"
+              DTS:DTSID="{E2D511EB-E08E-487D-9948-B5D1AC76C0EB}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="131"
+              DTS:DataPrecision="18"
+              DTS:TextQualified="True"
+              DTS:ObjectName="LCCD"
+              DTS:DTSID="{2042E491-2196-41B5-A19E-B428AD269677}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="131"
+              DTS:DataPrecision="18"
+              DTS:DataScale="6"
+              DTS:TextQualified="True"
+              DTS:ObjectName="QUANTITY"
+              DTS:DTSID="{3A118B89-2F74-40EA-8AC5-CB633DC99939}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="131"
+              DTS:DataPrecision="18"
+              DTS:DataScale="2"
+              DTS:TextQualified="True"
+              DTS:ObjectName="UNITPRICE"
+              DTS:DTSID="{78B69D96-8109-47D9-A7CA-E894576B70EB}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ITEMFARNAME"
+              DTS:DTSID="{FED7A70B-5661-4831-9028-47B5AF71F0A7}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ITEMENGNAME"
+              DTS:DTSID="{2D32FF82-E91C-489D-AEED-B9DCE3B6F215}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="PRDCRNAME"
+              DTS:DTSID="{FC8DB126-A013-4845-BE89-460EBAC05371}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="3"
+              DTS:TextQualified="True"
+              DTS:ObjectName="RCVDDOCROW"
+              DTS:DTSID="{959773CF-266B-4D0A-A73F-C7030669FC64}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:DataType="131"
+              DTS:DataPrecision="18"
+              DTS:DataScale="2"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ITMFOBAMNT"
+              DTS:DTSID="{E249AFFD-3576-41DF-9B8D-BC5882F8946A}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{5E8688FA-00DB-4C52-8E26-4C9898F50C10}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="v_count">
+      <DTS:VariableValue
+        DTS:DataType="3">5</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{8891FA39-64F7-4F6F-8AF3-38CA6EF2C745}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="v_CstmrName">
+      <DTS:VariableValue
+        DTS:DataType="8">''</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{5AEDB4A2-AD63-4802-905E-E11B8B2150D5}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="V_result">
+      <DTS:VariableValue
+        DTS:DataSubType="ManagedSerializable"
+        DTS:DataType="13">
+        <SOAP-ENV:Envelope xmlns:clr="http://schemas.microsoft.com/soap/encoding/clr/1.0" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+          <SOAP-ENV:Body>
+            <xsd:anyType
+              id="ref-1"></xsd:anyType>
+          </SOAP-ENV:Body>
+        </SOAP-ENV:Envelope>
+      </DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{630ACAC1-F407-4C05-A47E-88A760616FAA}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="(DT_WSTR,100) @[User::v_CstmrName]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="v_str">
+      <DTS:VariableValue
+        DTS:DataType="8">''</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Export to dimension"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{0CC9CAC3-ECC4-463F-A3C9-C1CB22BC1EFB}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Export to dimension"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Export to dimension\Data Conversion"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Export to dimension\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Export to dimension\Data Conversion.Inputs[Data Conversion Input].Columns[ITEMFARNAME]"
+                      cachedCodepage="1256"
+                      cachedDataType="str"
+                      cachedLength="200"
+                      cachedName="ITEMFARNAME"
+                      lineageId="Package\Export to dimension\ODBC Source.Outputs[ODBC Source Output].Columns[ITEMFARNAME]" />
+                    <inputColumn
+                      refId="Package\Export to dimension\Data Conversion.Inputs[Data Conversion Input].Columns[ITEMENGNAME]"
+                      cachedCodepage="1256"
+                      cachedDataType="str"
+                      cachedLength="200"
+                      cachedName="ITEMENGNAME"
+                      lineageId="Package\Export to dimension\ODBC Source.Outputs[ODBC Source Output].Columns[ITEMENGNAME]" />
+                    <inputColumn
+                      refId="Package\Export to dimension\Data Conversion.Inputs[Data Conversion Input].Columns[PRDCRNAME]"
+                      cachedCodepage="1256"
+                      cachedDataType="str"
+                      cachedLength="200"
+                      cachedName="PRDCRNAME"
+                      lineageId="Package\Export to dimension\ODBC Source.Outputs[ODBC Source Output].Columns[PRDCRNAME]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Export to dimension\Data Conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Export to dimension\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Export to dimension\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of ITEMFARNAME]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="100"
+                      lineageId="Package\Export to dimension\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of ITEMFARNAME]"
+                      name="Copy of ITEMFARNAME"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Export to dimension\ODBC Source.Outputs[ODBC Source Output].Columns[ITEMFARNAME]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Export to dimension\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of ITEMENGNAME]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="100"
+                      lineageId="Package\Export to dimension\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of ITEMENGNAME]"
+                      name="Copy of ITEMENGNAME"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Export to dimension\ODBC Source.Outputs[ODBC Source Output].Columns[ITEMENGNAME]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Export to dimension\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of PRDCRNAME]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Export to dimension\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of PRDCRNAME]"
+                      name="Copy of PRDCRNAME"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Export to dimension\ODBC Source.Outputs[ODBC Source Output].Columns[PRDCRNAME]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Export to dimension\Data Conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Export to dimension\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Export to dimension\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Export to dimension\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Export to dimension\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Export to dimension\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Export to dimension\ODBC Source"
+              componentClassID="Microsoft.SSISODBCSrc"
+              contactInfo="ODBC Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="ODBC Source"
+              name="ODBC Source"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The name of the table to be fetched."
+                  expressionType="Notify"
+                  name="TableName"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select 
+    itmdtl.ITEMDTLID,itmdtl.LCCD,itmdtl.QUANTITY,itmdtl.UNITPRICE
+   
+           ,CAST(itmdtl.ITEMFARNAME AS VARCHAR(200) CCSID 1252) ITEMFARNAME
+           ,CAST(itmdtl.ITEMENGNAME AS VARCHAR(200) CCSID 1252) ITEMENGNAME
+           ,CAST(itmdtl.PRDCRNAME AS VARCHAR(200) CCSID 1252) PRDCRNAME
+            ,itmdtl.RCVDDOCROW,itmdtl.ITMFOBAMNT
+            
+		   from  TASSHMA.CTFLCITEMDTL itmdtl
+with ur;</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows fetched per batch."
+                  expressionType="Notify"
+                  name="BatchSize">1000</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines the chunk size allocation for LOB columns"
+                  expressionType="Notify"
+                  name="LobChunkSize">32768</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines how the component exposes CHAR columns. If False, CHAR columns are exposed as (multi-)byte strings (DT_STR), if True, CHAR columns are exposed as wide strings (DT_WSTR)"
+                  expressionType="Notify"
+                  name="ExposeCharColumnsAsUnicode">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds to wait for an SQL statement to execute before returning to the application."
+                  expressionType="Notify"
+                  name="StatementTimeout">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The code page to use when code page information is unavailable from the data source."
+                  expressionType="Notify"
+                  name="DefaultCodePage">1256</property>
+                <property
+                  dataType="System.Int32"
+                  description="The method used for fetching data."
+                  expressionType="Notify"
+                  name="FetchMethod">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="The ODBC C data type for binding numeric data."
+                  expressionType="Notify"
+                  name="BindNumericAs">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines how the component would bind columns of (multi)-byte string types (i.e., SQL_CHAR, SQL_VARCHAR, SQL_LONGVARCHAR). The options are: Unicode (SQL_C_WCHAR) and ANSI (SQL_C_CHAR)."
+                  expressionType="Notify"
+                  name="BindCharColumnsAs">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The mode used to access the database."
+                  expressionType="Notify"
+                  name="AccessMode"
+                  typeConverter="AccessMode">1</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Export to dimension\ODBC Source.Connections[ODBCConnection]"
+                  connectionManagerID="{C8E26535-4899-49F5-AEB0-8BD774D74F0D}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DB2_DEV_odbc sayar]"
+                  description="The ODBC runtime connection used to access the database."
+                  name="ODBCConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Export to dimension\ODBC Source.Outputs[ODBC Source Output]"
+                  errorRowDisposition="FailComponent"
+                  name="ODBC Source Output"
+                  truncationRowDisposition="FailComponent">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Export to dimension\ODBC Source.Outputs[ODBC Source Output].Columns[ITEMDTLID]"
+                      dataType="numeric"
+                      externalMetadataColumnId="Package\Export to dimension\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[ITEMDTLID]"
+                      lineageId="Package\Export to dimension\ODBC Source.Outputs[ODBC Source Output].Columns[ITEMDTLID]"
+                      name="ITEMDTLID"
+                      precision="18" />
+                    <outputColumn
+                      refId="Package\Export to dimension\ODBC Source.Outputs[ODBC Source Output].Columns[LCCD]"
+                      dataType="numeric"
+                      externalMetadataColumnId="Package\Export to dimension\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[LCCD]"
+                      lineageId="Package\Export to dimension\ODBC Source.Outputs[ODBC Source Output].Columns[LCCD]"
+                      name="LCCD"
+                      precision="18" />
+                    <outputColumn
+                      refId="Package\Export to dimension\ODBC Source.Outputs[ODBC Source Output].Columns[QUANTITY]"
+                      dataType="numeric"
+                      externalMetadataColumnId="Package\Export to dimension\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[QUANTITY]"
+                      lineageId="Package\Export to dimension\ODBC Source.Outputs[ODBC Source Output].Columns[QUANTITY]"
+                      name="QUANTITY"
+                      precision="18"
+                      scale="6" />
+                    <outputColumn
+                      refId="Package\Export to dimension\ODBC Source.Outputs[ODBC Source Output].Columns[UNITPRICE]"
+                      dataType="numeric"
+                      externalMetadataColumnId="Package\Export to dimension\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[UNITPRICE]"
+                      lineageId="Package\Export to dimension\ODBC Source.Outputs[ODBC Source Output].Columns[UNITPRICE]"
+                      name="UNITPRICE"
+                      precision="18"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Export to dimension\ODBC Source.Outputs[ODBC Source Output].Columns[ITEMFARNAME]"
+                      codePage="1256"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Export to dimension\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[ITEMFARNAME]"
+                      length="200"
+                      lineageId="Package\Export to dimension\ODBC Source.Outputs[ODBC Source Output].Columns[ITEMFARNAME]"
+                      name="ITEMFARNAME" />
+                    <outputColumn
+                      refId="Package\Export to dimension\ODBC Source.Outputs[ODBC Source Output].Columns[ITEMENGNAME]"
+                      codePage="1256"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Export to dimension\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[ITEMENGNAME]"
+                      length="200"
+                      lineageId="Package\Export to dimension\ODBC Source.Outputs[ODBC Source Output].Columns[ITEMENGNAME]"
+                      name="ITEMENGNAME" />
+                    <outputColumn
+                      refId="Package\Export to dimension\ODBC Source.Outputs[ODBC Source Output].Columns[PRDCRNAME]"
+                      codePage="1256"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Export to dimension\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[PRDCRNAME]"
+                      length="200"
+                      lineageId="Package\Export to dimension\ODBC Source.Outputs[ODBC Source Output].Columns[PRDCRNAME]"
+                      name="PRDCRNAME" />
+                    <outputColumn
+                      refId="Package\Export to dimension\ODBC Source.Outputs[ODBC Source Output].Columns[RCVDDOCROW]"
+                      dataType="i2"
+                      externalMetadataColumnId="Package\Export to dimension\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[RCVDDOCROW]"
+                      lineageId="Package\Export to dimension\ODBC Source.Outputs[ODBC Source Output].Columns[RCVDDOCROW]"
+                      name="RCVDDOCROW" />
+                    <outputColumn
+                      refId="Package\Export to dimension\ODBC Source.Outputs[ODBC Source Output].Columns[ITMFOBAMNT]"
+                      dataType="numeric"
+                      externalMetadataColumnId="Package\Export to dimension\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[ITMFOBAMNT]"
+                      lineageId="Package\Export to dimension\ODBC Source.Outputs[ODBC Source Output].Columns[ITMFOBAMNT]"
+                      name="ITMFOBAMNT"
+                      precision="18"
+                      scale="2" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Export to dimension\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[ITEMDTLID]"
+                      dataType="numeric"
+                      name="ITEMDTLID"
+                      precision="18" />
+                    <externalMetadataColumn
+                      refId="Package\Export to dimension\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[LCCD]"
+                      dataType="numeric"
+                      name="LCCD"
+                      precision="18" />
+                    <externalMetadataColumn
+                      refId="Package\Export to dimension\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[QUANTITY]"
+                      dataType="numeric"
+                      name="QUANTITY"
+                      precision="18"
+                      scale="6" />
+                    <externalMetadataColumn
+                      refId="Package\Export to dimension\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[UNITPRICE]"
+                      dataType="numeric"
+                      name="UNITPRICE"
+                      precision="18"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Export to dimension\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[ITEMFARNAME]"
+                      codePage="1256"
+                      dataType="str"
+                      length="200"
+                      name="ITEMFARNAME" />
+                    <externalMetadataColumn
+                      refId="Package\Export to dimension\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[ITEMENGNAME]"
+                      codePage="1256"
+                      dataType="str"
+                      length="200"
+                      name="ITEMENGNAME" />
+                    <externalMetadataColumn
+                      refId="Package\Export to dimension\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[PRDCRNAME]"
+                      codePage="1256"
+                      dataType="str"
+                      length="200"
+                      name="PRDCRNAME" />
+                    <externalMetadataColumn
+                      refId="Package\Export to dimension\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[RCVDDOCROW]"
+                      dataType="i2"
+                      name="RCVDDOCROW" />
+                    <externalMetadataColumn
+                      refId="Package\Export to dimension\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[ITMFOBAMNT]"
+                      dataType="numeric"
+                      name="ITMFOBAMNT"
+                      precision="18"
+                      scale="2" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Export to dimension\ODBC Source.Outputs[ODBC Source Error Output]"
+                  isErrorOut="true"
+                  name="ODBC Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Export to dimension\ODBC Source.Outputs[ODBC Source Error Output].Columns[ITEMDTLID]"
+                      dataType="numeric"
+                      externalMetadataColumnId="Package\Export to dimension\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[ITEMDTLID]"
+                      lineageId="Package\Export to dimension\ODBC Source.Outputs[ODBC Source Error Output].Columns[ITEMDTLID]"
+                      name="ITEMDTLID"
+                      precision="18" />
+                    <outputColumn
+                      refId="Package\Export to dimension\ODBC Source.Outputs[ODBC Source Error Output].Columns[LCCD]"
+                      dataType="numeric"
+                      externalMetadataColumnId="Package\Export to dimension\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[LCCD]"
+                      lineageId="Package\Export to dimension\ODBC Source.Outputs[ODBC Source Error Output].Columns[LCCD]"
+                      name="LCCD"
+                      precision="18" />
+                    <outputColumn
+                      refId="Package\Export to dimension\ODBC Source.Outputs[ODBC Source Error Output].Columns[QUANTITY]"
+                      dataType="numeric"
+                      externalMetadataColumnId="Package\Export to dimension\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[QUANTITY]"
+                      lineageId="Package\Export to dimension\ODBC Source.Outputs[ODBC Source Error Output].Columns[QUANTITY]"
+                      name="QUANTITY"
+                      precision="18"
+                      scale="6" />
+                    <outputColumn
+                      refId="Package\Export to dimension\ODBC Source.Outputs[ODBC Source Error Output].Columns[UNITPRICE]"
+                      dataType="numeric"
+                      externalMetadataColumnId="Package\Export to dimension\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[UNITPRICE]"
+                      lineageId="Package\Export to dimension\ODBC Source.Outputs[ODBC Source Error Output].Columns[UNITPRICE]"
+                      name="UNITPRICE"
+                      precision="18"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Export to dimension\ODBC Source.Outputs[ODBC Source Error Output].Columns[ITEMFARNAME]"
+                      codePage="1256"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Export to dimension\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[ITEMFARNAME]"
+                      length="200"
+                      lineageId="Package\Export to dimension\ODBC Source.Outputs[ODBC Source Error Output].Columns[ITEMFARNAME]"
+                      name="ITEMFARNAME" />
+                    <outputColumn
+                      refId="Package\Export to dimension\ODBC Source.Outputs[ODBC Source Error Output].Columns[ITEMENGNAME]"
+                      codePage="1256"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Export to dimension\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[ITEMENGNAME]"
+                      length="200"
+                      lineageId="Package\Export to dimension\ODBC Source.Outputs[ODBC Source Error Output].Columns[ITEMENGNAME]"
+                      name="ITEMENGNAME" />
+                    <outputColumn
+                      refId="Package\Export to dimension\ODBC Source.Outputs[ODBC Source Error Output].Columns[PRDCRNAME]"
+                      codePage="1256"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Export to dimension\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[PRDCRNAME]"
+                      length="200"
+                      lineageId="Package\Export to dimension\ODBC Source.Outputs[ODBC Source Error Output].Columns[PRDCRNAME]"
+                      name="PRDCRNAME" />
+                    <outputColumn
+                      refId="Package\Export to dimension\ODBC Source.Outputs[ODBC Source Error Output].Columns[RCVDDOCROW]"
+                      dataType="i2"
+                      externalMetadataColumnId="Package\Export to dimension\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[RCVDDOCROW]"
+                      lineageId="Package\Export to dimension\ODBC Source.Outputs[ODBC Source Error Output].Columns[RCVDDOCROW]"
+                      name="RCVDDOCROW" />
+                    <outputColumn
+                      refId="Package\Export to dimension\ODBC Source.Outputs[ODBC Source Error Output].Columns[ITMFOBAMNT]"
+                      dataType="numeric"
+                      externalMetadataColumnId="Package\Export to dimension\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[ITMFOBAMNT]"
+                      lineageId="Package\Export to dimension\ODBC Source.Outputs[ODBC Source Error Output].Columns[ITMFOBAMNT]"
+                      name="ITMFOBAMNT"
+                      precision="18"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Export to dimension\ODBC Source.Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Export to dimension\ODBC Source.Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Export to dimension\ODBC Source.Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Export to dimension\ODBC Source.Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Export to dimension\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[dimCTFLCITEMS]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1256</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Export to dimension\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="{5396C769-EA4B-4C43-AB53-318B29EE5414}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[SAYAR_MSSQLSERVER2019.BEHSAZANDW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Export to dimension\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Export to dimension\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ITEMDTLID]"
+                      cachedDataType="numeric"
+                      cachedName="ITEMDTLID"
+                      cachedPrecision="18"
+                      externalMetadataColumnId="Package\Export to dimension\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ITEMDTLID]"
+                      lineageId="Package\Export to dimension\ODBC Source.Outputs[ODBC Source Output].Columns[ITEMDTLID]" />
+                    <inputColumn
+                      refId="Package\Export to dimension\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[QUANTITY]"
+                      cachedDataType="numeric"
+                      cachedName="QUANTITY"
+                      cachedPrecision="18"
+                      cachedScale="6"
+                      externalMetadataColumnId="Package\Export to dimension\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[QUANTITY]"
+                      lineageId="Package\Export to dimension\ODBC Source.Outputs[ODBC Source Output].Columns[QUANTITY]" />
+                    <inputColumn
+                      refId="Package\Export to dimension\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[UNITPRICE]"
+                      cachedDataType="numeric"
+                      cachedName="UNITPRICE"
+                      cachedPrecision="18"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\Export to dimension\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[UNITPRICE]"
+                      lineageId="Package\Export to dimension\ODBC Source.Outputs[ODBC Source Output].Columns[UNITPRICE]" />
+                    <inputColumn
+                      refId="Package\Export to dimension\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[RCVDDOCROW]"
+                      cachedDataType="i2"
+                      cachedName="RCVDDOCROW"
+                      externalMetadataColumnId="Package\Export to dimension\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[RCVDDOCROW]"
+                      lineageId="Package\Export to dimension\ODBC Source.Outputs[ODBC Source Output].Columns[RCVDDOCROW]" />
+                    <inputColumn
+                      refId="Package\Export to dimension\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ITMFOBAMNT]"
+                      cachedDataType="numeric"
+                      cachedName="ITMFOBAMNT"
+                      cachedPrecision="18"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\Export to dimension\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ITMFOBAMNT]"
+                      lineageId="Package\Export to dimension\ODBC Source.Outputs[ODBC Source Output].Columns[ITMFOBAMNT]" />
+                    <inputColumn
+                      refId="Package\Export to dimension\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[LCCD]"
+                      cachedDataType="numeric"
+                      cachedName="LCCD"
+                      cachedPrecision="18"
+                      externalMetadataColumnId="Package\Export to dimension\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LCID]"
+                      lineageId="Package\Export to dimension\ODBC Source.Outputs[ODBC Source Output].Columns[LCCD]" />
+                    <inputColumn
+                      refId="Package\Export to dimension\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of ITEMFARNAME]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="Copy of ITEMFARNAME"
+                      externalMetadataColumnId="Package\Export to dimension\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ITEMFARNAME]"
+                      lineageId="Package\Export to dimension\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of ITEMFARNAME]" />
+                    <inputColumn
+                      refId="Package\Export to dimension\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of ITEMENGNAME]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="Copy of ITEMENGNAME"
+                      externalMetadataColumnId="Package\Export to dimension\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ITEMENGNAME]"
+                      lineageId="Package\Export to dimension\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of ITEMENGNAME]" />
+                    <inputColumn
+                      refId="Package\Export to dimension\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of PRDCRNAME]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Copy of PRDCRNAME"
+                      externalMetadataColumnId="Package\Export to dimension\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PRDCRNAME]"
+                      lineageId="Package\Export to dimension\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of PRDCRNAME]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Export to dimension\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ITEMDTLID]"
+                      dataType="numeric"
+                      name="ITEMDTLID"
+                      precision="18" />
+                    <externalMetadataColumn
+                      refId="Package\Export to dimension\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LCID]"
+                      dataType="numeric"
+                      name="LCID"
+                      precision="18" />
+                    <externalMetadataColumn
+                      refId="Package\Export to dimension\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[QUANTITY]"
+                      dataType="numeric"
+                      name="QUANTITY"
+                      precision="18"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Export to dimension\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[UNITPRICE]"
+                      dataType="numeric"
+                      name="UNITPRICE"
+                      precision="18"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Export to dimension\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ITEMFARNAME]"
+                      dataType="wstr"
+                      length="100"
+                      name="ITEMFARNAME" />
+                    <externalMetadataColumn
+                      refId="Package\Export to dimension\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ITEMENGNAME]"
+                      dataType="wstr"
+                      length="100"
+                      name="ITEMENGNAME" />
+                    <externalMetadataColumn
+                      refId="Package\Export to dimension\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PRDCRNAME]"
+                      dataType="wstr"
+                      length="50"
+                      name="PRDCRNAME" />
+                    <externalMetadataColumn
+                      refId="Package\Export to dimension\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[RCVDDOCROW]"
+                      dataType="i2"
+                      name="RCVDDOCROW" />
+                    <externalMetadataColumn
+                      refId="Package\Export to dimension\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ITMFOBAMNT]"
+                      dataType="numeric"
+                      name="ITMFOBAMNT"
+                      precision="18"
+                      scale="2" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Export to dimension\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Export to dimension\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Export to dimension\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Export to dimension\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Export to dimension\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Export to dimension\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Export to dimension.Paths[Data Conversion Output]"
+              endId="Package\Export to dimension\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Data Conversion Output"
+              startId="Package\Export to dimension\Data Conversion.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\Export to dimension.Paths[ODBC Source Output]"
+              endId="Package\Export to dimension\Data Conversion.Inputs[Data Conversion Input]"
+              name="ODBC Source Output"
+              startId="Package\Export to dimension\ODBC Source.Outputs[ODBC Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncate Table"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{88F86BCE-ED2F-4335-9578-9C97D0145ADC}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncate Table"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{5396C769-EA4B-4C43-AB53-318B29EE5414}"
+          SQLTask:BypassPrepare="False"
+          SQLTask:SqlStatementSource="truncate table dimCTFLCITEMS" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{2B21A4C0-49F6-426E-A84D-B0C00AE83A31}"
+      DTS:From="Package\Truncate Table"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\Export to dimension" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="173,42"
+          Id="Package\Export to dimension"
+          TopLeft="99,217" />
+        <NodeLayout
+          Size="150,42"
+          Id="Package\Truncate Table"
+          TopLeft="105,82" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="182.75,124">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,93"
+              Start="0,0"
+              End="0,85.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,85.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Export to dimension">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="142,42"
+          Id="Package\Export to dimension\ODBC Source"
+          TopLeft="505,43" />
+        <NodeLayout
+          Size="156,42"
+          Id="Package\Export to dimension\Data Conversion"
+          TopLeft="317,164" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Export to dimension\OLE DB Destination"
+          TopLeft="471,260" />
+        <EdgeLayout
+          Id="Package\Export to dimension.Paths[ODBC Source Output]"
+          TopLeft="576,85">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-181,79"
+              Start="0,0"
+              End="-181,71.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,35.5"
+                    Point2="0,39.5"
+                    Point3="-4,39.5" />
+                  <mssgle:LineSegment
+                    End="-177,39.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-177,39.5"
+                    Point2="-181,39.5"
+                    Point3="-181,43.5" />
+                  <mssgle:LineSegment
+                    End="-181,71.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Export to dimension.Paths[Data Conversion Output]"
+          TopLeft="395,206">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="161.5,54"
+              Start="0,0"
+              End="161.5,46.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,23"
+                    Point2="0,27"
+                    Point3="4,27" />
+                  <mssgle:LineSegment
+                    End="157.5,27" />
+                  <mssgle:CubicBezierSegment
+                    Point1="157.5,27"
+                    Point2="161.5,27"
+                    Point3="161.5,31" />
+                  <mssgle:LineSegment
+                    End="161.5,46.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Export to dimension\ODBC Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Export to dimension\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

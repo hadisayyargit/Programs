@@ -1,0 +1,3300 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="2/6/2022 9:25:44 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="SAYAR"
+  DTS:CreatorName="BEHSAZAN\sayar"
+  DTS:DTSID="{9921B118-CA21-4B3C-9C2C-3240127CD5B5}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5035.3"
+  DTS:LocaleID="1065"
+  DTS:ObjectName="Package_DB2_cstmr"
+  DTS:PackageType="5"
+  DTS:VersionBuild="455"
+  DTS:VersionGUID="{08DCBD2B-0E44-427A-AF28-A1D027E06957}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{E01753E1-650C-45E7-BF35-EC1D1B37C80F}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="v_count">
+      <DTS:VariableValue
+        DTS:DataType="3">5</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{5A12050D-B465-4734-95A9-61658D2547C7}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="v_CstmrName">
+      <DTS:VariableValue
+        DTS:DataType="8">''</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{37BF43D7-5280-4D21-85BF-2ADEC39B40DD}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="v_EndTimestamp">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{CF79E720-16AD-4B18-91D3-9F36982036EB}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;select CST.CSTMRID, cst.INTCSTMRID , cst.CSTMRNAID, cst.CSTMRACCNO, cst.CSTMRBIRTHDT   , cst.GENDERCD ,cst.CSTMRTYPCD, cst.CSTMRGRPCD ,CAST(CST.CSTMRNAME AS VARCHAR(200) CCSID 1252) as CSTMRNAME, CAST(CST.NAME AS VARCHAR(100) CCSID 1252) AS FIRSTNAME , CAST(CST.FAMILY AS VARCHAR(100) CCSID 1252) AS LASTNAME ,cst.TIMEZ from TASSHMA.CTFCSTMR CST where  (CST.timez&gt; '&quot;+ (DT_WSTR,100) @[User::v_StartTimestamp] + &quot;' ) with ur;&quot;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="v_query">
+      <DTS:VariableValue
+        DTS:DataType="8">select CST.CSTMRID, cst.INTCSTMRID , cst.CSTMRNAID, cst.CSTMRACCNO, cst.CSTMRBIRTHDT   , cst.GENDERCD ,cst.CSTMRTYPCD, cst.CSTMRGRPCD ,CAST(CST.CSTMRNAME AS VARCHAR(200) CCSID 1252) as CSTMRNAME, CAST(CST.NAME AS VARCHAR(100) CCSID 1252) AS FIRSTNAME , CAST(CST.FAMILY AS VARCHAR(100) CCSID 1252) AS LASTNAME ,cst.TIMEZ from TASSHMA.CTFCSTMR CST where  (CST.timez&gt; '' ) with ur;</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{73910FAF-FBBE-4929-8FA6-6AA5F740DAB4}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="V_result">
+      <DTS:VariableValue
+        DTS:DataSubType="ManagedSerializable"
+        DTS:DataType="13">
+        <SOAP-ENV:Envelope xmlns:clr="http://schemas.microsoft.com/soap/encoding/clr/1.0" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+          <SOAP-ENV:Body>
+            <xsd:anyType
+              id="ref-1"></xsd:anyType>
+          </SOAP-ENV:Body>
+        </SOAP-ENV:Envelope>
+      </DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{A78F4071-1B4E-4C26-A97D-F206E18289F8}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="v_StartTimestamp">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{F0D107E2-F61E-4DD3-9B3C-EA553DF5EDCB}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="(DT_WSTR,100) @[User::v_CstmrName]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="v_str">
+      <DTS:VariableValue
+        DTS:DataType="8">''</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Execute SQL Task _Get Start Timestamp"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{722ce0be-88a8-4e94-a68c-cf8580f1afc1}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Execute SQL Task _Get Start Timestamp"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{5396C769-EA4B-4C43-AB53-318B29EE5414}"
+          SQLTask:SqlStatementSource="select LastTimeStamp from ETLConfig where tablename='CTFCSTMR'"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="0"
+            SQLTask:DtsVariableName="User::v_StartTimestamp" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Execute SQL Task_Get End Timestamp"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{91c68628-1a45-47c3-a2d0-cbc691a54cfb}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Execute SQL Task_Get End Timestamp"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{5396C769-EA4B-4C43-AB53-318B29EE5414}"
+          SQLTask:SqlStatementSource="select max(timez) from stageCstmr"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="0"
+            SQLTask:DtsVariableName="User::v_EndTimestamp" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Export stage to fact"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{3574097d-e6dd-48d6-b4e8-7255ee67124f}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Export stage to fact"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Export stage to fact\Lookup"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [dbo].[dimCSTMR]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [dbo].[dimCSTMR]) [refTable]
+where [refTable].[CustomerKey] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="CustomerKey" dataType="DT_NUMERIC" length="0" precision="12" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CSTMRID" dataType="DT_NUMERIC" length="0" precision="12" scale="0" codePage="0"/&gt;&lt;referenceColumn name="INTCSTMRID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="FIRSTNAME" dataType="DT_WSTR" length="100" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="LASTNAME" dataType="DT_WSTR" length="100" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CSTMRNAME" dataType="DT_WSTR" length="200" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CSTMRNAID" dataType="DT_NUMERIC" length="0" precision="12" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CSTMRACCNO" dataType="DT_NUMERIC" length="0" precision="10" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CSTMRBIRTHDT" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="GENDERCD" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CSTMRTYPCD" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CSTMRGRPCD" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="TIMEZ" dataType="DT_BYTES" length="8" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CSTMRBIRTHDTDateKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Output].Columns[CSTMRID]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1256</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Export stage to fact\Lookup.Connections[OleDbConnection]"
+                  connectionManagerID="{5396C769-EA4B-4C43-AB53-318B29EE5414}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[SAYAR_MSSQLSERVER2019.BEHSAZANDW]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Export stage to fact\Lookup.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Export stage to fact\Lookup.Inputs[Lookup Input].Columns[CSTMRID]"
+                      cachedDataType="numeric"
+                      cachedName="CSTMRID"
+                      cachedPrecision="12"
+                      lineageId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Output].Columns[CSTMRID]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">CustomerKey</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Export stage to fact\Lookup.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Export stage to fact\Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Export stage to fact\Lookup.Outputs[Lookup Match Output].Columns[CustomerKey]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Export stage to fact\Lookup.Outputs[Lookup Match Output].Columns[CustomerKey]"
+                      name="CustomerKey"
+                      precision="12"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">CustomerKey</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Export stage to fact\Lookup.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Export stage to fact\Lookup.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Export stage to fact\Lookup.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Export stage to fact\Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Export stage to fact\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Export stage to fact\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Export stage to fact\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Export stage to fact\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Export stage to fact\Lookup_DateKey"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup_DateKey"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [dbo].[dimDate]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [dbo].[dimDate]) [refTable]
+where [refTable].[JDateKey] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="DateKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="GregorianDate" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="DayOfWeek" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="DayNameOfWeek" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="DayOfMonth" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="MonthNumberOfYear" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="EnglishMonthName" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CalendarQuarter" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CalendarYear" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="JalaliYear" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="JalaliMonth" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="JalaliMonthDay" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="JalaliMonthName" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="JalaliWeekDayName" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="JalaliString" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="JalaliFullName" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="PersianSeason" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="PersianSeasonName" dataType="DT_WSTR" length="7" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="JDateKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Output].Columns[CSTMRBIRTHDT]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1256</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Export stage to fact\Lookup_DateKey.Connections[OleDbConnection]"
+                  connectionManagerID="{5396C769-EA4B-4C43-AB53-318B29EE5414}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[SAYAR_MSSQLSERVER2019.BEHSAZANDW]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Export stage to fact\Lookup_DateKey.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Export stage to fact\Lookup_DateKey.Inputs[Lookup Input].Columns[CSTMRBIRTHDT]"
+                      cachedDataType="i4"
+                      cachedName="CSTMRBIRTHDT"
+                      lineageId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Output].Columns[CSTMRBIRTHDT]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">JDateKey</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Export stage to fact\Lookup_DateKey.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="IgnoreFailure"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Export stage to fact\Lookup_DateKey.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Export stage to fact\Lookup_DateKey.Outputs[Lookup Match Output].Columns[JDateKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Export stage to fact\Lookup_DateKey.Outputs[Lookup Match Output].Columns[JDateKey]"
+                      name="JDateKey"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">JDateKey</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Export stage to fact\Lookup_DateKey.Outputs[Lookup Match Output].Columns[DateKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Export stage to fact\Lookup_DateKey.Outputs[Lookup Match Output].Columns[DateKey]"
+                      name="DateKey"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">DateKey</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Export stage to fact\Lookup_DateKey.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Export stage to fact\Lookup_DateKey.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Export stage to fact\Lookup_DateKey.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Export stage to fact\Lookup_DateKey.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Export stage to fact\Lookup_DateKey.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Export stage to fact\Lookup_DateKey.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Export stage to fact\Lookup_DateKey.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Export stage to fact\Lookup_DateKey.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Export stage to fact\OLE DB Command_update"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="OLE DB Command_update"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
+UPDATE [dbo].[dimCSTMR]
+   SET
+      [INTCSTMRID] = ?
+      ,[FIRSTNAME] = ?
+      ,[LASTNAME] = ?
+      ,[CSTMRNAME] = ?
+      ,[CSTMRNAID] = ?
+      ,[CSTMRACCNO] = ?
+      ,[CSTMRBIRTHDT] = ?
+      ,[GENDERCD] = ?
+      ,[CSTMRTYPCD] = ?
+      ,[CSTMRGRPCD] = ?
+      ,[CSTMRBIRTHDTDateKey] = ?
+ WHERE CustomerKey = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1256</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Export stage to fact\OLE DB Command_update.Connections[OleDbConnection]"
+                  connectionManagerID="{5396C769-EA4B-4C43-AB53-318B29EE5414}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[SAYAR_MSSQLSERVER2019.BEHSAZANDW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Export stage to fact\OLE DB Command_update.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Export stage to fact\OLE DB Command_update.Inputs[OLE DB Command Input].Columns[INTCSTMRID]"
+                      cachedDataType="i4"
+                      cachedName="INTCSTMRID"
+                      externalMetadataColumnId="Package\Export stage to fact\OLE DB Command_update.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Output].Columns[INTCSTMRID]" />
+                    <inputColumn
+                      refId="Package\Export stage to fact\OLE DB Command_update.Inputs[OLE DB Command Input].Columns[FIRSTNAME]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="FIRSTNAME"
+                      externalMetadataColumnId="Package\Export stage to fact\OLE DB Command_update.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      lineageId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Output].Columns[FIRSTNAME]" />
+                    <inputColumn
+                      refId="Package\Export stage to fact\OLE DB Command_update.Inputs[OLE DB Command Input].Columns[LASTNAME]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="LASTNAME"
+                      externalMetadataColumnId="Package\Export stage to fact\OLE DB Command_update.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      lineageId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Output].Columns[LASTNAME]" />
+                    <inputColumn
+                      refId="Package\Export stage to fact\OLE DB Command_update.Inputs[OLE DB Command Input].Columns[CSTMRNAME]"
+                      cachedDataType="wstr"
+                      cachedLength="200"
+                      cachedName="CSTMRNAME"
+                      externalMetadataColumnId="Package\Export stage to fact\OLE DB Command_update.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      lineageId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Output].Columns[CSTMRNAME]" />
+                    <inputColumn
+                      refId="Package\Export stage to fact\OLE DB Command_update.Inputs[OLE DB Command Input].Columns[CSTMRNAID]"
+                      cachedDataType="numeric"
+                      cachedName="CSTMRNAID"
+                      cachedPrecision="12"
+                      externalMetadataColumnId="Package\Export stage to fact\OLE DB Command_update.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                      lineageId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Output].Columns[CSTMRNAID]" />
+                    <inputColumn
+                      refId="Package\Export stage to fact\OLE DB Command_update.Inputs[OLE DB Command Input].Columns[CSTMRACCNO]"
+                      cachedDataType="numeric"
+                      cachedName="CSTMRACCNO"
+                      cachedPrecision="10"
+                      externalMetadataColumnId="Package\Export stage to fact\OLE DB Command_update.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
+                      lineageId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Output].Columns[CSTMRACCNO]" />
+                    <inputColumn
+                      refId="Package\Export stage to fact\OLE DB Command_update.Inputs[OLE DB Command Input].Columns[CSTMRBIRTHDT]"
+                      cachedDataType="i4"
+                      cachedName="CSTMRBIRTHDT"
+                      externalMetadataColumnId="Package\Export stage to fact\OLE DB Command_update.Inputs[OLE DB Command Input].ExternalColumns[Param_6]"
+                      lineageId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Output].Columns[CSTMRBIRTHDT]" />
+                    <inputColumn
+                      refId="Package\Export stage to fact\OLE DB Command_update.Inputs[OLE DB Command Input].Columns[GENDERCD]"
+                      cachedDataType="i2"
+                      cachedName="GENDERCD"
+                      externalMetadataColumnId="Package\Export stage to fact\OLE DB Command_update.Inputs[OLE DB Command Input].ExternalColumns[Param_7]"
+                      lineageId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Output].Columns[GENDERCD]" />
+                    <inputColumn
+                      refId="Package\Export stage to fact\OLE DB Command_update.Inputs[OLE DB Command Input].Columns[CSTMRTYPCD]"
+                      cachedDataType="i2"
+                      cachedName="CSTMRTYPCD"
+                      externalMetadataColumnId="Package\Export stage to fact\OLE DB Command_update.Inputs[OLE DB Command Input].ExternalColumns[Param_8]"
+                      lineageId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Output].Columns[CSTMRTYPCD]" />
+                    <inputColumn
+                      refId="Package\Export stage to fact\OLE DB Command_update.Inputs[OLE DB Command Input].Columns[CSTMRGRPCD]"
+                      cachedDataType="i2"
+                      cachedName="CSTMRGRPCD"
+                      externalMetadataColumnId="Package\Export stage to fact\OLE DB Command_update.Inputs[OLE DB Command Input].ExternalColumns[Param_9]"
+                      lineageId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Output].Columns[CSTMRGRPCD]" />
+                    <inputColumn
+                      refId="Package\Export stage to fact\OLE DB Command_update.Inputs[OLE DB Command Input].Columns[CustomerKey]"
+                      cachedDataType="numeric"
+                      cachedName="CustomerKey"
+                      cachedPrecision="12"
+                      externalMetadataColumnId="Package\Export stage to fact\OLE DB Command_update.Inputs[OLE DB Command Input].ExternalColumns[Param_11]"
+                      lineageId="Package\Export stage to fact\Lookup.Outputs[Lookup Match Output].Columns[CustomerKey]" />
+                    <inputColumn
+                      refId="Package\Export stage to fact\OLE DB Command_update.Inputs[OLE DB Command Input].Columns[DateKey]"
+                      cachedDataType="i4"
+                      cachedName="DateKey"
+                      externalMetadataColumnId="Package\Export stage to fact\OLE DB Command_update.Inputs[OLE DB Command Input].ExternalColumns[Param_10]"
+                      lineageId="Package\Export stage to fact\Lookup_DateKey.Outputs[Lookup Match Output].Columns[DateKey]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Export stage to fact\OLE DB Command_update.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      dataType="i4"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Export stage to fact\OLE DB Command_update.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      dataType="wstr"
+                      length="100"
+                      name="Param_1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Export stage to fact\OLE DB Command_update.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      dataType="wstr"
+                      length="100"
+                      name="Param_2">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Export stage to fact\OLE DB Command_update.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      dataType="wstr"
+                      length="200"
+                      name="Param_3">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Export stage to fact\OLE DB Command_update.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                      dataType="numeric"
+                      name="Param_4"
+                      precision="12">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Export stage to fact\OLE DB Command_update.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
+                      dataType="numeric"
+                      name="Param_5"
+                      precision="10">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Export stage to fact\OLE DB Command_update.Inputs[OLE DB Command Input].ExternalColumns[Param_6]"
+                      dataType="i4"
+                      name="Param_6">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Export stage to fact\OLE DB Command_update.Inputs[OLE DB Command Input].ExternalColumns[Param_7]"
+                      dataType="i2"
+                      name="Param_7">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Export stage to fact\OLE DB Command_update.Inputs[OLE DB Command Input].ExternalColumns[Param_8]"
+                      dataType="i2"
+                      name="Param_8">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Export stage to fact\OLE DB Command_update.Inputs[OLE DB Command Input].ExternalColumns[Param_9]"
+                      dataType="i2"
+                      name="Param_9">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Export stage to fact\OLE DB Command_update.Inputs[OLE DB Command Input].ExternalColumns[Param_10]"
+                      dataType="i4"
+                      name="Param_10">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Export stage to fact\OLE DB Command_update.Inputs[OLE DB Command Input].ExternalColumns[Param_11]"
+                      dataType="numeric"
+                      name="Param_11"
+                      precision="12">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Export stage to fact\OLE DB Command_update.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\Export stage to fact\OLE DB Command_update.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Export stage to fact\OLE DB Command_update.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\Export stage to fact\OLE DB Command_update.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Export stage to fact\OLE DB Command_update.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Export stage to fact\OLE DB Command_update.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Export stage to fact\OLE DB Command_update.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Export stage to fact\OLE DB Command_update.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Export stage to fact\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[dimCSTMR]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1256</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Export stage to fact\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="{5396C769-EA4B-4C43-AB53-318B29EE5414}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[SAYAR_MSSQLSERVER2019.BEHSAZANDW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Export stage to fact\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Export stage to fact\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[INTCSTMRID]"
+                      cachedDataType="i4"
+                      cachedName="INTCSTMRID"
+                      externalMetadataColumnId="Package\Export stage to fact\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[INTCSTMRID]"
+                      lineageId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Output].Columns[INTCSTMRID]" />
+                    <inputColumn
+                      refId="Package\Export stage to fact\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[FIRSTNAME]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="FIRSTNAME"
+                      externalMetadataColumnId="Package\Export stage to fact\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FIRSTNAME]"
+                      lineageId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Output].Columns[FIRSTNAME]" />
+                    <inputColumn
+                      refId="Package\Export stage to fact\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[LASTNAME]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="LASTNAME"
+                      externalMetadataColumnId="Package\Export stage to fact\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LASTNAME]"
+                      lineageId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Output].Columns[LASTNAME]" />
+                    <inputColumn
+                      refId="Package\Export stage to fact\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[CSTMRNAME]"
+                      cachedDataType="wstr"
+                      cachedLength="200"
+                      cachedName="CSTMRNAME"
+                      externalMetadataColumnId="Package\Export stage to fact\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CSTMRNAME]"
+                      lineageId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Output].Columns[CSTMRNAME]" />
+                    <inputColumn
+                      refId="Package\Export stage to fact\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[CSTMRNAID]"
+                      cachedDataType="numeric"
+                      cachedName="CSTMRNAID"
+                      cachedPrecision="12"
+                      externalMetadataColumnId="Package\Export stage to fact\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CSTMRNAID]"
+                      lineageId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Output].Columns[CSTMRNAID]" />
+                    <inputColumn
+                      refId="Package\Export stage to fact\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[CSTMRACCNO]"
+                      cachedDataType="numeric"
+                      cachedName="CSTMRACCNO"
+                      cachedPrecision="10"
+                      externalMetadataColumnId="Package\Export stage to fact\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CSTMRACCNO]"
+                      lineageId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Output].Columns[CSTMRACCNO]" />
+                    <inputColumn
+                      refId="Package\Export stage to fact\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[CSTMRBIRTHDT]"
+                      cachedDataType="i4"
+                      cachedName="CSTMRBIRTHDT"
+                      externalMetadataColumnId="Package\Export stage to fact\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CSTMRBIRTHDT]"
+                      lineageId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Output].Columns[CSTMRBIRTHDT]" />
+                    <inputColumn
+                      refId="Package\Export stage to fact\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[GENDERCD]"
+                      cachedDataType="i2"
+                      cachedName="GENDERCD"
+                      externalMetadataColumnId="Package\Export stage to fact\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[GENDERCD]"
+                      lineageId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Output].Columns[GENDERCD]" />
+                    <inputColumn
+                      refId="Package\Export stage to fact\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[CSTMRTYPCD]"
+                      cachedDataType="i2"
+                      cachedName="CSTMRTYPCD"
+                      externalMetadataColumnId="Package\Export stage to fact\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CSTMRTYPCD]"
+                      lineageId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Output].Columns[CSTMRTYPCD]" />
+                    <inputColumn
+                      refId="Package\Export stage to fact\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[CSTMRGRPCD]"
+                      cachedDataType="i2"
+                      cachedName="CSTMRGRPCD"
+                      externalMetadataColumnId="Package\Export stage to fact\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CSTMRGRPCD]"
+                      lineageId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Output].Columns[CSTMRGRPCD]" />
+                    <inputColumn
+                      refId="Package\Export stage to fact\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DateKey]"
+                      cachedDataType="i4"
+                      cachedName="DateKey"
+                      externalMetadataColumnId="Package\Export stage to fact\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CSTMRBIRTHDTDateKey]"
+                      lineageId="Package\Export stage to fact\Lookup_DateKey.Outputs[Lookup Match Output].Columns[DateKey]" />
+                    <inputColumn
+                      refId="Package\Export stage to fact\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[CSTMRID]"
+                      cachedDataType="numeric"
+                      cachedName="CSTMRID"
+                      cachedPrecision="12"
+                      externalMetadataColumnId="Package\Export stage to fact\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CustomerKey]"
+                      lineageId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Output].Columns[CSTMRID]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Export stage to fact\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CustomerKey]"
+                      dataType="numeric"
+                      name="CustomerKey"
+                      precision="12" />
+                    <externalMetadataColumn
+                      refId="Package\Export stage to fact\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CSTMRID]"
+                      dataType="numeric"
+                      name="CSTMRID"
+                      precision="12" />
+                    <externalMetadataColumn
+                      refId="Package\Export stage to fact\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[INTCSTMRID]"
+                      dataType="i4"
+                      name="INTCSTMRID" />
+                    <externalMetadataColumn
+                      refId="Package\Export stage to fact\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FIRSTNAME]"
+                      dataType="wstr"
+                      length="100"
+                      name="FIRSTNAME" />
+                    <externalMetadataColumn
+                      refId="Package\Export stage to fact\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LASTNAME]"
+                      dataType="wstr"
+                      length="100"
+                      name="LASTNAME" />
+                    <externalMetadataColumn
+                      refId="Package\Export stage to fact\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CSTMRNAME]"
+                      dataType="wstr"
+                      length="200"
+                      name="CSTMRNAME" />
+                    <externalMetadataColumn
+                      refId="Package\Export stage to fact\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CSTMRNAID]"
+                      dataType="numeric"
+                      name="CSTMRNAID"
+                      precision="12" />
+                    <externalMetadataColumn
+                      refId="Package\Export stage to fact\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CSTMRACCNO]"
+                      dataType="numeric"
+                      name="CSTMRACCNO"
+                      precision="10" />
+                    <externalMetadataColumn
+                      refId="Package\Export stage to fact\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CSTMRBIRTHDT]"
+                      dataType="i4"
+                      name="CSTMRBIRTHDT" />
+                    <externalMetadataColumn
+                      refId="Package\Export stage to fact\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[GENDERCD]"
+                      dataType="i2"
+                      name="GENDERCD" />
+                    <externalMetadataColumn
+                      refId="Package\Export stage to fact\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CSTMRTYPCD]"
+                      dataType="i2"
+                      name="CSTMRTYPCD" />
+                    <externalMetadataColumn
+                      refId="Package\Export stage to fact\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CSTMRGRPCD]"
+                      dataType="i2"
+                      name="CSTMRGRPCD" />
+                    <externalMetadataColumn
+                      refId="Package\Export stage to fact\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TIMEZ]"
+                      dataType="bytes"
+                      length="8"
+                      name="TIMEZ" />
+                    <externalMetadataColumn
+                      refId="Package\Export stage to fact\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CSTMRBIRTHDTDateKey]"
+                      dataType="i4"
+                      name="CSTMRBIRTHDTDateKey" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Export stage to fact\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Export stage to fact\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Export stage to fact\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Export stage to fact\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Export stage to fact\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Export stage to fact\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Export stage to fact\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[stageCstmr]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select *
+from stageCstmr</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1256</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Export stage to fact\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="{5396C769-EA4B-4C43-AB53-318B29EE5414}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[SAYAR_MSSQLSERVER2019.BEHSAZANDW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Output].Columns[CSTMRID]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CSTMRID]"
+                      lineageId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Output].Columns[CSTMRID]"
+                      name="CSTMRID"
+                      precision="12"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Output].Columns[INTCSTMRID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[INTCSTMRID]"
+                      lineageId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Output].Columns[INTCSTMRID]"
+                      name="INTCSTMRID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Output].Columns[FIRSTNAME]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[FIRSTNAME]"
+                      length="100"
+                      lineageId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Output].Columns[FIRSTNAME]"
+                      name="FIRSTNAME"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Output].Columns[LASTNAME]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[LASTNAME]"
+                      length="100"
+                      lineageId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Output].Columns[LASTNAME]"
+                      name="LASTNAME"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Output].Columns[CSTMRNAME]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CSTMRNAME]"
+                      length="200"
+                      lineageId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Output].Columns[CSTMRNAME]"
+                      name="CSTMRNAME"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Output].Columns[CSTMRNAID]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CSTMRNAID]"
+                      lineageId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Output].Columns[CSTMRNAID]"
+                      name="CSTMRNAID"
+                      precision="12"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Output].Columns[CSTMRACCNO]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CSTMRACCNO]"
+                      lineageId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Output].Columns[CSTMRACCNO]"
+                      name="CSTMRACCNO"
+                      precision="10"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Output].Columns[CSTMRBIRTHDT]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CSTMRBIRTHDT]"
+                      lineageId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Output].Columns[CSTMRBIRTHDT]"
+                      name="CSTMRBIRTHDT"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Output].Columns[GENDERCD]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[GENDERCD]"
+                      lineageId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Output].Columns[GENDERCD]"
+                      name="GENDERCD"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Output].Columns[CSTMRTYPCD]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CSTMRTYPCD]"
+                      lineageId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Output].Columns[CSTMRTYPCD]"
+                      name="CSTMRTYPCD"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Output].Columns[CSTMRGRPCD]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CSTMRGRPCD]"
+                      lineageId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Output].Columns[CSTMRGRPCD]"
+                      name="CSTMRGRPCD"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Output].Columns[timez]"
+                      codePage="1256"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[timez]"
+                      length="50"
+                      lineageId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Output].Columns[timez]"
+                      name="timez"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CSTMRID]"
+                      dataType="numeric"
+                      name="CSTMRID"
+                      precision="12" />
+                    <externalMetadataColumn
+                      refId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[INTCSTMRID]"
+                      dataType="i4"
+                      name="INTCSTMRID" />
+                    <externalMetadataColumn
+                      refId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[FIRSTNAME]"
+                      dataType="wstr"
+                      length="100"
+                      name="FIRSTNAME" />
+                    <externalMetadataColumn
+                      refId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[LASTNAME]"
+                      dataType="wstr"
+                      length="100"
+                      name="LASTNAME" />
+                    <externalMetadataColumn
+                      refId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CSTMRNAME]"
+                      dataType="wstr"
+                      length="200"
+                      name="CSTMRNAME" />
+                    <externalMetadataColumn
+                      refId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CSTMRNAID]"
+                      dataType="numeric"
+                      name="CSTMRNAID"
+                      precision="12" />
+                    <externalMetadataColumn
+                      refId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CSTMRACCNO]"
+                      dataType="numeric"
+                      name="CSTMRACCNO"
+                      precision="10" />
+                    <externalMetadataColumn
+                      refId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CSTMRBIRTHDT]"
+                      dataType="i4"
+                      name="CSTMRBIRTHDT" />
+                    <externalMetadataColumn
+                      refId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[GENDERCD]"
+                      dataType="i2"
+                      name="GENDERCD" />
+                    <externalMetadataColumn
+                      refId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CSTMRTYPCD]"
+                      dataType="i2"
+                      name="CSTMRTYPCD" />
+                    <externalMetadataColumn
+                      refId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CSTMRGRPCD]"
+                      dataType="i2"
+                      name="CSTMRGRPCD" />
+                    <externalMetadataColumn
+                      refId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[timez]"
+                      codePage="1256"
+                      dataType="str"
+                      length="50"
+                      name="timez" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CSTMRID]"
+                      dataType="numeric"
+                      lineageId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CSTMRID]"
+                      name="CSTMRID"
+                      precision="12" />
+                    <outputColumn
+                      refId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[INTCSTMRID]"
+                      dataType="i4"
+                      lineageId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[INTCSTMRID]"
+                      name="INTCSTMRID" />
+                    <outputColumn
+                      refId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[FIRSTNAME]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[FIRSTNAME]"
+                      name="FIRSTNAME" />
+                    <outputColumn
+                      refId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[LASTNAME]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[LASTNAME]"
+                      name="LASTNAME" />
+                    <outputColumn
+                      refId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CSTMRNAME]"
+                      dataType="wstr"
+                      length="200"
+                      lineageId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CSTMRNAME]"
+                      name="CSTMRNAME" />
+                    <outputColumn
+                      refId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CSTMRNAID]"
+                      dataType="numeric"
+                      lineageId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CSTMRNAID]"
+                      name="CSTMRNAID"
+                      precision="12" />
+                    <outputColumn
+                      refId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CSTMRACCNO]"
+                      dataType="numeric"
+                      lineageId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CSTMRACCNO]"
+                      name="CSTMRACCNO"
+                      precision="10" />
+                    <outputColumn
+                      refId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CSTMRBIRTHDT]"
+                      dataType="i4"
+                      lineageId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CSTMRBIRTHDT]"
+                      name="CSTMRBIRTHDT" />
+                    <outputColumn
+                      refId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[GENDERCD]"
+                      dataType="i2"
+                      lineageId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[GENDERCD]"
+                      name="GENDERCD" />
+                    <outputColumn
+                      refId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CSTMRTYPCD]"
+                      dataType="i2"
+                      lineageId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CSTMRTYPCD]"
+                      name="CSTMRTYPCD" />
+                    <outputColumn
+                      refId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CSTMRGRPCD]"
+                      dataType="i2"
+                      lineageId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CSTMRGRPCD]"
+                      name="CSTMRGRPCD" />
+                    <outputColumn
+                      refId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[timez]"
+                      codePage="1256"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[timez]"
+                      name="timez" />
+                    <outputColumn
+                      refId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Export stage to fact.Paths[Lookup Match Output]"
+              endId="Package\Export stage to fact\OLE DB Command_update.Inputs[OLE DB Command Input]"
+              name="Lookup Match Output"
+              startId="Package\Export stage to fact\Lookup.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Export stage to fact.Paths[Lookup Match Output1]"
+              endId="Package\Export stage to fact\Lookup.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Export stage to fact\Lookup_DateKey.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Export stage to fact.Paths[Lookup No Match Output]"
+              endId="Package\Export stage to fact\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Lookup No Match Output"
+              startId="Package\Export stage to fact\Lookup.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\Export stage to fact.Paths[OLE DB Source Output]"
+              endId="Package\Export stage to fact\Lookup_DateKey.Inputs[Lookup Input]"
+              name="OLE DB Source Output"
+              startId="Package\Export stage to fact\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Export to stage by timestamp"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{e71ac009-0ab2-4abe-8e7b-3b0555c95c79}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Export to stage by timestamp"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:PropertyExpression
+        DTS:Name="[ODBC Source].[SqlCommand]">@[User::v_query]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Export to stage by timestamp\Data Conversion"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Export to stage by timestamp\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Export to stage by timestamp\Data Conversion.Inputs[Data Conversion Input].Columns[FIRSTNAME]"
+                      cachedCodepage="1256"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="FIRSTNAME"
+                      lineageId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Output].Columns[FIRSTNAME]" />
+                    <inputColumn
+                      refId="Package\Export to stage by timestamp\Data Conversion.Inputs[Data Conversion Input].Columns[LASTNAME]"
+                      cachedCodepage="1256"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="LASTNAME"
+                      lineageId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Output].Columns[LASTNAME]" />
+                    <inputColumn
+                      refId="Package\Export to stage by timestamp\Data Conversion.Inputs[Data Conversion Input].Columns[CSTMRNAME]"
+                      cachedCodepage="1256"
+                      cachedDataType="str"
+                      cachedLength="200"
+                      cachedName="CSTMRNAME"
+                      lineageId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Output].Columns[CSTMRNAME]" />
+                    <inputColumn
+                      refId="Package\Export to stage by timestamp\Data Conversion.Inputs[Data Conversion Input].Columns[TIMEZ]"
+                      cachedDataType="dbTimeStamp2"
+                      cachedName="TIMEZ"
+                      cachedScale="6"
+                      lineageId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Output].Columns[TIMEZ]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Export to stage by timestamp\Data Conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Export to stage by timestamp\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Export to stage by timestamp\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of FIRSTNAME]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="100"
+                      lineageId="Package\Export to stage by timestamp\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of FIRSTNAME]"
+                      name="Copy of FIRSTNAME"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Output].Columns[FIRSTNAME]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Export to stage by timestamp\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of LASTNAME]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="100"
+                      lineageId="Package\Export to stage by timestamp\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of LASTNAME]"
+                      name="Copy of LASTNAME"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Output].Columns[LASTNAME]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Export to stage by timestamp\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of CSTMRNAME]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="200"
+                      lineageId="Package\Export to stage by timestamp\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of CSTMRNAME]"
+                      name="Copy of CSTMRNAME"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Output].Columns[CSTMRNAME]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Export to stage by timestamp\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of TIMEZ]"
+                      codePage="1256"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Export to stage by timestamp\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of TIMEZ]"
+                      name="Copy of TIMEZ"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Output].Columns[TIMEZ]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Export to stage by timestamp\Data Conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Export to stage by timestamp\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Export to stage by timestamp\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Export to stage by timestamp\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Export to stage by timestamp\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Export to stage by timestamp\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Export to stage by timestamp\ODBC Source"
+              componentClassID="Microsoft.SSISODBCSrc"
+              contactInfo="ODBC Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="ODBC Source"
+              name="ODBC Source"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The name of the table to be fetched."
+                  expressionType="Notify"
+                  name="TableName"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select CST.CSTMRID, cst.INTCSTMRID , cst.CSTMRNAID, cst.CSTMRACCNO, cst.CSTMRBIRTHDT   , cst.GENDERCD ,cst.CSTMRTYPCD, cst.CSTMRGRPCD ,CAST(CST.CSTMRNAME AS VARCHAR(200) CCSID 1252) as CSTMRNAME, CAST(CST.NAME AS VARCHAR(100) CCSID 1252) AS FIRSTNAME , CAST(CST.FAMILY AS VARCHAR(100) CCSID 1252) AS LASTNAME ,cst.TIMEZ from TASSHMA.CTFCSTMR CST where  (CST.timez&gt; '' ) with ur;</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows fetched per batch."
+                  expressionType="Notify"
+                  name="BatchSize">1000</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines the chunk size allocation for LOB columns"
+                  expressionType="Notify"
+                  name="LobChunkSize">32768</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines how the component exposes CHAR columns. If False, CHAR columns are exposed as (multi-)byte strings (DT_STR), if True, CHAR columns are exposed as wide strings (DT_WSTR)"
+                  expressionType="Notify"
+                  name="ExposeCharColumnsAsUnicode">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds to wait for an SQL statement to execute before returning to the application."
+                  expressionType="Notify"
+                  name="StatementTimeout">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The code page to use when code page information is unavailable from the data source."
+                  expressionType="Notify"
+                  name="DefaultCodePage">1256</property>
+                <property
+                  dataType="System.Int32"
+                  description="The method used for fetching data."
+                  expressionType="Notify"
+                  name="FetchMethod">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="The ODBC C data type for binding numeric data."
+                  expressionType="Notify"
+                  name="BindNumericAs">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines how the component would bind columns of (multi)-byte string types (i.e., SQL_CHAR, SQL_VARCHAR, SQL_LONGVARCHAR). The options are: Unicode (SQL_C_WCHAR) and ANSI (SQL_C_CHAR)."
+                  expressionType="Notify"
+                  name="BindCharColumnsAs">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The mode used to access the database."
+                  expressionType="Notify"
+                  name="AccessMode"
+                  typeConverter="AccessMode">1</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Export to stage by timestamp\ODBC Source.Connections[ODBCConnection]"
+                  connectionManagerID="{C8E26535-4899-49F5-AEB0-8BD774D74F0D}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DB2_DEV_odbc sayar]"
+                  description="The ODBC runtime connection used to access the database."
+                  name="ODBCConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Output]"
+                  errorRowDisposition="FailComponent"
+                  name="ODBC Source Output"
+                  truncationRowDisposition="FailComponent">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Output].Columns[CSTMRID]"
+                      dataType="numeric"
+                      externalMetadataColumnId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[CSTMRID]"
+                      lineageId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Output].Columns[CSTMRID]"
+                      name="CSTMRID"
+                      precision="12" />
+                    <outputColumn
+                      refId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Output].Columns[INTCSTMRID]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[INTCSTMRID]"
+                      lineageId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Output].Columns[INTCSTMRID]"
+                      name="INTCSTMRID" />
+                    <outputColumn
+                      refId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Output].Columns[CSTMRNAID]"
+                      dataType="numeric"
+                      externalMetadataColumnId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[CSTMRNAID]"
+                      lineageId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Output].Columns[CSTMRNAID]"
+                      name="CSTMRNAID"
+                      precision="12" />
+                    <outputColumn
+                      refId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Output].Columns[CSTMRACCNO]"
+                      dataType="numeric"
+                      externalMetadataColumnId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[CSTMRACCNO]"
+                      lineageId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Output].Columns[CSTMRACCNO]"
+                      name="CSTMRACCNO"
+                      precision="10" />
+                    <outputColumn
+                      refId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Output].Columns[CSTMRBIRTHDT]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[CSTMRBIRTHDT]"
+                      lineageId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Output].Columns[CSTMRBIRTHDT]"
+                      name="CSTMRBIRTHDT" />
+                    <outputColumn
+                      refId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Output].Columns[GENDERCD]"
+                      dataType="i2"
+                      externalMetadataColumnId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[GENDERCD]"
+                      lineageId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Output].Columns[GENDERCD]"
+                      name="GENDERCD" />
+                    <outputColumn
+                      refId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Output].Columns[CSTMRTYPCD]"
+                      dataType="i2"
+                      externalMetadataColumnId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[CSTMRTYPCD]"
+                      lineageId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Output].Columns[CSTMRTYPCD]"
+                      name="CSTMRTYPCD" />
+                    <outputColumn
+                      refId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Output].Columns[CSTMRGRPCD]"
+                      dataType="i2"
+                      externalMetadataColumnId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[CSTMRGRPCD]"
+                      lineageId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Output].Columns[CSTMRGRPCD]"
+                      name="CSTMRGRPCD" />
+                    <outputColumn
+                      refId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Output].Columns[CSTMRNAME]"
+                      codePage="1256"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[CSTMRNAME]"
+                      length="200"
+                      lineageId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Output].Columns[CSTMRNAME]"
+                      name="CSTMRNAME" />
+                    <outputColumn
+                      refId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Output].Columns[FIRSTNAME]"
+                      codePage="1256"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[FIRSTNAME]"
+                      length="100"
+                      lineageId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Output].Columns[FIRSTNAME]"
+                      name="FIRSTNAME" />
+                    <outputColumn
+                      refId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Output].Columns[LASTNAME]"
+                      codePage="1256"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[LASTNAME]"
+                      length="100"
+                      lineageId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Output].Columns[LASTNAME]"
+                      name="LASTNAME" />
+                    <outputColumn
+                      refId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Output].Columns[TIMEZ]"
+                      dataType="dbTimeStamp2"
+                      externalMetadataColumnId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[TIMEZ]"
+                      lineageId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Output].Columns[TIMEZ]"
+                      name="TIMEZ"
+                      scale="6" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[CSTMRID]"
+                      dataType="numeric"
+                      name="CSTMRID"
+                      precision="12" />
+                    <externalMetadataColumn
+                      refId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[INTCSTMRID]"
+                      dataType="i4"
+                      name="INTCSTMRID" />
+                    <externalMetadataColumn
+                      refId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[CSTMRNAID]"
+                      dataType="numeric"
+                      name="CSTMRNAID"
+                      precision="12" />
+                    <externalMetadataColumn
+                      refId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[CSTMRACCNO]"
+                      dataType="numeric"
+                      name="CSTMRACCNO"
+                      precision="10" />
+                    <externalMetadataColumn
+                      refId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[CSTMRBIRTHDT]"
+                      dataType="i4"
+                      name="CSTMRBIRTHDT" />
+                    <externalMetadataColumn
+                      refId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[GENDERCD]"
+                      dataType="i2"
+                      name="GENDERCD" />
+                    <externalMetadataColumn
+                      refId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[CSTMRTYPCD]"
+                      dataType="i2"
+                      name="CSTMRTYPCD" />
+                    <externalMetadataColumn
+                      refId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[CSTMRGRPCD]"
+                      dataType="i2"
+                      name="CSTMRGRPCD" />
+                    <externalMetadataColumn
+                      refId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[CSTMRNAME]"
+                      codePage="1256"
+                      dataType="str"
+                      length="200"
+                      name="CSTMRNAME" />
+                    <externalMetadataColumn
+                      refId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[FIRSTNAME]"
+                      codePage="1256"
+                      dataType="str"
+                      length="100"
+                      name="FIRSTNAME" />
+                    <externalMetadataColumn
+                      refId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[LASTNAME]"
+                      codePage="1256"
+                      dataType="str"
+                      length="100"
+                      name="LASTNAME" />
+                    <externalMetadataColumn
+                      refId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[TIMEZ]"
+                      dataType="dbTimeStamp2"
+                      name="TIMEZ"
+                      scale="6" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Error Output]"
+                  isErrorOut="true"
+                  name="ODBC Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Error Output].Columns[CSTMRID]"
+                      dataType="numeric"
+                      externalMetadataColumnId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[CSTMRID]"
+                      lineageId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Error Output].Columns[CSTMRID]"
+                      name="CSTMRID"
+                      precision="12" />
+                    <outputColumn
+                      refId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Error Output].Columns[INTCSTMRID]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[INTCSTMRID]"
+                      lineageId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Error Output].Columns[INTCSTMRID]"
+                      name="INTCSTMRID" />
+                    <outputColumn
+                      refId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Error Output].Columns[CSTMRNAID]"
+                      dataType="numeric"
+                      externalMetadataColumnId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[CSTMRNAID]"
+                      lineageId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Error Output].Columns[CSTMRNAID]"
+                      name="CSTMRNAID"
+                      precision="12" />
+                    <outputColumn
+                      refId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Error Output].Columns[CSTMRACCNO]"
+                      dataType="numeric"
+                      externalMetadataColumnId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[CSTMRACCNO]"
+                      lineageId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Error Output].Columns[CSTMRACCNO]"
+                      name="CSTMRACCNO"
+                      precision="10" />
+                    <outputColumn
+                      refId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Error Output].Columns[CSTMRBIRTHDT]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[CSTMRBIRTHDT]"
+                      lineageId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Error Output].Columns[CSTMRBIRTHDT]"
+                      name="CSTMRBIRTHDT" />
+                    <outputColumn
+                      refId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Error Output].Columns[GENDERCD]"
+                      dataType="i2"
+                      externalMetadataColumnId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[GENDERCD]"
+                      lineageId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Error Output].Columns[GENDERCD]"
+                      name="GENDERCD" />
+                    <outputColumn
+                      refId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Error Output].Columns[CSTMRTYPCD]"
+                      dataType="i2"
+                      externalMetadataColumnId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[CSTMRTYPCD]"
+                      lineageId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Error Output].Columns[CSTMRTYPCD]"
+                      name="CSTMRTYPCD" />
+                    <outputColumn
+                      refId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Error Output].Columns[CSTMRGRPCD]"
+                      dataType="i2"
+                      externalMetadataColumnId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[CSTMRGRPCD]"
+                      lineageId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Error Output].Columns[CSTMRGRPCD]"
+                      name="CSTMRGRPCD" />
+                    <outputColumn
+                      refId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Error Output].Columns[CSTMRNAME]"
+                      codePage="1256"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[CSTMRNAME]"
+                      length="200"
+                      lineageId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Error Output].Columns[CSTMRNAME]"
+                      name="CSTMRNAME" />
+                    <outputColumn
+                      refId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Error Output].Columns[FIRSTNAME]"
+                      codePage="1256"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[FIRSTNAME]"
+                      length="100"
+                      lineageId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Error Output].Columns[FIRSTNAME]"
+                      name="FIRSTNAME" />
+                    <outputColumn
+                      refId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Error Output].Columns[LASTNAME]"
+                      codePage="1256"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[LASTNAME]"
+                      length="100"
+                      lineageId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Error Output].Columns[LASTNAME]"
+                      name="LASTNAME" />
+                    <outputColumn
+                      refId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Error Output].Columns[TIMEZ]"
+                      dataType="dbTimeStamp2"
+                      externalMetadataColumnId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[TIMEZ]"
+                      lineageId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Error Output].Columns[TIMEZ]"
+                      name="TIMEZ"
+                      scale="6" />
+                    <outputColumn
+                      refId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Export to stage by timestamp\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[stageCstmr]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1256</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Export to stage by timestamp\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="{5396C769-EA4B-4C43-AB53-318B29EE5414}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[SAYAR_MSSQLSERVER2019.BEHSAZANDW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Export to stage by timestamp\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Export to stage by timestamp\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[CSTMRID]"
+                      cachedDataType="numeric"
+                      cachedName="CSTMRID"
+                      cachedPrecision="12"
+                      externalMetadataColumnId="Package\Export to stage by timestamp\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CSTMRID]"
+                      lineageId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Output].Columns[CSTMRID]" />
+                    <inputColumn
+                      refId="Package\Export to stage by timestamp\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[INTCSTMRID]"
+                      cachedDataType="i4"
+                      cachedName="INTCSTMRID"
+                      externalMetadataColumnId="Package\Export to stage by timestamp\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[INTCSTMRID]"
+                      lineageId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Output].Columns[INTCSTMRID]" />
+                    <inputColumn
+                      refId="Package\Export to stage by timestamp\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[CSTMRNAID]"
+                      cachedDataType="numeric"
+                      cachedName="CSTMRNAID"
+                      cachedPrecision="12"
+                      externalMetadataColumnId="Package\Export to stage by timestamp\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CSTMRNAID]"
+                      lineageId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Output].Columns[CSTMRNAID]" />
+                    <inputColumn
+                      refId="Package\Export to stage by timestamp\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[CSTMRACCNO]"
+                      cachedDataType="numeric"
+                      cachedName="CSTMRACCNO"
+                      cachedPrecision="10"
+                      externalMetadataColumnId="Package\Export to stage by timestamp\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CSTMRACCNO]"
+                      lineageId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Output].Columns[CSTMRACCNO]" />
+                    <inputColumn
+                      refId="Package\Export to stage by timestamp\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[CSTMRBIRTHDT]"
+                      cachedDataType="i4"
+                      cachedName="CSTMRBIRTHDT"
+                      externalMetadataColumnId="Package\Export to stage by timestamp\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CSTMRBIRTHDT]"
+                      lineageId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Output].Columns[CSTMRBIRTHDT]" />
+                    <inputColumn
+                      refId="Package\Export to stage by timestamp\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[GENDERCD]"
+                      cachedDataType="i2"
+                      cachedName="GENDERCD"
+                      externalMetadataColumnId="Package\Export to stage by timestamp\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[GENDERCD]"
+                      lineageId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Output].Columns[GENDERCD]" />
+                    <inputColumn
+                      refId="Package\Export to stage by timestamp\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[CSTMRTYPCD]"
+                      cachedDataType="i2"
+                      cachedName="CSTMRTYPCD"
+                      externalMetadataColumnId="Package\Export to stage by timestamp\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CSTMRTYPCD]"
+                      lineageId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Output].Columns[CSTMRTYPCD]" />
+                    <inputColumn
+                      refId="Package\Export to stage by timestamp\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[CSTMRGRPCD]"
+                      cachedDataType="i2"
+                      cachedName="CSTMRGRPCD"
+                      externalMetadataColumnId="Package\Export to stage by timestamp\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CSTMRGRPCD]"
+                      lineageId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Output].Columns[CSTMRGRPCD]" />
+                    <inputColumn
+                      refId="Package\Export to stage by timestamp\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of FIRSTNAME]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="Copy of FIRSTNAME"
+                      externalMetadataColumnId="Package\Export to stage by timestamp\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FIRSTNAME]"
+                      lineageId="Package\Export to stage by timestamp\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of FIRSTNAME]" />
+                    <inputColumn
+                      refId="Package\Export to stage by timestamp\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of LASTNAME]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="Copy of LASTNAME"
+                      externalMetadataColumnId="Package\Export to stage by timestamp\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LASTNAME]"
+                      lineageId="Package\Export to stage by timestamp\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of LASTNAME]" />
+                    <inputColumn
+                      refId="Package\Export to stage by timestamp\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of CSTMRNAME]"
+                      cachedDataType="wstr"
+                      cachedLength="200"
+                      cachedName="Copy of CSTMRNAME"
+                      externalMetadataColumnId="Package\Export to stage by timestamp\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CSTMRNAME]"
+                      lineageId="Package\Export to stage by timestamp\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of CSTMRNAME]" />
+                    <inputColumn
+                      refId="Package\Export to stage by timestamp\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of TIMEZ]"
+                      cachedCodepage="1256"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Copy of TIMEZ"
+                      externalMetadataColumnId="Package\Export to stage by timestamp\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[timez]"
+                      lineageId="Package\Export to stage by timestamp\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of TIMEZ]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Export to stage by timestamp\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CSTMRID]"
+                      dataType="numeric"
+                      name="CSTMRID"
+                      precision="12" />
+                    <externalMetadataColumn
+                      refId="Package\Export to stage by timestamp\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[INTCSTMRID]"
+                      dataType="i4"
+                      name="INTCSTMRID" />
+                    <externalMetadataColumn
+                      refId="Package\Export to stage by timestamp\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FIRSTNAME]"
+                      dataType="wstr"
+                      length="100"
+                      name="FIRSTNAME" />
+                    <externalMetadataColumn
+                      refId="Package\Export to stage by timestamp\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LASTNAME]"
+                      dataType="wstr"
+                      length="100"
+                      name="LASTNAME" />
+                    <externalMetadataColumn
+                      refId="Package\Export to stage by timestamp\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CSTMRNAME]"
+                      dataType="wstr"
+                      length="200"
+                      name="CSTMRNAME" />
+                    <externalMetadataColumn
+                      refId="Package\Export to stage by timestamp\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CSTMRNAID]"
+                      dataType="numeric"
+                      name="CSTMRNAID"
+                      precision="12" />
+                    <externalMetadataColumn
+                      refId="Package\Export to stage by timestamp\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CSTMRACCNO]"
+                      dataType="numeric"
+                      name="CSTMRACCNO"
+                      precision="10" />
+                    <externalMetadataColumn
+                      refId="Package\Export to stage by timestamp\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CSTMRBIRTHDT]"
+                      dataType="i4"
+                      name="CSTMRBIRTHDT" />
+                    <externalMetadataColumn
+                      refId="Package\Export to stage by timestamp\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[GENDERCD]"
+                      dataType="i2"
+                      name="GENDERCD" />
+                    <externalMetadataColumn
+                      refId="Package\Export to stage by timestamp\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CSTMRTYPCD]"
+                      dataType="i2"
+                      name="CSTMRTYPCD" />
+                    <externalMetadataColumn
+                      refId="Package\Export to stage by timestamp\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CSTMRGRPCD]"
+                      dataType="i2"
+                      name="CSTMRGRPCD" />
+                    <externalMetadataColumn
+                      refId="Package\Export to stage by timestamp\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[timez]"
+                      codePage="1256"
+                      dataType="str"
+                      length="50"
+                      name="timez" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Export to stage by timestamp\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Export to stage by timestamp\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Export to stage by timestamp\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Export to stage by timestamp\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Export to stage by timestamp\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Export to stage by timestamp\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Export to stage by timestamp.Paths[Data Conversion Output]"
+              endId="Package\Export to stage by timestamp\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Data Conversion Output"
+              startId="Package\Export to stage by timestamp\Data Conversion.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\Export to stage by timestamp.Paths[ODBC Source Output]"
+              endId="Package\Export to stage by timestamp\Data Conversion.Inputs[Data Conversion Input]"
+              name="ODBC Source Output"
+              startId="Package\Export to stage by timestamp\ODBC Source.Outputs[ODBC Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncate Table"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{AEAABABF-BC03-48E6-9683-A06B0285DEBC}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncate Table"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{5396C769-EA4B-4C43-AB53-318B29EE5414}"
+          SQLTask:BypassPrepare="False"
+          SQLTask:SqlStatementSource="truncate table stageCstmr&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\update config table"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{4ad2405a-046c-49f2-be90-4dfad88df8b3}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="update config table"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\update config table\Conditional Split"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="Conditional Split"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\update config table\Conditional Split.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\update config table\Conditional Split.Outputs[stage_isnot_empty]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="stage_isnot_empty"
+                  synchronousInputId="Package\update config table\Conditional Split.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">@[User::v_EndTimestamp] != ""</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">@[User::v_EndTimestamp] != ""</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\update config table\Conditional Split.Outputs[Conditional Split Default Output]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="Conditional Split Default Output"
+                  synchronousInputId="Package\update config table\Conditional Split.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\update config table\Conditional Split.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\update config table\Conditional Split.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\update config table\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\update config table\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\update config table\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\update config table\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\update config table\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\update config table\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\update config table\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\update config table\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\update config table\Derived Column.Outputs[Derived Column Output].Columns[v_EndTimeStamp]"
+                      codePage="1256"
+                      dataType="str"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\update config table\Derived Column.Outputs[Derived Column Output].Columns[v_EndTimeStamp]"
+                      name="v_EndTimeStamp"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">@[User::v_EndTimestamp]</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">@[User::v_EndTimestamp]</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\update config table\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\update config table\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\update config table\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\update config table\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\update config table\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\update config table\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\update config table\fake Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="fake Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[stageConfig]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select 0 as Coumn1</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1256</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\update config table\fake Source.Connections[OleDbConnection]"
+                  connectionManagerID="{5396C769-EA4B-4C43-AB53-318B29EE5414}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[SAYAR_MSSQLSERVER2019.BEHSAZANDW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\update config table\fake Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\update config table\fake Source.Outputs[OLE DB Source Output].Columns[Coumn1]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\update config table\fake Source.Outputs[OLE DB Source Output].ExternalColumns[Coumn1]"
+                      lineageId="Package\update config table\fake Source.Outputs[OLE DB Source Output].Columns[Coumn1]"
+                      name="Coumn1"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\update config table\fake Source.Outputs[OLE DB Source Output].ExternalColumns[Coumn1]"
+                      dataType="i4"
+                      name="Coumn1" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\update config table\fake Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\update config table\fake Source.Outputs[OLE DB Source Error Output].Columns[Coumn1]"
+                      dataType="i4"
+                      lineageId="Package\update config table\fake Source.Outputs[OLE DB Source Error Output].Columns[Coumn1]"
+                      name="Coumn1" />
+                    <outputColumn
+                      refId="Package\update config table\fake Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\update config table\fake Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\update config table\fake Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\update config table\fake Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\update config table\OLE DB Command_update config table"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="OLE DB Command_update config table"
+              usesDispositions="true"
+              validateExternalMetadata="False"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">update ETLConfig 
+set LastTimeStamp=replace(replace(? ,' ','-'),':','.') 
+where tablename='CTFCSTMR' </property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1256</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\update config table\OLE DB Command_update config table.Connections[OleDbConnection]"
+                  connectionManagerID="{5396C769-EA4B-4C43-AB53-318B29EE5414}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[SAYAR_MSSQLSERVER2019.BEHSAZANDW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\update config table\OLE DB Command_update config table.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\update config table\OLE DB Command_update config table.Inputs[OLE DB Command Input].Columns[v_EndTimeStamp]"
+                      cachedCodepage="1256"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="v_EndTimeStamp"
+                      externalMetadataColumnId="Package\update config table\OLE DB Command_update config table.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\update config table\Derived Column.Outputs[Derived Column Output].Columns[v_EndTimeStamp]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\update config table\OLE DB Command_update config table.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      codePage="1256"
+                      dataType="str"
+                      length="19"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\update config table\OLE DB Command_update config table.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\update config table\OLE DB Command_update config table.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\update config table\OLE DB Command_update config table.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\update config table\OLE DB Command_update config table.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\update config table\OLE DB Command_update config table.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\update config table\OLE DB Command_update config table.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\update config table\OLE DB Command_update config table.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\update config table\OLE DB Command_update config table.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\update config table\Row Count"
+              componentClassID="Microsoft.RowCount"
+              contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+              name="Row Count">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable to hold the row count."
+                  name="VariableName">User::v_count</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\update config table\Row Count.Inputs[Row Count Input 1]"
+                  hasSideEffects="true"
+                  name="Row Count Input 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\update config table\Row Count.Outputs[Row Count Output 1]"
+                  name="Row Count Output 1"
+                  synchronousInputId="Package\update config table\Row Count.Inputs[Row Count Input 1]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\update config table.Paths[Conditional Split Default Output]"
+              endId="Package\update config table\Row Count.Inputs[Row Count Input 1]"
+              name="Conditional Split Default Output"
+              startId="Package\update config table\Conditional Split.Outputs[Conditional Split Default Output]" />
+            <path
+              refId="Package\update config table.Paths[Derived Column Output]"
+              endId="Package\update config table\Conditional Split.Inputs[Conditional Split Input]"
+              name="Derived Column Output"
+              startId="Package\update config table\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\update config table.Paths[OLE DB Source Output]"
+              endId="Package\update config table\Derived Column.Inputs[Derived Column Input]"
+              name="OLE DB Source Output"
+              startId="Package\update config table\fake Source.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\update config table.Paths[stage_isnot_empty]"
+              endId="Package\update config table\OLE DB Command_update config table.Inputs[OLE DB Command Input]"
+              name="stage_isnot_empty"
+              startId="Package\update config table\Conditional Split.Outputs[stage_isnot_empty]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{F5480046-29AE-424C-8A0C-7F7831719763}"
+      DTS:From="Package\Truncate Table"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Execute SQL Task _Get Start Timestamp" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{B2092977-F950-4389-BEE2-45E8B843FDEB}"
+      DTS:From="Package\Execute SQL Task _Get Start Timestamp"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Export to stage by timestamp" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{4EE8148C-912E-4F95-A182-D807E874515F}"
+      DTS:From="Package\Export to stage by timestamp"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Export stage to fact" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{2536665B-6A7F-49C8-ACA9-072FA0BBA61F}"
+      DTS:From="Package\Export stage to fact"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\Execute SQL Task_Get End Timestamp" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
+      DTS:CreationName=""
+      DTS:DTSID="{C0BDFC0F-8436-4575-9FB3-21194118FED4}"
+      DTS:From="Package\Execute SQL Task_Get End Timestamp"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 4"
+      DTS:To="Package\update config table" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="270,42"
+          Id="Package\Execute SQL Task _Get Start Timestamp"
+          TopLeft="318,90" />
+        <NodeLayout
+          Size="262,42"
+          Id="Package\Execute SQL Task_Get End Timestamp"
+          TopLeft="317,407" />
+        <NodeLayout
+          Size="172,42"
+          Id="Package\Export stage to fact"
+          TopLeft="357,307" />
+        <NodeLayout
+          Size="218,42"
+          Id="Package\Export to stage by timestamp"
+          TopLeft="338,193" />
+        <NodeLayout
+          Size="150,42"
+          Id="Package\Truncate Table"
+          TopLeft="381,4" />
+        <NodeLayout
+          Size="170,42"
+          Id="Package\update config table"
+          TopLeft="365,498" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="454.5,46">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,44"
+              Start="0,0"
+              End="0,36.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="450,132">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,61"
+              Start="0,0"
+              End="0,53.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,53.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="445,235">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,72"
+              Start="0,0"
+              End="0,64.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,64.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="445.5,349">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,58"
+              Start="0,0"
+              End="0,50.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,50.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 4]"
+          TopLeft="449,449">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,49"
+              Start="0,0"
+              End="0,41.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Export stage to fact">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Export stage to fact\OLE DB Destination"
+          TopLeft="262,578" />
+        <NodeLayout
+          Size="158,42"
+          Id="Package\Export stage to fact\Lookup_DateKey"
+          TopLeft="425,106" />
+        <NodeLayout
+          Size="150,42"
+          Id="Package\Export stage to fact\OLE DB Source"
+          TopLeft="426,4" />
+        <NodeLayout
+          Size="204,42"
+          Id="Package\Export stage to fact\OLE DB Command_update"
+          TopLeft="489,582" />
+        <NodeLayout
+          Size="113,42"
+          Id="Package\Export stage to fact\Lookup"
+          TopLeft="444,325" />
+        <EdgeLayout
+          Id="Package\Export stage to fact.Paths[Lookup Match Output1]"
+          TopLeft="502.25,148">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,177"
+              Start="0,0"
+              End="0,169.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,169.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,78.9453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Export stage to fact.Paths[Lookup Match Output]"
+          TopLeft="518,367">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="73,215"
+              Start="0,0"
+              End="73,207.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,83.8010471204188" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,83.8010471204188"
+                    Point2="0,87.8010471204188"
+                    Point3="4,87.8010471204188" />
+                  <mssgle:LineSegment
+                    End="69,87.8010471204188" />
+                  <mssgle:CubicBezierSegment
+                    Point1="69,87.8010471204188"
+                    Point2="73,87.8010471204188"
+                    Point3="73,91.8010471204188" />
+                  <mssgle:LineSegment
+                    End="73,207.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-11.69138671875,92.8010471204188,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Export stage to fact.Paths[OLE DB Source Output]"
+          TopLeft="502.5,46">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Export stage to fact.Paths[Lookup No Match Output]"
+          TopLeft="483,367">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-135.5,211"
+              Start="0,0"
+              End="-135.5,203.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,82.1675392670157" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,82.1675392670157"
+                    Point2="0,86.1675392670157"
+                    Point3="-4,86.1675392670157" />
+                  <mssgle:LineSegment
+                    End="-131.5,86.1675392670157" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-131.5,86.1675392670157"
+                    Point2="-135.5,86.1675392670157"
+                    Point3="-135.5,90.1675392670157" />
+                  <mssgle:LineSegment
+                    End="-135.5,203.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-123.55638671875,91.1675392670157,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Export stage to fact\Lookup_DateKey">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[dimDate]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Export stage to fact\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Export stage to fact\Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[dimCSTMR]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Export stage to fact\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Export to stage by timestamp">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="142,42"
+          Id="Package\Export to stage by timestamp\ODBC Source"
+          TopLeft="337.5,48.5" />
+        <NodeLayout
+          Size="156,42"
+          Id="Package\Export to stage by timestamp\Data Conversion"
+          TopLeft="128.5,155.5" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Export to stage by timestamp\OLE DB Destination"
+          TopLeft="318.5,270.5" />
+        <EdgeLayout
+          Id="Package\Export to stage by timestamp.Paths[Data Conversion Output]"
+          TopLeft="206.5,197.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="197.5,73"
+              Start="0,0"
+              End="197.5,65.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,32.5"
+                    Point2="0,36.5"
+                    Point3="4,36.5" />
+                  <mssgle:LineSegment
+                    End="193.5,36.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="193.5,36.5"
+                    Point2="197.5,36.5"
+                    Point3="197.5,40.5" />
+                  <mssgle:LineSegment
+                    End="197.5,65.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Export to stage by timestamp.Paths[ODBC Source Output]"
+          TopLeft="408.5,90.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-202,65"
+              Start="0,0"
+              End="-202,57.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,28.5"
+                    Point2="0,32.5"
+                    Point3="-4,32.5" />
+                  <mssgle:LineSegment
+                    End="-198,32.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-198,32.5"
+                    Point2="-202,32.5"
+                    Point3="-202,36.5" />
+                  <mssgle:LineSegment
+                    End="-202,57.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Export to stage by timestamp\ODBC Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Export to stage by timestamp\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\update config table">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="262,42"
+          Id="Package\update config table\OLE DB Command_update config table"
+          TopLeft="452,446" />
+        <NodeLayout
+          Size="134,42"
+          Id="Package\update config table\fake Source"
+          TopLeft="664,90" />
+        <NodeLayout
+          Size="154,42"
+          Id="Package\update config table\Derived Column"
+          TopLeft="674,207" />
+        <EdgeLayout
+          Id="Package\update config table.Paths[OLE DB Source Output]"
+          TopLeft="731,132">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="20,75"
+              Start="0,0"
+              End="20,67.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,33.5"
+                    Point2="0,37.5"
+                    Point3="4,37.5" />
+                  <mssgle:LineSegment
+                    End="16,37.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="16,37.5"
+                    Point2="20,37.5"
+                    Point3="20,41.5" />
+                  <mssgle:LineSegment
+                    End="20,67.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="155,42"
+          Id="Package\update config table\Conditional Split"
+          TopLeft="756,312" />
+        <EdgeLayout
+          Id="Package\update config table.Paths[Derived Column Output]"
+          TopLeft="751,249">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="82.5,63"
+              Start="0,0"
+              End="82.5,55.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,27.5"
+                    Point2="0,31.5"
+                    Point3="4,31.5" />
+                  <mssgle:LineSegment
+                    End="78.5,31.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="78.5,31.5"
+                    Point2="82.5,31.5"
+                    Point3="82.5,35.5" />
+                  <mssgle:LineSegment
+                    End="82.5,55.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\update config table.Paths[stage_isnot_empty]"
+          TopLeft="833.5,354">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-250.5,92"
+              Start="0,0"
+              End="-250.5,84.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,42" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,42"
+                    Point2="0,46"
+                    Point3="-4,46" />
+                  <mssgle:LineSegment
+                    End="-246.5,46" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-246.5,46"
+                    Point2="-250.5,46"
+                    Point3="-250.5,50" />
+                  <mssgle:LineSegment
+                    End="-250.5,84.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-167.75701171875,51,85.0140234375,11.384765625"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="130,42"
+          Id="Package\update config table\Row Count"
+          TopLeft="930,456" />
+        <EdgeLayout
+          Id="Package\update config table.Paths[Conditional Split Default Output]"
+          TopLeft="858,354">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="137,102"
+              Start="0,0"
+              End="137,94.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,37.4252873563218" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,37.4252873563218"
+                    Point2="0,41.4252873563218"
+                    Point3="4,41.4252873563218" />
+                  <mssgle:LineSegment
+                    End="133,41.4252873563218" />
+                  <mssgle:CubicBezierSegment
+                    Point1="133,41.4252873563218"
+                    Point2="137,41.4252873563218"
+                    Point3="137,45.4252873563218" />
+                  <mssgle:LineSegment
+                    End="137,94.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-2.11390625000001,46.4252873563218,141.2278125,11.658203125"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
