@@ -1,0 +1,24 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Default</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8d94d4ec-478f-4eb6-9b4f-0b7b8098864d}</ProjectGuid>
+    <WidgetFileName>SimpleWidget1.widget</WidgetFileName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Default' ">
+    <OutputPath>bin\Default\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="widget.htm" />
+    <Content Include="widget.png" />
+    <Content Include="config.xml" />
+    <Content Include="scripts\widget.js" />
+    <Content Include="css\LoDPI.css" />
+    <Content Include="css\HiDPI.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="css\" />
+    <Folder Include="scripts\" />
+  </ItemGroup>
+  <Import Project="$(ProgramFiles)\Microsoft\WMWA\VS2008\Widget.targets" />
+</Project>

@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="msafdari" Class="DatabaseDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=sayar;Initial Catalog=msafdari;Persist Security Info=True;User ID=vistaene_usr" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="vistaene_msafdariConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.FILEDETAILS" Member="FILEDETAILs">
+    <Type Name="FILEDETAIL">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MENUITEMID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FILENAME" Type="System.String" DbType="NVarChar(60)" CanBeNull="true" />
+      <Column Name="FILECONTENT" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="MENUITEM_FILEDETAIL" Member="MENUITEM" ThisKey="MENUITEMID" OtherKey="ID" Type="MENUITEM" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.LINK" Member="LINKs">
+    <Type Name="LINK">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TITLE" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="URL" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MENUITEM" Member="MENUITEMs">
+    <Type Name="MENUITEM">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MENU" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="HANDLER" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PARENTID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MTEXT" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="MNUSEEN" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="MENUITEM_FILEDETAIL" Member="FILEDETAILs" ThisKey="ID" OtherKey="MENUITEMID" Type="FILEDETAIL" />
+      <Association Name="MENUITEM_UM" Member="UMs" ThisKey="ID" OtherKey="MENUITEMID" Type="UM" />
+    </Type>
+  </Table>
+  <Table Name="dbo.NEWS" Member="NEWs">
+    <Type Name="NEW">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TITLE" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="NEWSTEXT" Type="System.String" DbType="NText NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="REGDATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="VISIT" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="NEW_UN" Member="UNs" ThisKey="ID" OtherKey="NEWSID" Type="UN" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SLIDER" Member="SLIDERs">
+    <Type Name="SLIDER">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="FileSize" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FilePath" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UM" Member="UMs">
+    <Type Name="UM">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="USERID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MENUITEMID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="MENUITEM_UM" Member="MENUITEM" ThisKey="MENUITEMID" OtherKey="ID" Type="MENUITEM" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="USER_UM" Member="USER" ThisKey="USERID" OtherKey="ID" Type="USER" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UN" Member="UNs">
+    <Type Name="UN">
+      <Column Name="USERID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NEWSID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="NEW_UN" Member="NEW" ThisKey="NEWSID" OtherKey="ID" Type="NEW" IsForeignKey="true" />
+      <Association Name="USER_UN" Member="USER" ThisKey="USERID" OtherKey="ID" Type="USER" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[USER]" Member="USERs">
+    <Type Name="USER">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NAME" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="FAMILY" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="EMAIL" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="PWD" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="CREATEDDATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="LASTLOGINDATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ISACTIVE" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ISADMIN" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="USER_UM" Member="UMs" ThisKey="ID" OtherKey="USERID" Type="UM" />
+      <Association Name="USER_UN" Member="UNs" ThisKey="ID" OtherKey="USERID" Type="UN" />
+    </Type>
+  </Table>
+  <Table Name="dbo.USERPROFILE" Member="USERPROFILEs">
+    <Type Name="USERPROFILE">
+      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="BgColor" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="IconFile" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="FontFamily" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="FontSize" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.getPdfDetail" Method="getPdfDetail">
+    <ElementType Name="getPdfDetailResult">
+      <Column Name="MENU" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="FILENAME" Type="System.String" DbType="NVarChar(60)" CanBeNull="true" />
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+</Database>

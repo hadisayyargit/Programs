@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" name="MessageService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://vds/MinooWcfServiceLibrary/MessageService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://vds/MinooWcfServiceLibrary/MessageService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://vds/MinooWcfServiceLibrary/MessageService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/MinooWcfServiceLibrary" />
+      <xsd:import schemaLocation="http://vds/MinooWcfServiceLibrary/MessageService.svc?xsd=xsd3" />
+      <xsd:import schemaLocation="http://vds/MinooWcfServiceLibrary/MessageService.svc?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://vds/MinooWcfServiceLibrary/MessageService.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/System.Data" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IService1_GetData_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetData" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetDataUsingDataContract_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDataUsingDataContract" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetDataUsingDataContract_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDataUsingDataContractResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SendPacket_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendPacket" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SendPacket_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SendPacketResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetPacket_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPacket" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetPacket_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPacketResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetPacketInQueue_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPacketInQueue" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetPacketInQueue_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPacketInQueueResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ReceiveMessageInQueue_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReceiveMessageInQueue" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ReceiveMessageInQueue_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReceiveMessageInQueueResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SendMessage_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendMessage" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SendMessage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SendMessageResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SendMessageMultiple_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendMessageMultiple" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SendMessageMultiple_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SendMessageMultipleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SendMassageInQueue_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendMassageInQueue" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SendMassageInQueue_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SendMassageInQueueResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Confirm_Packet_InputMessage">
+    <wsdl:part name="parameters" element="tns:Confirm_Packet" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Confirm_Packet_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Confirm_PacketResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IService1">
+    <wsdl:operation name="GetData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetData" message="tns:IService1_GetData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetDataResponse" message="tns:IService1_GetData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDataUsingDataContract">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetDataUsingDataContract" message="tns:IService1_GetDataUsingDataContract_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetDataUsingDataContractResponse" message="tns:IService1_GetDataUsingDataContract_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendPacket">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/SendPacket" message="tns:IService1_SendPacket_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/SendPacketResponse" message="tns:IService1_SendPacket_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPacket">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetPacket" message="tns:IService1_GetPacket_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetPacketResponse" message="tns:IService1_GetPacket_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPacketInQueue">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetPacketInQueue" message="tns:IService1_GetPacketInQueue_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetPacketInQueueResponse" message="tns:IService1_GetPacketInQueue_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReceiveMessageInQueue">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/ReceiveMessageInQueue" message="tns:IService1_ReceiveMessageInQueue_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/ReceiveMessageInQueueResponse" message="tns:IService1_ReceiveMessageInQueue_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendMessage">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/SendMessage" message="tns:IService1_SendMessage_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/SendMessageResponse" message="tns:IService1_SendMessage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendMessageMultiple">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/SendMessageMultiple" message="tns:IService1_SendMessageMultiple_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/SendMessageMultipleResponse" message="tns:IService1_SendMessageMultiple_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendMassageInQueue">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/SendMassageInQueue" message="tns:IService1_SendMassageInQueue_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/SendMassageInQueueResponse" message="tns:IService1_SendMassageInQueue_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Confirm_Packet">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/Confirm_Packet" message="tns:IService1_Confirm_Packet_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/Confirm_PacketResponse" message="tns:IService1_Confirm_Packet_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetData">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDataUsingDataContract">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetDataUsingDataContract" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendPacket">
+      <soap:operation soapAction="http://tempuri.org/IService1/SendPacket" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPacket">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetPacket" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPacketInQueue">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetPacketInQueue" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReceiveMessageInQueue">
+      <soap:operation soapAction="http://tempuri.org/IService1/ReceiveMessageInQueue" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendMessage">
+      <soap:operation soapAction="http://tempuri.org/IService1/SendMessage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendMessageMultiple">
+      <soap:operation soapAction="http://tempuri.org/IService1/SendMessageMultiple" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendMassageInQueue">
+      <soap:operation soapAction="http://tempuri.org/IService1/SendMassageInQueue" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Confirm_Packet">
+      <soap:operation soapAction="http://tempuri.org/IService1/Confirm_Packet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="MessageService">
+    <wsdl:port name="BasicHttpBinding_IService1" binding="tns:BasicHttpBinding_IService1">
+      <soap:address location="http://vds/MinooWcfServiceLibrary/MessageService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

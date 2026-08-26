@@ -1,0 +1,24 @@
+﻿@model VEnergie.Models.NewsModel
+
+
+<section id="feature" style="background-color:@ViewBag.UserProfileModel.BgColor">
+    <div class="container">
+        <div class="center wow fadeInDown">
+            <h2>News</h2>
+        </div>
+        <div class="row">
+            <div class="features">
+                <div class="col-md-12 col-sm-8 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
+                    <div class="feature-wrap">
+                        @if (Model != null)
+                        {
+                            @Html.Raw(Model.TITLE)
+                            <br />
+                            @Html.Raw(Model.NEWSTEXT)
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

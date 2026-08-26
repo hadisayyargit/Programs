@@ -1,0 +1,42 @@
+@charset "utf-8";
+/* CSS Document */
+
+#mainmenu li li a:hover,
+#mainmenu li li a:hover,
+.blog-list .date,
+.blog-read .date,
+.slider-info .text1,
+.btn-primary,
+#pricing-table .package-price,
+#subheader,
+a.label-custom,
+#filters a.selected,
+.btn-alt,
+#pricing-table .featured-package .package-price
+{
+	background-color:#008a8a;
+}
+
+.subtext,
+.slider_text h1,
+.title span,
+a,a:visited{
+	color:#008a8a;
+}
+
+header .info{
+	border-bottom-color:#008a8a;
+}
+
+.subfooter{
+	border-top-color:#008a8a;
+}
+
+#flickr-photo-stream a:hover img,
+#filters a:hover,
+#filters a.selected{
+	border-color:#008a8a;
+}
+	
+
+

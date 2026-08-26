@@ -1,0 +1,148 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>IBS International Company (LLC)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Modern responsive hosting theme">
+	<meta name="keywords" content="responsive,hosting,modern,theme">
+    <meta name="author" content="">
+    
+    <!-- CSS Files
+    ================================================== -->
+    <link rel="stylesheet" href="css/main.css" type="text/css">
+    <link rel="stylesheet" href="css/colors/green.css" id="colors">
+    <link rel="stylesheet" href="css/overide.css" id="colors">
+    
+    <!-- Javascript Files
+    ================================================== -->
+   	<script src="js/jquery.min.js"></script>
+    <script src="js/jquery.isotope.min.js"></script>
+    <script src="js/jquery.prettyPhoto.js"></script>
+    <script src="js/easing.js"></script>
+    <script src="js/jquery.ui.totop.js"></script>
+	<script src="js/selectnav.js"></script>
+    <script src="js/ender.js"></script>
+    <script src="js/custom.js"></script>
+    <script src="js/jquery.lazyload.js"></script>
+    <script src="js/responsiveslides.min.js"></script>
+      <script>
+    // You can also use "$(window).load(function() {"
+    $(function () {
+      $(".pic_slider").responsiveSlides({
+        auto: true,
+        pager: false,
+        nav: true,
+        speed: 500,
+        namespace: "callbacks",
+        before: function () {
+          $('.events').append("<li>before event fired.</li>");
+        },
+        after: function () {
+          $('.events').append("<li>after event fired.</li>");
+        }
+      });
+    });
+  </script>
+</head>
+
+<body>
+	<!-- header begin -->
+	<header>
+    	<div class="info">
+        	<div class="container">
+            	<div class="row">
+                	<div class="span6">
+                    	Phone:  +971558122147     <span class="separator"></span>     Email:  ibsintl110@gmail.com
+                    </div>
+                    <div class="span6 text-right">
+                    	<a href="#" class="label-custom">Home</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    	<div class="container">
+        	<div id="logo">
+            	<div class="inner">
+   	    		  <!--<a href="index.html"><img src="img/logo.png"></a>-->
+                    <a href="index.html"><img src="img/ibs_logo.jpg"></a>
+            	</div>
+            </div>
+    
+				<!-- mainmenu begin -->
+				<ul id="mainmenu">
+                  <li><a href="index.html">Home</a></li>
+                  <li><a href="services.html">Products</a></li>
+       
+                  <li><a href="contact.html">Contact</a></li>
+              	</ul>
+                <!-- mainmenu close -->
+    
+   	  </div>
+    </header>
+	<!-- header close -->
+    
+	<!-- slider -->
+	<section id="slider" data-speed="10" data-type="background">
+            	<div class="callbacks_container">
+                		<div class="container">
+                        	<div class="row">
+                              <ul class="rslides pic_slider span10">
+                              
+                              	<!-- slider item -->
+                                <li>
+                                    <div class="slider_pic text-center">
+                               	    <img src="img/ibs_s1.jpg">
+                                    </div>
+                                  	
+                              <!--      <div class="slider_text">
+                                    	<h1>Virtual Server</h1>
+                                    	<div class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div> 
+                                  		<a href="#" class="btn btn-primary btn-large">Read More</a>
+                                    </div>-->
+                                </li>
+                                <!-- close slider item -->
+                                
+                                <!-- slider item -->
+                                <li>
+                                    <div class="slider_pic text-center">
+                               	    <img src="img/ibs_s2.jpg">
+                                    </div>
+                                  	
+                            <!--        <div class="slider_text">
+                                    	<h1>24/7 Support</h1>
+                                    	<div class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div> 
+                                  		<a href="#" class="btn btn-primary btn-large">Read More</a>&nbsp;&nbsp;
+                                        <a href="#" class="btn btn-large btn-alt">Read More</a>
+                                    </div>-->
+                                </li>
+                                <!-- close slider item -->
+                                
+                             </ul>
+                        	</div>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+            	</section>
+	<!-- slider close -->
+    
+	<!-- content begin -->
+
+	<!-- content close -->
+    
+	<!-- footer begin -->
+   	
+	<!-- footer close -->
+   
+   
+    <!-- style switcher
+    ================================================== -->
+   	<script src="js/switcher.js"></script>
+	<link rel="stylesheet" href="css/switcher.css">
+    
+    
+   
+</body>
+
+</html>

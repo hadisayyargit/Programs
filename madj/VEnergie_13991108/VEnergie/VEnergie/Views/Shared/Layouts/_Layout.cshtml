@@ -1,0 +1,245 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content="">
+    <meta name="author" content="ali yavari">
+    <title>@ViewBag.Title</title>
+
+
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome.css" rel="stylesheet" />
+    <link href="~/Content/animate.min.css" rel="stylesheet" />
+    <link href="~/Content/prettyPhoto.css" rel="stylesheet" />
+    <link href="~/Content/main.css" rel="stylesheet" />
+    <link href="~/Content/responsive.css" rel="stylesheet" />
+
+    @{
+    string strIconFile="~/images/ico/favicon.ico", strFontFamily="Arial", strFontSize="10";
+
+    try
+    {
+    string a;
+    a = ViewBag.UserProfileModel.IconFile;
+    if (a.StartsWith("~"))
+    {
+    strIconFile = a.Remove(0, 1);
+    }
+    }
+    catch
+    {
+    strIconFile= "~/images/ico/favicon.ico";
+    }
+
+    try
+    {
+
+    strFontFamily = ViewBag.UserProfileModel.IconFile;
+
+    }
+    catch
+    {
+    strFontFamily= "Arial";
+    }
+
+    try
+    {
+
+    strFontSize = ViewBag.UserProfileModel.IconFile;
+
+    }
+    catch
+    {
+    strFontSize= "10";
+    }
+
+    }
+
+    <link rel="shortcut icon" href="@strIconFile">
+
+    @*
+    <link rel="shortcut icon" href="~/images/ico/favicon.ico" id="favicon">*@
+
+
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="~/images/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="~/images/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="~/images/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="~/images/ico/apple-touch-icon-57-precomposed.png">
+    <style>
+        span:hover {
+            color: #5378bb;
+        }
+    </style>
+</head>
+
+<body>
+    <header id="header">
+        <div class="top-bar">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6 col-xs-4">
+                        <div class="top-number">
+                            @{
+                                if (Session["Email"] != null)
+                                {
+                                    string strEmail = Session["Email"].ToString();
+                                    if (Convert.ToBoolean(Session["ISADMIN"]))
+                                    {
+                                        <a href="~/Cms/Index">
+                                            Welcome <span> @strEmail </span>
+                                        </a>
+                                    }
+                                    else
+                                    {
+                                        <a>Welcome @strEmail</a>
+                                    }
+
+
+                                }
+                            }
+
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xs-8">
+                        <div class="social">
+                            <ul class="social-share">
+                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                                <li><a href="#"><i class="fa fa-skype"></i></a></li>
+                            </ul>
+                            <div class="search">
+                                <form role="form">
+                                    <input type="text" class="search-form" autocomplete="off" placeholder="Search">
+                                    <i class="fa fa-search"></i>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!--/.container-->
+        </div><!--/.top-bar-->
+        <nav class="navbar navbar-inverse" role="banner" style="background-image:url(../../Images/header.jpg);background-size:cover">
+            <div class="container">
+
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/"><img src="~/images/logo.png" alt="logo"></a>
+                </div>
+                <div class="collapse navbar-collapse navbar-right">
+
+                    <ul class="nav navbar-nav" style="font-family:@strFontFamily; font-size:@strFontSize">
+                    @*<ul class="nav navbar-nav">*@
+                        @Html.Raw(ViewBag.unorderedList)
+                    </ul>
+                </div>
+            </div><!--/.container-->
+        </nav><!--/nav-->
+
+    </header><!--/header-->
+
+    @RenderBody()
+
+    @*<section id="bottom">
+            <div class="container wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
+                <div class="row">
+                    <div class="col-md-3 col-sm-6">
+                        <div class="widget">
+                            <h3>Company</h3>
+                            <ul>
+                                <li><a href="~/">Home</a></li>
+                                <li><a href="~/Home/Contact">Contact</a></li>
+                                <li><a href="~/Home/TechnicalInf">Technical Information</a></li>
+                            </ul>
+                        </div>
+                    </div><!--/.col-md-3-->
+                    <div class="col-md-3 col-sm-6">
+                        <div class="widget">
+                            <h3>Support</h3>
+                            <ul>
+                                <li><a href="#">Faq</a></li>
+                                <li><a href="#">Blog</a></li>
+                                <li><a href="#">Forum</a></li>
+                            </ul>
+                        </div>
+                    </div><!--/.col-md-3-->
+                    <div class="col-md-3 col-sm-6">
+                        <div class="widget">
+                            <h3>Developers</h3>
+                            <ul>
+                                <li><a href="#">Web Development</a></li>
+                                <li><a href="#">SEO Marketing</a></li>
+                                <li><a href="#">Theme</a></li>
+                            </ul>
+                        </div>
+                    </div><!--/.col-md-3-->
+                    <div class="col-md-3 col-sm-6">
+                        <div class="widget">
+                            <h3>Our Partners</h3>
+                            <ul>
+                                <li><a href="#">Adipisicing Elit</a></li>
+                                <li><a href="#">Eiusmod</a></li>
+                                <li><a href="#">Tempor</a></li>
+                            </ul>
+                        </div>
+                    </div><!--/.col-md-3-->
+                </div>
+            </div>
+        </section><!--/#bottom-->*@
+
+    <footer id="footer" class="midnight-blue">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <span style="color:black">Created by:<a target="_blank" style="color:cornflowerblue" href="http:\\www.configcode.com">ConfigCode.com</a></span>
+                </div>
+                <div class="col-sm-6">
+                    <ul class="pull-right">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/Home/Contact">Contact</a></li>
+                        <li><a href="/Home/TechnicalInf">Technical Information</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer><!--/#footer-->
+    <!--/js Src-->
+    <script src="~/Scripts/jquery.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery.prettyPhoto.js"></script>
+    <script src="~/Scripts/jquery.isotope.min.js"></script>
+    <script src="~/Scripts/main.js"></script>
+    <script src="~/Scripts/wow.min.js"></script>
+    @{
+        if (Session["Email"] != null)
+        {
+            <script>
+                li6.setAttribute('style', 'display:none');
+                li5.setAttribute('style', 'display:none');
+            </script>
+        }
+        else
+        {
+            <script>
+                li7.setAttribute('style', 'display:none');
+            </script>
+        }
+    }
+    <script>
+        $('.nav-tabs a[href="#tab1"]').tab('show');
+        
+        
+        $("link[rel*='icon']").attr("href", "favicon.ico");
+    </script>
+
+
+
+</body>
+</html>

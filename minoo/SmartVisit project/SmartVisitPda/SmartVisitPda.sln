@@ -1,0 +1,76 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "layerBusiness", "layerBusiness\layerBusiness.csproj", "{F83EB352-304F-40FB-9441-41116550BC25}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "layerData", "layerData\layerData.csproj", "{4E232740-6C89-4D4E-BE26-F49741CB660E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HControls", "HControls\HControls.csproj", "{AFE103B0-569C-4612-BC58-9B9567BBAC86}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "layerPresentation", "layerPresentation\layerPresentation.csproj", "{78209CB6-CA57-4162-A2B4-E07DF17CC191}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GlobalUnit", "GlobalUnit\GlobalUnit.csproj", "{FB94C51D-64D9-4CF8-AE8E-26DE1DFD7D23}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{6A28AC98-DD7C-40F3-A016-798F79E880C5}"
+EndProject
+Global
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 7
+		SccProjectName0 = \u0022$/Software\u0020Projects/14.\u0020PDA/3.\u0020Implementation/1.\u0020Source/SmartVisitPda\u0022,\u0020TRXHAAAA
+		SccLocalPath0 = .
+		SccProvider0 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
+		SccProjectUniqueName1 = HControls\\HControls.csproj
+		SccLocalPath1 = .
+		SccProjectFilePathRelativizedFromConnection1 = HControls\\
+		SccProjectUniqueName2 = layerPresentation\\layerPresentation.csproj
+		SccProjectName2 = \u0022$/Software\u0020Projects/14.\u0020PDA/3.\u0020Implementation/1.\u0020Source/SmartVisitPda/layerPresentation\u0022,\u0020BTXHAAAA
+		SccLocalPath2 = layerPresentation
+		SccProjectUniqueName3 = layerData\\layerData.csproj
+		SccProjectName3 = \u0022$/Software\u0020Projects/14.\u0020PDA/3.\u0020Implementation/1.\u0020Source/SmartVisitPda/layerDataLayer\u0022,\u0020OSXHAAAA
+		SccLocalPath3 = layerData
+		SccProjectUniqueName4 = layerBusiness\\layerBusiness.csproj
+		SccProjectName4 = \u0022$/Software\u0020Projects/14.\u0020PDA/3.\u0020Implementation/1.\u0020Source/SmartVisitPda/layerBusinessLayer\u0022,\u0020WRXHAAAA
+		SccLocalPath4 = layerBusiness
+		SccProjectUniqueName5 = GlobalUnit\\GlobalUnit.csproj
+		SccProjectName5 = \u0022$/Software\u0020Projects/14.\u0020PDA/3.\u0020Implementation/1.\u0020Source/SmartVisitPda/layerGeneral\u0022,\u0020USXHAAAA
+		SccLocalPath5 = GlobalUnit
+		SccProjectUniqueName6 = Common\\Common.csproj
+		SccLocalPath6 = .
+		SccProjectFilePathRelativizedFromConnection6 = Common\\
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F83EB352-304F-40FB-9441-41116550BC25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F83EB352-304F-40FB-9441-41116550BC25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F83EB352-304F-40FB-9441-41116550BC25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F83EB352-304F-40FB-9441-41116550BC25}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E232740-6C89-4D4E-BE26-F49741CB660E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E232740-6C89-4D4E-BE26-F49741CB660E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E232740-6C89-4D4E-BE26-F49741CB660E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E232740-6C89-4D4E-BE26-F49741CB660E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AFE103B0-569C-4612-BC58-9B9567BBAC86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFE103B0-569C-4612-BC58-9B9567BBAC86}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFE103B0-569C-4612-BC58-9B9567BBAC86}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFE103B0-569C-4612-BC58-9B9567BBAC86}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78209CB6-CA57-4162-A2B4-E07DF17CC191}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78209CB6-CA57-4162-A2B4-E07DF17CC191}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78209CB6-CA57-4162-A2B4-E07DF17CC191}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{78209CB6-CA57-4162-A2B4-E07DF17CC191}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78209CB6-CA57-4162-A2B4-E07DF17CC191}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78209CB6-CA57-4162-A2B4-E07DF17CC191}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{FB94C51D-64D9-4CF8-AE8E-26DE1DFD7D23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB94C51D-64D9-4CF8-AE8E-26DE1DFD7D23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB94C51D-64D9-4CF8-AE8E-26DE1DFD7D23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB94C51D-64D9-4CF8-AE8E-26DE1DFD7D23}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A28AC98-DD7C-40F3-A016-798F79E880C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A28AC98-DD7C-40F3-A016-798F79E880C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A28AC98-DD7C-40F3-A016-798F79E880C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A28AC98-DD7C-40F3-A016-798F79E880C5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
