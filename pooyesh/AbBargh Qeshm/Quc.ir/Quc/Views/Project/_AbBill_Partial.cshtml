@@ -1,0 +1,246 @@
+﻿@model quc.Models.AbBillModel
+
+@*@{
+    Model.Subscribeno = "45555";
+    Model.Subscribername = "علی";
+    Model.PostalCode = "14500";
+    Model.Address = "خیابان ستارخان";
+    Model.ReadPersonCode = "ReadPersonCode";
+    Model.BillDateText = "94/12/23";
+    Model.BillKindString = "BillKindString";
+    Model.CodeWord = "CodeWord";
+    Model.UsageDetailDesc = "تعرفه";
+    Model.UsageInfoDesc = "UsageInfoDesc";
+    Model.Year = "ردیف";
+    Model.CycleNumber = "CycleNumber";
+    Model.ResidentialNumber = "71";
+    Model.FamilyNumber = "FamilyNumber";
+    Model.TxtReadDate = "94/12/28";
+    Model.ReadNumber = "ReadNumber";
+    Model.ReadStateDesc = "ReadStateDesc";
+    Model.ReadViewDesc = "ReadViewDesc";
+    Model.IncDecMessage = "94/12/21";
+    Model.BoreDesc = "BoreDesc";
+    Model.WaterValueContract = "WaterValueContract";
+    Model.WaterMeterSerial = "WaterMeterSerial";
+    Model.BillMinRow = "BillMinRow";
+    Model.BillMaxRow = "BillMaxRow";
+    Model.bahayeab = "bahayeab";
+    Model.khadamatDafeFaz = "khadamatDafeFaz";
+    Model.maliat = "maliat";
+    Model.bedehiGhabli = "bedehiGhabli";
+    Model.mablaghPardakht = "mablaghPardakht";
+    Model.BillPartAmount = "BillPartAmount";
+    Model.PayPartAmount = "PayPartAmount";
+    Model.Days = "Days";
+    Model.UseAmount = "UseAmount";
+    Model.CommercialNumber = "72";
+    Model.LastReadNumber = "LastReadNumber";
+    Model.PayDate = "PayDate";
+    Model.UseAverage = "UseAverage";
+    Model.AreaDesc = "AreaDesc";
+    Model.ZoneDesc = "ZoneDesc";
+    Model.SewageFlag = "SewageFlag";
+    Model.Shorb76 = "Shorb76";
+    Model.EditAmount = "EditAmount";
+    Model.BillEditAmount = "BillEditAmount";
+    Model.RialRemain = "RialRemain";
+    Model.CostAmount = "CostAmount";
+    Model.DiscountAmount = "DiscountAmount";
+    Model.PaymentAmount = "PaymentAmount";
+
+    Model.txtArr211 = "txtArr211";
+    Model.txtArr212 = "txtArr212";
+    Model.txtArr251 = "txtArr251";
+    Model.GeneralMessage = "پیام";
+}*@
+
+<div class="person-image" style="background-image:url(../../Images/abBill.PNG);background-size:contain;background-repeat:no-repeat;width:600px ;height:300px;position:absolute;font-family:'B Nazanin'">
+
+    <div style="position:absolute;top:20px;right:73px;font-size:8px">
+        @Html.DisplayFor(m => m.Subscribername)
+    </div>
+
+    <div style="position:absolute;top:20px;right:382px;font-size:8px">
+        @Html.DisplayFor(m => m.UsageDetailDesc)
+    </div>
+    <div style="position:absolute;top:28px;right:68px;font-size:8px">
+        @Html.DisplayFor(m => m.Subscribeno)
+    </div>
+    <div style="position:absolute;top:28px;right:360px;font-size:8px">
+        @Html.DisplayFor(m => m.Year)
+    </div>
+
+    <div style="position:absolute;top:36px;right:60px;font-size:8px">
+        @Html.DisplayFor(m => m.PostalCode)
+    </div>
+    <div style="position:absolute;top:36px;right:360px;font-size:8px">
+        @Html.DisplayFor(m => m.BillDateText)
+    </div>
+
+    <div style="position:absolute;top:44px;right:55px;font-size:8px">
+        @Html.DisplayFor(m => m.Address)
+    </div>
+
+    @Html.Label("اصلی", htmlAttributes: new { style = "position:absolute;top:68px;right:40px;font-size:8px" })
+    <div style="position:absolute;top:68px;right:75px;font-size:8px">
+        @Html.DisplayFor(m => m.ResidentialNumber)
+    </div>
+
+    @Html.Label("فرعی", htmlAttributes: new { style = "position:absolute;top:80px;right:40px;font-size:8px" })
+    <div style="position:absolute;top:80px;right:75px;font-size:8px">
+        @Html.DisplayFor(m => m.CommercialNumber)
+    </div>
+
+
+    <div style="position:absolute;top:77px;right:135px;font-size:6px">
+        @Html.DisplayFor(m => m.IncDecMessage)
+    </div>
+
+    <div style="position:absolute;top:77px;right:160px;font-size:6px">
+        @Html.DisplayFor(m => m.TxtReadDate)
+    </div>
+
+    <div style="position:absolute;top:88px;right:135px;font-size:8px">
+        @Html.DisplayFor(m => m.LastReadNumber)
+    </div>
+
+    <div style="position:absolute;top:88px;right:160px;font-size:8px">
+        @Html.DisplayFor(m => m.ReadNumber)
+    </div>
+
+
+    <div style="position:absolute;top:105px;right:70px;font-size:8px">
+        @Html.DisplayFor(m => m.BoreDesc)
+    </div>
+
+    <div style="position:absolute;top:111px;right:70px;font-size:8px">
+        @Html.DisplayFor(m => m.SewageFlag)
+    </div>
+
+    <div style="position:absolute;top:120px;right:80px;font-size:8px">
+        @Html.DisplayFor(m => m.WaterMeterSerial)
+    </div>
+
+    <div style="position:absolute;top:130px;right:80px;font-size:8px">
+        @Html.DisplayFor(m => m.ReadStateDesc)
+    </div>
+
+    <div style="position:absolute;top:106px;right:170px;font-size:6px">
+        @Html.DisplayFor(m => m.Days)
+    </div>
+    <div style="position:absolute;top:114px;right:170px;font-size:6px">
+        @Html.DisplayFor(m => m.UseAmount)
+    </div>
+    <div style="position:absolute;top:122px;right:170px;font-size:6px">
+        @Html.DisplayFor(m => m.UseAverage)
+    </div>
+    <div style="position:absolute;top:135px;right:170px;font-size:6px">
+        @Html.DisplayFor(m => m.txtArr211)
+    </div>
+    <div style="position:absolute;top:142px;right:170px;font-size:6px">
+        @Html.DisplayFor(m => m.txtArr212)
+    </div>
+    <div style="position:absolute;top:150px;right:170px;font-size:6px">
+        @Html.DisplayFor(m => m.WaterValueContract)
+    </div>
+
+    @Html.Label("بهای آب", htmlAttributes: new { style = "position:absolute;top:70px;right:193px;font-size:6px" })
+    <div style="position:absolute;top:73px;right:250px;font-size:8px">
+        @Html.DisplayFor(m => m.bahayeab)
+    </div>
+    @Html.Label("خدمات دفع فاضلاب", htmlAttributes: new { style = "position:absolute;top:85px;right:193px;font-size:6px" })
+    <div style="position:absolute;top:88px;right:250px;font-size:8px">
+        @Html.DisplayFor(m => m.khadamatDafeFaz)
+    </div>
+    @Html.Label("بدهی قبلی", htmlAttributes: new { style = "position:absolute;top:100px;right:193px;font-size:6px" })
+    <div style="position:absolute;top:100px;right:250px;font-size:8px">
+        @Html.DisplayFor(m => m.bedehiGhabli)
+    </div>
+    @Html.Label("مبلغ صورتحساب دوره", htmlAttributes: new { style = "position:absolute;top:115px;right:193px;font-size:6px" })
+    <div style="position:absolute;top:115px;right:250px;font-size:8px">
+        @Html.DisplayFor(m => m.txtArr251)
+    </div>
+    @Html.Label("مانده هزار ریال", htmlAttributes: new { style = "position:absolute;top:130px;right:193px;font-size:6px" })
+    <div style="position:absolute;top:130px;right:250px;font-size:8px">
+        @Html.DisplayFor(m => m.RialRemain)
+    </div>
+
+    <div style="position:absolute;top:172px;right:200px;font-size:8px">
+        @Html.DisplayFor(m => m.mablaghPardakht)
+    </div>
+    <div style="position:absolute;top:172px;right:255px;font-size:8px">
+        @Html.DisplayFor(m => m.PayDate)
+    </div>
+
+    <div style="position:absolute;top:172px;right:313px;font-size:8px">
+        @Html.DisplayFor(m => m.BillPartAmount)
+    </div>
+    <div style="position:absolute;top:172px;right:375px;font-size:8px">
+        @Html.DisplayFor(m => m.PayPartAmount)
+    </div>
+
+    <div style="position:absolute;top:30px;right:500px;font-size:8px">
+        @Html.DisplayFor(m => m.Subscribeno)
+    </div>
+
+    <div style="position:absolute;top:40px;right:500px;font-size:8px">
+        @Html.DisplayFor(m => m.PostalCode)
+    </div>
+
+    <div style="position:absolute;top:48px;right:500px;font-size:8px">
+        @Html.DisplayFor(m => m.TxtReadDate)
+    </div>
+
+    <div style="position:absolute;top:60px;right:513px;font-size:8px">
+        @Html.DisplayFor(m => m.mablaghPardakht)
+    </div>
+
+    <div style="position:absolute;top:72px;right:513px;font-size:8px">
+        @Html.DisplayFor(m => m.PayDate)
+    </div>
+
+    <div style="position:absolute;top:95px;right:450px;font-size:8px">
+        @Html.DisplayFor(m => m.PaymentAmount)
+    </div>
+
+    <div style="position:absolute;top:122px;right:515px;font-size:8px">
+        @Html.DisplayFor(m => m.BillPartAmount)
+    </div>
+    <div style="position:absolute;top:135px;right:515px;font-size:8px">
+        @Html.DisplayFor(m => m.PayPartAmount)
+    </div>
+
+    <div style="position:absolute;top:172px;right:50px;font-size:8px; color:darkblue">
+        @Html.DisplayFor(m => m.GeneralMessage)
+    </div>
+    
+    <div style="position:absolute; top:200px;right:50px; font-weight:bold">
+        ***شناسه پرداخت و شناسه قبض قابل برداشتن(copy) می باشد
+        <br />
+        ***برای چاپ قبض از Internet Explorer استفاده کنید
+    </div>
+</div>
+
+
+
+@*<iframe src="~/ReportViewerPage.aspx" width="600" height="600" dir="rtl" frameborder="0" style="background-color:white"></iframe>*@
+@*<iframe id="estframe" src="~/ReportViewerPage.aspx" width="100%" height="400px" dir="rtl"   frameborder="0" style="background-color: white;-webkit-transform: scale(0.5); -moz-transform-scale: scale(0.5); ">    </iframe>*@
+
+
+@*<style>
+    #containerworldTime {
+        height: 100%;
+        margin:auto;
+        overflow: hidden;
+        width: 100%;
+    }
+        #containerworldTime iframe {
+            -webkit-transform:scale(0.7);
+        -moz-transform:scale(0.7);
+        -o-transform:scale(0.7);
+        -ms-transform:scale(0.7);
+
+
+        }
+    </style>*@

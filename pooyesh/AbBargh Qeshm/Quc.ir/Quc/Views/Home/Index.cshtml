@@ -1,0 +1,285 @@
+﻿@{
+    ViewBag.Menu = "خانه";
+    ViewBag.SubMenu = "";
+    ViewBag.JalaliDate = Session[quc.GeneralModule.m_JalaliToday];
+
+    List<string> myGalleryList = ViewBag.GalleryList;
+    List<quc.Models.Blog> qucBlogList = ViewBag.qucBlogList;
+    List<quc.Models.Blog> qeshmBlogList = ViewBag.qeshmBlogList;
+    quc.Models.Blog hotnews = ViewBag.HotNews;
+    string galleryPath = Server.MapPath("~/images/gallery/");
+    string filename = "";
+}
+}
+
+<link href="~/Content/fancybox.css" rel="stylesheet" />
+
+@section featured {
+
+    <section class="featured">
+        <header>
+            <div id="slider">
+                <div id="da-slider" class="da-slider">
+                    <div class="da-slide">
+                        <div class="slider-content">
+
+                        </div>
+                        <div class="da-img">
+                            <img src="~/Images/slider/img1.png" alt="image01" />
+                        </div>
+                    </div>
+                    <div class="da-slide">
+
+                        <div class="da-img">
+                            <img src="~/Images/slider/img2.png" alt="image01" />
+                        </div>
+                    </div>
+                    <div class="da-slide">
+
+                        <div class="da-img">
+                            <img src="~/Images/slider/img3.png" alt="image01" />
+                        </div>
+                    </div>
+                    <div class="da-slide">
+                        <!--<div class="slider-content">
+                            <h2>taking care of nature</h2>
+                            <p>Lorem ipsum dolor<br /><span>Sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
+                            <a href="#" class="da-link">توضیحات...</a>
+                        </div>-->
+                        <div class="da-img">
+                            <img src="~/Images/slider/img4.png" alt="image01" />
+                        </div>
+                    </div>
+                    <div class="da-slide">
+
+                        <div class="da-img">
+                            <img src="~/Images/slider/img5.png" alt="image01" />
+                        </div>
+                    </div>
+                    <nav class="da-arrows">
+                        <div class="slider-content">
+                            <span class="da-arrows-prev"></span>
+                            <span class="da-arrows-next"></span>
+                        </div>
+                    </nav>
+                </div>
+                <div class="subslider clearfix">
+
+                    <div class="pres right clearfix">
+                        <div class="rowl right">
+                            <div class="organic">
+                                <a href="~/project/AbBarghBill?BillType=0">
+                                    <div class="title">&nbsp &nbsp &nbsp &nbsp قبض آب</div>
+                                </a>
+                                <div class="content">برای مشاهده قبض آب خود کلیک کنید</div>
+                            </div>
+                        </div>
+                        <div class="row right">
+                            <div class="production right">
+                                <a href="~/Project/AbBarghBill?BillType=1">
+                                    <div class="title">&nbsp &nbsp &nbsp &nbsp قبض برق</div>
+                                </a>
+                                <div class="content">برای مشاهده قبض برق خود کلیک کنید</div>
+                            </div>
+                        </div>
+                        <div class="rowbl right">
+                            <div class="showcase">
+                                <a href="#">
+                                    <div class="title">&nbsp &nbsp &nbsp &nbsp همکاری با ما</div>
+                                </a>
+                                <div class="content">آیا علاقمند به همکاری با ما هستید؟ کلیک کنید</div>
+                            </div>
+                        </div>
+                        <div class="rowb right">
+                            <div class="pic">
+                                <a href="~/home/contact">
+                                    <div class="title">&nbsp &nbsp &nbsp &nbsp نظرات، انتقادات و پیشنهادات</div>
+                                </a>
+                                <div class="content">هرگوته نظر، انتقاد و پیشنهاد دارید و یا نیاز به مشاوره دارید با ما در تماس باشید.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonials right clearfix">
+                        <div class="image right">
+                            <img src="~/Images/client.png" alt="" />
+                        </div>
+                        <div class="testimonial right">
+                            <div class="ttitle">&nbsp دانستنیهای آب و فاضلاب</div>
+
+                            <div class="tcontent">
+                                <a href="#">
+                                    مشاهده<br />
+                                    <br />در این قسمت با اطلاعات عمومی مفید در زمینه آب و فاضلاب آشنا می‌شوید <br />
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div id="content">
+            <div id="services" class="clearfix">
+                <div class="latest-blog-title">فعالیتها و پروژه‌ها</div>
+
+                <div class="service left">
+                    <div class="simage">
+                        <a href="#">
+                            <div class="border"><!-- --></div>
+                            <img src="~/images/pic/production.jpg" alt="" />
+                            <div class="stitle">...</div>
+                        </a>
+                    </div>
+                    <div class="scontent">
+                        خرید12200 متر لوله پلی اتیلن تکجداره
+                        <br />
+                        <br />عنوان مناقصه: خرید12200 متر لوله پلی اتیلن تکجداره
+                        زمان انتشار: 1394/04/10
+                        ساعت باز گشایی:0:11
+                        تاریخ باز گشایی:1394/04/22
+                        نوع مناقصه:یک مرحله ای
+                    </div>
+                    <div class="smore">
+                        <a href="#">بیشتر...</a>
+                    </div>
+                </div>
+
+                <div class="service left">
+                    <div class="simage">
+                        <a href="#">
+                            <div class="border"><!-- --></div>
+                            <img src="~/images/pic/organic.jpg" alt="" />
+                            <div class="stitle">...</div>
+                        </a>
+                    </div>
+                    <div class="scontent">
+                        بهره برداری تاسیسات آب و فاضلاب شهر
+                        <br />
+                        <br />ساعت باز گشایی:0:11
+                        تاریخ باز گشایی:1394/03/10
+                    </div>
+                    <div class="smore">
+                        <a href="#">بیشتر...</a>
+                    </div>
+                </div>
+                <div class="service last left">
+                    <div class="simage">
+                        <a href="#">
+                            <div class="border"><!-- --></div>
+                            <img src="~/images/pic/showcase.jpg" alt="" />
+                            <div class="stitle">...</div>
+                        </a>
+                    </div>
+                    <div class="scontent">
+                        فروش بخشی از پساب تصفیه شده فاضلاب جزیره هرمز
+                        <br />
+                        <br />نوع مناقصه:دو مرحله ای
+                        نام روزنامه:دریا
+                    </div>
+                    <div class="smore">
+                        <a href="#">ادامه...</a>
+                    </div>
+                </div>
+            </div>
+
+            <div id="latest-blog" class="clearfix">
+                <div class="latest-blog-title">اخبار</div>
+
+                <div class="lblog right">
+                    <a href="#" class="clearfix">
+                        <div class="lblog-pencil-icon right"></div>
+                        <div class="lblog-title right">&nbsp; خبر روز</div>
+                    </a>
+                    <div class="clearfix">
+                        <div class="lblog-date right">@hotnews.PublishDate </div>
+                        <div class="lblog-content right"> @hotnews.Body</div>
+                        <div class="pe-spacer size10"></div>
+                    </div>
+
+                    <div class="lmore">
+                        <a href="#">ادامه...</a>
+                    </div>
+
+                </div>
+
+                <div class="lblog right">
+                    <a href="#" class="clearfix">
+                        <div class="lblog-link-icon right"></div>
+                        <div class="lblog-title right">&nbsp; آخرین اخبار شرکت</div>
+                    </a>
+                    <div class="clearfix">
+                        @foreach (quc.Models.Blog item in qucBlogList)
+                        {
+                            <div class="lblog-date right">@item.PublishDate &nbsp;</div>
+                            <div class="lblog-content right">@item.Body</div>
+                            <div class="pe-spacer size10"></div>
+                        }
+                    </div>
+
+                    <div class="lmore">
+                        <a href="#">همه اخبار...</a>
+                    </div>
+                </div>
+
+                <div class="lblog left" >
+                    <a href="#" class="clearfix">
+                        <div class="lblog-gallery-icon right"></div>
+                        <div class="lblog-title right">&nbsp آخرین اخبار جزیره </div>
+                    </a>
+                    <div class="clearfix">
+                        @foreach (quc.Models.Blog item in qeshmBlogList)
+                        {
+
+                            <div class="lblog-date right">@item.PublishDate&nbsp;</div>
+                            <div class="lblog-content right"><a href="~/cms/BlogPost?blogid=@item.BlogId"> @item.Title  </a>  </div>
+                            <div class="pe-spacer size10"></div>
+                        }
+                        </div>
+
+                    
+                        <div class="lmore">
+                            <a href="~/cms/BlogList">همه اخبار...</a>
+                        </div>
+                    </div>
+
+            </div>
+
+            <div class="row-fluid">
+                <div class="span12">
+                    <div class="main_content_title ">
+                        <h3>گالری</h3>
+                    </div>
+                    <!-- start lightbox & carousel -->
+                    <div class="carouFredSel_style clearafter">
+                        <ul id="carouFredSel">
+                            @foreach (string item in myGalleryList)
+                            {
+                                filename = @item.Replace(galleryPath, "");
+
+                                <li>
+                                    <a href="~/images/gallery/@filename" title=@filename class="fancybox" rel="group">
+                                        <img alt="" src="~/Images/gallery/@filename" />
+
+                                    </a>
+                                </li>
+                            }
+
+                        </ul>
+                        <div class="carouFredSel_nav">
+                            <a id="caroul_prev" class="caroul_prev" href="#"></a>
+                            <a id="caroul_next" class="caroul_next" href="#"></a>
+                        </div>
+                    </div>
+                    <!-- end lightbox & carousel -->
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+}
+
+

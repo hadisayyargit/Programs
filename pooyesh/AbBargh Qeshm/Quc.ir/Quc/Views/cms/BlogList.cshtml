@@ -1,0 +1,133 @@
+﻿
+@{
+    ViewBag.Menu = "";
+    ViewBag.SubMenu = "";
+    ViewBag.JalaliDate = Session[quc.GeneralModule.m_JalaliTodayName];
+
+    List<quc.Models.Blog> myList = ViewBag.BlogList;
+
+    int prevpage = ViewBag.pageindex - 1;
+    int nextpage = ViewBag.pageindex + 1;
+    int lastpage = ViewBag.lastpage;
+}
+
+@section featured {
+    <section class="featured">
+        <div id="content">
+            <div class="page-title clearfix">
+                اخبار
+                <div class="date left">@ViewBag.JalaliDate</div>
+            </div>
+
+            <div class="skin_width">
+                <div class="blog_page">
+                    <div class="skin_main ">
+                        @if (((quc.Models.AppUser)Session[GeneralModule.m_CurrentUser]).AllowWriteBlog)
+                        {
+                            <button class="btn-danger" onclick="location.href = '/cms/BlogPost'">+</button>
+                        }
+
+                        <div class="pe-spacer size20"></div>
+                        <div class="row-fluid">
+                            <div class="span9">
+
+                                @foreach (quc.Models.Blog item in myList)
+                                {                                
+                                    <div class="blog_post_list">
+                                        <div class="standard_title">
+                                            @if (((quc.Models.AppUser)Session[GeneralModule.m_CurrentUser]).AllowWriteBlog)
+                                            {
+                                                <a href="~/cms/BlogPost?blogid=@item.BlogId">
+                                                    <img src="~/images/icons/bp-det.png" />
+                                                </a>
+                                            }
+                                            else
+                                            {
+                                                <a href="#">
+                                                    <img src="~/images/icons/bp-det.png" />
+                                                </a>
+
+                                            }
+
+                                            <p style="float:right">@item.PublishDate</p>
+                                            <span>&nbsp;&nbsp; @item.Title </span>
+                                        </div>
+                                        <div class="standard_content">
+                                            <img src="~/images/blog/@item.ImageName" alt="" style="width:620px;height:300px" />
+
+                                            <div class="pe-spacer size20"></div>
+                                            <p style="width:620px">
+                                                @item.Body
+                                            </p>
+                                            <br />
+                                            <span style="font-size:10px">
+                                                کد خبر:&nbsp; @item.BlogId
+                                                @if (@item.IsQeshmNews)
+                                                {
+                                                    <img src="~/images/blog/qeshm1.jpg" style="width:32px;height:32px" />
+                                                }
+                                                else
+                                                {
+                                                    <img src="~/images/blog/logo.jpg" style="width:32px;height:32px" />
+                                                }
+
+                                                @if (@item.IsHotNews)
+                                                {
+                                                    <img src="~/images/icons/redstar.png" style="width:16px;height:16px" />
+                                                }
+
+                                            </span>
+
+                                        </div>
+
+                                        <div class="pe-spacer size20"></div>
+
+                    
+
+                                    </div>
+
+
+                                }
+
+                                <div class="pe-spacer size40"></div>
+                                <!-- start next blog item -->
+                                <!-- start pagination -->
+                                <div class="row-fluid project-pagination">
+                                    <div class="span8 offset4 clearafter">
+                                        <a href="~/cms/BlogList?pageindex=1" class="prev-btn">پیشین</a>
+                                        <a href="~/cms/BlogList?pageindex=@prevpage" class="prev-btn">قبلی</a>
+                                        <ul>
+                                            <li class="selected">
+                                                <a href="~/cms/BlogList?pageindex=1">1</a>
+                                            </li>
+                                            <li>
+                                                <a href="~/cms/BlogList?pageindex=2">2</a>
+                                            </li>
+                                            <li>
+                                                <a href="~/cms/BlogList?pageindex=3">3</a>
+                                            </li>
+                                            <li>
+                                                <a href="~/cms/BlogList?pageindex=4">4</a>
+                                            </li>
+                                        </ul>
+                                        <a href="~/cms/BlogList?pageindex=@nextpage" class="next-btn">بعدی</a>
+                                        <a href="~/cms/BlogList?pageindex=@lastpage" class="prev-btn">پسین</a>
+                                    </div>
+                                </div>
+                                <!-- end pagination -->
+                            </div>
+                            <!-- start right sidebar -->
+                            <!-- end right sidebar -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pe-spacer size50"></div>
+
+            <a href="#" id="top-link" title="Back to Top"></a>
+
+        </div>
+
+    </section>
+}

@@ -1,0 +1,563 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="12/16/2024 3:56:38 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="OK001P920301846"
+  DTS:CreatorName="OKCO\Sayyar.Hadi"
+  DTS:DTSID="{C484FCFD-62F4-432D-8079-A0BFE1141EFA}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5314.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="PerformanceManagement_ShelfLabel"
+  DTS:PackageType="5"
+  DTS:VersionBuild="93"
+  DTS:VersionGUID="{7F53825A-646C-4E28-BCD2-5794FE8212CB}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[OKDC34017\NODE.OKDWH]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{06929748-1D74-43BB-AA6E-5E6A0AD2269E}"
+      DTS:ObjectName="OKDC34017\NODE.OKDWH">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=OKDC34017\NODE;Initial Catalog=OKDWH;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{0A5C60F0-FBA6-4399-85A0-CCC48A1C4F64}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="v_LastTimeStamp">
+      <DTS:VariableValue
+        DTS:DataType="20">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Extract"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{908D21DC-6033-46A9-81DE-31A9D33372E9}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Extract">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Extract\Delete Old Data"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{94f106ee-e06e-4ac4-ae75-548e7f47675e}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Delete Old Data"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{06929748-1D74-43BB-AA6E-5E6A0AD2269E}"
+              SQLTask:BypassPrepare="False"
+              SQLTask:SqlStatementSource="Delete  from  HRM.Fact_HCMShelfLabelHistory&#xA; where shelfdate= cast(getdate()-1 as date)" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Extract\HRM_Fact_HCMShelfLabelHistory"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{5229A141-2959-49A5-A1AC-A16914D74959}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="HRM_Fact_HCMShelfLabelHistory"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              autoAdjustBufferSize="true"
+              version="1">
+              <components>
+                <component
+                  refId="Package\Extract\HRM_Fact_HCMShelfLabelHistory\CMR_Fact_ShelfLableControl_New"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="CMR_Fact_ShelfLableControl_New"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">DECLARE @mydate date
+set @mydate= getdate()-1
+SELECT
+InventLocationId,
+isnull([StatusName_lastDate],'No Scan') as StatusName,
+count(distinct LocationItem) As ShelfCount
+,@mydate as Shelfdate
+FROM [OKDWH].[CMR].[Fact_ShelfLableControl_New] sh with(nolock)
+INNER join [OKDWH].[COM].[DIM_Item] i with(nolock) on sh.ItemId=i.BKItemId and i.CodeLevel1 not in (13,4,12)
+inner join [OKDWH].[COM].[DIM_InventLocation] l with(nolock) on l.BKInventLocationId=sh.InventLocationId and l.DistrictCode IS NOT NULL and  l.DistrictCode not in (-1,37,4,42)
+  where
+  AvailablePhysical=1
+  and
+  InventLocationName NOT LIKE '%دارک استور%' and InventLocationName NOT LIKE '%امار%'
+  and 
+  PersianDate_EndLocation in ( '1478/10/11')
+  and
+  PersianDate_StartLocation not in ( '1478/10/11')
+group by InventLocationId,isnull([StatusName_lastDate],'No Scan')</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Extract\HRM_Fact_HCMShelfLabelHistory\CMR_Fact_ShelfLableControl_New.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[OKDC34017\NODE.OKDWH]"
+                      connectionManagerRefId="Package.ConnectionManagers[OKDC34017\NODE.OKDWH]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Extract\HRM_Fact_HCMShelfLabelHistory\CMR_Fact_ShelfLableControl_New.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Extract\HRM_Fact_HCMShelfLabelHistory\CMR_Fact_ShelfLableControl_New.Outputs[OLE DB Source Output].Columns[InventLocationId]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Extract\HRM_Fact_HCMShelfLabelHistory\CMR_Fact_ShelfLableControl_New.Outputs[OLE DB Source Output].ExternalColumns[InventLocationId]"
+                          length="10"
+                          lineageId="Package\Extract\HRM_Fact_HCMShelfLabelHistory\CMR_Fact_ShelfLableControl_New.Outputs[OLE DB Source Output].Columns[InventLocationId]"
+                          name="InventLocationId"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Extract\HRM_Fact_HCMShelfLabelHistory\CMR_Fact_ShelfLableControl_New.Outputs[OLE DB Source Output].Columns[StatusName]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Extract\HRM_Fact_HCMShelfLabelHistory\CMR_Fact_ShelfLableControl_New.Outputs[OLE DB Source Output].ExternalColumns[StatusName]"
+                          length="25"
+                          lineageId="Package\Extract\HRM_Fact_HCMShelfLabelHistory\CMR_Fact_ShelfLableControl_New.Outputs[OLE DB Source Output].Columns[StatusName]"
+                          name="StatusName"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Extract\HRM_Fact_HCMShelfLabelHistory\CMR_Fact_ShelfLableControl_New.Outputs[OLE DB Source Output].Columns[ShelfCount]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Extract\HRM_Fact_HCMShelfLabelHistory\CMR_Fact_ShelfLableControl_New.Outputs[OLE DB Source Output].ExternalColumns[ShelfCount]"
+                          lineageId="Package\Extract\HRM_Fact_HCMShelfLabelHistory\CMR_Fact_ShelfLableControl_New.Outputs[OLE DB Source Output].Columns[ShelfCount]"
+                          name="ShelfCount"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Extract\HRM_Fact_HCMShelfLabelHistory\CMR_Fact_ShelfLableControl_New.Outputs[OLE DB Source Output].Columns[Shelfdate]"
+                          dataType="dbDate"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Extract\HRM_Fact_HCMShelfLabelHistory\CMR_Fact_ShelfLableControl_New.Outputs[OLE DB Source Output].ExternalColumns[Shelfdate]"
+                          lineageId="Package\Extract\HRM_Fact_HCMShelfLabelHistory\CMR_Fact_ShelfLableControl_New.Outputs[OLE DB Source Output].Columns[Shelfdate]"
+                          name="Shelfdate"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Extract\HRM_Fact_HCMShelfLabelHistory\CMR_Fact_ShelfLableControl_New.Outputs[OLE DB Source Output].ExternalColumns[InventLocationId]"
+                          dataType="wstr"
+                          length="10"
+                          name="InventLocationId" />
+                        <externalMetadataColumn
+                          refId="Package\Extract\HRM_Fact_HCMShelfLabelHistory\CMR_Fact_ShelfLableControl_New.Outputs[OLE DB Source Output].ExternalColumns[StatusName]"
+                          dataType="wstr"
+                          length="25"
+                          name="StatusName" />
+                        <externalMetadataColumn
+                          refId="Package\Extract\HRM_Fact_HCMShelfLabelHistory\CMR_Fact_ShelfLableControl_New.Outputs[OLE DB Source Output].ExternalColumns[ShelfCount]"
+                          dataType="i4"
+                          name="ShelfCount" />
+                        <externalMetadataColumn
+                          refId="Package\Extract\HRM_Fact_HCMShelfLabelHistory\CMR_Fact_ShelfLableControl_New.Outputs[OLE DB Source Output].ExternalColumns[Shelfdate]"
+                          dataType="dbDate"
+                          name="Shelfdate" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Extract\HRM_Fact_HCMShelfLabelHistory\CMR_Fact_ShelfLableControl_New.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Extract\HRM_Fact_HCMShelfLabelHistory\CMR_Fact_ShelfLableControl_New.Outputs[OLE DB Source Error Output].Columns[InventLocationId]"
+                          dataType="wstr"
+                          length="10"
+                          lineageId="Package\Extract\HRM_Fact_HCMShelfLabelHistory\CMR_Fact_ShelfLableControl_New.Outputs[OLE DB Source Error Output].Columns[InventLocationId]"
+                          name="InventLocationId" />
+                        <outputColumn
+                          refId="Package\Extract\HRM_Fact_HCMShelfLabelHistory\CMR_Fact_ShelfLableControl_New.Outputs[OLE DB Source Error Output].Columns[StatusName]"
+                          dataType="wstr"
+                          length="25"
+                          lineageId="Package\Extract\HRM_Fact_HCMShelfLabelHistory\CMR_Fact_ShelfLableControl_New.Outputs[OLE DB Source Error Output].Columns[StatusName]"
+                          name="StatusName" />
+                        <outputColumn
+                          refId="Package\Extract\HRM_Fact_HCMShelfLabelHistory\CMR_Fact_ShelfLableControl_New.Outputs[OLE DB Source Error Output].Columns[ShelfCount]"
+                          dataType="i4"
+                          lineageId="Package\Extract\HRM_Fact_HCMShelfLabelHistory\CMR_Fact_ShelfLableControl_New.Outputs[OLE DB Source Error Output].Columns[ShelfCount]"
+                          name="ShelfCount" />
+                        <outputColumn
+                          refId="Package\Extract\HRM_Fact_HCMShelfLabelHistory\CMR_Fact_ShelfLableControl_New.Outputs[OLE DB Source Error Output].Columns[Shelfdate]"
+                          dataType="dbDate"
+                          lineageId="Package\Extract\HRM_Fact_HCMShelfLabelHistory\CMR_Fact_ShelfLableControl_New.Outputs[OLE DB Source Error Output].Columns[Shelfdate]"
+                          name="Shelfdate" />
+                        <outputColumn
+                          refId="Package\Extract\HRM_Fact_HCMShelfLabelHistory\CMR_Fact_ShelfLableControl_New.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Extract\HRM_Fact_HCMShelfLabelHistory\CMR_Fact_ShelfLableControl_New.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Extract\HRM_Fact_HCMShelfLabelHistory\CMR_Fact_ShelfLableControl_New.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Extract\HRM_Fact_HCMShelfLabelHistory\CMR_Fact_ShelfLableControl_New.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Extract\HRM_Fact_HCMShelfLabelHistory\Fact_HCMShelfLabelHistory"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="Fact_HCMShelfLabelHistory"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[HRM].[Fact_HCMShelfLabelHistory]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Extract\HRM_Fact_HCMShelfLabelHistory\Fact_HCMShelfLabelHistory.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[OKDC34017\NODE.OKDWH]"
+                      connectionManagerRefId="Package.ConnectionManagers[OKDC34017\NODE.OKDWH]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Extract\HRM_Fact_HCMShelfLabelHistory\Fact_HCMShelfLabelHistory.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Extract\HRM_Fact_HCMShelfLabelHistory\Fact_HCMShelfLabelHistory.Inputs[OLE DB Destination Input].Columns[StatusName]"
+                          cachedDataType="wstr"
+                          cachedLength="25"
+                          cachedName="StatusName"
+                          externalMetadataColumnId="Package\Extract\HRM_Fact_HCMShelfLabelHistory\Fact_HCMShelfLabelHistory.Inputs[OLE DB Destination Input].ExternalColumns[StatusName]"
+                          lineageId="Package\Extract\HRM_Fact_HCMShelfLabelHistory\CMR_Fact_ShelfLableControl_New.Outputs[OLE DB Source Output].Columns[StatusName]" />
+                        <inputColumn
+                          refId="Package\Extract\HRM_Fact_HCMShelfLabelHistory\Fact_HCMShelfLabelHistory.Inputs[OLE DB Destination Input].Columns[Shelfdate]"
+                          cachedDataType="dbDate"
+                          cachedName="Shelfdate"
+                          externalMetadataColumnId="Package\Extract\HRM_Fact_HCMShelfLabelHistory\Fact_HCMShelfLabelHistory.Inputs[OLE DB Destination Input].ExternalColumns[ShelfDate]"
+                          lineageId="Package\Extract\HRM_Fact_HCMShelfLabelHistory\CMR_Fact_ShelfLableControl_New.Outputs[OLE DB Source Output].Columns[Shelfdate]" />
+                        <inputColumn
+                          refId="Package\Extract\HRM_Fact_HCMShelfLabelHistory\Fact_HCMShelfLabelHistory.Inputs[OLE DB Destination Input].Columns[ShelfCount]"
+                          cachedDataType="i4"
+                          cachedName="ShelfCount"
+                          externalMetadataColumnId="Package\Extract\HRM_Fact_HCMShelfLabelHistory\Fact_HCMShelfLabelHistory.Inputs[OLE DB Destination Input].ExternalColumns[StatusCount]"
+                          lineageId="Package\Extract\HRM_Fact_HCMShelfLabelHistory\CMR_Fact_ShelfLableControl_New.Outputs[OLE DB Source Output].Columns[ShelfCount]" />
+                        <inputColumn
+                          refId="Package\Extract\HRM_Fact_HCMShelfLabelHistory\Fact_HCMShelfLabelHistory.Inputs[OLE DB Destination Input].Columns[InventLocationId]"
+                          cachedDataType="wstr"
+                          cachedLength="10"
+                          cachedName="InventLocationId"
+                          externalMetadataColumnId="Package\Extract\HRM_Fact_HCMShelfLabelHistory\Fact_HCMShelfLabelHistory.Inputs[OLE DB Destination Input].ExternalColumns[BKInventLocationId]"
+                          lineageId="Package\Extract\HRM_Fact_HCMShelfLabelHistory\CMR_Fact_ShelfLableControl_New.Outputs[OLE DB Source Output].Columns[InventLocationId]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Extract\HRM_Fact_HCMShelfLabelHistory\Fact_HCMShelfLabelHistory.Inputs[OLE DB Destination Input].ExternalColumns[ID]"
+                          dataType="i8"
+                          name="ID" />
+                        <externalMetadataColumn
+                          refId="Package\Extract\HRM_Fact_HCMShelfLabelHistory\Fact_HCMShelfLabelHistory.Inputs[OLE DB Destination Input].ExternalColumns[StatusName]"
+                          dataType="wstr"
+                          length="50"
+                          name="StatusName" />
+                        <externalMetadataColumn
+                          refId="Package\Extract\HRM_Fact_HCMShelfLabelHistory\Fact_HCMShelfLabelHistory.Inputs[OLE DB Destination Input].ExternalColumns[StatusCount]"
+                          dataType="i4"
+                          name="StatusCount" />
+                        <externalMetadataColumn
+                          refId="Package\Extract\HRM_Fact_HCMShelfLabelHistory\Fact_HCMShelfLabelHistory.Inputs[OLE DB Destination Input].ExternalColumns[ShelfDate]"
+                          dataType="dbDate"
+                          name="ShelfDate" />
+                        <externalMetadataColumn
+                          refId="Package\Extract\HRM_Fact_HCMShelfLabelHistory\Fact_HCMShelfLabelHistory.Inputs[OLE DB Destination Input].ExternalColumns[BKInventLocationId]"
+                          dataType="wstr"
+                          length="10"
+                          name="BKInventLocationId" />
+                        <externalMetadataColumn
+                          refId="Package\Extract\HRM_Fact_HCMShelfLabelHistory\Fact_HCMShelfLabelHistory.Inputs[OLE DB Destination Input].ExternalColumns[Timestamp1]"
+                          dataType="bytes"
+                          length="8"
+                          name="Timestamp1" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Extract\HRM_Fact_HCMShelfLabelHistory\Fact_HCMShelfLabelHistory.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Extract\HRM_Fact_HCMShelfLabelHistory\Fact_HCMShelfLabelHistory.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Extract\HRM_Fact_HCMShelfLabelHistory\Fact_HCMShelfLabelHistory.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Extract\HRM_Fact_HCMShelfLabelHistory\Fact_HCMShelfLabelHistory.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Extract\HRM_Fact_HCMShelfLabelHistory\Fact_HCMShelfLabelHistory.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Extract\HRM_Fact_HCMShelfLabelHistory\Fact_HCMShelfLabelHistory.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Extract\HRM_Fact_HCMShelfLabelHistory.Paths[OLE DB Source Output]"
+                  endId="Package\Extract\HRM_Fact_HCMShelfLabelHistory\Fact_HCMShelfLabelHistory.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Extract\HRM_Fact_HCMShelfLabelHistory\CMR_Fact_ShelfLableControl_New.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Extract.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{FEBBE566-48FE-44E8-9403-4CC73D49EA00}"
+          DTS:From="Package\Extract\Delete Old Data"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Extract\HRM_Fact_HCMShelfLabelHistory" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="154,42"
+          Id="Package\Extract\Delete Old Data"
+          TopLeft="99,42" />
+        <NodeLayout
+          Size="235,42"
+          Id="Package\Extract\HRM_Fact_HCMShelfLabelHistory"
+          TopLeft="57,133" />
+        <EdgeLayout
+          Id="Package\Extract.PrecedenceConstraints[Constraint]"
+          TopLeft="175.25,84">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,49"
+              Start="0,0"
+              End="0,41.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="359,235"
+          Size="359,278"
+          Id="Package\Extract"
+          TopLeft="529,259.5" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Extract\HRM_Fact_HCMShelfLabelHistory">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="240,42"
+          Id="Package\Extract\HRM_Fact_HCMShelfLabelHistory\CMR_Fact_ShelfLableControl_New"
+          TopLeft="109,61" />
+        <NodeLayout
+          Size="207,42"
+          Id="Package\Extract\HRM_Fact_HCMShelfLabelHistory\Fact_HCMShelfLabelHistory"
+          TopLeft="127,184" />
+        <EdgeLayout
+          Id="Package\Extract\HRM_Fact_HCMShelfLabelHistory.Paths[OLE DB Source Output]"
+          TopLeft="229.75,103">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,81"
+              Start="0,0"
+              End="0,73.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,73.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Extract\HRM_Fact_HCMShelfLabelHistory\CMR_Fact_ShelfLableControl_New">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Extract\HRM_Fact_HCMShelfLabelHistory\Fact_HCMShelfLabelHistory">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

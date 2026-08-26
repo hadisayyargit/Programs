@@ -1,0 +1,369 @@
+﻿@{
+
+    ViewBag.CopyRight = ((System.Reflection.AssemblyCopyrightAttribute)(System.Reflection.Assembly.GetAssembly(typeof(quc.MvcApplication)).GetCustomAttributes(typeof(System.Reflection.AssemblyCopyrightAttribute), false)).First()).Copyright.ToString();
+    ViewBag.Version = System.Reflection.Assembly.GetAssembly(typeof(quc.MvcApplication)).GetName().Version.ToString();
+
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>شرکت آب و برق و تاسیسات قشم</title>
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <!-- Mobile Specific Metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" media="all" href="~/Content/base.css" />
+    <link href="~/Content/style.css" rel="stylesheet" />
+
+    <link rel="stylesheet" media="all" href="~/Content/layout.css" />
+    <link rel="stylesheet" media="all" href="~/Content/slider.css" />
+
+    <link href="~/Content/bootstrap-rtl/css/bootstrap-rtl.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-rtl/css/bootstrap-responsive-rtl.min.css" rel="stylesheet" />
+    <link href="~/Content/chosen.css" rel="stylesheet" />
+
+
+    <link rel="shortcut icon" href="~/Images/icons/logo.png" type="image/x-icon" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+</head>
+<body>
+
+    <header>
+        <div class="pe-spacer size20"></div>
+
+        <div id="header" class="clearfix">
+            <div class="logo left">
+                <a href="#"><img src="~/Images/icons/logo.png" alt="شرکت آب و برق و تاسیسات قشم" /></a>
+                <div class="pull-right dropdown">
+                    <a href="#" class="user_info dropdown-toggle" title="ورود" data-toggle="dropdown">
+                    @if (((quc.Models.AppUser)Session[GeneralModule.m_CurrentUser]).UserName.ToLower()=="admin")
+                        {
+                            <img src="~/images/pic/admin.gif" alt="">
+                        }
+                        else
+                        {
+                            <img src="~/images/pic/avatar-mini.png" alt="">
+                        }
+
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="javascript:void(0)">پروفایل کاربر</a>
+                        </li>
+                        @if (((quc.Models.AppUser)Session[GeneralModule.m_CurrentUser]).UserName.ToLower() == "guest")
+                        {
+                            <li>
+                                <a href="~/Account/LogIn">ورود به سیستم</a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li>
+                                <a href="~/Account/LogOff">خروج</a>
+                            </li>
+                        }
+
+                    </ul>
+                </div>
+
+            </div>
+
+            <nav id="main-nav" class="right">
+                <ul class="">
+                    <li class="first current">
+                        <a href="~/">خانه</a>
+                    </li>
+
+                    <li class="sub">
+                        <a href="">کاربری</a>
+                        <ul class="home">
+                            <li class="current">
+                                <a href="~/cms/BlogList">اخبار</a>
+                            </li>
+                            <li>
+                                <a href="~/cms/GalleryList">تصاویر</a>
+                            </li>
+                        </ul>
+
+                    </li>
+
+                    <li class="sub">
+                        <a href="">خدمات مشترکین</a>
+                        <ul class="">
+                            <li class="current">
+                                <a href="~/Project/AbBarghBill?BillType=0">مشاهده قبض آب</a>
+                            </li>
+                            <li>
+                                <a href="~/Project/AbBarghBill?BillType=1">مشاهده قبض برق</a>
+                            </li>
+                            <li class="divider"></li>
+
+                            <li class="">
+                                <a href="#">قوانین و مقررات</a>
+                            </li>
+                            <li class="dropdown-submenu">
+                                <a href="*">شیوه نامه راهنمای ارباب رجوع</a>
+                                <ul class="dropdown-menu">
+                                    <li class="">
+                                        <a href="~/Subscriber/AbCounter_vagozari">نحوه واگذاری انشعاب </a>
+                                    </li>
+                                    <li class="">
+                                        <a href="~/Subscriber/AbCounter_dedication">اختصاص کنتور به واحدها </a>
+                                    </li>
+                                    <li class="">
+                                        <a href="#">جابجایی کنتور </a>
+                                    </li>
+                                    <li class="">
+                                        <a href="#">تشکیل پرونده</a>
+                                    </li>
+                                </ul>
+
+                            </li>
+                            <li class="">
+                                <a href="~/Subscriber/Ab_declaration">اطلاعیه</a>
+                            </li>
+
+                            <li class="">
+                                @*<a href="~/Images/pic/quc_abbaha.jpg" target="_blank">تعرفه آب بها</a>*@
+                                <a href="#" target="_blank">تعرفه آب بها</a>
+                            </li>
+
+                        </ul>
+
+                    </li>
+
+                    <li class="sub">
+                        <a href="#">آمار و اطلاعات</a>
+                        <ul>
+                            @*<li><a href="~/Project/AbProjects">گزارشهای عملکرد</a></li>*@
+                            <li>
+                                <a href="#">گزارشهای عملکرد</a>
+                            </li>
+                            @*<li><a href="~/Project/BarghProjects">پروژه ها</a></li>*@
+                            <li>
+                                <a href="#">پروژه ها</a>
+                            </li>
+
+                            <li>
+                                <a href="#">طرحهای تحقیقاتی</a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="#">توانمندیهای شرکت</a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="#">فناوریهای نوین</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="sub">
+                        <a href="">مناقصه و مزایده</a>
+                        <ul>
+                            <li>
+                                <a href="#">مناقصه</a>
+                            </li>
+                            <li>
+                                <a href="#">مزایده</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="sub">
+                        <a href="">راهنما</a>
+                        <ul>
+                            <li>
+                                <a href="~/home/about">درباره ما (معرفی)</a>
+                            </li>
+                            <li>
+                                <a href="~/home/policy">خط مشی و ماموریتها</a>
+                            </li>
+                            <li>
+                                <a href="~/home/portfolio">فعالیتهای گذشته</a>
+                            </li>
+                            <li class="divider"></li>
+
+                            <li class="dropdown-submenu">
+                                <a href="">اطلاعات فنی</a>
+                                <ul>
+                                    <li>
+                                        @*<a href="~/Home/Organization">مقالات علمی و پژوهشها</a>*@
+                                        <a href="#">مقالات علمی و پژوهشها</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">فرایند تصفیه آب</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="~/home/contact">تماس با ما</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="breadcrumbs">
+            شما اینجایید:
+            <a href="#">@ViewBag.Menu</a>
+            <span class="active">@ViewBag.SubMenu</span>
+
+
+            <ul class="language left">
+                <li>
+                    <a href="#" class="english"></a>
+                </li>
+                <li>
+                    <a href="#" class="persian"></a>
+                </li>
+            </ul>
+
+
+
+
+        </div>
+
+
+    </header>
+
+    @RenderSection("featured", required: false)
+
+    @RenderBody()
+
+    <footer>
+        <div id="footer" class="clearfix">
+
+            <div class="col left">
+                <div class="col-title">اطلاعات تماس</div>
+                <ul class="foo-links">
+                    <li>قشم - میدان گلها - بلوار 22 بهمن - خ بوستان شمالی - سایت آب شیرین‌کن - کد پستی: 7951919716</li>
+                    <li></li>
+                    <li>Tel: (+98) 0763-5240881-5</li>
+                    <li>
+                        <a href="~/home/contact" class="email">نظرات خود را با ما در میان بگذارید</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col left">
+                <div class="col-title">پیوندها</div>
+                <ul class="foo-links">
+                    <li>
+                        <a href="http://www.qeshm.ir" class="qeshm" target="_blank">منطقه آزاد قشم &nbsp</a>
+                    </li>
+                    <li>
+                        <a href="http://www.kish.ir" class="kish" target="_blank">منطقه آزاد کیش &nbsp</a>
+                    </li>
+                    <li>
+                        <a href="http://www.kwpco.ir" class="abbarghkish" target="_blank">شرکت آب و برق کیش &nbsp</a>
+                    </li>
+                    
+                    <li>
+                        <a href="http://www.freezones.ir" class="" target="_blank">شورای عالی مناطق آزاد و ویژه اقتصادی &nbsp</a>
+                    </li>                    <li>
+                        <a href="http://www.abfahormozgan.com" class="abfahormozgan" target="_blank">آبفای هرمزگان &nbsp</a>
+                    </li>
+                    <li>
+                        <a href="http://www.hedc.co.ir/Home/FA" class="barghhormozgan" target="_blank">شرکت توزیع برق هرمزگان &nbsp</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col left">
+                <div class="col-title">بایگانی</div>
+                <ul class="foo-links">
+                    <li>
+                        <a href="#" class="">آرشیو مناقصات و مزایده‌ها</a>
+                    </li>
+                    <li>
+                        <a href="#" class="">آرشیو گزارشهای عملکرد</a>
+                    </li>
+                    <li>
+                        <a href="#" class="">آرشیو مقالات و مطالب علمی</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col right">
+                <div>
+                    <ul class="foo-links">
+                        <li>
+                            @ViewBag.CopyRight
+                        </li>
+
+                    </ul>
+                </div>
+
+                <br />
+                <div id="copyright">
+                    <ul class="foo-links">
+                        <li>
+                            @ViewBag.Version
+                            <br />
+                            پیاده سازی و اجرا توسط:
+                            <br />
+                            شرکت آتی رویکرد افکار
+                            <a href="http://www.atiafkar.com"><img src="~/Images/icons/logo_atiafkar.png" /></a>
+                        </li>
+                    </ul>
+                </div>
+                <br />
+                <div class="menu right">
+                    <a href="~/">خانه</a>
+                    <a href="~/Home/About">معرفی</a>
+                    <a href="~/Home/Contact" class="last">تماس با ما</a>
+                </div>
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+
+
+    <script src="~/Scripts/scripts.js"></script>
+    <script src="~/Scripts/modernizr.custom.28468.js"></script>
+
+    <script src="~/Scripts/respond.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.cslider.js"></script>
+
+    @*<script src="~/Content/bootstrap/js/bootstrap.js"></script>*@
+    <script src="~/Content/bootstrap-rtl/js/bootstrap.min.js"></script>
+
+    <script src="~/Scripts/New/colorpicker.js"></script>
+    <script src="~/Scripts/New/jquery.carouFredSel-6.2.1-packed.js"></script>
+    <script src="~/Scripts/New/jquery.cookie.js"></script>
+    <script src="~/Scripts/New/jquery.fancybox.min.js"></script>
+    <script src="~/Scripts/New/jquery.hoverIntent.min.js"></script>
+    <script src="~/Scripts/New/trans-banner.min.js"></script>
+    <script src="~/Scripts/New/custom.js"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            $('#da-slider').cslider({
+                bgincrement: 0
+            });
+        });
+    </script>
+
+
+
+    @*             @RenderSection("scripts", required: false)
+        @Scripts.Render("~/bundles/modernizr")*@
+
+</body>
+</html>

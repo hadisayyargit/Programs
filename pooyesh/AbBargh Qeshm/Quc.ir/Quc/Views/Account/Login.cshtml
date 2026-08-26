@@ -1,0 +1,41 @@
+﻿@using quc.Models
+
+@model LoginViewModel
+
+@{
+    ViewBag.Menu = "";
+    ViewBag.SubMenu = "";
+    ViewBag.JalaliDate = Session[quc.GeneralModule.m_JalaliTodayName];
+}
+@section featured {
+<section class="featured">
+        <div id="content">
+            <div class="login_wrapper">
+                <div class="login_panel">
+                    <div class="login_head">
+                        <h1>ورود با حساب کاربری</h1>
+                    </div>
+                    <form action="~/Account/Authenticate" id="login_form">
+                        <div class="form-group">
+                            <label for="login_username">شناسه</label>
+                            @*<input type="text" id="login_username" name="login_username" class="form-control input-lg" data-required="true" data-minlength="2" data-required-message="شناسه خود را وارد نمایید" value="Ali">*@
+                            @Html.TextBoxFor(m=>m.UserName, htmlAttributes: new  { @id = "login_username" , @class="form-control input-lg",@Text="Ali"  })
+                        </div>
+                        <div class="form-group">
+                            <label for="login_password">گذرواژه </label>
+                            @Html.PasswordFor(m => m.Password, htmlAttributes: new { @id = "login_password", @class = "form-control input-lg", @Text = "123456" })
+                            @*<input type="password" id="login_password" name="login_password" class="form-control input-lg" data-required="true" data-minlength="6" data-minlength-message="Password should have at least 6 characters." data-required-message="Please enter a valid Password" value="123456">*@
+
+                        </div>
+                        <div class="login_submit">
+                            <button class="btn btn-primary ">ورود</button>
+                        </div>
+                        @*<a href="#">Need an account? Sign up</a>*@
+                        <a href="#">آیا حساب کاربری دارید؟ ثبت نام</a>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+</section>
+    }

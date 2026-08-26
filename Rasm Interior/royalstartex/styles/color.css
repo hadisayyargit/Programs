@@ -1,0 +1,310 @@
+/* 
+
+RoyalStartex - CSS File
+
+CHANGE COLOR STYLE
+
+*/
+
+body {color:#656565;}
+#bodychild { border-top:7px solid #2f2f3b}
+#outermain{}
+
+/*============================================== GENERAL SECTION ==============================================*/
+a{color:#7c7c8d;}
+a:hover{color:#292941}
+
+.more-link{ color:#292941}
+.more-link:hover{color:#7c7c8d;}
+
+#logo-wrap{ background:#2f2f3b}
+#logo h1 a, #logo h1 a:visited{color:#fff;}
+.desc{ color:#a0a0a0}
+
+/* Heading & text */
+h1, h2, h3, h4, h5, h6{color:#7c7c8d;}
+.pagetitle{}
+
+
+/*============================================== HEADER AND MENU SECTION ==============================================*/
+
+.top-container1{ color:#999;}
+
+
+/* Social */
+.icon-img.twitter{background:#2f2f3b url(../images/social/twitter.png)}
+.icon-img.facebook{background:#2f2f3b url(../images/social/facebook.png)}
+.icon-img.google{background:#2f2f3b url(../images/social/google.png)}
+.icon-img.pinterest{background:#2f2f3b url(../images/social/pinterest.png)}
+.icon-img.pinterest{background:#2f2f3b url(../images/social/instagram.png)}
+
+.icon-img.twitter:hover{background:#f4cb0d url(../images/social/twitter.png)}
+.icon-img.facebook:hover{background:#f4cb0d url(../images/social/facebook.png)}
+.icon-img.google:hover{background:#f4cb0d url(../images/social/google.png)}
+.icon-img.pinterest:hover{background:#f4cb0d url(../images/social/pinterest.png)}
+.icon-img.pinterest:hover{background:#f4cb0d url(../images/social/instagram.png)}
+
+
+
+/* 1st level */
+.sf-menu a, .sf-menu a:visited{color:#7c7c8d; }
+.sf-menu a:hover, .sf-menu li.current > a{color:#2f2f3b; }
+
+.sf-menu > li{ border-left:1px solid #eaeaea}
+.sf-menu > li:first-child{border-left:0px}
+
+/* 2nd level */
+.sf-menu ul li a:hover, .sf-menu li li.current-menu-item > a, .sf-menu li li.current_page_item > a, 
+.sf-menu li.current-menu-ancestor li > a, .sf-menu li.current-menu-parent li > a, .sf-menu li.current_page_ancestor li > a, 
+.sf-menu li.current_page_parent li > a{color:#7c7c8d; background:#f9f9f9}
+
+
+.sf-menu li:hover ul,
+.sf-menu li.sfHover ul {
+	background:#f4f4f4;
+	color:#292941;
+	border-top:4px solid #eac20c;
+	border-left:1px solid #ebebeb;
+	border-right:1px solid #ebebeb;
+	border-bottom:1px solid #ebebeb;
+}
+
+.sf-menu li li:first-child{ border-top:0px;}
+.sf-menu li li:last-child{ border-bottom:0px;}
+.sf-menu li li{ border-bottom:1px solid #ebebeb; border-top:1px solid #fff}
+
+.tinynav{background:#fff; border:1px solid #eee;}
+
+/*============================================== AFTER HEADER SECTION ==============================================*/
+#afterheader h1{ border-top:1px solid #eaeaea;  width:100%; display:block;}
+#breadcrumbs{ background:#f4f4f4; border:1px solid #fff; outline:1px solid #f4f4f4}
+
+
+
+
+/*============================================== SLIDER SECTION ==============================================*/
+
+#slider {
+	border-top:1px solid #eaeaea;
+    background: #FFFFFF;
+    border-bottom: 1px solid #eaeaea;
+}
+#slider:before {
+    background: #FFFFFF;
+    border-bottom: 5px solid #eaeaea;
+}
+
+#slider .slider-title, #slider .slider-title a{ color:#7c7c8d}
+#slider .slider-desc{ color:#656565;}
+
+#slider .nivo-prevNav { background:url(../images/slider-prev.png) no-repeat; }
+#slider .nivo-nextNav {	background:url(../images/slider-next.png) no-repeat; }
+
+#slider .nivo-prevNav:hover { background:url(../images/slider-prev-hover.png) no-repeat; }
+#slider .nivo-nextNav:hover {	background:url(../images/slider-next-hover.png) no-repeat; }
+
+
+/*============================================== CONTENT SECTION ==============================================*/
+
+
+/* Images */
+.img-circle, .ts-features .img-container{ background:#292941}
+
+/* Form */
+input[type="text"], input[type="email"],
+textarea, input[type="password"], select{
+	background:#fff;
+	border:1px solid #f4f4f4;
+	color:#656565;
+}
+label{ color:#7c7c8d;}
+span.required{ color:#f00;}
+
+/* Horizontal Line */
+hr {
+	color:#e4e3e3;
+	background-color:#e4e3e3;
+}
+
+.separator{ 
+	border-bottom: 1px dotted #e4e3e3;
+}
+
+/* List */
+ul.checklist li{ background:url(../images/checklist.html) no-repeat 0 5px;}
+ul.list li{border-bottom:solid 1px #f0f0f0;}
+ul.client{border:solid 1px #eaeaea;}
+
+
+/* Button */
+.button,
+button,
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+	background: #292941; /* for non-css3 browsers */
+	color:#fff;
+	
+}
+.button:hover,
+button:hover,
+input[type="submit"]:hover,
+input[type="reset"]:hover,
+input[type="button"]:hover {
+	background: #f4cb0d; /* for non-css3 browsers */
+	color:#fff;
+}
+
+input.wpcf7-submit, input.wpcf7-submit:hover{ background-image:url(../images/arrow.png); background-repeat:no-repeat; background-position:right;}
+
+/* Blockquote */
+blockquote{color:#656565; background:none; }
+
+
+/* Dropcaps */	
+.dropcap1{text-shadow:1px 1px 0 #ededed; color:#2e2e2e}
+.dropcap2{color:#fff; background:#2e2e2e}		
+.dropcap3{color:#fff; background:#2e2e2e}
+
+
+/* Code */
+code {
+	border-left:4px solid #e9e9e9;
+}
+
+/* Tables */
+th{border-bottom: 1px solid #f1f1f1;}
+table {border: 1px solid #f1f1f1;border-bottom:0;}
+tr td {border-bottom: 1px solid #f1f1f1;}
+tr.odd td {background: #F2F7FC;}
+
+
+/*============================================== BLOG SECTION ==============================================*/
+.posttitle a, .posttitle a:visited{color:#7c7c8d;}
+.posttitle a:hover{color:#292941}
+
+.datecomment{ border-right:1px solid #ebebeb; color:#999;}
+.datecomment a, .datecomment a:hover{color:#999;}
+.datecomment .like{ background:url(../images/comment.png) no-repeat 0 6px;  border-top:1px solid #ebebeb}
+
+#singlepost .post{
+	border-bottom: 1px dashed #cecece;
+}
+
+
+.entry-comment a, entry-comment a:visited{color:#fff}
+
+.comment-body .time, .comment-body .time a, .comment-body .time a:visited{color:#aaaaaa;}
+.comment-body .time a:hover{color:#222222;}
+
+.entry-utility{ color:#999;}
+.entry-utility .user, .entry-utility .tag, .entry-utility .like{border-color:#b3b3b3;}
+
+
+.fn, .fn a, .author{color:#7c7c8d;}
+.tdate, .reply a, .reply a:visited{color:#aaa; }
+
+
+.post{ border-bottom:1px dashed #cecece}
+
+/* Post Format */
+.entry-quote blockquote{background-color:#f9f9f9; color:#7c7c8d;}
+
+.aside{ border-left:4px solid #292941}
+
+.avatar{
+	border:solid 1px #ebebeb;
+    background: #ffffff;	
+}
+
+#entry-author-info{border-color:#cecece;}
+
+/* pagenavi */
+.wp-pagenavi{ background:#f4f4f4; outline:1px solid #f4f4f4; border:1px solid #fff}
+.wp-pagenavi .pages{color:#7c7c8d;}
+.wp-pagenavi a, .wp-pagenavi .current, .wp-pagenavi .extend{
+    border-left: 1px solid #eaeaea!important;
+}
+.wp-pagenavi a:before, .wp-pagenavi .current:before, .wp-pagenavi .extend:before {
+    border-left: 1px solid #fff;
+}
+.wp-pagenavi a, .wp-pagenavi a:visited{color:#656565;}
+.wp-pagenavi .current, .wp-pagenavi a:hover{ background:#f4cb0d; border:0px; color:#fff;}
+
+
+/* Tags */
+.tag-text{ color:#999}
+.tagcloud a, .tag-items a {
+    background: #292941!important;
+    color: #FFFFFF !important;
+}
+.tagcloud a:hover, .tag-items a:hover {
+    background: #f4cb0d!important;
+    color: #FFFFFF !important;
+}
+
+/*============================================== PORTFOLIO SECTION ==============================================*/
+.filterlist{ border:1px solid #f4f4f4}
+#filter { border:1px solid #fff}
+#filter li{
+    border-left: 1px solid #eaeaea;
+}
+#filter li:before {
+    border-left: 1px solid #fff;
+}
+#filter li a, #filter li a:visited{ color:#656565;
+	background: #f4f4f4; /* for non-css3 browsers */
+}
+#filter li.current a, #filter li a:hover{color:#fff;
+	background: #f4cb0d; /* for non-css3 browsers */
+}
+
+.ts-pf-text .pftitle{ border-bottom:1px dashed #cecece}
+.ts-pf-text .pftitle a, .ts-pf-text .pftitle a:visited{color:#7c7c8d;}
+.ts-pf-text .pftitle a:hover{color:#292941;}
+
+
+/*============================================== SIDEBAR SECTION ==============================================*/
+
+#sidebar .widget-title {color:#7c7c8d;}
+
+
+#sidebar li li{
+	border-bottom: 1px dashed #cecece;
+
+}
+#sidebar li{}
+#sidebar li a, #sidebar li li a{color:#656565;}
+#sidebar li a:hover, #sidebar li li a:hover, #sidebar li li a.current{color:#292941;}
+
+
+#sidebar .morelink{color:#2e2e2e;}
+#sidebar .morelink:hover{color:#6a6a6a}
+
+
+.ts-recentpost-widget .smalldate{ color:#999;}
+.ts-recentpost-widget .recent-title a{ color:#7c7c8d;}
+.ts-recentpost-widget .recent-title a:hover{color:#292941;}
+#sidebar .ts-recentpost-widget .recent-item{ border-bottom:1px dashed #cecece}
+
+.widget_calendar #wp-calendar tbody td:first-child, .widget_calendar #wp-calendar tfoot td:first-child{border-left:0px;}
+.widget_calendar thead th{ background-color:#e3e3e3; border:0px;}
+
+
+
+/* Search */
+#searchform .searcharea{border:1px solid #e3e3e3;}
+input.searchbutton {
+    background: url(../images/search-icon.png) no-repeat 8px 13px !important;
+}
+
+
+/* Featured Post Widgets */
+.ts-features .item-container{border-bottom: 1px dashed #cecece;}
+
+
+
+/*============================================== FOOTER SECTION ==============================================*/
+#outerfooter{}
+#footer{color:#656565; border-top:4px solid #eaeaea}
+#footer a, #footer a:visited{ color: #292941;}

@@ -1,0 +1,173 @@
+﻿@*@model quc.Models.AbBillModel*@
+
+@{
+    ViewBag.Menu = "خدمات";
+    ViewBag.SubMenu = "مشاهده قبض";
+    ViewBag.JalaliDate = Session[quc.GeneralModule.m_JalaliTodayName];
+    ViewBag.BillType = Session[GeneralModule.m_billtype];
+    quc.Models.AbBillModel myAbBillModel = (quc.Models.AbBillModel)Session[GeneralModule.m_abbillmodel];
+    quc.Models.BarghBillModel myBarghBillModel = (quc.Models.BarghBillModel)Session[GeneralModule.m_barghbillmodel];
+
+
+    if (ViewBag.BillType == null || ViewBag.BillType == 0)
+    {
+        ViewBag.Title = "مشاهده قبض آب";
+    }
+    else
+    {
+        ViewBag.Title = "مشاهده قبض برق";
+    }
+}
+
+
+
+
+@section featured {
+    <section class="featured">
+        <div id="content">
+            <div class="page-title clearfix">
+                @ViewBag.Title
+
+                <div class="date left">@ViewBag.JalaliDate</div>
+            </div>
+
+            <div class="about-content clearfix">
+
+
+                <div class="project-right">
+                    <div class="p-image">
+                        <img src="~/Images/projects/6.jpg" alt="" />
+
+                    </div>
+
+                    <div class="contact-frm-right right">
+                        <div class="inp-label">نوع کد</div>
+                        <select id="event_priority" data-placeholder="Select ..." style="width:280px">
+                            <option value="1">کد اشتراک</option>
+                            <option value="2">کدGIS</option>
+                            <option value="3">کد شناسایی</option>
+                            <option value="4">کد پستی</option>
+                        </select>
+
+                    </div>
+
+                    <div>
+                        <div class="inp-label">کد اشتراک&nbsp;&nbsp;</div>
+                        <input id="txtSubscriberno" class="text-left" style="width:280px" />
+                    </div>
+
+                    @*<div class="space12"></div>*@
+
+
+
+                    <div class="buttons clearfix">
+                        @if (ViewBag.BillType == null || ViewBag.BillType == 0)
+                        {
+                            <button type="button" id="btnShowAbBill" class="btn btn-primary ctn-bottom" style="width:140px;">مشاهده قبض آب</button>
+                            <button type="button" id="PrintAbBill" class="btn btn-primary" style="width:140px;background-image:url('../../Images/icons/print.png'); background-repeat:no-repeat"> چاپ قبض آب </button>
+                        }
+                        else
+                        {
+                            <button type="button" id="btnShowBarghBill" class="btn btn-primary ctn-bottom" style="width:140px;">مشاهده قبض برق</button>
+                            <button type="button" id="PrintBarghBill" class="btn btn-primary" style="width:140px;background-image:url('../../Images/icons/print.png'); background-repeat:no-repeat"> چاپ قبض برق </button>
+                        }
+
+                    </div>
+
+                    <div class="buttons clearfix">
+                        <a href="https://sadad.shaparak.ir/billpayment" target="_blank">
+                            <img src="~/images/icons/bmelli.jpg" title="بانک ملی ایران" style="width:64px;height:64px" />
+                        </a>
+                        <a href="http://www.refah-bank.ir/portal/Default-1506.aspx" target="_blank">
+
+                            <img src="~/images/icons/brefah.jpg" title="بانک رفاه" style="width:64px;height:64px" />
+                        </a>
+                        <a href="https://epayment.rqb.ir/BillPayment.aspx" target="_blank">
+                            <img src="~/images/icons/bresalat.jpg" title="بانک قرض الحسنه رسالت" style="width:64px;height:64px" />
+                        </a>
+                        @*<a href="~/Project/pay_saman">*@
+                        <a href="https://bill.samanepay.com/Public/BillPay.aspx" target="_blank">
+
+                            <img src="~/images/icons/bsaman.jpg" title="بانک سامان" style="width:64px;height:64px" />
+                        </a>
+                    </div>
+
+
+                </div>
+                <div class="project-left">
+                    <div class="subtitle">رویت قبض</div>
+                    <div class="acontent">
+                        با وارد نمودن شماره اشتراک می توانید آب بهای خود را رویت نمایید
+                    </div>
+                    <br />
+                    <div>
+                        @if (ViewBag.BillType == null || ViewBag.BillType == 0)
+                        {
+                            @Html.Partial("_AbBill_Partial", myAbBillModel)
+                        }
+                        else
+                        {
+                            @Html.Partial("_BarghBill_Partial", myBarghBillModel)
+                        }
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+
+        </div>
+
+        <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+
+        <script>
+            $("#btnShowAbBill").click(function () {
+                var url = "GetAbBill?subscriberno=" + $("#txtSubscriberno").val() + "&hasdirectpath=0";
+                window.location.replace(url);
+                //alert($("#txtSubscriberno").val());
+            });
+        </script>
+
+        <script>
+            $("#PrintAbBill").click(function () {
+                var url = "GetAbBill?subscriberno=" + $("#txtSubscriberno").val() + "&hasdirectpath=1";
+
+                //same window
+                //window.location.replace(url);
+                //window.open(url,'_self');
+
+                ///new tab
+                //window.open(url);
+
+                //new window
+                window.open(url, '', 'scrollbars=yes,menubar=no,height=600,width=800,resizable=yes,toolbar=no,status=no,titlebar=no');
+
+
+                //var myWindow = window.open("", "MsgWindow", "width=200, height=100");
+                //myWindow.document.write("<p>This is 'MsgWindow'. I am 200px wide and 100px tall!</p>");
+
+            });
+        </script>
+
+        <script>
+            $("#btnShowBarghBill").click(function () {
+                var url = "GetBarghBill?subscriberno=" + $("#txtSubscriberno").val() + "&hasdirectpath=0";
+                window.location.replace(url);
+            });
+        </script>
+
+        <script>
+            $("#PrintBarghBill").click(function () {
+
+                var url = "GetBarghBill?subscriberno=" + $("#txtSubscriberno").val() + "&hasdirectpath=1";
+                window.open(url, '', 'scrollbars=yes,menubar=no,height=600,width=800,resizable=yes,toolbar=no,status=no,titlebar=no');
+            });
+        </script>
+
+        @Scripts.Render("~/bundles/jqueryval")
+
+    </section>
+}
+

@@ -1,0 +1,128 @@
+﻿
+@model quc.Models.Blog 
+
+@{
+    ViewBag.Menu = "";
+    ViewBag.SubMenu = "";
+}
+
+@section featured {
+    <section class="featured">
+        <div id="content">
+            <div class="page-title clearfix">جزئیات خبر <div class="date left">@ViewBag.JalaliDate</div></div>            
+
+            <div class="skin_width">
+                <div class="blog_page">
+                    <div class="skin_main ">
+                        <div class="pe-spacer size20"></div>
+                        <div class="row-fluid">
+
+                            <!-- start post -->
+                            <div class="standard_title">
+
+                                <span>جزئیات</span>
+                            </div>
+
+                            <img id="img1" src="~/images/blog/@Model.ImageName" style="max-width:600px;max-height:300px" />
+                            <div class="pe-spacer size20"></div>
+                            @using (Html.BeginForm("UpdateBlog", "cms", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                            {
+                                @Html.ValidationSummary(true);
+
+                                <form action="#" class="form-horizontal" method="post">
+
+                                    <div class="form-group">
+                                        <label class="control-label ">شناسه&nbsp;</label>
+                                        @Html.HiddenFor(m => m.BlogId)
+                                        @Html.HiddenFor(m => m.ImageName)
+                                        @Html.HiddenFor(m => m.PublishDate)
+                                        @Html.TextBoxFor(m => m.BlogId, htmlAttributes: new { @class = "form-control", @id = "txtId", @style = "font-family: 'Tahoma'", @disabled = "disabled" })
+                                    </div>
+                                    &nbsp;
+                                    <div class="form-group">
+                                        <label class="control-label">عنوان&nbsp;</label>
+                                        @Html.TextBoxFor(m => m.Title, htmlAttributes: new { @class = "form-control", @id = "txtTitle", @style = "font-family: 'Tahoma'" })
+
+                                        <label class="control-label">متن خبر&nbsp;</label>
+                                        @Html.TextAreaFor(m => m.Body, htmlAttributes: new { @class = "form-control", @id = "txtBody", @style = "font-family: 'Tahoma'" })
+
+                                        <label class="control-label">انتخاب تصویر</label>
+
+                                            <input type="file" name="UserImageUrlUpload" onchange="readURL(this);" style="color:blue;background-color:red ;" />
+                                            @*<div style=" position: relative;   overflow: hidden;    margin: 10px;">
+                                                    <span style="color:blue;background-color:red; ">انتخاب تصویر...</span>
+                                                    <input type="file" name="UserImageUrlUpload" onchange="readURL(this);" style="   position: absolute;    top: 0;    right: 0;    margin: 0;    padding: 0;    font-size: 20px;    cursor: pointer;    opacity: 0;    filter: alpha(opacity=0);" />
+                                                </div>*@
+
+                                            <input type="button" class="btn btn-warning" value="پاک کردن تصویر" id="btnClearPicture" />
+
+                                            <label class="control-label col-lg-3">فعال؟</label>
+                                            @Html.CheckBoxFor(m => m.IsActive, htmlAttributes: new { @checked = "checked", @class = "", @id = "check", @name = "check", @type = "checkbox" })
+
+                                        <label class="control-label col-lg-3">خبر جزیره؟</label>
+                                        @Html.CheckBoxFor(m => m.IsQeshmNews, htmlAttributes: new { @checked = "checked", @class = "", @id = "check2", @name = "check", @type = "checkbox" })
+
+                                        <label class="control-label col-lg-2">خبر داغ؟</label>
+                                        @Html.CheckBoxFor(m => m.IsHotNews, htmlAttributes: new { @checked = "checked", @class = "", @id = "check3", @name = "check", @type = "checkbox" })
+
+
+                                        </div>
+
+                                    <div class="pe-spacer size20"></div>
+                                    <br />
+                                    <div class="form-group">
+                                        <input type="submit" class="btn btn-danger" value="بروزرسانی" />
+                                        <input type="button" class="btn btn-danger" value="حذف" onclick="location.href='/cms/deleteBlog?blogid=@Model.BlogId'" />
+                                        <input type="button" class="btn btn-danger" value="بازگشت" onclick="location.href = '/cms/bloglist'" />
+                                        @*<span><a href="#">بروزرسانی</a></span>
+            <div class="buttons7_left_bg"></div>*@
+                                    </div>
+
+                                </form>
+                            }
+
+                            <!-- end post -->
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+
+            </div>
+
+</section>
+}
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+
+<script>
+    //$("#UserImageUrlUpload").change(function () {
+    //    alert("1");
+    //});
+
+    function readURL(input) {
+
+        if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#img1')             .attr('src', e.target.result) ;
+                    
+
+                };
+                reader.readAsDataURL(input.files[0]);
+        }
+        else {
+        }
+    }
+
+    $("#btnClearPicture").click(function () {
+        //alert("100");
+        $('#img1').attr('src', "");
+
+    });
+
+
+</script>
+

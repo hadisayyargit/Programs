@@ -1,0 +1,12 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="OKDC34017_NODE.OKDWH_STG"
+  DTS:DTSID="{FC3564CE-9429-49F9-8F10-4AF86F7C5D57}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=OKDC34017\NODE;Initial Catalog=OKDWH_STG;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-BI_PerformanceManagement_ETL-{FC3564CE-9429-49F9-8F10-4AF86F7C5D57}OKDC34017\NODE.OKDWH_STG;Auto Translate=False;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

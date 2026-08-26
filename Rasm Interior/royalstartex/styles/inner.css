@@ -1,0 +1,310 @@
+/* 
+
+RoyalStartex - CSS File
+
+USE THIS STYLE SHEET FOR INNER PAGE
+
+*/
+
+
+
+/* Page Navi*/
+.wp-pagenavi{ display:inline-block; padding:7px 0 7px; margin:0px 0 40px 0;}
+.wp-pagenavi{ padding-top:6px\9;}
+.wp-pagenavi a, .wp-pagenavi .current, .wp-pagenavi .extend {
+
+    position: relative;
+    z-index: 10;
+}
+.wp-pagenavi a:before, .wp-pagenavi .current:before, .wp-pagenavi .extend:before {
+    bottom: 0;
+    content: "";
+    display: block;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: -1;
+}
+.wp-pagenavi a, .wp-pagenavi span {
+    border: 0px!important;
+    margin: 0px!important;
+    padding: 9px 15px 10px!important;
+    text-decoration: none;
+}
+
+
+/* BLOG */
+.datecomment{ float:left; margin-right:30px; text-align:center}
+.datecomment .date{ font-size:12px; font-weight:bold; padding:1px 12px 6px 1px; line-height:19px; text-transform:uppercase}
+.datecomment .like{ padding:2px 11px 5px 20px;}
+
+.postimg{margin-bottom:21px;}
+.postimg img{display:block;}
+.entry-content img{}
+.entry-content p{margin-bottom:16px; line-height:21px;}
+.entry-content .loopexcerpt p{margin-bottom:9px;}
+
+.post{margin-bottom:40px; padding-bottom:30px;}
+.post .button{margin:10px 0 ; display:inline-block; float:left}
+
+.articlecontainer{  overflow:hidden;}
+.page.hentry{ padding-bottom:10px;}
+.post, #searchresult .page, #searchresult .hentry{clear:both;}
+#singlepost .post{margin-bottom:31px; padding-bottom:31px;}
+
+#singlepost .entry-utility{ margin-top:0px;}
+.entry-utility{
+	font-size:11px;
+	margin:0px 0px 0px 0px; 
+	padding:0px 0px 6px;
+}
+.entry-utility div{
+	display:inline-block;
+	line-height:100%;
+}
+.entry-utility .tag, .entry-utility .like{
+	margin-left:6px;
+	padding-left:8px;
+	border-style:solid;
+	border-width:0px 0px 0px 1px;
+}
+
+.posttitle{margin:0 0 0px 0; word-wrap:break-word;}
+.posttitle, .posttitle a{font-size:26px; line-height:30px}
+.posttitle a:hover{text-decoration:none;}
+
+.single .entry-content{ border:0px; margin:0px; padding:0px;}
+.last .entry-content{ margin-bottom:15px;}
+.entry-content{ overflow:hidden; margin-bottom:0px; padding:0 0 0px 0; word-wrap:break-word;}
+
+#postattachment .entry-utility{width:100%; float:none; padding:0}
+.entry-attachment{margin-bottom:20px;}
+
+/* author */
+#entry-author-info{
+	clear: both;
+	margin-bottom:36px;
+	position:relative;
+	padding:0px 0px 25px 0px;
+	border-width:0px 0px 1px 0px;
+	border-style:dashed;
+
+}
+#entry-author-info h3{ margin-bottom:23px; font-size:26px;}
+#entry-author-info img{ float:left; margin:5px 20px 0 0;}
+.author{ padding:0px 0px 9px;}
+
+
+.related-post{margin-bottom:20px; float:left}
+
+#comment h3{ display:block; margin-bottom:30px; font-size:26px;}
+.commentlist{
+	list-style-type:none;
+	padding:0;
+	margin:0;
+}
+.commentlist ol{
+	list-style-type:none;
+	padding:30px 0 0 80px;
+	margin:0;
+}
+
+.commentlist li{
+	position:relative;
+	padding:0 0 25px 0;
+}
+.commentlist li li{
+	position:relative;
+	padding:0;
+}
+
+
+.avatar-img{
+	position:absolute;
+	top:5px;
+	left:0px;
+
+}
+.avatar{display:block}
+.fn{display:block;}
+
+.commenttext{}
+.tdate, .reply{ font-size:11px;}
+.reply a, .reply a:visited{}
+.reply a:hover{text-decoration:underline;}
+.fn a, .fn a:visited{}
+
+.comment-body{margin:0 0 0 0px; padding:0px 0 20px 80px;}
+.comment-body p{ margin-bottom:5px; margin-top:10px;}
+.comment-body .more{ padding:0px 0px;}
+.comment-arrow{ width:8px; height:18px; position:absolute; left:72px; top:10px;}
+#commentform {margin-bottom:20px}
+#commentform label{display:block}
+#commentform .text-input{
+	margin-bottom:8px;
+	padding:8px 5px;
+	vertical-align:middle;
+}
+#commentform .textarea{
+	margin-bottom:20px;
+	padding:8px 5px;
+	vertical-align:top;
+}
+
+/* PORTFOLIO */
+
+/*======= Portfolio Navigation =======*/
+.filterlist{ display:inline-block; padding:0px; clear:both; margin-bottom:24px;}
+#filter{ margin:0px; padding:0px; clear:both}
+#filter li{ padding:5px 0px 5px; margin-bottom:1px; list-style-type:none; float:left}
+#filter li{ padding-top:4px\9;}/* IE Only */
+#filter li{
+	padding-left:1px;
+    position: relative;
+    z-index: 10;
+}
+#filter li:before {
+    bottom: 0;
+    content: "";
+    display: block;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: -1;
+}
+#filter li.first {
+    border-left: 0 none;
+    padding-left: 0;
+}
+#filter li a, #filter li a:visited{ font-weight:normal; font-size:11px; padding:8px 11px;}
+#filter li.current a, #filter li a:hover{ text-decoration:none;}
+
+/*======= End Portfolio Navigation =======*/
+
+#ts-portfolio{ margin-bottom:-20px; }
+.ts-pf-img{position:relative;}
+.ts-clear{clear:both; height:1px !important; line-height:1px !important; float:none!important}
+.ts-portfolio .item {
+    margin-bottom: 40px;
+}
+.ts-pf-text .pftitle {
+    margin: 0;
+    padding-bottom: 11px;
+    padding-top: 14px;
+}
+.ts-pf-text .pftitle a, .ts-pf-text .pftitle a:visited {
+    font-size: 14px;
+    font-weight: 300;
+}
+
+.ts-pf-img img{ display:block;}
+.ts-pf-img{
+	overflow:hidden;
+	display:block;	
+	position:relative;
+}
+.ts-pf-img a.image{
+	display:block;
+	position:relative;
+	overflow:hidden;
+}
+.ts-pf-img a .rollover{
+	background:url(../images/hover-zoom.png);
+	background-color:#000;
+	background-repeat:no-repeat;
+	background-position:center;
+	display:block;
+    position:absolute;
+	z-index:10;
+	display:none;
+	cursor:pointer;
+	width:100%;
+	height:100%;
+}
+.ts-pf-img a .rollover.gotolink{
+	background:url(../images/hover-link.png);
+	background-color:#000;
+	background-repeat:no-repeat;
+	background-position:center;
+}
+.ts-pf-img a .rollover.gotopost{
+	background:url(../images/hover-doc.png);
+	background-color:#000;
+	background-repeat:no-repeat;
+	background-position:center;
+}
+
+
+/* ---------------------------- */
+/*       Isotope plugin
+/* ---------------------------- */
+
+.isotope-item {
+	z-index: 2;
+}
+
+.isotope-hidden.isotope-item {
+	pointer-events: none;
+	z-index: 1;
+}
+
+.isotope,
+.isotope .isotope-item {
+	-webkit-transition-duration: 0.8s;
+	-moz-transition-duration: 0.8s;
+	-o-transition-duration: 0.8s;
+	transition-duration: 0.8s;
+}
+
+.isotope {
+	-webkit-transition-property: height, width;
+	-moz-transition-property: height, width;
+	-o-transition-property: height, width;
+	transition-property: height, width;
+}
+
+.isotope .isotope-item {
+	-webkit-transition-property: -webkit-transform, opacity;
+	-moz-transition-property: -moz-transform, opacity;
+	-o-transition-property: top, left, opacity;
+	transition-property: transform, opacity;
+}
+
+/**** disabling Isotope CSS3 transitions ****/
+
+.isotope.no-transition,
+.isotope.no-transition .isotope-item,
+.isotope .isotope-item.no-transition {
+	-webkit-transition-duration: 0s;
+	-moz-transition-duration: 0s;
+	-o-transition-duration: 0s;
+	transition-duration: 0s;
+}
+
+/* End: Recommended Isotope styles */
+
+
+/* CONTACT */
+form{margin:0; padding:0;}
+fieldset{border:0px;}
+#contactform{margin:0 auto 40px; position:relative; }
+#contactform label{display:block; width:100%; padding-bottom:5px;}
+span.error{color:red;text-align:left; font-size:11px; padding-bottom:15px; display:block;}
+#contactform input.text-input{
+	margin-bottom:15px;
+	vertical-align:middle;
+	padding:10px;
+	width:45%;
+}
+#contactform textarea{ width:95%; height:110px;} 
+#message{ margin-left:0px; font-weight:bold;}
+#message h2	{}
+#message p{margin:6px 0px; }
+
+#contactform .button{
+	cursor:pointer;
+	margin-top:18px;
+	border:0px;
+ }

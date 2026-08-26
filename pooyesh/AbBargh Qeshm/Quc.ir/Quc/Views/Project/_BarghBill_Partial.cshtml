@@ -1,0 +1,513 @@
+﻿@model quc.Models.BarghBillModel
+
+@*@{
+    Model.ABN_A = "1";
+    Model.SH_GHABZ = "6492769";
+    Model.SH_PARDAKHT = "749000037";
+    Model.SHENASAYEE = "66";
+    Model.ACCOUNT_CODE = "2";
+    Model.AMPER = "3";
+    Model.BRANCH_COST_A = "4";
+    Model.CDAT = "94/07/25";
+    Model.CNTD1 = "6";
+    Model.CNTN1 = "7";
+    Model.ID = "29/46756";
+    Model.ESHT = "1234567890";
+    Model.INSTD = "94/01/30";
+    Model.COMPANY_NAME = "شرکت آب برق...";
+    Model.NAME = "خسرو شایگان";
+    Model.ADR = "میدان چمن خیابان بوستان کوچه ژاله پلاک 777";
+    Model.POSTC = "14559";
+    Model.CRD1 = "99887766";
+    Model.CRD2 = "10";
+    Model.CRD3 = "11";
+    Model.CRD4 = "12";
+    Model.CRDR1 = "13";
+    Model.CREDIT = "14";
+    Model.CYC = "15";
+    Model.DATM = "94/12/28";
+    Model.DATS = "94/07/17";
+    Model.DECREASE_A = "18";
+    Model.DEMANDC = "19";
+    Model.DEMANDG = "20";
+    Model.DEMANDM_A = "21";
+    Model.DEMANDR = "22";
+    Model.EMOJD = "94/12/23";
+    Model.EMOJD_JAR_A = "24";
+    Model.ETOLL = "25";
+    Model.EXTRA_A = "26";
+    Model.FAZ = "27";
+    Model.FINANCIAL_CODE = "28";
+    Model.INSURANCE = "31";
+    Model.KASR = "32";
+    Model.KHAN = "33";
+    Model.LDAT = "94/08/18";
+    Model.LRD1 = "35";
+    Model.LRD1_A = "36657567";
+    Model.LRD2 = "37";
+    Model.LRD2_A = "38";
+    Model.LRD3_A = "39";
+    Model.LRD4 = "40";
+    Model.LRD4_A = "41";
+    Model.LRDR_A = "42";
+    Model.LRDR1 = "43";
+    Model.MABE1_A = "44";
+    Model.MABE2_A = "45";
+    Model.MABE3_A = "46";
+    Model.MABE4_A = "47";
+    Model.MABER1_A = "48";
+    Model.MAXLDAT = "94/10/08";
+    Model.MSG = "5";
+    Model.NERKH1 = "5161718";
+    Model.NERKH2 = "52";
+    Model.NERKH3 = "53";
+    Model.NERKH4 = "54";
+    Model.NERKHR = "55";
+    Model.OMOOR_ADR = "میدان گلها نبش خیابان سوم";
+    Model.OMOOR_DES = "قشم";
+    Model.PEEK_A = "5800497";
+
+    Model.PWR = "60";
+    Model.RD3 = "61";
+    Model.READ_TYPE = "62";
+    Model.RUSE1_A = "63";
+    Model.TARF_CODE = "005-تجاری";
+    Model.TARF_TITLE = "68";
+    Model.TEL_KHADAMAT = "69";
+    Model.TEL_M = "70";
+    Model.TEL_OP = "71";
+    Model.TOLL = "72";
+    Model.TOT_AV = "73";
+    Model.TOT_MAB = "74983620";
+    Model.TOT_MAB_A = "75";
+    Model.TOT_MAB_B = "76";
+    Model.TOT_USE = "77";
+    Model.TOT_USE_A = "78";
+    Model.TOT_USE_B = "797877";
+    Model.TOT_USE1 = "80";
+    Model.TOT_USE2 = "81";
+    Model.TOT_USE3 = "82";
+    Model.TOTD = "83";
+    Model.TOTD_A = "84";
+    Model.TOTD_B = "858687";
+    Model.USE1_A = "86";
+    Model.USE2_A = "87";
+    Model.USE3_A = "88";
+    Model.USE4_A = "89";
+    Model.YR = "90";
+    Model.ZAR = "91";
+    Model.ZAR_D = "92";
+    Model.ZARIB = "93";
+    Model.CHART_STR = "94";
+    Model.STEP_STR = "95";
+
+
+    //Model.GeneralMessage = "پیام";
+}*@
+
+<div class="person-image" style="background-image:url(../../Images/barghBill.jpg);background-size:contain;background-repeat:no-repeat;width:600px;height:1000px;position:relative;font-family:'B Yekan';font-size:8px">
+
+    <div style="position:absolute;top:20px;right:60px;font-size:10px">
+        @Html.DisplayFor(m => m.COMPANY_NAME)
+    </div>
+
+    <div style="position:absolute;top:10px;right:300px;font-size:10px">
+        @Html.DisplayFor(m => m.NAME)
+    </div>
+
+    <div style="position:absolute;top:30px;right:300px;font-size:10px">
+        @Html.DisplayFor(m => m.ADR)
+    </div>
+
+    <div style="position:absolute;top:55px;right:300px;font-size:10px">
+        @Html.DisplayFor(m => m.POSTC)
+    </div>
+
+    <div style="position:absolute;top:55px;right:510px;font-size:10px">
+        @Html.DisplayFor(m => m.SH_GHABZ)
+    </div>
+
+    <div style="position:absolute;top:85px;right:510px;font-size:10px">
+        @Html.DisplayFor(m => m.SH_PARDAKHT)
+    </div>
+
+
+
+    <div style="position:absolute;top:73px;right:60px;font-size:10px">
+        @Html.DisplayFor(m => m.OMOOR_DES)
+    </div>
+
+    <div style="position:absolute;top:85px;right:50px;font-size:10px">
+        @Html.DisplayFor(m => m.OMOOR_ADR)
+    </div>
+
+    <div style="position:absolute;top:97px;right:60px;font-size:10px">
+        @Html.DisplayFor(m => m.OMOOR_DES)
+    </div>
+
+    <div style="position:absolute;top:110px;right:110px;font-size:10px;font-weight:bold">تلفن گویا </div>
+    <div style="position:absolute;top:110px;right:150px;font-size:10px">
+        @Html.DisplayFor(m => m.TEL_OP)
+    </div>
+    <div style="position:absolute;top:127px;right:100px;font-size:10px">
+        @Html.DisplayFor(m => m.TEL_KHADAMAT)
+    </div>
+
+    <div style="position:absolute;top:77px;right:300px;">
+        @Html.DisplayFor(m => m.SHENASAYEE)
+    </div>
+
+    <div style="position:absolute;top:73px;right:440px;">
+        @Html.DisplayFor(m => m.ESHT)
+    </div>
+    <div style="position:absolute;top:90px;right:280px;">
+        @Html.DisplayFor(m => m.ID)
+    </div>
+    <div style="position:absolute;top:90px;right:435px;">
+        @Html.DisplayFor(m => m.INSTD)
+    </div>
+    <div style="position:absolute;top:110px;right:275px;">
+        @Html.DisplayFor(m => m.TARF_CODE)
+    </div>
+    <div style="position:absolute;top:128px;right:435px;">
+        @Html.DisplayFor(m => m.EMOJD)
+    </div>
+
+    <div style="position:absolute;top:170px;right:80px;">
+        @Html.DisplayFor(m => m.DEMANDG)
+    </div>
+    <div style="position:absolute;top:170px;right:165px;">
+        @Html.DisplayFor(m => m.DEMANDC)
+    </div>
+    <div style="position:absolute;top:190px;right:80px;">
+        @Html.DisplayFor(m => m.PWR)
+    </div>
+
+    <div style="position:absolute;top:210px;right:74px;">
+        @Html.DisplayFor(m => m.DEMANDR)
+    </div>
+    <div style="position:absolute;top:210px;right:170px;">
+        @Html.DisplayFor(m => m.EXTRA_A)
+    </div>
+
+
+    <div style="position:absolute;top:165px;right:290px;">
+        @Html.DisplayFor(m => m.CNTD1)
+    </div>
+    <div style="position:absolute;top:165px;right:300px;">
+        @Html.DisplayFor(m => m.LRD1_A)
+    </div>
+    <div style="position:absolute;top:165px;right:355px;">
+        @Html.DisplayFor(m => m.CRD1)
+    </div>    
+    <div style="position:absolute;top:165px;right:410px;">
+        @Html.DisplayFor(m => m.ZAR)
+    </div>
+    <div style="position:absolute;top:165px;right:450px;">
+        @Html.DisplayFor(m => m.USE1_A)
+    </div>
+    <div style="position:absolute;top:165px;right:493px;">
+        @Html.DisplayFor(m => m.NERKH1)
+    </div>
+    <div style="position:absolute;top:165px;right:550px;">
+        @Html.DisplayFor(m => m.MABE1_A)
+    </div>
+
+    <div style="position:absolute;top:180px;right:290px;">
+        @Html.DisplayFor(m => m.CNTD1)
+    </div>
+    <div style="position:absolute;top:180px;right:300px;">
+        @Html.DisplayFor(m => m.LRD2_A)
+    </div>
+    <div style="position:absolute;top:180px;right:355px;">
+        @Html.DisplayFor(m => m.CRD2)
+    </div>
+    <div style="position:absolute;top:180px;right:410px;">
+        @Html.DisplayFor(m => m.ZAR)
+    </div>
+    <div style="position:absolute;top:180px;right:450px;">
+        @Html.DisplayFor(m => m.USE2_A)
+    </div>
+    <div style="position:absolute;top:180px;right:493px;">
+        @Html.DisplayFor(m => m.NERKH2)
+    </div>
+    <div style="position:absolute;top:180px;right:550px;">
+        @Html.DisplayFor(m => m.MABE2_A)
+    </div>
+
+    <div style="position:absolute;top:195px;right:290px;">
+        @Html.DisplayFor(m => m.CNTD1)
+    </div>
+    <div style="position:absolute;top:195px;right:300px;">
+        @Html.DisplayFor(m => m.LRD3_A)
+    </div>
+    <div style="position:absolute;top:195px;right:355px;">
+        @Html.DisplayFor(m => m.CRD3)
+    </div>
+    <div style="position:absolute;top:195px;right:410px;">
+        @Html.DisplayFor(m => m.ZAR)
+    </div>
+    <div style="position:absolute;top:195px;right:450px;">
+        @Html.DisplayFor(m => m.USE3_A)
+    </div>
+    <div style="position:absolute;top:195px;right:493px;">
+        @Html.DisplayFor(m => m.NERKH3)
+    </div>
+    <div style="position:absolute;top:195px;right:550px;">
+        @Html.DisplayFor(m => m.MABE3_A)
+    </div>
+
+    <div style="position:absolute;top:210px;right:290px;">
+        @Html.DisplayFor(m => m.CNTD1)
+    </div>
+    <div style="position:absolute;top:210px;right:300px;">
+        @Html.DisplayFor(m => m.LRD4_A)
+    </div>
+    <div style="position:absolute;top:210px;right:355px;">
+        @Html.DisplayFor(m => m.CRD4)
+    </div>
+    <div style="position:absolute;top:210px;right:410px;">
+        @Html.DisplayFor(m => m.ZAR)
+    </div>
+    <div style="position:absolute;top:210px;right:450px;">
+        @Html.DisplayFor(m => m.USE4_A)
+    </div>
+    <div style="position:absolute;top:210px;right:493px;">
+        @Html.DisplayFor(m => m.NERKH4)
+    </div>
+    <div style="position:absolute;top:210px;right:550px;">
+        @Html.DisplayFor(m => m.MABE4_A)
+    </div>
+
+
+
+    <div style="position:absolute;top:225px;right:290px;">
+        @Html.DisplayFor(m => m.CNTD1)
+    </div>
+    <div style="position:absolute;top:225px;right:300px;">
+        @Html.DisplayFor(m => m.LRDR_A)
+    </div>
+    <div style="position:absolute;top:225px;right:355px;">
+        @Html.DisplayFor(m => m.CRDR1)
+    </div>
+    <div style="position:absolute;top:225px;right:410px;">
+        @Html.DisplayFor(m => m.ZAR)
+    </div>
+    <div style="position:absolute;top:225px;right:450px;">
+        @Html.DisplayFor(m => m.RUSE1_A)
+    </div>
+    <div style="position:absolute;top:225px;right:493px;">
+        @Html.DisplayFor(m => m.NERKHR)
+    </div>
+    <div style="position:absolute;top:225px;right:550px;">
+        @Html.DisplayFor(m => m.MABER1_A)
+    </div>
+
+    <div style="position:absolute;top:275px;right:110px;">
+            @Html.DisplayFor(m => m.CNTN1)
+        </div>
+
+    <div style="position:absolute;top:312px;right:110px;">
+        @Html.DisplayFor(m => m.ZAR)
+    </div>
+    <div style="position:absolute;top:335px;right:110px;">
+        @Html.DisplayFor(m => m.ZAR_D)
+    </div>
+    <div style="position:absolute;top:355px;right:130px;">
+        @Html.DisplayFor(m => m.CYC)
+    </div>
+    <div style="position:absolute;top:355px;right:155px;">
+        @Html.DisplayFor(m => m.YR)
+    </div>
+
+    <div style="position:absolute;top:250px;right:235px;">
+        @Html.DisplayFor(m => m.LDAT)
+    </div>
+    <div style="position:absolute;top:250px;right:318px;">
+        @Html.DisplayFor(m => m.CDAT)
+    </div>
+    <div style="position:absolute;top:250px;right:385px;">
+        @Html.DisplayFor(m => m.TOTD)
+    </div>
+    <div style="position:absolute;top:268px;right:280px;">
+        @Html.DisplayFor(m => m.DATS)
+    </div>
+    <div style="position:absolute;top:268px;right:385px;">
+        @Html.DisplayFor(m => m.TOT_USE)
+    </div>
+    <div style="position:absolute;top:303px;right:285px;">
+        @Html.DisplayFor(m => m.ZARIB)
+    </div>
+
+
+    <div style="position:absolute;top:322px;right:225px;">
+        تعداد روز قبل از:
+    </div>
+    <div style="position:absolute;top:322px;right:282px;">
+        @Html.DisplayFor(m => m.MAXLDAT)
+    </div>
+    <div style="position:absolute;top:322px;right:335px;">
+        @Html.DisplayFor(m => m.TOTD_B)
+    </div>
+    <div style="position:absolute;top:322px;right:385px;">
+        روز
+    </div>
+
+    <div style="position:absolute;top:337px;right:225px;">
+        مصرف قبل از:
+    </div>
+    <div style="position:absolute;top:337px;right:282px;">
+        @Html.DisplayFor(m => m.MAXLDAT)
+    </div>
+    <div style="position:absolute;top:337px;right:335px;">
+        @Html.DisplayFor(m => m.TOT_USE_B)
+    </div>
+    <div style="position:absolute;top:337px;right:383px;">
+        کیلو وات ساعت
+    </div>
+
+
+    <div style="position:absolute;top:353px;right:225px;">
+        مبلغ مصرف قبل از:
+    </div>
+    <div style="position:absolute;top:353px;right:282px;">
+        @Html.DisplayFor(m => m.MAXLDAT)
+    </div>
+    <div style="position:absolute;top:353px;right:335px;">
+        @Html.DisplayFor(m => m.TOT_MAB_B)
+    </div>
+    <div style="position:absolute;top:353px;right:385px;">
+        ریال
+    </div>
+
+    <div style="position:absolute;top:246px;right:546px;">
+        @Html.DisplayFor(m => m.TOT_MAB_A)
+    </div>
+
+    <div style="position:absolute;top:261px;right:540px;">
+        @Html.DisplayFor(m => m.TOT_MAB_A)
+    </div>
+
+    <div style="position:absolute;top:273px;right:480px;">
+        بهای قدرت
+    </div>
+    <div style="position:absolute;top:273px;right:540px;">
+        @Html.DisplayFor(m => m.DEMANDM_A)
+    </div>
+
+    <div style="position:absolute;top:285px;right:475px;;">
+        تجاوز از قدرت
+    </div>
+    <div style="position:absolute;top:285px;right:540px;">
+        @Html.DisplayFor(m => m.EXTRA_A)
+    </div>
+
+    <div style="position:absolute;top:297px;right:485px;">
+        پیک فصلی
+    </div>
+    <div style="position:absolute;top:297px;right:540px;;">
+        @Html.DisplayFor(m => m.PEEK_A)
+    </div>
+
+    <div style="position:absolute;top:309px;right:445px;;">
+        تفاوت انقضاء اعتبار پروانه
+    </div>
+    <div style="position:absolute;top:309px;right:540px;">
+        @Html.DisplayFor(m => m.EMOJD_JAR_A)
+    </div>
+    <div style="position:absolute;top:321px;right:455px;">
+        تفاوت نرخ تعرفه آزاد
+    </div>
+    <div style="position:absolute;top:321px;right:540px;">
+        @Html.DisplayFor(m => m.BRANCH_COST_A)
+    </div>
+    <div style="position:absolute;top:333px;right:483px;">
+        عوارض برق
+    </div>
+    <div style="position:absolute;top:333px;right:540px;">
+        @Html.DisplayFor(m => m.ETOLL)
+    </div>
+    <div style="position:absolute;top:345px;right:485px;">
+        تخفیف
+    </div>
+
+    <div style="position:absolute;top:357px;right:485px;">
+        آبونمان
+    </div>
+    <div style="position:absolute;top:357px;right:540px;">
+        @Html.DisplayFor(m => m.ABN_A)
+    </div>
+    <div style="position:absolute;top:369px;right:438px;">
+        مبلغ قبل از تاریخ
+    </div>
+    <div style="position:absolute;top:369px;right:486px;font-size:6px">
+        @Html.DisplayFor(m => m.MAXLDAT)
+    </div>
+    <div style="position:absolute;top:369px;right:540px;">
+        @Html.DisplayFor(m => m.TOT_MAB_B)
+    </div>
+
+
+    <div style="position:absolute;top:393px;right:540px;">
+        @Html.DisplayFor(m => m.TOLL)
+    </div>
+    <div style="position:absolute;top:405px;right:540px;">
+        @Html.DisplayFor(m => m.CREDIT)
+    </div>
+    <div style="position:absolute;top:417px;right:540px;">
+        @Html.DisplayFor(m => m.KASR)
+    </div>
+
+    <div style="position:absolute;top:437px;right:517px;font-size:12px;font-weight:bold">
+        @Html.DisplayFor(m => m.TOT_MAB)
+    </div>
+    <div style="position:absolute;top:452px;right:530px;font-weight:bold">
+        @Html.DisplayFor(m => m.DATM)
+    </div>
+
+
+    <div style="position:absolute;top:765px;right:400px;">
+        @Html.DisplayFor(m => m.SH_GHABZ)
+    </div>
+
+    <div style="position:absolute;top:765px;right:510px;">
+        @Html.DisplayFor(m => m.SH_PARDAKHT)
+    </div>
+
+    <div style="position:absolute;top:740px;right:100px;">
+        @Html.DisplayFor(m => m.OMOOR_DES)
+    </div>
+
+    <div style="position:absolute;top:765px;right:100px;">
+        @Html.DisplayFor(m => m.SHENASAYEE)
+    </div>
+
+    <div style="position:absolute;top:782px;right:100px;">
+        @Html.DisplayFor(m => m.ID)
+    </div>
+
+    <div style="position:absolute;top:827px;right:125px;">
+        @Html.DisplayFor(m => m.ESHT)
+    </div>
+
+    <div style="position:absolute;top:827px;right:185px;">
+        @Html.DisplayFor(m => m.CYC)
+    </div>
+
+    <div style="position:absolute;top:827px;right:220px;">
+        @Html.DisplayFor(m => m.YR)
+    </div>
+    
+    <div style="position:absolute;top:823px;right:500px;font-size:12px;font-weight:bold">
+        @Html.DisplayFor(m => m.TOT_MAB)
+    </div>
+
+
+
+
+    <div style="position:absolute;top:400px;right:50px;">
+        @Html.DisplayFor(m => m.GeneralMessage)
+    </div>
+
+
+</div>

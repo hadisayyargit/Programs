@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Menu = "";
+    ViewBag.SubMenu = "";
+    ViewBag.JalaliDate = Session[quc.GeneralModule.m_JalaliTodayName];
+}
+@section featured {
+    <section class="featured">
+        <div id="content">
+            <div class="page-title clearfix">
+                نحوه ی اختصاص کنتور به واحدها
+                <div class="date left">@ViewBag.JalaliDate</div>
+            </div>
+
+            <div class="clearfix">
+
+                <div class="bp-image">
+                    <img src="~/images/pic/counter.png" alt="" />
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+}

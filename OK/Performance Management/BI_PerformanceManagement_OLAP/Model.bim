@@ -1,0 +1,946 @@
+{
+  "name": "SemanticModel",
+  "compatibilityLevel": 1500,
+  "model": {
+    "culture": "en-US",
+    "dataSources": [
+      {
+        "type": "structured",
+        "name": "SQL/OKDC34017\\NODE;OKDWH",
+        "connectionDetails": {
+          "protocol": "tds",
+          "address": {
+            "server": "OKDC34017\\NODE",
+            "database": "OKDWH"
+          },
+          "authentication": null,
+          "query": null
+        },
+        "credential": {
+          "AuthenticationKind": "ServiceAccount",
+          "kind": "SQL",
+          "path": "okdc34017\\node;OKDWH",
+          "EncryptConnection": false
+        }
+      }
+    ],
+    "tables": [
+      {
+        "name": "COM DIM_Date_StartDate",
+        "columns": [
+          {
+            "name": "ID",
+            "dataType": "int64",
+            "sourceColumn": "ID"
+          },
+          {
+            "name": "GregorianDate",
+            "dataType": "dateTime",
+            "sourceColumn": "GregorianDate"
+          },
+          {
+            "name": "PersianInt",
+            "dataType": "int64",
+            "sourceColumn": "PersianInt"
+          },
+          {
+            "name": "PersianDate",
+            "dataType": "string",
+            "sourceColumn": "PersianDate"
+          },
+          {
+            "name": "PersianYearMonthStr",
+            "dataType": "string",
+            "sourceColumn": "PersianYearMonthStr"
+          },
+          {
+            "name": "PersianFullName",
+            "dataType": "string",
+            "sourceColumn": "PersianFullName"
+          },
+          {
+            "name": "GregorianMonthName",
+            "dataType": "string",
+            "sourceColumn": "GregorianMonthName"
+          },
+          {
+            "name": "PersianYearMonthInt",
+            "dataType": "int64",
+            "sourceColumn": "PersianYearMonthInt"
+          },
+          {
+            "name": "PersianMonthName",
+            "dataType": "string",
+            "sourceColumn": "PersianMonthName"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/OKDC34017\\NODE;OKDWH\",",
+                "    COM_DIM_Date = Source{[Schema=\"COM\",Item=\"DIM_Date\"]}[Data],",
+                "    #\"Removed Other Columns\" = Table.SelectColumns(COM_DIM_Date,{\"ID\", \"GregorianDate\", \"GregorianMonthName\", \"PersianInt\", \"PersianDate\", \"PersianYearMonthInt\", \"PersianYearMonthStr\", \"PersianMonthName\", \"PersianFullName\"})",
+                "in",
+                "    #\"Removed Other Columns\""
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "HRM DIM_HCMGOALHEADING",
+        "columns": [
+          {
+            "name": "ID",
+            "dataType": "int64",
+            "sourceColumn": "ID"
+          },
+          {
+            "name": "ACTIVE",
+            "dataType": "int64",
+            "sourceColumn": "ACTIVE"
+          },
+          {
+            "name": "DESCRIPTION",
+            "dataType": "string",
+            "sourceColumn": "DESCRIPTION"
+          },
+          {
+            "name": "PARTITION",
+            "dataType": "int64",
+            "sourceColumn": "PARTITION"
+          },
+          {
+            "name": "RECVERSION",
+            "dataType": "int64",
+            "sourceColumn": "RECVERSION"
+          },
+          {
+            "name": "MODIFIEDDATETIME",
+            "dataType": "dateTime",
+            "sourceColumn": "MODIFIEDDATETIME"
+          },
+          {
+            "name": "MODIFIEDBY",
+            "dataType": "string",
+            "sourceColumn": "MODIFIEDBY"
+          },
+          {
+            "name": "CREATEDDATETIME",
+            "dataType": "dateTime",
+            "sourceColumn": "CREATEDDATETIME"
+          },
+          {
+            "name": "CREATEDBY",
+            "dataType": "string",
+            "sourceColumn": "CREATEDBY"
+          },
+          {
+            "name": "GOALCAT_CUSTOM",
+            "dataType": "string",
+            "sourceColumn": "GOALCAT_CUSTOM"
+          },
+          {
+            "name": "VISION",
+            "dataType": "string",
+            "sourceColumn": "VISION"
+          },
+          {
+            "name": "VISIONCODE",
+            "dataType": "string",
+            "sourceColumn": "VISIONCODE"
+          },
+          {
+            "name": "StrategyCode",
+            "dataType": "string",
+            "sourceColumn": "StrategyCode"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/OKDC34017\\NODE;OKDWH\",",
+                "    HRM_DIM_HCMGOALHEADING = Source{[Schema=\"HRM\",Item=\"DIM_HCMGOALHEADING\"]}[Data]",
+                "in",
+                "    HRM_DIM_HCMGOALHEADING"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "HRM DIM_HCMMEASUREMENT",
+        "columns": [
+          {
+            "name": "ID",
+            "dataType": "int64",
+            "sourceColumn": "ID"
+          },
+          {
+            "name": "MEASUREMENTTYPE",
+            "dataType": "int64",
+            "sourceColumn": "MEASUREMENTTYPE"
+          },
+          {
+            "name": "CURRENCYCODE",
+            "dataType": "string",
+            "sourceColumn": "CURRENCYCODE"
+          },
+          {
+            "name": "RATINGMODEL",
+            "dataType": "int64",
+            "sourceColumn": "RATINGMODEL"
+          },
+          {
+            "name": "PARTITION",
+            "dataType": "int64",
+            "sourceColumn": "PARTITION"
+          },
+          {
+            "name": "RECVERSION",
+            "dataType": "int64",
+            "sourceColumn": "RECVERSION"
+          },
+          {
+            "name": "DESCRIPTION_CUSTOM",
+            "dataType": "string",
+            "sourceColumn": "DESCRIPTION_CUSTOM"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/OKDC34017\\NODE;OKDWH\",",
+                "    HRM_DIM_HCMMEASUREMENT = Source{[Schema=\"HRM\",Item=\"DIM_HCMMEASUREMENT\"]}[Data]",
+                "in",
+                "    HRM_DIM_HCMMEASUREMENT"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "HRM Fact_HCMGOAL",
+        "columns": [
+          {
+            "name": "ID",
+            "dataType": "int64",
+            "sourceColumn": "ID"
+          },
+          {
+            "name": "DESCRIPTION",
+            "dataType": "string",
+            "sourceColumn": "DESCRIPTION"
+          },
+          {
+            "name": "OVERVIEW",
+            "dataType": "string",
+            "sourceColumn": "OVERVIEW"
+          },
+          {
+            "name": "COM_DIM_DATE_StartDateRef",
+            "dataType": "int64",
+            "sourceColumn": "COM_DIM_DATE_StartDateRef"
+          },
+          {
+            "name": "COM_DIM_DATE_EndDateRef",
+            "dataType": "int64",
+            "sourceColumn": "COM_DIM_DATE_EndDateRef"
+          },
+          {
+            "name": "COM_DIM_DATE_FinishedDateRef",
+            "dataType": "int64",
+            "sourceColumn": "COM_DIM_DATE_FinishedDateRef"
+          },
+          {
+            "name": "HRM_DIM_HCMGOALHEADINGRef",
+            "dataType": "int64",
+            "sourceColumn": "HRM_DIM_HCMGOALHEADINGRef"
+          },
+          {
+            "name": "WORKER",
+            "dataType": "int64",
+            "sourceColumn": "WORKER"
+          },
+          {
+            "name": "GoalStatus",
+            "dataType": "int64",
+            "sourceColumn": "GoalStatus"
+          },
+          {
+            "name": "GOALID",
+            "dataType": "string",
+            "sourceColumn": "GOALID"
+          },
+          {
+            "name": "GOALTYPE",
+            "dataType": "int64",
+            "sourceColumn": "GOALTYPE"
+          },
+          {
+            "name": "GOALLEVEL",
+            "dataType": "int64",
+            "sourceColumn": "GOALLEVEL"
+          },
+          {
+            "name": "PERCENTCOMPLETE",
+            "dataType": "int64",
+            "sourceColumn": "PERCENTCOMPLETE"
+          },
+          {
+            "name": "UNITOFMEASURE",
+            "dataType": "int64",
+            "sourceColumn": "UNITOFMEASURE"
+          },
+          {
+            "name": "WEIGHT",
+            "dataType": "double",
+            "sourceColumn": "WEIGHT"
+          },
+          {
+            "name": "TARGETVALUE",
+            "dataType": "double",
+            "sourceColumn": "TARGETVALUE"
+          },
+          {
+            "name": "ACTUALVALUE",
+            "dataType": "double",
+            "sourceColumn": "ACTUALVALUE"
+          },
+          {
+            "name": "PARTITION",
+            "dataType": "int64",
+            "sourceColumn": "PARTITION"
+          },
+          {
+            "name": "RECVERSION",
+            "dataType": "int64",
+            "sourceColumn": "RECVERSION"
+          },
+          {
+            "name": "CREATEDBY",
+            "dataType": "string",
+            "sourceColumn": "CREATEDBY"
+          },
+          {
+            "name": "CREATEDDATETIME",
+            "dataType": "dateTime",
+            "sourceColumn": "CREATEDDATETIME"
+          },
+          {
+            "name": "MODIFIEDBY",
+            "dataType": "string",
+            "sourceColumn": "MODIFIEDBY"
+          },
+          {
+            "name": "MODIFIEDDATETIME",
+            "dataType": "dateTime",
+            "sourceColumn": "MODIFIEDDATETIME"
+          },
+          {
+            "name": "HRM_DIM_HCMMEASUREMENTRef",
+            "dataType": "int64",
+            "sourceColumn": "HRM_DIM_HCMMEASUREMENTRef"
+          },
+          {
+            "name": "HRM_WorkerPersonnelCode",
+            "dataType": "int64",
+            "sourceColumn": "HRM_WorkerPersonnelCode"
+          },
+          {
+            "name": "Depatment",
+            "dataType": "string",
+            "sourceColumn": "Depatment"
+          },
+          {
+            "name": "KPIDirection",
+            "dataType": "string",
+            "sourceColumn": "KPIDirection"
+          },
+          {
+            "name": "KPIRealization",
+            "dataType": "double",
+            "sourceColumn": "KPIRealization"
+          },
+          {
+            "name": "KPIUnit",
+            "dataType": "string",
+            "sourceColumn": "KPIUnit"
+          },
+          {
+            "name": "DepatmentCode",
+            "dataType": "string",
+            "sourceColumn": "DepatmentCode"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/OKDC34017\\NODE;OKDWH\",",
+                "    HRM_Fact_HCMGOAL = Source{[Schema=\"HRM\",Item=\"Fact_HCMGOAL\"]}[Data]",
+                "in",
+                "    HRM_Fact_HCMGOAL"
+              ]
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "MaxID",
+            "expression": "MAX('HRM Fact_HCMGOAL'[ID])"
+          },
+          {
+            "name": "SumofTargetValue",
+            "expression": "SUM('HRM Fact_HCMGOAL'[TARGETVALUE])"
+          },
+          {
+            "name": "SumofActualValue",
+            "expression": "SUM('HRM Fact_HCMGOAL'[ACTUALVALUE])"
+          },
+          {
+            "name": "SumofKpiRealization",
+            "expression": " SUM('HRM Fact_HCMGOAL'[KPIRealization])"
+          },
+          {
+            "name": "OrganRealization",
+            "expression": " SUMX('HRM Fact_HCMGOAL', 'HRM Fact_HCMGOAL'[KPIRealization]*'HRM Fact_HCMGOAL'[WEIGHT])/SUM('HRM Fact_HCMGOAL'[WEIGHT])*100"
+          },
+          {
+            "name": "CountofAll",
+            "expression": "COUNT('HRM Fact_HCMGOAL'[ID])"
+          }
+        ]
+      },
+      {
+        "name": "HRM DIM_Personnel",
+        "columns": [
+          {
+            "name": "ID",
+            "dataType": "int64",
+            "sourceColumn": "ID"
+          },
+          {
+            "name": "NationalCode",
+            "dataType": "string",
+            "sourceColumn": "NationalCode"
+          },
+          {
+            "name": "FirstName",
+            "dataType": "string",
+            "sourceColumn": "FirstName"
+          },
+          {
+            "name": "Lastname",
+            "dataType": "string",
+            "sourceColumn": "Lastname"
+          },
+          {
+            "name": "COM_DIM_Date_BirthDate",
+            "dataType": "int64",
+            "sourceColumn": "COM_DIM_Date_BirthDate"
+          },
+          {
+            "name": "RealBirthDate",
+            "dataType": "int64",
+            "sourceColumn": "RealBirthDate"
+          },
+          {
+            "name": "FatherName",
+            "dataType": "string",
+            "sourceColumn": "FatherName"
+          },
+          {
+            "name": "Gender",
+            "dataType": "boolean",
+            "sourceColumn": "Gender"
+          },
+          {
+            "name": "MaritalStatus",
+            "dataType": "int64",
+            "sourceColumn": "MaritalStatus"
+          },
+          {
+            "name": "HRM_DIM_DistrictRef",
+            "dataType": "int64",
+            "sourceColumn": "HRM_DIM_DistrictRef"
+          },
+          {
+            "name": "COM_DIM_Date_HireDate",
+            "dataType": "int64",
+            "sourceColumn": "COM_DIM_Date_HireDate"
+          },
+          {
+            "name": "IdentifyCardNo",
+            "dataType": "string",
+            "sourceColumn": "IdentifyCardNo"
+          },
+          {
+            "name": "IdentifyCardSerial1",
+            "dataType": "string",
+            "sourceColumn": "IdentifyCardSerial1"
+          },
+          {
+            "name": "IdentifyCardSerial2",
+            "dataType": "string",
+            "sourceColumn": "IdentifyCardSerial2"
+          },
+          {
+            "name": "IdentifyCardSerial6",
+            "dataType": "string",
+            "sourceColumn": "IdentifyCardSerial6"
+          },
+          {
+            "name": "InsuranceNo",
+            "dataType": "string",
+            "sourceColumn": "InsuranceNo"
+          },
+          {
+            "name": "HRM_DIM_CityBirthRef",
+            "dataType": "int64",
+            "sourceColumn": "HRM_DIM_CityBirthRef"
+          },
+          {
+            "name": "HRM_DIM_CityIssuanceRef",
+            "dataType": "int64",
+            "sourceColumn": "HRM_DIM_CityIssuanceRef"
+          },
+          {
+            "name": "ReligionId",
+            "dataType": "int64",
+            "sourceColumn": "ReligionId"
+          },
+          {
+            "name": "MilitaryServiceId",
+            "dataType": "int64",
+            "sourceColumn": "MilitaryServiceId"
+          },
+          {
+            "name": "MilitaryServiceCauseId",
+            "dataType": "int64",
+            "sourceColumn": "MilitaryServiceCauseId"
+          },
+          {
+            "name": "HRM_DIM_PostJobRef",
+            "dataType": "int64",
+            "sourceColumn": "HRM_DIM_PostJobRef"
+          },
+          {
+            "name": "HRM_DIM_SectionRef",
+            "dataType": "int64",
+            "sourceColumn": "HRM_DIM_SectionRef"
+          },
+          {
+            "name": "JobCategory",
+            "dataType": "string",
+            "sourceColumn": "JobCategory"
+          },
+          {
+            "name": "HRM_DIM_DepartmentRef",
+            "dataType": "int64",
+            "sourceColumn": "HRM_DIM_DepartmentRef"
+          },
+          {
+            "name": "HRM_DIM_DepartmentHeadRef",
+            "dataType": "int64",
+            "sourceColumn": "HRM_DIM_DepartmentHeadRef"
+          },
+          {
+            "name": "HiringType",
+            "dataType": "int64",
+            "sourceColumn": "HiringType"
+          },
+          {
+            "name": "IsActive",
+            "dataType": "boolean",
+            "sourceColumn": "IsActive"
+          },
+          {
+            "name": "COM_DIM_Date_LeaveDate",
+            "dataType": "int64",
+            "sourceColumn": "COM_DIM_Date_LeaveDate"
+          },
+          {
+            "name": "UnActiveType",
+            "dataType": "int64",
+            "sourceColumn": "UnActiveType"
+          },
+          {
+            "name": "PostalCode",
+            "dataType": "string",
+            "sourceColumn": "PostalCode"
+          },
+          {
+            "name": "HRM_DIM_CityResidenceRef",
+            "dataType": "int64",
+            "sourceColumn": "HRM_DIM_CityResidenceRef"
+          },
+          {
+            "name": "Phone",
+            "dataType": "string",
+            "sourceColumn": "Phone"
+          },
+          {
+            "name": "Mobile",
+            "dataType": "string",
+            "sourceColumn": "Mobile"
+          },
+          {
+            "name": "NecessaryPhone",
+            "dataType": "string",
+            "sourceColumn": "NecessaryPhone"
+          },
+          {
+            "name": "Address",
+            "dataType": "string",
+            "sourceColumn": "Address"
+          },
+          {
+            "name": "NecessaryAddress",
+            "dataType": "string",
+            "sourceColumn": "NecessaryAddress"
+          },
+          {
+            "name": "EducationDegreeId",
+            "dataType": "int64",
+            "sourceColumn": "EducationDegreeId"
+          },
+          {
+            "name": "EducationCourse",
+            "dataType": "string",
+            "sourceColumn": "EducationCourse"
+          },
+          {
+            "name": "EducationField",
+            "dataType": "string",
+            "sourceColumn": "EducationField"
+          },
+          {
+            "name": "UniversityName",
+            "dataType": "string",
+            "sourceColumn": "UniversityName"
+          },
+          {
+            "name": "BankName",
+            "dataType": "string",
+            "sourceColumn": "BankName"
+          },
+          {
+            "name": "AccountNo",
+            "dataType": "string",
+            "sourceColumn": "AccountNo"
+          },
+          {
+            "name": "PersonnelCardId",
+            "dataType": "int64",
+            "sourceColumn": "PersonnelCardId"
+          },
+          {
+            "name": "TafsiliSN",
+            "dataType": "int64",
+            "sourceColumn": "TafsiliSN"
+          },
+          {
+            "name": "BloodGroup",
+            "dataType": "string",
+            "sourceColumn": "BloodGroup"
+          },
+          {
+            "name": "WeddingDate",
+            "dataType": "int64",
+            "sourceColumn": "WeddingDate"
+          },
+          {
+            "name": "ResidenceType",
+            "dataType": "int64",
+            "sourceColumn": "ResidenceType"
+          },
+          {
+            "name": "IsVeteran",
+            "dataType": "boolean",
+            "sourceColumn": "IsVeteran"
+          },
+          {
+            "name": "PersonnelBody",
+            "dataType": "int64",
+            "sourceColumn": "PersonnelBody"
+          },
+          {
+            "name": "BoorsCode",
+            "dataType": "string",
+            "sourceColumn": "BoorsCode"
+          },
+          {
+            "name": "SejamCode",
+            "dataType": "string",
+            "sourceColumn": "SejamCode"
+          },
+          {
+            "name": "HouseMortgage",
+            "dataType": "double",
+            "sourceColumn": "HouseMortgage"
+          },
+          {
+            "name": "HouseRent",
+            "dataType": "double",
+            "sourceColumn": "HouseRent"
+          },
+          {
+            "name": "EntranceDate",
+            "dataType": "int64",
+            "sourceColumn": "EntranceDate"
+          },
+          {
+            "name": "LastOrderStartDate",
+            "dataType": "int64",
+            "sourceColumn": "LastOrderStartDate"
+          },
+          {
+            "name": "LastOrderEndDate",
+            "dataType": "int64",
+            "sourceColumn": "LastOrderEndDate"
+          },
+          {
+            "name": "LastOrderAssignDate",
+            "dataType": "int64",
+            "sourceColumn": "LastOrderAssignDate"
+          },
+          {
+            "name": "LastOrderPromotionDate",
+            "dataType": "int64",
+            "sourceColumn": "LastOrderPromotionDate"
+          },
+          {
+            "type": "calculated",
+            "name": "WorkerName",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": " 'HRM DIM_Personnel'[FirstName]&\" \"&'HRM DIM_Personnel'[Lastname]"
+          },
+          {
+            "name": "PersonnelCode",
+            "dataType": "int64",
+            "sourceColumn": "PersonnelCode"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/OKDC34017\\NODE;OKDWH\",",
+                "    HRM_DIM_Personnel = Source{[Schema=\"HRM\",Item=\"DIM_Personnel\"]}[Data]",
+                "in",
+                "    HRM_DIM_Personnel"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "COM DIM_Date_EndDate",
+        "columns": [
+          {
+            "name": "ID",
+            "dataType": "int64",
+            "sourceColumn": "ID"
+          },
+          {
+            "name": "GregorianDate",
+            "dataType": "dateTime",
+            "sourceColumn": "GregorianDate"
+          },
+          {
+            "name": "PersianInt",
+            "dataType": "int64",
+            "sourceColumn": "PersianInt"
+          },
+          {
+            "name": "PersianDate",
+            "dataType": "string",
+            "sourceColumn": "PersianDate"
+          },
+          {
+            "name": "PersianYearMonthInt",
+            "dataType": "int64",
+            "sourceColumn": "PersianYearMonthInt"
+          },
+          {
+            "name": "PersianYearMonthStr",
+            "dataType": "string",
+            "sourceColumn": "PersianYearMonthStr"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/OKDC34017\\NODE;OKDWH\",",
+                "    COM_DIM_Date = Source{[Schema=\"COM\",Item=\"DIM_Date\"]}[Data],",
+                "    #\"Removed Other Columns\" = Table.SelectColumns(COM_DIM_Date,{\"ID\", \"GregorianDate\", \"PersianInt\", \"PersianDate\", \"PersianYearMonthInt\", \"PersianYearMonthStr\"})",
+                "in",
+                "    #\"Removed Other Columns\""
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "name": "b594442b-27a2-4294-8e74-4fbe1fe13682",
+        "fromTable": "HRM Fact_HCMGOAL",
+        "fromColumn": "COM_DIM_DATE_StartDateRef",
+        "toTable": "COM DIM_Date_StartDate",
+        "toColumn": "ID"
+      },
+      {
+        "name": "ff488e93-7db9-4a32-a282-0242f02cc0b3",
+        "fromTable": "HRM Fact_HCMGOAL",
+        "fromColumn": "HRM_DIM_HCMGOALHEADINGRef",
+        "toTable": "HRM DIM_HCMGOALHEADING",
+        "toColumn": "ID"
+      },
+      {
+        "name": "66919256-058b-4286-8daf-cc63d06050d7",
+        "fromTable": "HRM Fact_HCMGOAL",
+        "fromColumn": "HRM_DIM_HCMMEASUREMENTRef",
+        "toTable": "HRM DIM_HCMMEASUREMENT",
+        "toColumn": "ID"
+      },
+      {
+        "name": "9f387cbe-f5c5-4090-ae94-a43ea131e7b6",
+        "fromTable": "HRM Fact_HCMGOAL",
+        "fromColumn": "COM_DIM_DATE_EndDateRef",
+        "toTable": "COM DIM_Date_EndDate",
+        "toColumn": "ID"
+      },
+      {
+        "name": "0869980e-20bb-427c-8a2c-05121f6a1796",
+        "fromTable": "HRM Fact_HCMGOAL",
+        "fromColumn": "HRM_WorkerPersonnelCode",
+        "toTable": "HRM DIM_Personnel",
+        "toColumn": "PersonnelCode"
+      }
+    ],
+    "roles": [
+      {
+        "name": "Role_Reading",
+        "modelPermission": "read",
+        "members": [
+          {
+            "memberName": "OKCO\\Sayyar.Hadi",
+            "memberId": "S-1-5-21-3570569664-3352858826-3026070528-9602"
+          },
+          {
+            "memberName": "OKCO\\Gholami.Mohammad",
+            "memberId": "S-1-5-21-3570569664-3352858826-3026070528-2799"
+          },
+          {
+            "memberName": "OKCO\\Benvidi.Sara",
+            "memberId": "S-1-5-21-3570569664-3352858826-3026070528-2026"
+          },
+          {
+            "memberName": "OKCO\\Ahmadi.Amin",
+            "memberId": "S-1-5-21-3570569664-3352858826-3026070528-1810"
+          },
+          {
+            "memberName": "OKCO\\Sabouri.Hossein",
+            "memberId": "S-1-5-21-3570569664-3352858826-3026070528-3658"
+          },
+          {
+            "memberName": "OKCO\\Mohammadi.Mohsen",
+            "memberId": "S-1-5-21-3570569664-3352858826-3026070528-4816"
+          },
+          {
+            "memberName": "OKCO\\Sehatifar.Nahid",
+            "memberId": "S-1-5-21-3570569664-3352858826-3026070528-9469"
+          },
+          {
+            "memberName": "OKCO\\NazariGanje.Nader",
+            "memberId": "S-1-5-21-3570569664-3352858826-3026070528-9468"
+          },
+          {
+            "memberName": "OKCO\\Jahangiri.Zahra",
+            "memberId": "S-1-5-21-3570569664-3352858826-3026070528-12397"
+          },
+          {
+            "memberName": "OKCO\\Parikhani.Zahra",
+            "memberId": "S-1-5-21-3570569664-3352858826-3026070528-3513"
+          },
+          {
+            "memberName": "OKCO\\Emamifard.Alireza",
+            "memberId": "S-1-5-21-3570569664-3352858826-3026070528-12373"
+          },
+          {
+            "memberName": "OKCO\\AzizAbadi.Pegah",
+            "memberId": "S-1-5-21-3570569664-3352858826-3026070528-1958"
+          },
+          {
+            "memberName": "OKCO\\OK.DataAnalytics",
+            "memberId": "S-1-5-21-3570569664-3352858826-3026070528-11537"
+          }
+        ],
+        "tablePermissions": [
+          {
+            "name": "COM DIM_Date_StartDate",
+            "metadataPermission": "none"
+          },
+          {
+            "name": "HRM DIM_HCMGOALHEADING",
+            "metadataPermission": "none"
+          },
+          {
+            "name": "HRM DIM_HCMMEASUREMENT",
+            "metadataPermission": "none"
+          },
+          {
+            "name": "HRM Fact_HCMGOAL",
+            "metadataPermission": "none"
+          },
+          {
+            "name": "HRM DIM_Personnel",
+            "metadataPermission": "none"
+          },
+          {
+            "name": "COM DIM_Date_EndDate",
+            "metadataPermission": "none"
+          }
+        ]
+      }
+    ],
+    "annotations": [
+      {
+        "name": "ClientCompatibilityLevel",
+        "value": "600"
+      }
+    ]
+  },
+  "id": "SemanticModel"
+}

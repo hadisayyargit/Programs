@@ -1,0 +1,32 @@
+DECLARE @Ym AS INT = 140312;
+
+;WITH ALL_cte AS (
+    SELECT   
+        D.Value,
+		P.CodeMask
+    FROM [HR].[Att_DailyResult] D WITH (NOLOCK)
+    INNER JOIN [HR].[Prs_Person] P WITH (NOLOCK) ON P.ID = D.personelid 
+    INNER JOIN [HR].[GolrangAllPerson] G WITH (NOLOCK) ON G.PersonelID = P.CodeMask
+    INNER JOIN [HR].Att_Code C ON D.Code = C.CodeID
+    WHERE P.companyid = 14 
+      AND CONCAT(LEFT([date], 4), SUBSTRING([date], 6, 2)) = @Ym
+      AND D.Code IN (11101,10103)
+      AND  G.semat IN (
+        'راننده','راننده ليفتراك','رئيس انبار','سرپرست انبار','سرپرست پخش','سرپرست داخلي انبار',
+        'سرپرست2 انبار','كارگر انبار','کاردان پخش','کاردان فني تعميرات','کارشناس کاردکس',
+        'کارگرجورچين','کنترل چي','مهماندار'
+      )
+),
+Final_CTE AS (
+    SELECT 
+        all_cte.CodeMask,
+        IIF(SUM(all_cte.value)/60 - 30 < 0, 0, SUM(all_cte.value)/60 - 30) AS Value
+    FROM ALL_cte
+    GROUP BY all_cte.CodeMask
+)
+
+SELECT SUM(Value) AS TotalValue
+FROM Final_CTE;
+
+----10103  حضور غير موظف عادي روزكاري
+----11101  اضافه كار عادي

@@ -1,0 +1,12 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="OKDC33028_NODE BI_SLA_Stores"
+  DTS:DTSID="{35FC8291-2557-463F-8838-E96EA81E0C28}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=OKDC33028\NODE;Initial Catalog=BI_SLA_Stores;Provider=MSOLAP.8;Integrated Security=SSPI;Extended Properties=Format=Tabular;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

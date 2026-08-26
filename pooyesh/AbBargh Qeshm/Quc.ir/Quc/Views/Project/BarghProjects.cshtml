@@ -1,0 +1,55 @@
+﻿@{
+    ViewBag.Menu = "پروژه‌ها";
+    ViewBag.SubMenu = "برق";
+    ViewBag.JalaliDate = Session[quc.GeneralModule.m_JalaliTodayName];
+}
+
+@section featured {
+    <section class="featured">
+            <div id="content">
+                <div class="page-title clearfix">
+                    پروژه‌های برق
+                    <div class="date right">@ViewBag.JalaliDate</div>
+                </div>
+                <div class="blog clearfix">
+                    <div class="blog-l left">
+                        <div class="bp-image"><img src="~/images/pic/1a.jpg" alt="" /></div>
+                        <div class="bp-details clearfix">
+                            <div class="bp-det-left left">
+                                <div>تاریخ: <span>@ViewBag.JalaliDat</span></div>
+                                <div>طبقه: <span>برق</span></div>
+                                
+                            </div>
+                            <div class="bp-det-right left">
+                                <div class="bp-title">پروژه های برق</div>
+                                <p>
+                                    شرح...
+                                    <br />
+                                    شرح...
+                                </p>
+                            </div>
+                        </div>
+                        <div class="bp-tags">
+                            Tags:
+                            <a href="#">برق,</a>
+                            <a href="#">آب,</a>
+                            <a href="#">تاسیسات,</a>
+                        </div>
+
+
+                    </div>
+
+                    <div class="blog-r left">
+                        <div class="b-title">اطلاعات</div>
+                        <ul class="categories">
+                            <li><a href="#">برق فشار قوی</a></li>
+                            <li><a href="#">متناوب</a></li>
+                            <li><a href="#">مستقیم</a></li>
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+    </section>
+
+    }

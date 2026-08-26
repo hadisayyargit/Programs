@@ -1,0 +1,14 @@
+declare @YM AS INT = 140311
+;With Main_Cte as (
+SELECT LoadID,sum(GrossWeight)-2.8 as Grossweight
+  FROM [OKDWH].[SCM].[Fact_wareHouseTransportationCost] Costs
+  LEFT JOIN COM.DIM_Date Dates on Dates.ID = Costs.COM_DIM_Date_LoadShipConfirmUtcDate_Ref
+  where LOADDIRECTION = 2 and Dates.PersianYearMonthInt = @YM
+  group by 
+  LoadID
+  )
+  select sum(Grossweight)/count(*) as Gw
+  from Main_Cte
+  where Grossweight>0
+
+

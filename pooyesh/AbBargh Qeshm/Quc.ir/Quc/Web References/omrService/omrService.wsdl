@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="LogIn">
+        <s:complexType />
+      </s:element>
+      <s:element name="LogInResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="LogInResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="WebWPBills_FollowArr">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FollowCode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="WebWPBills_FollowArrResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="WebWPBills_FollowArrResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="WebWPBills_ShowDataArr">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SubscriberCode" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="WebWPBills_ShowDataArrResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="WebWPBills_ShowDataArrResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ShowAllDebitArr">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SubCode" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="DebitType" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ShowAllDebitArrResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ShowAllDebitArrResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ShowLstDebitBillArr">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="command" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ShowLstDebitBillArrResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ShowLstDebitBillArrResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ShowLastBillArr">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FromCode" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="fromCycle" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ShowLastBillArrResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ShowLastBillArrResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="WebWPBills_Create_Tablet">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="command" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="WebWPBills_Create_TabletResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="WebWPBills_Create_TabletResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ShowSubscriberToReadArr">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="command" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ShowSubscriberToReadArrResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ShowSubscriberToReadArrResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="LogInSoapIn">
+    <wsdl:part name="parameters" element="tns:LogIn" />
+  </wsdl:message>
+  <wsdl:message name="LogInSoapOut">
+    <wsdl:part name="parameters" element="tns:LogInResponse" />
+  </wsdl:message>
+  <wsdl:message name="WebWPBills_FollowArrSoapIn">
+    <wsdl:part name="parameters" element="tns:WebWPBills_FollowArr" />
+  </wsdl:message>
+  <wsdl:message name="WebWPBills_FollowArrSoapOut">
+    <wsdl:part name="parameters" element="tns:WebWPBills_FollowArrResponse" />
+  </wsdl:message>
+  <wsdl:message name="WebWPBills_ShowDataArrSoapIn">
+    <wsdl:part name="parameters" element="tns:WebWPBills_ShowDataArr" />
+  </wsdl:message>
+  <wsdl:message name="WebWPBills_ShowDataArrSoapOut">
+    <wsdl:part name="parameters" element="tns:WebWPBills_ShowDataArrResponse" />
+  </wsdl:message>
+  <wsdl:message name="ShowAllDebitArrSoapIn">
+    <wsdl:part name="parameters" element="tns:ShowAllDebitArr" />
+  </wsdl:message>
+  <wsdl:message name="ShowAllDebitArrSoapOut">
+    <wsdl:part name="parameters" element="tns:ShowAllDebitArrResponse" />
+  </wsdl:message>
+  <wsdl:message name="ShowLstDebitBillArrSoapIn">
+    <wsdl:part name="parameters" element="tns:ShowLstDebitBillArr" />
+  </wsdl:message>
+  <wsdl:message name="ShowLstDebitBillArrSoapOut">
+    <wsdl:part name="parameters" element="tns:ShowLstDebitBillArrResponse" />
+  </wsdl:message>
+  <wsdl:message name="ShowLastBillArrSoapIn">
+    <wsdl:part name="parameters" element="tns:ShowLastBillArr" />
+  </wsdl:message>
+  <wsdl:message name="ShowLastBillArrSoapOut">
+    <wsdl:part name="parameters" element="tns:ShowLastBillArrResponse" />
+  </wsdl:message>
+  <wsdl:message name="WebWPBills_Create_TabletSoapIn">
+    <wsdl:part name="parameters" element="tns:WebWPBills_Create_Tablet" />
+  </wsdl:message>
+  <wsdl:message name="WebWPBills_Create_TabletSoapOut">
+    <wsdl:part name="parameters" element="tns:WebWPBills_Create_TabletResponse" />
+  </wsdl:message>
+  <wsdl:message name="ShowSubscriberToReadArrSoapIn">
+    <wsdl:part name="parameters" element="tns:ShowSubscriberToReadArr" />
+  </wsdl:message>
+  <wsdl:message name="ShowSubscriberToReadArrSoapOut">
+    <wsdl:part name="parameters" element="tns:ShowSubscriberToReadArrResponse" />
+  </wsdl:message>
+  <wsdl:portType name="OMRServiceSoap">
+    <wsdl:operation name="LogIn">
+      <wsdl:input message="tns:LogInSoapIn" />
+      <wsdl:output message="tns:LogInSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WebWPBills_FollowArr">
+      <wsdl:input message="tns:WebWPBills_FollowArrSoapIn" />
+      <wsdl:output message="tns:WebWPBills_FollowArrSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WebWPBills_ShowDataArr">
+      <wsdl:input message="tns:WebWPBills_ShowDataArrSoapIn" />
+      <wsdl:output message="tns:WebWPBills_ShowDataArrSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ShowAllDebitArr">
+      <wsdl:input message="tns:ShowAllDebitArrSoapIn" />
+      <wsdl:output message="tns:ShowAllDebitArrSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ShowLstDebitBillArr">
+      <wsdl:input message="tns:ShowLstDebitBillArrSoapIn" />
+      <wsdl:output message="tns:ShowLstDebitBillArrSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ShowLastBillArr">
+      <wsdl:input message="tns:ShowLastBillArrSoapIn" />
+      <wsdl:output message="tns:ShowLastBillArrSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WebWPBills_Create_Tablet">
+      <wsdl:input message="tns:WebWPBills_Create_TabletSoapIn" />
+      <wsdl:output message="tns:WebWPBills_Create_TabletSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ShowSubscriberToReadArr">
+      <wsdl:input message="tns:ShowSubscriberToReadArrSoapIn" />
+      <wsdl:output message="tns:ShowSubscriberToReadArrSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="OMRServiceSoap" type="tns:OMRServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="LogIn">
+      <soap:operation soapAction="http://tempuri.org/LogIn" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WebWPBills_FollowArr">
+      <soap:operation soapAction="http://tempuri.org/WebWPBills_FollowArr" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WebWPBills_ShowDataArr">
+      <soap:operation soapAction="http://tempuri.org/WebWPBills_ShowDataArr" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ShowAllDebitArr">
+      <soap:operation soapAction="http://tempuri.org/ShowAllDebitArr" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ShowLstDebitBillArr">
+      <soap:operation soapAction="http://tempuri.org/ShowLstDebitBillArr" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ShowLastBillArr">
+      <soap:operation soapAction="http://tempuri.org/ShowLastBillArr" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WebWPBills_Create_Tablet">
+      <soap:operation soapAction="http://tempuri.org/WebWPBills_Create_Tablet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ShowSubscriberToReadArr">
+      <soap:operation soapAction="http://tempuri.org/ShowSubscriberToReadArr" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="OMRServiceSoap12" type="tns:OMRServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="LogIn">
+      <soap12:operation soapAction="http://tempuri.org/LogIn" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WebWPBills_FollowArr">
+      <soap12:operation soapAction="http://tempuri.org/WebWPBills_FollowArr" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WebWPBills_ShowDataArr">
+      <soap12:operation soapAction="http://tempuri.org/WebWPBills_ShowDataArr" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ShowAllDebitArr">
+      <soap12:operation soapAction="http://tempuri.org/ShowAllDebitArr" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ShowLstDebitBillArr">
+      <soap12:operation soapAction="http://tempuri.org/ShowLstDebitBillArr" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ShowLastBillArr">
+      <soap12:operation soapAction="http://tempuri.org/ShowLastBillArr" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WebWPBills_Create_Tablet">
+      <soap12:operation soapAction="http://tempuri.org/WebWPBills_Create_Tablet" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ShowSubscriberToReadArr">
+      <soap12:operation soapAction="http://tempuri.org/ShowSubscriberToReadArr" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="OMRService">
+    <wsdl:port name="OMRServiceSoap" binding="tns:OMRServiceSoap">
+      <soap:address location="http://192.168.10.106/PublishWeb/WebServices/omrService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="OMRServiceSoap12" binding="tns:OMRServiceSoap12">
+      <soap12:address location="http://192.168.10.106/PublishWeb/WebServices/omrService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

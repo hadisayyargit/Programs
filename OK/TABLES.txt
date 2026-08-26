@@ -1,0 +1,55 @@
+ ۱.	فروشگاه های فعال(COM.DINinventlocation)
+server: OKDC34017\NODE
+database:OKDWH
+
+2.	گزارش چارت فروش(InventLocationChart)
+server: OKDC34017\NODE
+database:OKDWH
+
+3.	گزارش فروش(Fact_SalesTrans)
+server: OKDC34017\NODE
+database:OKDWH
+
+4.	گزارش هدف فروش
+
+5.	گزارش تیکتینگ(WFCASE, WORKFLOW, WFCLASS, WFUSER)
+server:
+database:
+
+
+6.	اقلام راکد(deadinventory)
+server: OKDC34017\NODE
+database:OKDWH
+
+7.	روند موجودی(inventtrend)
+server: OKDC34017\NODE
+database:OKDWH
+
+8.	ضایعات (scm.Fact_Waste)
+server: OKDC34017\NODE
+database:OKDWH
+
+9.	آخال (Fact_Akhal)
+server: OKDC34017\NODE
+database:OKDWH
+
+10.	ادجاست (Fact_Adjustment)
+server: OKDC34017\NODE
+database:OKDWH
+
+11.	هدف فروش
+
+12.	مرجوعی(ReturnControl)
+server: OKDC34017\NODE
+database:OKDWH
+
+13.	تناژ ورود خروج (scm.Fact_WarehouseInputOutput)
+server: OKDC34017\NODE
+database:OKDWH
+
+14.	لیست پرسنلی (vw_Personel_BPM)
+server: KOOROSHDB
+database: personnel
+
+15.	جت پرینت
+

@@ -1,0 +1,12 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="OKDC32016_AXDB"
+  DTS:DTSID="{963E27AD-550C-4BCC-868A-08D24DCA52D0}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=OKDC32016;Initial Catalog=AXDB;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;Application Name=SSIS-BI_PerformanceManagement_ETL-{963E27AD-550C-4BCC-868A-08D24DCA52D0}OKDC42103-0.AXDB;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

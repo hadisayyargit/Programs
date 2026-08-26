@@ -1,0 +1,63 @@
+بهره وری
+---------------------------------------
+(1)
+declare @YM as int = 140312
+select SUM(W.GrossWeight)/1000000
+FROM [OKDWH].[SCM].[Fact_WarehouseInputOutput] W
+INNER JOIN [COM].[DIM_Date] D ON W.COM_DIM_Date_LoadShipconfirmUTCdateRef = D.ID
+INNER JOIN [COM].[DIM_InventLocation] L ON W.COM_DIM_InventLocationFromRef = L.ID
+inner join com.DIM_Item I ON I.ID = W.COM_DIM_ItemRef
+WHERE  d.PersianYearMonthInt  = @YM AND L.TypeID IN (5,6,7) AND I.CodeLevel1 IN(1,2,3,4,6,7,8,9,11)
+
+-----------------------------------------
+(2)
+
+DECLARE @Ym AS INT = 140312;
+
+WITH ALL_cte AS (
+    SELECT   
+        CONCAT(LEFT([date], 4), SUBSTRING([date], 6, 2)) AS YearMonth,
+        D.Value,
+        D.Code, 
+        CONCAT(CONCAT(LEFT([date], 4), SUBSTRING([date], 6, 2), RIGHT([date], 2)), p.CodeMask) AS Key_D_P
+    FROM [HR].[Att_DailyResult] D WITH (NOLOCK)
+    INNER JOIN [HR].[Prs_Person] P WITH (NOLOCK) ON P.ID = D.personelid 
+    INNER JOIN [HR].[GolrangAllPerson] G WITH (NOLOCK) ON G.PersonelID = P.CodeMask
+    INNER JOIN [HR].Att_Code C ON D.Code = C.CodeID
+    WHERE P.companyid = 14 
+      AND CONCAT(LEFT([date], 4), SUBSTRING([date], 6, 2)) = @Ym
+      AND D.Code IN (14381)
+      AND G.semat IN ('راننده ليفتراك','كارگر انبار','کارگرجورچين','کنترل چي')
+),
+Mamoriyat_cte2 AS (
+    SELECT 
+        D.Value,
+        CONCAT(CONCAT(LEFT([date], 4), SUBSTRING([date], 6, 2), RIGHT([date], 2)), p.CodeMask) AS Key_D_P
+    FROM [HR].[Att_DailyResult] D WITH (NOLOCK)
+    INNER JOIN [HR].[Prs_Person] P WITH (NOLOCK) ON P.ID = D.personelid 
+    INNER JOIN [HR].[GolrangAllPerson] G WITH (NOLOCK) ON G.PersonelID = P.CodeMask
+    INNER JOIN [HR].Att_Code C ON D.Code = C.CodeID
+    WHERE P.companyid = 14 
+      AND CONCAT(LEFT([date], 4), SUBSTRING([date], 6, 2)) = @Ym
+      AND D.Code IN (11032)
+      AND G.semat IN ('راننده ليفتراك','كارگر انبار','کارگرجورچين','کنترل چي')
+)
+SELECT 
+    sum(IIF(ALL_cte.Code = 14381, ALL_cte.Value - ISNULL(Mamoriyat_cte2.Value, 0), ALL_cte.Value))/60 AS Value
+FROM ALL_cte
+LEFT JOIN Mamoriyat_cte2 ON ALL_cte.Key_D_P = Mamoriyat_cte2.Key_D_P;
+---------------------------------------------------------
+(3)
+
+Declare @YM AS int = 140312
+SELECT count(KaregarRoozMozdCodeMeliSN)*6.33
+FROM OKDM_DataAnalysis.HR.KaregarRoozmozdDarkhast AS Fact
+left join OKDM_DataAnalysis.HR.KaregarRoozMozdDarkhast_DataState Dim on dim.SN = fact.KaregarRoozmozdDarkhastStatus
+left join [OKDM_DataAnalysis].[HR].[MdvwDep] Dep on dep.mdDepSN = Fact.mdDepSN
+where dim.SN = 200 and [MdDepActivityTypeDS] IN( N'انبار',N'امور انبارها') and LEFT(Fact.KaregarRoozmozdDarkhastDate,6) = @YM
+
+X = (1)/(2)+(3)
+
+
+
+

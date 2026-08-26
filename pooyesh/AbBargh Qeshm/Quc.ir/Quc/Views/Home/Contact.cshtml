@@ -1,0 +1,68 @@
+﻿@{
+    ViewBag.Menu = "تماس با ما";
+    ViewBag.SubMenu = "";
+    ViewBag.JalaliDate = Session[quc.GeneralModule.m_JalaliTodayName];
+}
+
+@section featured {
+    <section class="featured">
+            <div id="content">
+                <div class="page-title clearfix">
+                    تماس با ما
+                    <div class="date left">@ViewBag.JalaliDate</div>
+                </div>
+                <div class="contact-map">
+                    @*<iframe width="100%" height="300" frameborder="0" style="border:0" allowfullscreen src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d227920.99152230436!2d55.87997084698745!3d26.79967380218359!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sir!4v1437994780841"></iframe>*@
+                    <img   width="100%" height="300" src="~/Images/pic/QUC_map.jpg"/>
+                </div>
+
+                <div class="contact-ctn clearfix">
+                    <div class="contact-form right">
+                        <div class="contact-title">هرگونه نظر یا پیشنهاد خود را با ما درمیان بگذارید</div>
+                        <form name="" action="#" class="contact-frm clearfix">
+                            <div class="contact-frm-left right">
+                                <div class="inp-label" >نام <span >*</span></div>
+                                <input type="text" name="" class="inp-input" value="" />
+                                <div class="inp-label">پست الکترونیکی <span>*</span></div>
+                                <input type="text" name="" class="inp-input" value="" />
+                                <div class="inp-label">تلفن </div>
+                                <input type="text" name="" class="inp-input" value="" />
+                            </div>
+                            <div class="contact-frm-left right">
+                                <div class="inp-label">پیام شما <span>*</span></div>
+                                <textarea></textarea>
+                                <div class="buttons clearfix">
+                                    <div class="all-fields right">*فیلد اجباری</div>
+                                    <input type="submit" name="" class="ctn-submit left" />
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="contact-info right">
+                        <div class="contact-title">اطلاعات تماس</div>
+                        <div class="ctn-info">
+                            دفتر تهران: خ کارگر شمالی - نرسیده به چهارراه امیر آباد - خ دوم - خ انتصاریه  - پلاک: 77 طبقه اول - کد پستی: 1413915413
+                            <br />
+                            تلفن: 88339119 - 88339118 021
+
+
+                        </div>
+                        <div class="ctn-home">
+                            <p>
+                                هرمزگان - قشم
+                                <br />
+                                قشم - میدان گلها - بلوار 22 بهمن - خ بوستان شمالی - سایت آب شیرین‌کن - کد پستی: 7951919716
+                            </p>
+                        </div>
+                        <div class="ctn-email" dir="ltr" ><a href="#">contact@quc.ir</a></div>
+                        
+                        <div class="ctn-phone" dir="ltr" >
+                            (+98) 0763- 5240881-5
+                            <br />
+                            فکس (نمابر): 5240890
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+    }

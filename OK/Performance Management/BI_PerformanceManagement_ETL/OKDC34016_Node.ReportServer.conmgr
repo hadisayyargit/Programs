@@ -1,0 +1,12 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="OKDC34016_Node.ReportServer"
+  DTS:DTSID="{9E633ADE-D62A-4CDD-8267-C379A30A30A2}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=OKDC34016\Node;Initial Catalog=ReportServer;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-PerformanceManagement_9_DataAnalysis-{9E633ADE-D62A-4CDD-8267-C379A30A30A2}OKDC34016\Node.ReportServer;Auto Translate=False;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>
