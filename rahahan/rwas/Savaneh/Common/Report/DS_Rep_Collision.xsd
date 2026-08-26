@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema id="DS_Rep_Collision" targetNamespace="http://tempuri.org/DS_Rep_Collision.xsd"
+	elementFormDefault="qualified" attributeFormDefault="qualified" xmlns="http://tempuri.org/DS_Rep_Collision.xsd"
+	xmlns:mstns="http://tempuri.org/DS_Rep_Collision.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+	<xs:element name="DS_Rep_Collision" msdata:IsDataSet="true">
+		<xs:complexType>
+			<xs:choice maxOccurs="unbounded">
+				<xs:element name="Rws_Sp_Rep_Collision4DS">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="DayDate" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="Rws_Fld_FileCategorize" type="xs:string" />
+							<xs:element name="Rws_Fld_AccidentDate" type="xs:string" />
+							<xs:element name="Rws_Fld_RegionDescribe" type="xs:string" />
+							<xs:element name="Rws_Tbl_AccidentKindDesribe" type="xs:string" />
+							<xs:element name="Rws_Tbl_CollisionStateDesribe" type="xs:string" minOccurs="0" />
+							<xs:element name="Rws_Tbl_CollisionKindDesribe" type="xs:string" minOccurs="0" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

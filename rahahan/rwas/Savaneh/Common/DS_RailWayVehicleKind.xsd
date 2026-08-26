@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema id="DS_RailWayVehicleKind" targetNamespace="http://tempuri.org/DS_RailWayVehicleKind.xsd"
+	elementFormDefault="qualified" attributeFormDefault="qualified" xmlns="http://tempuri.org/DS_RailWayVehicleKind.xsd"
+	xmlns:mstns="http://tempuri.org/DS_RailWayVehicleKind.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+	<xs:element name="DS_RailWayVehicleKind" msdata:IsDataSet="true">
+		<xs:complexType>
+			<xs:choice maxOccurs="unbounded">
+				<xs:element name="Rws_Sp_Sel_All_RailWayVehicleKind">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Rws_Fld_Code" type="xs:unsignedByte" />
+							<xs:element name="Rws_Fld_Describe" type="xs:string" />
+							<xs:element name="Rws_Fld_ActiveOnManeuver" type="xs:boolean" minOccurs="0" />
+							<xs:element name="Rws_Fld_VehicleType" type="xs:unsignedByte" minOccurs="0" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:choice>
+		</xs:complexType>
+		<xs:unique name="DS_RailWayVehicleKindKey1" msdata:PrimaryKey="true">
+			<xs:selector xpath=".//mstns:Rws_Sp_Sel_All_RailWayVehicleKind" />
+			<xs:field xpath="mstns:Rws_Fld_Code" />
+		</xs:unique>
+	</xs:element>
+</xs:schema>

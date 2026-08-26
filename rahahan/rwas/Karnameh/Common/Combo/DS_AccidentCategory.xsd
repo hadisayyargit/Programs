@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema id="DS_AccidentCategory" targetNamespace="http://tempuri.org/DS_AccidentCategory.xsd"
+	elementFormDefault="qualified" attributeFormDefault="qualified" xmlns="http://tempuri.org/DS_AccidentCategory.xsd"
+	xmlns:mstns="http://tempuri.org/DS_AccidentCategory.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+	<xs:element name="DS_AccidentCategory" msdata:IsDataSet="true">
+		<xs:complexType>
+			<xs:choice maxOccurs="unbounded">
+				<xs:element name="Rws_Sp_Sel_All_AccidentCategory4Combo">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Rws_Fld_CategoryNo" type="xs:int" />
+							<xs:element name="Rws_Fld_Describe" type="xs:string" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:choice>
+		</xs:complexType>
+		<xs:unique name="DS_AccidentCategoryKey1" msdata:PrimaryKey="true">
+			<xs:selector xpath=".//mstns:Rws_Sp_Sel_All_AccidentCategory4Combo" />
+			<xs:field xpath="mstns:Rws_Fld_CategoryNo" />
+		</xs:unique>
+	</xs:element>
+</xs:schema>

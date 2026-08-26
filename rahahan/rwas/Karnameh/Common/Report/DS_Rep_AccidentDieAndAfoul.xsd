@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema id="DS_Rep_AccidentDieAndAfoul" targetNamespace="http://tempuri.org/DS_Rep_AccidentDieAndAfoul.xsd"
+	elementFormDefault="qualified" attributeFormDefault="qualified" xmlns="http://tempuri.org/DS_Rep_AccidentDieAndAfoul.xsd"
+	xmlns:mstns="http://tempuri.org/DS_Rep_AccidentDieAndAfoul.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+	<xs:element name="DS_Rep_AccidentDieAndAfoul" msdata:IsDataSet="true">
+		<xs:complexType>
+			<xs:choice maxOccurs="unbounded">
+				<xs:element name="Rws_Sp_Rep_AccidentDieAndAfoul4DS">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="DayDate" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="Rws_Fld_FileCategorize" type="xs:string" />
+							<xs:element name="Rws_Fld_fk_CategoryNo" type="xs:int" />
+							<xs:element name="Rws_Fld_fk_Region" type="xs:unsignedByte" />
+							<xs:element name="Rws_Fld_AccidentDate" type="xs:string" />
+							<xs:element name="Rws_Fld_AccidentTime" type="xs:string" minOccurs="0" />
+							<xs:element name="Rws_Fld_AccidentTelGraph" type="xs:string" minOccurs="0" />
+							<xs:element name="Rws_Fld_RegionDescribe" type="xs:string" />
+							<xs:element name="Rws_Fld_CategoryNo" type="xs:int" />
+							<xs:element name="Rws_Fld_AccidentKindDescribe" type="xs:string" />
+							<xs:element name="Rws_Fld_Row" type="xs:short" />
+							<xs:element name="Rws_Fld_fk_UniqueCode" type="xs:int" minOccurs="0" />
+							<xs:element name="Rws_Fld_IsAfoul" type="xs:boolean" minOccurs="0" />
+							<xs:element name="Rws_Fld_IsAfoulDes" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="Rws_Fld_Name" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

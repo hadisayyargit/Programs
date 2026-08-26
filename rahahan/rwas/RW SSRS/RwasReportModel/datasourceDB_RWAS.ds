@@ -1,0 +1,10 @@
+﻿<DataSource xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" xsi:type="RelationalDataSource" dwd:design-time-name="9bcefbf4-d695-4663-b2b0-8fdd417a039c" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+  <ID>datasourceDB_RWAS</ID>
+  <Name>datasourceDB_RWAS</Name>
+  <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+  <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+  <ConnectionString>Data Source=SAYAR-GH-IT;Initial Catalog=DB_RWAS;Integrated Security=True</ConnectionString>
+  <ConnectionStringSecurity>Unchanged</ConnectionStringSecurity>
+  <ManagedProvider>System.Data.SqlClient</ManagedProvider>
+  <Timeout>PT0S</Timeout>
+</DataSource>

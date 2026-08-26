@@ -1,0 +1,337 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2008/01/reportdefinition">
+  <DataSources>
+    <DataSource Name="datasourceRWAS">
+      <DataSourceReference>datasourceRWAS</DataSourceReference>
+      <rd:DataSourceID>f6f25d40-f780-47e5-b045-ccd430c8f4d1</rd:DataSourceID>
+      <rd:SecurityType>None</rd:SecurityType>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="datasetTrainArrangement">
+      <Fields>
+        <Field Name="Rws_Fld_fk_EarlyAccident">
+          <DataField>Rws_Fld_fk_EarlyAccident</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Rws_Fld_TrainArrangementCroquis">
+          <DataField>Rws_Fld_TrainArrangementCroquis</DataField>
+          <rd:TypeName>System.Byte[]</rd:TypeName>
+        </Field>
+        <Field Name="Rws_Fld_fk_EarlyAccidentPre">
+          <DataField>Rws_Fld_fk_EarlyAccidentPre</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Rws_Fld_TrainNo">
+          <DataField>Rws_Fld_TrainNo</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Rws_Fld_fk_Locomotive">
+          <DataField>Rws_Fld_fk_Locomotive</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Rws_Fld_WagonCount">
+          <DataField>Rws_Fld_WagonCount</DataField>
+          <rd:TypeName>System.Int16</rd:TypeName>
+        </Field>
+        <Field Name="Rws_Fld_TrainWeight">
+          <DataField>Rws_Fld_TrainWeight</DataField>
+          <rd:TypeName>System.Int16</rd:TypeName>
+        </Field>
+        <Field Name="Rws_Fld_fk_LocomotiveDriver">
+          <DataField>Rws_Fld_fk_LocomotiveDriver</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Rws_Fld_fk_TrainBoss">
+          <DataField>Rws_Fld_fk_TrainBoss</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Rws_Fld_pk_TrainNo">
+          <DataField>Rws_Fld_pk_TrainNo</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="Rws_Fld_LocomotiveDescribe">
+          <DataField>Rws_Fld_LocomotiveDescribe</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Rws_Fld_TrainBossName">
+          <DataField>Rws_Fld_TrainBossName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Rws_Fld_LocmotiveDriverName">
+          <DataField>Rws_Fld_LocmotiveDriverName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Rws_Fld_TrainBossUniqueCode">
+          <DataField>Rws_Fld_TrainBossUniqueCode</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="Rws_Fld_LocomotiveDriverUniqueCode">
+          <DataField>Rws_Fld_LocomotiveDriverUniqueCode</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="Rws_Fld_TrainNo_Org">
+          <DataField>Rws_Fld_TrainNo_Org</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="Rws_Fld_fk_Locomotive_Org">
+          <DataField>Rws_Fld_fk_Locomotive_Org</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="Rws_Fld_fk_LocomotiveDriver_Org">
+          <DataField>Rws_Fld_fk_LocomotiveDriver_Org</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="Rws_Fld_fk_TrainBoss_Org">
+          <DataField>Rws_Fld_fk_TrainBoss_Org</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="Rws_Fld_WagonCount_Org">
+          <DataField>Rws_Fld_WagonCount_Org</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="Rws_Fld_TrainWeight_Org">
+          <DataField>Rws_Fld_TrainWeight_Org</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>datasourceRWAS</DataSourceName>
+        <CommandType>StoredProcedure</CommandType>
+        <CommandText>Rws_Sp_Sel_TrainAttribute</CommandText>
+        <QueryParameters>
+          <QueryParameter Name="@Rws_Fld_fk_EarlyAccident">
+            <Value>=Parameters!pPKEarlyAccident.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+      </Query>
+      <Filters>
+        <Filter>
+          <FilterExpression>=Fields!Rws_Fld_fk_EarlyAccident.Value</FilterExpression>
+          <Operator>Equal</Operator>
+          <FilterValues>
+            <FilterValue>=Parameters!pPKEarlyAccident.Value</FilterValue>
+          </FilterValues>
+        </Filter>
+      </Filters>
+    </DataSet>
+  </DataSets>
+  <Body>
+    <ReportItems>
+      <Image Name="Image1">
+        <Source>Database</Source>
+        <Value>=First(Fields!Rws_Fld_TrainArrangementCroquis.Value, "datasetTrainArrangement")</Value>
+        <MIMEType>image/jpeg</MIMEType>
+        <Sizing>FitProportional</Sizing>
+        <Top>0.3925in</Top>
+        <Left>0.58in</Left>
+        <Height>3.61458in</Height>
+        <Width>3.88542in</Width>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Image>
+    </ReportItems>
+    <Height>10.5791cm</Height>
+    <Style />
+  </Body>
+  <ReportParameters>
+    <ReportParameter Name="pPDate">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>pPDate</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="pPKEarlyAccident">
+      <DataType>Integer</DataType>
+      <Nullable>true</Nullable>
+      <Prompt>pPKEarlyAccident</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="pTitle">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>pTitle</Prompt>
+      <Hidden>true</Hidden>
+    </ReportParameter>
+    <ReportParameter Name="pFooterTitle">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>pFooterTitle</Prompt>
+      <Hidden>true</Hidden>
+    </ReportParameter>
+  </ReportParameters>
+  <Width>12.7cm</Width>
+  <Page>
+    <PageHeader>
+      <Height>2.9898cm</Height>
+      <PrintOnFirstPage>true</PrintOnFirstPage>
+      <PrintOnLastPage>true</PrintOnLastPage>
+      <ReportItems>
+        <Textbox Name="textbox1">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>آرایش قطار در محل حادثه</Value>
+                  <Style>
+                    <FontFamily>Tahoma</FontFamily>
+                    <FontSize>20pt</FontSize>
+                    <FontWeight>Bold</FontWeight>
+                    <Color>SteelBlue</Color>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style />
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>textbox1</rd:DefaultName>
+          <Top>0.39688cm</Top>
+          <Height>0.36in</Height>
+          <Width>5in</Width>
+          <Style>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+            <Direction>RTL</Direction>
+          </Style>
+        </Textbox>
+        <Textbox Name="Textbox22">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>="تاریخ گزارشگیری: "+Parameters!pPDate.Value</Value>
+                  <Style>
+                    <FontFamily>Tahoma</FontFamily>
+                    <FontSize>8pt</FontSize>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style />
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox22</rd:DefaultName>
+          <Top>0.68056in</Top>
+          <Left>0.125in</Left>
+          <Height>0.25in</Height>
+          <Width>1in</Width>
+          <ZIndex>1</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+            <Direction>RTL</Direction>
+          </Style>
+        </Textbox>
+        <Textbox Name="pTitle">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>=Parameters!pTitle.Value</Value>
+                  <Style>
+                    <FontFamily>Tahoma</FontFamily>
+                    <FontSize>14pt</FontSize>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style />
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>pTitle</rd:DefaultName>
+          <Top>0.68056in</Top>
+          <Left>1.30729in</Left>
+          <Height>0.34375in</Height>
+          <Width>3.48958in</Width>
+          <ZIndex>2</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+            <Direction>RTL</Direction>
+          </Style>
+        </Textbox>
+      </ReportItems>
+      <Style>
+        <Border>
+          <Style>None</Style>
+        </Border>
+      </Style>
+    </PageHeader>
+    <PageFooter>
+      <Height>1.77271cm</Height>
+      <PrintOnFirstPage>true</PrintOnFirstPage>
+      <PrintOnLastPage>true</PrintOnLastPage>
+      <ReportItems>
+        <Textbox Name="pFooterTitle">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>=Parameters!pFooterTitle.Value</Value>
+                  <Style>
+                    <FontFamily>Tahoma</FontFamily>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style />
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>pFooterTitle</rd:DefaultName>
+          <Top>0.24479in</Top>
+          <Left>0.58855in</Left>
+          <Height>0.28125in</Height>
+          <Width>4.20833in</Width>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+            <Direction>RTL</Direction>
+          </Style>
+        </Textbox>
+      </ReportItems>
+      <Style>
+        <Border>
+          <Style>None</Style>
+        </Border>
+      </Style>
+    </PageFooter>
+    <PageHeight>29.7cm</PageHeight>
+    <PageWidth>21cm</PageWidth>
+    <LeftMargin>2.54cm</LeftMargin>
+    <RightMargin>2.54cm</RightMargin>
+    <TopMargin>2.54cm</TopMargin>
+    <BottomMargin>2.54cm</BottomMargin>
+    <ColumnSpacing>1.27cm</ColumnSpacing>
+    <Style />
+  </Page>
+  <Language>fa-IR</Language>
+  <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
+  <rd:ReportID>a1ed1b0f-bde6-43bf-84e2-040a41b2de95</rd:ReportID>
+  <rd:ReportUnitType>Cm</rd:ReportUnitType>
+</Report>

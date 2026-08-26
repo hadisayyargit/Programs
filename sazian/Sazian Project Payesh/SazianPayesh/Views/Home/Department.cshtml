@@ -1,0 +1,106 @@
+﻿@using Kendo.Mvc.UI
+
+@{
+    ViewBag.Title = "Department";
+    List<SazianPayesh.Models.Department> myList = ViewBag.DepartmentList;
+}
+
+<head>
+    <link href="~/Content/kendo/2014.1.318/style/kendo.common.min.css" rel="stylesheet" />
+    <link href="~/Content/kendo/2014.1.318/style/kendo.default.min.css" rel="stylesheet" />
+    <link href="~/Content/kendo/2014.1.318/style/kendo.dataviz.min.css" rel="stylesheet" />
+    <link href="~/Content/kendo/2014.1.318/style/kendo.dataviz.default.min.css" rel="stylesheet" />
+    <link href="~/Content/kendo/2014.1.318/style/kendo.rtl.min.css" rel="stylesheet" />
+    <link href="~/Content/kendo/2014.1.318/style/kendo.blueopal.min.css" rel="stylesheet" />
+    <link href="~/Content/kendo/2014.1.318/style/kendo.blueopal.mobile.min.css" rel="stylesheet" />
+    <script src="~/Content/kendo/2014.1.318/js/kendo.all.min.js"></script>
+    <script src="~/Content/kendo/2014.1.318/js/kendo.aspnetmvc.min.js"></script>
+
+</head>
+
+
+@section breadcrumb {
+    <div id="breadcrumb">
+        <a href="~/" title="صفحه نخست" class="top-bottom"><i class="glyphicon glyphicon-home"></i> خانه</a>
+        <a href="#" class="">اطلاعات پایه</a>
+        <a href="#" class="current">واحدهای سازمان</a>
+    </div>
+}
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="widget-box">
+                <div class="widget-title">
+                    <span class="icon">
+                        <i class="glyphicon glyphicon-align-justify"></i>
+                    </span>
+                    <h5>Text inputs</h5>
+                </div>
+
+                @(Html.Kendo().Grid(myList).Name("MyGrid")
+        .Resizable(resize => resize.Columns(true))
+        @*.Columns(columns =>
+            {
+            columns.Bound("MarkazCode").Title("کد مرکز").Width(200).HtmlAttributes(new { style = "font-family:B yekan,Tahoma" });
+            columns.Bound("MarkazName").Title("نام مرکز")
+                 .Template(@<text>
+                    @Html.ActionLink(@item.MarkazName, "Markaz_Update", new { markazcode = @item.MarkazCode })
+                </text>);
+
+            })*@
+
+
+                            .Sortable()
+
+
+                            .Filterable(filterable => filterable
+                                            .Messages(str => str
+                                            .And("و")
+                                            .Cancel("لغو")
+                                            .Clear("پاک")
+                                            .Filter("فیلتر")
+                                            .Info("فیلتر کردن گزینه ها")
+                                            )
+                                            .Operators(operators => operators
+                                            .ForNumber(n => n.Clear()
+                                                .IsEqualTo("=")
+                                                .IsGreaterThan(">")
+                                                .IsGreaterThanOrEqualTo(">=")
+                                                .IsLessThan("<")
+                                                .IsLessThanOrEqualTo("<=")
+                                                .IsNotEqualTo("<>")
+                                                )
+                                            .ForString(str => str.Clear()
+                                                .StartsWith("شروع شود با ")
+                                                .IsEqualTo("برابر با")
+                                                .Contains("شامل")
+                                                .DoesNotContain("شامل نباشد")
+                                                .StartsWith("شروع شود با")
+                                                .EndsWith("تمام شود به")
+                                                .IsNotEqualTo("نابرابر با")))
+                                   )
+
+                            .Pageable(pageable => pageable
+                                //.PageSizes(true)
+                                .PageSizes(new int[] { 10, 20, 30, 40 })
+                                .ButtonCount(5).Numeric(true).Refresh(true)
+                                .Messages(str => str.ItemsPerPage("تعداد سطر در صفحه").First("اولین").Last("آخرین").Next("بعدی").Previous("قبلی").Page("صفحه").Of("از").MorePages("صفحات بیشتر").Empty("خالی").Refresh("تازه سازی"))
+                                    )
+
+
+                )
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<script>
+    alert("department view");
+   
+
+</script>

@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ActiveReportsLayout Version="3" PrintWidth="9405" DocumentName="ActiveReports Document" ScriptLang="C#" CodeFile="arvReport9.cs">
+  <StyleSheet>
+    <Style Name="Normal" Value="font-family: Arial; font-style: normal; font-variant: inherit; font-weight: normal; font-size: 10pt; font-size-adjust: inherit; font-stretch: inherit; color: rgb(0,0,0); background-repeat: inherit; background-attachment: inherit; opacity: inherit; word-spacing: inherit; letter-spacing: inherit; text-decoration: none; vertical-align: inherit; text-transform: inherit; text-align: inherit; text-indent: inherit; unicode-bidi: inherit; line-height: inherit; white-space: inherit; ddo-char-set: 0; " />
+    <Style Name="Heading1" Value="font-family: inherit; font-style: inherit; font-variant: inherit; font-weight: bold; font-size: 16pt; font-size-adjust: inherit; font-stretch: inherit; " />
+    <Style Name="Heading2" Value="font-family: Times New Roman; font-style: italic; font-variant: inherit; font-weight: bold; font-size: 14pt; font-size-adjust: inherit; font-stretch: inherit; " />
+    <Style Name="Heading3" Value="font-family: inherit; font-style: inherit; font-variant: inherit; font-weight: bold; font-size: 13pt; font-size-adjust: inherit; font-stretch: inherit; " />
+  </StyleSheet>
+  <Sections>
+    <Section Type="PageHeader" Name="PageHeader" Height="4656" BackColor="16777215" CanShrink="0">
+      <Control Type="AR.Label" Name="Label" MOD="4" Left="2700" Top="90" Width="2970" Height="450" Caption="سایر آتش سوزیها" Style="text-align: center; font-weight: bold; font-size: 12pt; font-family: Tahoma; " />
+      <Control Type="AR.Line" Name="Line1" MOD="4" X1="0" Y1="0" X2="0" Y2="4500" />
+      <Control Type="AR.Line" Name="Line" MOD="4" X1="0" Y1="0" X2="8910" Y2="0" />
+      <Control Type="AR.Line" Name="Line2" MOD="4" X1="8910" Y1="0" X2="8910" Y2="4500" />
+      <Control Type="AR.Line" Name="Line3" MOD="4" X1="0" Y1="630" X2="8910" Y2="630" />
+      <Control Type="AR.Line" Name="Line4" MOD="4" X1="8910" Y1="1920" X2="0" Y2="1920" />
+      <Control Type="AR.Label" Name="Label1" MOD="4" Left="7290" Top="720" Width="1530" Height="270" Caption=":محل آتش سوزی" Style="text-align: right; font-size: 9pt; font-family: Tahoma; " />
+      <Control Type="AR.Label" Name="Label3" MOD="4" Left="7200" Top="1080" Width="1620" Height="360" Caption=":طریقه اطفای حریق" Style="text-align: right; font-size: 9pt; font-family: Tahoma; " />
+      <Control Type="AR.Label" Name="Label16" MOD="4" Left="8010" Top="1980" Width="810" Height="270" Caption=":توضیحات" Style="text-align: right; font-size: 9pt; font-family: Tahoma; " />
+      <Control Type="AR.Line" Name="Line5" MOD="4" X1="0" Y1="4500" X2="8910" Y2="4500" />
+      <Control Type="AR.Field" Name="TextBox3" DataField="Rws_Fld_Description" MOD="4" Left="180" Top="1980" Width="7740" Height="2340" Text="" Style="text-align: right; font-size: 9pt; font-family: Tahoma; " />
+      <Control Type="AR.Field" Name="TextBox" DataField="Rws_Fld_FireLocation" MOD="4" Left="180" Top="720" Width="7020" Height="270" Text="" Style="text-align: right; font-size: 9pt; font-family: Tahoma; " />
+      <Control Type="AR.Field" Name="TextBox1" DataField="Rws_Fld_FireControlMethod" MOD="4" Left="180" Top="1170" Width="7020" Height="270" Text="" Style="text-align: right; font-size: 9pt; font-family: Tahoma; " />
+      <Control Type="AR.Field" Name="TextBox41" DataField="Rws_Fld_FileCategorize" MOD="4" Left="180" Top="180" Width="2430" Height="288" Text="" Style="text-align: right; font-size: 9pt; font-family: Tahoma; " />
+    </Section>
+    <Section Type="Detail" Name="Detail" Height="0" BackColor="16777215" CanShrink="0" />
+    <Section Type="PageFooter" Name="PageFooter" Height="0" BackColor="16777215" CanShrink="0" />
+  </Sections>
+  <PageSettings LeftMargin="432" RightMargin="432" TopMargin="432" BottomMargin="432" GutterMargin="432" PaperSize="9" PaperWidth="11906" PaperHeight="16838" PaperName="" Orientation="1" />
+</ActiveReportsLayout>

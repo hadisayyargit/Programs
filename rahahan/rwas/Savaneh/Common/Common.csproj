@@ -1,0 +1,893 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <OwnerKey>{FE3BBBB6-72D5-11d2-9ACE-00C04F79A2A4}</OwnerKey>
+    <ProjectType>Local</ProjectType>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1010B136-1D0F-4E7D-84CD-6EBE68D17A3C}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ApplicationIcon>
+    </ApplicationIcon>
+    <AssemblyKeyContainerName>
+    </AssemblyKeyContainerName>
+    <AssemblyName>Common</AssemblyName>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+    <DefaultClientScript>JScript</DefaultClientScript>
+    <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+    <DefaultTargetSchema>IE50</DefaultTargetSchema>
+    <DelaySign>false</DelaySign>
+    <OutputType>Library</OutputType>
+    <RootNamespace>RWAS.Common</RootNamespace>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <StartupObject>
+    </StartupObject>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>false</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>full</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>false</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>true</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>none</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System">
+      <Name>System</Name>
+    </Reference>
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data">
+      <Name>System.Data</Name>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Name>System.XML</Name>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="clsDSFormAccessRight.cs">
+      <SubType>code</SubType>
+    </Compile>
+    <Compile Include="clsDSObjectAccessRight.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ActivityData.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AccidentReasonData.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CategoryData.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="clsDSAccidentDegree.cs">
+      <SubType>code</SubType>
+    </Compile>
+    <Compile Include="clsDSChastiseReason.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="clsDSHealth.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="clsDSHealthKind.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="clsDSRegion.cs">
+      <SubType>code</SubType>
+    </Compile>
+    <Compile Include="clsDSStation.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="clsDSSubContractor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DS_Personel.Designer.cs" />
+    <Compile Include="Parameters.cs" />
+    <Compile Include="Secondary\DS_BlamefulFromAccident.cs">
+      <SubType>code</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="SurveyItemData.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CommonClass.cs" />
+    <Compile Include="ColorData.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DS_AccidentCategory.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS_AccidentCategory.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DS_AccidentEffective.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS_AccidentEffective.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DS_EmployeeStatus.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS_EmployeeStatus.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DS_ForfeitKind.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS_ForfeitKind.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DS_Job.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS_Job.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DS_OrgUnit.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS_OrgUnit.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DS_RailWayVehicleKind.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS_RailWayVehicleKind.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DS_Region.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS_Region.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DS_Station.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS_Station.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DS_StudyStatus.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS_StudyStatus.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DS_SurveyItem.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS_SurveyItem.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DS_SurveyMajorItem.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS_SurveyMajorItem.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DS_SurveyResult.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS_SurveyResult.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="EarlyAccidentLocationData.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="EarlyAccidentMainData.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="EarlyAccidentTrainAttData.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="enums.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DS_SearchAccident.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS_SearchAccident.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="clsDSBriefAreze.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="clsDSPersonel.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="clsDSRailVehicleInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="dsClsOtherSystem.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="clsDSOrgUnit.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>clsDSOrgUnit.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="PersonelData.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Report2\DS_Report1.cs">
+      <DependentUpon>DS_Report1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Report2\DS_Report1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS_Report1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Report2\DS_Report2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS_Report2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Report2\DS_Report3.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS_Report3.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Report\Dataset1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Dataset1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Report\DS_Rep_AbRailWayAccident.Designer.cs">
+      <DependentUpon>DS_Rep_AbRailWayAccident.xsd</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Report\DS_Rep_AccidentCount.Designer.cs">
+      <DependentUpon>DS_Rep_AccidentCount.xsd</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Report\DS_Rep_AccidentCountOnBlockKind.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS_Rep_AccidentCountOnBlockKind.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Report\DS_Rep_AccidentDegree.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS_Rep_AccidentDegree.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Report\DS_Rep_AccidentDieAndAfoul.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS_Rep_AccidentDieAndAfoul.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Report\DS_Rep_AccidentOnCategoryKindType.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS_Rep_AccidentOnCategoryKindType.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Report\DS_Rep_AccidentOnLoc.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS_Rep_AccidentOnLoc.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Report\DS_Rep_AccidentOnRailway.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS_Rep_AccidentOnRailway.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Report\DS_Rep_AccidentReason.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS_Rep_AccidentReason.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Report\DS_Rep_BodilyMentalStatus.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS_Rep_BodilyMentalStatus.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Report\DS_Rep_Bogy.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS_Rep_Bogy.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Report\DS_Rep_Chastise.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS_Rep_Chastise.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Report\DS_Rep_Collision.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS_Rep_Collision.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Report\DS_Rep_DieAndAfoul.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS_Rep_DieAndAfoul.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Report\DS_Rep_Eulogy.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS_Rep_Eulogy.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Report\DS_Rep_ExitRailWayCount.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS_Rep_ExitRailWayCount.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Report\DS_Rep_FireRailWay.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS_Rep_FireRailWay.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Report\DS_Rep_Loss.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS_Rep_Loss.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Report\DS_Rep_Operation.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS_Rep_Operation.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Report\DS_Rep_Personel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS_Rep_Personel.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Report\DS_Rep_PersonelAccident.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS_Rep_PersonelAccident.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Report\DS_Rep_PersonelTraining.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS_Rep_PersonelTraining.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Report\DS_Rep_PrefermentHistory.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS_Rep_PrefermentHistory.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Report\DS_Rep_RailWayAccident.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS_Rep_RailWayAccident.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Report\DS_Rep_ScapeRailWay.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS_Rep_ScapeRailWay.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Report\DS_Rep_Score.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS_Rep_Score.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Report\DS_Rep_SumScore.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS_Rep_SumScore.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Report\DS_Rep_Survey.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS_Rep_Survey.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Report\DS_Rep_SurveyMonthy.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS_Rep_SurveyMonthy.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="CollisionData.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ExitData.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ExitInfoData.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="FiredData.cs">
+      <SubType>code</SubType>
+    </Compile>
+    <Compile Include="ScapeData.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="clsDSAccidentMedia.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="clsDSEarlyAccidentRailWayVehicleKind.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="clsDSRailWayVehicleLoss.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SecondaryAccidentData.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SecondaryAccidentDetailData.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AbRailWayAccidentData.cs">
+      <SubType>code</SubType>
+    </Compile>
+    <Compile Include="AgentDieAfoulData.cs">
+      <SubType>code</SubType>
+    </Compile>
+    <Compile Include="RailWayAccidentData.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="clsDSErrorLogReport.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DS_Sel_UserAttribute.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS_Sel_UserAttribute.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="UserDefineData.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="UserPersonelData.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="clsDSWorkBook.cs" />
+    <Compile Include="DS_Personel1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS_Personel.xsd</DependentUpon>
+    </Compile>
+    <Content Include="DS_AccidentCategory.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_AccidentCategory.Designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="DS_AccidentEffective.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_AccidentEffective.Designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="DS_EmployeeStatus.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_EmployeeStatus.Designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="DS_ForfeitKind.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_ForfeitKind.Designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="DS_Job.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_Job.Designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="DS_OrgUnit.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_OrgUnit.Designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="DS_RailWayVehicleKind.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_RailWayVehicleKind.Designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="DS_Region.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_Region.Designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="DS_Station.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_Station.Designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="DS_StudyStatus.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_StudyStatus.Designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="DS_SurveyItem.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_SurveyItem.Designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="DS_SurveyMajorItem.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_SurveyMajorItem.Designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="DS_SurveyResult.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_SurveyResult.Designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="DS_SearchAccident.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_SearchAccident.Designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="clsDSOrgUnit.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>clsDSOrgUnit.Designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="Report2\DS_Report1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_Report1.Designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="Report2\DS_Report2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_Report2.Designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="Report2\DS_Report3.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_Report3.Designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="Report\Dataset1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Dataset1.Designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="Report\DS_Rep_AbRailWayAccident.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_Rep_AbRailWayAccident.Designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="Report\DS_Rep_AccidentCount.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_Rep_AccidentCount.Designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="Report\DS_Rep_AccidentCountOnBlockKind.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_Rep_AccidentCountOnBlockKind.Designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="Report\DS_Rep_AccidentDegree.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_Rep_AccidentDegree.Designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="Report\DS_Rep_AccidentDieAndAfoul.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_Rep_AccidentDieAndAfoul.Designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="Report\DS_Rep_AccidentOnCategoryKindType.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_Rep_AccidentOnCategoryKindType.Designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="Report\DS_Rep_AccidentOnLoc.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_Rep_AccidentOnLoc.Designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="Report\DS_Rep_AccidentOnRailway.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_Rep_AccidentOnRailway.Designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="Report\DS_Rep_AccidentReason.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_Rep_AccidentReason.Designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="Report\DS_Rep_BodilyMentalStatus.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_Rep_BodilyMentalStatus.Designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="Report\DS_Rep_Bogy.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_Rep_Bogy.Designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="Report\DS_Rep_Chastise.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_Rep_Chastise.Designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="Report\DS_Rep_Collision.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_Rep_Collision.Designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="Report\DS_Rep_DieAndAfoul.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_Rep_DieAndAfoul.Designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="Report\DS_Rep_Eulogy.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_Rep_Eulogy.Designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="Report\DS_Rep_ExitRailWayCount.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_Rep_ExitRailWayCount.Designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="Report\DS_Rep_FireRailWay.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_Rep_FireRailWay.Designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="Report\DS_Rep_Loss.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_Rep_Loss.Designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="Report\DS_Rep_Operation.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_Rep_Operation.Designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="Report\DS_Rep_Personel.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_Rep_Personel.Designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="Report\DS_Rep_PersonelAccident.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_Rep_PersonelAccident.Designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="Report\DS_Rep_PersonelTraining.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_Rep_PersonelTraining.Designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="Report\DS_Rep_PrefermentHistory.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_Rep_PrefermentHistory.Designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="Report\DS_Rep_RailWayAccident.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_Rep_RailWayAccident.Designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="Report\DS_Rep_ScapeRailWay.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_Rep_ScapeRailWay.Designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="Report\DS_Rep_Score.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_Rep_Score.Designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="Report\DS_Rep_SumScore.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_Rep_SumScore.Designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="Report\DS_Rep_Survey.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_Rep_Survey.Designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="Report\DS_Rep_SurveyMonthy.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_Rep_SurveyMonthy.Designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="DS_Sel_UserAttribute.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_Sel_UserAttribute.Designer.cs</LastGenOutput>
+    </Content>
+    <None Include="DS_AccidentCategory.xsx">
+      <DependentUpon>DS_AccidentCategory.xsd</DependentUpon>
+    </None>
+    <None Include="DS_AccidentEffective.xsx">
+      <DependentUpon>DS_AccidentEffective.xsd</DependentUpon>
+    </None>
+    <None Include="DS_EmployeeStatus.xsx">
+      <DependentUpon>DS_EmployeeStatus.xsd</DependentUpon>
+    </None>
+    <None Include="DS_ForfeitKind.xsx">
+      <DependentUpon>DS_ForfeitKind.xsd</DependentUpon>
+    </None>
+    <None Include="DS_Job.xsx">
+      <DependentUpon>DS_Job.xsd</DependentUpon>
+    </None>
+    <None Include="DS_OrgUnit.xsx">
+      <DependentUpon>DS_OrgUnit.xsd</DependentUpon>
+    </None>
+    <None Include="DS_RailWayVehicleKind.xsx">
+      <DependentUpon>DS_RailWayVehicleKind.xsd</DependentUpon>
+    </None>
+    <None Include="DS_Region.xsx">
+      <DependentUpon>DS_Region.xsd</DependentUpon>
+    </None>
+    <None Include="DS_Station.xsx">
+      <DependentUpon>DS_Station.xsd</DependentUpon>
+    </None>
+    <None Include="DS_StudyStatus.xsx">
+      <DependentUpon>DS_StudyStatus.xsd</DependentUpon>
+    </None>
+    <None Include="DS_SurveyItem.xsx">
+      <DependentUpon>DS_SurveyItem.xsd</DependentUpon>
+    </None>
+    <None Include="DS_SurveyMajorItem.xsx">
+      <DependentUpon>DS_SurveyMajorItem.xsd</DependentUpon>
+    </None>
+    <None Include="DS_SurveyResult.xsx">
+      <DependentUpon>DS_SurveyResult.xsd</DependentUpon>
+    </None>
+    <None Include="DS_SearchAccident.xsc">
+      <DependentUpon>DS_SearchAccident.xsd</DependentUpon>
+    </None>
+    <None Include="DS_SearchAccident.xss">
+      <DependentUpon>DS_SearchAccident.xsd</DependentUpon>
+    </None>
+    <None Include="DS_SearchAccident.xsx">
+      <DependentUpon>DS_SearchAccident.xsd</DependentUpon>
+    </None>
+    <None Include="clsDSOrgUnit.xsx">
+      <DependentUpon>clsDSOrgUnit.xsd</DependentUpon>
+    </None>
+    <None Include="Report2\DS_Report1.xsc">
+      <DependentUpon>DS_Report1.xsd</DependentUpon>
+    </None>
+    <None Include="Report2\DS_Report1.xss">
+      <DependentUpon>DS_Report1.xsd</DependentUpon>
+    </None>
+    <None Include="Report2\DS_Report1.xsx">
+      <DependentUpon>DS_Report1.xsd</DependentUpon>
+    </None>
+    <None Include="Report2\DS_Report2.xsx">
+      <DependentUpon>DS_Report2.xsd</DependentUpon>
+    </None>
+    <None Include="Report2\DS_Report3.xsx">
+      <DependentUpon>DS_Report3.xsd</DependentUpon>
+    </None>
+    <None Include="Report\DS_Rep_AbRailWayAccident.xsx">
+      <DependentUpon>DS_Rep_AbRailWayAccident.xsd</DependentUpon>
+    </None>
+    <None Include="Report\DS_Rep_AccidentCount.xsx">
+      <DependentUpon>DS_Rep_AccidentCount.xsd</DependentUpon>
+    </None>
+    <None Include="Report\DS_Rep_AccidentCountOnBlockKind.xsx">
+      <DependentUpon>DS_Rep_AccidentCountOnBlockKind.xsd</DependentUpon>
+    </None>
+    <None Include="Report\DS_Rep_AccidentDegree.xsx">
+      <DependentUpon>DS_Rep_AccidentDegree.xsd</DependentUpon>
+    </None>
+    <None Include="Report\DS_Rep_AccidentDieAndAfoul.xsx">
+      <DependentUpon>DS_Rep_AccidentDieAndAfoul.xsd</DependentUpon>
+    </None>
+    <None Include="Report\DS_Rep_AccidentOnCategoryKindType.xsx">
+      <DependentUpon>DS_Rep_AccidentOnCategoryKindType.xsd</DependentUpon>
+    </None>
+    <None Include="Report\DS_Rep_AccidentOnLoc.xsx">
+      <DependentUpon>DS_Rep_AccidentOnLoc.xsd</DependentUpon>
+    </None>
+    <None Include="Report\DS_Rep_AccidentOnRailway.xsx">
+      <DependentUpon>DS_Rep_AccidentOnRailway.xsd</DependentUpon>
+    </None>
+    <None Include="Report\DS_Rep_AccidentReason.xsx">
+      <DependentUpon>DS_Rep_AccidentReason.xsd</DependentUpon>
+    </None>
+    <None Include="Report\DS_Rep_BodilyMentalStatus.xsx">
+      <DependentUpon>DS_Rep_BodilyMentalStatus.xsd</DependentUpon>
+    </None>
+    <None Include="Report\DS_Rep_Bogy.xsx">
+      <DependentUpon>DS_Rep_Bogy.xsd</DependentUpon>
+    </None>
+    <None Include="Report\DS_Rep_Chastise.xsx">
+      <DependentUpon>DS_Rep_Chastise.xsd</DependentUpon>
+    </None>
+    <None Include="Report\DS_Rep_Collision.xsx">
+      <DependentUpon>DS_Rep_Collision.xsd</DependentUpon>
+    </None>
+    <None Include="Report\DS_Rep_DieAndAfoul.xsx">
+      <DependentUpon>DS_Rep_DieAndAfoul.xsd</DependentUpon>
+    </None>
+    <None Include="Report\DS_Rep_Eulogy.xsx">
+      <DependentUpon>DS_Rep_Eulogy.xsd</DependentUpon>
+    </None>
+    <None Include="Report\DS_Rep_ExitRailWayCount.xsx">
+      <DependentUpon>DS_Rep_ExitRailWayCount.xsd</DependentUpon>
+    </None>
+    <None Include="Report\DS_Rep_FireRailWay.xsx">
+      <DependentUpon>DS_Rep_FireRailWay.xsd</DependentUpon>
+    </None>
+    <None Include="Report\DS_Rep_Loss.xsx">
+      <DependentUpon>DS_Rep_Loss.xsd</DependentUpon>
+    </None>
+    <None Include="Report\DS_Rep_Operation.xsx">
+      <DependentUpon>DS_Rep_Operation.xsd</DependentUpon>
+    </None>
+    <None Include="Report\DS_Rep_Personel.xsx">
+      <DependentUpon>DS_Rep_Personel.xsd</DependentUpon>
+    </None>
+    <None Include="Report\DS_Rep_PersonelAccident.xsx">
+      <DependentUpon>DS_Rep_PersonelAccident.xsd</DependentUpon>
+    </None>
+    <None Include="Report\DS_Rep_PersonelTraining.xsx">
+      <DependentUpon>DS_Rep_PersonelTraining.xsd</DependentUpon>
+    </None>
+    <None Include="Report\DS_Rep_PrefermentHistory.xsx">
+      <DependentUpon>DS_Rep_PrefermentHistory.xsd</DependentUpon>
+    </None>
+    <None Include="Report\DS_Rep_RailWayAccident.xsx">
+      <DependentUpon>DS_Rep_RailWayAccident.xsd</DependentUpon>
+    </None>
+    <None Include="Report\DS_Rep_ScapeRailWay.xsx">
+      <DependentUpon>DS_Rep_ScapeRailWay.xsd</DependentUpon>
+    </None>
+    <None Include="Report\DS_Rep_Score.xsx">
+      <DependentUpon>DS_Rep_Score.xsd</DependentUpon>
+    </None>
+    <None Include="Report\DS_Rep_SumScore.xsx">
+      <DependentUpon>DS_Rep_SumScore.xsd</DependentUpon>
+    </None>
+    <None Include="Report\DS_Rep_Survey.xsx">
+      <DependentUpon>DS_Rep_Survey.xsd</DependentUpon>
+    </None>
+    <None Include="Report\DS_Rep_SurveyMonthy.xsx">
+      <DependentUpon>DS_Rep_SurveyMonthy.xsd</DependentUpon>
+    </None>
+    <None Include="DS_Sel_UserAttribute.xsx">
+      <DependentUpon>DS_Sel_UserAttribute.xsd</DependentUpon>
+    </None>
+    <None Include="DS_Personel.xsc">
+      <DependentUpon>DS_Personel.xsd</DependentUpon>
+    </None>
+    <None Include="DS_Personel.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_Personel1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DS_Personel.xss">
+      <DependentUpon>DS_Personel.xsd</DependentUpon>
+    </None>
+    <None Include="DS_Personel.xsx">
+      <DependentUpon>DS_Personel.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup />
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties TDLELEMENTTYPE="System" />
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

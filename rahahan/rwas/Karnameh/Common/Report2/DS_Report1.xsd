@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema id="DS_Report1" targetNamespace="http://tempuri.org/DS_Report1.xsd" elementFormDefault="qualified"
+	attributeFormDefault="qualified" xmlns="http://tempuri.org/DS_Report1.xsd" xmlns:mstns="http://tempuri.org/DS_Report1.xsd"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+	<xs:element name="DS_Report1" msdata:IsDataSet="true">
+		<xs:complexType>
+			<xs:choice maxOccurs="unbounded">
+				<xs:element name="Rws_Sp_Rep_Report1">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Rws_Fld_FileCategorize" type="xs:string" />
+							<xs:element name="Rws_Fld_AccidentDate" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="Rws_Fld_AccidentTime" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="Rws_Fld_RegionDescribe" type="xs:string" />
+							<xs:element name="Rws_Fld_AccidentLocation" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="Rws_Fld_Kilometer" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="Rws_Fld_AccidentTelGraph" type="xs:string" minOccurs="0" />
+							<xs:element name="Rws_Fld_BlockTime" type="xs:string" minOccurs="0" />
+							<xs:element name="Rws_Fld_AccidentDegreeDescribe" type="xs:string" minOccurs="0" />
+							<xs:element name="Rws_Fld_TrainNo" type="xs:int" minOccurs="0" />
+							<xs:element name="Rws_Fld_SerialNo" type="xs:string" minOccurs="0" />
+							<xs:element name="Rws_Fld_WagonCount" type="xs:short" minOccurs="0" />
+							<xs:element name="Rws_Fld_TrainWeight" type="xs:short" minOccurs="0" />
+							<xs:element name="Prs_Fld_TrainBossName" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="Prs_Fld_LocoDriverName" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="Rws_Fld_RailWayVehicleKindDescribe" type="xs:string" minOccurs="0" />
+							<xs:element name="Rws_Fld_fk_SerialNo" type="xs:string" minOccurs="0" />
+							<xs:element name="Rws_Fld_IsOnManeuver" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="Rws_Fld_DeletedPassengerTrainCount" type="xs:short" minOccurs="0" />
+							<xs:element name="Rws_Fld_DeletedCarrierTrainCount" type="xs:short" minOccurs="0" />
+							<xs:element name="Rws_Fld_DeletedOtherTrainCount" type="xs:short" minOccurs="0" />
+							<xs:element name="Rws_Fld_DelayTimePassengerTrainCount" type="xs:short" minOccurs="0" />
+							<xs:element name="Rws_Fld_DelayTimeCarrierTrainCount" type="xs:short" minOccurs="0" />
+							<xs:element name="Rws_Fld_DelayTimeOtherTrainCount" type="xs:short" minOccurs="0" />
+							<xs:element name="Rws_Fld_AccidentKindDescribe" type="xs:string" minOccurs="0" />
+							<xs:element name="Rws_Fld_PermitedSpeed" type="xs:unsignedByte" minOccurs="0" />
+							<xs:element name="Rws_Fld_SpeedOnAccident" type="xs:short" minOccurs="0" />
+							<xs:element name="Rws_Fld_EventToStopLocation" type="xs:int" minOccurs="0" />
+							<xs:element name="Rws_Fld_LoadingKindDescribe" type="xs:string" minOccurs="0" />
+							<xs:element name="Rws_Fld_BasicRepairDate" type="xs:string" minOccurs="0" />
+							<xs:element name="Rws_Fld_18MonthlyRepairDate" type="xs:string" minOccurs="0" />
+							<xs:element name="Rws_Fld_Det_EarlyAccidentReasonDescribe" type="xs:string" minOccurs="0" />
+							<xs:element name="Rws_Fld_AccidentEffectiveDescribe" type="xs:string" minOccurs="0" />
+							<xs:element name="Rws_Fld_AccidentLocationOnStation" msdata:ReadOnly="true" type="xs:string"
+								minOccurs="0" />
+							<xs:element name="Rws_Fld_DeclivityAmount" type="xs:short" minOccurs="0" />
+							<xs:element name="Rws_Fld_ArcRadius" type="xs:short" minOccurs="0" />
+							<xs:element name="Rws_Fld_ExitVehicleCount" type="xs:short" minOccurs="0" />
+							<xs:element name="Rws_Fld_RailWayAfoulCount" type="xs:short" minOccurs="0" />
+							<xs:element name="Rws_Fld_AbRailwayAfoulCount" type="xs:short" minOccurs="0" />
+							<xs:element name="Rws_Fld_RailwayDieCount" type="xs:short" minOccurs="0" />
+							<xs:element name="Rws_Fld_AbRailwayDieCount" type="xs:short" minOccurs="0" />
+							<xs:element name="Rws_Fld_Description" type="xs:string" minOccurs="0" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

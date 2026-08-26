@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema id="DS_Rep_SurveyMonthy" targetNamespace="http://tempuri.org/DS_Rep_SurveyMonthy.xsd"
+	elementFormDefault="qualified" attributeFormDefault="qualified" xmlns="http://tempuri.org/DS_Rep_SurveyMonthy.xsd"
+	xmlns:mstns="http://tempuri.org/DS_Rep_SurveyMonthy.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+	<xs:element name="DS_Rep_SurveyMonthy" msdata:IsDataSet="true">
+		<xs:complexType>
+			<xs:choice maxOccurs="unbounded">
+				<xs:element name="Rws_Sp_Rep_SurveyMonthy4DS">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="DayDate" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="Rws_Fld_fk_SurveyMajorItem" msdata:ReadOnly="true" type="xs:unsignedByte" />
+							<xs:element name="Rws_Fld_Describe" type="xs:string" />
+							<xs:element name="F01" msdata:ReadOnly="true" type="xs:int" minOccurs="0" />
+							<xs:element name="F02" msdata:ReadOnly="true" type="xs:int" minOccurs="0" />
+							<xs:element name="F03" msdata:ReadOnly="true" type="xs:int" minOccurs="0" />
+							<xs:element name="F04" msdata:ReadOnly="true" type="xs:int" minOccurs="0" />
+							<xs:element name="F05" msdata:ReadOnly="true" type="xs:int" minOccurs="0" />
+							<xs:element name="F06" msdata:ReadOnly="true" type="xs:int" minOccurs="0" />
+							<xs:element name="F07" msdata:ReadOnly="true" type="xs:int" minOccurs="0" />
+							<xs:element name="F08" msdata:ReadOnly="true" type="xs:int" minOccurs="0" />
+							<xs:element name="F09" msdata:ReadOnly="true" type="xs:int" minOccurs="0" />
+							<xs:element name="F10" msdata:ReadOnly="true" type="xs:int" minOccurs="0" />
+							<xs:element name="F11" msdata:ReadOnly="true" type="xs:int" minOccurs="0" />
+							<xs:element name="F12" msdata:ReadOnly="true" type="xs:int" minOccurs="0" />
+							<xs:element name="sum" msdata:ReadOnly="true" type="xs:int" minOccurs="0" />
+							<xs:element name="percent" msdata:ReadOnly="true" type="xs:decimal" minOccurs="0" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

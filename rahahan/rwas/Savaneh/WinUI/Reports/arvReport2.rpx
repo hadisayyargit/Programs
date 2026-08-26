@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ActiveReportsLayout Version="3" PrintWidth="15120" DocumentName="ActiveReports Document" ScriptLang="C#" CodeFile="arvReport2.cs">
+  <StyleSheet>
+    <Style Name="Normal" Value="font-family: Arial; font-style: normal; font-variant: inherit; font-weight: normal; font-size: 10pt; font-size-adjust: inherit; font-stretch: inherit; color: rgb(0,0,0); background-repeat: inherit; background-attachment: inherit; opacity: inherit; word-spacing: inherit; letter-spacing: inherit; text-decoration: none; vertical-align: inherit; text-transform: inherit; text-align: inherit; text-indent: inherit; unicode-bidi: inherit; line-height: inherit; white-space: inherit; ddo-char-set: 0; " />
+    <Style Name="Heading1" Value="font-family: inherit; font-style: inherit; font-variant: inherit; font-weight: bold; font-size: 16pt; font-size-adjust: inherit; font-stretch: inherit; " />
+    <Style Name="Heading2" Value="font-family: Times New Roman; font-style: italic; font-variant: inherit; font-weight: bold; font-size: 14pt; font-size-adjust: inherit; font-stretch: inherit; " />
+    <Style Name="Heading3" Value="font-family: inherit; font-style: inherit; font-variant: inherit; font-weight: bold; font-size: 13pt; font-size-adjust: inherit; font-stretch: inherit; " />
+  </StyleSheet>
+  <Sections>
+    <Section Type="PageHeader" Name="PageHeader" Height="8124" BackColor="16777215" CanShrink="0">
+      <Control Type="AR.Label" Name="Label" MOD="4" Left="4770" Top="90" Width="4860" Height="450" Caption="گزارش اولیه حادثه -حوادث غیر راه اهنی" Style="text-align: center; font-weight: bold; font-size: 12pt; font-family: Tahoma; " />
+      <Control Type="AR.Line" Name="Line15" MOD="4" X1="2790" Y1="1440" X2="2790" Y2="1890" />
+      <Control Type="AR.Line" Name="Line14" MOD="4" X1="5490" Y1="1440" X2="5490" Y2="1890" />
+      <Control Type="AR.Line" Name="Line13" MOD="4" X1="7200" Y1="1440" X2="7200" Y2="1890" />
+      <Control Type="AR.Line" Name="Line12" MOD="4" X1="8820" Y1="1440" X2="8820" Y2="1890" />
+      <Control Type="AR.Line" Name="Line10" MOD="4" X1="6480" Y1="990" X2="6480" Y2="1440" />
+      <Control Type="AR.Line" Name="Line9" MOD="4" X1="14850" Y1="1440" X2="0" Y2="1440" />
+      <Control Type="AR.Line" Name="Line8" MOD="4" X1="2970" Y1="540" X2="2970" Y2="990" />
+      <Control Type="AR.Line" Name="Line7" MOD="4" X1="5220" Y1="990" X2="5220" Y2="540" />
+      <Control Type="AR.Line" Name="Line6" MOD="4" X1="8280" Y1="540" X2="8280" Y2="990" />
+      <Control Type="AR.Line" Name="Line5" MOD="4" X1="10440" Y1="540" X2="10440" Y2="990" />
+      <Control Type="AR.Line" Name="Line4" MOD="4" X1="12330" Y1="540" X2="12330" Y2="990" />
+      <Control Type="AR.Line" Name="Line3" MOD="4" X1="14850" Y1="990" X2="0" Y2="990" />
+      <Control Type="AR.Label" Name="Label6" MOD="4" Left="12960" Top="180" Width="1440" Height="288" Caption=":کلاسمان پرونده" Style="text-align: right; font-size: 9pt; font-family: Tahoma; " />
+      <Control Type="AR.Label" Name="Label21" MOD="4" Left="1620" Top="1530" Width="1080" Height="288" Caption=": لکو موتیو ران" Style="text-align: right; font-size: 9pt; font-family: Tahoma; " />
+      <Control Type="AR.Label" Name="Label20" MOD="4" Left="4410" Top="1530" Width="990" Height="288" Caption=":رئیس قطار" Style="text-align: right; font-size: 9pt; font-family: Tahoma; " />
+      <Control Type="AR.Label" Name="Label19" MOD="4" Left="6300" Top="1530" Width="810" Height="288" Caption=":وزن قطار" Style="text-align: right; font-size: 9pt; font-family: Tahoma; " />
+      <Control Type="AR.Label" Name="Label18" MOD="4" Left="7830" Top="1530" Width="900" Height="288" Caption=":تعداد واگن" Style="text-align: right; font-size: 9pt; font-family: Tahoma; " />
+      <Control Type="AR.Label" Name="Label17" MOD="4" Left="9540" Top="1530" Width="1440" Height="288" Caption=":شماره لکوموتیوها" Style="text-align: right; font-size: 9pt; font-family: Tahoma; " />
+      <Control Type="AR.Label" Name="Label16" MOD="4" Left="11790" Top="1530" Width="990" Height="288" Caption=":شماره قطار" Style="text-align: right; font-size: 9pt; font-family: Tahoma; " />
+      <Control Type="AR.Label" Name="Label15" MOD="4" Left="5490" Top="1080" Width="900" Height="288" Caption="رتبه حادثه" Style="text-align: right; font-size: 9pt; font-family: Tahoma; " />
+      <Control Type="AR.Label" Name="Label14" MOD="4" Left="13590" Top="1530" Width="1170" Height="288" Caption="مشخصات قطار" Style="text-align: right; font-size: 9pt; font-family: Tahoma; " />
+      <Control Type="AR.Label" Name="Label13" MOD="4" Left="10440" Top="1080" Width="1260" Height="288" Caption=":ساعت شروع" Style="text-align: right; font-size: 9pt; font-family: Tahoma; " />
+      <Control Type="AR.Label" Name="Label12" Visible="0" MOD="4" Left="7740" Top="1080" Width="1170" Height="288" Caption=":ساعت خاتمه" Style="text-align: right; font-size: 9pt; font-family: Tahoma; " />
+      <Control Type="AR.Label" Name="Label11" MOD="4" Left="13590" Top="1080" Width="1170" Height="288" Caption="زمان مسدودی" Style="text-align: right; font-size: 9pt; font-family: Tahoma; " />
+      <Control Type="AR.Label" Name="Label10" MOD="4" Left="2070" Top="630" Width="810" Height="288" Caption=":تلفنگرام" Style="text-align: right; font-size: 9pt; font-family: Tahoma; " />
+      <Control Type="AR.Label" Name="Label9" MOD="4" Left="4050" Top="630" Width="1170" Height="288" Caption=":کیلو متر حادثه" Style="text-align: right; font-size: 9pt; font-family: Tahoma; " />
+      <Control Type="AR.Label" Name="Label8" MOD="4" Left="6840" Top="630" Width="1350" Height="288" Caption=":محل وقوع حادثه" Style="text-align: right; font-size: 9pt; font-family: Tahoma; " />
+      <Control Type="AR.Label" Name="Label7" MOD="4" Left="9540" Top="630" Width="810" Height="288" Caption=": اداره کل" Style="text-align: right; font-size: 9pt; font-family: Tahoma; " />
+      <Control Type="AR.Label" Name="Label4" MOD="4" Left="11160" Top="630" Width="1080" Height="288" Caption=":ساعت وقوع" Style="text-align: right; font-size: 9pt; font-family: Tahoma; " />
+      <Control Type="AR.Label" Name="Label3" MOD="4" Left="13770" Top="630" Width="990" Height="288" Caption=": تاریخ حادثه" Style="text-align: right; font-size: 9pt; font-family: Tahoma; " />
+      <Control Type="AR.Line" Name="Line2" MOD="4" X1="14850" Y1="540" X2="14850" Y2="5490" />
+      <Control Type="AR.Line" Name="Line1" MOD="4" X1="0" Y1="540" X2="0" Y2="8010" />
+      <Control Type="AR.Line" Name="Line" MOD="4" X1="0" Y1="540" X2="14850" Y2="540" />
+      <Control Type="AR.Line" Name="Line11" MOD="4" X1="14850" Y1="1890" X2="0" Y2="1890" />
+      <Control Type="AR.Label" Name="Label22" MOD="4" Left="13050" Top="1980" Width="1710" Height="288" Caption=":نوع وسیله نقلیه ریلی" Style="text-align: right; font-size: 9pt; font-family: Tahoma; " />
+      <Control Type="AR.Label" Name="Label23" MOD="4" Left="3600" Top="1980" Width="1440" Height="288" Caption=" آیا در مانور بوده؟" Style="text-align: right; font-size: 9pt; font-family: Tahoma; " />
+      <Control Type="AR.Line" Name="Line16" MOD="4" X1="14850" Y1="2340" X2="0" Y2="2340" />
+      <Control Type="AR.Line" Name="Line17" MOD="4" X1="5130" Y1="2340" X2="5130" Y2="1890" />
+      <Control Type="AR.Label" Name="Label5" MOD="4" Left="12060" Top="2430" Width="2700" Height="288" Caption="تعداد قطارهای تاخیر یا حذف شده" Style="text-align: right; font-size: 9pt; font-family: Tahoma; " />
+      <Control Type="AR.Label" Name="Label24" MOD="4" Left="10260" Top="2430" Width="810" Height="288" Caption=":مسافری" Style="text-align: right; font-size: 9pt; font-family: Tahoma; " />
+      <Control Type="AR.Label" Name="Label25" MOD="4" Left="8280" Top="2430" Width="720" Height="288" Caption=":باری" Style="text-align: right; font-size: 9pt; font-family: Tahoma; " />
+      <Control Type="AR.Label" Name="Label26" MOD="4" Left="8280" Top="2898" Width="720" Height="288" Caption=":باری" Style="text-align: right; font-size: 9pt; font-family: Tahoma; " />
+      <Control Type="AR.Label" Name="Label27" MOD="4" Left="10260" Top="2880" Width="810" Height="288" Caption=":مسافری" Style="text-align: right; font-size: 9pt; font-family: Tahoma; " />
+      <Control Type="AR.Label" Name="Label28" MOD="4" Left="5850" Top="2430" Width="720" Height="288" Caption=":سایر" Style="text-align: right; font-size: 9pt; font-family: Tahoma; " />
+      <Control Type="AR.Label" Name="Label29" MOD="4" Left="5850" Top="2898" Width="720" Height="288" Caption=":سایر" Style="text-align: right; font-size: 9pt; font-family: Tahoma; " />
+      <Control Type="AR.Label" Name="Label30" MOD="4" Left="3780" Top="2430" Width="720" Height="288" Caption=":جمع" Style="text-align: right; font-size: 9pt; font-family: Tahoma; " />
+      <Control Type="AR.Label" Name="Label31" MOD="4" Left="3780" Top="2898" Width="720" Height="288" Caption=":جمع" Style="text-align: right; font-size: 9pt; font-family: Tahoma; " />
+      <Control Type="AR.Label" Name="Label32" MOD="4" Left="12870" Top="2898" Width="1890" Height="288" Caption="مدت زمان تاخیر قطارها" Style="text-align: right; font-size: 9pt; font-family: Tahoma; " />
+      <Control Type="AR.Line" Name="Line18" MOD="4" X1="14850" Y1="2790" X2="0" Y2="2790" />
+      <Control Type="AR.Line" Name="Line19" MOD="4" X1="14850" Y1="3240" X2="0" Y2="3240" />
+      <Control Type="AR.Label" Name="Label33" MOD="4" Left="13770" Top="3330" Width="990" Height="288" Caption=":نوع حادثه" Style="text-align: right; font-size: 9pt; font-family: Tahoma; " />
+      <Control Type="AR.Line" Name="Line20" MOD="4" X1="14850" Y1="3690" X2="0" Y2="3690" />
+      <Control Type="AR.Label" Name="Label37" MOD="4" Left="13680" Top="3780" Width="1080" Height="288" Caption=":جنسیت عابر" Style="text-align: right; font-size: 9pt; font-family: Tahoma; " />
+      <Control Type="AR.Label" Name="Label38" MOD="4" Left="5220" Top="3780" Width="1800" Height="288" Caption=":وضعیت سنی عابرین" Style="text-align: right; font-size: 9pt; font-family: Tahoma; " />
+      <Control Type="AR.Label" Name="Label39" MOD="4" Left="12960" Top="4230" Width="1800" Height="288" Caption=":نوع تقاطع همسطح" Style="text-align: right; font-size: 9pt; font-family: Tahoma; " />
+      <Control Type="AR.Line" Name="Line24" MOD="4" X1="14850" Y1="4140" X2="0" Y2="4140" />
+      <Control Type="AR.Line" Name="Line25" MOD="4" X1="7200" Y1="3690" X2="7200" Y2="4140" />
+      <Control Type="AR.Label" Name="Label40" MOD="4" Left="5760" Top="4230" Width="1350" Height="288" Caption=":علت اولیه حادثه" Style="text-align: right; font-size: 9pt; font-family: Tahoma; " />
+      <Control Type="AR.Line" Name="Line26" MOD="4" X1="14850" Y1="4590" X2="0" Y2="4590" />
+      <Control Type="AR.Line" Name="Line27" MOD="4" X1="7200" Y1="4140" X2="7200" Y2="4590" />
+      <Control Type="AR.Label" Name="Label41" MOD="4" Left="12780" Top="4680" Width="1980" Height="288" Caption=":نوع وسیله نقلیه جاده ای" Style="text-align: right; font-size: 9pt; font-family: Tahoma; " />
+      <Control Type="AR.Label" Name="Label42" MOD="4" Left="13590" Top="5130" Width="1170" Height="288" Caption="تعداد مصدومین" Style="text-align: right; font-size: 9pt; font-family: Tahoma; " />
+      <Control Type="AR.Line" Name="Line28" MOD="4" X1="14850" Y1="5040" X2="0" Y2="5040" />
+      <Control Type="AR.Label" Name="Label43" MOD="4" Left="11430" Top="5130" Width="1170" Height="288" Caption=":اشخاص ثالث" Style="text-align: right; font-size: 9pt; font-family: Tahoma; " />
+      <Control Type="AR.Label" Name="Label44" MOD="4" Left="9810" Top="5130" Width="810" Height="288" Caption=":مسافرین" Style="text-align: right; font-size: 9pt; font-family: Tahoma; " />
+      <Control Type="AR.Label" Name="Label45" MOD="4" Left="7740" Top="5130" Width="1260" Height="288" Caption=":کارکنان راه آهن" Style="text-align: right; font-size: 9pt; font-family: Tahoma; " />
+      <Control Type="AR.Line" Name="Line30" MOD="4" X1="7200" Y1="5040" X2="7200" Y2="5490" />
+      <Control Type="AR.Label" Name="Label46" MOD="4" Left="5760" Top="5130" Width="1350" Height="288" Caption="تعداد فوت شده ها" Style="text-align: right; font-size: 9pt; font-family: Tahoma; " />
+      <Control Type="AR.Label" Name="Label47" MOD="4" Left="4140" Top="5130" Width="1170" Height="288" Caption=":اشخاص ثالث" Style="text-align: right; font-size: 9pt; font-family: Tahoma; " />
+      <Control Type="AR.Label" Name="Label48" MOD="4" Left="2700" Top="5130" Width="810" Height="288" Caption=":مسافرین" Style="text-align: right; font-size: 9pt; font-family: Tahoma; " />
+      <Control Type="AR.Label" Name="Label49" MOD="4" Left="810" Top="5130" Width="1260" Height="288" Caption=":کارکنان راه آهن" Style="text-align: right; font-size: 9pt; font-family: Tahoma; " />
+      <Control Type="AR.Field" Name="TextBox" DataField="Rws_Fld_AccidentTelGraph" MOD="4" Left="90" Top="630" Width="1980" Height="288" Text="" Style="text-align: right; font-size: 9pt; font-family: Tahoma; " />
+      <Control Type="AR.Field" Name="TextBox1" DataField="Rws_Fld_DelayTimeOtherTrainCount" MOD="4" Left="4860" Top="2880" Width="990" Height="288" Text="" Style="text-align: right; font-size: 9pt; font-family: Tahoma; " />
+      <Control Type="AR.Field" Name="TextBox2" DataField="Rws_Fld_DeletedOtherTrainCount" MOD="4" Left="4860" Top="2430" Width="990" Height="288" Text="" Style="text-align: right; font-size: 9pt; font-family: Tahoma; " />
+      <Control Type="AR.Field" Name="TextBox3" DataField="Prs_Fld_LocoDriverName" MOD="4" Left="90" Top="1530" Width="1530" Height="288" Text="" Style="text-align: right; font-size: 9pt; font-family: Tahoma; " />
+      <Control Type="AR.Field" Name="TextBox4" DataField="Rws_Fld_Kilometer" MOD="4" Left="2970" Top="630" Width="1080" Height="288" Text="" Style="text-align: right; font-size: 9pt; font-family: Tahoma; " />
+      <Control Type="AR.Field" Name="TextBox5" DataField="Prs_Fld_TrainBossName" MOD="4" Left="2970" Top="1530" Width="1440" Height="288" Text="" Style="text-align: right; font-size: 9pt; font-family: Tahoma; " />
+      <Control Type="AR.Field" Name="TextBox6" DataField="Rws_Fld_IsOnManeuver" MOD="4" Left="90" Top="1980" Width="3420" Height="288" Text="" Style="text-align: right; font-size: 9pt; font-family: Tahoma; " />
+      <Control Type="AR.Field" Name="TextBox7" DataField="Rws_Fld_DeletedSumTrainCount" MOD="4" Left="2790" Top="2430" Width="990" Height="288" Text="" Style="text-align: right; font-size: 9pt; font-family: Tahoma; " />
+      <Control Type="AR.Field" Name="TextBox8" DataField="Rws_Fld_DelayTimeSumTrainCount" MOD="4" Left="2790" Top="2880" Width="990" Height="288" Text="" Style="text-align: right; font-size: 9pt; font-family: Tahoma; " />
+      <Control Type="AR.Field" Name="TextBox9" DataField="Rws_Fld_AccidentTime" MOD="4" Left="10530" Top="630" Width="630" Height="288" Text="" Style="text-align: right; font-size: 9pt; font-family: Tahoma; " />
+      <Control Type="AR.Field" Name="TextBox10" DataField="Rws_Fld_RegionDescribe" MOD="4" Left="8280" Top="630" Width="1260" Height="288" Text="" Style="text-align: right; font-size: 9pt; font-family: Tahoma; " />
+      <Control Type="AR.Field" Name="TextBox11" DataField="Rws_Fld_SerialNo" MOD="4" Left="8910" Top="1530" Width="630" Height="288" Text="" Style="text-align: right; font-size: 9pt; font-family: Tahoma; " />
+      <Control Type="AR.Field" Name="TextBox12" DataField="Rws_Fld_TrainNo" MOD="4" Left="11160" Top="1530" Width="630" Height="288" Text="" Style="text-align: right; font-size: 9pt; font-family: Tahoma; " />
+      <Control Type="AR.Field" Name="TextBox13" DataField="Rws_Fld_RailWayVehicleKindDescribe" MOD="4" Left="5760" Top="1980" Width="7290" Height="288" Text="" Style="text-align: right; font-size: 9pt; font-family: Tahoma; " />
+      <Control Type="AR.Field" Name="TextBox14" DataField="Rws_Fld_AccidentDate" MOD="4" Left="12420" Top="630" Width="1350" Height="288" Text="" Style="text-align: right; font-size: 9pt; font-family: Tahoma; " />
+      <Control Type="AR.Field" Name="TextBox15" DataField="Rws_Fld_DeletedPassengerTrainCount" MOD="4" Left="9270" Top="2430" Width="990" Height="288" Text="" Style="text-align: right; font-size: 9pt; font-family: Tahoma; " />
+      <Control Type="AR.Field" Name="TextBox16" DataField="Rws_Fld_ufk_PassengerAgeStatuse" MOD="4" Left="90" Top="3780" Width="5130" Height="288" Text="" Style="text-align: right; font-size: 9pt; font-family: Tahoma; " />
+      <Control Type="AR.Field" Name="TextBox18" DataField="Rws_Fld_DelayTimeCarrierTrainCount" MOD="4" Left="7290" Top="2880" Width="990" Height="288" Text="" Style="text-align: right; font-size: 9pt; font-family: Tahoma; " />
+      <Control Type="AR.Field" Name="TextBox19" DataField="Rws_Fld_DeletedCarrierTrainCount" MOD="4" Left="7290" Top="2430" Width="990" Height="288" Text="" Style="text-align: right; font-size: 9pt; font-family: Tahoma; " />
+      <Control Type="AR.Field" Name="TextBox20" DataField="Rws_Fld_Det_EarlyAccidentReasonDescription" MOD="4" Left="90" Top="4230" Width="5670" Height="288" Text="" Style="text-align: right; font-size: 9pt; font-family: Tahoma; " />
+      <Control Type="AR.Field" Name="TextBox21" DataField="Rws_Fld_PassengerDieCount" MOD="4" Left="2250" Top="5130" Width="450" Height="288" Text="" Style="text-align: right; font-size: 9pt; font-family: Tahoma; " />
+      <Control Type="AR.Field" Name="TextBox22" DataField="Rws_Fld_RailWayDieCount" MOD="4" Left="180" Top="5130" Width="630" Height="288" Text="" Style="text-align: right; font-size: 9pt; font-family: Tahoma; " />
+      <Control Type="AR.Field" Name="TextBox23" DataField="Rws_Fld_ThirdPartyDieCount" MOD="4" Left="3690" Top="5130" Width="450" Height="288" Text="" Style="text-align: right; font-size: 9pt; font-family: Tahoma; " />
+      <Control Type="AR.Field" Name="TextBox25" DataField="Rws_Fld_PassengerGender" MOD="4" Left="7740" Top="3780" Width="5850" Height="288" Text="" Style="text-align: right; font-size: 9pt; font-family: Tahoma; " />
+      <Control Type="AR.Field" Name="TextBox28" DataField="Rws_Fld_ufk_CrossroadKind" MOD="4" Left="7560" Top="4230" Width="5400" Height="288" Text="" Style="text-align: right; font-size: 9pt; font-family: Tahoma; " />
+      <Control Type="AR.Field" Name="TextBox29" DataField="Rws_Fld_ufk_RoadVehicleKind" MOD="4" Left="630" Top="4680" Width="12060" Height="288" Text="" Style="text-align: right; font-size: 9pt; font-family: Tahoma; " />
+      <Control Type="AR.Field" Name="TextBox30" DataField="Rws_Fld_DelayTimePassengerTrainCount" MOD="4" Left="9270" Top="2880" Width="990" Height="288" Text="" Style="text-align: right; font-size: 9pt; font-family: Tahoma; " />
+      <Control Type="AR.Field" Name="TextBox31" DataField="Rws_Fld_AccidentKindDescribe" MOD="4" Left="360" Top="3330" Width="13320" Height="288" Text="" Style="text-align: right; font-size: 9pt; font-family: Tahoma; " />
+      <Control Type="AR.Field" Name="TextBox32" DataField="Rws_Fld_PassengerAfoulCount" MOD="4" Left="9270" Top="5130" Width="540" Height="288" Text="" Style="text-align: right; font-size: 9pt; font-family: Tahoma; " />
+      <Control Type="AR.Field" Name="TextBox34" DataField="Rws_Fld_ThirdPartyAfoulCount" MOD="4" Left="10890" Top="5130" Width="540" Height="288" Text="" Style="text-align: right; font-size: 9pt; font-family: Tahoma; " />
+      <Control Type="AR.Field" Name="TextBox35" DataField="Rws_Fld_RailWayAfoulCount" MOD="4" Left="7290" Top="5130" Width="450" Height="288" Text="" Style="text-align: right; font-size: 9pt; font-family: Tahoma; " />
+      <Control Type="AR.Field" Name="TextBox41" DataField="Rws_Fld_FileCategorize" MOD="4" Left="9990" Top="180" Width="2970" Height="288" Text="" Style="text-align: right; font-size: 9pt; font-family: Tahoma; " />
+      <Control Type="AR.Field" Name="TextBox36" DataField="Rws_Fld_AccidentLocation" MOD="4" Left="5220" Top="630" Width="1620" Height="288" Text="" Style="text-align: right; font-size: 9pt; font-family: Tahoma; " />
+      <Control Type="AR.Field" Name="TextBox37" DataField="Rws_Fld_AccidentDegreeDescribe" MOD="4" Left="90" Top="1080" Width="5310" Height="288" Text="" Style="text-align: right; font-size: 9pt; font-family: Tahoma; " />
+      <Control Type="AR.Field" Name="TextBox38" DataField="Rws_Fld_BlockTime" MOD="4" Left="11970" Top="1080" Width="1530" Height="288" Text="" Style="text-align: right; font-size: 9pt; font-family: Tahoma; " />
+      <Control Type="AR.Field" Name="TextBox39" DataField="Rws_Fld_WagonCount" MOD="4" Left="7290" Top="1530" Width="540" Height="288" Text="" Style="text-align: right; font-size: 9pt; font-family: Tahoma; " />
+      <Control Type="AR.Field" Name="TextBox40" DataField="Rws_Fld_TrainWeight" MOD="4" Left="5580" Top="1530" Width="720" Height="288" Text="" Style="text-align: right; font-size: 9pt; font-family: Tahoma; " />
+      <Control Type="AR.Field" Name="TextBox17" DataField="Rws_Fld_AccidentTime" MOD="4" Left="9270" Top="1080" Width="1170" Height="288" Text="" Style="text-align: right; font-size: 9pt; font-family: Tahoma; " />
+      <Control Type="AR.Field" Name="TextBox24" Visible="0" MOD="4" Left="6570" Top="1080" Width="1170" Height="288" Text="-----" Style="text-align: right; font-size: 9pt; font-family: Tahoma; " />
+      <Control Type="AR.Label" Name="Label50" MOD="4" Left="13680" Top="5670" Width="1050" Height="288" Caption=":شرح مختصر" Style="text-align: right; " />
+      <Control Type="AR.Field" Name="TextBox42" DataField="Rws_Fld_Description" MOD="4" Left="90" Top="5670" Width="13500" Height="2160" Text="" RightToLeft="1" Style="ddo-char-set: 178; text-align: right; font-size: 9pt; font-family: Tahoma; " />
+      <Control Type="AR.Line" Name="Line22" MOD="4" X1="14850" Y1="5490" X2="14850" Y2="8010" />
+      <Control Type="AR.Line" Name="Line23" MOD="4" X1="14850" Y1="8010" X2="90" Y2="8010" />
+      <Control Type="AR.Line" Name="Line21" MOD="4" X1="14850" Y1="5580" X2="0" Y2="5580" />
+    </Section>
+    <Section Type="Detail" Name="Detail" Height="0" BackColor="16777215" CanShrink="0" />
+    <Section Type="PageFooter" Name="PageFooter" Height="0" BackColor="16777215" CanShrink="0" />
+  </Sections>
+  <PageSettings LeftMargin="432" RightMargin="432" TopMargin="432" BottomMargin="432" GutterMargin="432" PaperSize="9" PaperWidth="11906" PaperHeight="16838" PaperName="" Orientation="2" />
+</ActiveReportsLayout>

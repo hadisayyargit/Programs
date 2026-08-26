@@ -1,0 +1,31 @@
+
+-- Select * From Vw_F15_F46_4Savaneh Where T_Date_Shamsi = '890511' And Dizel_No = 7002
+Alter VIEW [dbo].[Vw_F15_F46_4Savaneh]
+
+AS
+
+
+Select
+	F4603 As T_No ,   ‘„«—Â ﬁÿ«—
+  
+	F4604 As T_Date_Shamsi ,  «—ÌŒ ‘„”Ì  «ÌÃ«œ 
+	F4605 As T_Time , ”«⁄  «ÌÃ«œ
+	F1504 As Train_Kind , ‰Ê⁄ ﬁÿ«— ﬂœ
+	(Select [Desc] From P8 Where P8.Code = F1504 ) As Train_Kind_Desc ,‘—Õ ‰Ê⁄ ﬁÿ«—  
+	F1505 As Src_Code , ﬂœ „»œ«
+	F1506 As Des_Code , ﬂœ „ﬁ’œ
+	(Select [Desc] From P2 Where P2.Code = T8.F1505 And P2.Nahi =T9.Nahi ) AS Src_Desc , ⁄‰Ê«‰ „»œ«
+	(Select [Desc] From P2 Where P2.Code = T8.F1506 And P2.Nahi =T9.Nahi ) AS Des_Desc ,⁄‰Ê«‰ „ﬁ’œ
+	F4602 As Dizel_No ,‘„«—Â  œÌ“· Â« 
+	F1511 As Wagon_Number ,  ⁄œ«œ Ê«ê‰Â«
+	  
+	F1510 As T_Vazn  Ê“‰ ﬂ· ﬁÿ«— 
+	
+From F46 As T9
+	Left Join F15 As T8 On 
+		T9.F4603 = T8.F1501
+		And T9.F4604_M = T8.F1502_M
+		And T9.F4605 = T8.F1503
+		And T9.Nahi = T8.Nahi
+
+Where F4601 = 11	

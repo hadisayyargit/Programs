@@ -1,0 +1,294 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <OwnerKey>{FE3BBBB6-72D5-11d2-9ACE-00C04F79A2A4}</OwnerKey>
+    <ProjectType>Local</ProjectType>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{7B326ED5-7F2B-4ABD-ACE6-87777F8B9DDD}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ApplicationIcon>
+    </ApplicationIcon>
+    <AssemblyKeyContainerName>
+    </AssemblyKeyContainerName>
+    <AssemblyName>BusinessRules</AssemblyName>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+    <DefaultClientScript>JScript</DefaultClientScript>
+    <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+    <DefaultTargetSchema>IE50</DefaultTargetSchema>
+    <DelaySign>false</DelaySign>
+    <OutputType>Library</OutputType>
+    <RootNamespace>RWAS.BusinessRules</RootNamespace>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <StartupObject>
+    </StartupObject>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>false</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>full</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>false</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>true</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>none</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System">
+      <Name>System</Name>
+    </Reference>
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data">
+      <Name>System.Data</Name>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml">
+      <Name>System.XML</Name>
+    </Reference>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Name>Common</Name>
+      <Project>{1010B136-1D0F-4E7D-84CD-6EBE68D17A3C}</Project>
+      <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
+    </ProjectReference>
+    <ProjectReference Include="..\DataAccess\DataAccess.csproj">
+      <Project>{10229AD2-1D15-414C-8840-058EA0AF3A12}</Project>
+      <Name>DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ProgLib\Proglib.csproj">
+      <Project>{6063B271-FF43-4CE6-9665-D046CA023AFA}</Project>
+      <Name>Proglib</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ApplicationObject.cs" />
+    <Compile Include="clsBRFormAccessRight.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Activity.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AccidentReason.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Category.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="clsBRAccidentDegree.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="clsBRChastiseReason.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="clsBRHealthItem.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="clsBRRegion.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="clsBRStation.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="clsBRSubContractor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="PersonnelTraining.cs" />
+    <Compile Include="Donor.cs" />
+    <Compile Include="dpHadiBusiness.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="EducationDegree.cs" />
+    <Compile Include="EulogyType.cs" />
+    <Compile Include="ForfeitKind.cs" />
+    <Compile Include="Job.cs" />
+    <Compile Include="PersonnelJobStatus.cs" />
+    <Compile Include="Score.cs" />
+    <Compile Include="Score_Accident.cs" />
+    <Compile Include="Score_Chastise.cs" />
+    <Compile Include="Score_Encouragement.cs" />
+    <Compile Include="Score_Training.cs" />
+    <Compile Include="Setad.cs" />
+    <Compile Include="SubContractor.cs" />
+    <Compile Include="SurveyItem.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="clsBRComboHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="EarlyAccident.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="LoadAccident.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ChangePassword.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Personeli.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="clsBROtherSystem.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="clsBRPersonel.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TrainingTerm.cs" />
+    <Compile Include="UserPersonal.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BREnums.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="clsBRDocReport.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="clsBRReportHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Collision.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Exit.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Fire.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Scape.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="clsBRAccidentMedia.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="clsBREarlyAccidentRailWayVehicleKind.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SecondaryAccident.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SecondaryAccidentDetail.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AbRailWayAccident.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AgentDieAfoul.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="RailWayAccident.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="UserAccessRight.cs" />
+    <Compile Include="clsBRErrorLogReport.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="clsBRUserAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="UserDefine.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="clsBRAdminValues.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="clsBRWorkBook.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties TDLELEMENTTYPE="BusinessRules" />
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

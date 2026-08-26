@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <metadata name="MyToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="btnUniqueCode.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAACwwAAAsMAT9AIsgAAAAIdEVYdENvbW1lbnQA9syWvwAAANhJREFUOE+tlMERhCAM
+        RXPai33SBJXYiCfZ2QLsaA9ZSDaCAQQVZ+Kgzjxe4lfYNoSRRTAA60/1urLhDrTWYjxgX4b7xhjshSpg
+        BDERUDbqhRYNwXNDEdIv0mqZNg2ld+ccgS8C2SyvfsumobaS9mum2QyPdrHFJAJ+OVfbPzVkmzgCeUmI
+        316gnh8b6rf+yDAAA0AOove2HKKhSwAMnXGaXqT8XtdihP4zPMZCh1lff5aFPsdSLm//aWSwWaxayT97
+        HmDa9LahbKRNHwM5VvEDGAJMxzIc+AOlLN/n0po6gQAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="chkcboRegion_DesignTimeLayout.LayoutString" xml:space="preserve">
+    <value>&lt;GridEXLayoutData&gt;&lt;RootTable&gt;&lt;Columns Collection="true" ElementName="Column"&gt;&lt;Column0 ID="Rws_Fld_Describe"&gt;&lt;Caption&gt;نام ناحیه&lt;/Caption&gt;&lt;DataMember&gt;Rws_Fld_Describe&lt;/DataMember&gt;&lt;Key&gt;Rws_Fld_Describe&lt;/Key&gt;&lt;Position&gt;0&lt;/Position&gt;&lt;ShowRowSelector&gt;True&lt;/ShowRowSelector&gt;&lt;/Column0&gt;&lt;/Columns&gt;&lt;GroupCondition /&gt;&lt;/RootTable&gt;&lt;RowWithErrorsFormatStyle&gt;&lt;PredefinedStyle&gt;RowWithErrorsFormatStyle&lt;/PredefinedStyle&gt;&lt;/RowWithErrorsFormatStyle&gt;&lt;LinkFormatStyle&gt;&lt;Font&gt;Tahoma, 8.25pt&lt;/Font&gt;&lt;PredefinedStyle&gt;LinkFormatStyle&lt;/PredefinedStyle&gt;&lt;/LinkFormatStyle&gt;&lt;AlternatingRowFormatStyle&gt;&lt;Font&gt;Tahoma, 8.25pt&lt;/Font&gt;&lt;PredefinedStyle&gt;AlternatingRowFormatStyle&lt;/PredefinedStyle&gt;&lt;/AlternatingRowFormatStyle&gt;&lt;CardCaptionFormatStyle&gt;&lt;PredefinedStyle&gt;CardCaptionFormatStyle&lt;/PredefinedStyle&gt;&lt;/CardCaptionFormatStyle&gt;&lt;GroupByBoxFormatStyle&gt;&lt;PredefinedStyle&gt;GroupByBoxFormatStyle&lt;/PredefinedStyle&gt;&lt;/GroupByBoxFormatStyle&gt;&lt;GroupByBoxInfoFormatStyle&gt;&lt;PredefinedStyle&gt;GroupByBoxInfoFormatStyle&lt;/PredefinedStyle&gt;&lt;/GroupByBoxInfoFormatStyle&gt;&lt;GroupRowFormatStyle&gt;&lt;Font&gt;Tahoma, 8.25pt&lt;/Font&gt;&lt;PredefinedStyle&gt;GroupRowFormatStyle&lt;/PredefinedStyle&gt;&lt;/GroupRowFormatStyle&gt;&lt;HeaderFormatStyle&gt;&lt;Font&gt;Tahoma, 8.25pt&lt;/Font&gt;&lt;PredefinedStyle&gt;HeaderFormatStyle&lt;/PredefinedStyle&gt;&lt;/HeaderFormatStyle&gt;&lt;RowHeaderFormatStyle&gt;&lt;Font&gt;Tahoma, 8.25pt&lt;/Font&gt;&lt;PredefinedStyle&gt;RowHeaderFormatStyle&lt;/PredefinedStyle&gt;&lt;/RowHeaderFormatStyle&gt;&lt;PreviewRowFormatStyle&gt;&lt;Font&gt;Tahoma, 8.25pt&lt;/Font&gt;&lt;PredefinedStyle&gt;PreviewRowFormatStyle&lt;/PredefinedStyle&gt;&lt;/PreviewRowFormatStyle&gt;&lt;RowFormatStyle&gt;&lt;Font&gt;Tahoma, 8.25pt&lt;/Font&gt;&lt;PredefinedStyle&gt;RowFormatStyle&lt;/PredefinedStyle&gt;&lt;/RowFormatStyle&gt;&lt;SelectedFormatStyle&gt;&lt;Font&gt;Tahoma, 8.25pt&lt;/Font&gt;&lt;PredefinedStyle&gt;SelectedFormatStyle&lt;/PredefinedStyle&gt;&lt;/SelectedFormatStyle&gt;&lt;SelectedInactiveFormatStyle&gt;&lt;PredefinedStyle&gt;SelectedInactiveFormatStyle&lt;/PredefinedStyle&gt;&lt;/SelectedInactiveFormatStyle&gt;&lt;FocusCellFormatStyle&gt;&lt;Font&gt;Tahoma, 8.25pt&lt;/Font&gt;&lt;PredefinedStyle&gt;FocusCellFormatStyle&lt;/PredefinedStyle&gt;&lt;/FocusCellFormatStyle&gt;&lt;GroupRowVisualStyle&gt;UseRowStyle&lt;/GroupRowVisualStyle&gt;&lt;WatermarkImage /&gt;&lt;BackColor&gt;PapayaWhip&lt;/BackColor&gt;&lt;VisualStyle&gt;Office2007&lt;/VisualStyle&gt;&lt;AllowEdit&gt;False&lt;/AllowEdit&gt;&lt;ColumnAutoResize&gt;True&lt;/ColumnAutoResize&gt;&lt;ExpandableGroups&gt;False&lt;/ExpandableGroups&gt;&lt;GroupByBoxVisible&gt;False&lt;/GroupByBoxVisible&gt;&lt;HideSelection&gt;Highlight&lt;/HideSelection&gt;&lt;/GridEXLayoutData&gt;</value>
+  </data>
+  <data name="chkcboSubContractor_DesignTimeLayout.LayoutString" xml:space="preserve">
+    <value>&lt;GridEXLayoutData&gt;&lt;RootTable&gt;&lt;Columns Collection="true" ElementName="Column"&gt;&lt;Column0 ID="Rws_Fld_Describe"&gt;&lt;Caption&gt;پیمانکار&lt;/Caption&gt;&lt;DataMember&gt;Rws_Fld_Describe&lt;/DataMember&gt;&lt;Key&gt;Rws_Fld_Describe&lt;/Key&gt;&lt;Position&gt;0&lt;/Position&gt;&lt;ShowRowSelector&gt;True&lt;/ShowRowSelector&gt;&lt;/Column0&gt;&lt;/Columns&gt;&lt;GroupCondition /&gt;&lt;/RootTable&gt;&lt;RowWithErrorsFormatStyle&gt;&lt;PredefinedStyle&gt;RowWithErrorsFormatStyle&lt;/PredefinedStyle&gt;&lt;/RowWithErrorsFormatStyle&gt;&lt;LinkFormatStyle&gt;&lt;Font&gt;Tahoma, 8.25pt&lt;/Font&gt;&lt;PredefinedStyle&gt;LinkFormatStyle&lt;/PredefinedStyle&gt;&lt;/LinkFormatStyle&gt;&lt;AlternatingRowFormatStyle&gt;&lt;Font&gt;Tahoma, 8.25pt&lt;/Font&gt;&lt;PredefinedStyle&gt;AlternatingRowFormatStyle&lt;/PredefinedStyle&gt;&lt;/AlternatingRowFormatStyle&gt;&lt;CardCaptionFormatStyle&gt;&lt;PredefinedStyle&gt;CardCaptionFormatStyle&lt;/PredefinedStyle&gt;&lt;/CardCaptionFormatStyle&gt;&lt;GroupByBoxFormatStyle&gt;&lt;PredefinedStyle&gt;GroupByBoxFormatStyle&lt;/PredefinedStyle&gt;&lt;/GroupByBoxFormatStyle&gt;&lt;GroupByBoxInfoFormatStyle&gt;&lt;PredefinedStyle&gt;GroupByBoxInfoFormatStyle&lt;/PredefinedStyle&gt;&lt;/GroupByBoxInfoFormatStyle&gt;&lt;GroupRowFormatStyle&gt;&lt;Font&gt;Tahoma, 8.25pt&lt;/Font&gt;&lt;PredefinedStyle&gt;GroupRowFormatStyle&lt;/PredefinedStyle&gt;&lt;/GroupRowFormatStyle&gt;&lt;HeaderFormatStyle&gt;&lt;Font&gt;Tahoma, 8.25pt&lt;/Font&gt;&lt;PredefinedStyle&gt;HeaderFormatStyle&lt;/PredefinedStyle&gt;&lt;/HeaderFormatStyle&gt;&lt;RowHeaderFormatStyle&gt;&lt;Font&gt;Tahoma, 8.25pt&lt;/Font&gt;&lt;PredefinedStyle&gt;RowHeaderFormatStyle&lt;/PredefinedStyle&gt;&lt;/RowHeaderFormatStyle&gt;&lt;PreviewRowFormatStyle&gt;&lt;Font&gt;Tahoma, 8.25pt&lt;/Font&gt;&lt;PredefinedStyle&gt;PreviewRowFormatStyle&lt;/PredefinedStyle&gt;&lt;/PreviewRowFormatStyle&gt;&lt;RowFormatStyle&gt;&lt;Font&gt;Tahoma, 8.25pt&lt;/Font&gt;&lt;PredefinedStyle&gt;RowFormatStyle&lt;/PredefinedStyle&gt;&lt;/RowFormatStyle&gt;&lt;SelectedFormatStyle&gt;&lt;Font&gt;Tahoma, 8.25pt&lt;/Font&gt;&lt;PredefinedStyle&gt;SelectedFormatStyle&lt;/PredefinedStyle&gt;&lt;/SelectedFormatStyle&gt;&lt;SelectedInactiveFormatStyle&gt;&lt;PredefinedStyle&gt;SelectedInactiveFormatStyle&lt;/PredefinedStyle&gt;&lt;/SelectedInactiveFormatStyle&gt;&lt;FocusCellFormatStyle&gt;&lt;Font&gt;Tahoma, 8.25pt&lt;/Font&gt;&lt;PredefinedStyle&gt;FocusCellFormatStyle&lt;/PredefinedStyle&gt;&lt;/FocusCellFormatStyle&gt;&lt;GroupRowVisualStyle&gt;UseRowStyle&lt;/GroupRowVisualStyle&gt;&lt;WatermarkImage /&gt;&lt;BackColor&gt;PapayaWhip&lt;/BackColor&gt;&lt;VisualStyle&gt;Office2007&lt;/VisualStyle&gt;&lt;AllowEdit&gt;False&lt;/AllowEdit&gt;&lt;ColumnAutoResize&gt;True&lt;/ColumnAutoResize&gt;&lt;ExpandableGroups&gt;False&lt;/ExpandableGroups&gt;&lt;GroupByBoxVisible&gt;False&lt;/GroupByBoxVisible&gt;&lt;HideSelection&gt;Highlight&lt;/HideSelection&gt;&lt;/GridEXLayoutData&gt;</value>
+  </data>
+  <data name="chkcboOrgUnit_DesignTimeLayout.LayoutString" xml:space="preserve">
+    <value>&lt;GridEXLayoutData&gt;&lt;RootTable&gt;&lt;Columns Collection="true" ElementName="Column"&gt;&lt;Column0 ID="Prs_Fld_Describe"&gt;&lt;Caption&gt;Prs_Fld_Describe&lt;/Caption&gt;&lt;DataMember&gt;Prs_Fld_Describe&lt;/DataMember&gt;&lt;Key&gt;Prs_Fld_Describe&lt;/Key&gt;&lt;Position&gt;0&lt;/Position&gt;&lt;ShowRowSelector&gt;True&lt;/ShowRowSelector&gt;&lt;/Column0&gt;&lt;/Columns&gt;&lt;GroupCondition /&gt;&lt;/RootTable&gt;&lt;RowWithErrorsFormatStyle&gt;&lt;PredefinedStyle&gt;RowWithErrorsFormatStyle&lt;/PredefinedStyle&gt;&lt;/RowWithErrorsFormatStyle&gt;&lt;LinkFormatStyle&gt;&lt;Font&gt;Tahoma, 8.25pt&lt;/Font&gt;&lt;PredefinedStyle&gt;LinkFormatStyle&lt;/PredefinedStyle&gt;&lt;/LinkFormatStyle&gt;&lt;AlternatingRowFormatStyle&gt;&lt;Font&gt;Tahoma, 8.25pt&lt;/Font&gt;&lt;PredefinedStyle&gt;AlternatingRowFormatStyle&lt;/PredefinedStyle&gt;&lt;/AlternatingRowFormatStyle&gt;&lt;CardCaptionFormatStyle&gt;&lt;PredefinedStyle&gt;CardCaptionFormatStyle&lt;/PredefinedStyle&gt;&lt;/CardCaptionFormatStyle&gt;&lt;GroupByBoxFormatStyle&gt;&lt;PredefinedStyle&gt;GroupByBoxFormatStyle&lt;/PredefinedStyle&gt;&lt;/GroupByBoxFormatStyle&gt;&lt;GroupByBoxInfoFormatStyle&gt;&lt;PredefinedStyle&gt;GroupByBoxInfoFormatStyle&lt;/PredefinedStyle&gt;&lt;/GroupByBoxInfoFormatStyle&gt;&lt;GroupRowFormatStyle&gt;&lt;Font&gt;Tahoma, 8.25pt&lt;/Font&gt;&lt;PredefinedStyle&gt;GroupRowFormatStyle&lt;/PredefinedStyle&gt;&lt;/GroupRowFormatStyle&gt;&lt;HeaderFormatStyle&gt;&lt;Font&gt;Tahoma, 8.25pt&lt;/Font&gt;&lt;PredefinedStyle&gt;HeaderFormatStyle&lt;/PredefinedStyle&gt;&lt;/HeaderFormatStyle&gt;&lt;RowHeaderFormatStyle&gt;&lt;Font&gt;Tahoma, 8.25pt&lt;/Font&gt;&lt;PredefinedStyle&gt;RowHeaderFormatStyle&lt;/PredefinedStyle&gt;&lt;/RowHeaderFormatStyle&gt;&lt;PreviewRowFormatStyle&gt;&lt;Font&gt;Tahoma, 8.25pt&lt;/Font&gt;&lt;PredefinedStyle&gt;PreviewRowFormatStyle&lt;/PredefinedStyle&gt;&lt;/PreviewRowFormatStyle&gt;&lt;RowFormatStyle&gt;&lt;Font&gt;Tahoma, 8.25pt&lt;/Font&gt;&lt;PredefinedStyle&gt;RowFormatStyle&lt;/PredefinedStyle&gt;&lt;/RowFormatStyle&gt;&lt;SelectedFormatStyle&gt;&lt;Font&gt;Tahoma, 8.25pt&lt;/Font&gt;&lt;PredefinedStyle&gt;SelectedFormatStyle&lt;/PredefinedStyle&gt;&lt;/SelectedFormatStyle&gt;&lt;SelectedInactiveFormatStyle&gt;&lt;PredefinedStyle&gt;SelectedInactiveFormatStyle&lt;/PredefinedStyle&gt;&lt;/SelectedInactiveFormatStyle&gt;&lt;FocusCellFormatStyle&gt;&lt;Font&gt;Tahoma, 8.25pt&lt;/Font&gt;&lt;PredefinedStyle&gt;FocusCellFormatStyle&lt;/PredefinedStyle&gt;&lt;/FocusCellFormatStyle&gt;&lt;GroupRowVisualStyle&gt;UseRowStyle&lt;/GroupRowVisualStyle&gt;&lt;WatermarkImage /&gt;&lt;BackColor&gt;PapayaWhip&lt;/BackColor&gt;&lt;VisualStyle&gt;Office2007&lt;/VisualStyle&gt;&lt;AllowEdit&gt;False&lt;/AllowEdit&gt;&lt;ColumnAutoResize&gt;True&lt;/ColumnAutoResize&gt;&lt;ExpandableGroups&gt;False&lt;/ExpandableGroups&gt;&lt;GroupByBoxVisible&gt;False&lt;/GroupByBoxVisible&gt;&lt;HideSelection&gt;Highlight&lt;/HideSelection&gt;&lt;/GridEXLayoutData&gt;</value>
+  </data>
+  <data name="chkcboStudyStatus_DesignTimeLayout.LayoutString" xml:space="preserve">
+    <value>&lt;GridEXLayoutData&gt;&lt;RootTable&gt;&lt;Columns Collection="true" ElementName="Column"&gt;&lt;Column0 ID="Prs_Fld_Describe"&gt;&lt;Caption&gt;Prs_Fld_Describe&lt;/Caption&gt;&lt;DataMember&gt;Prs_Fld_Describe&lt;/DataMember&gt;&lt;Key&gt;Prs_Fld_Describe&lt;/Key&gt;&lt;Position&gt;0&lt;/Position&gt;&lt;ShowRowSelector&gt;True&lt;/ShowRowSelector&gt;&lt;/Column0&gt;&lt;/Columns&gt;&lt;GroupCondition /&gt;&lt;/RootTable&gt;&lt;RowWithErrorsFormatStyle&gt;&lt;PredefinedStyle&gt;RowWithErrorsFormatStyle&lt;/PredefinedStyle&gt;&lt;/RowWithErrorsFormatStyle&gt;&lt;LinkFormatStyle&gt;&lt;Font&gt;Tahoma, 8.25pt&lt;/Font&gt;&lt;PredefinedStyle&gt;LinkFormatStyle&lt;/PredefinedStyle&gt;&lt;/LinkFormatStyle&gt;&lt;AlternatingRowFormatStyle&gt;&lt;Font&gt;Tahoma, 8.25pt&lt;/Font&gt;&lt;PredefinedStyle&gt;AlternatingRowFormatStyle&lt;/PredefinedStyle&gt;&lt;/AlternatingRowFormatStyle&gt;&lt;CardCaptionFormatStyle&gt;&lt;PredefinedStyle&gt;CardCaptionFormatStyle&lt;/PredefinedStyle&gt;&lt;/CardCaptionFormatStyle&gt;&lt;GroupByBoxFormatStyle&gt;&lt;PredefinedStyle&gt;GroupByBoxFormatStyle&lt;/PredefinedStyle&gt;&lt;/GroupByBoxFormatStyle&gt;&lt;GroupByBoxInfoFormatStyle&gt;&lt;PredefinedStyle&gt;GroupByBoxInfoFormatStyle&lt;/PredefinedStyle&gt;&lt;/GroupByBoxInfoFormatStyle&gt;&lt;GroupRowFormatStyle&gt;&lt;Font&gt;Tahoma, 8.25pt&lt;/Font&gt;&lt;PredefinedStyle&gt;GroupRowFormatStyle&lt;/PredefinedStyle&gt;&lt;/GroupRowFormatStyle&gt;&lt;HeaderFormatStyle&gt;&lt;Font&gt;Tahoma, 8.25pt&lt;/Font&gt;&lt;PredefinedStyle&gt;HeaderFormatStyle&lt;/PredefinedStyle&gt;&lt;/HeaderFormatStyle&gt;&lt;RowHeaderFormatStyle&gt;&lt;Font&gt;Tahoma, 8.25pt&lt;/Font&gt;&lt;PredefinedStyle&gt;RowHeaderFormatStyle&lt;/PredefinedStyle&gt;&lt;/RowHeaderFormatStyle&gt;&lt;PreviewRowFormatStyle&gt;&lt;Font&gt;Tahoma, 8.25pt&lt;/Font&gt;&lt;PredefinedStyle&gt;PreviewRowFormatStyle&lt;/PredefinedStyle&gt;&lt;/PreviewRowFormatStyle&gt;&lt;RowFormatStyle&gt;&lt;Font&gt;Tahoma, 8.25pt&lt;/Font&gt;&lt;PredefinedStyle&gt;RowFormatStyle&lt;/PredefinedStyle&gt;&lt;/RowFormatStyle&gt;&lt;SelectedFormatStyle&gt;&lt;Font&gt;Tahoma, 8.25pt&lt;/Font&gt;&lt;PredefinedStyle&gt;SelectedFormatStyle&lt;/PredefinedStyle&gt;&lt;/SelectedFormatStyle&gt;&lt;SelectedInactiveFormatStyle&gt;&lt;PredefinedStyle&gt;SelectedInactiveFormatStyle&lt;/PredefinedStyle&gt;&lt;/SelectedInactiveFormatStyle&gt;&lt;FocusCellFormatStyle&gt;&lt;Font&gt;Tahoma, 8.25pt&lt;/Font&gt;&lt;PredefinedStyle&gt;FocusCellFormatStyle&lt;/PredefinedStyle&gt;&lt;/FocusCellFormatStyle&gt;&lt;GroupRowVisualStyle&gt;UseRowStyle&lt;/GroupRowVisualStyle&gt;&lt;WatermarkImage /&gt;&lt;BackColor&gt;PapayaWhip&lt;/BackColor&gt;&lt;VisualStyle&gt;Office2007&lt;/VisualStyle&gt;&lt;AllowEdit&gt;False&lt;/AllowEdit&gt;&lt;ColumnAutoResize&gt;True&lt;/ColumnAutoResize&gt;&lt;ExpandableGroups&gt;False&lt;/ExpandableGroups&gt;&lt;GroupByBoxVisible&gt;False&lt;/GroupByBoxVisible&gt;&lt;HideSelection&gt;Highlight&lt;/HideSelection&gt;&lt;/GridEXLayoutData&gt;</value>
+  </data>
+  <data name="chkcboJob_DesignTimeLayout.LayoutString" xml:space="preserve">
+    <value>&lt;GridEXLayoutData&gt;&lt;RootTable&gt;&lt;Columns Collection="true" ElementName="Column"&gt;&lt;Column0 ID="Prs_Fld_Describe"&gt;&lt;Caption&gt;Prs_Fld_Describe&lt;/Caption&gt;&lt;DataMember&gt;Prs_Fld_Describe&lt;/DataMember&gt;&lt;Key&gt;Prs_Fld_Describe&lt;/Key&gt;&lt;Position&gt;0&lt;/Position&gt;&lt;ShowRowSelector&gt;True&lt;/ShowRowSelector&gt;&lt;/Column0&gt;&lt;/Columns&gt;&lt;GroupCondition /&gt;&lt;/RootTable&gt;&lt;RowWithErrorsFormatStyle&gt;&lt;PredefinedStyle&gt;RowWithErrorsFormatStyle&lt;/PredefinedStyle&gt;&lt;/RowWithErrorsFormatStyle&gt;&lt;LinkFormatStyle&gt;&lt;Font&gt;Tahoma, 8.25pt&lt;/Font&gt;&lt;PredefinedStyle&gt;LinkFormatStyle&lt;/PredefinedStyle&gt;&lt;/LinkFormatStyle&gt;&lt;AlternatingRowFormatStyle&gt;&lt;Font&gt;Tahoma, 8.25pt&lt;/Font&gt;&lt;PredefinedStyle&gt;AlternatingRowFormatStyle&lt;/PredefinedStyle&gt;&lt;/AlternatingRowFormatStyle&gt;&lt;CardCaptionFormatStyle&gt;&lt;PredefinedStyle&gt;CardCaptionFormatStyle&lt;/PredefinedStyle&gt;&lt;/CardCaptionFormatStyle&gt;&lt;GroupByBoxFormatStyle&gt;&lt;PredefinedStyle&gt;GroupByBoxFormatStyle&lt;/PredefinedStyle&gt;&lt;/GroupByBoxFormatStyle&gt;&lt;GroupByBoxInfoFormatStyle&gt;&lt;PredefinedStyle&gt;GroupByBoxInfoFormatStyle&lt;/PredefinedStyle&gt;&lt;/GroupByBoxInfoFormatStyle&gt;&lt;GroupRowFormatStyle&gt;&lt;Font&gt;Tahoma, 8.25pt&lt;/Font&gt;&lt;PredefinedStyle&gt;GroupRowFormatStyle&lt;/PredefinedStyle&gt;&lt;/GroupRowFormatStyle&gt;&lt;HeaderFormatStyle&gt;&lt;Font&gt;Tahoma, 8.25pt&lt;/Font&gt;&lt;PredefinedStyle&gt;HeaderFormatStyle&lt;/PredefinedStyle&gt;&lt;/HeaderFormatStyle&gt;&lt;RowHeaderFormatStyle&gt;&lt;Font&gt;Tahoma, 8.25pt&lt;/Font&gt;&lt;PredefinedStyle&gt;RowHeaderFormatStyle&lt;/PredefinedStyle&gt;&lt;/RowHeaderFormatStyle&gt;&lt;PreviewRowFormatStyle&gt;&lt;Font&gt;Tahoma, 8.25pt&lt;/Font&gt;&lt;PredefinedStyle&gt;PreviewRowFormatStyle&lt;/PredefinedStyle&gt;&lt;/PreviewRowFormatStyle&gt;&lt;RowFormatStyle&gt;&lt;Font&gt;Tahoma, 8.25pt&lt;/Font&gt;&lt;PredefinedStyle&gt;RowFormatStyle&lt;/PredefinedStyle&gt;&lt;/RowFormatStyle&gt;&lt;SelectedFormatStyle&gt;&lt;Font&gt;Tahoma, 8.25pt&lt;/Font&gt;&lt;PredefinedStyle&gt;SelectedFormatStyle&lt;/PredefinedStyle&gt;&lt;/SelectedFormatStyle&gt;&lt;SelectedInactiveFormatStyle&gt;&lt;PredefinedStyle&gt;SelectedInactiveFormatStyle&lt;/PredefinedStyle&gt;&lt;/SelectedInactiveFormatStyle&gt;&lt;FocusCellFormatStyle&gt;&lt;Font&gt;Tahoma, 8.25pt&lt;/Font&gt;&lt;PredefinedStyle&gt;FocusCellFormatStyle&lt;/PredefinedStyle&gt;&lt;/FocusCellFormatStyle&gt;&lt;GroupRowVisualStyle&gt;UseRowStyle&lt;/GroupRowVisualStyle&gt;&lt;WatermarkImage /&gt;&lt;BackColor&gt;PapayaWhip&lt;/BackColor&gt;&lt;VisualStyle&gt;Office2007&lt;/VisualStyle&gt;&lt;AllowEdit&gt;False&lt;/AllowEdit&gt;&lt;ColumnAutoResize&gt;True&lt;/ColumnAutoResize&gt;&lt;ExpandableGroups&gt;False&lt;/ExpandableGroups&gt;&lt;GroupByBoxVisible&gt;False&lt;/GroupByBoxVisible&gt;&lt;HideSelection&gt;Highlight&lt;/HideSelection&gt;&lt;/GridEXLayoutData&gt;</value>
+  </data>
+  <data name="chkcboEmployeeStatus_DesignTimeLayout.LayoutString" xml:space="preserve">
+    <value>&lt;GridEXLayoutData&gt;&lt;RootTable&gt;&lt;Columns Collection="true" ElementName="Column"&gt;&lt;Column0 ID="Prs_Fld_Describe"&gt;&lt;Caption&gt;Prs_Fld_Describe&lt;/Caption&gt;&lt;DataMember&gt;Prs_Fld_Describe&lt;/DataMember&gt;&lt;Key&gt;Prs_Fld_Describe&lt;/Key&gt;&lt;Position&gt;0&lt;/Position&gt;&lt;ShowRowSelector&gt;True&lt;/ShowRowSelector&gt;&lt;/Column0&gt;&lt;/Columns&gt;&lt;GroupCondition /&gt;&lt;/RootTable&gt;&lt;RowWithErrorsFormatStyle&gt;&lt;PredefinedStyle&gt;RowWithErrorsFormatStyle&lt;/PredefinedStyle&gt;&lt;/RowWithErrorsFormatStyle&gt;&lt;LinkFormatStyle&gt;&lt;Font&gt;Tahoma, 8.25pt&lt;/Font&gt;&lt;PredefinedStyle&gt;LinkFormatStyle&lt;/PredefinedStyle&gt;&lt;/LinkFormatStyle&gt;&lt;AlternatingRowFormatStyle&gt;&lt;Font&gt;Tahoma, 8.25pt&lt;/Font&gt;&lt;PredefinedStyle&gt;AlternatingRowFormatStyle&lt;/PredefinedStyle&gt;&lt;/AlternatingRowFormatStyle&gt;&lt;CardCaptionFormatStyle&gt;&lt;PredefinedStyle&gt;CardCaptionFormatStyle&lt;/PredefinedStyle&gt;&lt;/CardCaptionFormatStyle&gt;&lt;GroupByBoxFormatStyle&gt;&lt;PredefinedStyle&gt;GroupByBoxFormatStyle&lt;/PredefinedStyle&gt;&lt;/GroupByBoxFormatStyle&gt;&lt;GroupByBoxInfoFormatStyle&gt;&lt;PredefinedStyle&gt;GroupByBoxInfoFormatStyle&lt;/PredefinedStyle&gt;&lt;/GroupByBoxInfoFormatStyle&gt;&lt;GroupRowFormatStyle&gt;&lt;Font&gt;Tahoma, 8.25pt&lt;/Font&gt;&lt;PredefinedStyle&gt;GroupRowFormatStyle&lt;/PredefinedStyle&gt;&lt;/GroupRowFormatStyle&gt;&lt;HeaderFormatStyle&gt;&lt;Font&gt;Tahoma, 8.25pt&lt;/Font&gt;&lt;PredefinedStyle&gt;HeaderFormatStyle&lt;/PredefinedStyle&gt;&lt;/HeaderFormatStyle&gt;&lt;RowHeaderFormatStyle&gt;&lt;Font&gt;Tahoma, 8.25pt&lt;/Font&gt;&lt;PredefinedStyle&gt;RowHeaderFormatStyle&lt;/PredefinedStyle&gt;&lt;/RowHeaderFormatStyle&gt;&lt;PreviewRowFormatStyle&gt;&lt;Font&gt;Tahoma, 8.25pt&lt;/Font&gt;&lt;PredefinedStyle&gt;PreviewRowFormatStyle&lt;/PredefinedStyle&gt;&lt;/PreviewRowFormatStyle&gt;&lt;RowFormatStyle&gt;&lt;Font&gt;Tahoma, 8.25pt&lt;/Font&gt;&lt;PredefinedStyle&gt;RowFormatStyle&lt;/PredefinedStyle&gt;&lt;/RowFormatStyle&gt;&lt;SelectedFormatStyle&gt;&lt;Font&gt;Tahoma, 8.25pt&lt;/Font&gt;&lt;PredefinedStyle&gt;SelectedFormatStyle&lt;/PredefinedStyle&gt;&lt;/SelectedFormatStyle&gt;&lt;SelectedInactiveFormatStyle&gt;&lt;PredefinedStyle&gt;SelectedInactiveFormatStyle&lt;/PredefinedStyle&gt;&lt;/SelectedInactiveFormatStyle&gt;&lt;FocusCellFormatStyle&gt;&lt;Font&gt;Tahoma, 8.25pt&lt;/Font&gt;&lt;PredefinedStyle&gt;FocusCellFormatStyle&lt;/PredefinedStyle&gt;&lt;/FocusCellFormatStyle&gt;&lt;GroupRowVisualStyle&gt;UseRowStyle&lt;/GroupRowVisualStyle&gt;&lt;WatermarkImage /&gt;&lt;BackColor&gt;PapayaWhip&lt;/BackColor&gt;&lt;VisualStyle&gt;Office2007&lt;/VisualStyle&gt;&lt;AllowEdit&gt;False&lt;/AllowEdit&gt;&lt;ColumnAutoResize&gt;True&lt;/ColumnAutoResize&gt;&lt;ExpandableGroups&gt;False&lt;/ExpandableGroups&gt;&lt;GroupByBoxVisible&gt;False&lt;/GroupByBoxVisible&gt;&lt;HideSelection&gt;Highlight&lt;/HideSelection&gt;&lt;/GridEXLayoutData&gt;</value>
+  </data>
+  <metadata name="imageList1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>232, 17</value>
+  </metadata>
+  <data name="imageList1.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
+        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
+        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAADK
+        KgAAAk1TRnQBSQFMAgEBBgEAAVABAQFQAQEBIwEAARkBAAT/ASEBAAj/AUIBTQE2BwABNgMAASgDAAGM
+        AwABMgMAAQEBAAEgBQABYAFt/wD/AP8A/wD/AP8A/wBYAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/
+        AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8BVwIkAf8BVwIkAf//AFgAAf8DAAH/AwAB/wMA
+        Af8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/XwAB/wGZAswB/wGZAswB/wGZ
+        AswB/wGZAswB/wGZAswB/wGZAswB/wGZAswB/wGZAswB/wGZAswB/wGZAswB/wGZAswB/wGZAswB/wMA
+        Af8BmQLMAf8BmQLMAf8DAAH/AVcCJAH/AVcCJAH//wBUAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/
+        AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/1sAAf8BmQLMAf8BmQLMAf8BmQLMAf8BmQLMAf8BmQLM
+        Af8BmQLMAf8BmQLMAf8BmQLMAf8BmQLMAf8BmQLMAf8BmQLMAf8BmQLMAf8BmQLMAf8BmQLMAf8DAAH/
+        AZkCzAH/AZkCzAH/AwAB/wFXAiQB/wFXAiQB//8AUAAB/wMAKf8DAAH/AwAB/1MAAf8DAAH/AwAB/wMA
+        Af8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMA
+        Af8BAAIkAf8BmQLMAf8DAAH/AVcCJAH/AVcCJAH//wBMAAH/AwAp/wMAAf8DAAH/UwAB/wHMA/8BzAP/
+        AcwD/wHMA/8BzAP/AcwD/wHMA/8BzAP/AcwD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BzAP/
+        AwAB/wPMAf8DAAH/AZkCzAH/AwAB/wFXAiQB/wFXAiQB//8ASAAB/wMAKf8DAAH/AwAB/1MAAf8BzAP/
+        AcwD/wHMA/8BzAP/AcwD/wHMA/8BzAP/AcwD/wHMA/8DmQH/A5kB/wOZAf8DmQH/A5kB/wOZAf8DmQH/
+        AcwD/wMAAf8DzAH/A8wB/wMAAf8DAAH//wBQAAH/AwAp/wMAAf8DAAH/UwAB/wHMA/8BzAP/AcwD/wHM
+        A/8BzAP/AcwD/wHMA/8BzAP/AcwD/wOZAf8DmQH/A5kB/wOZAf8DmQH/A5kB/wOZAf8BzAP/AwAB/wPM
+        Af8DzAH/A8wB/wMAAf8DAAH//wBMAAH/AwAp/wMAAf8DAAH/UwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/
+        AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wPMAf8DzAH/
+        A8wB/wPMAf8DJAH/AwAB//8ASAAB/wMAKf8DAAH/AwAB/1MAAf8DAAH/A8wB/wPMAf8DzAH/A8wB/wPM
+        Af8DzAH/A8wB/wPMAf8DzAH/A8wB/wPMAf8DzAH/A8wB/wPMAf8DzAH/AwAB/wMAAf8DJAH/A8wB/wPM
+        Af8DzAH/A8wB/wMAAf//AEgAAf8DACn/AwAB/wMAAf9XAAH/AwAB/wPMAf8DzAH/A8wB/wPMAf8DzAH/
+        A8wB/wPMAf8DzAH/A8wB/wPMAf8DzAH/A8wB/wPMAf8DzAH/AwAB/wPMAf8DzAH/AwAB/wMAAf8DzAH/
+        A8wB/wMAAf//AEgAAf8DACn/AwAB/wMAAf9bAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMA
+        Af8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wPMAf8DzAH/A8wB/wMAAf8DzAH/AwAB//8A
+        SAAB/wMAFf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/YwAt/wMAAf8DzAH/A8wB/wMkAf8DAAH/
+        A8wB/wPMAf8DAAH/AwAB//8ASAAB/wMAFf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/YwAx/wMA
+        Af8DzAH/A8wB/wPMAf8BAAIkAf8BAAIkAf8DAAH//wBMAAH/AwAV/wMAAf8DAAn/AwAB/wMAAf9rADH/
+        AwAB/wMAAf8DAAH/AwAB/wMAAf//AFAAAf8DABX/AwAB/wMABf8DAAH/AwAB/28ACf8DAAH/AwAB/wMA
+        Af8DAAH/AwAB/wMAAf8DAAH/AwAJ/wMAAf//AGAAAf8DABX/AwAB/wMAAf8DAAH/AwAB/3cAMf8DAAH/
+        /wBcAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/ewAJ/wMAAf8DAAH/AwAB/wMA
+        Af8DAAH/AwAB/wMAAf8DAAn/AwAB//8AXAAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/
+        gwAx/wMAAf//APwAMf8DAAH//wD/AAEAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMA
+        Af8DAAH/AwAB/wMAAf8BJAIAAf//AP8A/wD/AP8ApAAB/wHMA/8BzAP/ATwBmQHMAf8DAAH/AwAB/wMA
+        Af8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/5AABVQIAAf8BFQECAQ0B/w8AAf8DAAH/AwAB/wMA
+        Af8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMA
+        Af9vAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8bAAH/AcwD/wHM
+        A/8BPAGZAcwB/wE8AZkBzAH/ATwBmQHMAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/+AA
+        AXcBDAEWAf4B5gGjAS4B/wF/ATsBIQH+ARUBAgENAf8HAAH/Ab0CigH/Ab0CigH/Ab0CigH/Ab0CigH/
+        Ab0CigH/Ab0CigH/Ab0CigH/Ab0CigH/Ab0CigH/Ab0CigH/Ab0CigH/Ab0CigH/Ab0CigH/Ab0CigH/
+        Ab0CigH/Ab0CigH/Ab0CigH/Ab0CigH/Ab0CigH/AwAB/wMAAf9nAAH/A8wB/wOZAf8DmQH/A5kB/wMA
+        Af8DAAH/A5kB/wOZAf8DmQH/A5kB/wMAAf8bAAH/AcwD/wHMA/8BPAGZAcwB/wE8AZkBzAH/ATwBmQHM
+        Af8BPAGZAcwB/wE8AZkBzAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/bwAB/wMAAf8DAAH/AwAB/wMA
+        Af8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/zQAAX8BBwEYAf4BwQFB
+        AQAB/wGiAX8BSQH+Ab8CAAH/ARUBAgENAf8DAAX/AfcC4QH/AfcC4QH/AfcC4QH/AfcC4QH/AfcC4QH/
+        AfcC4QH/AfcC4QH/AfcC4QH/AfcC4QH/AfcC4QH/AfcC4QH/AfcC4QH/AfcC4QH/AfcC4QH/AfcC4QH/
+        AfcC4QH/AfcC4QH/AfcC4QH/Ab0CigH/AwAB/2cABf8DzAH/A8wB/wPMAf8DmQH/A5kB/wPMAf8DzAH/
+        A8wB/wOZAf8DAAH/GwAB/wHMA/8BzAP/ATwBmQHMAf8BPAGZAcwB/wE8AZkBzAH/ATwBmQHMAf8BPAGZ
+        AcwB/wE8AZkBzAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8MAAT/XwA1/wHnAcABrQH/AwAB/zgAAacCAAH/
+        Ac0BQAEAAf8B8gG0ARcB/wG7AgAB/wEVAQIBDQL/AfoB7wH/AfcC4QH/AfcC4QH/AfcC4QH/AfcC4QH/
+        AfcC4QH/AfcC4QH/AfcC4QH/AfcC4QH/AfcC4QH/AfcC4QH/AfcC4QH/AfcC4QH/AfcC4QH/AfcC4QH/
+        AfcC4QH/AfcC4QH/AfcC4QH/AfYC3gH/AbgCiAH/AwAB/2cABf8DzAH/A8wB/wPMAf8DzAH/A8wB/wPM
+        Af8DAAH/AwAB/wOZAf8DAAH/GwAB/wHMA/8BzAP/ATwBmQHMAf8BPAGZAcwB/wE8AZkBzAH/ATwBmQHM
+        Af8BPAGZAcwB/wE8AZkBzAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8IAAj/XwAR/wEAAZkBACH/AecBwAGt
+        Af8DAAH/PAABfwIQAf4B2AFPAQAB/wGaAX8BPwH+AbkCAAH/ARUBAgENAf8B9wLhAf8B9wLhAf8B9wLh
+        Af8B9wLhAf8B9wLhAf8B9wLhAf8B9wLhAf8B9wLhAf8B9wLhAf8B9wLhAf8B9wLhAf8B9wLhAf8B9wLh
+        Af8B9wLhAf8B9wLhAf8B9wLhAf8B9wLhAf8B9ALaAf8BuwKLAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMA
+        Af8DAAH/AwAB/0sAJf8DzAH/AwAB/xsAAf8BzAP/AcwD/wE8AZkBzAH/ATwBmQHMAf8BPAGZAcwB/wE8
+        AZkBzAH/ATwBmQHMAf8BPAGZAcwB/wMAAf8DAAH/AwAB/wMAAf8DAAH/BAAM/18AEf8BAAGZAQAB/wEA
+        AZkBAAH/AQABmQEAAf8BAAGZAQAB/wEAAZkBAAH/AQABmQEADf8B5wHAAa0B/wMAAf9AAAGoAgAB/wJ/
+        ATIB/gHpAZkBIgH/AS4BEwEkAf8B9wLhAf8B9wLhAf8B9wLhAf8B9wLhAf8B9wLhAf8B9wHjAeQB/wH3
+        AuEB/wH3AuEB/wH3AuEB/wH3AuEB/wH3AuEB/wH3AuEB/wH3AuEB/wH3AuEB/wH3At4B/wH2At4B/wH3
+        AuEB/wH4AuIB/wG5AooB/wMAAv8CAAL/AgAC/wIAAv8CAAL/AgAC/wIAAv8CAAH/AwAB/0cAAf8DAAH/
+        AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/xsAAf8BzAP/AcwD/wE8AZkBzAH/
+        ATwBmQHMAf8BPAGZAcwB/wE8AZkBzAH/ATwBmQHMAf8BPAGZAcwB/wMAAf8DAAH/AwAB/wMAAf8DAAn/
+        AwAF/18AEf8BAAGZAQAB/wEAAZkBAAH/AQABmQEAAf8BAAGZAQAB/wEAAZkBAAH/AQABmQEAAf8BAAGZ
+        AQAJ/wHnAcABrQH/AwAB/0QAAYkBGQETAf8BxwGuAZUB/wHVAccBzAH/AYsBNwFTAf8BEAIAAf8BEgIA
+        Af8BFQIAAf8BHgIAAf8BpQEgAZQB/wHzAd4B4QH/AfcC4QH/AfcC4QH/AfcC4QH/AfcC4QH/AfcC4QH/
+        AfcC4QH/AfcC4QH/AfcC4QH/AfcC4QH/AfcC4QH/AfcC4QH/AbICggH/AwAB/wMAAf8DAAH/AwAB/wMA
+        Av8CAAL/AgAC/wIAAf8DAAH/RwAB/wPMAf8DmQH/A5kB/wOZAf8DAAH/AwAB/wOZAf8DmQH/A5kB/wOZ
+        Af8DAAH/GwAB/wHMA/8BzAP/ATwBmQHMAf8BPAGZAcwB/wE8AZkBzAH/ATwBmQHMAf8BPAGZAcwB/wE8
+        AZkBzAH/AwAB/wMAAf8DAAH/AwAJ/wMAAf8DAAX/XwAR/wEAAZkBAAH/AQABmQEAAf8BAAGZAQAN/wEA
+        AZkBAAH/AQABmQEABf8B5wHAAa0B/wMAAf9IAAEVAQIBDQH/ARUBAgENAf8BFQECAQ0B/wJ/AUsB/gJ/
+        AU8B/gGtAbIBLQH/An8BXwH+AZYBQwEzAf8BfwF2AX8B/gH3AuEB/wH3AuEB/wH3AuEB/wH3AuEB/wH3
+        AuEB/wH3AuEB/wH3AuEB/wH3AuEB/wH3AuEB/wH3AuEB/wH1At4B/wGuAlUB/wMAAf8BvQKKAf8BvQKK
+        Af8BvQKKAf8BvQKKAf8DAAH/AwAC/wIAAf8DAAH/RwAF/wPMAf8DzAH/A8wB/wOZAf8DmQH/A8wB/wPM
+        Af8DzAH/A5kB/wMAAf8bAAH/AcwD/wHMA/8BPAGZAcwB/wE8AZkBzAH/ATwBmQHMAf8BPAGZAcwB/wE8
+        AZkBzAH/ATwBmQHMAf8DAAH/AwAB/wMACf8DAAH/AgAC/wIAAQkF/18AEf8BAAGZAQAB/wEAAZkBAAH/
+        AQABmQEAAf8BAAGZAQAN/wEAAZkBAAX/AecBwAGtAf8DAAH/SAABNQEAAREB/wEVAQIBDQH/AaoBsQEA
+        Af8B8ALfAf8B8ALfAf8B8ALfAf8B8ALfAf8B8ALfAf8BhgJ/Af4BbQFNAWgB+gH3AuEB/wH3AuEB/wH3
+        AuEB/wH3AuEB/wH3AuEB/wH3AuEB/wH3AuEB/wH3AuEB/wH3AuEB/wH3AuEB/wG9AooB/wMAAf8B7QLO
+        Af8B7QLOAf8B7QLOAf8B7QLOAf8BvQKKAf8DAAL/AgAB/wMAAf9HAAX/A8wB/wPMAf8DzAH/A8wB/wPM
+        Af8DzAH/AwAB/wMAAf8DmQH/AwAB/xsAAf8BzAP/AcwD/wE8AZkBzAH/ATwBmQHMAf8BPAGZAcwB/wE8
+        AZkBzAH/ATwBmQHMAf8BPAGZAcwB/wMAAf8DAAn/AwAB/wIAAv8CAAL/AwA1/wQACP8jADH/AQABmQEA
+        Af8B5wHAAa0B/wMAAf9EAAGxAY8BpAH/ARUBAgENAf8BtAGtARcB/wHzAuoB/wHzAuoB/wH3AvIB/wH3
+        AvIB/wH3AvIB/wH5AvUB/wH3AvAB/wHKAZkBVAH/AbEBjwGkAf8B9wLhAf8B9wLhAf8B9wLhAf8B9wLh
+        Af8B9wLhAf8B9wLhAf8B9wLhDf8DAAH/Ae0CzgH/Ae0CzgH/Ae0CzgH/Ae0CzgH/Ab0CigH/AwAC/wIA
+        Af8DAAH/RwAl/wPMAf8DAAH/GwAB/wHMA/8BzAP/ATwBmQHMAf8BPAGZAcwB/wE8AZkBzAH/ATwBmQHM
+        Af8BPAGZAcwB/wE8AZkBzAH/AwAJ/wMAAf8CAAL/AgAC/wIAAv8CAAL/AgABCQH/AwAB/wMAAf8DAAH/
+        AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAF/wEJAQABCQH/IwAF/wEAAZkBACn/
+        AQABmQEAAf8B5wHAAa0B/wMAAf9AAAMcAScBfwFDAX8B/gGHASwBDAH/AZQCiwH/AZQCiwH/A1kB9QHI
+        AsQB/wEyAi0B/wEyAi0B/wP9Af8ByALEAf8B8wLqAf8BywGNAaUB/wH3AuEB/wH3AuEB/wH3AuEB/wH3
+        AuEB/wH3AuEB/wH3AuEB/wG9AooB/wMAAf8DAAH/AwAB/wHtAs4B/wHtAs4B/wHtAs4B/wHtAs4B/wHt
+        As4B/wG9AooB/wMAAf8DAAH/SwAB/wMAAf8BAAGZAQkB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMA
+        Af8DAAH/AwAB/xsAAf8BzAP/AcwD/wE8AZkBzAH/ATwBmQHMAf8BPAGZAcwB/wE8AZkBzAH/ATwBmQHM
+        Af8BPAGZAcwJ/wMAAf8CAAL/AgAC/wIAAv8CAAL/AgAC/wIAAv8CAAL/AgAC/wIAAv8CAAL/AgAC/wIA
+        Av8CAAL/AwAB/wIAAv8CAAL/AwAB/wIAAv8DAAX/AwAB/yMABf8BAAGZAQAt/wHnAcABrQH/AwAB/0AA
+        AxwBJwGJAQABTgH/AVMBLQECAf8B8wKLAf8B8wKLAf8DWQH1ATICLQH/AfQC5wH/Ae0C1AH/Ae0C1AH/
+        Ae0C1AH/AZQCiwH/AcgBIAG1Af8B9wLhAf8B9wLhAf8B9wLhAf8B9wLhAf8B9wLhAf8BvQKKAf8DAAH/
+        Ae0CzgH/Ae0CzgH/AfcC4QH/AfcC4QH/AfcC4QH/AfcC4QH/AfcC4QH/AfcC4QH/Ab0CigH/AwAB/yAA
+        AZkCAAH/AZkCAAH/AZkCAAH/AZkCAAH/AZkCAAH/AZkCAAH/AZkCAAH/AZkCAAH/DwAB/wPMAf8BAAGZ
+        AQkB/wMAAf8DmQH/AwAB/wMAAf8DmQH/A5kB/wOZAf8DmQH/AwAB/xsAAf8BzAP/AcwD/wE8AZkBzAH/
+        ATwBmQHMAf8BPAGZAcwB/wE8AZkBzAH/ATwBmQHMAf8BPAGZAcwF/wMAAf8CAAL/AgAC/wIAAv8CAAL/
+        AgAC/wIAAv8CAAL/AgAC/wIAAv8CAAL/AgAC/wIAAv8CAAL/AgAC/wMAAf8CAAL/AgAC/wMAAf8CAAL/
+        AwAF/wMAAf8jAAn/AQABmQEADf8BAAGZAQAB/wEAAZkBAAH/AQABmQEAAf8BAAGZAQAN/wHnAcABrQH/
+        AwAB/0AAAxwBJwF/ASYBfwH+AVUBMgELAf8B8wKLAf8BlAKLAf8DWQH1ATICLQH/AfcC8gH/AfMC3wH/
+        AfMC3wH/AfMC3wH/AfAC3wH/AX8BVgF/Af4U/wG9AooB/wMAAf8B9wLhAf8B9wLhAf8B9wLhAf8B9wLh
+        Af8B9wLhAf8B9wLhAf8B9wLhAf8B9wLhAf8BvQKKAf8DAAH/IAABmQIAGf8BmQIAAf8PAAX/A8wB/wEA
+        AZkBCQH/AwAB/wOZAf8DmQH/A8wB/wPMAf8DzAH/A5kB/wMAAf8bAAH/AcwD/wHMA/8BPAGZAcwB/wE8
+        AZkBzAH/ATwBmQHMAf8BPAGZAcwB/wE8AZkBzAH/ATwBmQHMAf8DAAX/AwAB/wIAAv8CAAL/AgAC/wIA
+        Av8CAAL/AgAC/wIAAv8CAAL/AgAC/wIAAv8CAAL/AgAC/wIAAv8DAAH/AgAC/wIAAv8DAAH/AgAC/wMA
+        Bf8DAAH/IwAJ/wEAAZkBAAH/AQABmQEADf8BAAGZAQAB/wEAAZkBAAH/AQABmQEADf8B5wHAAa0B/wMA
+        Af9AAAMOARMBiQEAAU4B/wFJAQ4BFAH/AfMCiwH/AZQCiwH/Af0C+wH/AdkC0gH/AfcC8gH/AfMC3wH/
+        AfMC3wH/AfAC3wH/Ac0BpAGHAf8BywGNAaUB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wH3AuEB/wH3
+        AuEB/wH3AuEB/wH3AuEB/wH3AuEB/wH3AuEB/wH3AuEB/wH3AuEB/wH3AuEB/wG9AooB/wMAAf8gAAGZ
+        AgAF/wMAAf8DAAH/AwAB/wMABf8BmQIAAf8PAAX/A8wB/wEAAZkBCQH/AwAB/wPMAf8DzAH/A8wB/wMA
+        Af8DAAH/A5kB/wMAAf8bAAH/AcwD/wHMA/8BPAGZAcwB/wE8AZkBzAH/ATwBmQHMAf8BPAGZAcwB/wE8
+        AZkBzAH/ATwBmQHMAf8DAAH/AwkF/wMAAf8CAAL/AgAC/wIAAv8CAAL/AwAB/wMAAf8DAAH/AwAB/wMA
+        Af8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMABf8DAAH/IwAN/wEAAZkBAAH/AQABmQEA
+        Af8BAAGZAQAB/wEAAZkBAAH/AQABmQEAAf8BAAGZAQAB/wEAAZkBAA3/AecBwAGtAf8DAAH/QwAB/wGx
+        AY8BpAH/AUkBDAEwAf8DfwH+AbcCqwH/Af0C+wH/A/4B/wGUAosB/wHzAuoB/wH3AvIB/wHzAuoB/wHO
+        AZMBqgH/AbEBjwGkFf8B9wLhAf8B9wLhAf8B9wLhAf8B9wLhAf8B9wLhAf8B9wLhAf8B9wLhAf8B9wLh
+        Df8DAAH/DwAB/wMAAf8DAAH/AwAB/wMAAf8BmQIAGf8BmQIAAf8PAAn/AQABmQEJAf8DABX/A8wB/wMA
+        Af8bAAH/AcwD/wHMA/8BPAGZAcwB/wE8AZkBzAH/ATwBmQHMAf8BPAGZAcwB/wE8AZkBzAH/ATwBmQHM
+        Af8DAAH/AwAB/wMABf8DAAH/AgAC/wIAAv8CAAEJAf9jABH/AQABmQEAAf8BAAGZAQAB/wEAAZkBAAH/
+        AQABmQEAAf8BAAGZAQAB/wEAAZkBAAH/AecBwAGtAf8B5wHAAa0B/wHnAcABrQH/AecBwAGtAf8DAAH/
+        QwAC/wIAAf8BiQEAAU4B/wE7AQABJwH/Aa4BmQGEAf8B8wLqAf8B9gLtAf8BlAKLAf8BlAKLAf8B0wHF
+        AZsB/wHkAaQBygH/AbEBjwGkAf8DAAH/AwAB/wMAAf8DAAH/AwAF/wH3AuEB/wH3AuEB/wH3AuEB/wH3
+        AuEB/wH3AuEB/wH3AuEB/wH3AuEB/wG9AooB/wMAAf8DAAH/AwAB/xMAEf8BmQIABf8DAAH/AwAB/wMA
+        Af8DAAX/AZkCAAH/BwAB/wcAAf8DAAH/AQABmQEJAf8BAAGZAQkB/wMAAf8DAAH/AwAB/wMAAf8DAAH/
+        AwAB/wMAAf8DAAH/GwAB/wHMA/8BzAP/ATwBmQHMAf8BPAGZAcwB/wE8AZkBzAH/ATwBmQHMAf8BPAGZ
+        AcwB/wE8AZkBzAH/AwAB/wMAAf8DAAH/AwAF/wMAAf8CAAL/AgABCQH/YwAl/wEAAZkBAAH/AwAB/wMA
+        Af8DAAH/AwAB/wMAAf8/AAH/AwAC/wIAAf8DAAH/AYkBAAFOAf8BSwECATkB/wN/Af4BiAJ/Af4B0gGb
+        AaQB/wGNAn8B/gHKAUsBsgH/AbEBjwGkAf8B9wLhAf8B9wLhAf8B9wLhAf8B9wLhAf8B9wLhAf8B9wLh
+        Af8DAAX/AfcC4QH/AfcC4QH/AfcC4QH/AfcC4QH/AfcC4QH/Ab0CigH/AwAB/wG9AooB/wMAAf8XAAX/
+        AwAB/wMAAf8DAAH/AZkCABn/AZkCAAH/AwAB/wEAAZkBCQH/AwAB/wkAAZkBCQH/AQABmQEJAf8DAAH/
+        NwAB/wHMA/8BzAP/ATwBmQHMAf8BPAGZAcwB/wE8AZkBzAH/ATwBmQHMAf8BPAGZAcwB/wE8AZkBzAH/
+        AwAB/wMAAf8DAAH/AwAB/wMABf8DAAH/AwAB/2MAKf8DAAX/AecBwAGtAf8DAAH/QwAC/wIAAv8CAAH/
+        AwAF/wGxAY8BpAH/AYkBAAFOAf8BfwE2AX8B/gG/AQwBwAH/AYEBZgF/Af4BsQGPAaQZ/wH3AuEB/wH3
+        AuEB/wMAFf8BvQKKAf8DAAX/AwAB/xcAEf8BmQIABf8DAAX/AZkCAAH/AZkCAAH/AZkCAAH/AwAB/wEA
+        AZkBCQH/AQABmQEJAf8DAAH/BQABmQEJAf8BAAGZAQkB/wEAAZkBCQH/AwAB/zcAAf8BzAP/AcwD/wE8
+        AZkBzAH/ATwBmQHMAf8BPAGZAcwB/wE8AZkBzAH/ATwBmQHMAf8BPAGZAcwB/wMAAf8DAAH/AwAB/wMA
+        Af8DAAH/BAAE/wMJAf9jACn/AwAB/wHnAcABrQH/AwAB/0cAAf8DAAH/AwAB/wMABf8B9wLhAf8DAAH/
+        AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAX/AfcC4QH/AfcC4QH/AfcC4QH/AwAB/wMA
+        Af8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8bAAX/AwAB/wMAAf8DAAH/AZkCAA3/AZkCAAX/AZkCAAH/
+        AQABmQEJAf8BAAGZAQkB/wEAAZkBCQH/AQABmQEJAf8BAAGZAQkB/wEAAZkBCQH/AQABmQEJAf8DAAH/
+        OwAB/wHMA/8BzAP/ATwBmQHMAf8BPAGZAcwB/wE8AZkBzAH/ATwBmQHMAf8BPAGZAcwB/wE8AZkBzAH/
+        AwAB/wMAAf8DAAH/AwAB/wMAAf8IAAT/YwAB/wHnAcABrQH/AecBwAGtAf8B5wHAAa0B/wHnAcABrQH/
+        AecBwAGtAf8B5wHAAa0B/wHnAcABrQH/AecBwAGtAf8B5wHAAa0B/wHnAcABrQH/AwAB/wMAAf9XAAn/
+        AfcC4QH/AfcC4QH/AfcC4QH/AfcC4QH/AfcC4QH/AfcC4QH/AfcC4QH/AfcC4QH/AfcC4QH/AfcC4QH/
+        AwAF/wH3AuEB/wH3AuEB/wH3AuEB/wH3AuEB/wH3AuEB/wG9AooB/wMAAf8BvQKKAf8DAAH/HwAR/wGZ
+        AgAN/wGZAgAB/wMAAf8BAAGZAQkB/wEAAZkBCQH/AQABmQEJAf8BAAGZAQkB/wEAAZkBCQH/AQABmQEJ
+        Af8BAAGZAQkB/wEAAZkBCQH/AwAB/zsAAf8BzAP/AcwD/wE8AZkBzAH/ATwBmQHMAf8BPAGZAcwB/wE8
+        AZkBzAH/ATwBmQHMAf8BPAGZAcwB/wMAAf8DAAH/AwAB/wMAAf8DAAH/bwAB/wMAAf8DAAH/AwAB/wMA
+        Af8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/WwAB/wMAKf8B9wLhAf8B9wLhAf8DABX/Ab0CigH/
+        AwAF/wMAAf8fAAX/AwAF/wMAAf8BmQIAAf8BmQIAAf8BmQIAAf8BmQIAAf8BmQIAAf8HAAH/AQABmQEJ
+        Af8BAAGZAQkB/wEAAZkBCQH/AQABmQEJAf8BAAGZAQkB/wMAAf8DAAH/PwAB/wHMA/8BzAP/ATwBmQHM
+        Af8BPAGZAcwB/wE8AZkBzAH/ATwBmQHMAf8BPAGZAcwB/wE8AZkBzAH/AwAB/wMAAf8DAAH/AwAB/wMA
+        Af/7AAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAX/AfcC4QH/AfcC4QH/AfcC4QH/
+        AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8jAA3/AwAF/wMAAf8XAAH/AQABmQEJAf8BAAGZ
+        AQkB/wMAAf8DAAH/RwAB/wHMA/8BzAP/ATwBmQHMAf8BPAGZAcwB/wE8AZkBzAH/ATwBmQHMAf8BPAGZ
+        AcwB/wE8AZkBzAH/AwAB/wMAAf8DAAH/AwAB/wMAAf//ACQABf8B9wLhAf8B9wLhAf8B9wLhAf8B9wLh
+        Af8B9wLhAf8BvQKKAf8DAAH/LwAN/wMAAf8DAAH/HwAB/wEAAZkBCQH/AwAB/0sAAf8BzAP/AcwD/wE8
+        AZkBzAH/ATwBmQHMAf8BPAGZAcwB/wE8AZkBzAH/ATwBmQHMAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMA
+        Af//ACgAFf8BvQKKAf8DAAH/LwAB/wMAAf8DAAH/AwAB/wMAAf8nAAH/TwAB/wHMA/8BzAP/ATwBmQHM
+        Af8BPAGZAcwB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB//8ALAAB/wMAAf8DAAH/
+        AwAB/wMAAf8DAAH/uAABQgFNAT4HAAE+AwABKAMAAYwDAAEyAwABAQEAAQEFAAHoAQMWAAP/AQAI/wH8
+        CwAI/wH8CwAI/wH8CwAF/wHgAQABDwH8CwAB+AEAAR8C/wHAAQABBwH8CwAB+AEAAR8C/wGAAQABAwH8
+        CwAB+AEAAR8B/wH+AgABAQH8CwAB+AEAAR8B/wH+AwAB/AsAAfgBAAEfAf8B/gIAAQMB/AsAAfgBAAEf
+        Af8B/gIAAQEB/AsAAfgBAAEfAf8B/gMAAfwLAAH4AQABHwH/Af4DAAH8CwAB+AEAAR8C/wMAAfwLAAH4
+        AQABHwL/AYACAAH8CwAB+AEAAR8C/wHgAgAB/AsAAfgBAAEfAv8B4AEAAQEB/AsAAfgBAAE/Av8B8AEA
+        AQMB/AsAAfgBAAF/Av8B8AEAAT8B/AsAAfgBAAP/AfgBAAEfAfwLAAH4AQED/wH4AQABHwH8CwAB+AED
+        A/8B/AEAAQ8B/AsABf8B/AEAAQ8B/AsABf8B/gEAAQcB/AsACP8B/AsACP8B/AwAAQMG/wH+AXABAAEB
+        A/8BwAEDAfADAAEDBv8B/AEgAgABfwL/AcABAwHwAwABAwP/AYABAAF/AfwDAAF/Av8BwAEDAfADAAED
+        Ab8C/wGAAQABfwH+AwABfwL/AcABAwHwAwABAwE/Av8BgAEAAX8B/wQAAv8BwAEDAfADAAECAT8C/wGA
+        AQABfwH/AYADAAF/Af8BwAEDAfAEAAE/Av8BgAEAAX8B/wHAAwABfwH/AcABAwHwBAABPwL/AYABAAF/
+        Af8B4AMAAX8B/wHAAQMB8AQAAT8C/wGAAQABfwH/AeADAAF/Af8BwAEDAfAFAAECAX8BgAEAAX8B/wHA
+        AwABfwH/AcABAwHwBgABfwGAAQABfwH/AYADAAL/AcABAwHwBgABfwGAAQABfwH/AYACAAEBAf4BAQHA
+        AQMB8AYAAX8BgAEAAX8B/wGAAgABAQH+AQEBwAEDAfAGAAF/AYABAAF/Af8BgAIAAQEB/gEBAcABAwHw
+        BgABfwGAAQABfwH/AYACAAEBAcABAQHAAQMB8AQAAX8C/wGAAQABfwH/AYACAAEDAcABAQFAAQMB8AQA
+        AX8C/wGAAQABfwH/AwABBwHAAQABMQH/AfAEAAF/Av8BgAEAAv8DAAEHAcABAAEhAf8B8AMAAQIBfwL/
+        AYABAQL/AwABDwHAAQABAwH/AfADAAEDAX8C/wGAAQMC/wHgAgABHwHAAQABAwH/AfADAAEDA/8BgAEH
+        Av8B4AIAAR8BwAEIAQcB/wHwAwABAwf/AfACAAE/AcABfAEfAf8B8AMAAQMI/wH8AQEB/wHAAf4BPwH/
+        AfADAAEDCP8B/gEBAf8BwQH/AX8B/wHwAwABAwn/AQMF/wHwAgAL
+</value>
+  </data>
+  <metadata name="colUniqueId.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="colPersonelId.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="colFirstName.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="colLastName.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="colJobDescribe.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="colRegionDescribe.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>42</value>
+  </metadata>
+</root>

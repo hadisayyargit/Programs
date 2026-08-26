@@ -1,0 +1,181 @@
+﻿<DataSourceView xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+  <ID>datasourceviewRws_tbl_EarlyAccident</ID>
+  <Name>datasourceviewRws_tbl_EarlyAccident</Name>
+  <Annotations xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowFriendlyNames</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:CurrentLayout</Name>
+      <Value>_ALL_TABLES_</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:SchemaRestriction</Name>
+      <Value>
+      </Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:RetrieveRelationships</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:Layouts</Name>
+      <Value>
+        <Layouts xmlns="">
+          <Diagram>
+            <Name>_ALL_TABLES_</Name>
+            <DiagramLayout />
+            <ShowRelationshipNames>False</ShowRelationshipNames>
+            <UseDiagramDefaultLayout>True</UseDiagramDefaultLayout>
+            <DiagramViewPortLeft>0</DiagramViewPortLeft>
+            <DiagramViewPortTop>0</DiagramViewPortTop>
+            <DiagramBoundingLeft>0</DiagramBoundingLeft>
+            <DiagramBoundingTop>0</DiagramBoundingTop>
+            <DiagramZoom>100</DiagramZoom>
+          </Diagram>
+        </Layouts>
+      </Value>
+    </Annotation>
+  </Annotations>
+  <DataSourceID>datasourceDB_RWAS</DataSourceID>
+  <Schema>
+    <xs:schema id="datasourceviewRws_tbl_EarlyAccident" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop">
+      <xs:element name="datasourceviewRws_tbl_EarlyAccident" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:design-time-name="a972d0b8-3cfb-4a62-8d4a-8cd991986c9a" msprop:CompareInfo="&lt;CompareInfo&gt;&lt;Culture&gt;fa-IR&lt;/Culture&gt;&lt;IgnoreCase&gt;true&lt;/IgnoreCase&gt;&lt;IgnoreKanaType&gt;true&lt;/IgnoreKanaType&gt;&lt;IgnoreWidth&gt;true&lt;/IgnoreWidth&gt;&lt;/CompareInfo&gt;">
+        <xs:complexType>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="dbo_Rws_Tbl_EarlyAccident" msprop:FriendlyName="Rws_Tbl_EarlyAccident" msprop:DbSchemaName="dbo" msprop:DbTableName="Rws_Tbl_EarlyAccident" msprop:design-time-name="12ffe8c3-fcce-4f0a-b4ed-9033e297c308" msprop:TableType="Table" msprop:stats_RowCount="9">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="Rws_Fld_FileCategorize" msprop:stats_UniqueValuePercent="100" msprop:DbDataType="nvarchar" msprop:FriendlyName="Rws_Fld_FileCategorize" msprop:design-time-name="3677524b-5e27-467f-abc4-6a0b17e757ec" msprop:stats_MaxWidth="13" msprop:stats_UniqueValueCount="9" msprop:stats_StDevWidth="1.414214" msprop:stats_AvgWidth="11.33333" msprop:DbColumnName="Rws_Fld_FileCategorize">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="20" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="Rws_Fld_fk_CategoryNo" msprop:stats_UniqueValuePercent="100" msprop:DbDataType="int" msprop:FriendlyName="Rws_Fld_fk_CategoryNo" msprop:design-time-name="bfe3b23a-058b-4c98-a3a7-5a41fbabd527" msprop:stats_MaxWidth="6" msprop:stats_UniqueValueCount="9" msprop:stats_StDevWidth="0" msprop:stats_AvgWidth="6" msprop:DbColumnName="Rws_Fld_fk_CategoryNo" type="xs:int" />
+                  <xs:element name="Rws_Fld_fk_Region" msprop:stats_UniqueValuePercent="66" msprop:DbDataType="tinyint" msprop:FriendlyName="Rws_Fld_fk_Region" msprop:design-time-name="68db5c1d-db45-4837-b9a9-09b4450099bb" msprop:stats_MaxWidth="2" msprop:stats_UniqueValueCount="6" msprop:stats_StDevWidth="0.4409586" msprop:stats_AvgWidth="1.222222" msprop:DbColumnName="Rws_Fld_fk_Region" type="xs:unsignedByte" />
+                  <xs:element name="Rws_Fld_AccidentDate" msprop:stats_UniqueValuePercent="88" msprop:DbDataType="char" msprop:FriendlyName="Rws_Fld_AccidentDate" msprop:design-time-name="9d1ac486-0fa7-4d99-b6cf-7e064791b631" msprop:stats_MaxWidth="8" msprop:stats_UniqueValueCount="8" msprop:stats_StDevWidth="0" msprop:stats_AvgWidth="8" msprop:DbColumnName="Rws_Fld_AccidentDate">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="8" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="Rws_Fld_AccidentTime" msprop:stats_UniqueValuePercent="66" msprop:DbDataType="char" msprop:FriendlyName="Rws_Fld_AccidentTime" msprop:design-time-name="a3e0f0c2-2cdb-4198-bc9f-9b8b19496414" msprop:stats_MaxWidth="4" msprop:stats_UniqueValueCount="6" msprop:stats_StDevWidth="0" msprop:stats_AvgWidth="4" msprop:DbColumnName="Rws_Fld_AccidentTime" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="4" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="Rws_Fld_AccidentTelGraph" msprop:stats_UniqueValuePercent="100" msprop:DbDataType="char" msprop:FriendlyName="Rws_Fld_AccidentTelGraph" msprop:design-time-name="3a33ca7e-c1cd-480e-b522-de2a6a149ff1" msprop:stats_MaxWidth="12" msprop:stats_UniqueValueCount="9" msprop:stats_StDevWidth="0" msprop:stats_AvgWidth="12" msprop:DbColumnName="Rws_Fld_AccidentTelGraph" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="13" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="Rws_Fld_BlockTime" msprop:stats_UniqueValuePercent="22" msprop:DbDataType="char" msprop:FriendlyName="Rws_Fld_BlockTime" msprop:design-time-name="337b8787-c81d-4685-a501-c5a8b9fb9cf1" msprop:stats_MaxWidth="2" msprop:stats_UniqueValueCount="2" msprop:stats_StDevWidth="0.6666667" msprop:stats_AvgWidth="0.2222222" msprop:DbColumnName="Rws_Fld_BlockTime" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="4" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="Rws_Fld_AccidentCollectingTime" msprop:stats_UniqueValuePercent="22" msprop:DbDataType="char" msprop:FriendlyName="Rws_Fld_AccidentCollectingTime" msprop:design-time-name="5d2a6b6e-4bd0-431c-9e30-5dc3b0aa995c" msprop:stats_MaxWidth="2" msprop:stats_UniqueValueCount="2" msprop:stats_StDevWidth="0.6666667" msprop:stats_AvgWidth="0.2222222" msprop:DbColumnName="Rws_Fld_AccidentCollectingTime" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="4" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="Rws_Fld_fk_AccidentDegree" msprop:stats_UniqueValuePercent="71" msprop:DbDataType="smallint" msprop:FriendlyName="Rws_Fld_fk_AccidentDegree" msprop:design-time-name="b1c349e2-ef07-47d2-a5c4-be29379f973d" msprop:stats_MaxWidth="1" msprop:stats_UniqueValueCount="5" msprop:stats_StDevWidth="0" msprop:stats_AvgWidth="1" msprop:DbColumnName="Rws_Fld_fk_AccidentDegree" type="xs:short" minOccurs="0" />
+                  <xs:element name="Rws_Fld_fk_RailWayVehicleKind" msprop:stats_UniqueValuePercent="33" msprop:DbDataType="tinyint" msprop:FriendlyName="Rws_Fld_fk_RailWayVehicleKind" msprop:design-time-name="9bc6644b-577c-44a0-815c-15760e47a253" msprop:stats_MaxWidth="1" msprop:stats_UniqueValueCount="3" msprop:stats_StDevWidth="0" msprop:stats_AvgWidth="1" msprop:DbColumnName="Rws_Fld_fk_RailWayVehicleKind" type="xs:unsignedByte" minOccurs="0" />
+                  <xs:element name="Rws_Fld_fk_SerialNo" msprop:stats_UniqueValuePercent="33" msprop:DbDataType="varchar" msprop:FriendlyName="Rws_Fld_fk_SerialNo" msprop:design-time-name="f49bb922-cf80-4299-9b01-23d75e21b919" msprop:stats_MaxWidth="2" msprop:stats_UniqueValueCount="3" msprop:stats_StDevWidth="0.7071068" msprop:stats_AvgWidth="0.3333333" msprop:DbColumnName="Rws_Fld_fk_SerialNo" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="12" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="Rws_Fld_IsOnManeuver" msprop:stats_UniqueValuePercent="22" msprop:DbDataType="bit" msprop:FriendlyName="Rws_Fld_IsOnManeuver" msprop:design-time-name="a4efc7db-1293-4e77-95b5-d4918f4ac297" msprop:stats_UniqueValueCount="2" msprop:DbColumnName="Rws_Fld_IsOnManeuver" type="xs:boolean" minOccurs="0" />
+                  <xs:element name="Rws_Fld_fk_Creator" msprop:stats_UniqueValuePercent="11" msprop:DbDataType="bigint" msprop:FriendlyName="Rws_Fld_fk_Creator" msprop:design-time-name="9276b19d-6db0-41cf-8e46-bacf5233b551" msprop:stats_MaxWidth="3" msprop:stats_UniqueValueCount="1" msprop:stats_StDevWidth="0" msprop:stats_AvgWidth="3" msprop:DbColumnName="Rws_Fld_fk_Creator" type="xs:long" />
+                  <xs:element name="Rws_Fld_CreateDate" msprop:stats_UniqueValuePercent="77" msprop:DbDataType="char" msprop:FriendlyName="Rws_Fld_CreateDate" msprop:design-time-name="f6f2300d-4182-4b87-8527-00826498d976" msprop:stats_MaxWidth="8" msprop:stats_UniqueValueCount="7" msprop:stats_StDevWidth="0" msprop:stats_AvgWidth="8" msprop:DbColumnName="Rws_Fld_CreateDate">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="8" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="Rws_Fld_fk_User" msprop:stats_UniqueValuePercent="11" msprop:DbDataType="bigint" msprop:FriendlyName="Rws_Fld_fk_User" msprop:design-time-name="04331ec3-bfd4-4785-900f-bf550e91f916" msprop:stats_MaxWidth="3" msprop:stats_UniqueValueCount="1" msprop:stats_StDevWidth="0" msprop:stats_AvgWidth="3" msprop:DbColumnName="Rws_Fld_fk_User" type="xs:long" />
+                  <xs:element name="Rws_Fld_Date" msprop:stats_UniqueValuePercent="22" msprop:DbDataType="char" msprop:FriendlyName="Rws_Fld_Date" msprop:design-time-name="46d39a2d-8b4b-4979-a7ca-554e23fb25da" msprop:stats_MaxWidth="8" msprop:stats_UniqueValueCount="2" msprop:stats_StDevWidth="0" msprop:stats_AvgWidth="8" msprop:DbColumnName="Rws_Fld_Date">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="8" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="Rws_Fld_IsConfirm" msprop:stats_UniqueValuePercent="11" msprop:DbDataType="bit" msprop:FriendlyName="Rws_Fld_IsConfirm" msprop:design-time-name="e6675960-6ca4-4758-933f-fb5c58495215" msprop:stats_UniqueValueCount="1" msprop:DbColumnName="Rws_Fld_IsConfirm" type="xs:boolean" minOccurs="0" />
+                  <xs:element name="Rws_Fld_Description" msprop:stats_UniqueValuePercent="11" msprop:DbDataType="nvarchar" msprop:FriendlyName="Rws_Fld_Description" msprop:design-time-name="cab30681-224e-4f0e-a852-ded42b83f943" msprop:stats_MaxWidth="0" msprop:stats_UniqueValueCount="1" msprop:stats_StDevWidth="0" msprop:stats_AvgWidth="0" msprop:DbColumnName="Rws_Fld_Description" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="2000" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="Rws_Fld_fk_AccidentKind" msprop:stats_UniqueValuePercent="55" msprop:DbDataType="tinyint" msprop:FriendlyName="Rws_Fld_fk_AccidentKind" msprop:design-time-name="6b4e8f96-6583-4490-aa4d-18e7bd8454e4" msprop:stats_MaxWidth="1" msprop:stats_UniqueValueCount="5" msprop:stats_StDevWidth="0" msprop:stats_AvgWidth="1" msprop:DbColumnName="Rws_Fld_fk_AccidentKind" type="xs:unsignedByte" minOccurs="0" />
+                  <xs:element name="Rws_Fld_pk_EarlyAccident" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:stats_UniqueValuePercent="100" msprop:DbDataType="int" msprop:FriendlyName="Rws_Fld_pk_EarlyAccident" msprop:design-time-name="6fa25499-863e-4d48-96f1-50ed60ae58dc" msprop:stats_MaxWidth="9" msprop:stats_UniqueValueCount="9" msprop:stats_StDevWidth="0" msprop:stats_AvgWidth="9" msprop:DbColumnName="Rws_Fld_pk_EarlyAccident" type="xs:int" />
+                  <xs:element name="Rws_Fld_DeletedPassengerTrainCount" msprop:stats_UniqueValuePercent="44" msprop:DbDataType="smallint" msprop:FriendlyName="Rws_Fld_DeletedPassengerTrainCount" msprop:design-time-name="80fe2ea3-f600-429d-81cd-ab7e54c99f83" msprop:stats_MaxWidth="2" msprop:stats_UniqueValueCount="4" msprop:stats_StDevWidth="0.3333333" msprop:stats_AvgWidth="1.111111" msprop:DbColumnName="Rws_Fld_DeletedPassengerTrainCount" type="xs:short" minOccurs="0" />
+                  <xs:element name="Rws_Fld_DeletedCarrierTrainCount" msprop:stats_UniqueValuePercent="33" msprop:DbDataType="smallint" msprop:FriendlyName="Rws_Fld_DeletedCarrierTrainCount" msprop:design-time-name="713abc9a-76e3-4d34-b8a0-90b578493332" msprop:stats_MaxWidth="1" msprop:stats_UniqueValueCount="3" msprop:stats_StDevWidth="0" msprop:stats_AvgWidth="1" msprop:DbColumnName="Rws_Fld_DeletedCarrierTrainCount" type="xs:short" minOccurs="0" />
+                  <xs:element name="Rws_Fld_DeletedOtherTrainCount" msprop:stats_UniqueValuePercent="11" msprop:DbDataType="smallint" msprop:FriendlyName="Rws_Fld_DeletedOtherTrainCount" msprop:design-time-name="788dcb16-ef5d-415e-9416-1210cae0a473" msprop:stats_MaxWidth="1" msprop:stats_UniqueValueCount="1" msprop:stats_StDevWidth="0" msprop:stats_AvgWidth="1" msprop:DbColumnName="Rws_Fld_DeletedOtherTrainCount" type="xs:short" minOccurs="0" />
+                  <xs:element name="Rws_Fld_DelayTimePassengerTrainCount" msprop:stats_UniqueValuePercent="22" msprop:DbDataType="smallint" msprop:FriendlyName="Rws_Fld_DelayTimePassengerTrainCount" msprop:design-time-name="2e741252-c8b1-44e6-9919-a0c3bccd3964" msprop:stats_MaxWidth="3" msprop:stats_UniqueValueCount="2" msprop:stats_StDevWidth="0.6666667" msprop:stats_AvgWidth="1.222222" msprop:DbColumnName="Rws_Fld_DelayTimePassengerTrainCount" type="xs:short" minOccurs="0" />
+                  <xs:element name="Rws_Fld_DelayTimeCarrierTrainCount" msprop:stats_UniqueValuePercent="22" msprop:DbDataType="smallint" msprop:FriendlyName="Rws_Fld_DelayTimeCarrierTrainCount" msprop:design-time-name="78eaee26-2a69-48e6-b13c-9d163c628f35" msprop:stats_MaxWidth="1" msprop:stats_UniqueValueCount="2" msprop:stats_StDevWidth="0" msprop:stats_AvgWidth="1" msprop:DbColumnName="Rws_Fld_DelayTimeCarrierTrainCount" type="xs:short" minOccurs="0" />
+                  <xs:element name="Rws_Fld_DelayTimeOtherTrainCount" msprop:stats_UniqueValuePercent="11" msprop:DbDataType="smallint" msprop:FriendlyName="Rws_Fld_DelayTimeOtherTrainCount" msprop:design-time-name="06898f14-deb8-43a4-9fff-373c2029733f" msprop:stats_MaxWidth="1" msprop:stats_UniqueValueCount="1" msprop:stats_StDevWidth="0" msprop:stats_AvgWidth="1" msprop:DbColumnName="Rws_Fld_DelayTimeOtherTrainCount" type="xs:short" minOccurs="0" />
+                  <xs:element name="Rws_Fld_Det_fk_EarlyAccidentReason" msprop:stats_UniqueValuePercent="100" msprop:DbDataType="int" msprop:FriendlyName="Rws_Fld_Det_fk_EarlyAccidentReason" msprop:design-time-name="b41711bb-ca96-4bf5-af42-161ed189c825" msprop:stats_MaxWidth="3" msprop:stats_UniqueValueCount="1" msprop:stats_StDevWidth="0" msprop:stats_AvgWidth="3" msprop:DbColumnName="Rws_Fld_Det_fk_EarlyAccidentReason" type="xs:int" minOccurs="0" />
+                  <xs:element name="Rws_Fld_Det_EarlyAccidentReasonDescription" msprop:stats_UniqueValuePercent="100" msprop:DbDataType="nvarchar" msprop:FriendlyName="Rws_Fld_Det_EarlyAccidentReasonDescription" msprop:design-time-name="dc6240cf-3d15-4faf-b382-1bc23ced65b3" msprop:stats_MaxWidth="7" msprop:stats_UniqueValueCount="5" msprop:stats_StDevWidth="2.408319" msprop:stats_AvgWidth="4.4" msprop:DbColumnName="Rws_Fld_Det_EarlyAccidentReasonDescription" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="250" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="Rws_Fld_Det_fk_EarlyAccidentReason2" msprop:stats_UniqueValuePercent="100" msprop:DbDataType="int" msprop:FriendlyName="Rws_Fld_Det_fk_EarlyAccidentReason2" msprop:design-time-name="219c8107-f14e-4498-b953-2b75898048f0" msprop:stats_MaxWidth="2" msprop:stats_UniqueValueCount="1" msprop:stats_StDevWidth="0" msprop:stats_AvgWidth="2" msprop:DbColumnName="Rws_Fld_Det_fk_EarlyAccidentReason2" type="xs:int" minOccurs="0" />
+                  <xs:element name="Rws_Fld_Det_EarlyAccidentReasonDescription2" msprop:stats_UniqueValuePercent="100" msprop:DbDataType="nvarchar" msprop:FriendlyName="Rws_Fld_Det_EarlyAccidentReasonDescription2" msprop:design-time-name="ed45e390-dd0a-4aee-8213-9634a01a26cb" msprop:stats_MaxWidth="7" msprop:stats_UniqueValueCount="5" msprop:stats_StDevWidth="2.701851" msprop:stats_AvgWidth="4.4" msprop:DbColumnName="Rws_Fld_Det_EarlyAccidentReasonDescription2" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="250" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="Rws_Fld_Det_fk_FinalAccidentReason" msprop:stats_UniqueValuePercent="100" msprop:DbDataType="int" msprop:FriendlyName="Rws_Fld_Det_fk_FinalAccidentReason" msprop:design-time-name="867f3d83-c91f-40a5-a509-134a2b0f88dd" msprop:stats_MaxWidth="3" msprop:stats_UniqueValueCount="4" msprop:stats_StDevWidth="0.5773503" msprop:stats_AvgWidth="2.5" msprop:DbColumnName="Rws_Fld_Det_fk_FinalAccidentReason" type="xs:int" minOccurs="0" />
+                  <xs:element name="Rws_Fld_Det_FinalAccidentReasonDescription" msprop:stats_UniqueValuePercent="0" msprop:DbDataType="nvarchar" msprop:FriendlyName="Rws_Fld_Det_FinalAccidentReasonDescription" msprop:design-time-name="16708268-06e4-4920-baa2-41fff7244d23" msprop:stats_MaxWidth="0" msprop:stats_UniqueValueCount="0" msprop:stats_StDevWidth="0" msprop:stats_AvgWidth="0" msprop:DbColumnName="Rws_Fld_Det_FinalAccidentReasonDescription" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="250" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="Rws_Fld_Det_fk_FinalAccidentReason2" msprop:stats_UniqueValuePercent="100" msprop:DbDataType="int" msprop:FriendlyName="Rws_Fld_Det_fk_FinalAccidentReason2" msprop:design-time-name="71e31320-1b53-4fb2-baf6-f03438230012" msprop:stats_MaxWidth="3" msprop:stats_UniqueValueCount="3" msprop:stats_StDevWidth="0" msprop:stats_AvgWidth="3" msprop:DbColumnName="Rws_Fld_Det_fk_FinalAccidentReason2" type="xs:int" minOccurs="0" />
+                  <xs:element name="Rws_Fld_Det_FinalAccidentReasonDescription2" msprop:stats_UniqueValuePercent="0" msprop:DbDataType="nvarchar" msprop:FriendlyName="Rws_Fld_Det_FinalAccidentReasonDescription2" msprop:design-time-name="3f2e0380-49f2-46cc-9fa8-5f371eb09896" msprop:stats_MaxWidth="0" msprop:stats_UniqueValueCount="0" msprop:stats_StDevWidth="0" msprop:stats_AvgWidth="0" msprop:DbColumnName="Rws_Fld_Det_FinalAccidentReasonDescription2" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="250" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="Rws_Fld_HasSecondaryDetailRecord" msprop:stats_UniqueValuePercent="11" msprop:DbDataType="bit" msprop:FriendlyName="Rws_Fld_HasSecondaryDetailRecord" msprop:design-time-name="4ccf56a3-d125-4383-89be-c3870b13b1cd" msprop:stats_UniqueValueCount="1" msprop:DbColumnName="Rws_Fld_HasSecondaryDetailRecord" type="xs:boolean" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:choice>
+        </xs:complexType>
+        <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+          <xs:selector xpath=".//dbo_Rws_Tbl_EarlyAccident" />
+          <xs:field xpath="Rws_Fld_pk_EarlyAccident" />
+        </xs:unique>
+      </xs:element>
+    </xs:schema>
+  </Schema>
+</DataSourceView>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema id="DS_Rep_Score" targetNamespace="http://tempuri.org/DS_Rep_Score.xsd" elementFormDefault="qualified"
+	attributeFormDefault="qualified" xmlns="http://tempuri.org/DS_Rep_Score.xsd" xmlns:mstns="http://tempuri.org/DS_Rep_Score.xsd"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+	<xs:element name="DS_Rep_Score" msdata:IsDataSet="true">
+		<xs:complexType>
+			<xs:choice maxOccurs="unbounded">
+				<xs:element name="Rws_Sp_Rep_WorkBookPersonelAccident">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="PersonelCount" msdata:ReadOnly="true" type="xs:int" minOccurs="0" />
+							<xs:element name="CurrentDate" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="Prs_Fld_UniqueCode" type="xs:int" />
+							<xs:element name="Prs_Fld_FirstName" type="xs:string" minOccurs="0" />
+							<xs:element name="Prs_Fld_LastName" type="xs:string" minOccurs="0" />
+							<xs:element name="Prs_Fld_JobDescribe" type="xs:string" minOccurs="0" />
+							<xs:element name="Prs_Fld_OrgUnitDescribe" type="xs:string" minOccurs="0" />
+							<xs:element name="Rws_Fld_Row" type="xs:unsignedByte" />
+							<xs:element name="Rws_Fld_Describe" type="xs:string" />
+							<xs:element name="Rws_Fld_AccidentDate" type="xs:string" minOccurs="0" />
+							<xs:element name="Rws_Fld_AccidentLocation" type="xs:string" minOccurs="0" />
+							<xs:element name="Rws_Fld_DamageAmount" msdata:ReadOnly="true" type="xs:long" minOccurs="0" />
+							<xs:element name="Rws_Fld_ForfeitKindDescribe" type="xs:string" minOccurs="0" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

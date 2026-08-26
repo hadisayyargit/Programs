@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema id="DS_WorkBook" targetNamespace="http://tempuri.org/DS_WorkBook.xsd" elementFormDefault="qualified"
+	attributeFormDefault="qualified" xmlns="http://tempuri.org/DS_WorkBook.xsd" xmlns:mstns="http://tempuri.org/DS_WorkBook.xsd"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+	<xs:element name="DS_WorkBook" msdata:IsDataSet="true">
+		<xs:complexType>
+			<xs:choice maxOccurs="unbounded">
+				<xs:element name="Rws_Sp_Sel_IsEx_BodilyMentalStatus">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Rws_Fld_UniqueCode" type="xs:int" />
+							<xs:element name="Rws_Fld_Row" type="xs:unsignedByte" />
+							<xs:element name="Rws_Fld_CheckupDate" type="xs:string" minOccurs="0" />
+							<xs:element name="Rws_Fld_BodilyStatus" type="xs:string" minOccurs="0" />
+							<xs:element name="Rws_Fld_MentalStatus" type="xs:string" minOccurs="0" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Rws_Sp_Sel_IsEx_Chastise">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Rws_Fld_UniqueCode" type="xs:int" />
+							<xs:element name="Rws_Fld_Row" type="xs:unsignedByte" />
+							<xs:element name="Rws_Fld_Describe" type="xs:string" />
+							<xs:element name="Rws_Fld_Reference" type="xs:string" minOccurs="0" />
+							<xs:element name="Rws_Fld_ChastiseAmount" type="xs:string" minOccurs="0" />
+							<xs:element name="Rws_Fld_Date" type="xs:string" minOccurs="0" />
+							<xs:element name="Rws_Fld_NegativeScore" type="xs:double" />
+							<xs:element name="Rws_Fld_fk_ChastiseReason" type="xs:int" minOccurs="0" />
+							<xs:element name="Rws_Fld_ChastiseReasonDescribe" type="xs:string" minOccurs="0" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Rws_Sp_Sel_IsEx_Eulogy">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Rws_Fld_UniqueCode" type="xs:int" />
+							<xs:element name="Rws_Fld_Row" type="xs:unsignedByte" />
+							<xs:element name="Rws_Fld_Describe" type="xs:string" />
+							<xs:element name="Rws_Fld_Date" type="xs:string" minOccurs="0" />
+							<xs:element name="Rws_Fld_Reference" type="xs:string" minOccurs="0" />
+							<xs:element name="Rws_Fld_PositiveScore" type="xs:double" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Rws_Sp_Sel_IsEx_PersonelAccident">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Rws_Fld_UniqueCode" type="xs:int" />
+							<xs:element name="Rws_Fld_Row" type="xs:unsignedByte" />
+							<xs:element name="Rws_Fld_Describe" type="xs:string" />
+							<xs:element name="Rws_Fld_AccidentDate" type="xs:string" minOccurs="0" />
+							<xs:element name="Rws_Fld_AccidentLocation" type="xs:string" minOccurs="0" />
+							<xs:element name="Rws_Fld_DamageAmount" msdata:ReadOnly="true" type="xs:long" minOccurs="0" />
+							<xs:element name="Rws_Fld_fk_ForfeitKind" type="xs:unsignedByte" minOccurs="0" />
+							<xs:element name="Rws_Fld_ForfeitKindDescribe" type="xs:string" minOccurs="0" />
+							<xs:element name="Rws_Fld_NegativeScore" type="xs:double" />
+							<xs:element name="Rws_Fld_fk_EarlyAccident" type="xs:int" minOccurs="0" />
+							<xs:element name="Rws_Fld_FileCategorize" type="xs:string" minOccurs="0" />
+							<xs:element name="Rws_Fld_Det_EarlyAccidentReasonDescription" type="xs:string" minOccurs="0" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Rws_Sp_Sel_IsEx_PrefermentHistory">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Rws_Fld_UniqueCode" type="xs:int" />
+							<xs:element name="Rws_Fld_Row" type="xs:unsignedByte" />
+							<xs:element name="Rws_Fld_fk_Job" type="xs:string" />
+							<xs:element name="Rws_Fld_JobTitle" type="xs:string" minOccurs="0" />
+							<xs:element name="Rws_Fld_FromDate" type="xs:string" minOccurs="0" />
+							<xs:element name="Rws_Fld_ToDate" type="xs:string" minOccurs="0" />
+							<xs:element name="Rws_Fld_fk_Region" type="xs:unsignedByte" minOccurs="0" />
+							<xs:element name="Rws_Fld_WorkLocation" type="xs:string" minOccurs="0" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Rws_Sp_Sel_IsEx_PersonelTraining">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Rws_Fld_UniqueCode" type="xs:int" />
+							<xs:element name="Rws_Fld_Row" type="xs:unsignedByte" />
+							<xs:element name="Rws_Fld_TrainingTitle" type="xs:string" />
+							<xs:element name="Rws_Fld_TrainingLocation" type="xs:string" />
+							<xs:element name="Rws_Fld_Amount" type="xs:short" minOccurs="0" />
+							<xs:element name="Rws_Fld_FromDate" type="xs:string" minOccurs="0" />
+							<xs:element name="Rws_Fld_ToDate" type="xs:string" minOccurs="0" />
+							<xs:element name="Rws_Fld_Degree" type="xs:short" minOccurs="0" />
+							<xs:element name="Rws_Fld_PositiveScore" type="xs:double" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Rws_Sp_Sel_IsEx_Score">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Rws_Fld_UniqueCode" type="xs:int" />
+							<xs:element name="Rws_Fld_Row" type="xs:unsignedByte" />
+							<xs:element name="Rws_Fld_Subject" type="xs:string" minOccurs="0" />
+							<xs:element name="Rws_Fld_PositiveScore" type="xs:double" />
+							<xs:element name="Rws_Fld_NegativeScore" type="xs:double" />
+							<xs:element name="Rws_Fld_WhereImFrom" type="xs:unsignedByte" minOccurs="0" />
+							<xs:element name="Rws_Fld_ufk_From" type="xs:string" minOccurs="0" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Rws_Sp_Sel_IsEx_Operation">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Rws_Fld_UniqueCode" type="xs:int" />
+							<xs:element name="Rws_Fld_MonthYear" type="xs:string" />
+							<xs:element name="Rws_Fld_WorkHours" type="xs:short" />
+							<xs:element name="Rws_Fld_SentinelHours" type="xs:short" />
+							<xs:element name="Rws_Fld_LoadKilometer" type="xs:int" />
+							<xs:element name="Rws_Fld_PassengerKilometer" type="xs:int" />
+							<xs:element name="Rws_Fld_LeaveDay" type="xs:unsignedByte" />
+							<xs:element name="Rws_Fld_SickLeaveDay" type="xs:unsignedByte" />
+							<xs:element name="Rws_Fld_LeaveWithoutPay" type="xs:short" />
+							<xs:element name="Rws_Fld_AbsentDay" type="xs:unsignedByte" />
+							<xs:element name="Rws_Fld_PositiveScore" type="xs:double" />
+							<xs:element name="Rws_Fld_NegativeScore" type="xs:double" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:choice>
+		</xs:complexType>
+		<xs:unique name="DS_WorkBookKey1" msdata:PrimaryKey="true">
+			<xs:selector xpath=".//mstns:Rws_Sp_Sel_IsEx_BodilyMentalStatus" />
+			<xs:field xpath="mstns:Rws_Fld_UniqueCode" />
+			<xs:field xpath="mstns:Rws_Fld_Row" />
+		</xs:unique>
+		<xs:unique name="DS_WorkBookKey2" msdata:PrimaryKey="true">
+			<xs:selector xpath=".//mstns:Rws_Sp_Sel_IsEx_Eulogy" />
+			<xs:field xpath="mstns:Rws_Fld_UniqueCode" />
+			<xs:field xpath="mstns:Rws_Fld_Row" />
+		</xs:unique>
+		<xs:unique name="DS_WorkBookKey3" msdata:PrimaryKey="true">
+			<xs:selector xpath=".//mstns:Rws_Sp_Sel_IsEx_PersonelTraining" />
+			<xs:field xpath="mstns:Rws_Fld_UniqueCode" />
+			<xs:field xpath="mstns:Rws_Fld_Row" />
+		</xs:unique>
+		<xs:unique name="DS_WorkBookKey4" msdata:PrimaryKey="true">
+			<xs:selector xpath=".//mstns:Rws_Sp_Sel_IsEx_Score" />
+			<xs:field xpath="mstns:Rws_Fld_UniqueCode" />
+			<xs:field xpath="mstns:Rws_Fld_Row" />
+		</xs:unique>
+		<xs:unique name="DS_WorkBookKey5" msdata:PrimaryKey="true">
+			<xs:selector xpath=".//mstns:Rws_Sp_Sel_IsEx_Operation" />
+			<xs:field xpath="mstns:Rws_Fld_UniqueCode" />
+			<xs:field xpath="mstns:Rws_Fld_MonthYear" />
+		</xs:unique>
+	</xs:element>
+</xs:schema>

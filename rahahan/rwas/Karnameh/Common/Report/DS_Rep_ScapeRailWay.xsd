@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema id="DS_Rep_ScapeRailWay" targetNamespace="http://tempuri.org/DS_Rep_ScapeRailWay.xsd"
+	elementFormDefault="qualified" attributeFormDefault="qualified" xmlns="http://tempuri.org/DS_Rep_ScapeRailWay.xsd"
+	xmlns:mstns="http://tempuri.org/DS_Rep_ScapeRailWay.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+	<xs:element name="DS_Rep_ScapeRailWay" msdata:IsDataSet="true">
+		<xs:complexType>
+			<xs:choice maxOccurs="unbounded">
+				<xs:element name="Rws_Sp_Rep_ScapeRailWay4DS">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="DayDate" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="Rws_Fld_fk_EarlyAccident" type="xs:int" />
+							<xs:element name="Rws_Fld_FileCategorize" type="xs:string" />
+							<xs:element name="Rws_Fld_AccidentDate" type="xs:string" />
+							<xs:element name="Rws_Fld_AccidentTelGraph" type="xs:string" minOccurs="0" />
+							<xs:element name="Rws_Fld_SerialNo" type="xs:string" />
+							<xs:element name="Rws_Fld_Describe" type="xs:string" />
+							<xs:element name="Rws_Fld_ScapeKind" type="xs:unsignedByte" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

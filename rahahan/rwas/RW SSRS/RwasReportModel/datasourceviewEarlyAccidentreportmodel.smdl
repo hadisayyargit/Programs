@@ -1,0 +1,2033 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SemanticModel ID="G7c136868-f7f8-41df-b7f8-cb90c3424b06" xmlns="http://schemas.microsoft.com/sqlserver/2004/10/semanticmodeling" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Culture>en-US</Culture>
+  <Entities>
+    <Entity ID="G4e8a87f6-3144-4f00-a292-3ca26a3c4914">
+      <Name>Rws Viw Full Early Accident</Name>
+      <CollectionName>Rws Viw Full Early Accidents</CollectionName>
+      <IdentifyingAttributes>
+        <AttributeReference>
+          <!--Rws Fld Accident Kind Describe-->
+          <AttributeID>Gc6dc6eaa-30cd-4168-ac93-7ab18978a611</AttributeID>
+        </AttributeReference>
+      </IdentifyingAttributes>
+      <DefaultDetailAttributes>
+        <AttributeReference>
+          <!--Rws Fld Accident Kind Describe-->
+          <AttributeID>Gc6dc6eaa-30cd-4168-ac93-7ab18978a611</AttributeID>
+        </AttributeReference>
+        <AttributeReference>
+          <!--Rws Fld User First Name-->
+          <AttributeID>G11a764b1-cd9a-4d42-8c5d-5b0a8e588073</AttributeID>
+        </AttributeReference>
+        <AttributeReference>
+          <!--Rws Fld User Last Name-->
+          <AttributeID>G4eb2722f-cac3-44b5-9e69-20ee37c5987b</AttributeID>
+        </AttributeReference>
+      </DefaultDetailAttributes>
+      <DefaultAggregateAttributes>
+        <AttributeReference>
+          <!--#Rws Viw Full Early Accidents-->
+          <AttributeID>Gdc9a1ee6-7173-46af-91b5-4cd59e456b14</AttributeID>
+        </AttributeReference>
+      </DefaultAggregateAttributes>
+      <InstanceSelection>FilteredList</InstanceSelection>
+      <Fields>
+        <Attribute ID="Gdc9a1ee6-7173-46af-91b5-4cd59e456b14">
+          <Name>#Rws Viw Full Early Accidents</Name>
+          <DataType>Integer</DataType>
+          <Expression>
+            <Function>
+              <FunctionName>Count</FunctionName>
+              <Arguments>
+                <Expression>
+                  <EntityRef>
+                    <!--Rws Viw Full Early Accident-->
+                    <EntityID>G4e8a87f6-3144-4f00-a292-3ca26a3c4914</EntityID>
+                  </EntityRef>
+                </Expression>
+              </Arguments>
+            </Function>
+          </Expression>
+          <IsAggregate>true</IsAggregate>
+          <SortDirection>Descending</SortDirection>
+          <Format>n0</Format>
+          <EnableDrillthrough>true</EnableDrillthrough>
+        </Attribute>
+        <Attribute ID="Gddcda241-f02d-4137-bc58-2389e94e6f1b">
+          <Name>کلاسمان</Name>
+          <DataType>String</DataType>
+          <SortDirection>Ascending</SortDirection>
+          <Column Name="Rws_Fld_FileCategorize" />
+        </Attribute>
+        <Attribute ID="Ge0f5bff0-140f-49a5-92d9-029e2983313a">
+          <Name>Rws Fld Fk Category No</Name>
+          <DataType>Integer</DataType>
+          <SortDirection>Descending</SortDirection>
+          <Format>g</Format>
+          <!--Total Rws Fld Fk Category No-->
+          <DefaultAggregateAttributeID>Gf41a8082-d212-47ac-bf72-02d70a53a966</DefaultAggregateAttributeID>
+          <Variations>
+            <Attribute ID="Gf41a8082-d212-47ac-bf72-02d70a53a966">
+              <Name>Total Rws Fld Fk Category No</Name>
+              <DataType>Integer</DataType>
+              <Nullable>true</Nullable>
+              <Expression>
+                <Function>
+                  <FunctionName>Sum</FunctionName>
+                  <Arguments>
+                    <Expression>
+                      <AttributeRef>
+                        <!--Rws Fld Fk Category No-->
+                        <AttributeID>Ge0f5bff0-140f-49a5-92d9-029e2983313a</AttributeID>
+                      </AttributeRef>
+                    </Expression>
+                  </Arguments>
+                </Function>
+              </Expression>
+              <IsAggregate>true</IsAggregate>
+              <SortDirection>Descending</SortDirection>
+              <EnableDrillthrough>true</EnableDrillthrough>
+            </Attribute>
+            <Attribute ID="G8c08d285-aba8-4d0a-8131-ae0d04069bff">
+              <Name>Avg Rws Fld Fk Category No</Name>
+              <DataType>Decimal</DataType>
+              <Nullable>true</Nullable>
+              <Expression>
+                <Function>
+                  <FunctionName>Avg</FunctionName>
+                  <Arguments>
+                    <Expression>
+                      <AttributeRef>
+                        <!--Rws Fld Fk Category No-->
+                        <AttributeID>Ge0f5bff0-140f-49a5-92d9-029e2983313a</AttributeID>
+                      </AttributeRef>
+                    </Expression>
+                  </Arguments>
+                </Function>
+              </Expression>
+              <IsAggregate>true</IsAggregate>
+              <SortDirection>Descending</SortDirection>
+              <EnableDrillthrough>true</EnableDrillthrough>
+            </Attribute>
+            <Attribute ID="G032d58d0-3b84-4c25-ba96-d478dcc5235a">
+              <Name>Min Rws Fld Fk Category No</Name>
+              <DataType>Integer</DataType>
+              <Nullable>true</Nullable>
+              <Expression>
+                <Function>
+                  <FunctionName>Min</FunctionName>
+                  <Arguments>
+                    <Expression>
+                      <AttributeRef>
+                        <!--Rws Fld Fk Category No-->
+                        <AttributeID>Ge0f5bff0-140f-49a5-92d9-029e2983313a</AttributeID>
+                      </AttributeRef>
+                    </Expression>
+                  </Arguments>
+                </Function>
+              </Expression>
+              <IsAggregate>true</IsAggregate>
+              <SortDirection>Descending</SortDirection>
+              <EnableDrillthrough>true</EnableDrillthrough>
+            </Attribute>
+            <Attribute ID="Gd713e6b0-8acd-406c-a07d-045b326e088a">
+              <Name>Max Rws Fld Fk Category No</Name>
+              <DataType>Integer</DataType>
+              <Nullable>true</Nullable>
+              <Expression>
+                <Function>
+                  <FunctionName>Max</FunctionName>
+                  <Arguments>
+                    <Expression>
+                      <AttributeRef>
+                        <!--Rws Fld Fk Category No-->
+                        <AttributeID>Ge0f5bff0-140f-49a5-92d9-029e2983313a</AttributeID>
+                      </AttributeRef>
+                    </Expression>
+                  </Arguments>
+                </Function>
+              </Expression>
+              <IsAggregate>true</IsAggregate>
+              <SortDirection>Descending</SortDirection>
+              <EnableDrillthrough>true</EnableDrillthrough>
+            </Attribute>
+          </Variations>
+          <Column Name="Rws_Fld_fk_CategoryNo" />
+        </Attribute>
+        <Attribute ID="Gc6dc6eaa-30cd-4168-ac93-7ab18978a611">
+          <Name>Rws Fld Accident Kind Describe</Name>
+          <DataType>String</DataType>
+          <SortDirection>Ascending</SortDirection>
+          <EnableDrillthrough>true</EnableDrillthrough>
+          <ContextualName>Merge</ContextualName>
+          <Column Name="Rws_Fld_AccidentKindDescribe" />
+        </Attribute>
+        <Attribute ID="Gf8d72b79-fb6b-4916-b499-51cb4addb7de">
+          <Name>Rws Fld Fk Accident Kind</Name>
+          <DataType>Integer</DataType>
+          <SortDirection>Descending</SortDirection>
+          <Format>g</Format>
+          <!--Total Rws Fld Fk Accident Kind-->
+          <DefaultAggregateAttributeID>G36c4f257-531e-461d-9823-7381e46d6a29</DefaultAggregateAttributeID>
+          <Variations>
+            <Attribute ID="G36c4f257-531e-461d-9823-7381e46d6a29">
+              <Name>Total Rws Fld Fk Accident Kind</Name>
+              <DataType>Integer</DataType>
+              <Nullable>true</Nullable>
+              <Expression>
+                <Function>
+                  <FunctionName>Sum</FunctionName>
+                  <Arguments>
+                    <Expression>
+                      <AttributeRef>
+                        <!--Rws Fld Fk Accident Kind-->
+                        <AttributeID>Gf8d72b79-fb6b-4916-b499-51cb4addb7de</AttributeID>
+                      </AttributeRef>
+                    </Expression>
+                  </Arguments>
+                </Function>
+              </Expression>
+              <IsAggregate>true</IsAggregate>
+              <SortDirection>Descending</SortDirection>
+              <EnableDrillthrough>true</EnableDrillthrough>
+            </Attribute>
+            <Attribute ID="Gfea5d2a8-9f75-48ec-863c-3dc37a51a36e">
+              <Name>Avg Rws Fld Fk Accident Kind</Name>
+              <DataType>Decimal</DataType>
+              <Nullable>true</Nullable>
+              <Expression>
+                <Function>
+                  <FunctionName>Avg</FunctionName>
+                  <Arguments>
+                    <Expression>
+                      <AttributeRef>
+                        <!--Rws Fld Fk Accident Kind-->
+                        <AttributeID>Gf8d72b79-fb6b-4916-b499-51cb4addb7de</AttributeID>
+                      </AttributeRef>
+                    </Expression>
+                  </Arguments>
+                </Function>
+              </Expression>
+              <IsAggregate>true</IsAggregate>
+              <SortDirection>Descending</SortDirection>
+              <EnableDrillthrough>true</EnableDrillthrough>
+            </Attribute>
+            <Attribute ID="Ga880c650-37d9-4e7d-a869-06615ae6e3f9">
+              <Name>Min Rws Fld Fk Accident Kind</Name>
+              <DataType>Integer</DataType>
+              <Nullable>true</Nullable>
+              <Expression>
+                <Function>
+                  <FunctionName>Min</FunctionName>
+                  <Arguments>
+                    <Expression>
+                      <AttributeRef>
+                        <!--Rws Fld Fk Accident Kind-->
+                        <AttributeID>Gf8d72b79-fb6b-4916-b499-51cb4addb7de</AttributeID>
+                      </AttributeRef>
+                    </Expression>
+                  </Arguments>
+                </Function>
+              </Expression>
+              <IsAggregate>true</IsAggregate>
+              <SortDirection>Descending</SortDirection>
+              <EnableDrillthrough>true</EnableDrillthrough>
+            </Attribute>
+            <Attribute ID="Ge88ed8f4-53cc-4705-b6a4-54c172742571">
+              <Name>Max Rws Fld Fk Accident Kind</Name>
+              <DataType>Integer</DataType>
+              <Nullable>true</Nullable>
+              <Expression>
+                <Function>
+                  <FunctionName>Max</FunctionName>
+                  <Arguments>
+                    <Expression>
+                      <AttributeRef>
+                        <!--Rws Fld Fk Accident Kind-->
+                        <AttributeID>Gf8d72b79-fb6b-4916-b499-51cb4addb7de</AttributeID>
+                      </AttributeRef>
+                    </Expression>
+                  </Arguments>
+                </Function>
+              </Expression>
+              <IsAggregate>true</IsAggregate>
+              <SortDirection>Descending</SortDirection>
+              <EnableDrillthrough>true</EnableDrillthrough>
+            </Attribute>
+          </Variations>
+          <Column Name="Rws_Fld_fk_AccidentKind" />
+        </Attribute>
+        <Attribute ID="Gb4feb989-4503-4416-83e1-902ab28a38b8">
+          <Name>Rws Fld Fk Region</Name>
+          <DataType>Integer</DataType>
+          <SortDirection>Descending</SortDirection>
+          <Format>g</Format>
+          <!--Total Rws Fld Fk Region-->
+          <DefaultAggregateAttributeID>Ge7d8657f-0cc9-411e-8c61-2194b72a9d3f</DefaultAggregateAttributeID>
+          <Variations>
+            <Attribute ID="Ge7d8657f-0cc9-411e-8c61-2194b72a9d3f">
+              <Name>Total Rws Fld Fk Region</Name>
+              <DataType>Integer</DataType>
+              <Nullable>true</Nullable>
+              <Expression>
+                <Function>
+                  <FunctionName>Sum</FunctionName>
+                  <Arguments>
+                    <Expression>
+                      <AttributeRef>
+                        <!--Rws Fld Fk Region-->
+                        <AttributeID>Gb4feb989-4503-4416-83e1-902ab28a38b8</AttributeID>
+                      </AttributeRef>
+                    </Expression>
+                  </Arguments>
+                </Function>
+              </Expression>
+              <IsAggregate>true</IsAggregate>
+              <SortDirection>Descending</SortDirection>
+              <EnableDrillthrough>true</EnableDrillthrough>
+            </Attribute>
+            <Attribute ID="Gccfd2e40-b151-4e9d-b62c-f590a6f18d9f">
+              <Name>Avg Rws Fld Fk Region</Name>
+              <DataType>Decimal</DataType>
+              <Nullable>true</Nullable>
+              <Expression>
+                <Function>
+                  <FunctionName>Avg</FunctionName>
+                  <Arguments>
+                    <Expression>
+                      <AttributeRef>
+                        <!--Rws Fld Fk Region-->
+                        <AttributeID>Gb4feb989-4503-4416-83e1-902ab28a38b8</AttributeID>
+                      </AttributeRef>
+                    </Expression>
+                  </Arguments>
+                </Function>
+              </Expression>
+              <IsAggregate>true</IsAggregate>
+              <SortDirection>Descending</SortDirection>
+              <EnableDrillthrough>true</EnableDrillthrough>
+            </Attribute>
+            <Attribute ID="G044b4914-05dd-4e36-9588-c7bf0d2f807f">
+              <Name>Min Rws Fld Fk Region</Name>
+              <DataType>Integer</DataType>
+              <Nullable>true</Nullable>
+              <Expression>
+                <Function>
+                  <FunctionName>Min</FunctionName>
+                  <Arguments>
+                    <Expression>
+                      <AttributeRef>
+                        <!--Rws Fld Fk Region-->
+                        <AttributeID>Gb4feb989-4503-4416-83e1-902ab28a38b8</AttributeID>
+                      </AttributeRef>
+                    </Expression>
+                  </Arguments>
+                </Function>
+              </Expression>
+              <IsAggregate>true</IsAggregate>
+              <SortDirection>Descending</SortDirection>
+              <EnableDrillthrough>true</EnableDrillthrough>
+            </Attribute>
+            <Attribute ID="Gfa5ab426-3e27-4475-b289-4b94319c2a20">
+              <Name>Max Rws Fld Fk Region</Name>
+              <DataType>Integer</DataType>
+              <Nullable>true</Nullable>
+              <Expression>
+                <Function>
+                  <FunctionName>Max</FunctionName>
+                  <Arguments>
+                    <Expression>
+                      <AttributeRef>
+                        <!--Rws Fld Fk Region-->
+                        <AttributeID>Gb4feb989-4503-4416-83e1-902ab28a38b8</AttributeID>
+                      </AttributeRef>
+                    </Expression>
+                  </Arguments>
+                </Function>
+              </Expression>
+              <IsAggregate>true</IsAggregate>
+              <SortDirection>Descending</SortDirection>
+              <EnableDrillthrough>true</EnableDrillthrough>
+            </Attribute>
+          </Variations>
+          <Column Name="Rws_Fld_fk_Region" />
+        </Attribute>
+        <Attribute ID="Ga390e908-4b86-437e-ad1f-841dee5e37fd">
+          <Name>Rws Fld Accident Date</Name>
+          <DataType>String</DataType>
+          <SortDirection>Ascending</SortDirection>
+          <Column Name="Rws_Fld_AccidentDate" />
+        </Attribute>
+        <Attribute ID="G695a4c91-c15d-4e9f-ba65-1553983ed830">
+          <Name>Rws Fld Accident Time</Name>
+          <DataType>String</DataType>
+          <Nullable>true</Nullable>
+          <SortDirection>Ascending</SortDirection>
+          <Column Name="Rws_Fld_AccidentTime" />
+        </Attribute>
+        <Attribute ID="G605f430f-8836-4cc1-836e-728b8ada5684">
+          <Name>Rws Fld Accident Tel Graph</Name>
+          <DataType>String</DataType>
+          <Nullable>true</Nullable>
+          <SortDirection>Ascending</SortDirection>
+          <Column Name="Rws_Fld_AccidentTelGraph" />
+        </Attribute>
+        <Attribute ID="Gd47f89f3-61c8-4e90-a1e1-4e810b267074">
+          <Name>Rws Fld Block Time</Name>
+          <DataType>String</DataType>
+          <Nullable>true</Nullable>
+          <SortDirection>Ascending</SortDirection>
+          <Column Name="Rws_Fld_BlockTime" />
+        </Attribute>
+        <Attribute ID="G73686686-a88c-44f2-9e46-f8c5d2c46930">
+          <Name>Rws Fld Accident Collecting Time</Name>
+          <DataType>String</DataType>
+          <Nullable>true</Nullable>
+          <SortDirection>Ascending</SortDirection>
+          <Column Name="Rws_Fld_AccidentCollectingTime" />
+        </Attribute>
+        <Attribute ID="Gf37fc769-7764-4afa-b720-b7c61444ca45">
+          <Name>Rws Fld Fk Accident Degree</Name>
+          <DataType>Integer</DataType>
+          <Nullable>true</Nullable>
+          <SortDirection>Descending</SortDirection>
+          <Format>g</Format>
+          <!--Total Rws Fld Fk Accident Degree-->
+          <DefaultAggregateAttributeID>Gec25deab-05cb-4550-abf2-3af32f7a71da</DefaultAggregateAttributeID>
+          <Variations>
+            <Attribute ID="Gec25deab-05cb-4550-abf2-3af32f7a71da">
+              <Name>Total Rws Fld Fk Accident Degree</Name>
+              <DataType>Integer</DataType>
+              <Nullable>true</Nullable>
+              <Expression>
+                <Function>
+                  <FunctionName>Sum</FunctionName>
+                  <Arguments>
+                    <Expression>
+                      <AttributeRef>
+                        <!--Rws Fld Fk Accident Degree-->
+                        <AttributeID>Gf37fc769-7764-4afa-b720-b7c61444ca45</AttributeID>
+                      </AttributeRef>
+                    </Expression>
+                  </Arguments>
+                </Function>
+              </Expression>
+              <IsAggregate>true</IsAggregate>
+              <SortDirection>Descending</SortDirection>
+              <EnableDrillthrough>true</EnableDrillthrough>
+            </Attribute>
+            <Attribute ID="G478b863d-3506-4d5e-a77e-4c4edd62c41e">
+              <Name>Avg Rws Fld Fk Accident Degree</Name>
+              <DataType>Decimal</DataType>
+              <Nullable>true</Nullable>
+              <Expression>
+                <Function>
+                  <FunctionName>Avg</FunctionName>
+                  <Arguments>
+                    <Expression>
+                      <AttributeRef>
+                        <!--Rws Fld Fk Accident Degree-->
+                        <AttributeID>Gf37fc769-7764-4afa-b720-b7c61444ca45</AttributeID>
+                      </AttributeRef>
+                    </Expression>
+                  </Arguments>
+                </Function>
+              </Expression>
+              <IsAggregate>true</IsAggregate>
+              <SortDirection>Descending</SortDirection>
+              <EnableDrillthrough>true</EnableDrillthrough>
+            </Attribute>
+            <Attribute ID="G95aa4b89-441b-4b4f-be37-8c2c2ee9e700">
+              <Name>Min Rws Fld Fk Accident Degree</Name>
+              <DataType>Integer</DataType>
+              <Nullable>true</Nullable>
+              <Expression>
+                <Function>
+                  <FunctionName>Min</FunctionName>
+                  <Arguments>
+                    <Expression>
+                      <AttributeRef>
+                        <!--Rws Fld Fk Accident Degree-->
+                        <AttributeID>Gf37fc769-7764-4afa-b720-b7c61444ca45</AttributeID>
+                      </AttributeRef>
+                    </Expression>
+                  </Arguments>
+                </Function>
+              </Expression>
+              <IsAggregate>true</IsAggregate>
+              <SortDirection>Descending</SortDirection>
+              <EnableDrillthrough>true</EnableDrillthrough>
+            </Attribute>
+            <Attribute ID="Ge0b9ce22-c069-4087-ae59-cc76a02d5650">
+              <Name>Max Rws Fld Fk Accident Degree</Name>
+              <DataType>Integer</DataType>
+              <Nullable>true</Nullable>
+              <Expression>
+                <Function>
+                  <FunctionName>Max</FunctionName>
+                  <Arguments>
+                    <Expression>
+                      <AttributeRef>
+                        <!--Rws Fld Fk Accident Degree-->
+                        <AttributeID>Gf37fc769-7764-4afa-b720-b7c61444ca45</AttributeID>
+                      </AttributeRef>
+                    </Expression>
+                  </Arguments>
+                </Function>
+              </Expression>
+              <IsAggregate>true</IsAggregate>
+              <SortDirection>Descending</SortDirection>
+              <EnableDrillthrough>true</EnableDrillthrough>
+            </Attribute>
+          </Variations>
+          <Column Name="Rws_Fld_fk_AccidentDegree" />
+        </Attribute>
+        <Attribute ID="Gbccf9e3f-de16-42ff-a42c-f85e48c4bcc7">
+          <Name>Rws Fld Fk Rail Way Vehicle Kind</Name>
+          <DataType>Integer</DataType>
+          <Nullable>true</Nullable>
+          <SortDirection>Descending</SortDirection>
+          <Format>g</Format>
+          <!--Total Rws Fld Fk Rail Way Vehicle Kind-->
+          <DefaultAggregateAttributeID>Gf5b1a603-d519-416f-9ef9-09ff7757a97c</DefaultAggregateAttributeID>
+          <Variations>
+            <Attribute ID="Gf5b1a603-d519-416f-9ef9-09ff7757a97c">
+              <Name>Total Rws Fld Fk Rail Way Vehicle Kind</Name>
+              <DataType>Integer</DataType>
+              <Nullable>true</Nullable>
+              <Expression>
+                <Function>
+                  <FunctionName>Sum</FunctionName>
+                  <Arguments>
+                    <Expression>
+                      <AttributeRef>
+                        <!--Rws Fld Fk Rail Way Vehicle Kind-->
+                        <AttributeID>Gbccf9e3f-de16-42ff-a42c-f85e48c4bcc7</AttributeID>
+                      </AttributeRef>
+                    </Expression>
+                  </Arguments>
+                </Function>
+              </Expression>
+              <IsAggregate>true</IsAggregate>
+              <SortDirection>Descending</SortDirection>
+              <EnableDrillthrough>true</EnableDrillthrough>
+            </Attribute>
+            <Attribute ID="G517f2fc7-ff7d-40b0-a314-57b489265b6a">
+              <Name>Avg Rws Fld Fk Rail Way Vehicle Kind</Name>
+              <DataType>Decimal</DataType>
+              <Nullable>true</Nullable>
+              <Expression>
+                <Function>
+                  <FunctionName>Avg</FunctionName>
+                  <Arguments>
+                    <Expression>
+                      <AttributeRef>
+                        <!--Rws Fld Fk Rail Way Vehicle Kind-->
+                        <AttributeID>Gbccf9e3f-de16-42ff-a42c-f85e48c4bcc7</AttributeID>
+                      </AttributeRef>
+                    </Expression>
+                  </Arguments>
+                </Function>
+              </Expression>
+              <IsAggregate>true</IsAggregate>
+              <SortDirection>Descending</SortDirection>
+              <EnableDrillthrough>true</EnableDrillthrough>
+            </Attribute>
+            <Attribute ID="Gc271c36a-7fc8-4863-a689-d2d350682c9f">
+              <Name>Min Rws Fld Fk Rail Way Vehicle Kind</Name>
+              <DataType>Integer</DataType>
+              <Nullable>true</Nullable>
+              <Expression>
+                <Function>
+                  <FunctionName>Min</FunctionName>
+                  <Arguments>
+                    <Expression>
+                      <AttributeRef>
+                        <!--Rws Fld Fk Rail Way Vehicle Kind-->
+                        <AttributeID>Gbccf9e3f-de16-42ff-a42c-f85e48c4bcc7</AttributeID>
+                      </AttributeRef>
+                    </Expression>
+                  </Arguments>
+                </Function>
+              </Expression>
+              <IsAggregate>true</IsAggregate>
+              <SortDirection>Descending</SortDirection>
+              <EnableDrillthrough>true</EnableDrillthrough>
+            </Attribute>
+            <Attribute ID="G76a68135-8dd4-4737-8f2b-27cfb378c542">
+              <Name>Max Rws Fld Fk Rail Way Vehicle Kind</Name>
+              <DataType>Integer</DataType>
+              <Nullable>true</Nullable>
+              <Expression>
+                <Function>
+                  <FunctionName>Max</FunctionName>
+                  <Arguments>
+                    <Expression>
+                      <AttributeRef>
+                        <!--Rws Fld Fk Rail Way Vehicle Kind-->
+                        <AttributeID>Gbccf9e3f-de16-42ff-a42c-f85e48c4bcc7</AttributeID>
+                      </AttributeRef>
+                    </Expression>
+                  </Arguments>
+                </Function>
+              </Expression>
+              <IsAggregate>true</IsAggregate>
+              <SortDirection>Descending</SortDirection>
+              <EnableDrillthrough>true</EnableDrillthrough>
+            </Attribute>
+          </Variations>
+          <Column Name="Rws_Fld_fk_RailWayVehicleKind" />
+        </Attribute>
+        <Attribute ID="Gb9d192da-589a-4c7d-96fa-baa57364e6f4">
+          <Name>Rws Fld Is On Maneuver</Name>
+          <DataType>Boolean</DataType>
+          <Nullable>true</Nullable>
+          <SortDirection>Ascending</SortDirection>
+          <Column Name="Rws_Fld_IsOnManeuver" />
+        </Attribute>
+        <Attribute ID="Ge9ab994e-58c5-48e0-b353-cab125975b09">
+          <Name>Rws Fld Fk Creator</Name>
+          <DataType>Integer</DataType>
+          <SortDirection>Descending</SortDirection>
+          <Format>g</Format>
+          <!--Total Rws Fld Fk Creator-->
+          <DefaultAggregateAttributeID>G465ccffe-3145-4112-a71b-e9f7a7a55b35</DefaultAggregateAttributeID>
+          <Variations>
+            <Attribute ID="G465ccffe-3145-4112-a71b-e9f7a7a55b35">
+              <Name>Total Rws Fld Fk Creator</Name>
+              <DataType>Integer</DataType>
+              <Nullable>true</Nullable>
+              <Expression>
+                <Function>
+                  <FunctionName>Sum</FunctionName>
+                  <Arguments>
+                    <Expression>
+                      <AttributeRef>
+                        <!--Rws Fld Fk Creator-->
+                        <AttributeID>Ge9ab994e-58c5-48e0-b353-cab125975b09</AttributeID>
+                      </AttributeRef>
+                    </Expression>
+                  </Arguments>
+                </Function>
+              </Expression>
+              <IsAggregate>true</IsAggregate>
+              <SortDirection>Descending</SortDirection>
+              <EnableDrillthrough>true</EnableDrillthrough>
+            </Attribute>
+            <Attribute ID="Gfb2f54ca-e7d7-4dac-acf8-dd5654d82ce3">
+              <Name>Avg Rws Fld Fk Creator</Name>
+              <DataType>Decimal</DataType>
+              <Nullable>true</Nullable>
+              <Expression>
+                <Function>
+                  <FunctionName>Avg</FunctionName>
+                  <Arguments>
+                    <Expression>
+                      <AttributeRef>
+                        <!--Rws Fld Fk Creator-->
+                        <AttributeID>Ge9ab994e-58c5-48e0-b353-cab125975b09</AttributeID>
+                      </AttributeRef>
+                    </Expression>
+                  </Arguments>
+                </Function>
+              </Expression>
+              <IsAggregate>true</IsAggregate>
+              <SortDirection>Descending</SortDirection>
+              <EnableDrillthrough>true</EnableDrillthrough>
+            </Attribute>
+            <Attribute ID="G0f119661-0e53-4488-b5c2-0590836cc7b6">
+              <Name>Min Rws Fld Fk Creator</Name>
+              <DataType>Integer</DataType>
+              <Nullable>true</Nullable>
+              <Expression>
+                <Function>
+                  <FunctionName>Min</FunctionName>
+                  <Arguments>
+                    <Expression>
+                      <AttributeRef>
+                        <!--Rws Fld Fk Creator-->
+                        <AttributeID>Ge9ab994e-58c5-48e0-b353-cab125975b09</AttributeID>
+                      </AttributeRef>
+                    </Expression>
+                  </Arguments>
+                </Function>
+              </Expression>
+              <IsAggregate>true</IsAggregate>
+              <SortDirection>Descending</SortDirection>
+              <EnableDrillthrough>true</EnableDrillthrough>
+            </Attribute>
+            <Attribute ID="G1409a202-1b2a-409c-bdaa-16e317c30114">
+              <Name>Max Rws Fld Fk Creator</Name>
+              <DataType>Integer</DataType>
+              <Nullable>true</Nullable>
+              <Expression>
+                <Function>
+                  <FunctionName>Max</FunctionName>
+                  <Arguments>
+                    <Expression>
+                      <AttributeRef>
+                        <!--Rws Fld Fk Creator-->
+                        <AttributeID>Ge9ab994e-58c5-48e0-b353-cab125975b09</AttributeID>
+                      </AttributeRef>
+                    </Expression>
+                  </Arguments>
+                </Function>
+              </Expression>
+              <IsAggregate>true</IsAggregate>
+              <SortDirection>Descending</SortDirection>
+              <EnableDrillthrough>true</EnableDrillthrough>
+            </Attribute>
+          </Variations>
+          <Column Name="Rws_Fld_fk_Creator" />
+        </Attribute>
+        <Attribute ID="Ge9f13e43-ae5c-4944-b207-77e3121f3114">
+          <Name>Rws Fld Create Date</Name>
+          <DataType>String</DataType>
+          <SortDirection>Ascending</SortDirection>
+          <Column Name="Rws_Fld_CreateDate" />
+        </Attribute>
+        <Attribute ID="Gdcd02aad-3953-44bc-8715-9e28a898ffb9">
+          <Name>Rws Fld Is Confirm</Name>
+          <DataType>Boolean</DataType>
+          <Nullable>true</Nullable>
+          <SortDirection>Ascending</SortDirection>
+          <Column Name="Rws_Fld_IsConfirm" />
+        </Attribute>
+        <Attribute ID="G0d4dceb6-c5df-428c-b883-cf84d808d182">
+          <Name>Rws Fld Pk Early Accident</Name>
+          <DataType>Integer</DataType>
+          <SortDirection>Descending</SortDirection>
+          <Format>g</Format>
+          <!--Total Rws Fld Pk Early Accident-->
+          <DefaultAggregateAttributeID>G2bf6a441-875b-4e38-b06b-a694985bc15a</DefaultAggregateAttributeID>
+          <Variations>
+            <Attribute ID="G2bf6a441-875b-4e38-b06b-a694985bc15a">
+              <Name>Total Rws Fld Pk Early Accident</Name>
+              <DataType>Integer</DataType>
+              <Nullable>true</Nullable>
+              <Expression>
+                <Function>
+                  <FunctionName>Sum</FunctionName>
+                  <Arguments>
+                    <Expression>
+                      <AttributeRef>
+                        <!--Rws Fld Pk Early Accident-->
+                        <AttributeID>G0d4dceb6-c5df-428c-b883-cf84d808d182</AttributeID>
+                      </AttributeRef>
+                    </Expression>
+                  </Arguments>
+                </Function>
+              </Expression>
+              <IsAggregate>true</IsAggregate>
+              <SortDirection>Descending</SortDirection>
+              <EnableDrillthrough>true</EnableDrillthrough>
+            </Attribute>
+            <Attribute ID="G85ba277f-ac48-4d3f-b9a0-483e5f6e3b34">
+              <Name>Avg Rws Fld Pk Early Accident</Name>
+              <DataType>Decimal</DataType>
+              <Nullable>true</Nullable>
+              <Expression>
+                <Function>
+                  <FunctionName>Avg</FunctionName>
+                  <Arguments>
+                    <Expression>
+                      <AttributeRef>
+                        <!--Rws Fld Pk Early Accident-->
+                        <AttributeID>G0d4dceb6-c5df-428c-b883-cf84d808d182</AttributeID>
+                      </AttributeRef>
+                    </Expression>
+                  </Arguments>
+                </Function>
+              </Expression>
+              <IsAggregate>true</IsAggregate>
+              <SortDirection>Descending</SortDirection>
+              <EnableDrillthrough>true</EnableDrillthrough>
+            </Attribute>
+            <Attribute ID="G29c36596-fb12-4b82-9d55-d0f31e16bc7b">
+              <Name>Min Rws Fld Pk Early Accident</Name>
+              <DataType>Integer</DataType>
+              <Nullable>true</Nullable>
+              <Expression>
+                <Function>
+                  <FunctionName>Min</FunctionName>
+                  <Arguments>
+                    <Expression>
+                      <AttributeRef>
+                        <!--Rws Fld Pk Early Accident-->
+                        <AttributeID>G0d4dceb6-c5df-428c-b883-cf84d808d182</AttributeID>
+                      </AttributeRef>
+                    </Expression>
+                  </Arguments>
+                </Function>
+              </Expression>
+              <IsAggregate>true</IsAggregate>
+              <SortDirection>Descending</SortDirection>
+              <EnableDrillthrough>true</EnableDrillthrough>
+            </Attribute>
+            <Attribute ID="Gf9fc99f7-5267-4a7c-8d32-d51e33a05700">
+              <Name>Max Rws Fld Pk Early Accident</Name>
+              <DataType>Integer</DataType>
+              <Nullable>true</Nullable>
+              <Expression>
+                <Function>
+                  <FunctionName>Max</FunctionName>
+                  <Arguments>
+                    <Expression>
+                      <AttributeRef>
+                        <!--Rws Fld Pk Early Accident-->
+                        <AttributeID>G0d4dceb6-c5df-428c-b883-cf84d808d182</AttributeID>
+                      </AttributeRef>
+                    </Expression>
+                  </Arguments>
+                </Function>
+              </Expression>
+              <IsAggregate>true</IsAggregate>
+              <SortDirection>Descending</SortDirection>
+              <EnableDrillthrough>true</EnableDrillthrough>
+            </Attribute>
+          </Variations>
+          <Column Name="Rws_Fld_pk_EarlyAccident" />
+        </Attribute>
+        <Attribute ID="Gbc22e2d3-0347-44fb-ab95-4b32446a8154">
+          <Name>Rws Fld Deleted Passenger Train Count</Name>
+          <DataType>Integer</DataType>
+          <Nullable>true</Nullable>
+          <SortDirection>Descending</SortDirection>
+          <Format>g</Format>
+          <!--Total Rws Fld Deleted Passenger Train Count-->
+          <DefaultAggregateAttributeID>Gb9cf45f3-4aa0-42da-a675-a25382f8630f</DefaultAggregateAttributeID>
+          <Variations>
+            <Attribute ID="Gb9cf45f3-4aa0-42da-a675-a25382f8630f">
+              <Name>Total Rws Fld Deleted Passenger Train Count</Name>
+              <DataType>Integer</DataType>
+              <Nullable>true</Nullable>
+              <Expression>
+                <Function>
+                  <FunctionName>Sum</FunctionName>
+                  <Arguments>
+                    <Expression>
+                      <AttributeRef>
+                        <!--Rws Fld Deleted Passenger Train Count-->
+                        <AttributeID>Gbc22e2d3-0347-44fb-ab95-4b32446a8154</AttributeID>
+                      </AttributeRef>
+                    </Expression>
+                  </Arguments>
+                </Function>
+              </Expression>
+              <IsAggregate>true</IsAggregate>
+              <SortDirection>Descending</SortDirection>
+              <EnableDrillthrough>true</EnableDrillthrough>
+            </Attribute>
+            <Attribute ID="Gd63340b4-3017-41b4-97dd-4b84a9e94d7a">
+              <Name>Avg Rws Fld Deleted Passenger Train Count</Name>
+              <DataType>Decimal</DataType>
+              <Nullable>true</Nullable>
+              <Expression>
+                <Function>
+                  <FunctionName>Avg</FunctionName>
+                  <Arguments>
+                    <Expression>
+                      <AttributeRef>
+                        <!--Rws Fld Deleted Passenger Train Count-->
+                        <AttributeID>Gbc22e2d3-0347-44fb-ab95-4b32446a8154</AttributeID>
+                      </AttributeRef>
+                    </Expression>
+                  </Arguments>
+                </Function>
+              </Expression>
+              <IsAggregate>true</IsAggregate>
+              <SortDirection>Descending</SortDirection>
+              <EnableDrillthrough>true</EnableDrillthrough>
+            </Attribute>
+            <Attribute ID="Gecd108a9-e600-4bfb-8fb8-84716a46f939">
+              <Name>Min Rws Fld Deleted Passenger Train Count</Name>
+              <DataType>Integer</DataType>
+              <Nullable>true</Nullable>
+              <Expression>
+                <Function>
+                  <FunctionName>Min</FunctionName>
+                  <Arguments>
+                    <Expression>
+                      <AttributeRef>
+                        <!--Rws Fld Deleted Passenger Train Count-->
+                        <AttributeID>Gbc22e2d3-0347-44fb-ab95-4b32446a8154</AttributeID>
+                      </AttributeRef>
+                    </Expression>
+                  </Arguments>
+                </Function>
+              </Expression>
+              <IsAggregate>true</IsAggregate>
+              <SortDirection>Descending</SortDirection>
+              <EnableDrillthrough>true</EnableDrillthrough>
+            </Attribute>
+            <Attribute ID="Gd793ca89-ba78-407b-ab80-a0e04ac7ed93">
+              <Name>Max Rws Fld Deleted Passenger Train Count</Name>
+              <DataType>Integer</DataType>
+              <Nullable>true</Nullable>
+              <Expression>
+                <Function>
+                  <FunctionName>Max</FunctionName>
+                  <Arguments>
+                    <Expression>
+                      <AttributeRef>
+                        <!--Rws Fld Deleted Passenger Train Count-->
+                        <AttributeID>Gbc22e2d3-0347-44fb-ab95-4b32446a8154</AttributeID>
+                      </AttributeRef>
+                    </Expression>
+                  </Arguments>
+                </Function>
+              </Expression>
+              <IsAggregate>true</IsAggregate>
+              <SortDirection>Descending</SortDirection>
+              <EnableDrillthrough>true</EnableDrillthrough>
+            </Attribute>
+          </Variations>
+          <Column Name="Rws_Fld_DeletedPassengerTrainCount" />
+        </Attribute>
+        <Attribute ID="G71835732-9b23-48db-bc25-b378ad5bc0e7">
+          <Name>Rws Fld Deleted Carrier Train Count</Name>
+          <DataType>Integer</DataType>
+          <Nullable>true</Nullable>
+          <SortDirection>Descending</SortDirection>
+          <Format>g</Format>
+          <!--Total Rws Fld Deleted Carrier Train Count-->
+          <DefaultAggregateAttributeID>Ged1c11e3-e6df-4b8b-b0b2-e3348b29af60</DefaultAggregateAttributeID>
+          <Variations>
+            <Attribute ID="Ged1c11e3-e6df-4b8b-b0b2-e3348b29af60">
+              <Name>Total Rws Fld Deleted Carrier Train Count</Name>
+              <DataType>Integer</DataType>
+              <Nullable>true</Nullable>
+              <Expression>
+                <Function>
+                  <FunctionName>Sum</FunctionName>
+                  <Arguments>
+                    <Expression>
+                      <AttributeRef>
+                        <!--Rws Fld Deleted Carrier Train Count-->
+                        <AttributeID>G71835732-9b23-48db-bc25-b378ad5bc0e7</AttributeID>
+                      </AttributeRef>
+                    </Expression>
+                  </Arguments>
+                </Function>
+              </Expression>
+              <IsAggregate>true</IsAggregate>
+              <SortDirection>Descending</SortDirection>
+              <EnableDrillthrough>true</EnableDrillthrough>
+            </Attribute>
+            <Attribute ID="G7cc64eb5-9632-4284-bbbe-b484b6960850">
+              <Name>Avg Rws Fld Deleted Carrier Train Count</Name>
+              <DataType>Decimal</DataType>
+              <Nullable>true</Nullable>
+              <Expression>
+                <Function>
+                  <FunctionName>Avg</FunctionName>
+                  <Arguments>
+                    <Expression>
+                      <AttributeRef>
+                        <!--Rws Fld Deleted Carrier Train Count-->
+                        <AttributeID>G71835732-9b23-48db-bc25-b378ad5bc0e7</AttributeID>
+                      </AttributeRef>
+                    </Expression>
+                  </Arguments>
+                </Function>
+              </Expression>
+              <IsAggregate>true</IsAggregate>
+              <SortDirection>Descending</SortDirection>
+              <EnableDrillthrough>true</EnableDrillthrough>
+            </Attribute>
+            <Attribute ID="G0635b397-4a7a-4184-a38e-359ecb153506">
+              <Name>Min Rws Fld Deleted Carrier Train Count</Name>
+              <DataType>Integer</DataType>
+              <Nullable>true</Nullable>
+              <Expression>
+                <Function>
+                  <FunctionName>Min</FunctionName>
+                  <Arguments>
+                    <Expression>
+                      <AttributeRef>
+                        <!--Rws Fld Deleted Carrier Train Count-->
+                        <AttributeID>G71835732-9b23-48db-bc25-b378ad5bc0e7</AttributeID>
+                      </AttributeRef>
+                    </Expression>
+                  </Arguments>
+                </Function>
+              </Expression>
+              <IsAggregate>true</IsAggregate>
+              <SortDirection>Descending</SortDirection>
+              <EnableDrillthrough>true</EnableDrillthrough>
+            </Attribute>
+            <Attribute ID="Gca2b02ac-7bab-4fa6-8ff4-adf564d036a9">
+              <Name>Max Rws Fld Deleted Carrier Train Count</Name>
+              <DataType>Integer</DataType>
+              <Nullable>true</Nullable>
+              <Expression>
+                <Function>
+                  <FunctionName>Max</FunctionName>
+                  <Arguments>
+                    <Expression>
+                      <AttributeRef>
+                        <!--Rws Fld Deleted Carrier Train Count-->
+                        <AttributeID>G71835732-9b23-48db-bc25-b378ad5bc0e7</AttributeID>
+                      </AttributeRef>
+                    </Expression>
+                  </Arguments>
+                </Function>
+              </Expression>
+              <IsAggregate>true</IsAggregate>
+              <SortDirection>Descending</SortDirection>
+              <EnableDrillthrough>true</EnableDrillthrough>
+            </Attribute>
+          </Variations>
+          <Column Name="Rws_Fld_DeletedCarrierTrainCount" />
+        </Attribute>
+        <Attribute ID="Gdafbfd99-fbff-4440-b731-7d4b4e6e4ecb">
+          <Name>Rws Fld Deleted Other Train Count</Name>
+          <DataType>Integer</DataType>
+          <Nullable>true</Nullable>
+          <SortDirection>Descending</SortDirection>
+          <Format>g</Format>
+          <!--Total Rws Fld Deleted Other Train Count-->
+          <DefaultAggregateAttributeID>Gefc28c71-523e-4b8c-81c3-d41e75bc6a30</DefaultAggregateAttributeID>
+          <Variations>
+            <Attribute ID="Gefc28c71-523e-4b8c-81c3-d41e75bc6a30">
+              <Name>Total Rws Fld Deleted Other Train Count</Name>
+              <DataType>Integer</DataType>
+              <Nullable>true</Nullable>
+              <Expression>
+                <Function>
+                  <FunctionName>Sum</FunctionName>
+                  <Arguments>
+                    <Expression>
+                      <AttributeRef>
+                        <!--Rws Fld Deleted Other Train Count-->
+                        <AttributeID>Gdafbfd99-fbff-4440-b731-7d4b4e6e4ecb</AttributeID>
+                      </AttributeRef>
+                    </Expression>
+                  </Arguments>
+                </Function>
+              </Expression>
+              <IsAggregate>true</IsAggregate>
+              <SortDirection>Descending</SortDirection>
+              <EnableDrillthrough>true</EnableDrillthrough>
+            </Attribute>
+            <Attribute ID="G9a876a55-e0e4-45e4-a716-1f9d65d02bdc">
+              <Name>Avg Rws Fld Deleted Other Train Count</Name>
+              <DataType>Decimal</DataType>
+              <Nullable>true</Nullable>
+              <Expression>
+                <Function>
+                  <FunctionName>Avg</FunctionName>
+                  <Arguments>
+                    <Expression>
+                      <AttributeRef>
+                        <!--Rws Fld Deleted Other Train Count-->
+                        <AttributeID>Gdafbfd99-fbff-4440-b731-7d4b4e6e4ecb</AttributeID>
+                      </AttributeRef>
+                    </Expression>
+                  </Arguments>
+                </Function>
+              </Expression>
+              <IsAggregate>true</IsAggregate>
+              <SortDirection>Descending</SortDirection>
+              <EnableDrillthrough>true</EnableDrillthrough>
+            </Attribute>
+            <Attribute ID="Gfa121a4d-c531-455e-80a7-f52ab477c874">
+              <Name>Min Rws Fld Deleted Other Train Count</Name>
+              <DataType>Integer</DataType>
+              <Nullable>true</Nullable>
+              <Expression>
+                <Function>
+                  <FunctionName>Min</FunctionName>
+                  <Arguments>
+                    <Expression>
+                      <AttributeRef>
+                        <!--Rws Fld Deleted Other Train Count-->
+                        <AttributeID>Gdafbfd99-fbff-4440-b731-7d4b4e6e4ecb</AttributeID>
+                      </AttributeRef>
+                    </Expression>
+                  </Arguments>
+                </Function>
+              </Expression>
+              <IsAggregate>true</IsAggregate>
+              <SortDirection>Descending</SortDirection>
+              <EnableDrillthrough>true</EnableDrillthrough>
+            </Attribute>
+            <Attribute ID="G9a21fd4f-a3e2-4382-a6bf-b64bde9a2ed7">
+              <Name>Max Rws Fld Deleted Other Train Count</Name>
+              <DataType>Integer</DataType>
+              <Nullable>true</Nullable>
+              <Expression>
+                <Function>
+                  <FunctionName>Max</FunctionName>
+                  <Arguments>
+                    <Expression>
+                      <AttributeRef>
+                        <!--Rws Fld Deleted Other Train Count-->
+                        <AttributeID>Gdafbfd99-fbff-4440-b731-7d4b4e6e4ecb</AttributeID>
+                      </AttributeRef>
+                    </Expression>
+                  </Arguments>
+                </Function>
+              </Expression>
+              <IsAggregate>true</IsAggregate>
+              <SortDirection>Descending</SortDirection>
+              <EnableDrillthrough>true</EnableDrillthrough>
+            </Attribute>
+          </Variations>
+          <Column Name="Rws_Fld_DeletedOtherTrainCount" />
+        </Attribute>
+        <Attribute ID="G87f8bbac-52d8-475f-a9c2-3a26fd81ccc8">
+          <Name>Rws Fld Delay Time Passenger Train Count</Name>
+          <DataType>Integer</DataType>
+          <Nullable>true</Nullable>
+          <SortDirection>Descending</SortDirection>
+          <Format>g</Format>
+          <!--Total Rws Fld Delay Time Passenger Train Count-->
+          <DefaultAggregateAttributeID>G498b7fea-2332-41c2-8647-c59c3e689005</DefaultAggregateAttributeID>
+          <Variations>
+            <Attribute ID="G498b7fea-2332-41c2-8647-c59c3e689005">
+              <Name>Total Rws Fld Delay Time Passenger Train Count</Name>
+              <DataType>Integer</DataType>
+              <Nullable>true</Nullable>
+              <Expression>
+                <Function>
+                  <FunctionName>Sum</FunctionName>
+                  <Arguments>
+                    <Expression>
+                      <AttributeRef>
+                        <!--Rws Fld Delay Time Passenger Train Count-->
+                        <AttributeID>G87f8bbac-52d8-475f-a9c2-3a26fd81ccc8</AttributeID>
+                      </AttributeRef>
+                    </Expression>
+                  </Arguments>
+                </Function>
+              </Expression>
+              <IsAggregate>true</IsAggregate>
+              <SortDirection>Descending</SortDirection>
+              <EnableDrillthrough>true</EnableDrillthrough>
+            </Attribute>
+            <Attribute ID="Ga7629eae-1aa5-47f9-ac96-35c5a6b93d27">
+              <Name>Avg Rws Fld Delay Time Passenger Train Count</Name>
+              <DataType>Decimal</DataType>
+              <Nullable>true</Nullable>
+              <Expression>
+                <Function>
+                  <FunctionName>Avg</FunctionName>
+                  <Arguments>
+                    <Expression>
+                      <AttributeRef>
+                        <!--Rws Fld Delay Time Passenger Train Count-->
+                        <AttributeID>G87f8bbac-52d8-475f-a9c2-3a26fd81ccc8</AttributeID>
+                      </AttributeRef>
+                    </Expression>
+                  </Arguments>
+                </Function>
+              </Expression>
+              <IsAggregate>true</IsAggregate>
+              <SortDirection>Descending</SortDirection>
+              <EnableDrillthrough>true</EnableDrillthrough>
+            </Attribute>
+            <Attribute ID="Gfeeb858c-94b4-4247-922e-37b9b8f22477">
+              <Name>Min Rws Fld Delay Time Passenger Train Count</Name>
+              <DataType>Integer</DataType>
+              <Nullable>true</Nullable>
+              <Expression>
+                <Function>
+                  <FunctionName>Min</FunctionName>
+                  <Arguments>
+                    <Expression>
+                      <AttributeRef>
+                        <!--Rws Fld Delay Time Passenger Train Count-->
+                        <AttributeID>G87f8bbac-52d8-475f-a9c2-3a26fd81ccc8</AttributeID>
+                      </AttributeRef>
+                    </Expression>
+                  </Arguments>
+                </Function>
+              </Expression>
+              <IsAggregate>true</IsAggregate>
+              <SortDirection>Descending</SortDirection>
+              <EnableDrillthrough>true</EnableDrillthrough>
+            </Attribute>
+            <Attribute ID="G494648d3-49a5-4b3b-b833-65224f8d0389">
+              <Name>Max Rws Fld Delay Time Passenger Train Count</Name>
+              <DataType>Integer</DataType>
+              <Nullable>true</Nullable>
+              <Expression>
+                <Function>
+                  <FunctionName>Max</FunctionName>
+                  <Arguments>
+                    <Expression>
+                      <AttributeRef>
+                        <!--Rws Fld Delay Time Passenger Train Count-->
+                        <AttributeID>G87f8bbac-52d8-475f-a9c2-3a26fd81ccc8</AttributeID>
+                      </AttributeRef>
+                    </Expression>
+                  </Arguments>
+                </Function>
+              </Expression>
+              <IsAggregate>true</IsAggregate>
+              <SortDirection>Descending</SortDirection>
+              <EnableDrillthrough>true</EnableDrillthrough>
+            </Attribute>
+          </Variations>
+          <Column Name="Rws_Fld_DelayTimePassengerTrainCount" />
+        </Attribute>
+        <Attribute ID="Ge16c3053-b373-4065-b440-499d38e2f244">
+          <Name>Rws Fld Delay Time Carrier Train Count</Name>
+          <DataType>Integer</DataType>
+          <Nullable>true</Nullable>
+          <SortDirection>Descending</SortDirection>
+          <Format>g</Format>
+          <!--Total Rws Fld Delay Time Carrier Train Count-->
+          <DefaultAggregateAttributeID>G2616a6df-1412-4cb0-907b-2417e1ce116a</DefaultAggregateAttributeID>
+          <Variations>
+            <Attribute ID="G2616a6df-1412-4cb0-907b-2417e1ce116a">
+              <Name>Total Rws Fld Delay Time Carrier Train Count</Name>
+              <DataType>Integer</DataType>
+              <Nullable>true</Nullable>
+              <Expression>
+                <Function>
+                  <FunctionName>Sum</FunctionName>
+                  <Arguments>
+                    <Expression>
+                      <AttributeRef>
+                        <!--Rws Fld Delay Time Carrier Train Count-->
+                        <AttributeID>Ge16c3053-b373-4065-b440-499d38e2f244</AttributeID>
+                      </AttributeRef>
+                    </Expression>
+                  </Arguments>
+                </Function>
+              </Expression>
+              <IsAggregate>true</IsAggregate>
+              <SortDirection>Descending</SortDirection>
+              <EnableDrillthrough>true</EnableDrillthrough>
+            </Attribute>
+            <Attribute ID="Ge22697df-6f82-44e3-ac8a-fbc5c91f228c">
+              <Name>Avg Rws Fld Delay Time Carrier Train Count</Name>
+              <DataType>Decimal</DataType>
+              <Nullable>true</Nullable>
+              <Expression>
+                <Function>
+                  <FunctionName>Avg</FunctionName>
+                  <Arguments>
+                    <Expression>
+                      <AttributeRef>
+                        <!--Rws Fld Delay Time Carrier Train Count-->
+                        <AttributeID>Ge16c3053-b373-4065-b440-499d38e2f244</AttributeID>
+                      </AttributeRef>
+                    </Expression>
+                  </Arguments>
+                </Function>
+              </Expression>
+              <IsAggregate>true</IsAggregate>
+              <SortDirection>Descending</SortDirection>
+              <EnableDrillthrough>true</EnableDrillthrough>
+            </Attribute>
+            <Attribute ID="G39464076-f17c-411a-aad0-c40f96a193e2">
+              <Name>Min Rws Fld Delay Time Carrier Train Count</Name>
+              <DataType>Integer</DataType>
+              <Nullable>true</Nullable>
+              <Expression>
+                <Function>
+                  <FunctionName>Min</FunctionName>
+                  <Arguments>
+                    <Expression>
+                      <AttributeRef>
+                        <!--Rws Fld Delay Time Carrier Train Count-->
+                        <AttributeID>Ge16c3053-b373-4065-b440-499d38e2f244</AttributeID>
+                      </AttributeRef>
+                    </Expression>
+                  </Arguments>
+                </Function>
+              </Expression>
+              <IsAggregate>true</IsAggregate>
+              <SortDirection>Descending</SortDirection>
+              <EnableDrillthrough>true</EnableDrillthrough>
+            </Attribute>
+            <Attribute ID="G372fb5f4-4f49-4602-97e1-44445e2ff34a">
+              <Name>Max Rws Fld Delay Time Carrier Train Count</Name>
+              <DataType>Integer</DataType>
+              <Nullable>true</Nullable>
+              <Expression>
+                <Function>
+                  <FunctionName>Max</FunctionName>
+                  <Arguments>
+                    <Expression>
+                      <AttributeRef>
+                        <!--Rws Fld Delay Time Carrier Train Count-->
+                        <AttributeID>Ge16c3053-b373-4065-b440-499d38e2f244</AttributeID>
+                      </AttributeRef>
+                    </Expression>
+                  </Arguments>
+                </Function>
+              </Expression>
+              <IsAggregate>true</IsAggregate>
+              <SortDirection>Descending</SortDirection>
+              <EnableDrillthrough>true</EnableDrillthrough>
+            </Attribute>
+          </Variations>
+          <Column Name="Rws_Fld_DelayTimeCarrierTrainCount" />
+        </Attribute>
+        <Attribute ID="Ge8069813-c4ea-4248-88dc-d60d15831fe9">
+          <Name>Rws Fld Delay Time Other Train Count</Name>
+          <DataType>Integer</DataType>
+          <Nullable>true</Nullable>
+          <SortDirection>Descending</SortDirection>
+          <Format>g</Format>
+          <!--Total Rws Fld Delay Time Other Train Count-->
+          <DefaultAggregateAttributeID>G3702b7a8-7270-4f18-96da-1d8b40de9c6f</DefaultAggregateAttributeID>
+          <Variations>
+            <Attribute ID="G3702b7a8-7270-4f18-96da-1d8b40de9c6f">
+              <Name>Total Rws Fld Delay Time Other Train Count</Name>
+              <DataType>Integer</DataType>
+              <Nullable>true</Nullable>
+              <Expression>
+                <Function>
+                  <FunctionName>Sum</FunctionName>
+                  <Arguments>
+                    <Expression>
+                      <AttributeRef>
+                        <!--Rws Fld Delay Time Other Train Count-->
+                        <AttributeID>Ge8069813-c4ea-4248-88dc-d60d15831fe9</AttributeID>
+                      </AttributeRef>
+                    </Expression>
+                  </Arguments>
+                </Function>
+              </Expression>
+              <IsAggregate>true</IsAggregate>
+              <SortDirection>Descending</SortDirection>
+              <EnableDrillthrough>true</EnableDrillthrough>
+            </Attribute>
+            <Attribute ID="G96ba1767-310d-4a9f-af06-70af247799c2">
+              <Name>Avg Rws Fld Delay Time Other Train Count</Name>
+              <DataType>Decimal</DataType>
+              <Nullable>true</Nullable>
+              <Expression>
+                <Function>
+                  <FunctionName>Avg</FunctionName>
+                  <Arguments>
+                    <Expression>
+                      <AttributeRef>
+                        <!--Rws Fld Delay Time Other Train Count-->
+                        <AttributeID>Ge8069813-c4ea-4248-88dc-d60d15831fe9</AttributeID>
+                      </AttributeRef>
+                    </Expression>
+                  </Arguments>
+                </Function>
+              </Expression>
+              <IsAggregate>true</IsAggregate>
+              <SortDirection>Descending</SortDirection>
+              <EnableDrillthrough>true</EnableDrillthrough>
+            </Attribute>
+            <Attribute ID="G13f940ce-1760-4504-8324-2c7a0103c203">
+              <Name>Min Rws Fld Delay Time Other Train Count</Name>
+              <DataType>Integer</DataType>
+              <Nullable>true</Nullable>
+              <Expression>
+                <Function>
+                  <FunctionName>Min</FunctionName>
+                  <Arguments>
+                    <Expression>
+                      <AttributeRef>
+                        <!--Rws Fld Delay Time Other Train Count-->
+                        <AttributeID>Ge8069813-c4ea-4248-88dc-d60d15831fe9</AttributeID>
+                      </AttributeRef>
+                    </Expression>
+                  </Arguments>
+                </Function>
+              </Expression>
+              <IsAggregate>true</IsAggregate>
+              <SortDirection>Descending</SortDirection>
+              <EnableDrillthrough>true</EnableDrillthrough>
+            </Attribute>
+            <Attribute ID="G8836aa42-bbd1-440d-954c-dfe452676fae">
+              <Name>Max Rws Fld Delay Time Other Train Count</Name>
+              <DataType>Integer</DataType>
+              <Nullable>true</Nullable>
+              <Expression>
+                <Function>
+                  <FunctionName>Max</FunctionName>
+                  <Arguments>
+                    <Expression>
+                      <AttributeRef>
+                        <!--Rws Fld Delay Time Other Train Count-->
+                        <AttributeID>Ge8069813-c4ea-4248-88dc-d60d15831fe9</AttributeID>
+                      </AttributeRef>
+                    </Expression>
+                  </Arguments>
+                </Function>
+              </Expression>
+              <IsAggregate>true</IsAggregate>
+              <SortDirection>Descending</SortDirection>
+              <EnableDrillthrough>true</EnableDrillthrough>
+            </Attribute>
+          </Variations>
+          <Column Name="Rws_Fld_DelayTimeOtherTrainCount" />
+        </Attribute>
+        <Attribute ID="G91fc2523-c9ed-41e2-be8f-c1b500d0f9eb">
+          <Name>Rws Fld Fk User</Name>
+          <DataType>Integer</DataType>
+          <SortDirection>Descending</SortDirection>
+          <Format>g</Format>
+          <!--Total Rws Fld Fk User-->
+          <DefaultAggregateAttributeID>G1b040a49-2900-4566-9e15-9e420be3e14c</DefaultAggregateAttributeID>
+          <Variations>
+            <Attribute ID="G1b040a49-2900-4566-9e15-9e420be3e14c">
+              <Name>Total Rws Fld Fk User</Name>
+              <DataType>Integer</DataType>
+              <Nullable>true</Nullable>
+              <Expression>
+                <Function>
+                  <FunctionName>Sum</FunctionName>
+                  <Arguments>
+                    <Expression>
+                      <AttributeRef>
+                        <!--Rws Fld Fk User-->
+                        <AttributeID>G91fc2523-c9ed-41e2-be8f-c1b500d0f9eb</AttributeID>
+                      </AttributeRef>
+                    </Expression>
+                  </Arguments>
+                </Function>
+              </Expression>
+              <IsAggregate>true</IsAggregate>
+              <SortDirection>Descending</SortDirection>
+              <EnableDrillthrough>true</EnableDrillthrough>
+            </Attribute>
+            <Attribute ID="Gea07df38-3fcb-4b6f-8b92-ab6dee1f748d">
+              <Name>Avg Rws Fld Fk User</Name>
+              <DataType>Decimal</DataType>
+              <Nullable>true</Nullable>
+              <Expression>
+                <Function>
+                  <FunctionName>Avg</FunctionName>
+                  <Arguments>
+                    <Expression>
+                      <AttributeRef>
+                        <!--Rws Fld Fk User-->
+                        <AttributeID>G91fc2523-c9ed-41e2-be8f-c1b500d0f9eb</AttributeID>
+                      </AttributeRef>
+                    </Expression>
+                  </Arguments>
+                </Function>
+              </Expression>
+              <IsAggregate>true</IsAggregate>
+              <SortDirection>Descending</SortDirection>
+              <EnableDrillthrough>true</EnableDrillthrough>
+            </Attribute>
+            <Attribute ID="G3b38024a-58de-4560-b373-6765045f92ea">
+              <Name>Min Rws Fld Fk User</Name>
+              <DataType>Integer</DataType>
+              <Nullable>true</Nullable>
+              <Expression>
+                <Function>
+                  <FunctionName>Min</FunctionName>
+                  <Arguments>
+                    <Expression>
+                      <AttributeRef>
+                        <!--Rws Fld Fk User-->
+                        <AttributeID>G91fc2523-c9ed-41e2-be8f-c1b500d0f9eb</AttributeID>
+                      </AttributeRef>
+                    </Expression>
+                  </Arguments>
+                </Function>
+              </Expression>
+              <IsAggregate>true</IsAggregate>
+              <SortDirection>Descending</SortDirection>
+              <EnableDrillthrough>true</EnableDrillthrough>
+            </Attribute>
+            <Attribute ID="G63d79870-d48e-40fa-969b-c0b55bfb7646">
+              <Name>Max Rws Fld Fk User</Name>
+              <DataType>Integer</DataType>
+              <Nullable>true</Nullable>
+              <Expression>
+                <Function>
+                  <FunctionName>Max</FunctionName>
+                  <Arguments>
+                    <Expression>
+                      <AttributeRef>
+                        <!--Rws Fld Fk User-->
+                        <AttributeID>G91fc2523-c9ed-41e2-be8f-c1b500d0f9eb</AttributeID>
+                      </AttributeRef>
+                    </Expression>
+                  </Arguments>
+                </Function>
+              </Expression>
+              <IsAggregate>true</IsAggregate>
+              <SortDirection>Descending</SortDirection>
+              <EnableDrillthrough>true</EnableDrillthrough>
+            </Attribute>
+          </Variations>
+          <Column Name="Rws_Fld_fk_User" />
+        </Attribute>
+        <Attribute ID="G0804cde9-ff27-43d4-97d1-89a0f0d7d16c">
+          <Name>Rws Fld Date</Name>
+          <DataType>String</DataType>
+          <SortDirection>Ascending</SortDirection>
+          <Column Name="Rws_Fld_Date" />
+        </Attribute>
+        <Attribute ID="G11a764b1-cd9a-4d42-8c5d-5b0a8e588073">
+          <Name>Rws Fld User First Name</Name>
+          <DataType>String</DataType>
+          <Nullable>true</Nullable>
+          <SortDirection>Ascending</SortDirection>
+          <Column Name="Rws_Fld_UserFirstName" />
+        </Attribute>
+        <Attribute ID="G4eb2722f-cac3-44b5-9e69-20ee37c5987b">
+          <Name>Rws Fld User Last Name</Name>
+          <DataType>String</DataType>
+          <Nullable>true</Nullable>
+          <SortDirection>Ascending</SortDirection>
+          <Column Name="Rws_Fld_UserLastName" />
+        </Attribute>
+        <Attribute ID="G72369b75-ac23-42a5-ae6d-fa0433a2c50a">
+          <Name>Rws Fld Creator First Name</Name>
+          <DataType>String</DataType>
+          <Nullable>true</Nullable>
+          <SortDirection>Ascending</SortDirection>
+          <Column Name="Rws_Fld_CreatorFirstName" />
+        </Attribute>
+        <Attribute ID="G2ed9dc00-1398-4482-9e2b-5f12529669a3">
+          <Name>Rws Fld Creator Last Name</Name>
+          <DataType>String</DataType>
+          <Nullable>true</Nullable>
+          <SortDirection>Ascending</SortDirection>
+          <Column Name="Rws_Fld_CreatorLastName" />
+        </Attribute>
+        <Attribute ID="Gda94ae21-44a3-451e-ad71-37e714103739">
+          <Name>Rws Fld Fk User Unique Code</Name>
+          <DataType>Integer</DataType>
+          <Nullable>true</Nullable>
+          <SortDirection>Descending</SortDirection>
+          <Format>g</Format>
+          <Column Name="Rws_Fld_fk_UserUniqueCode" />
+        </Attribute>
+        <Attribute ID="G572d9636-b159-4ee8-8b0f-aa44c4e645ba">
+          <Name>Rws Fld Fk Creator Unique Code</Name>
+          <DataType>Integer</DataType>
+          <Nullable>true</Nullable>
+          <SortDirection>Descending</SortDirection>
+          <Format>g</Format>
+          <Column Name="Rws_Fld_fk_CreatorUniqueCode" />
+        </Attribute>
+        <Attribute ID="G0b7d28af-ed13-48ce-9012-c9e6fc7534a9">
+          <Name>Rws Fld Train No</Name>
+          <DataType>Integer</DataType>
+          <Nullable>true</Nullable>
+          <SortDirection>Descending</SortDirection>
+          <Format>g</Format>
+          <!--Total Rws Fld Train No-->
+          <DefaultAggregateAttributeID>Gc8fa02b2-485c-49ec-b256-9376ad5f934a</DefaultAggregateAttributeID>
+          <Variations>
+            <Attribute ID="Gc8fa02b2-485c-49ec-b256-9376ad5f934a">
+              <Name>Total Rws Fld Train No</Name>
+              <DataType>Integer</DataType>
+              <Nullable>true</Nullable>
+              <Expression>
+                <Function>
+                  <FunctionName>Sum</FunctionName>
+                  <Arguments>
+                    <Expression>
+                      <AttributeRef>
+                        <!--Rws Fld Train No-->
+                        <AttributeID>G0b7d28af-ed13-48ce-9012-c9e6fc7534a9</AttributeID>
+                      </AttributeRef>
+                    </Expression>
+                  </Arguments>
+                </Function>
+              </Expression>
+              <IsAggregate>true</IsAggregate>
+              <SortDirection>Descending</SortDirection>
+              <EnableDrillthrough>true</EnableDrillthrough>
+            </Attribute>
+            <Attribute ID="Gc7140b12-00aa-49fb-a08b-5afebddb2d97">
+              <Name>Avg Rws Fld Train No</Name>
+              <DataType>Decimal</DataType>
+              <Nullable>true</Nullable>
+              <Expression>
+                <Function>
+                  <FunctionName>Avg</FunctionName>
+                  <Arguments>
+                    <Expression>
+                      <AttributeRef>
+                        <!--Rws Fld Train No-->
+                        <AttributeID>G0b7d28af-ed13-48ce-9012-c9e6fc7534a9</AttributeID>
+                      </AttributeRef>
+                    </Expression>
+                  </Arguments>
+                </Function>
+              </Expression>
+              <IsAggregate>true</IsAggregate>
+              <SortDirection>Descending</SortDirection>
+              <EnableDrillthrough>true</EnableDrillthrough>
+            </Attribute>
+            <Attribute ID="Gbbd7eb67-10e8-4ed6-be75-7494719cca51">
+              <Name>Min Rws Fld Train No</Name>
+              <DataType>Integer</DataType>
+              <Nullable>true</Nullable>
+              <Expression>
+                <Function>
+                  <FunctionName>Min</FunctionName>
+                  <Arguments>
+                    <Expression>
+                      <AttributeRef>
+                        <!--Rws Fld Train No-->
+                        <AttributeID>G0b7d28af-ed13-48ce-9012-c9e6fc7534a9</AttributeID>
+                      </AttributeRef>
+                    </Expression>
+                  </Arguments>
+                </Function>
+              </Expression>
+              <IsAggregate>true</IsAggregate>
+              <SortDirection>Descending</SortDirection>
+              <EnableDrillthrough>true</EnableDrillthrough>
+            </Attribute>
+            <Attribute ID="G3ce1cdf2-08d0-4fbf-86c8-99a65e3b1aa5">
+              <Name>Max Rws Fld Train No</Name>
+              <DataType>Integer</DataType>
+              <Nullable>true</Nullable>
+              <Expression>
+                <Function>
+                  <FunctionName>Max</FunctionName>
+                  <Arguments>
+                    <Expression>
+                      <AttributeRef>
+                        <!--Rws Fld Train No-->
+                        <AttributeID>G0b7d28af-ed13-48ce-9012-c9e6fc7534a9</AttributeID>
+                      </AttributeRef>
+                    </Expression>
+                  </Arguments>
+                </Function>
+              </Expression>
+              <IsAggregate>true</IsAggregate>
+              <SortDirection>Descending</SortDirection>
+              <EnableDrillthrough>true</EnableDrillthrough>
+            </Attribute>
+          </Variations>
+          <Column Name="Rws_Fld_TrainNo" />
+        </Attribute>
+        <Attribute ID="G5c769199-9fb6-411d-b5cc-f1a55d5b91bb">
+          <Name>Rws Fld Region Describe</Name>
+          <DataType>String</DataType>
+          <Nullable>true</Nullable>
+          <SortDirection>Ascending</SortDirection>
+          <Column Name="Rws_Fld_RegionDescribe" />
+        </Attribute>
+        <Attribute ID="G6867647b-3d97-4183-ab7e-d5bc4f703046">
+          <Name>Rws Fld Fk Serial No</Name>
+          <DataType>String</DataType>
+          <Nullable>true</Nullable>
+          <SortDirection>Ascending</SortDirection>
+          <Column Name="Rws_Fld_fk_SerialNo" />
+        </Attribute>
+        <Attribute ID="G1a5fd1f6-c2b9-4e92-9f22-a748bd58af20">
+          <Name>Rws Fld Fk Early Accident Agent Die And Afoul</Name>
+          <DataType>Integer</DataType>
+          <Nullable>true</Nullable>
+          <SortDirection>Descending</SortDirection>
+          <Format>g</Format>
+          <!--Total Rws Fld Fk Early Accident Agent Die And Afoul-->
+          <DefaultAggregateAttributeID>G26a74871-281e-44dc-9d24-42d896f1fd66</DefaultAggregateAttributeID>
+          <Variations>
+            <Attribute ID="G26a74871-281e-44dc-9d24-42d896f1fd66">
+              <Name>Total Rws Fld Fk Early Accident Agent Die And Afoul</Name>
+              <DataType>Integer</DataType>
+              <Nullable>true</Nullable>
+              <Expression>
+                <Function>
+                  <FunctionName>Sum</FunctionName>
+                  <Arguments>
+                    <Expression>
+                      <AttributeRef>
+                        <!--Rws Fld Fk Early Accident Agent Die And Afoul-->
+                        <AttributeID>G1a5fd1f6-c2b9-4e92-9f22-a748bd58af20</AttributeID>
+                      </AttributeRef>
+                    </Expression>
+                  </Arguments>
+                </Function>
+              </Expression>
+              <IsAggregate>true</IsAggregate>
+              <SortDirection>Descending</SortDirection>
+              <EnableDrillthrough>true</EnableDrillthrough>
+            </Attribute>
+            <Attribute ID="G5baa69e9-bd4a-42d2-923b-56599e36658b">
+              <Name>Avg Rws Fld Fk Early Accident Agent Die And Afoul</Name>
+              <DataType>Decimal</DataType>
+              <Nullable>true</Nullable>
+              <Expression>
+                <Function>
+                  <FunctionName>Avg</FunctionName>
+                  <Arguments>
+                    <Expression>
+                      <AttributeRef>
+                        <!--Rws Fld Fk Early Accident Agent Die And Afoul-->
+                        <AttributeID>G1a5fd1f6-c2b9-4e92-9f22-a748bd58af20</AttributeID>
+                      </AttributeRef>
+                    </Expression>
+                  </Arguments>
+                </Function>
+              </Expression>
+              <IsAggregate>true</IsAggregate>
+              <SortDirection>Descending</SortDirection>
+              <EnableDrillthrough>true</EnableDrillthrough>
+            </Attribute>
+            <Attribute ID="Gf72d8fef-ff40-4b7c-aaa3-f1eda523c497">
+              <Name>Min Rws Fld Fk Early Accident Agent Die And Afoul</Name>
+              <DataType>Integer</DataType>
+              <Nullable>true</Nullable>
+              <Expression>
+                <Function>
+                  <FunctionName>Min</FunctionName>
+                  <Arguments>
+                    <Expression>
+                      <AttributeRef>
+                        <!--Rws Fld Fk Early Accident Agent Die And Afoul-->
+                        <AttributeID>G1a5fd1f6-c2b9-4e92-9f22-a748bd58af20</AttributeID>
+                      </AttributeRef>
+                    </Expression>
+                  </Arguments>
+                </Function>
+              </Expression>
+              <IsAggregate>true</IsAggregate>
+              <SortDirection>Descending</SortDirection>
+              <EnableDrillthrough>true</EnableDrillthrough>
+            </Attribute>
+            <Attribute ID="G58f32974-8a53-4c13-bc30-80d55a42c41b">
+              <Name>Max Rws Fld Fk Early Accident Agent Die And Afoul</Name>
+              <DataType>Integer</DataType>
+              <Nullable>true</Nullable>
+              <Expression>
+                <Function>
+                  <FunctionName>Max</FunctionName>
+                  <Arguments>
+                    <Expression>
+                      <AttributeRef>
+                        <!--Rws Fld Fk Early Accident Agent Die And Afoul-->
+                        <AttributeID>G1a5fd1f6-c2b9-4e92-9f22-a748bd58af20</AttributeID>
+                      </AttributeRef>
+                    </Expression>
+                  </Arguments>
+                </Function>
+              </Expression>
+              <IsAggregate>true</IsAggregate>
+              <SortDirection>Descending</SortDirection>
+              <EnableDrillthrough>true</EnableDrillthrough>
+            </Attribute>
+          </Variations>
+          <Column Name="Rws_Fld_fk_EarlyAccidentAgentDieAndAfoul" />
+        </Attribute>
+        <Attribute ID="Gc538fc58-4855-4f72-b7c7-77aac9a03843">
+          <Name>Rws Fld Fk Early Accident Rail Way Accident</Name>
+          <DataType>Integer</DataType>
+          <Nullable>true</Nullable>
+          <SortDirection>Descending</SortDirection>
+          <Format>g</Format>
+          <!--Total Rws Fld Fk Early Accident Rail Way Accident-->
+          <DefaultAggregateAttributeID>G4ad6af95-1f25-45d7-b374-f84844062624</DefaultAggregateAttributeID>
+          <Variations>
+            <Attribute ID="G4ad6af95-1f25-45d7-b374-f84844062624">
+              <Name>Total Rws Fld Fk Early Accident Rail Way Accident</Name>
+              <DataType>Integer</DataType>
+              <Nullable>true</Nullable>
+              <Expression>
+                <Function>
+                  <FunctionName>Sum</FunctionName>
+                  <Arguments>
+                    <Expression>
+                      <AttributeRef>
+                        <!--Rws Fld Fk Early Accident Rail Way Accident-->
+                        <AttributeID>Gc538fc58-4855-4f72-b7c7-77aac9a03843</AttributeID>
+                      </AttributeRef>
+                    </Expression>
+                  </Arguments>
+                </Function>
+              </Expression>
+              <IsAggregate>true</IsAggregate>
+              <SortDirection>Descending</SortDirection>
+              <EnableDrillthrough>true</EnableDrillthrough>
+            </Attribute>
+            <Attribute ID="G37ae370c-d730-4192-a5f3-8770e199d719">
+              <Name>Avg Rws Fld Fk Early Accident Rail Way Accident</Name>
+              <DataType>Decimal</DataType>
+              <Nullable>true</Nullable>
+              <Expression>
+                <Function>
+                  <FunctionName>Avg</FunctionName>
+                  <Arguments>
+                    <Expression>
+                      <AttributeRef>
+                        <!--Rws Fld Fk Early Accident Rail Way Accident-->
+                        <AttributeID>Gc538fc58-4855-4f72-b7c7-77aac9a03843</AttributeID>
+                      </AttributeRef>
+                    </Expression>
+                  </Arguments>
+                </Function>
+              </Expression>
+              <IsAggregate>true</IsAggregate>
+              <SortDirection>Descending</SortDirection>
+              <EnableDrillthrough>true</EnableDrillthrough>
+            </Attribute>
+            <Attribute ID="G56777482-5d0d-4b8c-b4ab-09d13f567103">
+              <Name>Min Rws Fld Fk Early Accident Rail Way Accident</Name>
+              <DataType>Integer</DataType>
+              <Nullable>true</Nullable>
+              <Expression>
+                <Function>
+                  <FunctionName>Min</FunctionName>
+                  <Arguments>
+                    <Expression>
+                      <AttributeRef>
+                        <!--Rws Fld Fk Early Accident Rail Way Accident-->
+                        <AttributeID>Gc538fc58-4855-4f72-b7c7-77aac9a03843</AttributeID>
+                      </AttributeRef>
+                    </Expression>
+                  </Arguments>
+                </Function>
+              </Expression>
+              <IsAggregate>true</IsAggregate>
+              <SortDirection>Descending</SortDirection>
+              <EnableDrillthrough>true</EnableDrillthrough>
+            </Attribute>
+            <Attribute ID="G09b8a41a-e5db-4b17-867a-2169aa2b07b3">
+              <Name>Max Rws Fld Fk Early Accident Rail Way Accident</Name>
+              <DataType>Integer</DataType>
+              <Nullable>true</Nullable>
+              <Expression>
+                <Function>
+                  <FunctionName>Max</FunctionName>
+                  <Arguments>
+                    <Expression>
+                      <AttributeRef>
+                        <!--Rws Fld Fk Early Accident Rail Way Accident-->
+                        <AttributeID>Gc538fc58-4855-4f72-b7c7-77aac9a03843</AttributeID>
+                      </AttributeRef>
+                    </Expression>
+                  </Arguments>
+                </Function>
+              </Expression>
+              <IsAggregate>true</IsAggregate>
+              <SortDirection>Descending</SortDirection>
+              <EnableDrillthrough>true</EnableDrillthrough>
+            </Attribute>
+          </Variations>
+          <Column Name="Rws_Fld_fk_EarlyAccidentRailWayAccident" />
+        </Attribute>
+        <Attribute ID="G649c8f6a-fd13-46a1-ade3-6312653efbe0">
+          <Name>Rws Fld Fk Early Accident Ab Rail Way Accident</Name>
+          <DataType>Integer</DataType>
+          <Nullable>true</Nullable>
+          <SortDirection>Descending</SortDirection>
+          <Format>g</Format>
+          <!--Total Rws Fld Fk Early Accident Ab Rail Way Accident-->
+          <DefaultAggregateAttributeID>G20102309-b25b-4325-984d-9acff85a5d04</DefaultAggregateAttributeID>
+          <Variations>
+            <Attribute ID="G20102309-b25b-4325-984d-9acff85a5d04">
+              <Name>Total Rws Fld Fk Early Accident Ab Rail Way Accident</Name>
+              <DataType>Integer</DataType>
+              <Nullable>true</Nullable>
+              <Expression>
+                <Function>
+                  <FunctionName>Sum</FunctionName>
+                  <Arguments>
+                    <Expression>
+                      <AttributeRef>
+                        <!--Rws Fld Fk Early Accident Ab Rail Way Accident-->
+                        <AttributeID>G649c8f6a-fd13-46a1-ade3-6312653efbe0</AttributeID>
+                      </AttributeRef>
+                    </Expression>
+                  </Arguments>
+                </Function>
+              </Expression>
+              <IsAggregate>true</IsAggregate>
+              <SortDirection>Descending</SortDirection>
+              <EnableDrillthrough>true</EnableDrillthrough>
+            </Attribute>
+            <Attribute ID="G6d26363c-f0c2-4579-a533-601fb9e72e97">
+              <Name>Avg Rws Fld Fk Early Accident Ab Rail Way Accident</Name>
+              <DataType>Decimal</DataType>
+              <Nullable>true</Nullable>
+              <Expression>
+                <Function>
+                  <FunctionName>Avg</FunctionName>
+                  <Arguments>
+                    <Expression>
+                      <AttributeRef>
+                        <!--Rws Fld Fk Early Accident Ab Rail Way Accident-->
+                        <AttributeID>G649c8f6a-fd13-46a1-ade3-6312653efbe0</AttributeID>
+                      </AttributeRef>
+                    </Expression>
+                  </Arguments>
+                </Function>
+              </Expression>
+              <IsAggregate>true</IsAggregate>
+              <SortDirection>Descending</SortDirection>
+              <EnableDrillthrough>true</EnableDrillthrough>
+            </Attribute>
+            <Attribute ID="G56ab48d9-837a-49b6-ba5b-9c2b4b581f80">
+              <Name>Min Rws Fld Fk Early Accident Ab Rail Way Accident</Name>
+              <DataType>Integer</DataType>
+              <Nullable>true</Nullable>
+              <Expression>
+                <Function>
+                  <FunctionName>Min</FunctionName>
+                  <Arguments>
+                    <Expression>
+                      <AttributeRef>
+                        <!--Rws Fld Fk Early Accident Ab Rail Way Accident-->
+                        <AttributeID>G649c8f6a-fd13-46a1-ade3-6312653efbe0</AttributeID>
+                      </AttributeRef>
+                    </Expression>
+                  </Arguments>
+                </Function>
+              </Expression>
+              <IsAggregate>true</IsAggregate>
+              <SortDirection>Descending</SortDirection>
+              <EnableDrillthrough>true</EnableDrillthrough>
+            </Attribute>
+            <Attribute ID="G8a0a82b6-04ae-4519-a27c-be9046024562">
+              <Name>Max Rws Fld Fk Early Accident Ab Rail Way Accident</Name>
+              <DataType>Integer</DataType>
+              <Nullable>true</Nullable>
+              <Expression>
+                <Function>
+                  <FunctionName>Max</FunctionName>
+                  <Arguments>
+                    <Expression>
+                      <AttributeRef>
+                        <!--Rws Fld Fk Early Accident Ab Rail Way Accident-->
+                        <AttributeID>G649c8f6a-fd13-46a1-ade3-6312653efbe0</AttributeID>
+                      </AttributeRef>
+                    </Expression>
+                  </Arguments>
+                </Function>
+              </Expression>
+              <IsAggregate>true</IsAggregate>
+              <SortDirection>Descending</SortDirection>
+              <EnableDrillthrough>true</EnableDrillthrough>
+            </Attribute>
+          </Variations>
+          <Column Name="Rws_Fld_fk_EarlyAccidentAbRailWayAccident" />
+        </Attribute>
+        <Attribute ID="G484c7630-7584-46a2-b37d-046f67166915">
+          <Name>Rws Fld Fk Accident Type</Name>
+          <DataType>Integer</DataType>
+          <Nullable>true</Nullable>
+          <SortDirection>Descending</SortDirection>
+          <Format>g</Format>
+          <Column Name="Rws_Fld_fk_AccidentType" />
+        </Attribute>
+        <Attribute ID="G480cd26f-2789-43dc-ba0c-5b7950e84f2b">
+          <Name>Rws Fld Description</Name>
+          <DataType>String</DataType>
+          <Nullable>true</Nullable>
+          <SortDirection>Ascending</SortDirection>
+          <Column Name="Rws_Fld_Description" />
+        </Attribute>
+        <Attribute ID="G0fada702-0c50-4646-bffc-4877b8d154e0">
+          <Name>Rws Fld Fk Main Accident Kind</Name>
+          <DataType>Integer</DataType>
+          <Nullable>true</Nullable>
+          <SortDirection>Descending</SortDirection>
+          <Format>g</Format>
+          <!--Total Rws Fld Fk Main Accident Kind-->
+          <DefaultAggregateAttributeID>G48cf095b-787a-4ea2-b0b3-df10c62b3937</DefaultAggregateAttributeID>
+          <Variations>
+            <Attribute ID="G48cf095b-787a-4ea2-b0b3-df10c62b3937">
+              <Name>Total Rws Fld Fk Main Accident Kind</Name>
+              <DataType>Integer</DataType>
+              <Nullable>true</Nullable>
+              <Expression>
+                <Function>
+                  <FunctionName>Sum</FunctionName>
+                  <Arguments>
+                    <Expression>
+                      <AttributeRef>
+                        <!--Rws Fld Fk Main Accident Kind-->
+                        <AttributeID>G0fada702-0c50-4646-bffc-4877b8d154e0</AttributeID>
+                      </AttributeRef>
+                    </Expression>
+                  </Arguments>
+                </Function>
+              </Expression>
+              <IsAggregate>true</IsAggregate>
+              <SortDirection>Descending</SortDirection>
+              <EnableDrillthrough>true</EnableDrillthrough>
+            </Attribute>
+            <Attribute ID="G32ab21f8-b88b-4ab7-80ee-1171b45a5209">
+              <Name>Avg Rws Fld Fk Main Accident Kind</Name>
+              <DataType>Decimal</DataType>
+              <Nullable>true</Nullable>
+              <Expression>
+                <Function>
+                  <FunctionName>Avg</FunctionName>
+                  <Arguments>
+                    <Expression>
+                      <AttributeRef>
+                        <!--Rws Fld Fk Main Accident Kind-->
+                        <AttributeID>G0fada702-0c50-4646-bffc-4877b8d154e0</AttributeID>
+                      </AttributeRef>
+                    </Expression>
+                  </Arguments>
+                </Function>
+              </Expression>
+              <IsAggregate>true</IsAggregate>
+              <SortDirection>Descending</SortDirection>
+              <EnableDrillthrough>true</EnableDrillthrough>
+            </Attribute>
+            <Attribute ID="G54ddfcbb-8b8f-45e8-8c51-48151f47159e">
+              <Name>Min Rws Fld Fk Main Accident Kind</Name>
+              <DataType>Integer</DataType>
+              <Nullable>true</Nullable>
+              <Expression>
+                <Function>
+                  <FunctionName>Min</FunctionName>
+                  <Arguments>
+                    <Expression>
+                      <AttributeRef>
+                        <!--Rws Fld Fk Main Accident Kind-->
+                        <AttributeID>G0fada702-0c50-4646-bffc-4877b8d154e0</AttributeID>
+                      </AttributeRef>
+                    </Expression>
+                  </Arguments>
+                </Function>
+              </Expression>
+              <IsAggregate>true</IsAggregate>
+              <SortDirection>Descending</SortDirection>
+              <EnableDrillthrough>true</EnableDrillthrough>
+            </Attribute>
+            <Attribute ID="Gf96c6136-163e-4269-ae57-480478fcc394">
+              <Name>Max Rws Fld Fk Main Accident Kind</Name>
+              <DataType>Integer</DataType>
+              <Nullable>true</Nullable>
+              <Expression>
+                <Function>
+                  <FunctionName>Max</FunctionName>
+                  <Arguments>
+                    <Expression>
+                      <AttributeRef>
+                        <!--Rws Fld Fk Main Accident Kind-->
+                        <AttributeID>G0fada702-0c50-4646-bffc-4877b8d154e0</AttributeID>
+                      </AttributeRef>
+                    </Expression>
+                  </Arguments>
+                </Function>
+              </Expression>
+              <IsAggregate>true</IsAggregate>
+              <SortDirection>Descending</SortDirection>
+              <EnableDrillthrough>true</EnableDrillthrough>
+            </Attribute>
+          </Variations>
+          <Column Name="Rws_Fld_fk_MainAccidentKind" />
+        </Attribute>
+        <Attribute ID="G4b2e753b-f4b5-4e68-8e97-347c17984cff">
+          <Name>Rws Fld Main Accident Kind Describe</Name>
+          <DataType>String</DataType>
+          <Nullable>true</Nullable>
+          <SortDirection>Ascending</SortDirection>
+          <Column Name="Rws_Fld_MainAccidentKindDescribe" />
+        </Attribute>
+      </Fields>
+      <Table Name="dbo_Rws_Viw_Full_EarlyAccident" />
+    </Entity>
+  </Entities>
+</SemanticModel>

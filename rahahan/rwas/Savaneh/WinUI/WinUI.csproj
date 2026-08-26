@@ -1,0 +1,754 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <OwnerKey>{FE3BBBB6-72D5-11d2-9ACE-00C04F79A2A4}</OwnerKey>
+    <ProjectType>Local</ProjectType>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E44A2870-2525-471B-BB97-6C11AB1F59B9}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ApplicationIcon>Flash32.ico</ApplicationIcon>
+    <AssemblyKeyContainerName>
+    </AssemblyKeyContainerName>
+    <AssemblyName>Savaneh</AssemblyName>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+    <DefaultClientScript>JScript</DefaultClientScript>
+    <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+    <DefaultTargetSchema>IE50</DefaultTargetSchema>
+    <DelaySign>false</DelaySign>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>RWAS.WinUI</RootNamespace>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <StartupObject>RWAS.WinUI.Program</StartupObject>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>false</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>full</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>false</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>true</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>none</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ActiveReports, Version=4.0.0.1094, Culture=neutral, PublicKeyToken=cc4967777c49a3ff">
+      <HintPath>..\..\Resources\lib\ActiveReports.dll</HintPath>
+    </Reference>
+    <Reference Include="ActiveReports.Chart">
+      <Name>ActiveReports.Chart</Name>
+      <HintPath>..\..\Resources\lib\ActiveReports.Chart.dll</HintPath>
+      <AssemblyFolderKey>hklm\dn\activereports for .net 2.0</AssemblyFolderKey>
+    </Reference>
+    <Reference Include="ActiveReports.Design2">
+      <Name>ActiveReports.Design2</Name>
+      <HintPath>..\..\Resources\lib\ActiveReports.Design2.dll</HintPath>
+      <AssemblyFolderKey>hklm\dn\activereports for .net 2.0</AssemblyFolderKey>
+    </Reference>
+    <Reference Include="ActiveReports.HtmlExport, Version=4.0.0.1094, Culture=neutral, PublicKeyToken=cc4967777c49a3ff">
+      <HintPath>..\..\Resources\lib\ActiveReports.HtmlExport.dll</HintPath>
+    </Reference>
+    <Reference Include="ActiveReports.Interop, Version=4.0.0.1094, Culture=neutral, PublicKeyToken=cc4967777c49a3ff">
+      <HintPath>..\..\Resources\lib\ActiveReports.Interop.dll</HintPath>
+    </Reference>
+    <Reference Include="ActiveReports.PdfExport, Version=4.0.0.1094, Culture=neutral, PublicKeyToken=cc4967777c49a3ff">
+      <HintPath>..\..\Resources\lib\ActiveReports.PdfExport.dll</HintPath>
+    </Reference>
+    <Reference Include="ActiveReports.RtfExport, Version=4.0.0.1094, Culture=neutral, PublicKeyToken=cc4967777c49a3ff">
+      <HintPath>..\..\Resources\lib\ActiveReports.RtfExport.dll</HintPath>
+    </Reference>
+    <Reference Include="ActiveReports.TextExport, Version=4.0.0.1094, Culture=neutral, PublicKeyToken=cc4967777c49a3ff">
+      <HintPath>..\..\Resources\lib\ActiveReports.TextExport.dll</HintPath>
+    </Reference>
+    <Reference Include="ActiveReports.TiffExport, Version=4.0.0.1094, Culture=neutral, PublicKeyToken=cc4967777c49a3ff">
+      <HintPath>..\..\Resources\lib\ActiveReports.TiffExport.dll</HintPath>
+    </Reference>
+    <Reference Include="ActiveReports.Viewer, Version=4.0.0.1094, Culture=neutral, PublicKeyToken=cc4967777c49a3ff">
+      <HintPath>..\..\Resources\lib\ActiveReports.Viewer.dll</HintPath>
+    </Reference>
+    <Reference Include="ActiveReports.XlsExport, Version=4.0.0.1094, Culture=neutral, PublicKeyToken=cc4967777c49a3ff">
+      <HintPath>..\..\Resources\lib\ActiveReports.XlsExport.dll</HintPath>
+    </Reference>
+    <Reference Include="AxInterop.SHDocVw">
+      <Name>AxInterop.SHDocVw</Name>
+      <HintPath>..\..\Resources\lib\AxInterop.SHDocVw.dll</HintPath>
+    </Reference>
+    <Reference Include="FarsiLibrary.Resources, Version=1.9.0.0, Culture=neutral, PublicKeyToken=def7c46cace23f8f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Resources\lib\FarsiLibrary.Resources.dll</HintPath>
+    </Reference>
+    <Reference Include="FarsiLibrary.Utils, Version=1.9.0.0, Culture=neutral, PublicKeyToken=def7c46cace23f8f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Resources\lib\FarsiLibrary.Utils.dll</HintPath>
+    </Reference>
+    <Reference Include="FarsiLibrary.Win, Version=1.9.0.0, Culture=neutral, PublicKeyToken=def7c46cace23f8f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Resources\lib\FarsiLibrary.Win.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.SHDocVw">
+      <Name>Interop.SHDocVw</Name>
+      <HintPath>..\..\Resources\lib\Interop.SHDocVw.dll</HintPath>
+    </Reference>
+    <Reference Include="Janus.Windows.Common.v3">
+      <HintPath>..\..\Resources\lib\Janus 3.5\Janus.Windows.Common.v3.dll</HintPath>
+    </Reference>
+    <Reference Include="Janus.Windows.GridEX.v3">
+      <HintPath>..\..\Resources\lib\Janus 3.5\Janus.Windows.GridEX.v3.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="SpecialComboBox">
+      <Name>specialcombobox</Name>
+      <HintPath>..\..\Resources\lib\specialcombobox.dll</HintPath>
+    </Reference>
+    <Reference Include="System">
+      <Name>System</Name>
+    </Reference>
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data">
+      <Name>System.Data</Name>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Design">
+      <Name>System.Design</Name>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <Name>System.Drawing</Name>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web.Services">
+      <Name>System.Web.Services</Name>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <Name>System.Windows.Forms</Name>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Name>System.XML</Name>
+    </Reference>
+    <COMReference Include="stdole">
+      <Guid>{00020430-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Forms\frmAccidentKind.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmAccidentKind.Designer.cs">
+      <DependentUpon>frmAccidentKind.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmAppObject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmAppObject.Designer.cs">
+      <DependentUpon>frmAppObject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmAbout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmAbout.Designer.cs">
+      <DependentUpon>frmAbout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classReport.cs" />
+    <Compile Include="clsSecurity.cs" />
+    <Compile Include="Enums.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmAccidentCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmAccidentDegree.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmAccidentReason.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmDetailReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmDialogReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmDialogReport.Designer.cs">
+      <DependentUpon>frmDialogReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmEarlyAccidentReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmEffective.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmEffective.Designer.cs">
+      <DependentUpon>frmEffective.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmFiredRailVehicle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmLoadAccidentReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmParent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmParent.Designer.cs">
+      <DependentUpon>frmParent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmPasswordChange.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmPersonnel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmPersonnel.Designer.cs">
+      <DependentUpon>frmPersonnel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmPersonnelSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmPersonnelSearch.Designer.cs">
+      <DependentUpon>frmPersonnelSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmRegion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmReportViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmReportViewer.Designer.cs">
+      <DependentUpon>frmReportViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmSecondaryAccidentReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmStation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmErrorLogReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmHelp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmLoad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmCollision.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmExitRailVehicle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmScapeRailVehicle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmSecondaryAccidentReportDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmSubContractor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmSubContractor.Designer.cs">
+      <DependentUpon>frmSubContractor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmSuplAbRailWayAccident.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmSuplAgentDieAndAfoul.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmSuplRailWayAccident.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmChooseColor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmUserAccess.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmUserAccess.Designer.cs">
+      <DependentUpon>frmUserAccess.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmUserDefine.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmCroquis.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmMedia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmTrainArrangment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\arvReport1.cs">
+      <DependentUpon>arvReport1.rpx</DependentUpon>
+      <SubType>Code</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Reports\arvReport10.cs">
+      <DependentUpon>arvReport10.rpx</DependentUpon>
+      <SubType>Code</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Reports\arvReport11.cs">
+      <DependentUpon>arvReport11.rpx</DependentUpon>
+      <SubType>Code</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Reports\arvReport12.cs">
+      <DependentUpon>arvReport12.rpx</DependentUpon>
+      <SubType>Code</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Reports\arvReport13.cs">
+      <DependentUpon>arvReport13.rpx</DependentUpon>
+      <SubType>Code</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Reports\arvReport2.cs">
+      <DependentUpon>arvReport2.rpx</DependentUpon>
+      <SubType>Code</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Reports\arvReport3.cs">
+      <DependentUpon>arvReport3.rpx</DependentUpon>
+      <SubType>Code</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Reports\arvReport4.cs">
+      <DependentUpon>arvReport4.rpx</DependentUpon>
+      <SubType>Code</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Reports\arvReport4_1.cs">
+      <DependentUpon>arvReport4_1.rpx</DependentUpon>
+      <SubType>Code</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Reports\arvReport4_2.cs">
+      <DependentUpon>arvReport4_2.rpx</DependentUpon>
+      <SubType>Code</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Reports\arvReport5.cs">
+      <DependentUpon>arvReport5.rpx</DependentUpon>
+      <SubType>Code</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Reports\arvReport6.cs">
+      <DependentUpon>arvReport6.rpx</DependentUpon>
+      <SubType>Code</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Reports\arvReport7.cs">
+      <DependentUpon>arvReport7.rpx</DependentUpon>
+      <SubType>Code</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Reports\arvReport8.cs">
+      <DependentUpon>arvReport8.rpx</DependentUpon>
+      <SubType>Code</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Reports\arvReport9.cs">
+      <DependentUpon>arvReport9.rpx</DependentUpon>
+      <SubType>Code</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Forms\FrmActiveReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmExportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmChartOption.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserControl\ButtonEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserControl\Combo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\Item.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="UserControl\LabelEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <EmbeddedResource Include="Forms\frmAccidentKind.resx">
+      <DependentUpon>frmAccidentKind.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmAppObject.resx">
+      <DependentUpon>frmAppObject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmAbout.resx">
+      <DependentUpon>frmAbout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmAccidentCategory.resx">
+      <DependentUpon>FrmAccidentCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmAccidentDegree.resx">
+      <DependentUpon>FrmAccidentDegree.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmAccidentReason.resx">
+      <DependentUpon>FrmAccidentReason.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmDetailReport.resx">
+      <DependentUpon>FrmDetailReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmDialogReport.resx">
+      <DependentUpon>frmDialogReport.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmEarlyAccidentReport.resx">
+      <DependentUpon>FrmEarlyAccidentReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmEffective.resx">
+      <DependentUpon>frmEffective.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmFiredRailVehicle.resx">
+      <DependentUpon>FrmFiredRailVehicle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmLoadAccidentReport.resx">
+      <DependentUpon>FrmLoadAccidentReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmParent.resx">
+      <DependentUpon>frmParent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmPasswordChange.resx">
+      <DependentUpon>frmPasswordChange.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmPersonnel.resx">
+      <DependentUpon>frmPersonnel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmPersonnelSearch.resx">
+      <DependentUpon>frmPersonnelSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmRegion.resx">
+      <DependentUpon>FrmRegion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmReportViewer.resx">
+      <DependentUpon>frmReportViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmSecondaryAccidentReport.resx">
+      <DependentUpon>FrmSecondaryAccidentReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmStation.resx">
+      <DependentUpon>FrmStation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmErrorLogReport.resx">
+      <DependentUpon>FrmErrorLogReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmHelp.resx">
+      <DependentUpon>FrmHelp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmLoad.resx">
+      <DependentUpon>FrmLoad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmCollision.resx">
+      <DependentUpon>FrmCollision.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmExitRailVehicle.resx">
+      <DependentUpon>FrmExitRailVehicle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmScapeRailVehicle.resx">
+      <DependentUpon>FrmScapeRailVehicle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmSecondaryAccidentReportDetail.resx">
+      <DependentUpon>FrmSecondaryAccidentReportDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmSubContractor.resx">
+      <DependentUpon>frmSubContractor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmSuplAbRailWayAccident.resx">
+      <DependentUpon>FrmSuplAbRailWayAccident.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmSuplAgentDieAndAfoul.resx">
+      <DependentUpon>FrmSuplAgentDieAndAfoul.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmSuplRailWayAccident.resx">
+      <DependentUpon>FrmSuplRailWayAccident.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmChooseColor.resx">
+      <DependentUpon>FrmChooseColor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmUserAccess.resx">
+      <DependentUpon>frmUserAccess.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmUserDefine.resx">
+      <DependentUpon>FrmUserDefine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmCroquis.resx">
+      <DependentUpon>FrmCroquis.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmMedia.resx">
+      <DependentUpon>FrmMedia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmTrainArrangment.resx">
+      <DependentUpon>FrmTrainArrangment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\arvReport1.rpx">
+      <Generator>ARVSPackage.CodeGenerator</Generator>
+      <LastGenOutput>arvReport1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\arvReport10.rpx">
+      <Generator>ARVSPackage.CodeGenerator</Generator>
+      <LastGenOutput>arvReport10.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\arvReport11.rpx">
+      <Generator>ARVSPackage.CodeGenerator</Generator>
+      <LastGenOutput>arvReport11.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\arvReport12.rpx">
+      <Generator>ARVSPackage.CodeGenerator</Generator>
+      <LastGenOutput>arvReport12.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\arvReport13.rpx">
+      <Generator>ARVSPackage.CodeGenerator</Generator>
+      <LastGenOutput>arvReport13.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\arvReport2.rpx">
+      <Generator>ARVSPackage.CodeGenerator</Generator>
+      <LastGenOutput>arvReport2.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\arvReport3.rpx">
+      <Generator>ARVSPackage.CodeGenerator</Generator>
+      <LastGenOutput>arvReport3.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\arvReport4.rpx">
+      <Generator>ARVSPackage.CodeGenerator</Generator>
+      <LastGenOutput>arvReport4.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\arvReport4_1.rpx">
+      <Generator>ARVSPackage.CodeGenerator</Generator>
+      <LastGenOutput>arvReport4_1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\arvReport4_2.rpx">
+      <Generator>ARVSPackage.CodeGenerator</Generator>
+      <LastGenOutput>arvReport4_2.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\arvReport5.rpx">
+      <Generator>ARVSPackage.CodeGenerator</Generator>
+      <LastGenOutput>arvReport5.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\arvReport6.rpx">
+      <Generator>ARVSPackage.CodeGenerator</Generator>
+      <LastGenOutput>arvReport6.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\arvReport7.rpx">
+      <Generator>ARVSPackage.CodeGenerator</Generator>
+      <LastGenOutput>arvReport7.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\arvReport8.rpx">
+      <Generator>ARVSPackage.CodeGenerator</Generator>
+      <LastGenOutput>arvReport8.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\arvReport9.rpx">
+      <Generator>ARVSPackage.CodeGenerator</Generator>
+      <LastGenOutput>arvReport9.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmActiveReport.resx">
+      <DependentUpon>FrmActiveReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmExportForm.resx">
+      <DependentUpon>FrmExportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmChartOption.resx">
+      <DependentUpon>FrmChartOption.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl\ButtonEx.resx">
+      <DependentUpon>ButtonEx.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl\Combo.resx">
+      <DependentUpon>Combo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl\LabelEx.resx">
+      <DependentUpon>LabelEx.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BusinessRules\BusinessRules.csproj">
+      <Project>{7B326ED5-7F2B-4ABD-ACE6-87777F8B9DDD}</Project>
+      <Name>BusinessRules</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{1010B136-1D0F-4E7D-84CD-6EBE68D17A3C}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataAccess\DataAccess.csproj">
+      <Project>{10229AD2-1D15-414C-8840-058EA0AF3A12}</Project>
+      <Name>DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ProgLib\Proglib.csproj">
+      <Project>{6063B271-FF43-4CE6-9665-D046CA023AFA}</Project>
+      <Name>Proglib</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lock.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Lock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Flash32.ico" />
+  </ItemGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties TDLELEMENTTYPE="WinUI" />
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

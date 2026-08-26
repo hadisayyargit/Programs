@@ -1,0 +1,120 @@
+CREATE  view [dbo].[uv_current_prs_main_info_shaghelin]
+as
+select t1.UNIQ_CODE,     ßÏ ÇäÍÕÇÑí
+ t1.D_eff ,            ÊÇÑíÎ ãæËÑ 
+       t1.PER_NO,            ÔãÇÑå ßÇÑãäÏí
+       t1.Name,               äÇã
+       t1.SurName,            äÇã ÎÇäæÇÏí
+       t1.FADER ,             äÇã ÏÑ
+       t1.No_Ident ,           ÔãÇÑå ÔäÇÓäÇãå
+       t1.National_code ,     ßÏ ãáí
+       t1.d_born,                 ÊÇÑíÎ ÊæáÏ
+       t1.ID_t12_r13 ,           ßÏ æÖÚíÊ ÊÇåá
+       t2.descript as taahol,    ÚäæÇä æÖÚíÊ ÊÇåá
+       t1.D_emp  ,                   ÊÇÑíÎ ÇÓÊÎÏÇã
+       t1.Vahed_id_r2,            äÇÍíå æ ÓÊÇÏ -  ßÏ æÇÍÏ ÓÇÒãÇäí *
+       t7.pre_descript as vahedasli,       ÚäæÇä æÇÍÏ ÓÇÒãÇäí- äÇÍíå æ ÓÊÇÏ*
+       t1.Vahed_id_r73,       ßÏ ãÍá ßÇÑ-æÇÍÏ ÊÇÈÚå           
+       t8.pre_descript as vahedtabe,ÚäæÇä æÇÍÏ ÊÇÈÚå - ãÍá ßÇÑ 
+        t1.Emp_Kind_id_r5 ,  ßÏ äæÚ ÇÓÊÎÏÇã   
+       t5.descript as estekhdam ,   ÚäæÇä äæÚ ÇÓÊÎÏÇã 
+        t1.EDUC_ID_r27,     ßÏ ãÏÑß ÊÍÕíáí 
+       t3.descript as madrak,   ÚäæÇä ãÏÑß ÊÍÕíáí
+    
+       t1.org_row_r1,  ßÏ ÓÊ ÓÇÒãÇäí
+       (select min(d_eff) from prs_main_info ot where 
+       org_row_r1=t1.org_row_r1) as time_org,     ÊÇÑíÎ ÇÎĞ ÓÊ ÓÇÒãÇäí 
+      ( select dbo.udf_daytodates( datediff(day,dbo.s2m((select min(d_eff) from prs_main_info ot where 
+        org_row_r1=t1.org_row_r1)),getdate()))) as sabeghe,  ÓÇÈŞå ÏÑ ÂÎÑíä ÓÊ 
+     ( select dbo.udf_daytodates( datediff(day,dbo.s2m((select min(d_eff) from prs_main_info )),getdate()))) as sabeghekar,   ÓÇÈŞå ßá ßÇÑ
+       t9.descript as post,ÚäæÇä ÓÊ ÓÇÒãÇäí    
+       t11.job_level_id as codejob,  ßÏ ÔÛá 
+       t11.descript  as job,  ÚäæÇä ÔÛá 
+       t1.address, ÂÏÑÓ
+       t1.tel  Êáİä 
+from prs_main_info t1
+-------------------------------
+
+-- Select * From Vw_F15_F46_4Savaneh Where T_Date_Shamsi = '890511' And Dizel_No = 7002
+Alter VIEW [dbo].[Vw_F15_F46_4Savaneh]
+
+AS
+
+
+Select
+	F4603 As T_No ,   ÔãÇÑå ŞØÇÑ
+  
+	F4604 As T_Date_Shamsi , ÊÇÑíÎ ÔãÓí  ÇíÌÇÏ 
+	F4605 As T_Time , ÓÇÚÊ ÇíÌÇÏ
+	F1504 As Train_Kind , äæÚ ŞØÇÑ ßÏ
+	(Select [Desc] From P8 Where P8.Code = F1504 ) As Train_Kind_Desc ,ÔÑÍ äæÚ ŞØÇÑ  
+	F1505 As Src_Code , ßÏ ãÈÏÇ
+	F1506 As Des_Code , ßÏ ãŞÕÏ
+	(Select [Desc] From P2 Where P2.Code = T8.F1505 And P2.Nahi =T9.Nahi ) AS Src_Desc , ÚäæÇä ãÈÏÇ
+	(Select [Desc] From P2 Where P2.Code = T8.F1506 And P2.Nahi =T9.Nahi ) AS Des_Desc ,ÚäæÇä ãŞÕÏ
+	F4602 As Dizel_No ,ÔãÇÑå  ÏíÒá åÇ 
+	F1511 As Wagon_Number , ÊÚÏÇÏ æÇäåÇ
+	  
+	F1510 As T_Vazn  æÒä ßá ŞØÇÑ 
+	
+From F46 As T9
+	Left Join F15 As T8 On 
+		T9.F4603 = T8.F1501
+		And T9.F4604_M = T8.F1502_M
+		And T9.F4605 = T8.F1503
+		And T9.Nahi = T8.Nahi
+
+Where F4601 = 11	
+--------------------------------
+äÇã View : mms_vw_repairbase4savaneh
+
+SELECT     Mms_Fld_fk_WagonNo,ÔãÇÑå æÇä 
+ Mms_Fld_Date  ÊÇÑíÎ ÊÚãíÑ ÇÓÇÓí 
+FROM         dbo.Mms_Viw_CompositeRepairDetail
+---------------------------------
+USE [RWMMS]
+GO
+
+CREATE VIEW [dbo].[Vw_SpecialRepair_4Savaneh]
+
+AS
+
+	Select Mms_Fld_fk_WagonNo ,  ÔãÇÑå æÇä
+Mms_Fld_SpecialRepairDate  ÊÇÑíÎ ÊÚãíÑ æíå     
+	From dbo.[Mms_viw_SpecialRepair]
+
+
+
+GO
+
+---------------------
+	äÇã view:   Date_Asasi
+ÊÚãíÑÇÊ ÇÓÇÓí áßæãæÊíæåÇ    
+	SELECT     dbo.Ent_Ext_Asasi.Dizel_No,  ÔãÇÑå ÏíÒá   
+		   dbo.Ent_Ext_Asasi.Ent_Date, ÊÇÑíÎ ãíáÇÏí ÊÚãíÑ ÇÓÇÓí 
+		   dbo.Ent_Ext_Asasi.Ent_Date_Shamsi,ÊÇÑíÎ ÔãÓí ÊÚãíÑ ÇÓÇÓí 
+		   dbo.Ent_Asasi_Reason.Code_Asasi    ßÏ äæÚ ÊÚãíÑ 
+	FROM  dbo.Ent_Asasi_Reason INNER JOIN
+                      dbo.Ent_Ext_Asasi ON dbo.Ent_Asasi_Reason.Dizel_No = dbo.Ent_Ext_Asasi.Dizel_No AND 
+                      dbo.Ent_Asasi_Reason.Ent_Date = dbo.Ent_Ext_Asasi.Ent_Date
+	WHERE  (dbo.Ent_Asasi_Reason.Code_Asasi = 8)
+
+---------------------------
+	äÇã  view:   Date_tamir_Vizheh
+ÇØáÇÚÇÊ ÊÚãíÑ æíå áßæãæÊíæåÇ  
+	SELECT     dbo.Ent_Ext_Asasi.Dizel_No,  ÔãÇÑå ÏíÒá 
+		   dbo.Ent_Ext_Asasi.Ent_Date,ÊÇÑíÎ ãíáÇÏí ÊÚãíÑ  æíå 
+		   dbo.Ent_Ext_Asasi.Ent_Date_Shamsi,ÊÇÑíÎ ÔãÓí ÊÚãíÑ æíå 
+		   dbo.Ent_Asasi_Reason.Code_Asasi ßÏ äæÚ ÊÚãíÑ
+	FROM  dbo.Ent_Asasi_Reason INNER JOIN
+                      dbo.Ent_Ext_Asasi ON dbo.Ent_Asasi_Reason.Dizel_No = dbo.Ent_Ext_Asasi.Dizel_No AND 
+                      dbo.Ent_Asasi_Reason.Ent_Date = dbo.Ent_Ext_Asasi.Ent_Date
+	WHERE  (dbo.Ent_Asasi_Reason.Code_Asasi <> 8)
+
+
+
+
+
+
+
+

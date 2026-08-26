@@ -1,0 +1,15 @@
+USE [RWMMS]
+GO
+
+CREATE VIEW [dbo].[Vw_SpecialRepair_4Savaneh]
+
+AS
+
+	Select Mms_Fld_fk_WagonNo ,  ÔãÇÑå æÇä
+Mms_Fld_SpecialRepairDate  ÊÇÑíÎ ÊÚãíÑ æíå     
+	From dbo.[Mms_viw_SpecialRepair]
+
+
+
+GO
+

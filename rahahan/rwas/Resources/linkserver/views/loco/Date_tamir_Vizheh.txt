@@ -1,0 +1,10 @@
+	äÇã  view:   Date_tamir_Vizheh
+ÇØáÇÚÇÊ ÊÚãíÑ æíå áßæãæÊíæåÇ  
+	SELECT     dbo.Ent_Ext_Asasi.Dizel_No,  ÔãÇÑå ÏíÒá 
+		   dbo.Ent_Ext_Asasi.Ent_Date,ÊÇÑíÎ ãíáÇÏí ÊÚãíÑ  æíå 
+		   dbo.Ent_Ext_Asasi.Ent_Date_Shamsi,ÊÇÑíÎ ÔãÓí ÊÚãíÑ æíå 
+		   dbo.Ent_Asasi_Reason.Code_Asasi ßÏ äæÚ ÊÚãíÑ
+	FROM  dbo.Ent_Asasi_Reason INNER JOIN
+                      dbo.Ent_Ext_Asasi ON dbo.Ent_Asasi_Reason.Dizel_No = dbo.Ent_Ext_Asasi.Dizel_No AND 
+                      dbo.Ent_Asasi_Reason.Ent_Date = dbo.Ent_Ext_Asasi.Ent_Date
+	WHERE  (dbo.Ent_Asasi_Reason.Code_Asasi <> 8)

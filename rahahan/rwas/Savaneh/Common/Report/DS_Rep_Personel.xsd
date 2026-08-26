@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema id="DS_Rep_BodilyMentalStatus" targetNamespace="http://tempuri.org/DS_Rep_BodilyMentalStatus.xsd"
+	elementFormDefault="qualified" attributeFormDefault="qualified" xmlns="http://tempuri.org/DS_Rep_BodilyMentalStatus.xsd"
+	xmlns:mstns="http://tempuri.org/DS_Rep_BodilyMentalStatus.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+	<xs:element name="DS_Rep_BodilyMentalStatus" msdata:IsDataSet="true">
+		<xs:complexType>
+			<xs:choice maxOccurs="unbounded">
+				<xs:element name="Rws_Sp_Rep_Personel">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Prs_Fld_Row" msdata:ReadOnly="true" type="xs:int" minOccurs="0" />
+							<xs:element name="Prs_Fld_UniqueCode" type="xs:int" />
+							<xs:element name="Prs_Fld_PersonelID" type="xs:int" minOccurs="0" />
+							<xs:element name="Prs_Fld_FirstName" type="xs:string" minOccurs="0" />
+							<xs:element name="Prs_Fld_LastName" type="xs:string" minOccurs="0" />
+							<xs:element name="Prs_Fld_IDNo" type="xs:int" minOccurs="0" />
+							<xs:element name="Rws_Fld_JobDescribe" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="Prs_Fld_MaritalStatus" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="Prs_Fld_FatherName" type="xs:string" minOccurs="0" />
+							<xs:element name="Prs_Fld_BirthYear" type="xs:short" minOccurs="0" />
+							<xs:element name="Rws_Fld_StudyStatusDescribe" type="xs:string" minOccurs="0" />
+							<xs:element name="Rws_Fld_EmployeeStatusDescribe" type="xs:string" minOccurs="0" />
+							<xs:element name="Prs_Fld_EmployeeDate" type="xs:string" minOccurs="0" />
+							<xs:element name="Prs_Fld_Contractor" type="xs:string" minOccurs="0" />
+							<xs:element name="Prs_Fld_Address" type="xs:string" minOccurs="0" />
+							<xs:element name="Prs_Fld_TelNo" type="xs:string" minOccurs="0" />
+							<xs:element name="Prs_Fld_OrgUnitDescribe" type="xs:string" minOccurs="0" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

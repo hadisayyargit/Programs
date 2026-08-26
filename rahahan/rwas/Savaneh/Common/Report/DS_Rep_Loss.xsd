@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema id="DS_Rep_Loss" targetNamespace="http://tempuri.org/DS_Rep_Loss.xsd" elementFormDefault="qualified"
+	attributeFormDefault="qualified" xmlns="http://tempuri.org/DS_Rep_Loss.xsd" xmlns:mstns="http://tempuri.org/DS_Rep_Loss.xsd"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+	<xs:element name="DS_Rep_Loss" msdata:IsDataSet="true">
+		<xs:complexType>
+			<xs:choice maxOccurs="unbounded">
+				<xs:element name="Rws_Sp_Rep_Loss4DS">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="DayDate" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="Rws_Fld_FileCategorize" type="xs:string" />
+							<xs:element name="YearDate" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="Rws_Fld_fk_Region" type="xs:unsignedByte" />
+							<xs:element name="Rws_Fld_RegionDescribe" type="xs:string" />
+							<xs:element name="Rws_Fld_LocomotiveLoss" msdata:ReadOnly="true" type="xs:decimal" minOccurs="0" />
+							<xs:element name="Rws_Fld_WagonLoss" msdata:ReadOnly="true" type="xs:decimal" minOccurs="0" />
+							<xs:element name="Rws_Fld_LineLoss" msdata:ReadOnly="true" type="xs:decimal" minOccurs="0" />
+							<xs:element name="Rws_Fld_SignalLoss" msdata:ReadOnly="true" type="xs:decimal" minOccurs="0" />
+							<xs:element name="Rws_Fld_OtherLoss" msdata:ReadOnly="true" type="xs:decimal" minOccurs="0" />
+							<xs:element name="Rws_Fld_SumLoss" msdata:ReadOnly="true" type="xs:decimal" minOccurs="0" />
+							<xs:element name="Rws_Fld_LocomotiveLossPercent" msdata:ReadOnly="true" type="xs:decimal" minOccurs="0" />
+							<xs:element name="Rws_Fld_WagonLossPercent" msdata:ReadOnly="true" type="xs:decimal" minOccurs="0" />
+							<xs:element name="Rws_Fld_LineLossPercent" msdata:ReadOnly="true" type="xs:decimal" minOccurs="0" />
+							<xs:element name="Rws_Fld_SignalLossPercent" msdata:ReadOnly="true" type="xs:decimal" minOccurs="0" />
+							<xs:element name="Rws_Fld_OtherLossPercent" msdata:ReadOnly="true" type="xs:decimal" minOccurs="0" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

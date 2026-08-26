@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ActiveReportsLayout Version="3" PrintWidth="2059.2" DocumentName="ActiveReports Document" ScriptLang="C#" CodeFile="arvReport4_1.cs">
+  <StyleSheet>
+    <Style Name="Normal" Value="font-family: Arial; font-style: normal; font-variant: inherit; font-weight: normal; font-size: 10pt; font-size-adjust: inherit; font-stretch: inherit; color: rgb(0,0,0); background-repeat: inherit; background-attachment: inherit; opacity: inherit; word-spacing: inherit; letter-spacing: inherit; text-decoration: none; vertical-align: inherit; text-transform: inherit; text-align: inherit; text-indent: inherit; unicode-bidi: inherit; line-height: inherit; white-space: inherit; ddo-char-set: 0; " />
+    <Style Name="Heading1" Value="font-family: inherit; font-style: inherit; font-variant: inherit; font-weight: bold; font-size: 16pt; font-size-adjust: inherit; font-stretch: inherit; " />
+    <Style Name="Heading2" Value="font-family: Times New Roman; font-style: italic; font-variant: inherit; font-weight: bold; font-size: 14pt; font-size-adjust: inherit; font-stretch: inherit; " />
+    <Style Name="Heading3" Value="font-family: inherit; font-style: inherit; font-variant: inherit; font-weight: bold; font-size: 13pt; font-size-adjust: inherit; font-stretch: inherit; " />
+  </StyleSheet>
+  <Sections>
+    <Section Type="ReportHeader" Name="ReportHeader" Height="0" BackColor="16777215" CanShrink="0" />
+    <Section Type="Detail" Name="Detail" Height="576" BackColor="16777215" CanShrink="0">
+      <Control Type="AR.Field" Name="TextBox" DataField="Prs_Fld_FullName" MOD="4" Left="0" Top="270" Width="1980" Height="270" Text="" Style="ddo-char-set: 1; text-align: right; font-weight: normal; font-size: 8pt; font-family: Tahoma; " />
+      <Control Type="AR.Field" Name="TextBox1" DataField="Rws_Fld_AgentCodeDescribe" MOD="4" Left="0" Top="0" Width="1980" Height="270" Text="" Style="ddo-char-set: 1; text-align: right; font-weight: normal; font-size: 8pt; font-family: Tahoma; " />
+      <Control Type="AR.Line" Name="Line" MOD="4" X1="0" Y1="540" X2="2070" Y2="540" />
+    </Section>
+    <Section Type="ReportFooter" Name="ReportFooter" Height="0" BackColor="16777215" CanShrink="0" />
+  </Sections>
+  <PageSettings PaperSize="9" PaperWidth="11906" PaperHeight="16838" PaperName="" Orientation="2" />
+</ActiveReportsLayout>

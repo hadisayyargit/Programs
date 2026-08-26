@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema id="DS_Rep_AbRailWayAccident" targetNamespace="http://tempuri.org/DS_Rep_AbRailWayAccident.xsd"
+	elementFormDefault="qualified" attributeFormDefault="qualified" xmlns="http://tempuri.org/DS_Rep_AbRailWayAccident.xsd"
+	xmlns:mstns="http://tempuri.org/DS_Rep_AbRailWayAccident.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+	<xs:element name="DS_Rep_AbRailWayAccident" msdata:IsDataSet="true">
+		<xs:complexType>
+			<xs:choice maxOccurs="unbounded">
+				<xs:element name="Rws_Sp_Rep_AbRailWayAccident4DS">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="DayDate" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+							<xs:element name="Rws_Fld_FileCategorize" type="xs:string" />
+							<xs:element name="Rws_Tbl_AccidentCategoryCode" type="xs:string" />
+							<xs:element name="Rws_Fld_AccidentDate" type="xs:string" />
+							<xs:element name="Rws_Fld_PassengerGender" type="xs:unsignedByte" minOccurs="0" />
+							<xs:element name="Rws_Fld_RailWayAfoulCount" type="xs:short" minOccurs="0" />
+							<xs:element name="Rws_Fld_PassengerAfoulCount" type="xs:short" minOccurs="0" />
+							<xs:element name="Rws_Fld_ThirdPartyAfoulCount" type="xs:short" minOccurs="0" />
+							<xs:element name="Rws_Fld_RailWayDieCount" type="xs:short" minOccurs="0" />
+							<xs:element name="Rws_Fld_PassengerDieCount" type="xs:short" minOccurs="0" />
+							<xs:element name="Rws_Fld_ThirdPartyDieCount" type="xs:short" minOccurs="0" />
+							<xs:element name="Rws_Fld_RegionDescribe" type="xs:string" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

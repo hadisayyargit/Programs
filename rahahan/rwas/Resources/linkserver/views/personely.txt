@@ -1,0 +1,42 @@
+CREATE  view [dbo].[uv_current_prs_main_info_shaghelin]
+as
+select t1.UNIQ_CODE,     ßÏ ÇäÍÕÇÑí
+        t1.D_eff ,            ÊÇÑíÎ ãæËÑ 
+       t1.PER_NO,            ÔãÇÑå ßÇÑãäÏí
+       t1.Name,               äÇã
+       t1.SurName,            äÇã ÎÇäæÇÏí
+       t1.FADER ,             äÇã ÏÑ
+       t1.No_Ident ,           ÔãÇÑå ÔäÇÓäÇãå
+       t1.National_code ,     ßÏ ãáí
+       t1.d_born,                 ÊÇÑíÎ ÊæáÏ
+       t1.ID_t12_r13 ,           ßÏ æÖÚíÊ ÊÇåá
+       t2.descript as taahol,    ÚäæÇä æÖÚíÊ ÊÇåá
+       t1.D_emp  ,                   ÊÇÑíÎ ÇÓÊÎÏÇã
+       t1.Vahed_id_r2,            äÇÍíå æ ÓÊÇÏ -  ßÏ æÇÍÏ ÓÇÒãÇäí *
+       t7.pre_descript as vahedasli,       ÚäæÇä æÇÍÏ ÓÇÒãÇäí- äÇÍíå æ ÓÊÇÏ*
+       t1.Vahed_id_r73,       ßÏ ãÍá ßÇÑ-æÇÍÏ ÊÇÈÚå           
+       t8.pre_descript as vahedtabe,ÚäæÇä æÇÍÏ ÊÇÈÚå - ãÍá ßÇÑ 
+        t1.Emp_Kind_id_r5 ,  ßÏ äæÚ ÇÓÊÎÏÇã   
+       t5.descript as estekhdam ,   ÚäæÇä äæÚ ÇÓÊÎÏÇã 
+        t1.EDUC_ID_r27,     ßÏ ãÏÑß ÊÍÕíáí 
+       t3.descript as madrak,   ÚäæÇä ãÏÑß ÊÍÕíáí
+    
+       t1.org_row_r1,  ßÏ ÓÊ ÓÇÒãÇäí
+       (select min(d_eff) from prs_main_info ot where 
+       org_row_r1=t1.org_row_r1) as time_org,     ÊÇÑíÎ ÇÎĞ ÓÊ ÓÇÒãÇäí 
+      ( select dbo.udf_daytodates( datediff(day,dbo.s2m((select min(d_eff) from prs_main_info ot where 
+        org_row_r1=t1.org_row_r1)),getdate()))) as sabeghe,  ÓÇÈŞå ÏÑ ÂÎÑíä ÓÊ 
+     ( select dbo.udf_daytodates( datediff(day,dbo.s2m((select min(d_eff) from prs_main_info )),getdate()))) as sabeghekar,   ÓÇÈŞå ßá ßÇÑ
+       t9.descript as post,ÚäæÇä ÓÊ ÓÇÒãÇäí    
+       t11.job_level_id as codejob,  ßÏ ÔÛá 
+       t11.descript  as job,  ÚäæÇä ÔÛá 
+       t1.address, ÂÏÑÓ
+       t1.tel  Êáİä 
+from prs_main_info t1
+
+
+
+
+
+
+

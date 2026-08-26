@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema id="DS_Sel_UserAttribute" targetNamespace="http://tempuri.org/DS_Sel_UserAttribute.xsd"
+	elementFormDefault="qualified" attributeFormDefault="qualified" xmlns="http://tempuri.org/DS_Sel_UserAttribute.xsd"
+	xmlns:mstns="http://tempuri.org/DS_Sel_UserAttribute.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+	<xs:element name="DS_Sel_UserAttribute" msdata:IsDataSet="true">
+		<xs:complexType>
+			<xs:choice maxOccurs="unbounded">
+				<xs:element name="Acc_Sp_Sel_UserAttribute">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Acc_Fld_fk_User" type="xs:int" />
+							<xs:element name="Acc_Fld_MachineName" type="xs:string" minOccurs="0" />
+							<xs:element name="Acc_Fld_UserName" type="xs:string" minOccurs="0" />
+							<xs:element name="Acc_Fld_UserDomainName" type="xs:string" minOccurs="0" />
+							<xs:element name="Acc_Fld_LastLoginDate" type="xs:string" minOccurs="0" />
+							<xs:element name="Acc_Fld_LastLoginTime" type="xs:string" minOccurs="0" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:choice>
+		</xs:complexType>
+		<xs:unique name="DS_Sel_UserAttributeKey1" msdata:PrimaryKey="true">
+			<xs:selector xpath=".//mstns:Acc_Sp_Sel_UserAttribute" />
+			<xs:field xpath="mstns:Acc_Fld_fk_User" />
+		</xs:unique>
+	</xs:element>
+</xs:schema>

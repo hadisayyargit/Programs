@@ -1,0 +1,237 @@
+﻿<DataSourceView xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="2d7785cf-3420-4157-8293-c7bc233785d5" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+  <ID>datasourceviewEarlyAccident</ID>
+  <Name>datasourceviewEarlyAccident</Name>
+  <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+  <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+  <Annotations>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowFriendlyNames</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:CurrentLayout</Name>
+      <Value>_ALL_TABLES_</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:SchemaRestriction</Name>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:RetrieveRelationships</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:Layouts</Name>
+      <Value>
+        <Layouts xmlns="">
+          <Diagram>
+            <Name>_ALL_TABLES_</Name>
+            <DiagramLayout>
+              <dds>
+                <diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="MSDDS.Rectilinear" defaultlineroute="MSDDS.Rectilinear" version="7" nextobject="3" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="-2365" scrolltop="-5822" gridx="150" gridy="150" marginx="5000" marginy="5000" zoom="100" x="26935" y="17119" backcolor="15334399" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="0" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="1" viewpagebreaks="0" donotforceconnectorsbehindshapes="1" backpictureclsid="{00000000-0000-0000-0000-000000000000}">
+                  <font>
+                    <ddsxmlobjectstreamwrapper binary="01000000900144420100065461686f6d61" />
+                  </font>
+                  <mouseicon>
+                    <ddsxmlobjectstreamwrapper binary="6c74000000000000" />
+                  </mouseicon>
+                </diagram>
+                <layoutmanager>
+                  <ddsxmlobj />
+                </layoutmanager>
+                <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.2" tooltip="Rws_Viw_Full_EarlyAccident" left="79" top="-1058" logicalid="2" controlid="1" masterid="0" hint1="0" hint2="0" width="7011" height="12593" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+                  <control>
+                    <ddsxmlobjectstreaminitwrapper binary="00080000631b000031310000" />
+                  </control>
+                  <layoutobject>
+                    <ddsxmlobj>
+                      <property name="LogicalObject" value="dbo_Rws_Viw_Full_EarlyAccident" vartype="8" />
+                    </ddsxmlobj>
+                  </layoutobject>
+                  <shape groupshapeid="0" groupnode="0" />
+                </ddscontrol>
+              </dds>
+</DiagramLayout>
+            <ShowRelationshipNames>False</ShowRelationshipNames>
+            <UseDiagramDefaultLayout>True</UseDiagramDefaultLayout>
+            <DiagramViewPortLeft>-2365</DiagramViewPortLeft>
+            <DiagramViewPortTop>-5822</DiagramViewPortTop>
+            <DiagramBoundingLeft>0</DiagramBoundingLeft>
+            <DiagramBoundingTop>0</DiagramBoundingTop>
+            <DiagramZoom>100</DiagramZoom>
+          </Diagram>
+        </Layouts>
+      </Value>
+    </Annotation>
+  </Annotations>
+  <DataSourceID>datasourceDB_RWAS</DataSourceID>
+  <Schema>
+    <xs:schema id="datasourceviewEarlyAccident" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop">
+      <xs:element name="datasourceviewEarlyAccident" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:design-time-name="61a1ca95-7eb6-4b4d-b9f0-451218098c8c" msprop:CompareInfo="&lt;CompareInfo&gt;&lt;Culture&gt;fa-IR&lt;/Culture&gt;&lt;IgnoreCase&gt;true&lt;/IgnoreCase&gt;&lt;IgnoreKanaType&gt;true&lt;/IgnoreKanaType&gt;&lt;IgnoreWidth&gt;true&lt;/IgnoreWidth&gt;&lt;/CompareInfo&gt;">
+        <xs:complexType>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="dbo_Rws_Viw_Full_EarlyAccident" msprop:FriendlyName="Rws_Viw_Full_EarlyAccident" msprop:DbSchemaName="dbo" msprop:DbTableName="Rws_Viw_Full_EarlyAccident" msprop:design-time-name="2d0e624d-4b42-46fa-8a79-ea9c203ad0bc" msprop:TableType="View">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="Rws_Fld_FileCategorize" msprop:FriendlyName="کلاسمان" msprop:DbColumnName="Rws_Fld_FileCategorize" msprop:design-time-name="f1ab56dc-a642-40d6-8432-b010f966c147">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="20" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="Rws_Fld_fk_CategoryNo" msprop:FriendlyName="Rws_Fld_fk_CategoryNo" msprop:DbColumnName="Rws_Fld_fk_CategoryNo" msprop:design-time-name="036ddf76-689b-4f3b-ba5c-9b4ce63efe30" type="xs:int" />
+                  <xs:element name="Rws_Fld_AccidentKindDescribe" msprop:FriendlyName="Rws_Fld_AccidentKindDescribe" msprop:DbColumnName="Rws_Fld_AccidentKindDescribe" msprop:design-time-name="d60ed449-d971-4ed9-a3bd-339ecd2bda07">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="Rws_Fld_fk_AccidentKind" msprop:FriendlyName="Rws_Fld_fk_AccidentKind" msprop:DbColumnName="Rws_Fld_fk_AccidentKind" msprop:design-time-name="c6e0aa99-1711-4871-be1b-49bcc46c33c0" type="xs:unsignedByte" />
+                  <xs:element name="Rws_Fld_fk_Region" msprop:FriendlyName="Rws_Fld_fk_Region" msprop:DbColumnName="Rws_Fld_fk_Region" msprop:design-time-name="77f155a7-b069-41fa-93d2-211d1d611beb" type="xs:unsignedByte" />
+                  <xs:element name="Rws_Fld_AccidentDate" msprop:FriendlyName="Rws_Fld_AccidentDate" msprop:DbColumnName="Rws_Fld_AccidentDate" msprop:design-time-name="b1965fc5-5b46-4cb6-9fcb-2dfda85f2ece">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="8" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="Rws_Fld_AccidentTime" msprop:FriendlyName="Rws_Fld_AccidentTime" msprop:DbColumnName="Rws_Fld_AccidentTime" msprop:design-time-name="73bdf423-da89-4fd5-9485-d37dae2bd8d5" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="4" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="Rws_Fld_AccidentTelGraph" msprop:FriendlyName="Rws_Fld_AccidentTelGraph" msprop:DbColumnName="Rws_Fld_AccidentTelGraph" msprop:design-time-name="cbdaffc8-fa03-4c99-beac-2706d02dc675" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="13" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="Rws_Fld_BlockTime" msprop:FriendlyName="Rws_Fld_BlockTime" msprop:DbColumnName="Rws_Fld_BlockTime" msprop:design-time-name="a9eed9d6-8db5-4a22-8db9-b1089bb852df" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="4" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="Rws_Fld_AccidentCollectingTime" msprop:FriendlyName="Rws_Fld_AccidentCollectingTime" msprop:DbColumnName="Rws_Fld_AccidentCollectingTime" msprop:design-time-name="3980bb96-9c62-42ab-ad6d-7dce6c7091cb" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="4" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="Rws_Fld_fk_AccidentDegree" msprop:FriendlyName="Rws_Fld_fk_AccidentDegree" msprop:DbColumnName="Rws_Fld_fk_AccidentDegree" msprop:design-time-name="b512f5d9-97e7-42ef-946d-b38e4a53035d" type="xs:short" minOccurs="0" />
+                  <xs:element name="Rws_Fld_fk_RailWayVehicleKind" msprop:FriendlyName="Rws_Fld_fk_RailWayVehicleKind" msprop:DbColumnName="Rws_Fld_fk_RailWayVehicleKind" msprop:design-time-name="b7b8553c-62d7-43ae-992b-99163cc3bc42" type="xs:unsignedByte" minOccurs="0" />
+                  <xs:element name="Rws_Fld_IsOnManeuver" msprop:FriendlyName="Rws_Fld_IsOnManeuver" msprop:DbColumnName="Rws_Fld_IsOnManeuver" msprop:design-time-name="5ee2a24d-43ce-4930-868c-652fc2f7d1d2" type="xs:boolean" minOccurs="0" />
+                  <xs:element name="Rws_Fld_fk_Creator" msprop:FriendlyName="Rws_Fld_fk_Creator" msprop:DbColumnName="Rws_Fld_fk_Creator" msprop:design-time-name="6b923915-98d0-42e7-b5e0-4f677705e1ae" type="xs:long" />
+                  <xs:element name="Rws_Fld_CreateDate" msprop:FriendlyName="Rws_Fld_CreateDate" msprop:DbColumnName="Rws_Fld_CreateDate" msprop:design-time-name="a6f1ba4b-455d-40ba-b3c2-48150ff88506">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="8" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="Rws_Fld_IsConfirm" msprop:FriendlyName="Rws_Fld_IsConfirm" msprop:DbColumnName="Rws_Fld_IsConfirm" msprop:design-time-name="e295e17a-97ed-4f37-bc38-4ff66effb38a" type="xs:boolean" minOccurs="0" />
+                  <xs:element name="Rws_Fld_pk_EarlyAccident" msprop:FriendlyName="Rws_Fld_pk_EarlyAccident" msprop:DbColumnName="Rws_Fld_pk_EarlyAccident" msprop:design-time-name="8fd9648c-54cf-49c8-aeb5-32ddc39c7f8e" type="xs:int" />
+                  <xs:element name="Rws_Fld_DeletedPassengerTrainCount" msprop:FriendlyName="Rws_Fld_DeletedPassengerTrainCount" msprop:DbColumnName="Rws_Fld_DeletedPassengerTrainCount" msprop:design-time-name="f3eeef24-c4e5-4e3d-950f-48c4e86bea50" type="xs:short" minOccurs="0" />
+                  <xs:element name="Rws_Fld_DeletedCarrierTrainCount" msprop:FriendlyName="Rws_Fld_DeletedCarrierTrainCount" msprop:DbColumnName="Rws_Fld_DeletedCarrierTrainCount" msprop:design-time-name="462116fa-8aef-429e-b8e1-b1b65ebfe51e" type="xs:short" minOccurs="0" />
+                  <xs:element name="Rws_Fld_DeletedOtherTrainCount" msprop:FriendlyName="Rws_Fld_DeletedOtherTrainCount" msprop:DbColumnName="Rws_Fld_DeletedOtherTrainCount" msprop:design-time-name="4d70d6d1-23bb-4766-9d6d-76fa317cd23d" type="xs:short" minOccurs="0" />
+                  <xs:element name="Rws_Fld_DelayTimePassengerTrainCount" msprop:FriendlyName="Rws_Fld_DelayTimePassengerTrainCount" msprop:DbColumnName="Rws_Fld_DelayTimePassengerTrainCount" msprop:design-time-name="e6b44d5d-f5e4-4834-87a8-64b2a6da50cd" type="xs:short" minOccurs="0" />
+                  <xs:element name="Rws_Fld_DelayTimeCarrierTrainCount" msprop:FriendlyName="Rws_Fld_DelayTimeCarrierTrainCount" msprop:DbColumnName="Rws_Fld_DelayTimeCarrierTrainCount" msprop:design-time-name="fb75974b-6264-406d-bd4f-3dc17dcb5bbe" type="xs:short" minOccurs="0" />
+                  <xs:element name="Rws_Fld_DelayTimeOtherTrainCount" msprop:FriendlyName="Rws_Fld_DelayTimeOtherTrainCount" msprop:DbColumnName="Rws_Fld_DelayTimeOtherTrainCount" msprop:design-time-name="c9bb9659-4ad5-4af7-b153-f041566e90d1" type="xs:short" minOccurs="0" />
+                  <xs:element name="Rws_Fld_fk_User" msprop:FriendlyName="Rws_Fld_fk_User" msprop:DbColumnName="Rws_Fld_fk_User" msprop:design-time-name="e8a3799c-479b-4ec0-b3c2-eac3012e56e0" type="xs:long" />
+                  <xs:element name="Rws_Fld_Date" msprop:FriendlyName="Rws_Fld_Date" msprop:DbColumnName="Rws_Fld_Date" msprop:design-time-name="806ed412-2daf-4580-8a6a-18909a2af2ed">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="8" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="Rws_Fld_UserFirstName" msprop:FriendlyName="Rws_Fld_UserFirstName" msprop:DbColumnName="Rws_Fld_UserFirstName" msprop:design-time-name="c24760ee-1cec-4c89-993d-d4a8ee5ced49" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="Rws_Fld_UserLastName" msprop:FriendlyName="Rws_Fld_UserLastName" msprop:DbColumnName="Rws_Fld_UserLastName" msprop:design-time-name="813ebe79-7d2e-4cb9-95fe-2b9810bdc47f" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="Rws_Fld_CreatorFirstName" msprop:FriendlyName="Rws_Fld_CreatorFirstName" msprop:DbColumnName="Rws_Fld_CreatorFirstName" msprop:design-time-name="b37ab296-f5b3-407e-8637-e43641eae4e2" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="Rws_Fld_CreatorLastName" msprop:FriendlyName="Rws_Fld_CreatorLastName" msprop:DbColumnName="Rws_Fld_CreatorLastName" msprop:design-time-name="dfee8cdf-c488-47a3-974c-0785931a541b" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="Rws_Fld_fk_UserUniqueCode" msprop:FriendlyName="Rws_Fld_fk_UserUniqueCode" msprop:DbColumnName="Rws_Fld_fk_UserUniqueCode" msprop:design-time-name="78bcfc08-d85c-4f78-a4d1-84fc5b2300b0" type="xs:int" minOccurs="0" />
+                  <xs:element name="Rws_Fld_fk_CreatorUniqueCode" msprop:FriendlyName="Rws_Fld_fk_CreatorUniqueCode" msprop:DbColumnName="Rws_Fld_fk_CreatorUniqueCode" msprop:design-time-name="e4bba15a-f08e-4b15-9bd5-fe6a8c980dd5" type="xs:int" minOccurs="0" />
+                  <xs:element name="Rws_Fld_TrainNo" msprop:FriendlyName="Rws_Fld_TrainNo" msprop:DbColumnName="Rws_Fld_TrainNo" msprop:design-time-name="2148c1db-6942-4ba2-bf05-00207b721230" type="xs:int" minOccurs="0" />
+                  <xs:element name="Rws_Fld_RegionDescribe" msprop:FriendlyName="Rws_Fld_RegionDescribe" msprop:DbColumnName="Rws_Fld_RegionDescribe" msprop:design-time-name="99a1cc10-4890-4e5b-9dda-8ff637a0e649" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="15" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="Rws_Fld_fk_SerialNo" msprop:FriendlyName="Rws_Fld_fk_SerialNo" msprop:DbColumnName="Rws_Fld_fk_SerialNo" msprop:design-time-name="761ef416-c413-4cac-a071-fd7a8ad36c5d" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="12" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="Rws_Fld_fk_EarlyAccidentAgentDieAndAfoul" msprop:FriendlyName="Rws_Fld_fk_EarlyAccidentAgentDieAndAfoul" msprop:DbColumnName="Rws_Fld_fk_EarlyAccidentAgentDieAndAfoul" msprop:design-time-name="bfcc045f-8020-484b-a970-7dc990a057ea" type="xs:int" minOccurs="0" />
+                  <xs:element name="Rws_Fld_fk_EarlyAccidentRailWayAccident" msprop:FriendlyName="Rws_Fld_fk_EarlyAccidentRailWayAccident" msprop:DbColumnName="Rws_Fld_fk_EarlyAccidentRailWayAccident" msprop:design-time-name="0349a702-48f1-453d-9250-fc617f4fe950" type="xs:int" minOccurs="0" />
+                  <xs:element name="Rws_Fld_fk_EarlyAccidentAbRailWayAccident" msprop:FriendlyName="Rws_Fld_fk_EarlyAccidentAbRailWayAccident" msprop:DbColumnName="Rws_Fld_fk_EarlyAccidentAbRailWayAccident" msprop:design-time-name="ee4d1020-21ec-4176-ae68-19e11bee0f61" type="xs:int" minOccurs="0" />
+                  <xs:element name="Rws_Fld_fk_AccidentType" msprop:FriendlyName="Rws_Fld_fk_AccidentType" msprop:DbColumnName="Rws_Fld_fk_AccidentType" msprop:design-time-name="45ac24dc-dc37-4918-82c7-d2f4faa25a71" type="xs:unsignedByte" minOccurs="0" />
+                  <xs:element name="Rws_Fld_Description" msprop:FriendlyName="Rws_Fld_Description" msprop:DbColumnName="Rws_Fld_Description" msprop:design-time-name="81298020-a49f-4f0b-b453-e422e3298979" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="2000" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="Rws_Fld_fk_MainAccidentKind" msprop:FriendlyName="Rws_Fld_fk_MainAccidentKind" msprop:DbColumnName="Rws_Fld_fk_MainAccidentKind" msprop:design-time-name="0fc31208-eda0-4bba-b29c-5504d23827e2" type="xs:unsignedByte" minOccurs="0" />
+                  <xs:element name="Rws_Fld_MainAccidentKindDescribe" msprop:FriendlyName="Rws_Fld_MainAccidentKindDescribe" msprop:DbColumnName="Rws_Fld_MainAccidentKindDescribe" msprop:design-time-name="3cee05fc-d0b4-416a-ae49-fd359be02b4d" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:choice>
+        </xs:complexType>
+        <xs:unique name="Constraint1">
+          <xs:selector xpath=".//dbo_Rws_Viw_Full_EarlyAccident" />
+          <xs:field xpath="Rws_Fld_pk_EarlyAccident" />
+          <xs:field xpath="Rws_Fld_fk_EarlyAccidentRailWayAccident" />
+          <xs:field xpath="Rws_Fld_fk_EarlyAccidentAbRailWayAccident" />
+        </xs:unique>
+        <xs:unique name="Constraint2" msprop:IsLogical="True" msdata:PrimaryKey="true">
+          <xs:selector xpath=".//dbo_Rws_Viw_Full_EarlyAccident" />
+          <xs:field xpath="Rws_Fld_pk_EarlyAccident" />
+        </xs:unique>
+      </xs:element>
+    </xs:schema>
+    <diffgr:diffgram xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:diffgr="urn:schemas-microsoft-com:xml-diffgram-v1" />
+  </Schema>
+</DataSourceView>
