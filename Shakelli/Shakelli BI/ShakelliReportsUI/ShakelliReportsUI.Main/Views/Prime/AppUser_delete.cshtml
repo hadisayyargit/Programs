@@ -1,0 +1,75 @@
+﻿@model ShakelliReportsUI.DataLayer.Models.AppUser
+
+@{
+    ViewBag.Title = "کاربران";
+    ViewBag.activemenu_prime = "active";
+    ViewBag.activemenu_prime_usermanagement = "active";
+}
+
+
+@section pagetitle
+{
+    <h3 class="page-title">
+        اطلاعات پایه
+        <small>کاربران</small>
+    </h3>
+}
+
+@section breadcrumb
+{
+    <ul class="breadcrumb">
+        <li>
+            <a href="#"><i class="icon-home"></i></a><span class="divider">&nbsp;</span>
+        </li>
+        <li>
+            <a href="#">اطلاعات پایه</a> <span class="divider">&nbsp;</span>
+        </li>
+        <li><a href="#">کاربران</a><span class="divider-last">&nbsp;</span></li>
+
+    </ul>
+}
+
+<div class="widget-body">
+    <div class="alert alert-block alert-warning fade in">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        <h4 class="alert-heading">هشدار!</h4>
+        <p>
+            اطلاعات فعلی حذف می شود!
+            آیا ادامه می دهید؟
+        </p>
+
+        <div>
+            <br />
+            <div class="control-group">
+                <label class="control-label">شناسه کاربر</label>
+                <div class="controls">
+                    @Html.TextBoxFor(model => model.UserId)
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">نام کاربری </label>
+                <div class="controls">
+                    @Html.TextBoxFor(model => model.UserName, htmlAttributes: new { @class = "span6  tooltips", @id = "txtUserName", data_trigger = "hover", data_original_title = "نام کاربری" })
+                </div>
+            </div>
+
+            <button type="button" class="btn" onclick="location.href='@Url.Action("AppUser_delete_confirm", "Prime", new { userid = Model.UserId })'">خب</button>
+            <button type="button" class="btn" onclick="location.href='@Url.Action("AppUser_edit", "Prime", new { userid = Model.UserId})'">لغو</button>
+
+        </div>
+
+
+    </div>
+</div>
+
+
+
+<script>
+    jQuery(document).ready(function () {
+        // initiate layout and plugins
+        App.init();
+    });
+</script>
+
+

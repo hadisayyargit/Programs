@@ -1,0 +1,140 @@
+﻿@model ShakelliReportsUI.DataLayer.Models.AppGroupUserObjectView
+
+@{
+    ViewBag.Title = "مدیریت موضوعات";
+    Session[ShakelliReportsUI.CommonUnits.GeneralModule.m_ActiveMenu_Prime] = "active";
+    ViewBag.activemenu_prime_appobjects = "active";
+
+}
+
+<link href="~/Content/assets/bootstrap-tree/bootstrap-tree/css/bootstrap-tree.css" rel="stylesheet" />
+
+@section pagetitle
+{
+    <h3 class="page-title">
+        اطلاعات پایه
+        <small>مدیریت موضوعات</small>
+    </h3>
+}
+
+@section breadcrumb
+{
+    <ul class="breadcrumb">
+        <li>
+            <a href="#"><i class="icon-home"></i></a><span class="divider">&nbsp;</span>
+        </li>
+        <li>
+            <a href="#">اطلاعات پایه</a> <span class="divider">&nbsp;</span>
+        </li>
+        <li><a href="#">موضوعات</a><span class="divider-last">&nbsp;</span></li>
+
+    </ul>
+}
+
+
+<div class="widget">
+
+    <div class="widget-title">
+        <h4><i class="icon-reorder"></i>موضوعات</h4>
+        <span class="tools">
+            <a href="javascript:;" class="icon-chevron-down"></a>
+            <a class="icon-remove" href="javascript:;"></a>
+        </span>
+    </div>
+    <div class="widget-body" >
+        <div class="row-fluid">
+            <p>
+                <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("AppObject_create", "Prime", new { objectid = 0 })'">جدید</button>
+                <button type="button" class="btn btn-warning" onclick="location.href='@Url.Action("AppObject_edit2", "Prime", new { objectid = -1})'">ویرایش</button>
+            </p>
+
+            <ul id="tree_1" class="tree">
+                <li>
+                    <a data-value="Bootstrap_Tree" data-toggle="branch" class="tree-toggle" data-role="branch" href="#"></a>
+
+                    @if (ViewBag.AppObject != null)
+                    {
+                        IEnumerable<ShakelliReportsUI.DataLayer.Models.AppGroupUserObjectView> list1 = ViewBag.AppObject;
+                        list1 = list1.Where(p => p.ParentObjectId == null);
+                        <ul class="branch in">
+                            @foreach (ShakelliReportsUI.DataLayer.Models.AppGroupUserObjectView item1 in list1)
+                            {
+                                <li>
+                                    @*<span>
+                                        @
+                                    </span>*@
+                                    <a id="nut1" data-value="Bootstrap_Tree" data-toggle="branch" class="tree-toggle" style="color:red" href="~/Prime/selectnode?objectid=@item1.ObjectId">
+                                        @item1.ObjectDs
+                                    </a>
+
+                                    @*@Html.RenderAction("selectnode", "Prime", routeValues: new { objectid = item1.ObjectId })*@
+                                    @{
+                                IEnumerable<ShakelliReportsUI.DataLayer.Models.AppGroupUserObjectView> list2 = ViewBag.AppObject;
+
+                                list2 = list2.Where(p => p.ParentObjectId == item1.ObjectId);
+                                <ul class="branch in">
+                                    @foreach (ShakelliReportsUI.DataLayer.Models.AppGroupUserObjectView item2 in list2)
+                                    {
+                                        <li>
+                                            <a id="nut2" data-toggle="branch" class="tree-toggle closed" style="color:darkblue" href="~/Prime/selectnode?objectid=@item2.ObjectId">
+                                                @item2.ObjectDs
+                                            </a>
+
+                                            @{
+                                        IEnumerable<ShakelliReportsUI.DataLayer.Models.AppGroupUserObjectView> list3 = ViewBag.AppObject;
+
+                                        list3 = list3.Where(p => p.ParentObjectId == item2.ObjectId);
+                                        <ul class="branch">
+                                            @foreach (ShakelliReportsUI.DataLayer.Models.AppGroupUserObjectView item3 in list3)
+                                            {
+                                                @*if(item3.CRUD=="")
+                                                {
+                                                    <li><a data-role="leaf" href="~/Prime/AppObject_edit?objectid=@item3.ObjectId" style="color:yellow"><i class="icon-book"></i> @item3.ObjectDs</a></li>
+                                                }
+                                                
+                                                else
+                                                {        
+                                                    <li><a data-role="leaf" href="~/Prime/AppObject_edit?objectid=@item3.ObjectId" style="color:cadetblue"><i class="icon-book"></i> @item3.ObjectDs</a></li>
+                                                }*@
+                                                
+                                                <li><a data-role="leaf" href="~/Prime/AppObject_edit?objectid=@item3.ObjectId" style="color:cadetblue"><i class="icon-book"></i> @item3.ObjectDs</a></li>
+                                                
+                                            }
+                                        </ul>
+                                            }
+
+                                        </li>
+
+                                    }
+                                </ul>
+                                    }
+                                </li>
+
+
+                            }
+
+                        </ul>
+
+                    }
+
+                </li>
+            </ul>
+
+        </div>
+        </div>
+    </div>
+
+
+        <script src="@Url.Content("~/Scripts/jquery-1.8.3.min.js")"></script>
+
+        <script src="~/Content/assets/data-tables/jquery.dataTables.js"></script>
+        <script src="~/Content/assets/data-tables/DT_bootstrap.js"></script>
+        <script src="~/Content/assets/bootstrap-tree/bootstrap-tree/js/bootstrap-tree.js"></script>
+        <script src="~/Scripts/ui-tree.js"></script>
+
+        <script>
+            jQuery(document).ready(function () {
+                App.init();
+            });
+        </script>
+

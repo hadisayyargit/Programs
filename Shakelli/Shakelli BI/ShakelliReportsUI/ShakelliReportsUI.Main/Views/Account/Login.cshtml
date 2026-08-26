@@ -1,0 +1,155 @@
+﻿@*@model IEnumerable<ShakelliReportsUI.DataLayer.Models.Requisition>*@
+@model ShakelliReportsUI.DataLayer.Models.LoginViewModel
+
+@{
+    Layout = null;
+}
+
+
+
+<!DOCTYPE html>
+<!--
+Template Name: Admin Lab Dashboard build with Bootstrap v2.3.1
+Template Version: 1.0
+Author: Mosaddek Hossain
+Website: http://thevectorlab.net/
+-->
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+<!-- BEGIN HEAD -->
+<head>
+    <meta charset="utf-8" />
+    <title>صنایع غذایی شکلی - سامانه جامع گزارشها</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+    <link href="~/Content/assets/bootstrap-rtl/css/bootstrap-rtl.min.css" rel="stylesheet" />
+    <link href="~/Content/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link href="~/Content/style.css" rel="stylesheet" />
+    <link href="~/Content/style_responsive.css" rel="stylesheet" />
+    <link href="~/Content/style_default.css" rel="stylesheet" id="style_color" />
+</head>
+<!-- END HEAD -->
+<!-- BEGIN BODY -->
+<body id="login-body">
+    <div class="login-header">
+        <!-- BEGIN LOGO -->
+        <div id="logo" class="center">
+            <img src="~/images/logo_shakelli.png" alt="logo" class="center" />
+        </div>
+        <!-- END LOGO -->
+    </div>
+
+    <!-- BEGIN LOGIN -->
+    <div id="login">
+        <!-- BEGIN LOGIN FORM -->
+@using (Html.BeginForm())
+    { 
+        @*<form id="loginform" class="form-vertical no-padding no-margin" action="Login">*@
+            <div class="lock">
+                <i class="icon-lock"></i>
+            </div>
+            <div class="control-wrap">
+                <h4>ورود کاربر</h4>
+                <div class="control-group">
+                    <div class="controls">
+                        <div class="input-prepend">
+                            <span class="add-on"><i class="icon-user"></i></span>
+                            @*<input id="input-username" type="text" placeholder="Username" />*@
+                            @*@Html.TextBoxFor(model => model.UserName, htmlAttributes: new { @class = "username", id="input-username" ,type="text" ,placeholder="Username" })*@
+                            @Html.TextBoxFor(model => model.UserName, htmlAttributes: new {  id = "input-username", type = "text", placeholder = "نام کاربری" })
+                        </div>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div class="controls">
+                        <div class="input-prepend">
+                            <span class="add-on"><i class="icon-key"></i></span>
+                            @Html.TextBoxFor(model => model.Password, htmlAttributes: new { id = "input-password", type = "password", placeholder = "رمز" })
+                        </div>
+                        <div class="mtop10">
+                            <div class="block-hint pull-left small">
+                                <input type="checkbox" id=""> مرا به یاد بسپار
+                            </div>
+                            <div class="block-hint pull-right">
+                                <a href="javascript:;" class="" id="forget-password">گذرواژه خود را فراموش کرده‌اید؟</a>
+                            </div>
+                        </div>
+
+                        <div class="clearfix space5"></div>
+                    </div>
+
+                </div>
+            </div>
+
+            <input type="submit" id="login-btn" class="btn btn-block login-btn" value="ورود" />
+
+            if(Model !=null && Model.Message!="")
+            { 
+                <p>
+
+                </p>
+			    <div class="alert alert-error">
+				    @*<button class="close" >×</button>*@
+				    <strong>خطا!</strong> @Model.Message
+			    </div>
+            }    
+        @*</form>*@
+    }
+        
+        <!-- END LOGIN FORM -->
+        <!-- BEGIN FORGOT PASSWORD FORM -->
+        <form id="forgotform" class="form-vertical no-padding no-margin hide" action="Login">
+            <p class="center">آدرس رایانامه خود را به منظور بازسازی گذرواژه وارد کنید:</p>
+            <div class="control-group">
+                <div class="controls">
+                    <div class="input-prepend">
+                        <span class="add-on"><i class="icon-envelope"></i></span><input id="input-email" type="text" placeholder="Email" />
+                    </div>
+                </div>
+                <div class="space20"></div>
+            </div>
+            <input type="button" id="forget-btn" class="btn btn-block login-btn" value="قبول" />
+        </form>
+        <!-- END FORGOT PASSWORD FORM -->
+
+    </div>
+    <!-- END LOGIN -->
+    <!-- BEGIN COPYRIGHT -->
+
+    
+   
+    
+    <footer>
+        <div id="login-copyright">
+            <address>
+                <p>
+                    2014 &copy; صنایع غذایی شکلی
+                </p>
+            </address>
+            </div>
+        
+    </footer>
+
+
+    <!-- END COPYRIGHT -->
+    <!-- BEGIN JAVASCRIPTS -->
+    <script src="js/jquery-1.8.3.min.js"></script>
+    <script src="~/Content/assets/bootstrap-rtl/js/bootstrap.min.js"></script>
+    <script src="js/jquery.blockui.js"></script>
+    <script src="js/scripts.js"></script>
+    <script>
+        jQuery(document).ready(function () {
+            App.initLogin();
+        });
+    </script>
+    <!-- END JAVASCRIPTS -->
+</body>
+<!-- END BODY -->
+
+
+
+</html>

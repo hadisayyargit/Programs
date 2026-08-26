@@ -1,0 +1,413 @@
+﻿@model ShakelliReportsUI.DataLayer.Models.AppGroupUserObjectView
+
+<link href="~/Content/assets/bootstrap-tree/bootstrap-tree/css/bootstrap-tree.css" rel="stylesheet" />
+
+<link href="@Url.Content("~/Content/kendo.compatibility.css")" rel="stylesheet" type="text/css" />
+<link href="@Url.Content("~/Content/kendo/2014.1.318/kendo.common.min.css")" rel="stylesheet" type="text/css" />
+<link href="@Url.Content("~/Content/kendo/2014.1.318/kendo.default.min.css")" rel="stylesheet" type="text/css" />
+<link href="@Url.Content("~/Content/kendo/2014.1.318/kendo.dataviz.min.css")" rel="stylesheet" type="text/css" />
+<link href="@Url.Content("~/Content/kendo/2014.1.318/kendo.dataviz.default.min.css")" rel="stylesheet" type="text/css" />
+<link href="@Url.Content("~/Content/kendo/2014.1.318/kendo.rtl.min.css")" rel="stylesheet" type="text/css" />
+
+<script src="@Url.Content("~/Scripts/jquery-1.8.3.min.js")"></script>
+
+<script src="~/Content/assets/data-tables/jquery.dataTables.js"></script>
+<script src="~/Content/assets/data-tables/DT_bootstrap.js"></script>
+<script src="~/Content/assets/bootstrap-tree/bootstrap-tree/js/bootstrap-tree.js"></script>
+<script src="~/Scripts/ui-tree.js"></script>
+
+
+<script src="@Url.Content("~/Scripts/kendo/2014.1.318/kendo.all.min.js")"></script>
+<script src="@Url.Content("~/Scripts/kendo/2014.1.318/kendo.aspnetmvc.min.js")"></script>
+<script src="@Url.Content("~/Scripts/kendo.modernizr.custom.js")"></script>
+
+@{
+    ViewBag.Title = "مدیریت کاربران";
+    Session[ShakelliReportsUI.CommonUnits.GeneralModule.m_ActiveMenu_Prime] = "active";
+    ViewBag.activemenu_prime_usermanagement = "active";
+
+}
+
+@section pagetitle
+{
+    <h3 class="page-title">
+        اطلاعات پایه
+        <small>مدیریت کاربران</small>
+    </h3>
+}
+
+@section breadcrumb
+{
+    <ul class="breadcrumb">
+        <li>
+            <a href="#"><i class="icon-home"></i></a>
+            <span class="divider">&nbsp;</span>
+        </li>
+        <li>
+            <a href="#">اطلاعات پایه</a>
+            <span class="divider">&nbsp;</span>
+        </li>
+        <li>
+            <a href="#">مدیریت کاربران</a>
+            <span class="divider-last">&nbsp;</span>
+        </li>
+
+    </ul>
+}
+
+
+<div class="widget">
+
+    <div class="widget-title">
+        <h4><i class="icon-reorder"></i>مدیریت کاربران</h4>
+        <span class="tools">
+            <a href="javascript:;" class="icon-chevron-down"></a>
+            <a class="icon-remove" href="javascript:;"></a>
+        </span>
+    </div>
+
+    <div class="widget-body">
+        <div class="row-fluid">
+            <div class="span12">
+                <!--BEGIN TABS-->
+                <div class="tabbable tabbable-custom">
+                    <ul class="nav nav-tabs">
+                        <li class="@ViewBag.Tab_Group_Active"><a href=" #tab_1_1" data-toggle="tab">گروه کاربران</a></li>
+                        <li class="@ViewBag.Tab_User_Active"><a href="#tab_1_2" data-toggle="tab">کاربران</a></li>
+                        <li class="@ViewBag.Tab_GroupUser_Active"><a href="#tab_1_3" data-toggle="tab">کاربران گروه</a></li>
+                        <li class="@ViewBag.Tab_GroupUserObject_Active"><a href="#tab_1_5" data-toggle="tab">دسترسی موضوعات</a></li>
+                    </ul>
+
+                    <div class="tab-content">
+                        <div class="tab-pane @ViewBag.Tab_Group_Active" id="tab_1_1">
+                            <table class="table table-striped table-bordered table-advance table-hover" id="sample_4">
+                                <p>
+                                    <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("AppGroup_create", "Prime", new { groupid = 0 })'">جدید</button>
+                                </p>
+                                
+                                <tbody>
+                                    @if (ViewBag.AppGroup != null)
+                                    {
+                                        foreach (ShakelliReportsUI.DataLayer.Models.AppGroup item in ViewBag.AppGroup)
+                                        {
+
+                                            <tr class="odd gradeX">
+
+
+                                                @*<td>@Html.HiddenFor(modelItem => item.ConfigId)</td>*@
+                                                <td class="hidden-phone" style="font-family:'B Yekan'">@Html.DisplayFor(modelItem => item.GroupId)</td>
+
+
+                                                @*<td class="hidden-phone">@Html.DisplayFor(modelItem => item.ConfigDs)</td>*@
+                                                <td class="hidden-phone">@Html.ActionLink(item.GroupName, "AppGroup_edit", routeValues: new { groupId = item.GroupId })</td>
+
+
+                                                @if (item.Enabled == true)
+                                                {
+                                                    <td class="hidden-phone"><span class="label label-success">فعال</span></td>
+                                                }
+                                                else
+                                                {
+                                                    <td class="hidden-phone"><span class="label label-warning">غیرفعال</span></td>
+                                                }
+
+                                                @*<td class="hidden-phone">@Html.DisplayFor(modelItem => item.StartDate)</td>
+                                                    <td class="hidden-phone">@Html.DisplayFor(modelItem => item.EndDate)</td>
+                                                    <td class="center hidden-phone">@Html.DisplayFor(modelItem => item.Tozih)</td>*@
+
+                                                <td>@Html.ActionLink("کاربران", "AppGroupUser_refresh", routeValues: new { GroupId = item.GroupId }, htmlAttributes: new { @class = "btn mini green-stripe" })</td>
+                                            </tr>
+
+                                        }
+
+                                    }
+                                </tbody>
+                            </table>
+
+                        </div>
+
+                        <div class="tab-pane @ViewBag.Tab_User_Active" id="tab_1_2">
+                            <table class="table table-striped table-bordered table-advance table-hover" id="sample_1">
+                                <p>
+                                    <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("appuser_create", "Prime", new { userid = 0 })'">جدید</button>
+                                </p>
+                                <thead>
+                                    <tr>
+                                        <th class="" style="background-color: bisque; color: black">شناسه</th>
+                                        <th class="" style="background-color: bisque; color: black">نام کاربری</th>
+                                        <th class="" style="background-color: bisque; color:black">شناسه پرسنل</th>
+                                        <th class="" style="background-color: bisque; color: black">وضعیت</th>
+                                        <th class="" style="background-color: bisque; color:black">نام پرسنل</th>
+                                        <th class="" style="background-color: bisque; color:black">سازمان</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if (ViewBag.AppUser != null)
+                                    {
+                                        foreach (ShakelliReportsUI.DataLayer.Models.AppUserPersonView item in ViewBag.AppUser)
+                                        {
+                                            <tr class="odd gradeX">
+                                                <td class="hidden-phone">@item.UserId</td>
+                                                <td class="hidden-phone">@Html.ActionLink(@item.UserName, "AppUser_edit", routeValues: new { UserId = @item.UserId }, htmlAttributes: new { @style = "color:blue" })</td>
+                                                <td class="hidden-phone">@item.PersonId</td>
+                                                <td class="hidden-phone">@item.EnabledTitle</td>
+                                                <td class="hidden-phone">@item.FirstName @item.LastName</td>
+                                                <td class="hidden-phone">@item.OrganizationTitle</td>
+
+                                            </tr>
+
+                                        }
+
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="tab-pane @ViewBag.Tab_GroupUser_Active" id="tab_1_3">
+
+                            @*@using (Html.BeginForm("AppGroupUser_refresh", "Prime"))
+                                {*@
+                            @Html.ValidationSummary(true)
+
+                            @Html.DropDownList("groupid", new SelectList(@ViewBag.AppGroup, "GroupId", "GroupName", "0"), "گروه کاربری را انتخاب نمایید:", htmlAttributes: new { @class = "chosen-with-diselect", @id = "cboAppGroup" })
+
+                            @*@Html.ActionLink("تایید", "AppGroupUser_SelectGroup", "Prime", routeValues: new { groupid = Model.GroupId }, htmlAttributes: new { @class = "btn btn-primary" })*@
+                            @*<button type="button" class="btn" onclick="location.href='@Url.Action("AppGroupUser_SelectGroup", "Prime", null)'">تایید</button>*@
+
+
+                            <table class="table table-striped  table-advance table-hover" id="sample_3">
+                                <p>
+                                    @*<input type="submit" value="تازه سازی" class="btn btn-info" />*@
+                                    <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("AppGroupUser_create", "Prime", new { groupid=0,userid = 0 })'">جدید</button>
+                                </p>
+
+                                <thead>
+                                    <tr>
+                                        <th class="" style="background-color: darkblue; color:white">شناسه</th>
+                                        <th class="" style="background-color: darkblue; color:white">نام کاربری</th>
+                                        <th class="" style="background-color: darkblue; color:white">شناسه پرسنل</th>
+                                        <th class="" style="background-color: darkblue; color:white">وضعیت</th>
+                                        <th class="" style="background-color: darkblue; color:white">نام پرسنل</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if (ViewBag.GroupUser != null)
+                                    {
+                                        foreach (ShakelliReportsUI.DataLayer.Models.AppUserPersonView item in ViewBag.GroupUser)
+                                        {
+                                            <tr class="odd gradeX">
+                                                <td class="hidden-phone">@item.UserId</td>
+                                                <td class="hidden-phone">@Html.ActionLink(@item.UserName, "AppGroupUser_edit", routeValues: new { groupid = @item.GroupId, userid = @item.UserId })</td>
+                                                <td class="hidden-phone">@item.PersonId</td>
+                                                <td class="hidden-phone">@item.EnabledTitle</td>
+                                                <td class="hidden-phone">@item.FirstName @item.LastName</td>
+                                            </tr>
+
+                                        }
+
+                                    }
+                                </tbody>
+                            </table>
+
+                            @*}*@
+
+                            @*@{
+                                    var chart = new Chart(width: 600, height: 400)
+                                      .AddTitle("Students positions:")
+                                      .AddSeries(
+                                      name: "Student",chartType:"Pie",
+                                        xValue: new[] { "Ali", "Mohammad", "Mehdi", "Ahmad", "Hasan" },
+                                        yValues: new[] { "18", "18.50", "19", "16", "17" })
+                                      .Write();
+                                }*@
+
+
+                        </div>
+
+                        <div class="tab-pane @ViewBag.Tab_GroupUserObject_Active" id="tab_1_5">
+
+                            <div class="control-group">
+                                <label class="control-label">گروه</label>
+                                @Html.DropDownListFor(model => model.GroupId, new SelectList(@ViewBag.AppGroup, "GroupId", "GroupName", "0"), "گروه را انتخاب نمایید:", htmlAttributes: new { @class = "chosen-with-diselect", @id = "cboGroup1" })
+                                <label class="control-label">کاربر</label>
+                                @Html.DropDownListFor(model => model.UserId, new SelectList(@ViewBag.AppUser, "UserId", "UserName", "0"), "کاربر را انتخاب نمایید:", htmlAttributes: new { @class = "chosen-with-diselect", @id = "cboUser1" })
+                            </div>
+
+                            <p>
+                                @*<input type="submit" value="تازه سازی" class="btn btn-info" />*@
+                                <button type="button" class="btn btn-info" onclick="location.href='@Url.Action("AppGroupUserObject_update", "Prime", Model)'">ویرایش</button>
+                                <button type="button" class="btn btn-info" onclick="location.href='@Url.Action("AppGroupUserObject_updateall", "Prime", Model)'">ویرایش دسته‌ای </button>
+
+                            </p>
+
+
+                            <ul id="tree_1" class="tree">
+                                <li>
+                                    <a data-value="Bootstrap_Tree" data-toggle="branch" class="tree-toggle" data-role="branch" href="#"></a>
+
+                                    @if (ViewBag.GroupUserObject != null)
+                                    {
+                                        IEnumerable<ShakelliReportsUI.DataLayer.Models.AppGroupUserObjectView> list1 = ViewBag.GroupUserObject;
+                                        list1 = list1.Where(p => p.ParentObjectId == null);
+                                        <ul class="branch in">
+                                            @foreach (ShakelliReportsUI.DataLayer.Models.AppGroupUserObjectView item1 in list1)
+                                            {
+                                                <li>
+                                                    @if (item1.CRUD != null && item1.CRUD[1] == '1')
+                                                    {
+                                                        <a id="nut1" data-value="Bootstrap_Tree" data-toggle="branch" class="tree-toggle" style="color:red" href="~/Prime/selectnode?objectid=@item1.ObjectId">
+                                                            @item1.ObjectDs
+                                                        </a>
+
+                                                    }
+                                                    else
+                                                    {
+                                                        <a id="nut1" data-value="Bootstrap_Tree" data-toggle="branch" class="tree-toggle" style="color: cadetblue" href="~/Prime/selectnode?objectid=@item1.ObjectId">
+                                                            @item1.ObjectDs
+                                                        </a>
+
+                                                    }
+
+                                                    @{
+                                                    IEnumerable<ShakelliReportsUI.DataLayer.Models.AppGroupUserObjectView> list2 = ViewBag.GroupUserObject;
+
+                                                    list2 = list2.Where(p => p.ParentObjectId == item1.ObjectId);
+                                                    <ul class="branch in">
+                                                        @foreach (ShakelliReportsUI.DataLayer.Models.AppGroupUserObjectView item2 in list2)
+                                                        {
+                                                            <li>
+                                                                @if (item2.CRUD != null && item2.CRUD[1] == '1')
+                                                                {
+                                                                    <a id="nut2" data-toggle="branch" class="tree-toggle closed" style="color:red" href="~/Prime/selectnode?objectid=@item2.ObjectId">
+                                                                        @item2.ObjectDs
+                                                                    </a>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <a id="nut2" data-toggle="branch" class="tree-toggle closed" style="color: cadetblue" href="~/Prime/selectnode?objectid=@item2.ObjectId">
+                                                                        @item2.ObjectDs
+                                                                    </a>
+
+                                                                }
+
+                                                                @{
+                                                                IEnumerable<ShakelliReportsUI.DataLayer.Models.AppGroupUserObjectView> list3 = ViewBag.GroupUserObject;
+
+                                                                list3 = list3.Where(p => p.ParentObjectId == item2.ObjectId);
+
+                                                                <ul class="branch">
+                                                                    @foreach (ShakelliReportsUI.DataLayer.Models.AppGroupUserObjectView item3 in list3)
+                                                                    {
+                                                                        <li>
+                                                                            @if (item3.CRUD != null && item3.CRUD[1] == '1')
+                                                                            {
+                                                                                <a data-role="leaf" data-value=@item3.ObjectId style="color:red" href="~/Prime/AppGroupUserObject_update?isleaf=true&groupid=@Model.GroupId&userid=@Model.UserId&objectid=@item3.ObjectId"><i class="icon-book"></i> @item3.ObjectDs</a>
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                <a data-role="leaf" data-value=@item3.ObjectId style="color:cadetblue" href="~/Prime/AppGroupUserObject_update?isleaf=true&groupid=@Model.GroupId&userid=@Model.UserId&objectid=@item3.ObjectId"><i class=" icon-book"></i> @item3.ObjectDs</a>
+                                                                            }
+                                                                        </li>
+                                                                    }
+                                                                </ul>
+                                                                }
+
+                                                            </li>
+
+                                                        }
+                                                    </ul>
+                                                    }
+                                                </li>
+
+
+                                            }
+
+                                        </ul>
+
+                                    }
+
+                                </li>
+                            </ul>
+
+
+                        </div>
+
+                    </div>
+                </div>
+                <!--END TABS-->
+            </div>
+
+
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+<script>
+    $("#cboAppGroup").change(function () {       // This will fire when the dropdown value will get changed
+        //var url = "UserManagement/" + $(this).val(); //Append Id To URL
+        var url = "UserManagement?activetab=Tab_GroupUser&groupid=" + $(this).val(); //Append Id To URL
+        window.location.replace(url);
+    });
+</script>
+
+<script>
+    $("#cboUser1").change(function () {       // This will fire when the dropdown value will get changed
+        //var url = "UserManagement/" + $(this).val(); //Append Id To URL
+        var url = "UserManagement?activetab=Tab_GroupUserObject&userid=" + $(this).val(); //Append Id To URL
+        window.location.replace(url);
+    });
+</script>
+
+<script>
+    $("#cboGroup1").change(function () {       // This will fire when the dropdown value will get changed
+        //var url = "UserManagement/" + $(this).val(); //Append Id To URL
+        var url = "UserManagement?activetab=Tab_GroupUserObject&groupid=" + $(this).val(); //Append Id To URL
+        window.location.replace(url);
+    });
+</script>
+
+<script>
+    jQuery(document).ready(function () {
+        App.init();
+    });
+</script>
+
+<script>
+    $("#tree_1").on("nodeselect.tree.data-api", "[data-role=leaf]", function (e) {
+        var output = "";
+
+        //output += "Value: " + ((e.node.value) ? e.node.value : e.node.el.text()) + "\n";
+        //output +=  e.node.value;
+        //sessionStorage.setItem("node", e.node.value);
+        //$.session.set("node", e.node.value);
+        //alert(e.node.value);
+    });
+</script>
+<script>
+
+    function onselectkendonode(e) {
+        //href="~/Prime/selectnode?objectid=2
+        var url = "selectnode?objectid=" + this.dataItem(e.node).id; //Append Id To URL
+        //window.location.replace(url);
+
+
+        //alert(this.dataItem(e.node).text)
+    }
+</script>
+
+@*<script>
+        $("#myKendoTree").on("select","", function (e) {       // This will fire when the dropdown value will get changed
+            //var url = "UserManagement/" + $(this).val(); //Append Id To URL
+            //var url = "UserManagement?activetab=Tab_GroupUser&groupid=" + $(this).val(); //Append Id To URL
+            //window.location.replace(url);
+            alert("hala")
+        });
+    </script>*@
+

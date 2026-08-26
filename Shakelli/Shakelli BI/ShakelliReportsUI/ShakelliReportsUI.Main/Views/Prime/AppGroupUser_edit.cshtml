@@ -1,0 +1,98 @@
+﻿@model ShakelliReportsUI.DataLayer.Models.AppGroupUser
+
+<link href="~/Content/assets/datepicker-fa/styles/jquery-ui-1.8.14.css" rel="stylesheet" />
+
+@{
+    ViewBag.Title = "کاربران گروه";
+    ViewBag.activemenu_prime = "active";
+    ViewBag.activemenu_prime_usermanagement = "active";
+}
+
+@section pagetitle
+{
+    <h3 class="page-title">
+        اطلاعات پایه
+        <small>کاربران گروه</small>
+    </h3>
+}
+
+@section breadcrumb
+{
+    <ul class="breadcrumb">
+        <li>
+            <a href="#"><i class="icon-home"></i></a><span class="divider">&nbsp;</span>
+        </li>
+        <li>
+            <a href="#">اطلاعات پایه</a> <span class="divider">&nbsp;</span>
+        </li>
+        <li><a href="#">کاربران گروه</a><span class="divider-last">&nbsp;</span></li>
+
+    </ul>
+}
+
+
+<div class="widget">
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary(true)
+
+        <div class="span12">
+            <!-- BEGIN SAMPLE FORM widget-->
+            <div class="widget">
+                <div class="widget-title">
+                    <h4><i class="icon-reorder"></i>ویرایش</h4>
+                    <span class="tools">
+                        <a href="javascript:;" class="icon-chevron-down"></a>
+                        <a href="javascript:;" class="icon-remove"></a>
+                    </span>
+                </div>
+                <div class="widget-body form">
+                    <!-- BEGIN FORM-->
+                    <form action="#" class="form-horizontal">
+                        
+                        @Html.HiddenFor(model=>model.Id)
+
+                        <div class="control-group">
+                            <label class="control-label">گروه</label>
+                            <div class="controls">
+                                @Html.DropDownListFor(model => model.GroupId, new SelectList(@ViewBag.AppGroup, "GroupId", "GroupName", "0"), "گروه را انتخاب نمایید:", htmlAttributes: new { @class = "chosen-with-diselect", @id = "cboGroup" })
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label">پرسنل</label>
+                            <div class="controls">
+                                @Html.DropDownListFor(model => model.UserId, new SelectList(@ViewBag.AppUser, "UserId", "UserName", "0"), "کاربر را انتخاب نمایید:", htmlAttributes: new { @class = "chosen-with-diselect", @id = "cboUser" })
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-success">بروزرسانی</button>
+                            <button type="button" class="btn" onclick="location.href='@Url.Action("AppGroupUser_cancel", "Prime")'">بازگشت</button>
+                            <button type="button" class="btn" onclick="location.href='@Url.Action("AppGroupUser_delete", "Prime", new { groupid = Model.GroupId, userid = Model.UserId })'">حذف</button>
+
+
+                        </div>
+
+                    </form>
+                    <!-- END FORM-->
+                </div>
+            </div>
+            <!-- END SAMPLE FORM widget-->
+        </div>
+
+    }
+
+
+</div>
+
+
+<script src="@Url.Content("~/Scripts/jquery-ui-1.8.24.min.js")"></script>
+
+<script>
+    jQuery(document).ready(function () {
+        App.init();
+    });
+</script>
+
+@Scripts.Render("~/bundles/jqueryval")

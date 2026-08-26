@@ -1,0 +1,126 @@
+﻿@model ShakelliReportsUI.DataLayer.Models.Organization
+
+<link href="~/Content/assets/datepicker-fa/styles/jquery-ui-1.8.14.css" rel="stylesheet" />
+
+@{
+    ViewBag.Title = "سازمان";
+    ViewBag.activemenu_prime = "active";
+    ViewBag.activemenu_prime_organizationchart = "active";
+}
+
+@section pagetitle
+{
+    <h3 class="page-title">
+        اطلاعات پایه
+        <small>سازمان</small>
+    </h3>
+}
+
+@section breadcrumb
+{
+    <ul class="breadcrumb">
+        <li>
+            <a href="#"><i class="icon-home"></i></a><span class="divider">&nbsp;</span>
+        </li>
+        <li>
+            <a href="#">اطلاعات پایه</a> <span class="divider">&nbsp;</span>
+        </li>
+        <li><a href="#">سازمان</a><span class="divider-last">&nbsp;</span></li>
+
+    </ul>
+}
+
+
+<div class="widget">
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary(true)
+
+        <div class="span12">
+            <!-- BEGIN SAMPLE FORM widget-->
+            <div class="widget">
+                <div class="widget-title">
+                    <h4><i class="icon-reorder"></i>ویرایش</h4>
+                    <span class="tools">
+                        <a href="javascript:;" class="icon-chevron-down"></a>
+                        <a href="javascript:;" class="icon-remove"></a>
+                    </span>
+                </div>
+
+                <div class="widget-body form">
+                    <!-- BEGIN FORM-->
+                    <form action="#" class="form-horizontal">
+
+                        <div class="control-group">
+                            <label class="control-label">شناسه سازمان </label>
+                            <div class="controls">
+                                @Html.TextBoxFor(model => model.OrganizationId, htmlAttributes: new { @class = "span6  tooltips", @id = "txtOrganizationId", data_trigger = "hover", data_original_title = "شناسه گروه" })
+                                @Html.ValidationMessageFor(model => model.OrganizationId)
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label">نام سازمان</label>
+                            <div class="controls">
+                                @Html.TextBoxFor(model => model.Title, htmlAttributes: new { @class = "span6", @id = "txtOrganizationDs" })
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label">کد دسترسی</label>
+                            <div class="controls">
+                                @Html.TextBoxFor(model => model.AutorizeCode, htmlAttributes: new { @class = "span6", @id = "txtOrganizationName" })
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label">نوع سازمان</label>
+                            <div class="controls">
+                                @Html.DropDownListFor(model => model.OrganizationTypeCode, new SelectList(@ViewBag.OrganizationType, "PCode", "Title", "0"), "نوع سازمان را انتخاب نمایید:", htmlAttributes: new { @class = "chosen-with-diselect", @id = "cboOrganizationType" })
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label">سازمان پدر</label>
+                            <div class="controls">
+                                @Html.DropDownListFor(model => model.ParentId, new SelectList(@ViewBag.OrganizationList, "OrganizationId", "Title", "0"), "سازمان پدر را انتخاب نمایید:", htmlAttributes: new { @class = "chosen-with-diselect", @id = "cboParentOrganization" })
+                            </div>
+                        </div>
+
+                        @if(Session[ShakelliReportsUI.CommonUnits.GeneralModule.m_MessageModel] != null)
+                        { 
+                            @Html.Partial("_MessagePartial", Session[ShakelliReportsUI.CommonUnits.GeneralModule.m_MessageModel])
+                        }
+                        
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-success">بروزرسانی</button>
+                            <button type="button" class="btn" onclick="location.href='@Url.Action("Organization_cancel", "Prime")'">بازگشت</button>
+                            <button type="button" class="btn" onclick="location.href='@Url.Action("Organization_delete", "Prime", new { organizationid = Model.OrganizationId })'">حذف</button>
+
+
+                        </div>
+
+                    </form>
+                    <!-- END FORM-->
+                </div>
+
+                
+            </div>
+            <!-- END SAMPLE FORM widget-->
+        </div>
+
+    }
+
+
+</div>
+
+
+<script src="@Url.Content("~/Scripts/jquery-ui-1.8.24.min.js")"></script>
+
+<script>
+    jQuery(document).ready(function () {
+        App.init();
+    });
+</script>
+
+@Scripts.Render("~/bundles/jqueryval")

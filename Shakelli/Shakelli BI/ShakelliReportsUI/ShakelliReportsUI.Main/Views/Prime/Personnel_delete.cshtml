@@ -1,0 +1,81 @@
+﻿@model ShakelliReportsUI.DataLayer.Models.Person
+
+@{
+    ViewBag.Title = "پرسنل";
+    ViewBag.activemenu_prime = "active";
+    ViewBag.activemenu_prime_budjeh = "active";
+}
+
+
+@section pagetitle
+{
+    <h3 class="page-title">
+        اطلاعات پایه
+        <small>پرسنل</small>
+    </h3>
+}
+
+@section breadcrumb
+{
+    <ul class="breadcrumb">
+        <li>
+            <a href="#"><i class="icon-home"></i></a><span class="divider">&nbsp;</span>
+        </li>
+        <li>
+            <a href="#">اطلاعات پایه</a> <span class="divider">&nbsp;</span>
+        </li>
+        <li><a href="#">پرسنل</a><span class="divider-last">&nbsp;</span></li>
+
+    </ul>
+}
+
+<div class="widget-body">
+    <div class="alert alert-block alert-warning fade in">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        <h4 class="alert-heading">هشدار!</h4>
+        <p>
+            اطلاعات فعلی حذف می شود!
+            آیا ادامه می دهید؟
+        </p>
+
+        <div>
+            <br />
+            <div class="control-group">
+                <label class="control-label">کد پرسنلی</label>
+                <div class="controls">
+                    @Html.TextBoxFor(model => model.PersonCode)
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">نام </label>
+                <div class="controls">
+                    @Html.TextBoxFor(model => model.FirstName, htmlAttributes: new { @class = "span6  tooltips", @id = "txtFName", data_trigger = "hover", data_original_title = "نام" })
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">نام خانوادگی </label>
+                <div class="controls">
+                    @Html.TextBoxFor(model => model.LastName, htmlAttributes: new { @class = "span6  tooltips", @id = "txtLName", data_trigger = "hover", data_original_title = "نام خانوادگی" })
+                </div>
+            </div>
+                      <button type="button" class="btn" onclick="location.href='@Url.Action("Personnel_delete_confirm", "Prime", new { personid = Model.PersonId })'">خب</button>
+            <button type="button" class="btn" onclick="location.href='@Url.Action("Personnel_edit", "Prime", new { personid = Model.PersonId })'">لغو</button>
+
+        </div>
+
+
+    </div>
+</div>
+
+
+
+<script>
+    jQuery(document).ready(function () {
+        // initiate layout and plugins
+        App.init();
+    });
+</script>
+
+

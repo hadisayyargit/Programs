@@ -1,0 +1,53 @@
+﻿@model ShakelliReportsUI.DataLayer.Models.MessageModel
+
+<link href="@Url.Content("~/Content/assets/chosen-bootstrap/chosen/chosen.css")" rel="stylesheet" />
+
+<div class="widget-body">
+    @if (Model.MessageType == "Warning")
+    { 
+        <div class="alert alert-block alert-warning fade in">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <h4 class="alert-heading">هشدار!</h4>
+            <p>
+                @Model.MessageBody
+            </p>
+        </div>
+    }
+
+@if (Model.MessageType == "Success")
+    {
+    <div class="alert alert-block alert-success fade in">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        <h4 class="alert-heading">موفقیت!</h4>
+        <p>
+            @Model.MessageBody
+        </p>
+    </div>
+}
+
+@if (Model.MessageType == "Info")
+    {
+    <div class="alert alert-block alert-info fade in">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        <h4 class="alert-heading">توجه!</h4>
+        <p>
+            @Model.MessageBody
+
+        </p>
+    </div>
+}
+
+@if (Model.MessageType == "Error")
+    {
+    <div class="alert alert-block alert-error fade in">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        <h4 class="alert-heading">خطا!</h4>
+        <p>
+            @Model.MessageBody
+        </p>
+    </div>
+}
+</div>
+
+
+<script src="~/Scripts/jquery-1.8.3.min.js"></script>

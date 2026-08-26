@@ -1,0 +1,149 @@
+﻿@model ShakelliReportsUI.DataLayer.Models.Person
+
+<link href="~/Content/assets/datepicker-fa/styles/jquery-ui-1.8.14.css" rel="stylesheet" />
+
+@{
+    ViewBag.Title = "پرسنل";
+    ViewBag.activemenu_prime = "active";
+    ViewBag.activemenu_prime_personnel = "active";
+}
+
+@section pagetitle
+{
+    <h3 class="page-title">
+        اطلاعات پایه
+        <small>پرسنل</small>
+    </h3>
+}
+
+@section breadcrumb
+{
+    <ul class="breadcrumb">
+        <li>
+            <a href="#"><i class="icon-home"></i></a><span class="divider">&nbsp;</span>
+        </li>
+        <li>
+            <a href="#">اطلاعات پایه</a> <span class="divider">&nbsp;</span>
+        </li>
+        <li><a href="#">پرسنل</a><span class="divider-last">&nbsp;</span></li>
+
+    </ul>
+}
+
+
+<div class="widget">
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary(true)
+        
+        <div class="span12">
+            <!-- BEGIN SAMPLE FORM widget-->
+            <div class="widget">
+                <div class="widget-title">
+                    <h4><i class="icon-reorder"></i>ویرایش</h4>
+                    <span class="tools">
+                        <a href="javascript:;" class="icon-chevron-down"></a>
+                        <a href="javascript:;" class="icon-remove"></a>
+                    </span>
+                </div>
+                <div class="widget-body form">
+                    <!-- BEGIN FORM-->
+                    @*<form action="#" class="form-horizontal">*@     
+
+                                @Html.HiddenFor(model => model.PersonId)
+
+                        <div class="control-group">
+                            <label class="control-label">کد پرسنلی </label>
+                            <div class="controls">
+                                @Html.TextBoxFor(model => model.PersonCode, htmlAttributes: new { @class = "span6  tooltips", @id = "txtPersonCode", data_trigger = "hover", data_original_title = "کد پرسنلی" })
+                                @Html.ValidationMessageFor(model => model.PersonCode)
+                            </div>
+                        </div>
+
+
+                        <div class="control-group">
+                            <label class="control-label">نام</label>
+                            <div class="controls">
+                                @Html.TextBoxFor(model => model.FirstName, htmlAttributes: new { @class = "span6", @id = "txtFName" })
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label">نام خانوادگی</label>
+                            <div class="controls">
+                                @Html.TextBoxFor(model => model.LastName, htmlAttributes: new { @class = "span6", @id = "txtLName" })
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label">شماره ملی</label>
+                            <div class="controls">
+                                @Html.TextBoxFor(model => model.NationalCode, htmlAttributes: new { @class = "span6", @id = "txtNationalCode" })
+                            </div>
+                        </div>
+
+                        <div class="control-group" >
+                            <label class="control-label">تلفن همراه</label>
+                            <div class="controls">
+                                @Html.TextBoxFor(model => model.Mobile, htmlAttributes: new { @class = "span6", @id = "txtMobile" })
+                            </div>
+                        </div>
+
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-success">بروزرسانی</button>
+                            <button type="button" class="btn" onclick="location.href='@Url.Action("Personnel_cancel", "Prime")'">بازگشت</button>
+                            <button type="button" class="btn" onclick="location.href='@Url.Action("Personnel_delete", "Prime", new { personid = Model.PersonId })'">حذف</button>
+                        </div>
+                    @*</form>*@
+                    <!-- END FORM-->
+                </div>
+            </div>
+            <!-- END SAMPLE FORM widget-->
+        </div>
+
+    }
+
+
+</div>
+
+
+<script src="@Url.Content("~/Scripts/jquery-ui-1.8.24.min.js")"></script>
+<script src="@Url.Content("~/Content/assets/datepicker-fa/scripts/jquery.ui.datepicker-cc.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Content/assets/datepicker-fa/scripts/calendar.js")"></script>
+<script src="@Url.Content("~/Content/assets/datepicker-fa/scripts/jquery.ui.datepicker-cc-fa.js")" type="text/javascript"></script>
+
+<script type="text/javascript">
+
+    $(function () {
+        // حالت پیشفرض
+        $('#datepicker0').datepicker();
+        //-----------------------------------
+
+        //-----------------------------------
+        // انتخاب با کلیک بر روی عکس
+        $("#datepicker6").datepicker({
+            showOn: 'button',
+            buttonImage: '../../Content/assets/datepicker-fa/styles/images/calendar.png',
+            buttonImageOnly: true
+        });
+
+        // تنظیم حداقل بصورت پویا
+        $('#datepicker12from').datepicker({
+            onSelect: function (dateText, inst) {
+                $('#datepicker12to').datepicker('option', 'minDate', new JalaliDate(inst['selectedYear'], inst['selectedMonth'], inst['selectedDay']));
+            }
+        });
+        $('#datepicker12to').datepicker();
+
+    });
+</script>
+
+
+<script>
+    jQuery(document).ready(function () {
+        App.init();
+    });
+</script>
+
+@Scripts.Render("~/bundles/jqueryval")

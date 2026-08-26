@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SharedDataSet xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/shareddatasetdefinition">
+  <DataSet Name="">
+    <Query>
+      <DataSourceReference>datasourceShakelliDW</DataSourceReference>
+      <CommandText>SELECT *
+  FROM [ShakelliDW].[dbo].[vwSeller]</CommandText>
+    </Query>
+    <Fields>
+      <Field Name="LOGICALREF">
+        <DataField>LOGICALREF</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="SalesmanCode">
+        <DataField>SalesmanCode</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="SalesmanName">
+        <DataField>SalesmanName</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="SPECODE">
+        <DataField>SPECODE</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="CYPHCODE">
+        <DataField>CYPHCODE</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="BRANCH">
+        <DataField>BRANCH</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="POSITION_">
+        <DataField>POSITION_</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="ACTIVE">
+        <DataField>ACTIVE</DataField>
+        <rd:TypeName>System.Int16</rd:TypeName>
+      </Field>
+      <Field Name="USERID">
+        <DataField>USERID</DataField>
+        <rd:TypeName>System.Int16</rd:TypeName>
+      </Field>
+    </Fields>
+  </DataSet>
+</SharedDataSet>

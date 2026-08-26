@@ -1,0 +1,140 @@
+﻿@model ShakelliReportsUI.DataLayer.Models.AppObject
+
+<link href="~/Content/assets/datepicker-fa/styles/jquery-ui-1.8.14.css" rel="stylesheet" />
+
+@{
+    ViewBag.Title = "موضوعات";
+    ViewBag.activemenu_prime = "active";
+    ViewBag.activemenu_prime_usermanagement = "active";
+}
+
+@section pagetitle
+{
+    <h3 class="page-title">
+        اطلاعات پایه
+        <small>موضوعات</small>
+    </h3>
+}
+
+@section breadcrumb
+{
+    <ul class="breadcrumb">
+        <li>
+            <a href="#"><i class="icon-home"></i></a><span class="divider">&nbsp;</span>
+        </li>
+        <li>
+            <a href="#">اطلاعات پایه</a> <span class="divider">&nbsp;</span>
+        </li>
+        <li><a href="#">موضوعات</a><span class="divider-last">&nbsp;</span></li>
+
+    </ul>
+}
+
+
+<div class="widget">
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary(true)
+
+        <div class="span12">
+            <!-- BEGIN SAMPLE FORM widget-->
+            <div class="widget">
+                <div class="widget-title">
+                    <h4><i class="icon-reorder"></i>ویرایش</h4>
+                    <span class="tools">
+                        <a href="javascript:;" class="icon-chevron-down"></a>
+                        <a href="javascript:;" class="icon-remove"></a>
+                    </span>
+                </div>
+                <div class="widget-body form">
+                    <!-- BEGIN FORM-->
+                    <form action="#" class="form-horizontal">
+
+                        <div class="control-group">
+                            <div class="controls">
+                                @Html.HiddenFor(model => model.ObjectId, htmlAttributes: new { @class = "span6  tooltips", @id = "txtObjectId", data_trigger = "hover", data_original_title = "شناسه گروه" })
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label">نام موضوع</label>
+                            <div class="controls">
+                                @Html.TextBoxFor(model => model.ObjectDs, htmlAttributes: new { @class = "span6", @id = "txtObjectDs" ,@style="font-family: 'Tahoma'"})
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label">نام لاتین موضوع</label>
+                            <div class="controls">
+                                @Html.TextBoxFor(model => model.ObjectName, htmlAttributes: new { @class = "span6", @id = "txtObjectName", @dir = "ltr" })
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label">نوع موضوع</label>
+                            <div class="controls">
+                                @Html.DropDownListFor(model => model.ObjectTypeCode, new SelectList(@ViewBag.ObjectType, "PCode", "Title", "0"), "نوع موضوع را انتخاب نمایید:", htmlAttributes: new { @class = "chosen-with-diselect", @id = "cboObjectType" })
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label">موضوع پدر</label>
+                            <div class="controls">
+                                @Html.DropDownListFor(model => model.ParentObjectId, new SelectList(@ViewBag.ObjectList, "ObjectId", "ObjectDs", "0"), "موضوع پدر را انتخاب نمایید:", htmlAttributes: new { @class = "chosen-with-diselect", @id = "cboParentObject" })
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label">مسیر مستقیم/مسیر گزارش سروری</label>
+                            <div class="controls">
+                                @Html.TextBoxFor(model => model.UrlPath, htmlAttributes: new { @class = "span6", @id = "txtReportServerPath", @dir = "ltr" })
+                            </div>
+                        </div>
+                        
+                        <div class="control-group">
+                            <label class="control-label">مسیر مستقیم دارد؟</label>
+                             @Html.CheckBoxFor(model => model.HasDirectPath)
+                            <label class="control-label">کاربرگ ویژه دارد؟</label>
+                            @Html.CheckBoxFor(model => model.HasOwnGrid)
+                            <label class="control-label">گزارش سروری؟</label>
+                            @Html.CheckBoxFor(model => model.HasServerReport)
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label">Stored Procedure</label>
+                            <div class="controls">
+                                @Html.TextBoxFor(model => model.StoredProcedure, htmlAttributes: new { @class = "span6", @id = "txtStoredProcedure", @dir = "ltr" })
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-success">بروزرسانی</button>
+                            <button type="button" class="btn" onclick="location.href='@Url.Action("AppObject_cancel", "Prime")'">بازگشت</button>
+                            <button type="button" class="btn" onclick="location.href='@Url.Action("AppObject_delete", "Prime", new { objectid = Model.ObjectId })'">حذف</button>
+
+
+                        </div>
+
+                    </form>
+                    <!-- END FORM-->
+                </div>
+            </div>
+            <!-- END SAMPLE FORM widget-->
+        </div>
+
+    }
+
+
+</div>
+
+
+<script src="@Url.Content("~/Scripts/jquery-ui-1.8.24.min.js")"></script>
+<script src="@Url.Content("~/Scripts/jquery-1.8.3.min.js")"></script>
+
+<script>
+    jQuery(document).ready(function () {
+        App.init();
+    });
+</script>
+
+@Scripts.Render("~/bundles/jqueryval")

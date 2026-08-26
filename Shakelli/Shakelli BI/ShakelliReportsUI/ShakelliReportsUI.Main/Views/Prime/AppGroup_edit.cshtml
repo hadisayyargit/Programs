@@ -1,0 +1,104 @@
+﻿@model ShakelliReportsUI.DataLayer.Models.AppGroup
+
+<link href="~/Content/assets/datepicker-fa/styles/jquery-ui-1.8.14.css" rel="stylesheet" />
+
+@{
+    ViewBag.Title = "گروه کاربران";
+    ViewBag.activemenu_prime = "active";
+    ViewBag.activemenu_prime_usermanagement = "active";
+}
+
+@section pagetitle
+{
+    <h3 class="page-title">
+        اطلاعات پایه
+        <small>گروه کاربران</small>
+    </h3>
+}
+
+@section breadcrumb
+{
+    <ul class="breadcrumb">
+        <li>
+            <a href="#"><i class="icon-home"></i></a><span class="divider">&nbsp;</span>
+        </li>
+        <li>
+            <a href="#">اطلاعات پایه</a> <span class="divider">&nbsp;</span>
+        </li>
+        <li><a href="#">گروه کاربران</a><span class="divider-last">&nbsp;</span></li>
+
+    </ul>
+}
+
+
+<div class="widget">
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary(true)
+
+        <div class="span12">
+            <!-- BEGIN SAMPLE FORM widget-->
+            <div class="widget">
+                <div class="widget-title">
+                    <h4><i class="icon-reorder"></i>ویرایش</h4>
+                    <span class="tools">
+                        <a href="javascript:;" class="icon-chevron-down"></a>
+                        <a href="javascript:;" class="icon-remove"></a>
+                    </span>
+                </div>
+                <div class="widget-body form">
+                    <!-- BEGIN FORM-->
+                    <form action="#" class="form-horizontal">
+
+                        <div class="control-group">
+                            <label class="control-label">شناسه گروه </label>
+                            <div class="controls">
+                                @Html.TextBoxFor(model => model.GroupId, htmlAttributes: new { @class = "span6  tooltips", @id = "txtGroupId", data_trigger = "hover", data_original_title = "شناسه گروه" })
+                                @Html.ValidationMessageFor(model => model.GroupId)
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label">عنوان گروه</label>
+                            <div class="controls">
+                                @Html.TextBoxFor(model => model.GroupName, htmlAttributes: new { @class = "span6", @id = "txtGroupName" })
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label">وضعیت</label>
+                            @Html.CheckBoxFor(model => model.Enabled)
+                            <div class="controls">
+                                <label class="checkbox">
+                                    @*@Html.CheckBoxFor(model => model.Enabled)*@
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-success">بروزرسانی</button>
+                            <button type="button" class="btn" onclick="location.href='@Url.Action("AppGroup_cancel", "Prime")'">بازگشت</button>
+                            <button type="button" class="btn" onclick="location.href='@Url.Action("AppGroup_delete", "Prime", new { groupid = Model.GroupId })'">حذف</button>
+                        </div>
+                    </form>
+                    <!-- END FORM-->
+                </div>
+            </div>
+            <!-- END SAMPLE FORM widget-->
+        </div>
+
+    }
+
+
+</div>
+
+
+<script src="@Url.Content("~/Scripts/jquery-ui-1.8.24.min.js")"></script>
+
+<script>
+    jQuery(document).ready(function () {
+        App.init();
+    });
+</script>
+
+@Scripts.Render("~/bundles/jqueryval")

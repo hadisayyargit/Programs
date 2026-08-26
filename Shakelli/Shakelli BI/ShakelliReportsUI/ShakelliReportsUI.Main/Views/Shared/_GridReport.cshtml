@@ -1,0 +1,658 @@
+﻿@model ShakelliReportsUI.DataLayer.Models.ReportModel
+
+<!--This CSS entry was added by the Telerik VS Extensions for compatibility reasons-->
+
+<link href="@Url.Content("~/Content/kendo.compatibility.css")" rel="stylesheet" type="text/css" />
+<link href="@Url.Content("~/Content/kendo/2014.1.318/kendo.common.min.css")" rel="stylesheet" type="text/css" />
+<link href="@Url.Content("~/Content/kendo/2014.1.318/kendo.default.min.css")" rel="stylesheet" type="text/css" />
+<link href="@Url.Content("~/Content/kendo/2014.1.318/kendo.dataviz.min.css")" rel="stylesheet" type="text/css" />
+<link href="@Url.Content("~/Content/kendo/2014.1.318/kendo.dataviz.default.min.css")" rel="stylesheet" type="text/css" />
+
+<link href="@Url.Content("~/Content/kendo/2014.1.318/kendo.rtl.min.css")" rel="stylesheet" type="text/css" />
+
+<link href="~/Content/kendo/2014.1.318/kendo.moonlight.min.css" rel="stylesheet" />
+<link href="~/Content/kendo/2014.1.318/kendo.moonlight.mobile.min.css" rel="stylesheet" />
+@*<link href="~/Content/kendo/2014.1.318/kendo.flat.min.css" rel="stylesheet" />*@
+
+
+@{
+
+
+    List<ShakelliReportsUI.DataLayer.Models.postReportData> model2 = new List<ShakelliReportsUI.DataLayer.Models.postReportData>();
+    try
+    {
+        model2 = (List<ShakelliReportsUI.DataLayer.Models.postReportData>)Session[ShakelliReportsUI.CommonUnits.GeneralModule.m_postReportData];
+    }
+    catch
+    {
+
+    }
+
+    System.Data.DataSet model1 = new System.Data.DataSet();
+    try
+    {
+        model1 = (System.Data.DataSet)Session[ShakelliReportsUI.CommonUnits.GeneralModule.m_postReportData];
+    }
+
+    catch
+    {
+
+    }
+
+    //Session[ShakelliReportsUI.CommonUnits.GeneralModule.m_GridHtml] = strRes;
+
+
+}
+
+<div class="widget">
+    <div class="widget-title">
+        <h4><i class="icon-reorder"></i>فهرست</h4>
+        <span class="tools">
+            <a href="javascript:;" class="icon-chevron-down"></a>
+            <a href="javascript:;" class="icon-remove"></a>
+        </span>
+    </div>
+
+    <div class="widget-body" style="display: block;">
+        <p>
+            <strong>
+                @Model.ReportTitle
+            </strong>
+            <br />
+            @Model.SubTitle
+
+        </p>
+
+        @*<div>
+                <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("ReturnToMaster", "Reports", Model)'">بازگشت</button>
+            </div>*@
+
+        <div class="control-group">
+
+            @switch (((ShakelliReportsUI.DataLayer.Models.ReportModel)Session[ShakelliReportsUI.CommonUnits.GeneralModule.m_ReportModel]).ReportName)
+            {
+
+                case "rptSaleAndReturnOfSalesman":                    
+                    
+                    <link href="~/Content/kendo/2014.1.318/kendo.moonlight.min.css" rel="stylesheet" />
+                    <link href="~/Content/kendo/2014.1.318/kendo.moonlight.mobile.min.css" rel="stylesheet" />
+
+                    <div>
+
+                        @(Html.Kendo().Grid(model2).Name("MyGrid")
+                            .Resizable(resize => resize.Columns(true))
+                            .Columns(columns =>
+                                {
+                                    columns.Bound("Id").Visible(false);
+                                    columns.Bound("SalesmanCode").Width(130).HtmlAttributes(new { style = "font-family:B yekan,Tahoma" });
+                                    columns.Bound("SalesmanName").Width(160);
+                                    columns.Bound("SupervisorName").Width(160);
+                                    columns.Bound("payable").Width(140).HtmlAttributes(new { style = "font-family:B Yekan,Tahoma" }).Format("{0:#,0 }");
+                                    columns.Bound("retedadfactor").Width(150).HtmlAttributes(new { style = "font-family:B Yekan,Tahoma" }).Format("{0:#,0 }");
+                                    columns.Bound("reweight").Width(140).HtmlAttributes(new { style = "font-family:B Yekan,Tahoma" }).Format("{0:#,0 }");
+                                    columns.Bound("repayable").Width(150).HtmlAttributes(new { style = "font-family:B Yekan,Tahoma" }).Format("{0:#,0 }");
+                                    columns.Bound("mondehpayable").Width(140).HtmlAttributes(new { style = "font-family:B Yekan,Tahoma" }).Format("{0:#,0 }");
+                                    columns.Bound("mondehweight").Width(140).HtmlAttributes(new { style = "font-family:B Yekan,Tahoma" }).Format("{0:#,0 }");
+
+                                    columns.Bound("tedadfactor").Width(140).HtmlAttributes(new { style = "font-family:B Yekan,Tahoma" }).Format("{0:#,0 }")
+                                    .FooterTemplate(@<text>جمع کل تعداد فاکتور: @string.Format("{0:#,0 عدد}", item.Sum != null ? item.Sum.Value : 0)</text>);
+
+                                    columns.Bound("weight").Width(100).HtmlAttributes(new { style = "font-family:B Traffic,Tahoma" }).Format("{0:#,0 }")
+                                    .FooterTemplate(@<text>جمع کل وزن: @string.Format("{0:#,0 }", item.Sum != null ? item.Sum.Value : 0)</text>);
+
+                                })
+
+                            .DataSource(dataSource => dataSource.Server()
+                                        .Aggregates(aggregates =>
+                                        {
+                                            aggregates.Add(p => p.tedadfactor).Sum();
+                                            aggregates.Add(p => p.weight).Sum();
+                                        })
+                                        .PageSize(20)
+                                        )
+                                    
+                            .Sortable()                            
+                            .Scrollable(a => a.Height("auto")         //.Height(350)
+                                          .Enabled(true)
+                                       )
+                            .Groupable(groupable => groupable
+                                        .Messages(str => str
+                                        .Empty("برای گروهبندی ستونهای مورد نظر را کشیده و در اینجا بیندازید"))
+                                      )
+                            .Filterable(filterable => filterable
+                                            .Messages(str => str
+                                            .And("و")
+                                            .Cancel("لغو")
+                                            .Clear("پاک")
+                                            .Filter("فیلتر")
+                                            .Info("فیلتر کردن گزینه ها")
+                                            )
+                                            .Operators(operators => operators
+                                            .ForNumber(n => n.Clear()
+                                                .IsEqualTo("=")
+                                                .IsGreaterThan(">")
+                                                .IsGreaterThanOrEqualTo(">=")
+                                                .IsLessThan("<")
+                                                .IsLessThanOrEqualTo("<=")
+                                                .IsNotEqualTo("<>")
+                                                )
+                                            .ForString(str => str.Clear()
+                                                .StartsWith("شروع شود با ")
+                                                .IsEqualTo("برابر با")
+                                                .Contains("شامل")
+                                                .DoesNotContain("شامل نباشد")
+                                                .StartsWith("شروع شود با")
+                                                .EndsWith("تمام شود به")
+                                                .IsNotEqualTo("نابرابر با")))
+                                   )
+                            
+                            .Pageable(pageable => pageable
+                                //.PageSizes(true)
+                                .PageSizes(new int[] { 10, 20, 30, 40 })
+                                .ButtonCount(5).Numeric(true).Refresh(true)
+                                .Messages(str => str.ItemsPerPage("تعداد سطر در صفحه").First("اولین").Last("آخرین").Next("بعدی").Previous("قبلی").Page("صفحه").Of("از").MorePages("صفحات بیشتر").Empty("خالی").Refresh("تازه سازی"))
+                                    )
+
+                            .ToolBar(toolBar => toolBar.Custom().Text("خروجی به اکسل").HtmlAttributes(new { id = "export" }).Url(Url.Action("ExportToExcel", "Reports"))                   )                                                                                                                                                                                                  
+                            .ToolBar(toolBar => toolBar.Custom().Text("چاپ").HtmlAttributes(new { id = "print", onclick = "printGrid()" }))
+
+                        )
+
+                    </div>
+
+                    break;                
+                
+                case "rptSalesmanControl":
+
+                    <link href="~/Content/kendo/2014.1.318/kendo.moonlight.min.css" rel="stylesheet" />
+                    <link href="~/Content/kendo/2014.1.318/kendo.moonlight.mobile.min.css" rel="stylesheet" />
+
+                    <div>
+                        @(Html.Kendo().Grid(model2).Name("MyGrid")
+                            .Resizable(resize => resize.Columns(true))
+                            .Columns(columns =>
+                                {
+                                    columns.Bound("RowNo").Visible(false);
+                                    columns.Bound("SalesmanCode").Width(130).HtmlAttributes(new { style = "font-family:B yekan,Tahoma" });
+                                    columns.Bound("SalesmanName").Width(160);
+
+                                    columns.Bound("ksAMOUNT").Width(100).HtmlAttributes(new { style = "font-family:B Traffic,Tahoma" }).Format("{0:#,0 }")
+                                        .FooterTemplate(@<text>جمع کل: @string.Format("{0:#,0 }", item.Sum != null ? item.Sum.Value : 0)</text>);
+
+                                    columns.Bound("checkAMOUNT").Width(100).HtmlAttributes(new { style = "font-family:B Traffic,Tahoma" }).Format("{0:#,0 }")
+                                        .FooterTemplate(@<text>جمع کل: @string.Format("{0:#,0 }", item.Sum != null ? item.Sum.Value : 0)</text>);
+
+                                    columns.Bound("residAMOUNT").Width(100).HtmlAttributes(new { style = "font-family:B Traffic,Tahoma" }).Format("{0:#,0 }")
+                                        .FooterTemplate(@<text>جمع کل: @string.Format("{0:#,0 }", item.Sum != null ? item.Sum.Value : 0)</text>);
+
+                                    columns.Bound("distDisc").Width(100).HtmlAttributes(new { style = "font-family:B Traffic,Tahoma" }).Format("{0:#,0 }")
+                                        .FooterTemplate(@<text>جمع کل: @string.Format("{0:#,0 }", item.Sum != null ? item.Sum.Value : 0)</text>);
+
+                                    columns.Bound("returnAmount").Width(100).HtmlAttributes(new { style = "font-family:B Traffic,Tahoma" }).Format("{0:#,0 }")
+                                        .FooterTemplate(@<text>جمع کل: @string.Format("{0:#,0 }", item.Sum != null ? item.Sum.Value : 0)</text>);
+
+                                    columns.Bound("Campaign").Width(100).HtmlAttributes(new { style = "font-family:B Traffic,Tahoma" }).Format("{0:#,0 }")
+                                        .FooterTemplate(@<text>جمع کل: @string.Format("{0:#,0 }", item.Sum != null ? item.Sum.Value : 0)</text>);
+
+                                    columns.Bound("impureAmount").Width(140).HtmlAttributes(new { style = "font-family:B Yekan,Tahoma" }).Format("{0:#,0 }")
+                                        .FooterTemplate(@<text>جمع کل: @string.Format("{0:#,0 عدد}", item.Sum != null ? item.Sum.Value : 0)</text>);
+
+                                    columns.Bound("NetAmount").Width(100).HtmlAttributes(new { style = "font-family:B Traffic,Tahoma" }).Format("{0:#,0 }")
+                                        .FooterTemplate(@<text>جمع کل: @string.Format("{0:#,0 }", item.Sum != null ? item.Sum.Value : 0)</text>);
+
+                                    columns.Bound("RemainTerm").Width(100).HtmlAttributes(new { style = "font-family:B Traffic,Tahoma" }).Format("{0:#,0 }")
+                                        .FooterTemplate(@<text>جمع کل: @string.Format("{0:#,0 }", item.Sum != null ? item.Sum.Value : 0)</text>);
+
+                                    columns.Bound("RemainTot").Width(100).HtmlAttributes(new { style = "font-family:B Traffic,Tahoma" }).Format("{0:#,0 }")
+                                        .FooterTemplate(@<text>جمع کل: @string.Format("{0:#,0 }", item.Sum != null ? item.Sum.Value : 0)</text>);
+                                })
+
+                            .DataSource(dataSource => dataSource.Server()
+                                         .Aggregates(aggregates =>
+                                                {
+                                                    aggregates.Add(p => p.ksAMOUNT).Sum();
+                                                    aggregates.Add(p => p.checkAMOUNT).Sum();
+                                                    aggregates.Add(p => p.residAMOUNT).Sum();
+                                                    aggregates.Add(p => p.distDisc).Sum();
+                                                    aggregates.Add(p => p.returnAmount).Sum();
+                                                    aggregates.Add(p => p.Campaign).Sum();
+                                                    aggregates.Add(p => p.impureAmount).Sum();
+                                                    aggregates.Add(p => p.NetAmount).Sum();
+                                                    aggregates.Add(p => p.RemainTerm).Sum();
+                                                    aggregates.Add(p => p.RemainTot).Sum();
+
+                                                }) 
+                                            .PageSize(20)                                                                                                        
+                                            )
+                                            
+                            .Sortable()
+                            .Scrollable(a => a
+                                .Height("auto")
+                                //.Height(350)
+                                .Enabled(true)
+                                )
+                            
+                            .Groupable(groupable => groupable
+                                .Messages(str => str
+                                .Empty("برای گروهبندی ستونهای مورد نظر را کشیده و در اینجا بیندازید")))
+
+                            .Filterable(filterable => filterable
+                                .Messages(str => str
+                                .And("و")
+                                .Cancel("لغو")
+                                .Clear("پاک")
+                                .Filter("فیلتر")
+                                .Info("فیلتر کردن گزینه ها")
+                                    )
+                            
+                                .Operators(operators => operators
+                                        .ForNumber(n => n.Clear()
+                                            .IsEqualTo("=")
+                                            .IsGreaterThan(">")
+                                            .IsGreaterThanOrEqualTo(">=")
+                                            .IsLessThan("<")
+                                            .IsLessThanOrEqualTo("<=")
+                                            .IsNotEqualTo("<>")
+                                            )
+                                        .ForString(str => str.Clear()
+                                            .StartsWith("شروع شود با ")
+                                            .IsEqualTo("برابر با")
+                                            .Contains("شامل")
+                                            .DoesNotContain("شامل نباشد")
+                                            .StartsWith("شروع شود با")
+                                            .EndsWith("تمام شود به")
+                                            .IsNotEqualTo("نابرابر با")
+                                            )
+                                        )
+                                 )
+
+                            .Pageable(pageable => pageable
+                                            //.PageSizes(true)
+                                            .PageSizes(new int[] { 10, 20, 30, 40 })
+                                            .ButtonCount(5).Numeric(true).Refresh(true)
+                                            .Messages(str => str
+                                            .ItemsPerPage("تعداد سطر در صفحه").First("اولین").Last("آخرین").Next("بعدی").Previous("قبلی").Page("صفحه").Of("از").MorePages("صفحات بیشتر").Empty("خالی").Refresh("تازه سازی")
+                                            ))
+                                                    
+                            .ToolBar(toolBar => toolBar.Custom().Text("خروجی به اکسل").HtmlAttributes(new { id = "export" }).Url(Url.Action("ExportToExcel", "Reports")))
+                            .ToolBar(toolBar => toolBar.Custom().Text("چاپ").HtmlAttributes(new { id = "print", onclick = "printGrid()" }))
+                    )
+
+                </div>
+
+                    break;
+
+
+                case "rptSalesmanControlWight":
+
+                    <link href="~/Content/kendo/2014.1.318/kendo.moonlight.min.css" rel="stylesheet" />
+                    <link href="~/Content/kendo/2014.1.318/kendo.moonlight.mobile.min.css" rel="stylesheet" />
+
+                    <div>
+                        @(Html.Kendo().Grid(model2).Name("MyGrid")
+                            .Resizable(resize => resize.Columns(true))
+                            .Columns(columns =>
+                                {
+                                    columns.Bound("RowNo").Visible(false);
+                                    columns.Bound("kalacode").Width(130).HtmlAttributes(new { style = "font-family:B yekan,Tahoma" });
+                                    columns.Bound("kalaname").Width(160);
+
+                                    columns.Bound("caryWeight").Width(100).HtmlAttributes(new { style = "font-family:B Traffic,Tahoma" }).Format("{0:#,0 }")
+                                        .FooterTemplate(@<text>جمع کل: @string.Format("{0:#,0 }", item.Sum != null ? item.Sum.Value : 0)</text>);
+
+                                    columns.Bound("caryReWeight").Width(100).HtmlAttributes(new { style = "font-family:B Traffic,Tahoma" }).Format("{0:#,0 }")
+                                        .FooterTemplate(@<text>جمع کل: @string.Format("{0:#,0 }", item.Sum != null ? item.Sum.Value : 0)</text>);
+
+                                    columns.Bound("reweight").Width(100).HtmlAttributes(new { style = "font-family:B Traffic,Tahoma" }).Format("{0:#,0 }")
+                                        .FooterTemplate(@<text>جمع کل: @string.Format("{0:#,0 }", item.Sum != null ? item.Sum.Value : 0)</text>);
+
+                                    columns.Bound("capWeight").Width(100).HtmlAttributes(new { style = "font-family:B Traffic,Tahoma" }).Format("{0:#,0 }")
+                                        .FooterTemplate(@<text>جمع کل: @string.Format("{0:#,0 }", item.Sum != null ? item.Sum.Value : 0)</text>);
+
+                                    columns.Bound("weight").Width(100).HtmlAttributes(new { style = "font-family:B Traffic,Tahoma" }).Format("{0:#,0 }")
+                                        .FooterTemplate(@<text>جمع کل: @string.Format("{0:#,0 }", item.Sum != null ? item.Sum.Value : 0)</text>);
+
+                                    columns.Bound("Remain").Width(100).HtmlAttributes(new { style = "font-family:B Traffic,Tahoma" }).Format("{0:#,0 }")
+                                        .FooterTemplate(@<text>جمع کل: @string.Format("{0:#,0 }", item.Sum != null ? item.Sum.Value : 0)</text>);
+
+                                })
+                            
+                            .DataSource(dataSource => dataSource.Server()
+                                    .Aggregates(aggregates =>
+                                        {
+                                            aggregates.Add(p => p.caryWeight).Sum();
+                                            aggregates.Add(p => p.caryReWeight).Sum();
+                                            aggregates.Add(p => p.reweight).Sum();
+                                            aggregates.Add(p => p.capWeight).Sum();
+                                            aggregates.Add(p => p.weight).Sum();
+                                            aggregates.Add(p => p.Remain).Sum();
+                                        })                                                                                                
+                                    .PageSize(20)
+                                )
+                            
+                            .Sortable()
+                            .Scrollable(a => a
+                                .Height("auto")
+                                //.Height(350)
+                                .Enabled(true)
+                                )
+                                
+                            .Groupable(groupable => groupable
+                                .Messages(str => str
+                                .Empty("برای گروهبندی ستونهای مورد نظر را کشیده و در اینجا بیندازید")
+                                    )
+                               )
+                            
+                            .Filterable(filterable => filterable
+                                .Messages(str => str
+                                .And("و")
+                                .Cancel("لغو")
+                                .Clear("پاک")
+                                .Filter("فیلتر")
+                                .Info("فیلتر کردن گزینه ها")
+                                )
+                                .Operators(operators => operators
+                                    .ForNumber(n => n.Clear()
+                                        .IsEqualTo("=")
+                                        .IsGreaterThan(">")
+                                        .IsGreaterThanOrEqualTo(">=")
+                                        .IsLessThan("<")
+                                        .IsLessThanOrEqualTo("<=")
+                                        .IsNotEqualTo("<>")
+                                        )
+                                    .ForString(str => str.Clear()
+                                        .StartsWith("شروع شود با ")
+                                        .IsEqualTo("برابر با")
+                                        .Contains("شامل")
+                                        .DoesNotContain("شامل نباشد")
+                                        .StartsWith("شروع شود با")
+                                        .EndsWith("تمام شود به")
+                                        .IsNotEqualTo("نابرابر با")
+                                        )
+                                    )
+                                )                                                            
+                            
+                            .Pageable(pageable => pageable
+                                    //.PageSizes(true)
+                                    .PageSizes(new int[] { 10, 20, 30, 40 })
+                                    .ButtonCount(5).Numeric(true).Refresh(true)
+                                .Messages(str => str
+                                    .ItemsPerPage("تعداد سطر در صفحه").First("اولین").Last("آخرین").Next("بعدی").Previous("قبلی").Page("صفحه").Of("از").MorePages("صفحات بیشتر").Empty("خالی").Refresh("تازه سازی")
+                                    )
+                                )
+                                
+                            .ToolBar(toolBar => toolBar.Custom().Text("خروجی به اکسل").HtmlAttributes(new { id = "export" }).Url(Url.Action("ExportToExcel", "Reports")))
+                            .ToolBar(toolBar => toolBar.Custom().Text("چاپ").HtmlAttributes(new { id = "print", onclick = "printGrid()" }))
+
+                        )
+
+                    </div>
+
+                    break;
+
+                default:
+
+                    @*<link href="~/Content/kendo/2014.1.318/kendo.moonlight.min.css" rel="stylesheet" />*@
+                    @*
+                        <span id="myspan">
+                            @(
+                                Html.Raw(Session[ShakelliReportsUI.CommonUnits.GeneralModule.m_GridHtml])
+                            )
+
+                            <br />
+                        </span>
+
+                    *@
+
+                    <div>
+
+                        @*@(Html.Kendo().Grid(((System.Data.DataSet)Session[ShakelliReportsUI.CommonUnits.GeneralModule.m_postReportData]).Tables[0]).Name("MyGrid")*@
+                        @(Html.Kendo().Grid(model1.Tables[0].DefaultView).Name("MyGrid")
+                            .Resizable(resize => resize.Columns(true))
+                                                    //.HtmlAttributes(new {style=" background-color :yellow" })
+                            .Columns(columns =>
+                                {
+
+                                    foreach (System.Data.DataColumn column in model1.Tables[0].Columns)
+                                    {
+                                        if (column.DataType.FullName == "System.Int16" || column.DataType.FullName == "System.Int32" || column.DataType.FullName == "System.Single" || column.DataType.FullName == "System.Double")
+                                            columns.Bound(column.ColumnName).Title(column.Caption).Width(140).HtmlAttributes(new { style = "font-family:B Yekan,Tahoma" }).Format("{0:#,0 }");
+
+                                        else
+                                            columns.Bound(column.ColumnName).Title(column.Caption).Width(150).HtmlAttributes(new { style = "font-family:B Yekan,Tahoma" });
+
+                                    }
+                                    
+                                }
+                                )
+                                                           
+                            .DataSource(dataSource => dataSource.Server().PageSize(20))
+                                                        
+                            .Sortable()
+                                                        
+                            .Scrollable(a => a
+                                            .Height("auto")
+                                            //.Height(450)
+                                            .Enabled(true)
+                                       )
+                                                            
+                            .Groupable(groupable => groupable
+                                        .Messages(str => str
+                                        .Empty("برای گروهبندی ستونهای مورد نظر را کشیده و در اینجا بیندازید")
+                                        )
+                                  )
+
+                            .Filterable(filterable => filterable
+                                .Messages(str => str
+                                    .And("و")
+                                    .Cancel("لغو")
+                                    .Clear("پاک")
+                                    .Filter("فیلتر")
+                                    .Info("فیلتر کردن گزینه ها")
+                                        )
+                                    .Operators(operators => operators
+                                    .ForNumber(n => n.Clear()
+                                    .IsEqualTo("=")
+                                    .IsGreaterThan(">")
+                                    .IsGreaterThanOrEqualTo(">=")
+                                    .IsLessThan("<")
+                                    .IsLessThanOrEqualTo("<=")
+                                    .IsNotEqualTo("<>")
+                                    )
+                                    .ForString(str => str.Clear()
+                                    .StartsWith("شروع شود با ")
+                                    .IsEqualTo("برابر با")
+                                    .Contains("شامل")
+                                    .DoesNotContain("شامل نباشد")
+                                    .StartsWith("شروع شود با")
+                                    .EndsWith("تمام شود به")
+                                    .IsNotEqualTo("نابرابر با"))
+                                    )
+
+                                )                                                                                            
+                            
+                            .Pageable(pageable => pageable
+                                    //.PageSizes(true)
+                                    .PageSizes(new int[] { 10, 20, 30, 40 })
+                                    .ButtonCount(5).Numeric(true).Refresh(true)
+                                    .Messages(str => str
+                                        .ItemsPerPage("تعداد سطر در صفحه").First("اولین").Last("آخرین").Next("بعدی").Previous("قبلی").Page("صفحه").Of("از").MorePages("صفحات بیشتر").Empty("خالی").Refresh("تازه سازی")
+                                        )
+                                    )
+                                                                
+                            .ToolBar(toolBar => toolBar.Custom().Text("خروجی به اکسل").HtmlAttributes(new { id = "export" }).Url(Url.Action("ExportToExcel", "Reports")))                                                                                        
+                            .ToolBar(toolBar => toolBar.Custom().Text("چاپ").HtmlAttributes(new { id = "print", onclick = "printGrid()" }))
+
+                    )
+
+                </div>
+
+                    break;
+
+
+            }
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script src="@Url.Content("~/Scripts/kendo/2014.1.318/kendo.all.min.js")"></script>
+<script src="@Url.Content("~/Scripts/kendo/2014.1.318/kendo.aspnetmvc.min.js")"></script>
+<script src="@Url.Content("~/Scripts/kendo.modernizr.custom.js")"></script>
+
+<script>
+
+    function printGrid() {
+        var gridElement = $('#MyGrid'),
+            printableContent = '',
+            win = window.open('', '', 'width=800, height=500'),
+            doc = win.document.open();
+
+        var htmlStart =
+                '<!DOCTYPE html>' +
+                '<html>' +
+                '<head>    ' +
+                ' <meta charset="utf-8" />' +
+                '    <title>Kendo UI Grid</title>' +
+                '    <link href="http://cdn.kendostatic.com/' + kendo.version + '/styles/kendo.common.min.css" rel="stylesheet" /> ' +
+                '    <style>        ' + 'html { font: 11pt sans-serif; }' + '.k-grid { border-top-width: 0; }' + '.k-grid, .k-grid-content { height: auto !important; }' + '.k-grid .k-grid-header th { border-top: 1px solid; }' + '.k-grid-toolbar, .k-grid-pager > .k-link { display: none; }' +
+                '    </style>' +
+                '   </head>' +
+                ' <body>    ';
+
+        var htmlEnd =
+            '</body>' +
+            '</html>';
+
+        var gridHeader = gridElement.children('.k-grid-header');
+        if (gridHeader[0]) {
+            var thead = gridHeader.find('thead').clone().addClass('k-grid-header');
+            printableContent = gridElement
+                .clone()
+                    .children('.k-grid-header').remove()
+                .end()
+                    .children('.k-grid-content')
+                        .find('table')
+                            .first()
+                                .children('tbody').before(thead)
+                            .end()
+                        .end()
+                    .end()
+                .end()[0].outerHTML;
+        } else {
+            printableContent = gridElement.clone()[0].outerHTML;
+        }
+
+        doc.write(htmlStart + printableContent + htmlEnd);
+        doc.close();
+        win.print();
+    }
+
+</script>
+
+
+
+@*
+
+
+    <script>
+        $('#gridtable').kendoGrid({
+            name: 'MyGrid',
+            height: 500,
+            resizable:
+             {
+                 enabled: true,
+                 columns: true
+
+             },
+            scrollable:
+                {
+                    enabled: true
+                    //height: "auto",
+
+                },
+
+            sortable: { mode: "multiple", allowUnsort: true },
+            pageable: {
+                //pageSize:@Session["pagesize"],
+                //خط بالا هم درست کار میکند
+                pageSize: 5,
+                numeric: true,
+
+                messages: {
+                    ItemsPerPage:"تعداد سطر در صفحه"
+                    ,First:"اولین"
+                    ,Last:"آخرین"
+                    ,Next:"بعدی"
+                    ,Previous:"قبلی"
+                    ,Page:"صفحه"
+                    ,Of:"از"
+                    ,MorePages:"صفحات بیشتر"
+                    ,Empty:"خالی"
+                    , refresh: "تازه سازی"
+                }
+            },
+            toolbar: [
+                     {
+                         name: "export",
+                         text: "خروجی به اکسل",
+                         click: "exporttoexcel"
+                         // className: "k-grid-custom",
+                         //imageClass: "k-add"
+                     },
+                     {
+                         name: "print",
+                         text: "چاپ",
+                         click: "printGrid"
+                     }
+                     ],
+            selectable: "row",
+            groupable:
+                {
+                    messages: {
+                        empty: "برای گروهبندی ستونهای مورد نظر را کشیده و در اینجا بیندازید"
+                    }
+                },
+            filterable: {
+                extra: "true"
+                , operators: {
+                    string: {
+                        contains: "شامل"
+                        , startwith: "شروع شود با"
+                        , isequalto: "برابر با"
+                        , DoesNotContain: "شامل نباشد"
+                        , StartsWith: "شروع شود با"
+                        , EndsWith: "تمام شود به"
+                        , IsNotEqualTo: "نابرابر با"
+
+                    }
+                    , number: {
+                        IsEqualTo: "="
+                        , IsGreaterThan: ">"
+                        , IsGreaterThanOrEqualTo: ">="
+                        , IsLessThan: "<"
+                        , IsLessThanOrEqualTo: "<="
+                        , IsNotEqualTo: "<>"
+
+                    }
+                }
+                , messages: {
+                    info: "فیلتر کردن گزینه ها"
+                    , filter: "فیلتر"
+                    , clear: "پاک کردن"
+                    , cancel: "لغو"
+                    , and: "و"
+
+                }
+
+            }
+        , dataSource: {}
+        })
+
+
+    </script>
+
+*@

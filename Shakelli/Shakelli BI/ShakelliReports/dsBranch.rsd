@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SharedDataSet xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/shareddatasetdefinition">
+  <DataSet Name="">
+    <Query>
+      <DataSourceReference>datasourceShakelliDW</DataSourceReference>
+      <CommandText>SELECT        LOGICALREF, branchId, branchName
+FROM            vwBranch</CommandText>
+    </Query>
+    <Fields>
+      <Field Name="LOGICALREF">
+        <DataField>LOGICALREF</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="branchId">
+        <DataField>branchId</DataField>
+        <rd:TypeName>System.Int16</rd:TypeName>
+      </Field>
+      <Field Name="branchName">
+        <DataField>branchName</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+    </Fields>
+  </DataSet>
+</SharedDataSet>

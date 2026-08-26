@@ -1,0 +1,161 @@
+﻿@model ShakelliReportsUI.DataLayer.Models.AppUserPersonView
+
+@{
+    ViewBag.Title = "ویرایش پرسنل";
+    ViewBag.activemenu_help = "active";
+    ViewBag.activemenu_help_userprofile = "active";
+}
+
+
+@section pagetitle
+{
+    <h3 class="page-title">
+        راهنما
+        <small>ویرایش پرسنل</small>
+    </h3>
+}
+
+
+@section breadcrumb
+{
+    <ul class="breadcrumb">
+        <li>
+            <a href="#"><i class="icon-home"></i></a>
+            <span class="divider">&nbsp;</span>
+        </li>
+        <li>
+            <a href="#">راهنما</a>
+            <span class="divider">&nbsp;</span>
+        </li>
+        <li>
+            <a href="#">ویرایش پرسنل</a>
+            <span class="divider-last">&nbsp;</span>
+        </li>
+
+    </ul>
+}
+
+
+<div class="row-fluid">
+    <div class="span12">
+        <div class="widget">
+            <div class="widget-title">
+                <h4><i class="icon-user"></i>ویرایش پرسنل</h4>
+                <span class="tools">
+                    <a href="javascript:;" class="icon-chevron-down"></a>
+                    <a href="javascript:;" class="icon-remove"></a>
+                </span>
+            </div>
+            <div class="widget-body">
+                <div class="span3">
+                    <div class="text-center profile-pic">
+                        @if (HttpContext.Current.Session[ShakelliReportsUI.CommonUnits.GeneralModule.m_PersonImagePath] == null || HttpContext.Current.Session[ShakelliReportsUI.CommonUnits.GeneralModule.m_PersonImagePath] == "")
+                        {
+                            <img src="~/images/profile-pic.jpg" alt="" width="160" height="200">
+                        }
+                        else
+                        {
+                            <img src="@Url.Content(HttpContext.Current.Session[ShakelliReportsUI.CommonUnits.GeneralModule.m_PersonImagePath].ToString())" alt="" width="160" height="200">
+                        }
+                    </div>
+
+                    <ul class="nav nav-tabs nav-stacked">
+                        @*<li><a href="javascript:void(0)"><i class="icon-coffee"></i> ویرایش</a></li>*@
+
+
+                    </ul>
+
+                    @using (Html.BeginForm("UploadImage",
+                        "Account",
+                        FormMethod.Post
+                        ))
+                    {
+                        @*<input type="file" name="elementName" style="color:blue;background-color:red" />*@
+                        @Html.Kendo().Upload().Name("UserImageUrlUpload").Multiple(false)
+                        <input type="submit" class="btn btn-primary" value="تایید" />
+                        <input type="button" class="btn btn-danger" onclick="location.href='@Url.Action("UserProfile", "Account", new { userid = Model.UserId })'" value="بازگشت" />
+                    }
+
+
+                    <ul class="nav nav-tabs nav-stacked"></ul>
+                </div>
+                <div class="span6">
+                    <h4 style="color:blue">
+                        @HttpContext.Current.Session[ShakelliReportsUI.CommonUnits.GeneralModule.m_CurrentUserName]
+                        <br />
+                        <small style="color:seagreen">@HttpContext.Current.Session[ShakelliReportsUI.CommonUnits.GeneralModule.m_CurrentPersonCode]</small>
+                    </h4>
+                    <table class="table table-borderless">
+                        <tbody>
+                            <tr>
+                                <td class="span2">نام :</td>
+                                <td>
+                                    @Model.FirstName
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="span2">نام خانوادگی :</td>
+                                <td> @Model.LastName</td>
+                            </tr>
+                            <tr>
+                                <td class="span2">تاریخ تولد :</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td class="span2">کد ملی :</td>
+                                <td>
+                                    @Model.NationalCode
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="span2">عنوان شغلی :</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td class="span2"> داخلی :</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td class="span2"> تلفن همراه :</td>
+                                <td>
+                                    @Model.Mobile
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+
+                    <h4>نشانی</h4>
+                    <div class="well">
+                        <address>
+                            @Model.Address
+                            <abbr title="Phone">تلفن</abbr> @Model.Phone
+                        </address>
+                        <address>
+                            <strong>پست الکترونیک</strong><br>
+                            <a href="mailto:#">@Model.Email</a>
+                        </address>
+                    </div>
+                </div>
+                <div class="span3">
+
+
+                </div>
+                <div class="space5"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="@Url.Content("~/Scripts/kendo/2014.1.318/kendo.all.min.js")"></script>
+<script src="@Url.Content("~/Scripts/kendo/2014.1.318/kendo.aspnetmvc.min.js")"></script>
+<script src="@Url.Content("~/Scripts/kendo.modernizr.custom.js")"></script>
+
+<script>
+    jQuery(document).ready(function () {
+        App.init();
+    });
+</script>
+
+

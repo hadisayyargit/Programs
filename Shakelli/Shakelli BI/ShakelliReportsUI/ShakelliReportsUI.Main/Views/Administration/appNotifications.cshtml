@@ -1,0 +1,185 @@
+﻿@model ShakelliReportsUI.DataLayer.Models.AppNotification
+
+@{
+    ViewBag.Title = "پیامها و اعلانات";
+}
+
+@section pagetitle
+{
+    <h3 class="page-title">
+        راهبری
+        <small>پیامها و اعلانات</small>
+    </h3>
+}
+
+@section breadcrumb
+{
+    <ul class="breadcrumb">
+        <li>
+            <a href="#"><i class="icon-home"></i></a><span class="divider">&nbsp;</span>
+        </li>
+        <li>
+            <a href="#">راهبری </a> <span class="divider">&nbsp;</span>
+        </li>
+        <li><a href="#">پیامها و اعلانات</a><span class="divider-last">&nbsp;</span></li>
+
+    </ul>
+}
+
+@{
+    var myData1 = ((List<ShakelliReportsUI.DataLayer.Models.AppNotification>)ViewBag.AppNotification).Where(m => m.NotificationType == 0).ToList();
+    var myData2 = ((List<ShakelliReportsUI.DataLayer.Models.AppNotification>)ViewBag.AppNotification).Where(m => m.NotificationType == 1).ToList();
+}
+
+<div class="widget">
+
+    <div class="widget-title">
+        <h4><i class="icon-reorder"></i>پیامها و اعلانات</h4>
+        <span class="tools">
+            <a href="javascript:;" class="icon-chevron-down"></a>
+            <a class="icon-remove" href="javascript:;"></a>
+        </span>
+    </div>
+
+    <div class="widget-body">
+        <div class="row-fluid">
+            <div class="span12">
+                <!--BEGIN TABS-->
+                <div class="tabbable tabbable-custom">
+                    <ul class="nav nav-tabs">
+                        <li class="@ViewBag.Tab_Messages_Active"><a href="#tab_1_1" data-toggle="tab">پیامها</a></li>
+
+                        @if (HttpContext.Current.Session[ShakelliReportsUI.CommonUnits.GeneralModule.m_CurrentUserName].ToString() == "admin")
+                        {
+                            <li class="@ViewBag.Tab_Notifications_Active"><a href="#tab_1_2" data-toggle="tab">اعلانات</a></li>
+                        }
+                    </ul>
+
+                    <div class="tab-content">
+                        <div class="tab-pane @ViewBag.Tab_Messages_Active" id="tab_1_1">
+                            <table class="table table-striped table-advance table-hover" id="sample_1">
+                                <p>
+                                    <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("AppNotification_create", "Administration", new { notificationtype = 0 })'">جدید</button>
+                                </p>
+
+                                <thead>
+                                    <tr>
+                                        <th class="" style="background-color: #1EAA91; color: white">شناسه</th>
+                                        <th class="" style="background-color: #1EAA91; color: white">تاریخ</th>
+                                        <th class="" style="background-color: #1EAA91; color: white;width:400px">متن</th>
+                                        <th class="" style="background-color: #1EAA91; color: white">فرستنده</th>
+                                        <th class="" style="background-color: #1EAA91; color: white">گیرندگان</th>
+                                        <th class="" style="background-color: #1EAA91; color: white">نوع</th>
+                                        <th class="" style="background-color: #1EAA91; color: white">خوانندگان</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    @if (myData1 != null)
+                                    {
+                                        foreach (ShakelliReportsUI.DataLayer.Models.AppNotification item in myData1)
+                                        {
+                                            <tr class="odd gradeX">
+                                                <td class="hidden-phone" style="font-family: 'B Yekan'">@Html.DisplayFor(modelItem => item.NotificationId)</td>
+                                                <td class="hidden-phone">@item.NotificationDate</td>
+                                                <td class="hidden-phone" style="width:400px" >@Html.ActionLink(item.Body, "AppNotification_edit", routeValues: new { notificationid = item.NotificationId }) </td>
+                                                <td class="hidden-phone">@item.Sender</td>
+                                                <td class="hidden-phone">@item.Receivers</td>
+
+                                                @if (item.NotificationType == 0)
+                                                {
+                                                    <td class="hidden-phone"><span class="label label-success">پیام</span></td>
+                                                }
+                                                else
+                                                {
+                                                    <td class="hidden-phone"><span class="label label-warning">اعلان</span></td>
+                                                }
+
+                                                <td class="hidden-phone">@item.Readers</td>
+
+                                            </tr>
+
+                                        }
+
+                                    }
+                                </tbody>
+                            </table>
+
+                        </div>
+
+                        <div class="tab-pane @ViewBag.Tab_Notifications_Active" id="tab_1_2">
+                            <table class="table table-striped  table-advance table-hover" id="sample_3">
+                                <p>
+                                    <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("AppNotification_create", "Administration", new { notificationtype = 1})'">جدید</button>
+                                </p>
+                                <thead>
+
+                                    <tr>
+                                        <th class="" style="background-color: #208496; color: white; ">شناسه</th>
+                                        <th class="" style="background-color: #208496; color: white; ">تاریخ</th>
+                                        <th class="" style="background-color: #208496; color: white;width:400px">متن</th>
+                                        <th class="" style="background-color: #208496; color: white; ">فرستنده</th>
+                                        <th class="" style="background-color: #208496; color: white; ">گیرندگان</th>
+                                        <th class="hidden-phone" style="background-color: #208496; color: white; ">نوع</th>
+                                        <th class="" style="background-color: #208496; color: white; ">خوانندگان</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    @if (myData2 != null)
+                                    {
+                                        foreach (ShakelliReportsUI.DataLayer.Models.AppNotification item in myData2)
+                                        {
+                                            <tr class="odd gradeX">
+                                                <td class="hidden-phone" style="font-family:'B Yekan'">@Html.DisplayFor(modelItem => item.NotificationId)</td>
+                                                <td class="hidden-phone">@item.NotificationDate</td>
+                                                <td class="hidden-phone">@Html.ActionLink(item.Body, "AppNotification_edit", routeValues: new { notificationid = item.NotificationId })</td>
+                                                <td class="hidden-phone">@item.Sender</td>
+                                                <td class="hidden-phone">@item.Receivers</td>
+
+                                                @if (item.NotificationType == 0)
+                                                {
+                                                    <td class="hidden-phone"><span class="label label-success">پیام</span></td>
+                                                }
+                                                else
+                                                {
+                                                    <td class="hidden-phone"><span class="label label-warning">اعلان</span></td>
+                                                }
+
+                                                <td class="hidden-phone">@item.Readers</td>
+
+                                            </tr>
+
+                                        }
+
+                                    }
+                                </tbody>
+
+                            </table>
+                        </div>
+
+
+                    </div>
+                </div>
+                <!--END TABS-->
+            </div>
+
+
+        </div>
+    </div>
+
+</div>
+
+
+<script src="@Url.Content("~/Scripts/jquery-1.8.3.min.js")"></script>
+
+<script src="~/Content/assets/data-tables/jquery.dataTables.js"></script>
+<script src="~/Content/assets/data-tables/DT_bootstrap.js"></script>
+
+<script>
+    jQuery(document).ready(function () {
+        App.init();
+    });
+</script>
+

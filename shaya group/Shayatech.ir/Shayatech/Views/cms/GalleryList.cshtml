@@ -1,0 +1,133 @@
+﻿@using Shayatech.Helper;
+
+@{
+    ViewBag.menuhomeclass = "";
+    ViewBag.menuadminclass = "";
+    ViewBag.menuserviceclass = "current";
+    ViewBag.menuoverlookclass = "";
+    ViewBag.menuaboutclass = "";
+    ViewBag.menucontactclass = "";
+}
+
+@{
+    ViewBag.Menu = "";
+    ViewBag.SubMenu = "";
+    List<string> myList = ViewBag.GalleryList;
+    string myPath = Server.MapPath("~/images/gallery/");
+    string filename = "";
+}
+
+@section featured {
+    <section class="featured">
+        <div class="pagename_style">
+            <div class="skin_width">
+                <div class="row-fluid">
+                    <div class="top_title span12">
+                        <h1 dir="rtl" style="font-family:Tahoma">تصاویر گالری‌ </h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="skin_width">
+            <div class="carousel_page">
+                <div class="skin_main ">
+                    <div class="row-fluid">
+                        @if (((Shayatech.Models.AppUser)Sessi‍on[GeneralModule.m_CurrentUser]).AllowWriteImage)
+                        {
+                            <div style="float:right">
+                                <button class="btn-primary" onclick="location.href = '/cms/GalleryPost?imagename=0'">+</button>
+                            </div>
+                        }
+
+                        <div class="pe-spacer size10"></div>
+
+                        <div class="row-fluid">
+                            <div class="span12">
+                                <!--start carousel -->
+                                <div class="carouFredSel">
+                                    <ul id="carouFredSel">
+                                        @foreach (string item in myList)
+                                        {
+                                            filename = @item.Replace(myPath, "");
+                                            <li>
+                                                <div>
+                                                    <a href="~/cms/GalleryPost?imagename=@filename"><img alt="" src="~/images/gallery/@filename" /></a>
+                                                </div>
+                                                @*<p>عکس1</p>*@
+                                            </li>
+                                        }
+                                    </ul>
+
+                                    <div class="carouFredSel_nav" dir="ltr">
+                                        <a id="caroul_prev" class="caroul_prev" href="#"></a>
+                                        <a id="caroul_next" class="caroul_next" href="#"></a>
+                                    </div>
+
+
+                                </div>
+                                <!--end carousel -->
+                            </div>
+                        </div>
+
+                        <div class="pe-spacer size30"></div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="pe-spacer size50"></div>
+
+            <a href="#" id="top-link" title="Back to Top"></a>
+        </div>
+
+
+
+    </section>
+}
+
+
+
+
+<script type='text/javascript'>
+    //For CarouFredSel Style:
+    jQuery(document).ready(function () {
+        $("#carouFredSel").carouFredSel({
+            responsive: true,
+            width: "100%",
+            prev: "#caroul_prev",
+            next: "#caroul_next",
+            mousewheel: true,
+            scroll: 1,
+            items: {
+                width: 205,
+                //	height: '30%',	//	optionally resize item-height
+                visible: {
+                    min: 4,
+                    max: 4
+                }
+            }
+        });
+    });
+    //For CarouFredSel Style:
+    jQuery(document).ready(function () {
+        $("#carouFredSel2").carouFredSel({
+            responsive: true,
+            width: "100%",
+            prev: "#caroul_prev2",
+            next: "#caroul_next2",
+            mousewheel: true,
+            scroll: {
+                'duration': 1000
+            },
+            items: {
+                width: 175,
+                //	height: '30%',	//	optionally resize item-height
+                visible: {
+                    min: 6,
+                    max: 6
+                }
+            }
+        });
+    });
+</script>

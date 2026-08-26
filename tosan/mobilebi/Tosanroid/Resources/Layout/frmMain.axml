@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="fill_parent"
+    android:background="@drawable/bg2">
+    <RelativeLayout
+        android:id="@+id/RelativeLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="fill_vertical">
+        <Button
+            android:layout_height="wrap_content"
+            android:id="@+id/btnDashboards"
+            android:background="@drawable/buttonface"
+            android:layout_width="200dp"
+            android:layout_below="@+id/btnHome"
+            android:layout_alignLeft="@+id/btnHome"
+            android:layout_marginLeft="31dp"
+            android:layout_marginTop="17dp"
+            android:clickable="true"
+            android:text="@string/dashboards" />
+        <Button
+            android:id="@+id/btnChangepassword"
+            android:text="@string/changepassword"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btnDashboards"
+            android:layout_alignLeft="@+id/btnDashboards"
+            android:layout_marginTop="17dp"
+            android:background="@drawable/buttonface"
+            android:layout_width="200dp" />
+        <Button
+            android:layout_height="wrap_content"
+            android:id="@+id/btnSettings"
+            android:background="@drawable/buttonface"
+            android:layout_below="@+id/btnChangepassword"
+            android:layout_alignLeft="@+id/btnChangepassword"
+            android:layout_marginTop="15dp"
+            android:layout_width="200dp"
+            android:text="@string/settings"
+            android:clickable="false" />
+        <Button
+            android:layout_height="wrap_content"
+            android:id="@+id/btnAbout"
+            android:background="@drawable/buttonface"
+            android:layout_below="@+id/btnSettings"
+            android:layout_alignLeft="@+id/btnSettings"
+            android:layout_marginTop="15dp"
+            android:layout_width="200dp"
+            android:text="@string/about"
+            android:clickable="false" />
+    </RelativeLayout>
+</ScrollView>

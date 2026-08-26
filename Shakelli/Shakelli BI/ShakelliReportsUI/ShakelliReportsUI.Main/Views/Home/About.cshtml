@@ -1,0 +1,66 @@
+﻿@{
+    ViewBag.Title = "درباره ما ";
+    ViewBag.activemenu_help = "active";
+    ViewBag.activemenu_help_about = "active";
+}
+
+@section pagetitle
+{
+    <h3 class="page-title">
+        راهنما
+        <small>معرفی صنایع غذایی شکلی و سامانه جامع گزارشها </small>
+    </h3>
+}
+
+@section breadcrumb
+{
+    <ul class="breadcrumb">
+        <li>
+            <a href="#"><i class="icon-home"></i></a><span class="divider">&nbsp;</span>
+        </li>
+        <li>
+            <a href="#">راهنما</a> <span class="divider">&nbsp;</span>
+        </li>
+        <li><a href="#">درباره ما</a><span class="divider-last">&nbsp;</span></li>
+
+    </ul>
+}
+
+
+<div class="widget-body">
+    <!--BEGIN ABOUT US-->
+    <div class="about-us">
+        <h3>معرفی گروه غذایی شَکِلّی<br> </h3>
+        <div class="row-fluid">
+            <div class="span6">
+                <h4>تاریخچه</h4>
+                <p>
+                    آغاز فعالیت شَکِلّی به اواسط قرن سیزدهم هجری شمسی باز میگردد .
+                    نزدیک به یکصدو پنجاه سال پیش پایه گذار شَکِلّی در کوی دوه چی(شتربان) تبریز اقامت گزید بر این اساس این محله به نام شَکِلّی نامیده شد
+                     نخستین بار در همین محل بودکه شَکِلّی فعالیت خودرا با بنکداری مواد غذائی آغاز نمود. در آن زمان کوی شتربان یکی از 
+                    پرازدحام ترین و فعال ترین مراکز تجاری محصولات کشاورزی و لبنی در تبریز بود. بقای محله و مسجد شَکِلّی واقع در خیابان شمس تبریزی گواه این مدعاست.
+                </p>
+            </div>
+            <div class="span6">
+                <h4>اهداف و ماموریتها</h4>
+                <p>                    
+                    <mark>اهداف</mark> 
+                    <br />
+                    تهیه و توزیع مواد غذایی
+                    <br />                                                  	
+                </p>
+            </div>
+        </div>
+        
+        
+    </div>
+    <!--END ABOUT US-->
+</div>    
+
+
+<script>
+    jQuery(document).ready(function () {
+        // initiate layout and plugins
+        App.init();
+    });
+</script>

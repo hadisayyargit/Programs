@@ -1,0 +1,124 @@
+﻿@model ShakelliReportsUI.DataLayer.Models.AppNotification
+
+
+
+@{
+    ViewBag.Title = "پیامها و اعلانات";
+    Session[ShakelliReportsUI.CommonUnits.GeneralModule.m_ActiveMenu_Administration] = "active";
+    ViewBag.activemenu_prime_appnotifications = "active";
+
+}
+
+@section pagetitle
+{
+    <h3 class="page-title">
+        راهبری
+        <small>پیامها و اعلانات</small>
+    </h3>
+}
+
+@section breadcrumb
+{
+    <ul class="breadcrumb">
+        <li>
+            <a href="#"><i class="icon-home"></i></a><span class="divider">&nbsp;</span>
+        </li>
+        <li>
+            <a href="#">راهبری </a> <span class="divider">&nbsp;</span>
+        </li>
+        <li><a href="#">پیامها و اعلانات</a><span class="divider-last">&nbsp;</span></li>
+
+    </ul>
+}
+
+
+<div class="widget">
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary(true)
+
+        <div class="span12">
+            <!-- BEGIN SAMPLE FORM widget-->
+            <div class="widget">
+                <div class="widget-title">
+                    <h4><i class="icon-reorder"></i>ویرایش</h4>
+                    <span class="tools">
+                        <a href="javascript:;" class="icon-chevron-down"></a>
+                        <a href="javascript:;" class="icon-remove"></a>
+                    </span>
+                </div>
+                <div class="widget-body form">
+                    <!-- BEGIN FORM-->
+                    <form action="#" class="form-horizontal">
+
+                        <div class="control-group">
+                            <div class="controls">
+                                @Html.HiddenFor(model => model.NotificationId, htmlAttributes: new { @class = "span6  tooltips", @id = "txtId", data_trigger = "hover", data_original_title = "شناسه گروه" })
+                                @Html.HiddenFor(model => model.NotificationType, htmlAttributes: new { @id = "txtNotificationType" })
+                                @Html.HiddenFor(model => model.Sender, htmlAttributes: new { @id = "txtSender" })
+                                @Html.HiddenFor(model => model.Readers, htmlAttributes: new { @id = "txtReaders" })
+                                @Html.HiddenFor(model => model.NotificationDate, htmlAttributes: new { @id = "txtDate" })
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label">متن</label>
+                            <div class="controls">
+                                @Html.TextBoxFor(model => model.Body, htmlAttributes: new { @class = "span6", @id = "txtBody" })
+                            </div>
+                        </div>
+
+
+                        <div class="control-group">
+                            <label class="control-label">گیرندگان</label>
+                            <div class="controls">
+                                @Html.DropDownListFor(model => model.Receivers, new SelectList(@ViewBag.Receiver, "ItemId", "Itemds", "0"), "گیرندگان را انتخاب نمایید:", htmlAttributes: new { @class = "chosen", @id = "cboReceivers", @multiple = "multiple" })
+                            </div>
+                        </div>
+
+
+                        <div class="form-actions">
+                            @*<button type="submit" class="btn btn-success">بروزرسانی</button>*@
+                            @if (Session[ShakelliReportsUI.CommonUnits.GeneralModule.m_CurrentUserName].ToString() == "admin" || Model.Sender == (int)Session[ShakelliReportsUI.CommonUnits.GeneralModule.m_CurrentUserId])
+                            {
+                                <button type="button" id="btnUpdate" class="btn btn-success">بروزرسانی</button>
+                                <button type="button" class="btn" onclick="location.href='@Url.Action("AppNotification_delete", "Administration", new { notificationid = Model.NotificationId })'">حذف</button>
+                            }
+                            
+                            <button type="button" class="btn" onclick="location.href='@Url.Action("AppNotification_cancel", "Administration", new { notificationtype = Model.NotificationType })'">بازگشت</button>
+                            
+                            
+
+                        </div>
+
+                    </form>
+                    <!-- END FORM-->
+                </div>
+            </div>
+            <!-- END SAMPLE FORM widget-->
+        </div>
+
+    }
+
+
+</div>
+
+
+<script src="@Url.Content("~/Scripts/jquery-ui-1.8.24.min.js")"></script>
+<script src="@Url.Content("~/Scripts/jquery-1.8.3.min.js")"></script>
+
+<script>
+    jQuery(document).ready(function () {
+        App.init();
+    });
+</script>
+
+<script>
+    $("#btnUpdate").click(function () {
+        var url = "AppNotification_update?notificationid=" + $("#txtId").val() + "&receivers=" + $("#cboReceivers").val() + "&sender=" + $("#txtSender").val() + "&readers=" + $("#txtReaders").val() + "&notificationdate=" + $("#txtDate").val() + "&body=" + $("#txtBody").val() + "&notificationtype=" + $("#txtNotificationType").val();
+
+        window.location.replace(url);
+        //alert($("#cboReaders").val()); 
+    });
+</script>
+@Scripts.Render("~/bundles/jqueryval")

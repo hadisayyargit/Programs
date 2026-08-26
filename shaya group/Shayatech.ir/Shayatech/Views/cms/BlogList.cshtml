@@ -1,0 +1,141 @@
+﻿@using Shayatech.Helper;
+
+@{
+    ViewBag.menuhomeclass = "";
+    ViewBag.menuadminclass = "";
+    ViewBag.menuserviceclass = "current";
+    ViewBag.menuoverlookclass = "";
+    ViewBag.menuaboutclass = "";
+    ViewBag.menucontactclass = "";
+}
+
+@{
+    ViewBag.Menu = "";
+    ViewBag.SubMenu = "";
+    List<Shayatech.Models.Blog> myList = ViewBag.BlogList;
+
+    int prevpage = ViewBag.pageindex - 1;
+    int nextpage = ViewBag.pageindex + 1;
+    int lastpage = ViewBag.lastpage;
+
+    string isNews = ViewBag.isNews.ToString();
+}
+
+@section featured {
+    <section class="featured">
+        <div id="skin_wrapper">
+            <div class="skin_top_bg"> </div>
+            <div class="pagename_style">
+                <div class="skin_width">
+                    <div class="row-fluid">
+                        <div class="top_title span12">
+                            <h1 dir="rtl" style="font-family:Tahoma">@ViewBag.Title‌ </h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="skin_width">
+                <div class="blog_page">
+                    <div class="skin_main ">
+                        <div class="pe-spacer size20"></div>
+                        @if (((Shayatech.Models.AppUser)Sessi‍on[GeneralModule.m_CurrentUser]).AllowWriteBlog)
+                        {
+                            <button class="btn-danger" onclick="location.href = '/cms/BlogPost?isNews=@isNews'">+</button>
+                        }
+                        <div class="pe-spacer size20"></div>
+                        <div class="row-fluid">
+                            <div class="span9">
+
+                                @foreach (Shayatech.Models.Blog item in myList)
+                                {
+                                    <div class="blog_post_list">
+                                        <div class="standard_title">
+                                           @if (((Shayatech.Models.AppUser)Sessi‍on[GeneralModule.m_CurrentUser]).AllowWriteBlog)
+                                           {
+                                                <a href="~/cms/BlogPost?blogid=@item.BlogId&isNews=@isNews">                                                    
+                                                    <img src="~/images/icons/bp-det.png" />
+                                                </a>
+                                            }
+                                            else
+                                            {
+                                                <a href="#">
+                                                    <img src="~/images/icons/bp-det.png" />
+                                                </a>
+
+                                            }
+                                            <p style="float:right">@item.PublishDate</p>
+                                            <span>&nbsp;&nbsp; @item.Title </span>
+                                        </div>
+                                        <div class="standard_content" >
+                                            <img src="~/images/blog/@item.ImageName" alt="" style="width:620px;height:300px" />
+                                            <div class="pe-spacer size20"></div>
+                                            <p style="width:620px;font-family:Tahoma">
+                                                @item.Body
+                                            </p>
+                                            <br />
+                                            <span style="font-size:10px">کد خبر:&nbsp; @item.BlogId </span>
+                                        </div>
+                                        <div class="pe-spacer size20"></div>
+                                        
+                                        @if (isNews.ToLower() == "false")
+                                        {
+                                        <div class="standard_bottom">
+                                            <div class="blog_img_right" style="font-family:Tahoma">
+                                                <span><a href="#"><img src="~/images/icons/blog_name_img.jpg" />مدیر</a></span>
+                                                <span><a href="#"><img src="~/images/icons/blog_file_img.jpg" />پسندیدم/موافقم</a></span>
+                                                <span><a href="#"><img src="~/images/icons/blog_read_more.jpg" />نپسندیدم/مخالفم</a></span>
+                                                <span><a href="#"><img src="~/images/icons/blog_news_img.jpg" />نظر می‌دهم</a></span>
+                                            </div>
+                                            
+                                            <div class="pe-spacer size50"></div>
+                                        </div>
+                                        }
+
+                                    </div>
+                                <!-- end blog list -->
+
+                                }
+
+                                <div class="pe-spacer size40"></div>
+                                <!-- start next blog item -->
+                                <!-- start pagination -->
+                                <div class="row-fluid project-pagination">
+                                    <div class="span8 offset4 clearafter">
+                                        <a href="~/cms/BlogList?pageindex=1&isNews=@isNews" class="prev-btn">پیشین</a>
+                                        <a href="~/cms/BlogList?pageindex=@prevpage&isNews=@isNews" class="prev-btn">قبلی</a>
+                                        <ul>
+                                            <li class="selected">
+                                                <a href="~/cms/BlogList?pageindex=1&isNews=@isNews">1</a>
+                                            </li>
+                                            <li>
+                                                <a href="~/cms/BlogList?pageindex=2&isNews=@isNews">2</a>
+                                            </li>
+                                            <li>
+                                                <a href="~/cms/BlogList?pageindex=3&isNews=@isNews">3</a>
+                                            </li>
+                                            <li>
+                                                <a href="~/cms/BlogList?pageindex=4&isNews=@isNews">4</a>
+                                            </li>
+                                        </ul>
+                                        <a href="~/cms/BlogList?pageindex=@nextpage&isNews=@isNews" class="next-btn">بعدی</a>
+                                        <a href="~/cms/BlogList?pageindex=@lastpage&isNews=@isNews" class="prev-btn">پسین</a>
+                                    </div>
+                                </div>
+                                <!-- end pagination -->
+                            </div>
+                            <!-- start right sidebar -->
+                            <!-- end right sidebar -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pe-spacer size50"></div>
+
+            <a href="#" id="top-link" title="Back to Top"></a>
+
+        </div>
+
+    </section>
+}

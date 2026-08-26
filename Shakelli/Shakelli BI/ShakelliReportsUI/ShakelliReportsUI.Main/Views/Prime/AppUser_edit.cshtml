@@ -1,0 +1,123 @@
+﻿@model ShakelliReportsUI.DataLayer.Models.AppUser
+
+<link href="~/Content/assets/datepicker-fa/styles/jquery-ui-1.8.14.css" rel="stylesheet" />
+
+@{
+    ViewBag.Title = "کاربران";
+    ViewBag.activemenu_prime = "active";
+    ViewBag.activemenu_prime_organizationchart = "active";
+}
+
+@section pagetitle
+{
+    <h3 class="page-title">
+        اطلاعات پایه
+        <small>کاربران</small>
+    </h3>
+}
+
+@section breadcrumb
+{
+    <ul class="breadcrumb">
+        <li>
+            <a href="#"><i class="icon-home"></i></a><span class="divider">&nbsp;</span>
+        </li>
+        <li>
+            <a href="#">اطلاعات پایه</a> <span class="divider">&nbsp;</span>
+        </li>
+        <li><a href="#">کاربران</a><span class="divider-last">&nbsp;</span></li>
+
+    </ul>
+}
+
+
+<div class="widget">
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary(true)
+
+        <div class="span12">
+            <!-- BEGIN SAMPLE FORM widget-->
+            <div class="widget">
+    <div class="widget-title">
+        <h4><i class="icon-reorder"></i>ویرایش</h4>
+        <span class="tools">
+            <a href="javascript:;" class="icon-chevron-down"></a>
+            <a href="javascript:;" class="icon-remove"></a>
+        </span>
+    </div>
+    <div class="widget-body form">
+        <!-- BEGIN FORM-->
+        <form action="#" class="form-horizontal">
+
+            <div class="control-group">
+                <label class="control-label">شناسه کاربر </label>
+                <div class="controls">
+                    @Html.TextBoxFor(model => model.UserId, htmlAttributes: new { @class = "span6  tooltips", @id = "txtUserId", data_trigger = "hover", data_original_title = "شناسه گروه" })
+                    @Html.ValidationMessageFor(model => model.UserId)
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">نام کاربری</label>
+                <div class="controls">
+                    @Html.TextBoxFor(model => model.UserName, htmlAttributes: new { @class = "span6", @id = "txtUserName" })
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">گذرواژه</label>
+                <div class="controls">
+                    @Html.PasswordFor(model => model.Password, htmlAttributes: new { @class = "span6", @id = "txtPassword" })
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">پرسنل</label>
+                <div class="controls">
+                    @Html.DropDownListFor(model => model.PersonId, new SelectList(@ViewBag.Person, "ItemId", "ItemDs", "0"), "پرسنل را انتخاب نمایید:", htmlAttributes: new { @class = "chosen-with-diselect", @id = "cboPerson" })
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">واحد سازمانی</label>
+                <div class="controls">
+                    @Html.DropDownListFor(model => model.OrganizationId, new SelectList(@ViewBag.Organization, "OrganizationId", "Title", "0"), "واحد سازمانی را انتخاب نمایید:", htmlAttributes: new { @class = "chosen-with-diselect", @id = "cboOrganization" })
+                </div>
+            </div>
+            
+            <div class="control-group">
+                <label class="control-label">وضعیت</label>
+                @Html.CheckBoxFor(model => model.Enabled)
+            </div>
+
+    <div class="form-actions">
+        <button type="submit" class="btn btn-success">بروزرسانی</button>
+        <button type="button" class="btn" onclick="location.href='@Url.Action("AppUser_cancel", "Prime")'">بازگشت</button>
+        <button type="button" class="btn" onclick="location.href='@Url.Action("AppUser_delete", "Prime", new { userid = Model.UserId })'">حذف</button>
+
+
+    </div>
+
+    </form>
+                    <!-- END FORM-->
+        </div>
+            </div>
+            <!-- END SAMPLE FORM widget-->
+        </div>
+
+    }
+
+
+</div>
+
+
+<script src="@Url.Content("~/Scripts/jquery-ui-1.8.24.min.js")"></script>
+
+<script>
+    jQuery(document).ready(function () {
+        App.init();
+    });
+</script>
+
+@Scripts.Render("~/bundles/jqueryval")

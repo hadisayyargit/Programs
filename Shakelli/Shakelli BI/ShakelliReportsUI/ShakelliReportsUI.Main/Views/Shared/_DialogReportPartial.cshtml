@@ -1,0 +1,500 @@
+﻿@model ShakelliReportsUI.DataLayer.Models.ReportModel
+
+<link href="@Url.Content("~/Content/assets/bootstrap-rtl/css/bootstrap-rtl.min.css")" rel="stylesheet" />
+<link href="@Url.Content("~/Content/assets/bootstrap-rtl/css/bootstrap-responsive-rtl.min.css")" rel="stylesheet" />
+<link href="@Url.Content("~/Content/assets/font-awesome/css/font-awesome.css")" rel="stylesheet" />
+<link href="@Url.Content("~/Content/style.css")" rel="stylesheet" />
+<link href="@Url.Content("~/Content/style_responsive.css")" rel="stylesheet" />
+<link href="@Url.Content("~/Content/style_default.css")" rel="stylesheet" id="style_color" />
+
+<link href="~/Content/select2.css" rel="stylesheet" />
+<script src="~/Scripts/select2.min.js"></script>
+
+
+<div class="widget">
+
+    <div class="widget-title">
+        <h4>
+            <i class="icon-reorder"></i>پارامترهای گزارش
+        </h4>
+        <span class="tools">
+            <a href="javascript:;" class="icon-chevron-down"></a>
+            <a href="javascript:;" class="icon-remove"></a>
+        </span>
+    </div>
+
+    <div class="widget-body" style="display:normal;">
+        <div class="control-group">
+            @{
+                int displaymode = 1;
+                if (Model.ReportDisplayMode == ShakelliReportsUI.DataLayer.Models.ReportFormatEnum.Grid)
+                {
+                    displaymode = 1;
+                }
+
+                if (Model.ReportDisplayMode == ShakelliReportsUI.DataLayer.Models.ReportFormatEnum.ReportViewer)
+                {
+                    displaymode = 2;
+                }
+            }
+
+
+            <label class="control-label">نمایش خروجی</label>
+            <div class="controls">
+                <label class="radio">
+                    @if (displaymode == 1)
+                    {
+                        @Html.RadioButtonFor(model => model.ReportDisplayMode, 1, htmlAttributes: new { @checked = "checked", @id = "rdoGrid" })
+                    }
+                    else
+                    {
+                        @Html.RadioButtonFor(model => model.ReportDisplayMode, 1, htmlAttributes: new { @id = "rdoGrid" })
+                    }
+                    جدولی
+                </label>
+                <label class="radio">
+                    @if (displaymode == 2)
+                    {
+                        @Html.RadioButtonFor(model => model.ReportDisplayMode, 2, htmlAttributes: new { @checked = "checked", @id = "rdoReportViewer" })
+                    }
+
+                    else
+                    {
+                        @Html.RadioButtonFor(model => model.ReportDisplayMode, 2, htmlAttributes: new { @id = "rdoReportViewer" })
+                    }
+                    چاپی(ssrs)
+                </label>
+                @*<label class="radio">
+                        @Html.RadioButtonFor(model => model.ReportDisplayMode, 3) چاپی مستقیم
+                    </label>
+                    <label class="radio">
+                        @Html.RadioButtonFor(model => model.ReportDisplayMode, 4) Excel
+                    </label>
+                    <label class="radio">
+                        @Html.RadioButtonFor(model => model.ReportDisplayMode, 5) pdf
+                    </label>*@
+                <br />
+                <br />
+            </div>
+
+            <div class="controls">
+                @if (Model.IsEnabledDate)
+                {
+                    <div class="control-wrap">
+                        <label class="label label-new"> تاریخ:</label>
+                        @Html.TextBoxFor(model => model.FromDate, htmlAttributes: new { @class = "span2  popovers", @id = "datepicker12from", @data_trigger = "hover", @data_content = "تاریخ شروع را وارد نمایید", @data_original_title = "تاریخ شروع" })
+                    </div>
+                }
+
+                @if (Model.IsEnabledFromDate)
+                {
+                    <div class="control-wrap">
+                        <label class="label label-new">از تاریخ:</label>
+                        @Html.TextBoxFor(model => model.FromDate, htmlAttributes: new { @class = "span2  popovers", @id = "datepicker12from", @data_trigger = "hover", @data_content = "تاریخ شروع را وارد نمایید", @data_original_title = "تاریخ شروع" })
+                    </div>
+                }
+
+                @if (Model.IsEnabledToDate)
+                {
+                    <div class="control-wrap">
+                        <label class="label label-new">تا تاریخ:</label>
+                        @Html.TextBoxFor(model => model.ToDate, htmlAttributes: new { @class = "span2  tooltips", @id = "datepicker12to", @data_trigger = "hover", @data_original_title = "تاریخ پایانی را بزرگتر یا مساوی تاریخ شروع وارد نمایید" })
+                    </div>
+                }
+            </div>
+
+            <div class="controls">
+                @if (Model.IsEnabledState)
+                {
+                    <div class="control-wrap">
+                        <label class="label label-new">استان:</label>
+                        @Html.DropDownListFor(model => model.StateCode, new SelectList(@ViewBag.State, "logicalref", "Name", "0"), "", htmlAttributes: new { @class = "", @id = "cboProvince", @onchange = "cboProvice_Change()", @data_placeholder = "استان را انتخاب کنید",@style = "width:100%" })
+                    </div>
+                }
+
+                @if (Model.IsEnabledCity && @ViewBag.City != null)
+                {
+                    <div class="control-wrap">
+                        <label class="label label-new">شهر:</label>
+                        @Html.DropDownListFor(model => model.CityCode, new SelectList(@ViewBag.City, "logicalref", "Name", "0"), "", htmlAttributes: new { @id = "cboCity", @onchange = "cboCity_Change()", @data_placeholder = "شهر را انتخاب کنید:", @style = "width:100%" })
+                    </div>
+
+                }
+
+                @if (Model.IsEnabledDistrict && @ViewBag.District != null)
+                {
+                    <div class="control-wrap">
+                        <label class="label label-new">منطقه:</label>
+                        @Html.DropDownListFor(model => model.DistrictCode, new SelectList(@ViewBag.District, "Code", "Name", "0"), "", htmlAttributes: new { @id = "cboDistrict", @data_placeholder = "منطقه را انتخاب کنید:", @style = "width:100%" })
+                    </div>
+                }
+            </div>
+
+            <div class="controls">
+
+                @if (Model.IsEnabledBranch && @ViewBag.Branch != null)
+                {
+
+                    <div class="control-wrap">
+                        <label class="label label-new">شعبه:</label>
+                        @Html.DropDownListFor(model => model.Branch, new SelectList(@ViewBag.Branch, "branchId", "branchName"), "", htmlAttributes: new { @id = "cboBranch", @data_placeholder = "شعبه را انتخاب کنید", @onchange = "combochange('cboBranch')", @style = "width:100%" })
+                        @*@Html.DropDownListFor(model => model.Branch, new SelectList(@ViewBag.Branch, "branchId", "branchName"), "", htmlAttributes: new { @id = "cboBranch", @data_placeholder = "شعبه را انتخاب کنید" })*@
+                    </div>
+                }
+                @if (Model.IsEnabledSupervisor && @ViewBag.Supervisor != null)
+                {
+                    <div class="control-wrap">
+                        <label class="label label-new">سرپرست:</label>
+                        @Html.DropDownListFor(model => model.SupervisorCode, new SelectList(@ViewBag.Supervisor, "SupervisorCode", "SupervisorName"), "", htmlAttributes: new { @class = "", @id = "cboSupervisor", @tabindex = -1, @data_placeholder = "سرپرست را انتخاب کنید", @style = "width:100%" })
+                    </div>
+                }
+                @if (Model.IsEnabledSeller && @ViewBag.Seller != null)
+                {
+                    <div class="control-wrap">
+                        <label class="label label-new">فروشنده:</label>
+                        @if (Session[ShakelliReportsUI.CommonUnits.GeneralModule.m_CurrentUserType] == null || Session[ShakelliReportsUI.CommonUnits.GeneralModule.m_CurrentUserType].ToString() != ShakelliReportsUI.CommonUnits.GeneralModule.m_UserType_Sale.ToString())
+                        {
+                            @Html.DropDownListFor(model => model.SalesmanCode, new SelectList(@ViewBag.Seller, "SalesmanCode", "SalesmanName", -1), "", htmlAttributes: new { @id = "cboSeller", @data_placeholder = "فروشنده را انتخاب کنید", @onchange = "combochange('cboSeller')", @style = "width:100%" })
+                        }
+                        else
+                        {
+                            @Html.DropDownListFor(model => model.SalesmanCode, new SelectList(@ViewBag.Seller, "SalesmanCode", "SalesmanName"), "", htmlAttributes: new { @id = "cboSeller", @disabled = "disabled", @tabindex = -1, @data_placeholder = "فروشنده را انتخاب کنید", @onchange = "combochange('cboSeller')", @style = "width:100%" })
+                        }
+                    </div>
+
+                }
+
+                @if (Model.IsEnabledCustomer && ViewBag.Customer != null)
+                {
+                    <div class="control-wrap">
+                        <label class="label label-new">مشتری:</label>
+                        @Html.DropDownListFor(model => model.CustomerId, new SelectList(@ViewBag.Customer, "LOGICALREF", "CustomerName"), "", htmlAttributes: new { @id = "cboCustomer", @data_placeholder = "مشتری را انتخاب کنید", @style = "width:100%" })
+                    </div>
+                }
+            </div>
+
+            <div class="controls">
+
+                @if (Model.IsEnabledAnbar)
+                {
+                    <div class="control-wrap">
+                        <label class="label label-new">انبار:</label>
+                        @Html.DropDownListFor(model => model.AnbarId, new SelectList(@ViewBag.Anbar, "NR", "Name", "0"), "", htmlAttributes: new { @class = "", @id = "cboAnbar", @data_placeholder = "انبار را انتخاب کنید:", @style = "width:100%" })
+                    </div>
+                }
+
+                @if (Model.IsEnabledKanalTozi)
+                {
+                    <div class="control-wrap">
+                        <label class="label label-new">کانال توزیع:</label>
+                        @Html.DropDownListFor(model => model.KanalTozi, new SelectList(@ViewBag.KanalTozi, "KanalToziCode", "KanalToziDs", "0"), "", htmlAttributes: new { @class = "", @id = "cboKanal", @data_placeholder = "کانال توزیع را انتخاب کنید:", @style = "width:100%" })
+                    </div>
+                }
+
+                @if (Model.IsEnabledClassTakhfif)
+                {
+                    <div class="control-wrap">
+                        <label class="label label-new">کلاس تخفیف:</label>
+                        @Html.DropDownListFor(model => model.ClassTakhfif, new SelectList(@ViewBag.ClassTakhfif, "ClassTakhfifCode", "ClassTakhfifDs", "0"), "", htmlAttributes: new { @class = "", @id = "cboClassTakhfif", @data_placeholder = "کلاس تخفیف را انتخاب کنید:", @style = "width:100%" })
+                    </div>
+                }
+
+                @if (Model.IsEnabledTradingGrp)
+                {
+                    <div class="control-wrap">
+                        <label class="label label-new">گروه تجاری:</label>
+                        @Html.DropDownListFor(model => model.tradinggrp, new SelectList(@ViewBag.TradingGroup, "trgcode", "trgds", "0"), "", htmlAttributes: new { @class = "", @id = "cboTradingGrp", @data_placeholder = "گروه تجاری را انتخاب کنید", @style = "width:100%" })
+                    </div>
+                }
+
+            </div>
+
+            <div class="controls">
+
+                @if (Model.IsEnabledKalaGroup && @ViewBag.KalaGroup != null)
+                {
+                    <div class="control-wrap">
+                        <label class="label label-new">گروه کالا:</label>
+                        @Html.DropDownListFor(model => model.KalaGroupCode, new SelectList(@ViewBag.KalaGroup, "Code", "Name", "0"), "", htmlAttributes: new { @class = "chosen-with-diselect", @id = "cboKalaGroup", @data_placeholder = "گروه کالا را انتخاب کنید:" })
+                    </div>
+                }
+
+                @if (Model.IsEnabledKalaSubGroup)
+                {
+                    <div class="control-wrap">
+                        <label class="label label-new">زیرگروه کالا:</label>
+                        @Html.DropDownListFor(model => model.KalaSubGroupCode, new SelectList(@ViewBag.KalaSubGroup, "Code", "Name", "0"), "", htmlAttributes: new { @class = "chosen-with-diselect", @id = "cboKalaSubGroup", @data_placeholder = "زیرگروه کالا را انتخاب کنید:" })
+                    </div>
+                }
+
+                @if (Model.IsEnabledKala)
+                {
+                    <div class="control-wrap">
+                        <label class="label label-new">کالا:</label>
+                        @Html.DropDownListFor(model => model.StockRef, new SelectList(@ViewBag.Kala, "LOGICALREF", "Name"), "", htmlAttributes: new { @class = "chosen-with-diselect", @id = "cboKala", @data_placeholder = "کالا را انتخاب کنید" })
+                    </div>
+
+                }
+
+            </div>
+
+            <div class="controls">
+                @if (Model.NonTipParameters1_Name != null)
+                {
+                    <div class="control-wrap">
+                        <label class="label label-new">@Model.NonTipParameters1_Ds:</label>
+                        @Html.EditorFor(model => model.NonTipParameters1_Value)
+                    </div>
+                }
+
+                @if (Model.NonTipParameters2_Name != null)
+                {
+                    <div class="control-wrap">
+                        <label class="label label-new">@Model.NonTipParameters2_Ds:</label>
+                        @Html.EditorFor(model => model.NonTipParameters2_Value)
+                    </div>
+                }
+
+                @if (Model.NonTipParameters3_Name != null)
+                {
+                    <div class="control-wrap">
+                        <label class="label label-new">@Model.NonTipParameters3_Ds:</label>
+                        @Html.EditorFor(model => model.NonTipParameters3_Value)
+                    </div>
+                }
+
+
+                @if (Model.NonTipParameters4_Name != null)
+                {
+                    <div class="control-wrap">
+                        <label class="label label-new">@Model.NonTipParameters4_Ds:</label>
+                        @Html.EditorFor(model => model.NonTipParameters4_Value)
+                    </div>
+                }
+
+                @if (Model.NonTipParameters5_Name != null)
+                {
+                    <div class="control-wrap">
+                        <label class="label label-new">@Model.NonTipParameters5_Ds:</label>
+                        @Html.EditorFor(model => model.NonTipParameters5_Value)
+                    </div>
+                }
+
+            </div>
+
+            @*<div class="row-form clearfix">
+                    <div class="span4"><input type="text" value="span4"/></div>
+                    <div class="span4"><input type="text" value="span4"/></div>
+                    <div class="span4"><input type="text" value="span4"/></div>
+                </div>*@
+
+
+
+            <br />
+
+
+            <button type="button" class="btn btn-primary" onclick="showreport()">مشاهده</button>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+@*<script src="~/Content/assets/datepicker-fa/scripts/jquery-1.6.2.min.js"></script>*@
+
+<script src="~/Scripts/jquery-ui-1.8.24.min.js"></script>
+
+<script src="~/Content/assets/datepicker-fa/scripts/jquery.ui.core.js"></script>
+<script src="@Url.Content("~/Content/assets/datepicker-fa/scripts/jquery.ui.datepicker-cc.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Content/assets/datepicker-fa/scripts/calendar.js")"></script>
+<script src="@Url.Content("~/Content/assets/datepicker-fa/scripts/jquery.ui.datepicker-cc-fa.js")" type="text/javascript"></script>
+
+<script type="text/javascript">
+
+    $(function () {
+        // حالت پیشفرض
+        $('#datepicker0').datepicker();
+        //-----------------------------------
+
+        //-----------------------------------
+        // انتخاب با کلیک بر روی عکس
+        $("#datepicker6").datepicker({
+            showOn: 'button',
+            buttonImage: '../../Content/assets/datepicker-fa/styles/images/calendar.png',
+            buttonImageOnly: true
+        });
+
+        // تنظیم حداقل بصورت پویا
+        $('#datepicker12from').datepicker({
+            onSelect: function (dateText, inst) {
+                $('#datepicker12to').datepicker('option', 'minDate', new JalaliDate(inst['selectedYear'], inst['selectedMonth'], inst['selectedDay']));
+            }
+        });
+        $('#datepicker12to').datepicker();
+
+    });
+</script>
+
+
+<script>
+    function combochange(comboname)
+    {
+        if(comboname=="cboBranch")
+        {
+            var n = $("#cboBranch").val();
+
+            $("#cboSeller").empty();
+            $("#cboSeller").append($("<option></option>").val(-1).text("فروشنده را انتخاب کنید:"));
+
+            $("#cboCustomer").empty();
+            $("#cboCustomer").append($("<option></option>").val(-1).text("مشتری را انتخاب کنید:"));
+
+            /// روش ایجکس
+            $.ajax({
+                cache: false,
+                type: "GET",
+                url: "@(Url.Action("GetSellers", "Reports"))",
+                data: { "branch": n },
+                success: function (data) {
+                    $.each(data, function () {
+                        $("#cboSeller").append($("<option></option>").val(this.SalesmanCode).text(this.SalesmanName));
+                    });
+
+                }
+            });
+
+        }
+
+        if(comboname=="cboSeller")
+        {
+
+            var n = $("#cboSeller").val();
+
+            $("#cboCustomer").empty();
+            $("#cboCustomer").append($("<option></option>").val(-1).text("مشتری را انتخاب کنید:"));
+
+
+            /// روش ایجکس
+            $.ajax({
+                cache: false,
+                type: "GET",
+                url: "@(Url.Action("GetCustomers", "Reports"))",
+                data: { "salesmancode": n },
+                success: function (data) {
+
+                    $.each(data, function () {
+                        $("#cboCustomer").append($("<option></option>").val(this.LOGICALREF).text(this.CustomerName));
+
+                    });
+
+                }
+
+
+            });
+
+            //alert("6");
+
+        }
+    };
+</script>
+
+<script>
+    //$("#cboProvince").change(function () {       // This will fire when the dropdown value will get changed
+    function cboProvice_Change()
+    {
+        var n = $("#cboProvince").val();
+
+        @*
+        var myJsVariable = '@ViewBag.State'
+        var i1=$("#cboProvince")[0].selectedIndex;
+
+        if (i1 > 0)
+            i1 = i1 - 1;
+
+
+        *@
+
+        var x =@Html.Raw(new System.Web.Script.Serialization.JavaScriptSerializer().Serialize(@ViewBag.City));
+
+        //var passedTest = [];
+        $("#cboCity").empty();
+        $("#cboCity").append($("<option></option>").val(-1).text("شهر را انتخاب کنید:"));
+
+
+        ///روش کلاینتی
+        for (var i = 0; i < x.length; i++) {
+            if (x[i].CTYREF == n)
+            {
+                //passedTest.push(x[i]);
+                $("#cboCity").append($("<option></option>").val(x[i].LOGICALREF).text(x[i].NAME));
+            }
+        }
+
+    }
+
+</script>
+
+<script>
+    function cboCity_Change()
+    {
+        var cityid = $("#cboCity").val();
+
+        var x =@Html.Raw(new System.Web.Script.Serialization.JavaScriptSerializer().Serialize(@ViewBag.District));
+
+        $("#cboDistrict").empty();
+        $("#cboDistrict").append($("<option></option>").val(-1).text("منطقه را انتخاب کنید:"));
+
+
+        ///روش کلاینتی
+        for (var i = 0; i < x.length; i++) {
+            if (x[i].TOWNNR == cityid)
+            {
+                $("#cboDistrict").append($("<option></option>").val(x[i].Code).text(x[i].NAME));
+
+            }
+        }
+    }
+</script>
+
+<script>
+    function showreport()
+    {
+        var reportdisplaymode=0;
+
+        reportdisplaymode=$('#rdoGrid:checked').val()
+
+        if(reportdisplaymode==undefined)
+            reportdisplaymode=$('#rdoReportViewer:checked').val()
+
+        //var x=$("#NonTipParameters1_Value").val();
+        //alert(x);
+
+        var url1 = "../SubmitReport?stateid=" + $("#cboProvince").val() + "&citycode=" + $("#cboCity").val() + "&branch=" + $("#cboBranch").val() + "&salesmancode=" +$('#cboSeller').val()+ "&fromdate=" + $("#datepicker12from").val() + "&todate=" + $("#datepicker12to").val() + "&supervisorcode=" + $("#cboSupervisor").val()+ "&customercode=" + $("#cboCustomer").val()+ "&reportdisplaymode=" + reportdisplaymode
+            + "&anbarid=" + $("#cboAnbar").val()+ "&kalagroupcode=" + $("#cboKalaGroup").val()+ "&kalasubgroupcode=" + $("#cboKalaSubGroup").val()+ "&kalaid=" + $("#cboKala").val()+ "&kanaltozi=" + $("#cboKanal").val()+ "&classtakhfif=" + $("#cboClassTakhfif").val()+ "&districtcode=" + $("#cboDistrict").val()+ "&tradinggrp=" + $("#cboTradingGrp").val()
+            + "&nontipparameters1=" + $("#NonTipParameters1_Value").val()+ "&nontipparameters2=" + $("#NonTipParameters2_Value").val()+ "&nontipparameters3=" + $("#NonTipParameters3_Value").val()+ "&nontipparameters4=" + $("#NonTipParameters4_Value").val()+ "&nontipparameters5=" + $("#NonTipParameters5_Value").val(); //Append Id To URL
+
+        
+        window.location.replace(url1);
+    }
+
+</script>
+
+
+<script>
+    $("#cboProvince").select2();
+    $("#cboCity").select2();
+    $("#cboSeller").select2();
+    $("#cboCustomer").select2();
+    $("#cboBranch").select2();
+    $("#cboSupervisor").select2();
+    $("#cboAnbar").select2();
+    $("#cboKanal").select2();
+    $("#cboClassTakhfif").select2();
+    $("#cboClassTakhfif").select2();
+    $("#cboTradingGrp").select2();
+    $("#cboDistrict").select2();
+
+
+</script>

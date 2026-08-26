@@ -1,0 +1,199 @@
+﻿
+@{
+    ViewBag.Title = "ساختار سازمانی";
+    Session[ShakelliReportsUI.CommonUnits.GeneralModule.m_ActiveMenu_Prime] = "active";
+    ViewBag.activemenu_prime_organizationchart = "active";
+
+}
+
+
+@section pagetitle
+{
+    <h3 class="page-title">
+        اطلاعات پایه
+        <small>ساختار سازمانی</small>
+    </h3>
+}
+
+@section breadcrumb
+{
+    <ul class="breadcrumb">
+        <li>
+            <a href="#"><i class="icon-home"></i></a><span class="divider">&nbsp;</span>
+        </li>
+        <li>
+            <a href="#">اطلاعات پایه</a> <span class="divider">&nbsp;</span>
+        </li>
+        <li><a href="#">ساختار سازمانی</a><span class="divider-last">&nbsp;</span></li>
+
+    </ul>
+}
+
+
+<div class="widget">
+        
+        <div class="widget-title">
+            <h4><i class="icon-reorder"></i>ساختار سازمانی</h4>
+            <span class="tools">
+                <a href="javascript:;" class="icon-chevron-down"></a>
+                <a class="icon-remove" href="javascript:;"></a>
+            </span>
+        </div>
+
+        <div class="widget-body">
+            <div class="row-fluid">
+                <div class="span12">
+                    <!--BEGIN TABS-->
+                    <div class="tabbable tabbable-custom">
+                        <ul class="nav nav-tabs">
+                            <li class="@ViewBag.Tab_Organization_Active"><a href=" #tab_1_1" data-toggle="tab">سازمان</a></li>
+                            <li class="@ViewBag.Tab_Person_Active"><a href="#tab_1_2" data-toggle="tab">افراد</a></li>
+                            <li class="@ViewBag.Tab_OrganizationUser_Active"><a href="#tab_1_3" data-toggle="tab">کاربران سازمان</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                            <div class="tab-pane @ViewBag.Tab_Organization_Active" id="tab_1_1">
+                                <table class="table table-striped table-bordered table-advance table-hover" id="sample_2">
+                                    <p>
+                                        <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("organization_create", "Prime", new { organizationid = 0 })'">جدید</button>
+                                    </p>
+                                    <thead>
+                                        <tr >
+                                            <th class="" style="background-color: #1EAA91; color: white">شناسه</th>
+                                            <th class="" style="background-color: #1EAA91; color: white">عنوان</th>
+                                            <th class="" style="background-color: #1EAA91; color: white">نوع سازمان</th>
+                                            <th class="" style="background-color: #1EAA91; color: white">کد محل</th>
+                                            <th class="" style="background-color: #1EAA91; color: white">کد دسترسی</th>
+                                            <th class="" style="background-color: #1EAA91; color: white">نام سازمان بالاتر</th>
+                                            <th class="hidden">شناسه نوع سازمان</th>
+                                            <th class="hidden">شناسه سازمان پدر</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @if (ViewBag.Organization != null)
+                                        {
+                                            foreach (ShakelliReportsUI.DataLayer.Models.OrganizationUserView item in ViewBag.Organization)
+                                            {
+                                                <tr class="odd gradeX">
+                                                @*<td>@Html.HiddenFor(modelItem => item.ConfigId)</td>*@
+                                                <td class="hidden-phone">@item.OrganizationId</td>
+                                                <td class="hidden-phone">@Html.ActionLink(item.Title, "Organization_edit", routeValues: new { organizationid = item.OrganizationId })</td>
+                                                <td class="hidden-phone">@item.OrganizationTypeCodeDs</td>
+                                                <td class="hidden-phone">@item.LocationCode</td>
+                                                <td class="hidden-phone">@item.AutorizeCode</td>
+                                                <td class="hidden-phone">@item.ParentOrganizationDs</td>
+                                                <td class="hidden">@item.OrganizationTypeCode</td>
+                                                <td class="hidden">@item.ParentId</td>
+    
+                                            </tr>
+
+                                            }
+
+                                        }
+                                    </tbody>
+                                </table>
+
+                            </div>
+
+                            <div class="tab-pane @ViewBag.Tab_Person_Active" id="tab_1_2">
+                                <table class="table table-striped table-advance table-hover" id="sample_1">
+                                    <p>
+                                        <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Personnel_create", "Prime", new { personid = 0 })'">جدید</button>
+                                    </p>
+                                    <thead>
+                                        <tr style="background-color: #208496; color:white">
+                                            <th class="" style="background-color: #208496; color:white">شماره پرسنلی</th>
+                                            <th class="" style="background-color: #208496; color:white">نام</th>
+                                            <th style="background-color: #208496; color:white">نام خانوادگی</th>
+                                            <th style="background-color: #208496; color:white"></th>
+                                            @*<th class="hidden-phone"></th>*@
+                                            <th class="hidden-phone" style="background-color: #208496; color:white">واحد سازمانی</th>
+                                            <th style="background-color: #208496; color:white"></th>
+                                            <th class="hidden-phone" style="background-color: #208496; color:white">شماره ملی</th>
+                                            <th class="hidden-phone" style="background-color: #208496; color:white">تلفن همراه</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @if (ViewBag.Person != null)
+                                        {
+                                            foreach (ShakelliReportsUI.DataLayer.Models.Person item in ViewBag.Person)
+                                            {
+                                                <tr class="odd gradeX">
+                                                    @*<td class="hidden-phone">@Html.ActionLink(item.BudjehId.ToString(), "budjeh_edit", routeValues: new { budjehid = item.BudjehId })</td>*@
+
+                                                    <td class="hidden-phone">@Html.ActionLink(item.PersonCode, "Personnel_edit", routeValues: new { personid = item.PersonId })</td>
+                                                    <td class="hidden-phone">@Html.DisplayFor(modelItem => item.FirstName)</td>
+                                                    <td class="hidden-phone">@Html.DisplayFor(modelItem => item.LastName)</td>
+                                                    <td class="hidden-phone">@Html.HiddenFor(modelItem => item.PersonId)</td>
+                                                    <td class="hidden-phone">@Html.DisplayFor(modelItem => item.Email)</td>
+                                                    <td class="hidden-phone">@Html.HiddenFor(modelItem => item.Phone)</td>
+                                                    <td class="hidden-phone">@Html.DisplayFor(modelItem => item.NationalCode)</td>
+                                                    <td class="hidden-phone">@Html.DisplayFor(modelItem => item.Mobile)</td>
+
+                                                </tr>
+
+                                            }
+
+                                        }
+                                    </tbody>
+                                </table>                                
+                            </div>                                                       
+
+                            <div class="tab-pane @ViewBag.Tab_OrganizationUser_Active" id="tab_1_3">
+                                <table class="table table-striped table-bordered table-advance table-hover" id="sample_3">
+                                    <p>
+                                        <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("OrganizationUser_create", "Prime", new { id = 0 })'">جدید</button>
+                                    </p>
+                                    <thead>
+                                        <tr>
+                                            <th class="">شناسه</th>
+                                            <th class="">نام سازمان</th>
+                                            <th class="">نام کاربر</th>
+                                            <th class="hidden">شناسه سازمان</th>
+                                            <th class="hidden">شناسه کاربر</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @if (ViewBag.OrganizationUser != null)
+                                        {
+                                            foreach (ShakelliReportsUI.DataLayer.Models.OrganizationUserView item in ViewBag.OrganizationUser)
+                                            {
+                                                <tr class="odd gradeX">
+                                                    <td class="hidden-phone">@Html.ActionLink(@item.Id.ToString(), "OrganizationUser_edit", routeValues: new { organizationid = @item.OrganizationId, userid=@item.UserId })</td>
+                                                    <td class="hidden-phone">@item.Title</td>
+                                                    <td class="hidden-phone">@item.UserName</td>
+                                                    <td class="hidden">@item.OrganizationId</td>
+                                                    <td class="hidden">@item.UserId</td>
+                                                </tr>
+
+                                            }
+
+                                        }
+                                    </tbody>
+                                </table>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <!--END TABS-->
+                </div>
+                
+                
+            </div>
+        </div>
+
+    </div>
+
+<script src="@Url.Content("~/Scripts/jquery-1.8.3.min.js")"></script>
+
+<script src="~/Content/assets/data-tables/jquery.dataTables.js"></script>
+<script src="~/Content/assets/data-tables/DT_bootstrap.js"></script>
+
+<script>
+    jQuery(document).ready(function () {
+        App.init();
+    });
+</script>
+
+

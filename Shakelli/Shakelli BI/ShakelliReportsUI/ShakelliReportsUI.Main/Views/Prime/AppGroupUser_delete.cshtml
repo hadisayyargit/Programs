@@ -1,0 +1,80 @@
+﻿@model ShakelliReportsUI.DataLayer.Models.AppGroupUser
+
+<link href="~/Content/assets/datepicker-fa/styles/jquery-ui-1.8.14.css" rel="stylesheet" />
+
+@{
+    ViewBag.Title = "کاربران گروه";
+    ViewBag.activemenu_prime = "active";
+    ViewBag.activemenu_prime_usermanagement = "active";
+}
+
+@section pagetitle
+{
+    <h3 class="page-title">
+        اطلاعات پایه
+        <small>کاربران گروه</small>
+    </h3>
+}
+
+@section breadcrumb
+{
+    <ul class="breadcrumb">
+        <li>
+            <a href="#"><i class="icon-home"></i></a><span class="divider">&nbsp;</span>
+        </li>
+        <li>
+            <a href="#">اطلاعات پایه</a> <span class="divider">&nbsp;</span>
+        </li>
+        <li><a href="#">کاربران گروه</a><span class="divider-last">&nbsp;</span></li>
+
+    </ul>
+}
+
+
+<div class="widget-body">
+    <div class="alert alert-block alert-warning fade in">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        <h4 class="alert-heading">هشدار!</h4>
+        <p>
+            اطلاعات فعلی حذف می شود!
+            آیا ادامه می دهید؟
+        </p>
+
+        <div>
+            <br />
+            
+            @Html.HiddenFor(model => model.Id)
+
+            <div class="control-group">
+                <label class="control-label">شناسه کاربر</label>
+                <div class="controls">
+                    @Html.TextBoxFor(model => model.Id)
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">گروه کاربری </label>
+                <div class="controls">
+                    @Html.TextBoxFor(model => model.GroupId, htmlAttributes: new { @class = "span6  tooltips", @id = "txtGroup", data_trigger = "hover", data_original_title = "گروه" })
+                </div>
+            </div>
+
+            <button type="button" class="btn" onclick="location.href='@Url.Action("AppGroupUser_delete_confirm", "Prime", Model)'">خب</button>
+            <button type="button" class="btn" onclick="location.href='@Url.Action("AppGroupUser_edit", "Prime", new { groupid = Model.GroupId, userid = Model.UserId })'">لغو</button>
+
+        </div>
+
+
+    </div>
+</div>
+
+
+
+<script>
+    jQuery(document).ready(function () {
+        // initiate layout and plugins
+        App.init();
+    });
+</script>
+
+

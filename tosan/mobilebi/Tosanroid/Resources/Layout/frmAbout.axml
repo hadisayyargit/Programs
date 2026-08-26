@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:p1="http://schemas.android.com/apk/res/android"
+    p1:orientation="vertical"
+    p1:minWidth="25px"
+    p1:minHeight="25px"
+    p1:layout_width="fill_parent"
+    p1:layout_height="fill_parent"
+    p1:id="@+id/linearLayout1"
+    p1:background="#dae5f9">
+    <ImageView
+        p1:src="@drawable/tidm2"
+        p1:id="@+id/imageView2"
+        p1:scaleType="fitXY"
+        p1:layout_width="317.3dp"
+        p1:layout_height="94.7dp" />
+    <ImageView
+        p1:id="@+id/ImageView01"
+        p1:scaleType="fitXY"
+        p1:src="@drawable/splash"
+        p1:layout_height="176.0dp"
+        p1:layout_marginTop="15dp"
+        p1:layout_margin="15dp"
+        p1:layout_alignParentTop="true"
+        p1:layout_centerHorizontal="true"
+        p1:layout_width="284.0dp"
+        p1:layout_marginBottom="85.7dp" />
+    <TextView
+        p1:id="@+id/textView1"
+        p1:text="@string/copyright"
+        p1:layout_width="fill_parent"
+        p1:layout_height="45.3dp"
+        p1:layout_marginRight="0.0dp"
+        p1:layout_marginBottom="0.0dp" />
+    <TextView
+        p1:id="@+id/textView1"
+        p1:text="@string/app_version"
+        p1:layout_width="fill_parent"
+        p1:layout_height="40.0dp"
+        p1:layout_marginRight="0.0dp" />
+</LinearLayout>

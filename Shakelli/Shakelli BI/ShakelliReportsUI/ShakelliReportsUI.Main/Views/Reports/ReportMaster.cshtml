@@ -1,0 +1,65 @@
+﻿@model ShakelliReportsUI.DataLayer.Models.ReportModel
+
+@section pagetitle
+{
+    <h3 class="page-title">
+        گزارشات
+        <small>@ViewBag.Title</small>
+    </h3>
+}
+
+@section breadcrumb
+{
+    <ul class="breadcrumb">
+        <li>
+            <a href="#"><i class="icon-home"></i></a><span class="divider">&nbsp;</span>
+        </li>
+        <li>
+            <a href="#">@Session[ShakelliReportsUI.CommonUnits.GeneralModule.m_MainMenuDs]</a> <span class="divider">&nbsp;</span>
+        </li>
+        <li><a href="#">@Session[ShakelliReportsUI.CommonUnits.GeneralModule.m_SubMenuDs]</a><span class="divider-last">&nbsp;</span></li>
+
+    </ul>
+}
+
+    @*<div>
+        @Html.Partial("_SubMenuPartial",  Model)
+    </div>*@
+
+@if (Model!=null &&  Model.IsEnabledParameterDialog)
+{
+    <div>
+        @Html.Partial("_DialogReportPartial", Model)
+    </div>
+}
+
+@if (Model != null && Model.IsEnabledReportContainer && Model.RunStatus == ShakelliReportsUI.DataLayer.Models.RunStatusEnum.Started && Model.ReportDisplayMode == ShakelliReportsUI.DataLayer.Models.ReportFormatEnum.ReportViewer)
+{
+    <div>
+        @Html.Partial("_ReportViewerUserControl",Model)
+    </div>
+}
+
+@if (Model != null && Model.IsEnabledReportContainer && Model.RunStatus == ShakelliReportsUI.DataLayer.Models.RunStatusEnum.Started && Model.ReportDisplayMode == ShakelliReportsUI.DataLayer.Models.ReportFormatEnum.Grid)
+{
+    <div>
+        @Html.Partial("_GridReport", Model)
+    </div>
+    
+}
+
+@if (Model != null && Model.HasDirectPath)
+{
+    <div>
+        @Html.Partial("_DirectBrowser", Model)
+    </div>
+}
+
+
+<script>
+    jQuery(document).ready(function () {
+        App.init();
+    });
+</script>
+
+

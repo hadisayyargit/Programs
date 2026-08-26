@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9efa68866d1c458da5ca1469851b5d47" Name="Diagram1">
+        <EntityTypeShape EntityType="ShakelliDWModel.Glossary" Width="1.5" PointX="12.75" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShakelliDWModel.Lookup" Width="1.5" PointX="12.75" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShakelliDWModel.AppGroup" Width="1.5" PointX="3" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShakelliDWModel.AppGroupUser" Width="1.5" PointX="5.25" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShakelliDWModel.AppGroupUserObject" Width="1.5" PointX="5.25" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShakelliDWModel.AppNotification" Width="1.5" PointX="12.75" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShakelliDWModel.AppObject" Width="1.5" PointX="3" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShakelliDWModel.AppSystem" Width="1.5" PointX="5.75" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShakelliDWModel.AppUser" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShakelliDWModel.Logo_Trace" Width="1.5" PointX="14.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShakelliDWModel.Organization" Width="1.5" PointX="0.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShakelliDWModel.OrganizationUser" Width="1.5" PointX="5.25" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShakelliDWModel.Person" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShakelliDWModel.PostData" Width="1.5" PointX="14.75" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShakelliDWModel.Safa_Cash" Width="1.5" PointX="10" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShakelliDWModel.Safa_Cheque" Width="1.5" PointX="10" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShakelliDWModel.Safa_InvoiceHeader" Width="1.5" PointX="7.75" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShakelliDWModel.Safa_InvoiceLine" Width="1.5" PointX="10" PointY="15" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShakelliDWModel.Safa_Paytrans" Width="1.5" PointX="14.75" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShakelliDWModel.Safa_tabletFullUpdate" Width="1.5" PointX="14.75" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShakelliDWModel.SalePosition" Width="1.5" PointX="0.75" PointY="16.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShakelliDWModel.SalesOrg" Width="1.5" PointX="12.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShakelliDWModel.Salestarget" Width="1.5" PointX="2.75" PointY="16.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShakelliDWModel.Supervisor" Width="1.5" PointX="16.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShakelliDWModel.Safa_vw_City" Width="1.5" PointX="16.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShakelliDWModel.Safa_vw_ClassTakhfif" Width="1.5" PointX="4.75" PointY="17.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShakelliDWModel.Safa_vw_CSTRANSLastStatus" Width="1.5" PointX="16.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShakelliDWModel.Safa_vw_DISTRICT" Width="1.5" PointX="6.75" PointY="17.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShakelliDWModel.Safa_vw_KalaGroup" Width="1.5" PointX="16.75" PointY="16.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShakelliDWModel.Safa_vw_KalaSubGroup" Width="1.5" PointX="12.75" PointY="18.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShakelliDWModel.Safa_vw_KanalTozi" Width="1.5" PointX="18.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShakelliDWModel.Safa_vw_State" Width="1.5" PointX="18.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShakelliDWModel.Safa_vw_Supervisor" Width="1.5" PointX="18.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShakelliDWModel.Safa_vw_TradingGroup" Width="1.5" PointX="18.75" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShakelliDWModel.vwAnbar" Width="1.5" PointX="18.75" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShakelliDWModel.vwBranch" Width="1.5" PointX="14.75" PointY="19.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShakelliDWModel.vwCustomer" Width="1.5" PointX="18.75" PointY="16.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShakelliDWModel.vwKala" Width="1.5" PointX="16.75" PointY="19.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShakelliDWModel.vwObject2" Width="1.5" PointX="18.75" PointY="19.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShakelliDWModel.vwSalesOrg" Width="1.5" PointX="4.75" PointY="20.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShakelliDWModel.vwSeller" Width="1.5" PointX="6.75" PointY="20.875" IsExpanded="true" />
+        <AssociationConnector Association="ShakelliDWModel.FK_AppUserGroup_AppGroup" ManuallyRouted="false" />
+        <AssociationConnector Association="ShakelliDWModel.FK_AppUserGroupObject_AppGroup" ManuallyRouted="false" />
+        <AssociationConnector Association="ShakelliDWModel.FK_AppUserGroup_AppUser" ManuallyRouted="false" />
+        <AssociationConnector Association="ShakelliDWModel.FK_AppUserGroupObject_AppObject" ManuallyRouted="false" />
+        <AssociationConnector Association="ShakelliDWModel.FK_AppUserGroupObject_AppUser" ManuallyRouted="false" />
+        <AssociationConnector Association="ShakelliDWModel.FK_AppObject_AppObject" ManuallyRouted="false" />
+        <AssociationConnector Association="ShakelliDWModel.FK_AppUser_Organization" ManuallyRouted="false" />
+        <AssociationConnector Association="ShakelliDWModel.FK_AppUser_Person" ManuallyRouted="false" />
+        <AssociationConnector Association="ShakelliDWModel.FK_AppUserOrganization_AppUser" ManuallyRouted="false" />
+        <AssociationConnector Association="ShakelliDWModel.FK_AppUserOrganization_Organization" ManuallyRouted="false" />
+        <AssociationConnector Association="ShakelliDWModel.FK_Safa_Cash_Safa_InvoiceHeader" ManuallyRouted="false" />
+        <AssociationConnector Association="ShakelliDWModel.FK_Safa_Cheque_Safa_InvoiceHeader" ManuallyRouted="false" />
+        <AssociationConnector Association="ShakelliDWModel.FK_Safa_InvoiceLine_Safa_InvoiceHeader" ManuallyRouted="false" />
+        <AssociationConnector Association="ShakelliDWModel.FK_Safa_InvoiceLine_Safa_InvoiceLine" ManuallyRouted="false" />
+        <AssociationConnector Association="ShakelliDWModel.FK_SalesOrg_SalesOrg" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

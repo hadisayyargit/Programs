@@ -1,0 +1,61 @@
+﻿@model ShakelliReportsUI.DataLayer.Models.MessageModel
+
+<div class="row-fluid">
+    <div class="span12">
+        <div class="space20"></div>
+        <div class="space20"></div>
+        <div class="widget-body">
+            <div class="error-page" style="min-height: 800px">
+
+                @if (Model.MessageType == "Success")
+                {
+                    <img src="~/images/404.png" alt="500 error" />
+                }
+                else if (Model.MessageType == "Info")
+                {
+                    <img src="~/images/404.png" alt="500 error" />
+                }
+
+                else if (Model.MessageType == "Warning")
+                {
+                    <img src="~/images/404.png" alt="500 error" />
+                }
+
+                else if (Model.MessageType == "Error")
+                {
+                    <img src="~/images/500.png" alt="500 error" />
+                }
+
+                <h1>
+                    <strong style="color:maroon;font-family:Tahoma">@Model.Title</strong>
+                    <br />
+                    @Model.SubTitle
+                </h1>
+                <p style="color:black;font-size:small" >
+                    <span>
+                        @Model.MessageBody
+                    </span>
+                </p>
+                <p>
+                    <br />
+                    <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("MessageInvoked", "Home", Model)'">بازگشت</button>
+                </p>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+@*<script src="~/Content/assets/data-tables/DT_bootstrap.js"></script>*@
+
+<script src="@Url.Content("~/Scripts/jquery-1.8.3.min.js")"></script>
+
+@*<script>
+        jQuery(document).ready(function () {
+            App.init();
+        });
+    </script>*@
+
+

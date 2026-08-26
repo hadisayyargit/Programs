@@ -1,0 +1,384 @@
+﻿@using Shayatech.Helper;
+
+@{
+
+    Shayatech.Helper.GeneralModule.SetTopBlogs();
+
+    ViewBag.CopyRight = ((System.Reflection.AssemblyCopyrightAttribute)(System.Reflection.Assembly.GetAssembly(typeof(Shayatech.MvcApplication)).GetCustomAttributes(typeof(System.Reflection.AssemblyCopyrightAttribute), false)).First()).Copyright.ToString();
+    ViewBag.Version = System.Reflection.Assembly.GetAssembly(typeof(Shayatech.MvcApplication)).GetName().Version.ToString();
+
+    ViewBag.userdes = (((Shayatech.Models.AppUser)Session[GeneralModule.m_CurrentUser]).UserDes != null) ? ((Shayatech.Models.AppUser)Session[GeneralModule.m_CurrentUser]).UserDes : "ورود";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>شرکت شایا</title>
+    <meta name="author" content="Idea4Theme">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <link rel="shortcut icon" href="~/images/favicon.png" />
+    <!--[if lt IE 9]>
+        <script src="https://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+    <!-- font replacement -->
+    <link href='http://fonts.googleapis.com/css?family=Oxygen:400,300,700' rel='stylesheet' type='text/css'>
+    <!-- end font replacement -->
+    <!-- CSS -->
+    @*<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css" />*@
+    <link href="~/Content/bootstrap-rtl/css/bootstrap-rtl.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-rtl/css/bootstrap-responsive-rtl.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="~/Content/fancybox.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/base.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/style.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/trans-banner.css" />
+    <link rel="stylesheet" type="text/css" href="~/Scripts/colorpicker/css/colorpicker.css" />
+    <!-- JS -->
+
+</head>
+<body>
+    <div id="skin_wrapper">
+        <div class="skin_top_bg"> </div>
+        <div class="header_area">
+            <div class="pull-right dropdown">
+                <a href="#" class="user_info dropdown-toggle" title=@ViewBag.userdes data-toggle="dropdown">
+                    @if (((Shayatech.Models.AppUser)Session[GeneralModule.m_CurrentUser]).UserImage == null)
+                    {
+                        <img src="~/images/pic/avatar2.png" alt="" />
+
+                    }
+                    else
+                    {
+                        <img src=@Url.Content(((Shayatech.Models.AppUser)Session[GeneralModule.m_CurrentUser]).UserImage) width="32" height="32" alt="" />
+                        @*<img src="~/images/pic/admin.gif" alt="" />*@
+                    }
+
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a href="javascript:void(0)" style="font-family:Tahoma">پروفایل کاربر</a>
+                    </li>
+                    @if (((Shayatech.Models.AppUser)Session[GeneralModule.m_CurrentUser]).UserName.ToLower() == "guest")
+                    {
+                        <li>
+                            <a href="~/Account/LogIn" style="font-family:Tahoma">ورود به سیستم</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li>
+                            <a href="~/Account/LogOff" style="font-family:Tahoma">خروج</a>
+                        </li>
+
+                    }
+                </ul>
+            </div>
+
+
+
+            <div class="skin_width">
+                <header class="skin_header clearafter">
+                    <!--site logo-->
+                    <div class="logo_style">
+                        <a href="~/Home/Index" title="خانه"><img src="~/images/pic/logo_shaya2.png" alt="logo" /></a>
+
+                    </div>
+                    <!--mobile menu button -->
+                    <div class="mobile_nav">
+                        <a href="#" class="menuclick"><img alt="menu click" class="click_img" src="images/skin/blank.gif" /></a>
+                    </div>
+
+
+
+
+                    <nav class="menu_box">
+
+
+                        <!--start main nav-->
+                        <div id="standardMenu">
+                            <ul class="rootMenu">
+                                <li class="item first @ViewBag.menuhomeclass">
+                                    <a href="~/"><span  style="font-family:'B Yekan',Tahoma;font-size:16px;font-weight:normal">خانه</span></a>
+                                </li>
+
+                                <li class="item haschild @ViewBag.menuadminclass">
+                                    <a href="#"><span  style="font-family:B Yekan,Tahoma;font-size:16px;font-weight:normal">راهبری</span></a>
+                                    <div class="subMenu">
+                                        <ul>
+
+                                            <li class="item">
+                                                <a href="#"><span style="font-family:B Yekan,Tahoma;font-size:12px;font-weight:normal">تغییر گذرواژه</span></a>
+                                            </li>
+
+                                            @if (((Shayatech.Models.AppUser)Session[GeneralModule.m_CurrentUser]).UserName.ToLower() == "admin")
+                                            {
+                                                <li class="item">
+                                                    <a href="#"><span style="font-family:B Yekan,Tahoma;font-size:12px;font-weight:normal">مدیریت کاربران</span></a>
+                                                </li>
+                                                <li class="item">
+                                                    <a href="~/cms/BlogList?showdiactive=true"><span style="font-family:B Yekan,Tahoma;font-size:12px;font-weight:normal">پستهای غیرفعال</span></a>
+                                                </li>
+
+                                            }
+                                        </ul>
+                                    </div>
+                                </li>
+
+                                <li class="item haschild @ViewBag.menuserviceclass">
+                                    <a href="#"><span  style="font-family:B Yekan,Tahoma;font-size:16px;font-weight:normal">راهکارها و خدمات</span></a>
+                                    <!--second level nav-->
+                                    <div class="subMenu">
+                                        <ul>
+                                            <li class="item first">
+                                                <a href="~/Home/CRM"><span style="font-family:B Yekan,Tahoma;font-size:12px;font-weight:normal">مدیریت جامع ارتباط با مشتریان</span></a>
+                                                <!--Third level nav-->
+
+                                            </li>
+                                            <li class="item">
+                                                <a href="~/Home/Ecommerce"><span style="font-family:B Yekan,Tahoma;font-size:12px;font-weight:normal">توسعه کسب و کارهای الکترونیکی</span></a>
+                                            </li>
+                                            <li class="item">
+                                                <a href="~/Home/BI"><span style="font-family:B Yekan,Tahoma;font-size:12px;font-weight:normal">هوش تجاری (BI)  داشبورد گزارش مدیریت</span></a>
+                                            </li>
+                                            <li class="item">
+                                                <a href="~/Home/DocEM"><span style="font-family:B Yekan,Tahoma;font-size:12px;font-weight:normal">مدیریت الکترونیکی اسناد و مدارک</span></a>
+                                            </li>
+
+                                            <li class="item">
+                                                <a href="~/Home/FIPI"><span style="font-family:B Yekan,Tahoma;font-size:12px;font-weight:normal">پردازش اطلاعات مالی</span></a>
+                                            </li>
+                                            <li class="divider"></li>
+                                            <li class="item first">
+                                                <a href="~/cms/BlogList?isNews=true"><span style="font-family:B Yekan,Tahoma;font-size:12px;font-weight:normal">اخبار</span></a>
+                                            </li>
+                                            <li class="item">
+                                                <a href="~/cms/GalleryList"><span style="font-family:B Yekan,Tahoma;font-size:12px;font-weight:normal">نگاره‌های گالری</span></a>
+                                            </li>
+                                            <li class="item">
+                                                <a href="~/cms/BlogList?isNews=false"><span style="font-family:B Yekan,Tahoma;font-size:12px;font-weight:normal">بلاگ</span></a>
+                                            </li>
+                                            <li class="item">
+                                                <a href="#"><span style="font-family:B Yekan,Tahoma;font-size:12px;font-weight:normal">باشگاه مشتریان</span></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                </li>
+
+                                <li class="item @ViewBag.menuoverlookclass">
+                                    <a href="~/Home/Overlook"><span style="font-family:B Yekan,Tahoma;font-size:16px;font-weight:normal">چشم‌انداز </span></a>
+                                </li>
+
+                                <li class="item about_us_page @ViewBag.menuaboutclass">
+                                    <a href="~/Home/About"><span style="font-family:B Yekan,Tahoma;font-size:16px;font-weight:normal">درباره ما </span></a>
+                                </li>
+
+                                <li class="item last @ViewBag.menucontactclass">
+                                    <a href="~/Home/Contact"><span style="font-family:B Yekan,Tahoma;font-size:16px;font-weight:normal">تماس با ما</span></a>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </nav>
+                    <!--end main nav-->
+                    <div class="banner_shadow"></div>
+                </header>
+            </div>
+        </div>
+
+        <div id="maincontent">
+            @RenderSection("featured", required: false)
+            <section class="skin-wrapper">
+                @RenderBody()
+            </section>
+
+        </div>
+
+        <div class="skin_footer">
+            <div class="skin_width">
+                <div class="home_page footer_main">
+                    <div class="pe-spacer size10"></div>
+                    <div class="row-fluid">
+
+
+                        <div class="span3">
+                            <h3 style="font-family:'B Titr';">وبلاگ </h3>
+                            <!-- start footer post -->
+                            <div class="footer_post">
+                                <ul>
+                                    @if (Session[Shayatech.Helper.GeneralModule.m_BlogList] != null)
+                                    {
+                                        foreach (Shayatech.Models.Blog item in (List<Shayatech.Models.Blog>)Session[Shayatech.Helper.GeneralModule.m_BlogList])
+                                        {
+                                            <li>
+                                                <span><img alt="" src="~/images/pic/avatar2.png" height="32" width="32" /></span>
+                                                <div style="max-height:100px;font-family:Tahoma;">
+                                                    @item.Title
+                                                </div>
+                                                <div class="post_clear"></div>
+                                            </li>
+                                            <div class="footer_post_line"></div>
+                                        }
+                                    }
+
+                                </ul>
+                            </div>
+                            <!-- end footer post -->
+                        </div>
+                        @*<div class="span3">
+                                <h3></h3>
+                                <div class="footer_tag">
+                                        <ul>
+                                            <li>
+                                                <a href="~/" target="_blank"><span>خانه</span></a>
+                                            </li>
+                                            <li>
+                                                <a href="~/home/overlook" target="_blank"><span>چشم‌انداز</span></a>
+                                            </li>
+                                            <li>
+                                                <a href="~/home/about" target="_blank"><span>درباره ما</span></a>
+                                            </li>
+                                            <li>
+                                            </li>
+                                        </ul>
+                                    </div>
+                            </div>*@
+                        <div class="span3">
+                            <h3 style="font-family:B Titr;">محصولات برگزیده</h3>
+                            <!-- start image lightbox -->
+                            <div class="fancybox_style">
+                                <ul>
+                                    <li>
+                                        <a rel="photo" class="fancybox" title="Exciting Title!" href="~/images/pic/fancy-img1.jpg"><img alt="" src="~/images/pic/fancy-img1-s.jpg" /><span class="img-overlay"></span></a>
+                                    </li>
+                                    <li>
+                                        <a rel="photo" class="fancybox" title="Yup, More Text.." href="~/images/pic/fancy-img2.jpg"><img alt="" src="~/images/pic/fancy-img2-s.jpg" /><span class="img-overlay"></span></a>
+                                    </li>
+                                    <li>
+                                        <a rel="photo" class="fancybox" title="Yelf Up." href="~/images/pic/fancy-img3.jpg"><img alt="" src="~/images/pic/fancy-img3-s.jpg" /><span class="img-overlay"></span></a>
+                                    </li>
+                                    <li>
+                                        <a rel="photo" class="fancybox" title="Bonjour!!" href="~/images/pic/fancy-img4.jpg"><img alt="" src="~/images/pic/fancy-img4-s.jpg" /><span class="img-overlay"></span></a>
+                                    </li>
+                                    <li>
+                                        <a rel="photo" class="fancybox" title="Exciting Title!" href="~/images/pic/fancy-img5.jpg"><img alt="" src="~/images/pic/fancy-img5-s.jpg" /><span class="img-overlay"></span></a>
+                                    </li>
+                                    <li>
+                                        <a rel="photo" class="fancybox" title="Yup, More Text.." href="~/images/pic/fancy-img6.jpg"><img alt="" src="~/images/pic/fancy-img6-s.jpg" /><span class="img-overlay"></span></a>
+                                    </li>
+                                    @*<li>
+                                            <a rel="photo" class="fancybox" title="Bonjour!!" href="~/images/pic/fancy-img7.jpg"><img alt="" src="~/images/pic/fancy-img7-s.jpg" /><span class="img-overlay"></span></a>
+                                        </li>
+                                        <li>
+                                            <a rel="photo" class="fancybox" title="Exciting Title!" href="~/images/pic/fancy-img8.jpg"><img alt="" src="~/images/pic/fancy-img8-s.jpg" /><span class="img-overlay"></span></a>
+                                        </li>
+                                        <li>
+                                            <a rel="photo" class="fancybox" title="Yup, More Text.." href="~/images/pic/fancy-img9.jpg"><img alt="" src="~/images/pic/fancy-img9-s.jpg" /><span class="img-overlay"></span></a>
+                                        </li>*@
+                                </ul>
+                            </div>
+                            <!-- end image lightbox -->
+                        </div>
+                        <div class="span3">
+                            <h3 style="font-family:B Titr;">آخرین اخبار</h3>
+                            <!-- start testimonials -->
+                            <ul id="quovolver_style" class="quovolve clearafter">
+                                @if (Session[Shayatech.Helper.GeneralModule.m_NewsList] != null)
+                                {
+                                    foreach (Shayatech.Models.Blog item in (List<Shayatech.Models.Blog>)Session[Shayatech.Helper.GeneralModule.m_NewsList])
+                                    {
+                                        <li>
+                                            <p style="font-family:Tahoma;">
+                                                @item.Title
+                                                <cite>@item.PublishDate</cite>
+                                    </p>
+                                </li>
+                                    }
+                                }
+
+                            </ul>
+                            <!-- end testimonials -->
+                        </div>
+                        <div class="span3 left">
+                            <h3 style="font-family:B Titr;">اطلاعات تماس</h3>
+                            <ul>
+                                <li style="font-family:Tahoma;">دفتر تهران: نیاوران ، نارنجستان 7، پلاک 113، طبقه۴ </li>
+                                <li style="font-family:Tahoma;">Email: info@shayatech.ir</li>
+                                <li style="font-family:Tahoma;">Tel: (+98) 021-82806655 ext: 5265</li>
+                                <li>
+                                    <a href="~/home/contact" class="email" style="font-family:Tahoma;">نظرات خود را با ما در میان بگذارید</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                    <div class="pe-spacer size10"></div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <div class="footer_bottom style=" font-family:Tahoma">
+                <div class="skin_width">
+                    <div class="row-fluid ">
+                        <div class="span6 copyright_left">
+                            <!-- copyright info -->
+                            <p style="font-family:Tahoma">
+                                &copy; کلیه حقوق این سایت متعلق به شرکت شایا است
+                                <br />
+                                پیاده‌سازی و اجرا توسط:
+                                &nbsp;
+                                گروه پردازشگران خرداد
+                                <a href="http://www.khordadnet.ir" target="_blank"><img src="~/Images/icons/khordadlogoTransparent.png" width="10%" height="10%" /></a>
+                            </p>
+                        </div>
+                        <div class="span6 copyright_right">
+                            <!--Social Icons-->
+                            <div class="Social-Links">
+                                <a href="https://www.facebook.com/ShayaGroup?ref=hl" title="Facebook" class="iconFacebook" rel="tooltip" target="_blank"></a>
+                                <a href="https://www.twitter.com/ShayaGroup" title="Twitter" class="iconTwitter" rel="tooltip" target="_blank"></a>
+                                <a href="#" title="Youtube" class="iconYouTube" rel="tooltip" target="_blank"></a>
+                                <a href="shayagroupX@gmail.com" title="Google+" class="iconGoogle" rel="tooltip" target="_blank"></a>
+                                <a href="#" title="RSS" class="iconRss" rel="tooltip" target="_blank"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <a href="#" id="top-link" title="اول صفحه"></a>
+    </div>
+
+</body>
+
+
+</html>
+
+<script src='~/Scripts/jquery-1.10.2.min.js'></script>
+<script src='~/Scripts/jquery-migrate.min.js'></script>
+<script src='~/Scripts/jquery.scrollTo.min.js'></script>
+<script src='~/Scripts/scrolltop.call.js'></script>
+<script src='~/Scripts/trans-banner.min.js'></script>
+<script src='~/Scripts/jquery.hoverIntent.min.js'></script>
+<script src='~/Scripts/jquery.fancybox.min.js'></script>
+<script src='~/Scripts/jquery.mousewheel.min.js'></script>
+<script src='~/Scripts/jquery.easing.1.3.min.js'></script>
+<script src='~/Scripts/jquery.tipsy.js'></script>
+<script src='~/Scripts/colorpicker/js/colorpicker.js'></script>
+<script src='~/Scripts/colorpicker/js/eye.js'></script>
+<script src='~/Scripts/colorpicker/js/utils.js'></script>
+<script src='~/Scripts/jquery.cookie.js'></script>
+<script src="~/Content/bootstrap/js/bootstrap.js"></script>
+<script src="~/Content/bootstrap-rtl/js/bootstrap.min.js"></script>
+<script src='~/Scripts/jquery.carouFredSel-6.2.1-packed.js'></script>
+<script src='~/Scripts/jquery.quovolver.min.js'></script>
+<script src='~/Scripts/shake.js'></script>
+<script src='~/Scripts/custom-all.js'></script>
+<script src='~/Scripts/custom.js'></script>
+
+
+@Styles.Render("~/Content/css")
+@Scripts.Render("~/bundles/modernizr")

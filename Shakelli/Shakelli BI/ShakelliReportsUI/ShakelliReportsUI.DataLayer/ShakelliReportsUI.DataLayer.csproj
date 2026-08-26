@@ -1,0 +1,270 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DD941E05-60DF-48DB-B600-8AD574EF3E7D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ShakelliReportsUI.DataLayer</RootNamespace>
+    <AssemblyName>ShakelliReportsUI.DataLayer</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.1.0.0\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.1.0.0\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Windows\assembly\GAC_MSIL\Microsoft.ReportViewer.WebForms\12.0.0.0__89845dcd8080cc91\Microsoft.ReportViewer.WebForms.DLL</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AppGroup.cs">
+      <DependentUpon>ShakelliDWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AppGroupUser.cs">
+      <DependentUpon>ShakelliDWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AppGroupUserObject.cs">
+      <DependentUpon>ShakelliDWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AppGroupUserObjectView.cs" />
+    <Compile Include="Models\AppNotification.cs">
+      <DependentUpon>ShakelliDWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AppObject.cs">
+      <DependentUpon>ShakelliDWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AppSystem.cs">
+      <DependentUpon>ShakelliDWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AppUser.cs">
+      <DependentUpon>ShakelliDWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DatasetGeneral.cs">
+      <DependentUpon>DatasetGeneral.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DatasetGeneral.Designer.cs">
+      <DependentUpon>DatasetGeneral.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Models\Glossary.cs">
+      <DependentUpon>ShakelliDWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Logo_Trace.cs">
+      <DependentUpon>ShakelliDWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Lookup.cs">
+      <DependentUpon>ShakelliDWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MessageModel.cs" />
+    <Compile Include="Models\Organization.cs">
+      <DependentUpon>ShakelliDWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OrganizationUser.cs">
+      <DependentUpon>ShakelliDWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OrganizationUserView.cs" />
+    <Compile Include="Models\Person.cs">
+      <DependentUpon>ShakelliDWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PostData.cs">
+      <DependentUpon>ShakelliDWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\postReportData.cs" />
+    <Compile Include="Models\PrimeModel.cs" />
+    <Compile Include="Models\ReportModel.cs" />
+    <Compile Include="Models\Safa_Cash.cs">
+      <DependentUpon>ShakelliDWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Safa_Cheque.cs">
+      <DependentUpon>ShakelliDWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Safa_InvoiceHeader.cs">
+      <DependentUpon>ShakelliDWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Safa_InvoiceLine.cs">
+      <DependentUpon>ShakelliDWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\safa_maxFactorOfClientTable_Result.cs">
+      <DependentUpon>ShakelliDWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Safa_Paytrans.cs">
+      <DependentUpon>ShakelliDWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Safa_tabletFullUpdate.cs">
+      <DependentUpon>ShakelliDWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Safa_vw_City.cs">
+      <DependentUpon>ShakelliDWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Safa_vw_ClassTakhfif.cs">
+      <DependentUpon>ShakelliDWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Safa_vw_CSTRANSLastStatus.cs">
+      <DependentUpon>ShakelliDWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Safa_vw_DISTRICT.cs">
+      <DependentUpon>ShakelliDWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Safa_vw_KalaGroup.cs">
+      <DependentUpon>ShakelliDWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Safa_vw_KalaSubGroup.cs">
+      <DependentUpon>ShakelliDWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Safa_vw_KanalTozi.cs">
+      <DependentUpon>ShakelliDWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Safa_vw_State.cs">
+      <DependentUpon>ShakelliDWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Safa_vw_Supervisor.cs">
+      <DependentUpon>ShakelliDWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Safa_vw_TradingGroup.cs">
+      <DependentUpon>ShakelliDWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SalePosition.cs">
+      <DependentUpon>ShakelliDWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SalesOrg.cs">
+      <DependentUpon>ShakelliDWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Salestarget.cs">
+      <DependentUpon>ShakelliDWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ShakelliDWModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ShakelliDWModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ShakelliDWModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ShakelliDWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ShakelliDWModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ShakelliDWModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\spGetAccessRight_Result.cs">
+      <DependentUpon>ShakelliDWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Supervisor.cs">
+      <DependentUpon>ShakelliDWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\vwAnbar.cs">
+      <DependentUpon>ShakelliDWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\vwBranch.cs">
+      <DependentUpon>ShakelliDWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\vwCustomer.cs">
+      <DependentUpon>ShakelliDWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\vwKala.cs">
+      <DependentUpon>ShakelliDWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\vwObject2.cs">
+      <DependentUpon>ShakelliDWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\vwSalesOrg.cs">
+      <DependentUpon>ShakelliDWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\vwSeller.cs">
+      <DependentUpon>ShakelliDWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WorkListModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="Models\DatasetGeneral.xsc">
+      <DependentUpon>DatasetGeneral.xsd</DependentUpon>
+    </None>
+    <None Include="Models\DatasetGeneral.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DatasetGeneral.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Models\DatasetGeneral.xss">
+      <DependentUpon>DatasetGeneral.xsd</DependentUpon>
+    </None>
+    <EntityDeploy Include="Models\ShakelliDWModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ShakelliDWModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Models\ShakelliDWModel.edmx.diagram">
+      <DependentUpon>ShakelliDWModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Models\ShakelliDWModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ShakelliDWModel.edmx</DependentUpon>
+      <LastGenOutput>ShakelliDWModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\ShakelliDWModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ShakelliDWModel.edmx</DependentUpon>
+      <LastGenOutput>ShakelliDWModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    <RadioGroup
+        android:text="dsdfsd"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/radioGroup1">
+        <TextView
+            android:text="@string/connectionchannel"
+            android:id="@+id/textView1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
+        <RadioButton
+            android:text="Wifi"
+            android:id="@+id/rdoWifi"
+            android:checked="true"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
+        <RadioButton
+            android:text="GPRS"
+            android:id="@+id/rdoGprs"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
+    </RadioGroup>
+    <TableLayout
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tableLayout1">
+        <TableRow
+            android:id="@+id/tableRow1">
+            <TextView
+                android:text="@string/internetserver"
+                android:layout_column="0"
+                android:id="@+id/textView10" />
+            <EditText
+                android:layout_column="1"
+                android:id="@+id/txtInternetServer" />
+        </TableRow>
+        <TableRow
+            android:id="@+id/tableRow2">
+            <TextView
+                android:text="@string/localserver"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:layout_column="0"
+                android:id="@+id/textView11" />
+            <EditText
+                android:layout_column="1"
+                android:id="@+id/txtLocalServer"
+                android:inputType="textPersonName"
+                android:layout_width="217.3dp" />
+        </TableRow>
+        <TableRow
+            android:id="@+id/tableRow4">
+            <TextView
+                android:text="@string/reportpresenterport"
+                android:layout_column="0"
+                android:id="@+id/textView10" />
+            <EditText
+                android:layout_column="1"
+                android:id="@+id/txtReportPresenterPort" />
+        </TableRow>
+        <TableRow
+            android:id="@+id/tableRow3">
+            <TextView
+                android:text="@string/wcfserviceurl"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:layout_column="0"
+                android:id="@+id/textView12" />
+            <EditText
+                android:layout_column="1"
+                android:id="@+id/txtWcfService"
+                android:scrollHorizontally="true" />
+        </TableRow>
+    </TableLayout>
+    <Button
+        android:text="@string/apply"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnApply" />
+</LinearLayout>

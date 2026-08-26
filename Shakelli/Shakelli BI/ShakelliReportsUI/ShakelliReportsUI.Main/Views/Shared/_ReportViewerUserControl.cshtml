@@ -1,0 +1,30 @@
+﻿@model ShakelliReportsUI.DataLayer.Models.ReportModel
+
+
+<div class="widget">
+    <div class="widget-title">
+        <h4><i class="icon-reorder"></i> گزارش چاپی</h4>
+        <span class="tools">
+            <a href="javascript:;" class="icon-chevron-down"></a>
+            <a href="javascript:;" class="icon-remove"></a>
+        </span>
+    </div>
+
+    <div class="widget-body" style="display: normal;">
+        <div class="control-group">  
+            @*<button onclick="location.href='/Reports/print_ssrs'" formtarget="_blank">print</button>*@          
+            <a href="~/Reports/print_ssrs" target="_blank">چاپ</a>
+            <iframe src="~/ReportViewerPage.aspx" width="100%" height="700" dir="rtl" frameborder="0" style="background-color:white">    </iframe>
+        </div>
+    </div>
+
+</div>
+
+
+<script>
+
+</script>
+
+
+
+
