@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>D:\Documents\publish\EmdadMainServices</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="BankPasargadService.svc">
+      <publishTime>01/29/2014 12:15:53</publishTime>
+    </File>
+    <File Include="bin/CommonUnits.dll">
+      <publishTime>03/27/2014 12:19:49</publishTime>
+    </File>
+    <File Include="bin/CommonUnits.XmlSerializers.dll">
+      <publishTime>03/27/2014 12:19:50</publishTime>
+    </File>
+    <File Include="bin/EmdadMainServices.dll">
+      <publishTime>03/27/2014 12:45:35</publishTime>
+    </File>
+    <File Include="bin/EmdadMainServices.XmlSerializers.dll">
+      <publishTime>02/24/2014 14:18:33</publishTime>
+    </File>
+    <File Include="bin/EmdadSalpa.CRP.dll">
+      <publishTime>10/09/2013 15:04:02</publishTime>
+    </File>
+    <File Include="bin/fa-IR/CommonUnits.resources.dll">
+      <publishTime>03/27/2014 12:19:51</publishTime>
+    </File>
+    <File Include="bin/GlobalUnits.dll">
+      <publishTime>03/12/2014 13:53:03</publishTime>
+    </File>
+    <File Include="bin/Meli_check.dll">
+      <publishTime>09/20/2009 23:17:32</publishTime>
+    </File>
+    <File Include="bin/MgnUser.dll">
+      <publishTime>02/07/2012 15:36:40</publishTime>
+    </File>
+    <File Include="EcommerceService.svc">
+      <publishTime>01/29/2014 12:16:15</publishTime>
+    </File>
+    <File Include="EmdadMainServices.BankPasargadService.svc">
+      <publishTime>02/25/2014 11:33:19</publishTime>
+    </File>
+    <File Include="EmdadMainServices.EcommerceService.svc">
+      <publishTime>02/25/2014 11:33:19</publishTime>
+    </File>
+    <File Include="EmdadMainServices.GuaranteeService.svc">
+      <publishTime>02/25/2014 11:33:19</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>02/25/2014 11:33:19</publishTime>
+    </File>
+    <File Include="GuaranteeService.svc">
+      <publishTime>01/29/2014 12:17:33</publishTime>
+    </File>
+    <File Include="Web References/RahyabService/MessagesBL.datasource">
+      <publishTime>02/19/2014 16:55:50</publishTime>
+    </File>
+    <File Include="Web References/RahyabService/Reference.map">
+      <publishTime>02/19/2014 16:55:42</publishTime>
+    </File>
+    <File Include="Web References/RahyabService/send.wsdl">
+      <publishTime>02/19/2014 16:55:40</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>03/27/2014 12:19:52</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

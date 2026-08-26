@@ -1,0 +1,18 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="GeneralTest.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="GeneralTest_EcommerceService2_EcommerceService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://46.32.24.36:7003/EmdadMainServices.EcommerceService.svc</Value>
+    </Setting>
+    <Setting Name="GeneralTest_GuaranteeService_GuaranteeService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://ecm:7003/EmdadMainServices.GuaranteeService.svc</Value>
+    </Setting>
+    <Setting Name="GeneralTest_bankpasargad2_BankPasargadService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://ecm:7003/EmdadMainServices.BankPasargadService.svc</Value>
+    </Setting>
+    <Setting Name="GeneralTest_RahyabService_Send" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://192.168.0.23/post/send.asmx</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

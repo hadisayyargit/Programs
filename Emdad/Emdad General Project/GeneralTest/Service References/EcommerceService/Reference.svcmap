@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="c7a92728-6861-4e7a-874e-8ceddac7f465" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://46.32.24.36:7003/EcommerceService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="EcommerceService.xsd" MetadataType="Schema" ID="21f87998-c1ff-42c7-99d9-98a43877c6df" SourceId="1" SourceUrl="http://46.32.24.36:7003/EcommerceService.svc?xsd=xsd1" />
+    <MetadataFile FileName="EcommerceService1.xsd" MetadataType="Schema" ID="18240ede-bc31-4c8b-a0b8-d4b7d37c56b6" SourceId="1" SourceUrl="http://46.32.24.36:7003/EcommerceService.svc?xsd=xsd0" />
+    <MetadataFile FileName="EcommerceService2.xsd" MetadataType="Schema" ID="bb73a104-89c4-43db-9fbc-7b0ed0269d82" SourceId="1" SourceUrl="http://46.32.24.36:7003/EcommerceService.svc?xsd=xsd3" />
+    <MetadataFile FileName="EcommerceService3.xsd" MetadataType="Schema" ID="fc2970f9-6e49-4945-9b2c-db46edf9e4fd" SourceId="1" SourceUrl="http://46.32.24.36:7003/EcommerceService.svc?xsd=xsd2" />
+    <MetadataFile FileName="EcommerceService.disco" MetadataType="Disco" ID="ed3bc722-814c-4d44-8137-d5eff1ecf6d9" SourceId="1" SourceUrl="http://46.32.24.36:7003/EcommerceService.svc?disco" />
+    <MetadataFile FileName="EcommerceService.wsdl" MetadataType="Wsdl" ID="b3b1ca38-3190-44ff-a099-352d7162c903" SourceId="1" SourceUrl="http://46.32.24.36:7003/EcommerceService.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
