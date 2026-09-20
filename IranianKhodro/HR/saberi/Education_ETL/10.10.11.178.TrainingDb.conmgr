@@ -1,0 +1,12 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="10.10.11.178.TrainingDb"
+  DTS:DTSID="{1F63D341-594B-4129-B972-BD62EE030AFD}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=datastore.iraniankhodro.com;Initial Catalog=EmployeeDb;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Auto Translate=False;Application Name=SSIS-packageEducation-{1F63D341-594B-4129-B972-BD62EE030AFD}10.10.11.178.TrainingDb;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

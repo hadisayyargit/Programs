@@ -1,0 +1,16 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="datastorsrv.Staging"
+  DTS:DTSID="{958D49E4-C18C-4452-8380-0A9133EAAFC6}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=Datastore.Iraniankhodro.com;User ID=sa;Initial Catalog=Staging;Provider=SQLOLEDB.1;Persist Security Info=True;Application Name=SSIS-{958D49E4-C18C-4452-8380-0A9133EAAFC6}datastorsrv.Staging;">
+      <DTS:Password
+        DTS:Name="Password"
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAssCcgnvaLEmC3XJrEi36+QAAAAACAAAAAAAQZgAAAAEAACAAAAAvfpvx8gHYqPagxlpXj2r3Z4Cf18iHim5ZIkovuY/GAwAAAAAOgAAAAAIAACAAAADJvXPKs0Q1uRuBvW7TcHpUh7dAsbm8IAnXRTtii0WaC4AAAACigfcU94ak5SUmjNnzyVv3VyiZB91wEQb4i4VRP0tjGhwZfLPjx4wIo3a8STbVcyTBSftNjB9+aEF5lERsPtKFUPNHtH9ygQe2yz85F858UnnfG5G75koj8mWa1NY0vsh3j8BvOK3OZs0PPEInNDlUpnH7UjkYwH9CjX8DlIlRB0AAAAA1b2Cp6BGCTwQS7qX0nPM/8H69o01sJBLcovePY/ZqT2+wiOXxN9J3Z2ZUntpzSUtFmPlbhmTz1pZPAljkw+F5</DTS:Password>
+    </DTS:ConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

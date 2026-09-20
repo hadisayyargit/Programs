@@ -1,0 +1,17 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:DelayValidation="True"
+  DTS:ObjectName="POWERBI.DW_2025"
+  DTS:DTSID="{5BD8EC20-574F-40F6-B2AE-161744835213}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=BI.Iraniankhodro.com;User ID=sa;Initial Catalog=DW_2025;Provider=SQLOLEDB.1;Persist Security Info=True;Application Name=SSIS-{5BD8EC20-574F-40F6-B2AE-161744835213}POWERBI.DW_2025;">
+      <DTS:Password
+        DTS:Name="Password"
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA0vzTqNjb40ShFqx+SkfsJQAAAAACAAAAAAAQZgAAAAEAACAAAACUBDxBliBl8N2+Egq4isVrokVllrMtvfQDFw9xc4z22wAAAAAOgAAAAAIAACAAAAAqcALO5F68WbucUzL67QTV8Rpnh4pI8MLKbco7DqTvmYAAAAAYVqzD8Px6ukCQn3vHrLpCqASmUSJAAJw9dwQXOnk9pQKX0TI+IlCndZrM1EYxZdU3Lap7GRDNWKtXzclE8eqxzCLDaRCOS/zQTDrhvgOQT2L8d81STojaFvbDLjBVXM9HnrRCLu58XHv0stNARiyl7Ub63nTO1Ff+4U6PIQ8EBkAAAACUb7QTVqF+v/XUroyI7cou56G0bcsr9Tsd52zzpCfb1SfhkzwiJVbySM/667XUYm+pErE8n16ohp+DOIXe9ndx</DTS:Password>
+    </DTS:ConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

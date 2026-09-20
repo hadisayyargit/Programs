@@ -1,0 +1,12 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="10.10.11.194.Staging"
+  DTS:DTSID="{B76F0CAB-889E-4336-B126-E3E69A4576F8}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=10.10.11.194;Initial Catalog=Staging;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Auto Translate=False;Application Name=SSIS-Education_ETL-{B76F0CAB-889E-4336-B126-E3E69A4576F8}10.10.10.102.Staging;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

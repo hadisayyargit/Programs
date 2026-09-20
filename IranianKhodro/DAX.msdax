@@ -1,0 +1,593 @@
+﻿
+------------
+StatusIcon =
+SWITCH(
+    [DealerContractStatusCode],
+    0, "🔴",
+    1, "🟡",
+    2, "🟢"
+)
+
+--
+StatusIcon =
+SWITCH(
+    [statuscode],
+    0, UNICHAR(128308),   -- 🔴  red
+    1, UNICHAR(128993),   -- 🟡  yellow
+    2, UNICHAR(128994),   -- 🟢  green
+    ""
+)
+----------------
+=FORMAT (UsedCarDealers[JalaliEndContractDate], "0000\/00\/00" )
+------------------------
+--- (calculated column)
+JalaliContractdate= = LOOKUPVALUE('BI DimDate'[JalaliDate],'BI DimDate'[GregorianDate],'Sales HorizentalMergedSales'[FormattedContractDate])
+
+
+--------------------------
+--- (calculated column)
+paytype= 
+SWITCH (
+    TRUE(),
+    'Sales HorizentalMergedSales'[SaleType] IN { "نقدي", "فروش فوري نقدي", "پيش فروش نقدي" }, "نقدی",
+    'Sales HorizentalMergedSales'[SaleType] IN { "اقساطي", "فروش فوري اعتباري" }, "اقساطي",
+    'Sales HorizentalMergedSales'[SaleType]
+)
+
+
+-----------------------
+
+CancelledRatio:= 
+VAR TotalContracts = 
+CALCULATE(
+    COUNT('Sales HorizentalMergedSales'[ContractId]),
+    'Sales HorizentalMergedSales'[DealerCode] = 777
+)
+
+VAR CancelledContracts = 
+CALCULATE(
+    COUNT('Sales HorizentalMergedSales'[ContractId]),
+    'sales HorizentalMergedSales'[DealerCode] = 777,
+    'sales HorizentalMergedSales'[CancellationDate] <> DATE(2000,1,1)
+)
+
+Return Divide(CancelledContracts,TotalContracts,0)
+
+-----------------
+
+SalesCount:= CALCULATE( COUNT('Sales HorizentalMergedSales'[ContractId]),    'sales HorizentalMergedSales'[DealerCode] = 777)
+
+
+----------------------
+-- حاصل تجمعی فروش (Running Total)
+CumulativeMonthlySales:=
+VAR CurrentYear = SELECTEDVALUE('BI dimDate'[JalaliYear])
+VAR CurrentMonth = SELECTEDVALUE('BI dimDate'[JalaliMonth])
+VAR SelectedOption = SELECTEDVALUE(tableSaleType[FilterOption])
+
+RETURN
+SWITCH(
+    SelectedOption,
+    "عادی", CALCULATE(    [cashSalesCount],
+    FILTER(
+        ALL('BI dimDate'),
+       'BI dimDate'[JalaliYear] = CurrentYear &&
+        (
+          'BI dimDate'[JalaliMonth]<= CurrentMonth
+        )
+    )
+),
+    "جایگزین", CALCULATE(    [cashSalesSecondHandCount],
+    FILTER(
+        ALL('BI dimDate'),
+       'BI dimDate'[JalaliYear] = CurrentYear &&
+        (
+          'BI dimDate'[JalaliMonth]<= CurrentMonth
+        )
+    )
+),
+    "سازمانی", CALCULATE(    [cashSalesOrganizationalCount],
+    FILTER(
+        ALL('BI dimDate'),
+       'BI dimDate'[JalaliYear] = CurrentYear &&
+        (
+          'BI dimDate'[JalaliMonth]<= CurrentMonth
+        )
+    )
+),
+    blank()
+)
+
+
+-----------------
+-- حاصل تجمعی هدف فروش
+CumulativeTargetThisYear :=
+VAR CurrentYear = SELECTEDVALUE('BI dimDate'[JalaliYear])
+VAR CurrentSeason = SELECTEDVALUE('BI dimDate'[JalaliSeason])
+RETURN
+CALCULATE(
+    SUM('BI dimKPITarget'[TargetValue]),
+    FILTER(
+        'BI dimKPITarget',
+        'BI dimKPITarget'[JalaliYear] = CurrentYear &&
+        'BI dimKPITarget'[JalaliSeason] <= CurrentSeason
+    )
+)
+-----------------------------------
+
+
+/*
+
+
+اگر بخواهید جدول محاسباتی بسازید که مثلاً ماه به ماه تعداد فروش تجمعی را نشان دهد، باید یک جدول جدید تعریف کنید. مثلاً:
+dax
+Copy code
+CumulativeSalesByMonth = 
+ADDCOLUMNS(
+    SUMMARIZE(
+        dimDate,
+        dimDate[jalaliyear],
+        dimDate[jalalimonth]
+    ),
+    "CumulativeSales",
+    VAR CurrentYear = dimDate[jalaliyear]
+    VAR CurrentMonth = dimDate[jalalimonth]
+    RETURN
+    CALCULATE(
+        COUNT(factSale[contractid]),
+        factSale[issecondhand] = 0,
+        factSale[dealercode] = 777,
+        FILTER(
+            ALL(dimDate),
+            dimDate[jalaliyear] = CurrentYear &&
+            dimDate[jalalimonth] <= CurrentMonth
+        )
+    )
+)
+این جدول یک جدول جدید ماه به ماه با ستون تجمعی می‌سازد.
+
+
+*/
+
+
+---------------
+LeaveRatio:=	VAR TotalContracts = CALCULATE( COUNT('Sales HorizentalMergedSales'[ContractId]),    'Sales HorizentalMergedSales'[DealerCode] = 777,'Sales HorizentalMergedSales'[orderid] = 0)  
+	VAR leads = 'Crm Leads'[LeadCount]
+	Return COALESCE( Divide(TotalContracts,leads,0),0)
+
+
+-----------------------
+
+SeasonalTargetByMonth:=
+VAR CurrentYear = SELECTEDVALUE('BI dimDate'[JalaliYear])
+VAR CurrentSeason = SELECTEDVALUE('BI dimDate'[JalaliSeason])
+
+RETURN
+CALCULATE(
+    MAX('BI dimKPITarget'[TargetValue]),
+    FILTER(
+        'BI dimKPITarget',
+       'BI dimKPITarget'[JalaliYear] = CurrentYear &&
+        'BI dimKPITarget'[JalaliSeason] = CurrentSeason
+    )
+)
+
+dimRequestTypeTable=
+DATATABLE (
+    "RequestTypeID", INTEGER,
+    "RequestTypeTitle", STRING,
+    {
+        { 1, "تولید" },
+        { 2, "مصرف" },
+        { 3, "فروش" },
+        { 4, "امانی" },
+        { 5, "انتقال بین انبار" },
+        { 6, "ضایعات" },
+        { 7, "سایر" }
+    }
+)
+
+------------------
+
+PartTechnicalTitleCol=    SWITCH ( TRUE(),
+         CONTAINSSTRING ( 'com factPurchasePerformance'[PartTechnicalSpecification], "مصرف" ), "مصرفی",
+        CONTAINSSTRING ( 'com factPurchasePerformance'[PartTechnicalSpecification], "دارایی" ), "دارایی",
+        "سایر"
+    ) 
+
+    ---------------
+
+ PartrNatureTitleCol   =
+    SWITCH ( 'com factPurchasePerformance'[PartNature],
+         1, "ماده اولیه",
+         2, "محصول",
+         3, "نیمه ساخته",
+         4, "دارایی ثابت",
+          5,"سایر"
+, BLANK()
+        
+    ) 
+----------------
+tableSaleType
+= DATATABLE(
+    "FilterOption", STRING,
+    {
+        {"عادی"},
+        {"جایگزین"},
+        {"سازمانی"}
+    }
+)
+
+------------
+orderscount:=CALCULATE(
+    COUNTROWS('Sales HorizentalMergedSales')
+,USERELATIONSHIP ('Sales HorizentalMergedSales'[OrderDate], 'BI dimDate'[GregorianDate] ) 
+, 'Sales HorizentalMergedSales'[DealerCode] = 777
+
+)
+-------------------------
+AvgOfOrderToDelivery:=
+AVERAGEX(
+    FILTER(
+        'Sales HorizentalMergedSales',
+        'Sales HorizentalMergedSales'[DealerCode] = 777 &&
+        'Sales HorizentalMergedSales'[ContractId] <> 0 &&
+        ISBLANK(RELATED('BI IranianContracts'[ContractId])) &&
+        'Sales HorizentalMergedSales'[DeliverToCustomerDate] <> DATE(2000, 1, 1) &&
+        'Sales HorizentalMergedSales'[DeliverToCustomerDate] <> BLANK() &&
+        'Sales HorizentalMergedSales'[OrderDate] <> DATE(2000, 1, 1)
+        &&  'Sales HorizentalMergedSales'[OrderDate] <> BLANK()
+    ),
+    DATEDIFF(
+        'Sales HorizentalMergedSales'[OrderDate],
+        'Sales HorizentalMergedSales'[DeliverToCustomerDate],
+        DAY
+    )
+)
+
+CountofOrderToDelivery:=
+COUNTROWS(
+    FILTER(
+        'Sales HorizentalMergedSales',
+        'Sales HorizentalMergedSales'[DealerCode] = 777 &&
+        'Sales HorizentalMergedSales'[ContractId] <> 0 &&
+        ISBLANK(RELATED('BI IranianContracts'[ContractId])) &&
+        'Sales HorizentalMergedSales'[DeliverToCustomerDate] <> DATE(2000, 1, 1) &&
+        'Sales HorizentalMergedSales'[DeliverToCustomerDate] <> BLANK() &&
+        'Sales HorizentalMergedSales'[OrderDate] <> DATE(2000, 1, 1)
+        &&  'Sales HorizentalMergedSales'[OrderDate] <> BLANK()
+    )
+    )
+----------
+
+con:=
+CALCULATE(
+    COUNT(qryLeasings[LeasingConfirmDate]),   
+    qryLeasings[LeasingName] <> "بانک شهر ویژه پرسنل",
+    qryLeasings[LeasingName] <> "بانک صادرات ویژه پرسنل",
+    qryLeasings[LeasingName] <> "بانک گردشکري پرسنل",
+    qryLeasings[leasingtype] <> "سایر",
+    qryLeasings[MiladiContractDate] = BLANK(), 
+    qryLeasings[ChangeSalesPolicyDate] = BLANK(),
+    qryLeasings[CreditAmount]<> BLANK(),
+     TREATAS(
+         VALUES('bi dimDate'[GregorianDate]) ,
+        qryLeasings[MiladiLeasingConfirmDate]
+    )
+)
+
+--------------------
+
+measureTest:=
+
+VAR MinDate = MIN('bi dimDate'[GregorianDate])
+VAR MaxDate = MAX('bi dimDate'[GregorianDate])
+VAR FilteredTable =
+    FILTER(
+        ALL(qryLeasings),
+        qryLeasings[DealerCode] = "777"
+            && qryLeasings[LeasingName] <> "بانک شهر ویژه پرسنل"
+            && qryLeasings[LeasingName] <> "بانک صادرات ویژه پرسنل"
+            && qryLeasings[LeasingName] <> "بانک گردشکري پرسنل"
+            && qryLeasings[LeasingType] <> "سایر"
+            && ISBLANK(qryLeasings[MiladiCancelDate])
+            && ISBLANK(qryLeasings[ChangeSalesPolicyDate])
+            && NOT( ISBLANK(qryLeasings[CreditAmount]) )
+            && NOT( ISBLANK(qryLeasings[LeasingConfirmDate]) )
+            && qryLeasings[MiladiLeasingConfirmDate] >= MinDate
+            && qryLeasings[MiladiLeasingConfirmDate] <= MaxDate
+&& qryLeasings[ContractNo]=2157873
+
+    )
+
+
+RETURN
+  MAXX(FilteredTable, qryLeasings[ContractNo])
+
+  ----------------
+  measureTest:=
+VAR MinDate = MIN('bi dimDate'[GregorianDate])
+VAR MaxDate =MAX('bi dimDate'[GregorianDate])
+VAR FilteredTable =
+    FILTER(
+        ALL(qryLeasings),
+        qryLeasings[DealerCode] = "777"
+            && qryLeasings[LeasingName] <> "بانک شهر ویژه پرسنل"
+            && qryLeasings[LeasingName] <> "بانک صادرات ویژه پرسنل"
+            && qryLeasings[LeasingName] <> "بانک گردشکري پرسنل"
+            && ISBLANK(qryLeasings[MiladiCancelDate])
+            && ISBLANK(qryLeasings[ChangeSalesPolicyDate])
+            && NOT( ISBLANK(qryLeasings[CreditAmount]) )
+            && qryLeasings[MiladiLeasingConfirmDate] >= MinDate
+            && qryLeasings[MiladiLeasingConfirmDate] <= MaxDate
+    )
+RETURN
+CALCULATE(
+    COUNTROWS(FilteredTable),
+,    USERELATIONSHIP(        qryLeasings[MiladiLeasingConfirmDate],        'bi dimDate'[GregorianDate]    )
+)
+
+------------------------
+
+CountOfPersonnel:= 
+VAR _MaxDateKey = [SelectedToDate]
+
+RETURN
+SUMX(
+    DISTINCT( ALL( 'hr PersonnelSentence'[PersonnelId] ) ),  -- همه‌ی PersonnelId (بدون فیلتر ویژوال)
+    VAR pid = [PersonnelId]
+
+    VAR LastKey =
+        CALCULATE(
+            MAX( 'hr PersonnelSentence'[SentenceDateKey] ),
+            FILTER(
+                ALL( 'hr PersonnelSentence' ),
+                'hr PersonnelSentence'[PersonnelId] = pid
+                    && 'hr PersonnelSentence'[SentenceDateKey] <= _MaxDateKey
+            )
+        )
+
+    VAR LastType =
+        CALCULATE(
+            MIN( 'hr PersonnelSentence'[SentenceTypeId] ),  -- MIN برای جلوگیری از خطای multiple value
+            FILTER(
+                ALL( 'hr PersonnelSentence' ),
+                'hr PersonnelSentence'[PersonnelId] = pid
+                    && 'hr PersonnelSentence'[SentenceDateKey] = LastKey
+            )
+        )
+
+    RETURN
+        IF( NOT( ISBLANK( LastKey ) ) && NOT( ISBLANK( LastType ) ) && LastType <> 10, 1, 0 )
+)
+
+--------------------------
+
+CountOfActive:=
+
+VAR maxDate = [SelectedToDate]
+VAR dept    = SELECTEDVALUE('Department'[DepartmentId])
+RETURN
+COUNTROWS (
+    FILTER (
+        VALUES('EmployeeOrder'[PersonnelId]),
+        VAR lastKey =
+            CALCULATE (
+                MAX('EmployeeOrder'[OrderDateKey]),
+                KEEPFILTERS('EmployeeOrder'[OrderDateKey] <= maxDate),
+                ALLEXCEPT('EmployeeOrder','EmployeeOrder'[PersonnelId])
+            )
+        VAR lastType =
+            CALCULATE (
+                MIN('EmployeeOrder'[OrderTypeId]),
+                KEEPFILTERS('EmployeeOrder'[OrderDateKey] = lastKey),
+                ALLEXCEPT('EmployeeOrder','EmployeeOrder'[PersonnelId])
+            )
+        VAR lastDept =
+            CALCULATE (
+                SELECTEDVALUE('EmployeeOrder'[DepartmentId]),
+                KEEPFILTERS('EmployeeOrder'[OrderDateKey] = lastKey),
+                ALLEXCEPT('EmployeeOrder','EmployeeOrder'[PersonnelId])
+            )
+        RETURN
+            NOT ISBLANK(lastType) &&
+            lastType <> 10 &&
+            ( ISBLANK(dept) || lastDept = dept )
+    )
+)
+
+--------------------------
+--- انتخاب محدوده تاریخ برگزیده
+SelectedDateRange :=
+VAR CurrentStartDate =
+    CALCULATE(
+        MIN('RPR DimDate Receptions'[date_id]),
+        ALLSELECTED('RPR DimDate Receptions')
+    )
+VAR CurrentEndDate =
+    CALCULATE(
+        MAX('RPR DimDate Receptions'[date_id]),
+        ALLSELECTED('RPR DimDate Receptions')
+    )
+RETURN
+    FORMAT(CurrentStartDate, "YYYYMMDD")
+        & " - "
+        & FORMAT(CurrentEndDate, "YYYYMMDD")
+
+
+
+---------------------------
+--  شبیه سازی cte
+ChassisReceptionTable :=
+=
+VAR StartDate = DATE(2025,3,21)
+VAR EndDate   = DATE(2025,4,20)
+
+-- 1) پذیرش‌هایی که داخل بازه هستند
+VAR CTE1 =
+    FILTER(
+        'RPR Receptions',
+        'RPR Receptions'[RepDate] >= StartDate
+            && 'RPR Receptions'[RepDate] <= EndDate
+    )
+
+-- 2) لیست یکتای شاسی‌هایی که حداقل یک پذیرش در بازه داشته‌اند
+VAR ChassisList =
+    DISTINCT(
+        SELECTCOLUMNS( CTE1, "Ch", 'RPR Receptions'[ChassisNumber] )
+    )
+
+-- 3) برای هر شاسی محاسبات تجمعی را انجام بده
+RETURN
+ADDCOLUMNS(
+    ChassisList,
+    "ChassisReceptionCount",
+        VAR _ch = [Ch]
+        RETURN
+            CALCULATE(
+                COUNTROWS('RPR Receptions'),
+                FILTER( ALL('RPR Receptions'), 'RPR Receptions'[ChassisNumber] = _ch )
+            ),
+
+    "FirstReceptionDate",
+        VAR _ch2 = [Ch]
+        RETURN
+            CALCULATE(
+                MIN('RPR Receptions'[RepDate]),
+                FILTER( ALL('RPR Receptions'), 'RPR Receptions'[ChassisNumber] = _ch2 )
+            ),
+
+    "LastReceptionDate",
+        VAR _ch3 = [Ch]
+        RETURN
+            CALCULATE(
+                MAX('RPR Receptions'[RepDate]),
+                FILTER( ALL('RPR Receptions'), 'RPR Receptions'[ChassisNumber] = _ch3 )
+            )
+)
+---------------------
+
+measure_lastkey:=
+
+VAR minDate = [SelectedFromDate]
+VAR maxDate = [SelectedToDate]
+VAR dept    = SELECTEDVALUE('dimDepartment'[DepartmentId])
+
+
+
+RETURN
+
+            CALCULATE (
+                COUNT(factEmployeeOrder[PersonnelId])
+             ,USERELATIONSHIP(factEmployeeOrder[OrderDateKey], dimDate[DateKey])
+            , filter(factEmployeeOrder,  
+                factEmployeeOrder[OrderTypeId]=3 
+                 &&  ('factEmployeeOrder'[OrderDateKey] >=minDate && 'factEmployeeOrder'[OrderDateKey] <=maxDate ) 
+              &&    ( ISBLANK(dept) || 'factEmployeeOrder'[DepartmentId] = dept ) 
+            ) 
+)
+
+
+------------------------
+
+-- تبدیل عدد به متن
+Number_As_Text =
+FORMAT ( Table[NumberColumn], "General Number" )
+
+
+----------------
+-- calculated column
+partnaturetitle=
+VAR _PartID =
+    LOOKUPVALUE (
+        'com factPartRequestItem'[PartId],
+        'com factPartRequestItem'[PartRequestItemID],
+        'com factPurchaseRequestItem'[ReferenceId]
+    )
+
+VAR _PartNature =
+    LOOKUPVALUE (
+        'com dimParts'[PartNature],
+        'com dimParts'[PartID],
+        _PartID
+    )
+
+
+RETURN 
+    SWITCH ( 
+        TRUE (),
+        _PartNature = 1, "ماده اولیه",
+        _PartNature = 2, "محصول",
+        _PartNature = 3, "نیمه ساخته",
+        _PartNature = 4, "دارایی ثابت",
+        _PartNature = 5, "سایر",
+        BLANK () 
+    ) 
+	------------
+
+MaxJalaliModifiedDate:=
+VAR _maxDateTime =CALCULATE(
+    MAX ( 'Sales HorizentalMergedSales'[ModifiedDate]), ALL('Sales HorizentalMergedSales'))
+
+VAR _maxDateOnly =
+    DATE ( YEAR ( _maxDateTime ), MONTH ( _maxDateTime ), DAY ( _maxDateTime ) )
+VAR _jalaliDate =
+    CALCULATE (
+        MAX ( 'BI dimDate'[JalaliDate] ),
+        TREATAS ( {_maxDateOnly}, 'BI dimDate'[GregorianDate] ),ALL('Sales HorizentalMergedSales'))
+
+    
+VAR _timeText =
+    FORMAT ( _maxDateTime, "HH:mm" )
+RETURN
+    _jalaliDate & " " & _timeText
+	-------------
+
+
+
+
+    dimJalaliCalendarTable = 
+VAR _StartYear = 1400
+VAR _EndYear = 1499 
+
+-- ایجاد لیست سال‌ها با نام ستون مشخص
+VAR _Years = SELECTCOLUMNS(GENERATESERIES(_StartYear, _EndYear, 1), "YearVal", [Value])
+
+-- ایجاد لیست ماه‌ها با نام ستون مشخص
+VAR _Months = SELECTCOLUMNS(GENERATESERIES(1, 12, 1), "MonthVal", [Value])
+
+-- ترکیب سال و ماه
+VAR _BaseTable = CROSSJOIN(_Years, _Months)
+
+RETURN
+SELECTCOLUMNS(
+    _BaseTable,
+    "JalaliYear", [YearVal],                         -- استفاده از نام ستون مشخص شده در متغیر اول
+    "JalaliMonth", [MonthVal],                 -- استفاده از نام ستون مشخص شده در متغیر دوم
+    
+    "JalaliMonthName", 
+        SWITCH([MonthVal], 
+            1, "فروردین", 2, "اردیبهشت", 3, "خرداد", 
+            4, "تیر", 5, "مرداد", 6, "شهریور", 
+            7, "مهر", 8, "آبان", 9, "آذر", 
+            10, "دی", 11, "بهمن", 12, "اسفند"
+        ),
+
+    "JalaliYearMonth", 
+        [YearVal] * 100 + [MonthVal],            -- محاسبات روی ستون‌های مشخص شده
+
+    "JalaliYearMonthString", 
+        FORMAT([YearVal], "####") & "/" & FORMAT([MonthVal], "00")
+)
+
+---------------
+
+Measure1 = 
+CALCULATE(
+    COUNTROWS('Sales'[HorizentalMergedSales]),
+    FILTER(
+        'Sales'[HorizentalMergedSales],
+        NOT CONTAINSSTRING('Sales'[HorizentalMergedSales][ServicePackDescription], "گروه") &&
+        NOT CONTAINSSTRING('Sales'[HorizentalMergedSales][ServicePackDescription], "طرح جا")
+    )
+)

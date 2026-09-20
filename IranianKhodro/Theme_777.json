@@ -1,0 +1,101 @@
+﻿{
+  "name": "my Custom KPI Theme",
+  "textClasses": {
+    "callout": { "fontFace": "B Nazanin" },
+    "title": { "fontFace": "IranNastaliq" },
+    "header": { "fontFace": "IRANSans" },
+    "label": { "fontFace": "B Nazanin Regular" }
+  },
+  "dataColors": [
+    "#094780",
+    "#78152C",
+    "#168980",
+    "#573B92",
+    "#F4D25A",
+    "#5d1F1F",
+    "#3333FF",
+    "#F25579"
+  ],
+ 
+  "bad": "#B4BAC3",
+  "neutral": "#F3F2F1",
+  "good": "#EF2A57",
+  "minimum": "#B4BAC3",
+  "center": "#F3F2F1",
+  "maximum": "#EF2A57",
+  "visualStyles": {
+    "*": {
+      "*": {
+        "title": [
+          {
+            "fontColor": { "solid": { "color": "#000000" } },
+            "fontFamily": "B Nazanin Regular",
+            "fontSize": 10
+          }
+        ],
+        "*": [
+          {
+            "fontSize": 10,
+            "fontFamily": "B Nazanin Regular"
+          }
+        ]
+      }
+    },
+    "slicer": {
+      "*": {
+        "items": [
+          {
+            "fontFamily": "B Nazanin Regular"
+          }
+        ],
+        "header": [
+          {
+            "fontFamily": "B Nazanin Regular"
+          }
+        ]
+      }
+    },
+
+
+    "card": {
+      "*": {
+        "title": [
+          {
+            "fontColor": { "solid": { "color": "#000000" } },
+            "fontFamily": "B Nazanin Regular"
+          }
+        ],
+        "labels": [
+          {
+            "fontFamily": "B Nazanin Regular"
+          }
+        ]
+      }
+    },
+    "gauge": {
+      "*": {
+        "title": [
+          {
+            "fontColor": { "solid": { "color": "#000000" } },
+            "fontFamily": "B Nazanin Regular"
+          }
+        ],
+        "calloutValue": [
+          {
+            "fontFamily": "B Nazanin Regular"
+          }
+        ]
+      }
+    },
+    "kpi": {
+      "*": {
+        "title": [
+          {
+            "fontFamily": "B Nazanin Regular"
+          }
+        ]
+      }
+    }
+
+  }
+}
